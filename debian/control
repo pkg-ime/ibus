@@ -1,0 +1,88 @@
+Source: ibus
+Section: utils
+Priority: optional
+Maintainer: IME Packaging Team <pkg-ime-devel@lists.alioth.debian.org>
+Uploaders: 
+ LI Daobing <lidaobing@debian.org>,
+ Zhengpeng Hou <zhengpeng-hou@ubuntu.com>,
+ Asias He <asias.hejun@gmail.com>
+Build-Depends: debhelper (>= 7),
+ autotools-dev,
+ autoconf,
+ automake,
+ libtool,
+ python-support (>= 0.6),
+ libgtk2.0-dev,
+ libdbus-glib-1-dev,
+ python-dev,
+ iso-codes,
+ python-gobject-dev,
+ libgconf2-dev,
+ python-dbus (>= 0.83.0),
+ intltool (>= 0.40.0)
+Standards-Version: 3.9.1
+Homepage: http://code.google.com/p/ibus/
+Vcs-Bzr: lp:~pkg-ime/ibus/debian-ibus
+Vcs-Browser: https://code.launchpad.net/~pkg-ime/ibus/debian-ibus
+
+Package: ibus
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends},
+ python-ibus (= ${source:Version}), python-xdg, librsvg2-common, python-notify
+Recommends: im-config | im-switch, ibus-gtk | ibus-qt4
+Conflicts: ibus-anthy (<< 1.2),
+ ibus-table (<< 1.2),
+ ibus-pinyin (<< 1.2.99),
+ ibus-m17n (<< 1.2.99),
+ ibus-hangul (<< 1.2.99),
+ ibus-chewing (<< 1.2.99)
+Description: New input method framework using dbus
+ IBus is an Intelligent Input Bus. It is a new input framework for Linux
+ OS. It provides full featured and user friendly input method user interface.
+ It also may help developers to develop input method easily.
+
+Package: libibus2
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: New input method framework using dbus
+ IBus is an Intelligent Input Bus. It is a new input framework for Linux
+ OS. It provides full featured and user friendly input method user interface.
+ It also may help developers to develop input method easily.
+ .
+ libibus2 is the library of ibus.
+
+Package: libibus-dev
+Section: libdevel
+Architecture: any
+Depends: libibus2 (= ${binary:Version}), libglib2.0-dev, libdbus-1-dev, ${shlibs:Depends}, ${misc:Depends}
+Replaces: ibus (<< 1.3.6)
+Breaks: ibus (<< 1.3.6)
+Description: New input method framework using dbus
+ IBus is an Intelligent Input Bus. It is a new input framework for Linux
+ OS. It provides full featured and user friendly input method user interface.
+ It also may help developers to develop input method easily.
+ .
+ This package contains the header files and static libraries which is
+ needed for developing the IBus applications.
+
+Package: ibus-gtk
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: New input method framework using dbus
+ IBus is an Intelligent Input Bus. It is a new input framework for Linux
+ OS. It provides full featured and user friendly input method user interface.
+ It also may help developers to develop input method easily.
+ .
+ ibus-gtk is the GTK+ client of ibus, it provide a gtk-immodule for ibus.
+ 
+Package: python-ibus
+Section: python
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}, python-gtk2, python-dbus (>= 0.83.0), iso-codes
+Description: New input method framework using dbus
+ IBus is an Intelligent Input Bus. It is a new input framework for Linux
+ OS. It provides full featured and user friendly input method user interface.
+ It also may help developers to develop input method easily.
+ .
+ python-ibus is the Python binding of ibus.
