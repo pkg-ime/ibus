@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusObservedPath</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch04.html" title="Configuration">
+<link rel="prev" href="IBusConfigService.html" title="IBusConfigService">
+<link rel="next" href="ibus-ibusversion.html" title="ibusversion">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusConfigService.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch04.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="ibus-ibusversion.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusObservedPath.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusObservedPath.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusObservedPath.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusObservedPath">
+<a name="IBusObservedPath"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusObservedPath.top_of_page"></a>IBusObservedPath</span></h2>
+<p>IBusObservedPath — Path object of IBus.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="IBusObservedPath.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusObservedPath.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="IBusObservedPath.html#IBusObservedPath-struct" title="IBusObservedPath">IBusObservedPath</a>;
+                    <a class="link" href="IBusObservedPath.html#IBusObservedPathClass" title="IBusObservedPathClass">IBusObservedPathClass</a>;
+<a class="link" href="IBusObservedPath.html" title="IBusObservedPath"><span class="returnvalue">IBusObservedPath</span></a> *  <a class="link" href="IBusObservedPath.html#ibus-observed-path-new-from-xml-node" title="ibus_observed_path_new_from_xml_node ()">ibus_observed_path_new_from_xml_node</a>
+                                                        (<em class="parameter"><code><a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="type">XMLNode</span></a> *node</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> fill_stat</code></em>);
+<a class="link" href="IBusObservedPath.html" title="IBusObservedPath"><span class="returnvalue">IBusObservedPath</span></a> *  <a class="link" href="IBusObservedPath.html#ibus-observed-path-new" title="ibus_observed_path_new ()">ibus_observed_path_new</a>              (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> fill_stat</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="IBusObservedPath.html#ibus-observed-path-traverse" title="ibus_observed_path_traverse ()">ibus_observed_path_traverse</a>         (<em class="parameter"><code><a class="link" href="IBusObservedPath.html" title="IBusObservedPath"><span class="type">IBusObservedPath</span></a> *path</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusObservedPath.html#ibus-observed-path-check-modification" title="ibus_observed_path_check_modification ()">ibus_observed_path_check_modification</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusObservedPath.html" title="IBusObservedPath"><span class="type">IBusObservedPath</span></a> *path</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusObservedPath.html#ibus-observed-path-output" title="ibus_observed_path_output ()">ibus_observed_path_output</a>           (<em class="parameter"><code><a class="link" href="IBusObservedPath.html" title="IBusObservedPath"><span class="type">IBusObservedPath</span></a> *path</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Strings.html#GString"><span class="type">GString</span></a> *output</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> indent</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusObservedPath.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusSerializable.html" title="IBusSerializable">IBusSerializable</a>
+                     +----IBusObservedPath
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusObservedPath.description"></a><h2>Description</h2>
+<p>
+IBusObservedPath provides methods for file path manipulation,
+such as monitor modification, directory tree traversal.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusObservedPath.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBusObservedPath">
+<a name="IBusObservedPath-struct"></a><h3>IBusObservedPath</h3>
+<pre class="programlisting">typedef struct _IBusObservedPath IBusObservedPath;</pre>
+<p>
+Data structure of IBusObservedPath.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="IBusObservedPathClass">
+<a name="IBusObservedPathClass"></a><h3>IBusObservedPathClass</h3>
+<pre class="programlisting">typedef struct {
+    IBusSerializableClass parent;
+
+    /* class members */
+} IBusObservedPathClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_observed_path_new_from_xml_node ()">
+<a name="ibus-observed-path-new-from-xml-node"></a><h3>ibus_observed_path_new_from_xml_node ()</h3>
+<pre class="programlisting"><a class="link" href="IBusObservedPath.html" title="IBusObservedPath"><span class="returnvalue">IBusObservedPath</span></a> *  ibus_observed_path_new_from_xml_node
+                                                        (<em class="parameter"><code><a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="type">XMLNode</span></a> *node</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> fill_stat</code></em>);</pre>
+<p>
+New an IBusObservedPath from an XML node.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>node</code></em> :</span></p></td>
+<td>An XML node that contain path.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fill_stat</code></em> :</span></p></td>
+<td>Auto-fill the path status.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusObservedPath.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_observed_path_new ()">
+<a name="ibus-observed-path-new"></a><h3>ibus_observed_path_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusObservedPath.html" title="IBusObservedPath"><span class="returnvalue">IBusObservedPath</span></a> *  ibus_observed_path_new              (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> fill_stat</code></em>);</pre>
+<p>
+New an IBusObservedPath from an XML node.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>The path string.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fill_stat</code></em> :</span></p></td>
+<td>Auto-fill the path status.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusObservedPath.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_observed_path_traverse ()">
+<a name="ibus-observed-path-traverse"></a><h3>ibus_observed_path_traverse ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             ibus_observed_path_traverse         (<em class="parameter"><code><a class="link" href="IBusObservedPath.html" title="IBusObservedPath"><span class="type">IBusObservedPath</span></a> *path</code></em>);</pre>
+<p>
+Recursively traverse the path and put the files and subdirectory in to a newly allocated
+GLists, if the <em class="parameter"><code>path</code></em> is a directory. Otherwise returns NULL.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>An IBusObservedPath.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A newly allocate GList which holds content in path; NULL if <em class="parameter"><code>path</code></em> is not directory. <span class="annotation">[<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusObservedPath]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_observed_path_check_modification ()">
+<a name="ibus-observed-path-check-modification"></a><h3>ibus_observed_path_check_modification ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_observed_path_check_modification
+                                                        (<em class="parameter"><code><a class="link" href="IBusObservedPath.html" title="IBusObservedPath"><span class="type">IBusObservedPath</span></a> *path</code></em>);</pre>
+<p>
+Checks whether the path is modified by comparing the mtime in object and mtime in file system.
+Returns TRUE if imtime is changed, otherwise FALSE.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>An IBusObservedPath.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if mtime is changed; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_observed_path_output ()">
+<a name="ibus-observed-path-output"></a><h3>ibus_observed_path_output ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_observed_path_output           (<em class="parameter"><code><a class="link" href="IBusObservedPath.html" title="IBusObservedPath"><span class="type">IBusObservedPath</span></a> *path</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Strings.html#GString"><span class="type">GString</span></a> *output</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> indent</code></em>);</pre>
+<p>
+Append the observed path to a string with following format:
+&lt;path mtime="&lt;i&gt;modified time&lt;/i&gt;" &gt;&lt;i&gt;path&lt;/i&gt;&lt;/path&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>An IBusObservedPath.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>output</code></em> :</span></p></td>
+<td>Path is appended to.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>indent</code></em> :</span></p></td>
+<td>number of indent.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

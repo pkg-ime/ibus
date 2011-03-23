@@ -1,0 +1,716 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Amanpreet Singh <aalam@users.sf.net>, 2008.
+# A S Alam <aalam@users.sf.net>, 2009.
+# Jaswinder Singh <jsingh@redhat.com>, 2009, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: ibus\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-23 13:32+0800\n"
+"PO-Revision-Date: 2010-05-05 16:23+0530\n"
+"Last-Translator: Jaswinder Singh <jsingh@redhat.com>\n"
+"Language-Team: Punjabi/Panjabi <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: ../bus/ibus.desktop.in.h:1
+msgid "IBus"
+msgstr "IBus"
+
+#: ../bus/ibus.desktop.in.h:2
+#, fuzzy
+msgid "Input Method Framework"
+msgstr "IBus ਇੰਪੁੱਟ ਢੰਗ ਫਰੇਮਵਰਕ"
+
+#: ../bus/ibus.desktop.in.h:3
+#, fuzzy
+msgid "Start IBus Input Method Framework"
+msgstr "IBus ਇੰਪੁੱਟ ਢੰਗ ਫਰੇਮਵਰਕ"
+
+#: ../ibus/_config.py.in:38
+msgid ""
+"Copyright (c) 2007-2010 Peng Huang\n"
+"Copyright (c) 2007-2010 Red Hat, Inc."
+msgstr ""
+"Copyright (c) 2007-2010 Peng Huang\n"
+"Copyright (c) 2007-2010 Red Hat, Inc."
+
+#: ../ibus/lang.py:41
+msgid "Other"
+msgstr "ਹੋਰ"
+
+#: ../ui/gtk/candidatepanel.py:267
+msgid "Previous page"
+msgstr "ਪਿਛਲਾ ਪੇਜ਼"
+
+#: ../ui/gtk/candidatepanel.py:272
+msgid "Next page"
+msgstr "ਅਗਲਾ ਪੇਜ਼"
+
+#: ../ui/gtk/main.py:57
+msgid ""
+"Some input methods have been installed, removed or updated. Please restart "
+"ibus input platform."
+msgstr ""
+"ਕੁਝ ਇੰਪੁੰਟ ਢੰਗ ਇੰਸਟਾਲ ਕੀਤੇ, ਹਟਾਏ ਜਾਂ ਅੱਪਡੇਟ ਕੀਤੇ ਗਏ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ ibus ਇੰਪੁੱਟ ਪਲੇਟਫਾਰਮ ਮੁੜ-"
+"ਚਾਲੂ ਕਰੋ।"
+
+#: ../ui/gtk/main.py:62
+msgid "Restart Now"
+msgstr "ਹੁਣ ਮੁੜ-ਚਾਲੂ"
+
+#: ../ui/gtk/main.py:63
+msgid "Later"
+msgstr "ਬਾਅਦ `ਚ"
+
+#: ../ui/gtk/panel.py:113
+msgid "IBus input method framework"
+msgstr "IBus ਇੰਪੁੱਟ ਢੰਗ ਫਰੇਮਵਰਕ"
+
+#: ../ui/gtk/panel.py:331
+msgid "Restart"
+msgstr "ਮੁੜ-ਚਾਲੂ"
+
+#: ../ui/gtk/panel.py:418
+msgid "Turn off input method"
+msgstr "ਇੰਪੁੱਟ ਢੰਗ ਬੰਦ ਕਰੋ"
+
+#: ../ui/gtk/panel.py:457
+msgid "No input window"
+msgstr "ਕੋਈ ਇੰਪੁੱਟ ਵਿੰਡੋ ਨਹੀਂ"
+
+#: ../ui/gtk/panel.py:488
+msgid "IBus is an intelligent input bus for Linux/Unix."
+msgstr "IBus ਲੀਨਕਸ/ਯੂਨੈਕਸ ਲਈ ਮਾਹਰ ਇੰਪੁੱਟ ਬੱਸ ਹੈ।"
+
+#: ../ui/gtk/panel.py:492
+msgid "translator-credits"
+msgstr ""
+"ਅਮਨਪਰੀਤ ਸਿੰਘ ਆਲਮ <aalam@users.sf.net> ੨੦੦੮-੨੦੦੯\n"
+"http://www.satluj.com/"
+
+#: ../ui/gtk/languagebar.py:107
+msgid "About the input method"
+msgstr "ਇੰਪੁੱਟ ਢੰਗ ਬਾਰੇ"
+
+#: ../ui/gtk/languagebar.py:215
+msgid "Switch input method"
+msgstr "ਇੰਪੁੱਟ ਢੰਗ ਬਦਲੋ"
+
+#: ../ui/gtk/languagebar.py:358 ../ui/gtk/engineabout.py:35
+#: ../setup/engineabout.py:35 ../setup/setup.ui.h:16
+msgid "About"
+msgstr "ਇਸ ਬਾਰੇ"
+
+#: ../ui/gtk/languagebar.py:362
+msgid "About the Input Method"
+msgstr "ਇੰਪੁੱਟ ਢੰਗ ਬਾਰੇ"
+
+#: ../ui/gtk/engineabout.py:63 ../setup/engineabout.py:63
+#, python-format
+msgid "Language: %s\n"
+msgstr "ਭਾਸ਼ਾ: %s\n"
+
+#: ../ui/gtk/engineabout.py:65 ../setup/engineabout.py:65
+#, python-format
+msgid "Keyboard layout: %s\n"
+msgstr "ਕੀਬੋਰਡ ਲੇਆਉਟ: %s\n"
+
+#: ../ui/gtk/engineabout.py:67 ../setup/engineabout.py:67
+#, python-format
+msgid "Author: %s\n"
+msgstr "ਲੇਖਕ: %s\n"
+
+#: ../ui/gtk/engineabout.py:69 ../setup/engineabout.py:69
+msgid "Description:\n"
+msgstr "ਵੇਰਵਾ:\n"
+
+#: ../setup/main.py:106
+msgid "trigger"
+msgstr "ਟਰਿੱਗਰ"
+
+#: ../setup/main.py:117
+msgid "next input method"
+msgstr "ਅਗਲਾ ਇੰਪੁੱਟ ਢੰਗ"
+
+#: ../setup/main.py:128
+msgid "previous input method"
+msgstr "ਪਿਛਲਾ ਇੰਪੁੱਟ ਢੰਗ"
+
+#: ../setup/main.py:268
+msgid "IBus daemon is not started. Do you want to start it now?"
+msgstr "IBus ਡੈਮਨ ਚੱਲਦੀ ਨਹੀਂ ਹੈ। ਕੀ ਤੁਸੀਂ ਇਸ ਨੂੰ ਸ਼ੁਰੂ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?"
+
+#: ../setup/main.py:283
+msgid ""
+"IBus has been started! If you can not use IBus, please add below lines in "
+"$HOME/.bashrc, and relogin your desktop.\n"
+"  export GTK_IM_MODULE=ibus\n"
+"  export XMODIFIERS=@im=ibus\n"
+"  export QT_IM_MODULE=ibus"
+msgstr ""
+"IBus ਸ਼ੁਰੂ ਹੋ ਗਈ ਹੈ! ਜੇ ਤੁਹਾਨੂੰ IBus ਨਾ ਵੇਖਾਈ ਦੇਵੇ ਤਾਂ ਅੱਗੇ ਦਿੱਤੀਆਂ ਲਾਈਨਾਂ ਨੂੰ $HOME/.bashrc ਵਿੱਚ ਜੋੜੋ ਅਤੇ ਆਪਣੇ ਡੈਸਕਟਾਪ ਵਿੱਚ ਮੁੜ ਲਾਗਇਨ ਕਰੋ\n"
+"   export GTK_IM_MODULE=ibus\n"
+"   export XMODIFIERS=@im=ibus\n"
+"   export QT_IM_MODULE=ibus"
+
+#: ../setup/main.py:298
+#, python-format
+msgid "Select keyboard shortcut for %s"
+msgstr "%s ਲਈ ਕੀਬੋਰਡ ਸ਼ਾਰਟਕੱਟ ਚੁਣੋ"
+
+#: ../setup/keyboardshortcut.py:55
+msgid "Keyboard shortcuts"
+msgstr "ਕੀਬੋਰਡ ਸ਼ਾਰਟਕੱਟ"
+
+#: ../setup/keyboardshortcut.py:66
+msgid "Key code:"
+msgstr "ਕੀ ਕੋਡ:"
+
+#: ../setup/keyboardshortcut.py:81
+msgid "Modifiers:"
+msgstr "ਮਾਡੀਫਾਇਰ:"
+
+#: ../setup/keyboardshortcut.py:234
+msgid ""
+"Please press a key (or a key combination).\n"
+"The dialog will be closed when the key is released."
+msgstr ""
+"ਕੋਈ ਵੀ ਸਵਿੱਚ ਦੱਬੋ (ਜਾਂ ਕੋਈ ਸਵਿੱਚ ਜੋੜ)।\n"
+"ਜਦੋਂ ਸਵਿੱਚ ਛੱਡੀ ਜਾਵੇਗੀ ਤਾਂ ਇਹ ਡਾਈਲਾਗ ਬੰਦ ਹੋ ਜਾਵੇਗਾ।"
+
+#: ../setup/keyboardshortcut.py:236
+msgid "Please press a key (or a key combination)"
+msgstr "ਕੋਈ ਵੀ ਸਵਿੱਚ ਦੱਬੋ (ਜਾਂ ਸਵਿੱਚ ਜੋੜ)"
+
+#: ../setup/enginecombobox.py:120
+msgid "Select an input method"
+msgstr "ਇੱਕ ਇੰਪੁੱਟ ਢੰਗ ਚੁਣੋ"
+
+#. create im name & icon column
+#: ../setup/enginetreeview.py:67 ../setup/setup.ui.h:31
+msgid "Input Method"
+msgstr "ਇੰਪੁੱਟ ਢੰਗ"
+
+#: ../setup/enginetreeview.py:95
+msgid "Kbd"
+msgstr "Kbd"
+
+#: ../setup/ibus-setup.desktop.in.h:1 ../setup/setup.ui.h:30
+msgid "IBus Preferences"
+msgstr "IBus ਪਸੰਦ"
+
+#: ../setup/ibus-setup.desktop.in.h:2
+#, fuzzy
+msgid "Set IBus Preferences"
+msgstr "IBus ਪਸੰਦ"
+
+#: ../data/ibus.schemas.in.h:1
+msgid "Auto hide"
+msgstr "ਆਟੋਮੈਟਿਕ ਓਹਲੇ"
+
+#: ../data/ibus.schemas.in.h:2
+msgid "Custom font"
+msgstr "ਪਸੰਦੀਦਾ ਫੋਂਟ"
+
+#: ../data/ibus.schemas.in.h:3
+msgid "Custom font name for language panel"
+msgstr "ਭਾਸ਼ਾ ਪੈਨਲ ਲਈ ਪਸੰਦੀਦਾ ਫੋਂਟ ਨਾਂ"
+
+#: ../data/ibus.schemas.in.h:4
+msgid "Embed Preedit Text"
+msgstr "ਸ਼ਾਮਿਲ ਕੀਤਾ ਪਹਿਲਾਂ-ਸੋਧਿਆ ਪਾਠ"
+
+#: ../data/ibus.schemas.in.h:5
+msgid "Embed Preedit Text in Application Window"
+msgstr "ਐਪਲੀਕੇਸ਼ਨ ਵਿੱਡੋ ਵਿੱਚ ਸ਼ਾਮਿਲ ਕੀਤਾ ਪਹਿਲਾਂ-ਸੋਧਿਆ ਪਾਠ"
+
+#: ../data/ibus.schemas.in.h:6
+#, fuzzy
+msgid "Enable input method by default"
+msgstr "ਅਗਲਾ ਇੰਪੁੱਟ ਢੰਗ"
+
+#: ../data/ibus.schemas.in.h:7
+msgid "Enable input method by default when the application gets input focus"
+msgstr ""
+
+#: ../data/ibus.schemas.in.h:8
+msgid "Language panel position"
+msgstr "ਭਾਸ਼ਾ ਪੈਨਲ ਸਥਿਤੀ"
+
+#: ../data/ibus.schemas.in.h:9
+msgid "Next engine shortcut keys"
+msgstr "ਅਗਲਾ ਇੰਜਣ ਸ਼ਾਰਟਕੱਟ ਕੁੰਜੀਆਂ"
+
+#: ../data/ibus.schemas.in.h:10
+msgid "Orientation of lookup table"
+msgstr "ਖੋਜ ਟੇਬਲ ਦੀ ਸਥਿਤੀ"
+
+#: ../data/ibus.schemas.in.h:11
+msgid "Orientation of lookup table. 0 = Horizontal, 1 = Vertical"
+msgstr "ਖੋਜ ਟੇਬਲ ਦੀ ਸਥਿਤੀ। 0 = ਹਰੀਜੱਟਲ, 1 =ਵਰਟੀਕਲ"
+
+#: ../data/ibus.schemas.in.h:12
+msgid "Preload engines"
+msgstr "ਪ੍ਰੀ-ਲੋਡ ਇੰਜਣ"
+
+#: ../data/ibus.schemas.in.h:13
+msgid "Preload engines during ibus starts up"
+msgstr "ibus ਸ਼ੁਰੂ ਹੋਣ ਸਮੇਂ ਪਹਿਲਾਂ ਲੋਡ ਕੀਤੇ ਇੰਜਣ"
+
+#: ../data/ibus.schemas.in.h:14
+msgid "Prev engine shortcut keys"
+msgstr "ਪਿਛਲਾ ਇੰਜਣ ਸ਼ਾਰਟਕੱਟ ਕੁੰਜੀਆਂ"
+
+#: ../data/ibus.schemas.in.h:15 ../setup/setup.ui.h:40
+msgid "Share the same input method among all applications"
+msgstr "ਸਭ ਐਪਲੀਕੇਸ਼ਨਾਂ ਵਿਚਕਾਰ ਕੁਝ ਇੰਪੁੱਟ ਸਾਂਝੀ ਕਰੋ"
+
+#: ../data/ibus.schemas.in.h:16 ../setup/setup.ui.h:41
+msgid "Show icon on system tray"
+msgstr "ਸਿਸਟਮ ਟਰੇਅ ਵਿੱਚ ਆਈਕਾਨ ਵੇਖਾਓ"
+
+#: ../data/ibus.schemas.in.h:17
+msgid "Show input method name"
+msgstr "ਇੰਪੁੱਟ ਢੰਗ ਨਾਂ ਵੇਖਾਓ"
+
+#: ../data/ibus.schemas.in.h:18 ../setup/setup.ui.h:43
+msgid "Show input method name on language bar"
+msgstr "ਭਾਸ਼ਾ ਪੱਟੀ ਉੱਤੇ ਇੰਪੁੱਟ ਨਾਂ ਵੇਖੋ"
+
+#: ../data/ibus.schemas.in.h:19
+msgid ""
+"The behavior of language panel. 0 = Embedded in menu, 1 = Auto hide, 2 = "
+"Always show"
+msgstr "ਭਾਸ਼ਾ ਪੈਨਲ ਦਾ ਰਵੱਈਆ. 0 = ਹਮੇਸ਼ਾ ਓਹਲੇ,  1 = ਆਟੋਮੈਟਿਕ ਓਹਲੇ, 2 = ਹਮੇਸ਼ਾ ਵੇਖੋ"
+
+#: ../data/ibus.schemas.in.h:20
+msgid ""
+"The position of the language panel. 0 = Top left corner, 1 = Top right "
+"corner, 2 = Bottom left corner, 3 = Bottom right corner, 4 = Custom"
+msgstr ""
+"ਭਾਸ਼ਾ ਪੈਨਲ ਦੀ ਸਥਿਤੀ. 0 = ਉੱਪਰ ਖੱਬਾ ਕੋਨਾ, 1 = ਉੱਪਰ ਸੱਜਾ ਕੋਨਾ, 2 = ਹੇਠਾਂ ਖੱਬਾ ਕੋਨਾ, 3 = "
+"ਹੇਠਾਂ ਸੱਜਾ ਕੋਨਾ, 4 = ਪਸੰਦੀਦਾ"
+
+#: ../data/ibus.schemas.in.h:21
+#, fuzzy
+msgid "The shortcut keys for switching to the next input method in the list"
+msgstr "ਲਿਸਟ ਵਿੱਚ ਅਗਲਾ ਇੰਪੁੱਟ ਢੰਗ ਬਦਲਣ ਲਈ ਸ਼ਾਰਟਕੱਟ ਸਵਿੱਚ"
+
+#: ../data/ibus.schemas.in.h:22
+#, fuzzy
+msgid "The shortcut keys for switching to the previous input method"
+msgstr "ਲਿਸਟ ਵਿੱਚ ਪਿਛਲਾ ਇੰਪੁੱਟ ਢੰਗ ਬਦਲਣ ਲਈ ਸ਼ਾਰਟਕੱਟ ਸਵਿੱਚ"
+
+#: ../data/ibus.schemas.in.h:23 ../setup/setup.ui.h:49
+msgid "The shortcut keys for turning input method on or off"
+msgstr "ਇੰਪੁੱਟ ਢੰਗ ਬੰਦ ਕਰਨ ਜਾਂ ਚਾਲੂ ਕਰਨ ਲਈ ਸ਼ਾਰਟਕੱਟ ਕੁੰਜੀਆਂ"
+
+#: ../data/ibus.schemas.in.h:24
+msgid "Trigger shortcut keys"
+msgstr "ਟਰਿੱਗਰ ਸ਼ਾਰਟਕੱਟ ਕੁੰਜੀਆਂ"
+
+#: ../data/ibus.schemas.in.h:25
+msgid "Use custom font"
+msgstr "ਪਸੰਦੀਦਾ ਫੋਂਟ ਵਰਤੋਂ"
+
+#: ../data/ibus.schemas.in.h:26
+msgid "Use custom font name for language panel"
+msgstr "ਭਾਸ਼ਾ ਪੈਨਲ ਲਈ ਪਸੰਦੀਦਾ ਫੋਂਟ ਨਾਂ ਵਰਤੋਂ"
+
+#: ../data/ibus.schemas.in.h:27
+msgid "Use global input method"
+msgstr "ਗਲੋਬਲ ਇੰਪੁੱਟ ਢੰਗ ਵਰਤੋ"
+
+#: ../data/ibus.schemas.in.h:28 ../setup/setup.ui.h:53
+msgid "Use system keyboard (XKB) layout"
+msgstr "ਸਿਸਟਮ ਕੀਬੋਰਡ (XKB) ਲੇਆਉਟ ਵਰਤੋਂ"
+
+#: ../data/ibus.schemas.in.h:29 ../setup/setup.ui.h:54
+msgid "Use system keyboard layout"
+msgstr "ਸਿਸਟਮ ਕੀਬੋਰਡ ਲੇਆਉਟ ਵਰਤੋਂ"
+
+#: ../setup/setup.ui.h:1
+msgid "..."
+msgstr "..."
+
+#: ../setup/setup.ui.h:2
+msgid "<b>Font and Style</b>"
+msgstr "<b>ਫੋਂਟ ਅਤੇ ਸਟਾਈਲ</b>"
+
+#: ../setup/setup.ui.h:3
+msgid "<b>Global input method settings</b>"
+msgstr "<b>ਗਲੋਬਲ ਇੰਪੁੱਟ ਢੰਗ ਸੈਟਿੰਗ</b>"
+
+#: ../setup/setup.ui.h:4
+msgid "<b>Keyboard Layout</b>"
+msgstr "<b>ਕੀਬੋਰਡ ਲੇਆਉਟ</b>"
+
+#: ../setup/setup.ui.h:5
+msgid "<b>Keyboard Shortcuts</b>"
+msgstr "<b>ਕੀਬੋਰਡ ਸ਼ਾਰਟਕੱਟ</b>"
+
+#: ../setup/setup.ui.h:6
+msgid "<b>Startup</b>"
+msgstr "<b>ਸ਼ੁਰੂ</b>"
+
+#: ../setup/setup.ui.h:7
+msgid ""
+"<big><b>IBus</b></big>\n"
+"<small>The intelligent input bus</small>\n"
+"Homepage: http://code.google.com/p/ibus\n"
+"\n"
+"\n"
+"\n"
+msgstr ""
+"<big><b>IBus</b></big>\n"
+" <small>ਮਾਹਰ ਇੰਪੁੱਟ ਬੱਸ</small>\n"
+" ਮੁੱਖ ਸਫ਼ਾ: http://code.google.com/p/ibus\n"
+" \n"
+" \n"
+" \n"
+
+#: ../setup/setup.ui.h:14
+msgid ""
+"<small><i>The default input method is the top one in the list.\n"
+"You may use up/down buttons to change it.</i></small>"
+msgstr ""
+"<small><i>ਡਿਫਾਲਟ ਇੰਪੁੱਟ ਢੰਗ ਲਿਸਟ ਵਿੱਚ ਸਭ ਤੋਂ ਉੱਤੇ ਹੈ।\n"
+"ਤੁਸੀਂ ਇਸ ਨੂੰ ਬਦਲਣ ਲਈ ਉੱਤੇ/ਹੇਠਾਂ ਬਟਨ ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦੇ ਹੋ।</i></small>"
+
+#: ../setup/setup.ui.h:17
+msgid "Add the selected input method into the enabled input methods"
+msgstr "ਚੁਣਿਆ ਇੰਪੁੱਟ ਢੰਗ ਚਾਲੂ ਕੀਤੇ ਇੰਪੁੱਟ ਢੰਗਾਂ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ"
+
+#: ../setup/setup.ui.h:18
+msgid "Advanced"
+msgstr "ਮਾਹਰ"
+
+#: ../setup/setup.ui.h:19
+msgid "Always"
+msgstr "ਹਮੇਸ਼ਾ"
+
+#: ../setup/setup.ui.h:20
+msgid "Bottom left corner"
+msgstr "ਹੇਠਾਂ ਖੱਬਾ ਕੋਨਾ"
+
+#: ../setup/setup.ui.h:21
+msgid "Bottom right corner"
+msgstr "ਹੇਠਾਂ ਸੱਜਾ ਕੋਨਾ"
+
+#: ../setup/setup.ui.h:22
+msgid "Candidates orientation:"
+msgstr "ਉਮੀਦਵਾਰ ਸਥਿਤੀ:"
+
+#: ../setup/setup.ui.h:23
+msgid "Custom"
+msgstr "ਪਸੰਦੀਦਾ"
+
+#: ../setup/setup.ui.h:24
+msgid "Embed preedit text in application window"
+msgstr "ਐਪਲੀਕੇਸ਼ਨ ਵਿੰਡੋ ਵਿੱਚ ਸ਼ਾਮਿਲ ਕੀਤਾ ਪਹਿਲਾਂ-ਸੋਧਿਆ ਪਾਠ"
+
+#: ../setup/setup.ui.h:25
+msgid "Embed the preedit text of input method in the application window"
+msgstr "ਐਪਲੀਕੇਸ਼ਨ ਵਿੰਡੋ ਵਿੱਚ ਇੰਪੁੱਟ ਢੰਗ ਦਾ ਸ਼ਾਮਿਲ ਕੀਤਾ ਪਹਿਲਾਂ-ਸੋਧਿਆ ਪਾਠ"
+
+#: ../setup/setup.ui.h:26
+msgid "Embedded in menu"
+msgstr "ਮੇਨੂ ਵਿੱਚ ਸ਼ਾਮਿਲ"
+
+#: ../setup/setup.ui.h:27
+msgid "Enable or disable:"
+msgstr "ਚਾਲੂ ਜਾਂ ਬੰਦ:"
+
+#: ../setup/setup.ui.h:28
+msgid "General"
+msgstr "ਆਮ"
+
+#: ../setup/setup.ui.h:29
+msgid "Horizontal"
+msgstr "ਹਰੀਜੱਟਲ"
+
+#: ../setup/setup.ui.h:32
+msgid "Language panel position:"
+msgstr "ਭਾਸ਼ਾ ਪੈਨਲ ਸਥਿਤੀ:"
+
+#: ../setup/setup.ui.h:33
+msgid "Move down the selected input method in the enabled input methods"
+msgstr "ਚੁਣਿਆ ਇੰਪੁੱਟ ਢੰਗ ਚਾਲੂ ਇੰਪੁੱਟ ਢੰਗਾਂ ਵਿੱਚ ਹੇਠਾਂ ਭੇਜੋ"
+
+#: ../setup/setup.ui.h:34
+msgid "Move up the selected input method in the enabled input methods list"
+msgstr "ਚੁਣਿਆ ਇੰਪੁੱਟ ਢੰਗ ਚਾਲੂ ਇੰਪੁੱਟ ਢੰਗਾਂ ਵਿੱਚ ਉੱਤੇ ਭੇਜੋ"
+
+#: ../setup/setup.ui.h:35
+msgid "Next input method:"
+msgstr "ਅਗਲਾ ਇੰਪੁੱਟ ਢੰਗ:"
+
+#: ../setup/setup.ui.h:36
+msgid "Previous input method:"
+msgstr "ਪਿਛਲਾ ਇੰਪੁੱਟ ਢੰਗ:"
+
+#: ../setup/setup.ui.h:37
+msgid "Remove the selected input method from the enabled input methods"
+msgstr "ਚੁਣਿਆ ਇੰਪੁੱਟ ਢੰਗ ਚਾਲੂ ਇੰਪੁੱਟ ਢੰਗਾਂ ਵਿੱਚੋਂ ਹਟਾਓ"
+
+#: ../setup/setup.ui.h:38
+msgid "Set the behavior of ibus how to show or hide language bar"
+msgstr "ibus ਦਾ ਰਵੱਈਆ ਸੈੱਟ ਕਰੋ ਕਿ ਭਾਸ਼ਾ ਪੱਟੀ ਕਿਵੇਂ ਵੇਖਾਈ ਜਾਵੇ"
+
+#: ../setup/setup.ui.h:39
+msgid "Set the orientation of candidates in lookup table"
+msgstr "ਖੋਜ ਟੇਬਲ ਵਿੱਚ ਉਮੀਦਵਾਰ ਦੀ ਸਥਿਤੀ ਸੈੱਟ ਕਰੋ"
+
+#: ../setup/setup.ui.h:42
+msgid "Show information of the selected input method"
+msgstr "ਚੁਣੇ ਇੰਪੁੱਟ ਢੰਗ ਬਾਰੇ ਜਾਣਕਾਰੀ ਵੇਖੋ"
+
+#: ../setup/setup.ui.h:44
+msgid "Show input method's name on language bar when check the checkbox"
+msgstr "ਜਦੋਂ ਚੈੱਕ ਬਾਕਸ ਚੁਣਿਆ ਹੋਵੇ ਤਾਂ ਇੰਪੁੱਟ ਢੰਗ ਨਾਂ ਭਾਸ਼ਾ ਪੱਟੀ ਉੱਤੇ ਵੇਖੋ"
+
+#: ../setup/setup.ui.h:45
+msgid "Show language panel:"
+msgstr "ਭਾਸ਼ਾ ਪੈਨਲ ਵੇਖੋ:"
+
+#: ../setup/setup.ui.h:46
+msgid "Start ibus on login"
+msgstr "ਲਾਗਇਨ ਸਮੇਂ ibus ਚਲਾਉ"
+
+#: ../setup/setup.ui.h:47
+msgid "The shortcut keys for switching to next input method in the list"
+msgstr "ਲਿਸਟ ਵਿੱਚ ਅਗਲਾ ਇੰਪੁੱਟ ਢੰਗ ਬਦਲਣ ਲਈ ਸ਼ਾਰਟਕੱਟ ਸਵਿੱਚ"
+
+#: ../setup/setup.ui.h:48
+msgid "The shortcut keys for switching to previous input method in the list"
+msgstr "ਲਿਸਟ ਵਿੱਚ ਪਿਛਲਾ ਇੰਪੁੱਟ ਢੰਗ ਬਦਲਣ ਲਈ ਸ਼ਾਰਟਕੱਟ ਸਵਿੱਚ"
+
+#: ../setup/setup.ui.h:50
+msgid "Top left corner"
+msgstr "ਉੱਪਰ ਖੱਬਾ ਕੋਨਾ"
+
+#: ../setup/setup.ui.h:51
+msgid "Top right corner"
+msgstr "ਉੱਪਰ ਸੱਜਾ ਕੋਨਾ"
+
+#: ../setup/setup.ui.h:52
+msgid "Use custom font:"
+msgstr "ਪਸੰਦੀਦਾ ਫੋਂਟ ਵਰਤੋ:"
+
+#: ../setup/setup.ui.h:55
+msgid "Vertical"
+msgstr "ਵਰਟੀਕਲ"
+
+#: ../setup/setup.ui.h:56
+msgid "When active"
+msgstr "ਜਦੋਂ ਐਕਟਿਵ"
+
+#~ msgid "Never"
+#~ msgstr "ਕਦੇ ਨਹੀਂ"
+
+#~ msgid "Show in Status Icon menu"
+#~ msgstr "ਸਥਿਤੀ ਆਈਕਾਨ ਮੇਨੂ ਵਿੱਚ ਵੇਖਾਓ"
+
+#, fuzzy
+#~ msgid "Use global engine"
+#~ msgstr "ਪ੍ਰੀ-ਲੋਡ ਇੰਜਣ"
+
+#, fuzzy
+#~ msgid "Langauge panel position"
+#~ msgstr "ਭਾਸ਼ਾ ਪੈਨਲ ਵੇਖੋ:"
+
+#~ msgid "Custom font:"
+#~ msgstr "ਪਸੰਦੀਦਾ ਫੋਂਟ:"
+
+#, fuzzy
+#~ msgid "Font for language bar and candidates"
+#~ msgstr "ਭਾਸ਼ਾ ਪੱਟੀ ਅਤੇ ਉਮੀਦਵਾਰ ਲਈ ਫੋਂਟ ਚੋਣ"
+
+#~ msgid "Use custom font for language bar and candidates"
+#~ msgstr "ਭਾਸ਼ਾ ਪੱਟੀ ਅਤੇ ਉਮੀਦਵਾਰ ਲਈ ਕਸਟਮ ਫੋਂਟ"
+
+#~ msgid "Custom Font"
+#~ msgstr "ਪਸੰਦੀਦਾ ਫੋਂਟ"
+
+#~ msgid "Show IM Name"
+#~ msgstr "IM ਨਾਂ ਵੇਖੋ"
+
+#~ msgid "Show IM name on language bar"
+#~ msgstr "ਭਾਸ਼ਾ ਪੱਟੀ ਉੱਤੇ IM ਨਾਂ ਵੇਖੋ"
+
+#~ msgid "Use Custom Font"
+#~ msgstr "ਪਸੰਦੀਦਾ ਫੋਂਟ ਵਰਤੋਂ"
+
+#~ msgid "Next engine hotkey for switch to next input method engine"
+#~ msgstr "ਅਗਲੇ ਇੰਪੁੱਟ ਢੰਗ ਇੰਜਣ ਲਈ ਬਦਲਣ ਵਾਸਤੇ ਅਗਲਾ ਇੰਜਣ ਹਾਟ-ਕੀ"
+
+#~ msgid "Prev engine hotkey for switch to previous input method engine"
+#~ msgstr "ਪਿਛਲੇ ਇੰਪੁੱਟ ਢੰਗ ਇੰਜਣ ਲਈ ਬਦਲਣ ਵਾਸਤੇ ਪਿਛਲਾ ਇੰਜਣ ਹਾਟ-ਕੀ"
+
+#~ msgid "Trigger hotkey for enable or disable input context"
+#~ msgstr "ਇੰਪੁੱਟ ਪਰਸੰਗ ਚਾਲੂ ਜਾਂ ਬੰਦ ਕਰਨ ਵਾਸਤੇ ਟਰਿੱਗਰ ਹਾਟ-ਕੀ"
+
+#~ msgid "gtk-about"
+#~ msgstr "gtk-about"
+
+#~ msgid "[Control+space]"
+#~ msgstr "[Control+space]"
+
+#~ msgid "Switch engine"
+#~ msgstr "ਇੰਜਣ ਬਦਲੋ"
+
+#~ msgid "prev engine"
+#~ msgstr "ਪਿਛਲਾ ਇੰਜਣ"
+
+#~ msgid "keyboard label|BackSpace"
+#~ msgstr "BackSpace"
+
+#~ msgid "keyboard label|Tab"
+#~ msgstr "Tab"
+
+#~ msgid "keyboard label|Return"
+#~ msgstr "Return"
+
+#~ msgid "keyboard label|Pause"
+#~ msgstr "Pause"
+
+#~ msgid "keyboard label|Scroll_Lock"
+#~ msgstr "Scroll_Lock"
+
+#~ msgid "keyboard label|Sys_Req"
+#~ msgstr "Sys_Req"
+
+#~ msgid "keyboard label|Escape"
+#~ msgstr "Escape"
+
+#~ msgid "keyboard label|Multi_key"
+#~ msgstr "Multi_key"
+
+#~ msgid "keyboard label|Home"
+#~ msgstr "Home"
+
+#~ msgid "keyboard label|Left"
+#~ msgstr "ਖੱਬੇ"
+
+#~ msgid "keyboard label|Up"
+#~ msgstr "ਉੱਤੇ"
+
+#~ msgid "keyboard label|Right"
+#~ msgstr "ਸੱਜੇ"
+
+#~ msgid "keyboard label|Down"
+#~ msgstr "ਹੇਠਾਂ"
+
+#~ msgid "keyboard label|Page_Up"
+#~ msgstr "Page_Up"
+
+#~ msgid "keyboard label|Page_Down"
+#~ msgstr "Page_Down"
+
+#~ msgid "keyboard label|End"
+#~ msgstr "End"
+
+#~ msgid "keyboard label|Begin"
+#~ msgstr "Begin"
+
+#~ msgid "keyboard label|Print"
+#~ msgstr "Print"
+
+#~ msgid "keyboard label|Insert"
+#~ msgstr "Insert"
+
+#~ msgid "keyboard label|Num_Lock"
+#~ msgstr "Num_Lock"
+
+#~ msgid "keyboard label|KP_Space"
+#~ msgstr "KP_Space"
+
+#~ msgid "keyboard label|KP_Tab"
+#~ msgstr "KP_Tab"
+
+#~ msgid "keyboard label|KP_Enter"
+#~ msgstr "KP_Enter"
+
+#~ msgid "keyboard label|KP_Home"
+#~ msgstr "KP_Home"
+
+#~ msgid "keyboard label|KP_Left"
+#~ msgstr "KP_Left"
+
+#~ msgid "keyboard label|KP_Up"
+#~ msgstr "KP_Up"
+
+#~ msgid "keyboard label|KP_Right"
+#~ msgstr "KP_Right"
+
+#~ msgid "keyboard label|KP_Down"
+#~ msgstr "KP_Down"
+
+#~ msgid "keyboard label|KP_Page_Up"
+#~ msgstr "KP_Page_Up"
+
+#~ msgid "keyboard label|KP_Prior"
+#~ msgstr "KP_Prior"
+
+#~ msgid "keyboard label|KP_Page_Down"
+#~ msgstr "KP_Page_Down"
+
+#~ msgid "keyboard label|KP_Next"
+#~ msgstr "KP_Next"
+
+#~ msgid "keyboard label|KP_End"
+#~ msgstr "KP_End"
+
+#~ msgid "keyboard label|KP_Begin"
+#~ msgstr "KP_Begin"
+
+#~ msgid "keyboard label|KP_Insert"
+#~ msgstr "KP_Insert"
+
+#~ msgid "keyboard label|KP_Delete"
+#~ msgstr "KP_Delete"
+
+#~ msgid "keyboard label|Delete"
+#~ msgstr "Delete"
+
+#~ msgid "gtk-remove"
+#~ msgstr "gtk-close"
+
+#~ msgid "gtk-close"
+#~ msgstr "gtk-close"
+
+#~ msgid "IBus - Running"
+#~ msgstr "IBus -  ਚੱਲ ਰਿਹਾ ਹੈ"
+
+#~ msgid "IBus - Setup"
+#~ msgstr "IBus - ਸੈੱਟਅੱਪ"
+
+#~ msgid "Engine"
+#~ msgstr "ਇੰਜਣ"
+
+#~ msgid "Started"
+#~ msgstr "ਚਾਲੂ ਹੈ"
+
+#~ msgid "Cannot enable input engine"
+#~ msgstr "ਇੰਪੁੱਟ ਇੰਜਣ ਯੋਗ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ"
+
+#~ msgid ""
+#~ "IBus can not enable input engine, because IBus does not load any input "
+#~ "engines!\n"
+#~ "Please use ibus-setup program to load some input engines."
+#~ msgstr ""
+#~ "IBus ਕੋਈ ਇੰਪੁੱਟ ਇੰਜਣ ਯੋਗ ਨਹੀਂ ਕਰ ਸਕਦੀ ਹੈ, ਕਿਉਂਕਿ ਆਈ-ਬੱਸ ਕਿਸੇ ਇੰਪੁੱਟ ਇੰਜਣ ਨੂੰ ਲੋਡ ਨਹੀਂ ਕਰ "
+#~ "ਸਕਦੀ ਹੈ!\n"
+#~ " ਕੁਝ ਇੰਪੁੱਟ ਇੰਜਣ ਨੂੰ ਲੋਡ ਕਰਨ ਵਾਸਤੇ ibus-setup ਪਰੋਗਰਾਮ ਵਰਤੋਂ।"
+
+#~ msgid "Setup"
+#~ msgstr "ਸੈੱਟਅੱਪ"
+
+#~ msgid "Don't show this again"
+#~ msgstr "ਇਹ ਮੁੜ ਨਾ ਵੇਖਾਓ"

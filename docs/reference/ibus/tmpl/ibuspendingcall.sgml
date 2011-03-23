@@ -1,0 +1,147 @@
+<!-- ##### SECTION Title ##### -->
+ibuspendingcall
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### TYPEDEF IBusPendingCall ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### USER_FUNCTION IBusPendingCallNotifyFunction ##### -->
+<para>
+
+</para>
+
+@pending: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_pending_call_ref ##### -->
+<para>
+
+</para>
+
+@pending: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_pending_call_unref ##### -->
+<para>
+
+</para>
+
+@pending: 
+
+
+<!-- ##### FUNCTION ibus_pending_call_set_notify ##### -->
+<para>
+
+</para>
+
+@pending: 
+@function: 
+@user_data: 
+@free_user_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_pending_call_cancel ##### -->
+<para>
+
+</para>
+
+@pending: 
+
+
+<!-- ##### FUNCTION ibus_pending_call_get_completed ##### -->
+<para>
+
+</para>
+
+@pending: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_pending_call_steal_reply ##### -->
+<para>
+
+</para>
+
+@pending: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_pending_call_block ##### -->
+<para>
+
+</para>
+
+@pending: 
+
+
+<!-- ##### FUNCTION ibus_pending_call_wait ##### -->
+<para>
+
+</para>
+
+@pending: 
+
+
+<!-- ##### FUNCTION ibus_pending_call_allocate_data_slot ##### -->
+<para>
+
+</para>
+
+@slot_p: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_pending_call_free_data_slot ##### -->
+<para>
+
+</para>
+
+@slot_p: 
+
+
+<!-- ##### FUNCTION ibus_pending_call_set_data ##### -->
+<para>
+
+</para>
+
+@pending: 
+@slot: 
+@data: 
+@free_data_func: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_pending_call_get_data ##### -->
+<para>
+
+</para>
+
+@pending: 
+@slot: 
+@Returns: 
+
+

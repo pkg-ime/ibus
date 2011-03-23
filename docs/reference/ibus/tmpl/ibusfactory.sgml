@@ -1,0 +1,59 @@
+<!-- ##### SECTION Title ##### -->
+IBusFactory
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusFactory ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ARG IBusFactory:connection ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT IBusFactoryClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_factory_new ##### -->
+<para>
+
+</para>
+
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_factory_add_engine ##### -->
+<para>
+
+</para>
+
+@factory: 
+@engine_name: 
+@engine_type: 
+
+

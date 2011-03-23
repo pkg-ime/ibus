@@ -1,0 +1,589 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusComponent</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch03.html" title="Input method engine">
+<link rel="prev" href="ch03.html" title="Input method engine">
+<link rel="next" href="IBusEngine.html" title="IBusEngine">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch03.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusEngine.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusComponent.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusComponent.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusComponent.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusComponent">
+<a name="IBusComponent"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusComponent.top_of_page"></a>IBusComponent</span></h2>
+<p>IBusComponent — Component (executable) specification.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="IBusComponent.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusComponent.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="IBusComponent.html#IBusComponent-struct" title="IBusComponent">IBusComponent</a>;
+                    <a class="link" href="IBusComponent.html#IBusComponentClass" title="IBusComponentClass">IBusComponentClass</a>;
+<a class="link" href="IBusComponent.html" title="IBusComponent"><span class="returnvalue">IBusComponent</span></a> *     <a class="link" href="IBusComponent.html#ibus-component-new" title="ibus_component_new ()">ibus_component_new</a>                  (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *description</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *version</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *license</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *author</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *homepage</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *exec</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *textdomain</code></em>);
+<a class="link" href="IBusComponent.html" title="IBusComponent"><span class="returnvalue">IBusComponent</span></a> *     <a class="link" href="IBusComponent.html#ibus-component-new-from-xml-node" title="ibus_component_new_from_xml_node ()">ibus_component_new_from_xml_node</a>    (<em class="parameter"><code><a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="type">XMLNode</span></a> *node</code></em>);
+<a class="link" href="IBusComponent.html" title="IBusComponent"><span class="returnvalue">IBusComponent</span></a> *     <a class="link" href="IBusComponent.html#ibus-component-new-from-file" title="ibus_component_new_from_file ()">ibus_component_new_from_file</a>        (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *filename</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusComponent.html#ibus-component-add-observed-path" title="ibus_component_add_observed_path ()">ibus_component_add_observed_path</a>    (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> access_fs</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusComponent.html#ibus-component-add-engine" title="ibus_component_add_engine ()">ibus_component_add_engine</a>           (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *engine</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="IBusComponent.html#ibus-component-get-engines" title="ibus_component_get_engines ()">ibus_component_get_engines</a>          (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusComponent.html#ibus-component-output" title="ibus_component_output ()">ibus_component_output</a>               (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Strings.html#GString"><span class="type">GString</span></a> *output</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> indent</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusComponent.html#ibus-component-output-engines" title="ibus_component_output_engines ()">ibus_component_output_engines</a>       (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Strings.html#GString"><span class="type">GString</span></a> *output</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> indent</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusComponent.html#ibus-component-check-modification" title="ibus_component_check_modification ()">ibus_component_check_modification</a>   (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusComponent.html#ibus-component-start" title="ibus_component_start ()">ibus_component_start</a>                (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> verbose</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusComponent.html#ibus-component-stop" title="ibus_component_stop ()">ibus_component_stop</a>                 (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusComponent.html#ibus-component-is-running" title="ibus_component_is_running ()">ibus_component_is_running</a>           (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);
+<a class="link" href="IBusComponent.html" title="IBusComponent"><span class="returnvalue">IBusComponent</span></a> *     <a class="link" href="IBusComponent.html#ibus-component-get-from-engine" title="ibus_component_get_from_engine ()">ibus_component_get_from_engine</a>      (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *engine</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusComponent.html#ibus-component-set-restart" title="ibus_component_set_restart ()">ibus_component_set_restart</a>          (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> restart</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusComponent.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusSerializable.html" title="IBusSerializable">IBusSerializable</a>
+                     +----IBusComponent
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusComponent.description"></a><h2>Description</h2>
+<p>
+An IBusComponent is an executable program.
+It provides services such as user interface, configuration,
+and input method engine (IME).
+</p>
+<p>
+It is recommended that IME developers provide
+a component XML file and
+load the XML file by <a class="link" href="IBusComponent.html#ibus-component-new-from-file" title="ibus_component_new_from_file ()"><code class="function">ibus_component_new_from_file()</code></a>.
+</p>
+<p>
+The format of a component XML file is described  at
+<a class="ulink" href="http://code.google.com/p/ibus/wiki/DevXML" target="_top">http://code.google.com/p/ibus/wiki/DevXML</a>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusComponent.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBusComponent">
+<a name="IBusComponent-struct"></a><h3>IBusComponent</h3>
+<pre class="programlisting">typedef struct {
+    gchar *name;
+    gchar *description;
+    gchar *version;
+    gchar *license;
+    gchar *author;
+    gchar *homepage;
+    gchar *exec;
+
+    /* text domain for dgettext */
+    gchar *textdomain;
+} IBusComponent;
+</pre>
+<p>
+An IBusComponent stores component information.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="IBusComponent-struct.name"></a>name</code></em>;</span></p></td>
+<td>Name of the component.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="IBusComponent-struct.description"></a>description</code></em>;</span></p></td>
+<td>Detailed description of component.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="IBusComponent-struct.version"></a>version</code></em>;</span></p></td>
+<td>Component version.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="IBusComponent-struct.license"></a>license</code></em>;</span></p></td>
+<td>Distribution license of this component.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="IBusComponent-struct.author"></a>author</code></em>;</span></p></td>
+<td>Author(s) of the component.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="IBusComponent-struct.homepage"></a>homepage</code></em>;</span></p></td>
+<td>Homepage of the component.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="IBusComponent-struct.exec"></a>exec</code></em>;</span></p></td>
+<td>path to component executable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="IBusComponent-struct.textdomain"></a>textdomain</code></em>;</span></p></td>
+<td>Domain name for <code class="function">dgettext()</code>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="IBusComponentClass">
+<a name="IBusComponentClass"></a><h3>IBusComponentClass</h3>
+<pre class="programlisting">typedef struct {
+  IBusSerializableClass parent;
+
+  /* class members */
+} IBusComponentClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_new ()">
+<a name="ibus-component-new"></a><h3>ibus_component_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="returnvalue">IBusComponent</span></a> *     ibus_component_new                  (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *description</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *version</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *license</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *author</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *homepage</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *exec</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *textdomain</code></em>);</pre>
+<p>
+New an IBusComponent.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the component.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>description</code></em> :</span></p></td>
+<td>Detailed description of component.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>version</code></em> :</span></p></td>
+<td>Component version.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>license</code></em> :</span></p></td>
+<td>Distribution license of this component.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>author</code></em> :</span></p></td>
+<td>Author(s) of the component.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>homepage</code></em> :</span></p></td>
+<td>Homepage of the component.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>exec</code></em> :</span></p></td>
+<td>path to component executable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>textdomain</code></em> :</span></p></td>
+<td>Domain name for <code class="function">dgettext()</code>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusComponent.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_new_from_xml_node ()">
+<a name="ibus-component-new-from-xml-node"></a><h3>ibus_component_new_from_xml_node ()</h3>
+<pre class="programlisting"><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="returnvalue">IBusComponent</span></a> *     ibus_component_new_from_xml_node    (<em class="parameter"><code><a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="type">XMLNode</span></a> *node</code></em>);</pre>
+<p>
+New an IBusComponent from an XML tree.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>node</code></em> :</span></p></td>
+<td>Root node of component XML tree.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusComponent.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_new_from_file ()">
+<a name="ibus-component-new-from-file"></a><h3>ibus_component_new_from_file ()</h3>
+<pre class="programlisting"><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="returnvalue">IBusComponent</span></a> *     ibus_component_new_from_file        (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *filename</code></em>);</pre>
+<p>
+New an IBusComponent from an XML file.
+Note that a component file usually contains engine descriptions,
+if it does, <a class="link" href="IBusEngineDesc.html#ibus-engine-desc-new-from-xml-node" title="ibus_engine_desc_new_from_xml_node ()"><code class="function">ibus_engine_desc_new_from_xml_node()</code></a> will be called
+to load the engine descriptions.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>filename</code></em> :</span></p></td>
+<td>An XML file that contains component information.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusComponent.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_add_observed_path ()">
+<a name="ibus-component-add-observed-path"></a><h3>ibus_component_add_observed_path ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_component_add_observed_path    (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> access_fs</code></em>);</pre>
+<p>
+Add an observed path to IBusComponent.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>An IBusComponent
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>Observed path to be added.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>access_fs</code></em> :</span></p></td>
+<td>TRUE for filling the file status; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_add_engine ()">
+<a name="ibus-component-add-engine"></a><h3>ibus_component_add_engine ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_component_add_engine           (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *engine</code></em>);</pre>
+<p>
+Add an engine to IBusComponent according to the description in <em class="parameter"><code>engine</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>An IBusComponent
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>A description of an engine.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_get_engines ()">
+<a name="ibus-component-get-engines"></a><h3>ibus_component_get_engines ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             ibus_component_get_engines          (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);</pre>
+<p>
+Get the engines of this component.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>An IBusComponent.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A newly allocated GList that contains engines. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusEngineDesc]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_output ()">
+<a name="ibus-component-output"></a><h3>ibus_component_output ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_component_output               (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Strings.html#GString"><span class="type">GString</span></a> *output</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> indent</code></em>);</pre>
+<p>
+Output IBusComponent as an XML-formatted string.
+The output string can be then shown on the screen or written to file.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>An IBusComponent.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>output</code></em> :</span></p></td>
+<td>GString that holds the result.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>indent</code></em> :</span></p></td>
+<td>level of indent.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_output_engines ()">
+<a name="ibus-component-output-engines"></a><h3>ibus_component_output_engines ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_component_output_engines       (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Strings.html#GString"><span class="type">GString</span></a> *output</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> indent</code></em>);</pre>
+<p>
+Output engine description  as an XML-formatted string.
+The output string can be then shown on the screen or written to file.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>An IBusComponent.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>output</code></em> :</span></p></td>
+<td>GString that holds the result.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>indent</code></em> :</span></p></td>
+<td>level of indent.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_check_modification ()">
+<a name="ibus-component-check-modification"></a><h3>ibus_component_check_modification ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_component_check_modification   (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);</pre>
+<p>
+Check whether the observed paths of component is modified.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>An IBusComponent.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if at least one of the observed paths is modified; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_start ()">
+<a name="ibus-component-start"></a><h3>ibus_component_start ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_component_start                (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> verbose</code></em>);</pre>
+<p>
+Whether the IBusComponent is started.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>An IBusComponent.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>verbose</code></em> :</span></p></td>
+<td>if FALSE, redirect the child output to /dev/null
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the component is started; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_stop ()">
+<a name="ibus-component-stop"></a><h3>ibus_component_stop ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_component_stop                 (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);</pre>
+<p>
+Whether the IBusComponent is stopped.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>An IBusComponent.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the component is stopped; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_is_running ()">
+<a name="ibus-component-is-running"></a><h3>ibus_component_is_running ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_component_is_running           (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);</pre>
+<p>
+Whether the IBusComponent is running.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>An IBusComponent.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the component is running; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_get_from_engine ()">
+<a name="ibus-component-get-from-engine"></a><h3>ibus_component_get_from_engine ()</h3>
+<pre class="programlisting"><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="returnvalue">IBusComponent</span></a> *     ibus_component_get_from_engine      (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *engine</code></em>);</pre>
+<p>
+Get the IBusComponent from an engine description.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>A description of an engine.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> An IBusComponent of the engine. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_component_set_restart ()">
+<a name="ibus-component-set-restart"></a><h3>ibus_component_set_restart ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_component_set_restart          (<em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> restart</code></em>);</pre>
+<p>
+Set whether the component needs to be restarted when it dies.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>An IBusComponent.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>restart</code></em> :</span></p></td>
+<td>if TRUE, the component will be restartd when it dies.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

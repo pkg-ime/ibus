@@ -1,0 +1,787 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusLookupTable</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch02.html" title="Panel (User Interfaces)">
+<link rel="prev" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile">
+<link rel="next" href="IBusPanelService.html" title="IBusPanelService">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusHotkeyProfile.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusPanelService.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusLookupTable.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusLookupTable.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusLookupTable.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusLookupTable">
+<a name="IBusLookupTable"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusLookupTable.top_of_page"></a>IBusLookupTable</span></h2>
+<p>IBusLookupTable — Candidate word/phrase lookup table.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="IBusLookupTable.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusLookupTable.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="IBusLookupTable.html#IBusLookupTable-struct" title="IBusLookupTable">IBusLookupTable</a>;
+                    <a class="link" href="IBusLookupTable.html#IBusLookupTableClass" title="IBusLookupTableClass">IBusLookupTableClass</a>;
+<a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="returnvalue">IBusLookupTable</span></a> *   <a class="link" href="IBusLookupTable.html#ibus-lookup-table-new" title="ibus_lookup_table_new ()">ibus_lookup_table_new</a>               (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> page_size</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> cursor_pos</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> cursor_visible</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> round</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusLookupTable.html#ibus-lookup-table-append-candidate" title="ibus_lookup_table_append_candidate ()">ibus_lookup_table_append_candidate</a>  (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusLookupTable.html#ibus-lookup-table-get-number-of-candidates" title="ibus_lookup_table_get_number_of_candidates ()">ibus_lookup_table_get_number_of_candidates</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);
+<a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          <a class="link" href="IBusLookupTable.html#ibus-lookup-table-get-candidate" title="ibus_lookup_table_get_candidate ()">ibus_lookup_table_get_candidate</a>     (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusLookupTable.html#ibus-lookup-table-append-label" title="ibus_lookup_table_append_label ()">ibus_lookup_table_append_label</a>      (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusLookupTable.html#ibus-lookup-table-set-label" title="ibus_lookup_table_set_label ()">ibus_lookup_table_set_label</a>         (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
+<a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          <a class="link" href="IBusLookupTable.html#ibus-lookup-table-get-label" title="ibus_lookup_table_get_label ()">ibus_lookup_table_get_label</a>         (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusLookupTable.html#ibus-lookup-table-set-cursor-pos" title="ibus_lookup_table_set_cursor_pos ()">ibus_lookup_table_set_cursor_pos</a>    (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> cursor_pos</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusLookupTable.html#ibus-lookup-table-get-cursor-pos" title="ibus_lookup_table_get_cursor_pos ()">ibus_lookup_table_get_cursor_pos</a>    (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusLookupTable.html#ibus-lookup-table-set-cursor-visible" title="ibus_lookup_table_set_cursor_visible ()">ibus_lookup_table_set_cursor_visible</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusLookupTable.html#ibus-lookup-table-is-cursor-visible" title="ibus_lookup_table_is_cursor_visible ()">ibus_lookup_table_is_cursor_visible</a> (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusLookupTable.html#ibus-lookup-table-get-cursor-in-page" title="ibus_lookup_table_get_cursor_in_page ()">ibus_lookup_table_get_cursor_in_page</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusLookupTable.html#ibus-lookup-table-set-page-size" title="ibus_lookup_table_set_page_size ()">ibus_lookup_table_set_page_size</a>     (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> page_size</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusLookupTable.html#ibus-lookup-table-get-page-size" title="ibus_lookup_table_get_page_size ()">ibus_lookup_table_get_page_size</a>     (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusLookupTable.html#ibus-lookup-table-set-round" title="ibus_lookup_table_set_round ()">ibus_lookup_table_set_round</a>         (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> round</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusLookupTable.html#ibus-lookup-table-is-round" title="ibus_lookup_table_is_round ()">ibus_lookup_table_is_round</a>          (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusLookupTable.html#ibus-lookup-table-set-orientation" title="ibus_lookup_table_set_orientation ()">ibus_lookup_table_set_orientation</a>   (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> orientation</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                <a class="link" href="IBusLookupTable.html#ibus-lookup-table-get-orientation" title="ibus_lookup_table_get_orientation ()">ibus_lookup_table_get_orientation</a>   (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusLookupTable.html#ibus-lookup-table-clear" title="ibus_lookup_table_clear ()">ibus_lookup_table_clear</a>             (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusLookupTable.html#ibus-lookup-table-page-up" title="ibus_lookup_table_page_up ()">ibus_lookup_table_page_up</a>           (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusLookupTable.html#ibus-lookup-table-page-down" title="ibus_lookup_table_page_down ()">ibus_lookup_table_page_down</a>         (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusLookupTable.html#ibus-lookup-table-cursor-up" title="ibus_lookup_table_cursor_up ()">ibus_lookup_table_cursor_up</a>         (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusLookupTable.html#ibus-lookup-table-cursor-down" title="ibus_lookup_table_cursor_down ()">ibus_lookup_table_cursor_down</a>       (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusLookupTable.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusSerializable.html" title="IBusSerializable">IBusSerializable</a>
+                     +----IBusLookupTable
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusLookupTable.description"></a><h2>Description</h2>
+<p>
+An IBusLookuptable stores the candidate words or phrases for users to choose from.
+</p>
+<p>
+Use <a class="link" href="IBusEngine.html#ibus-engine-update-lookup-table" title="ibus_engine_update_lookup_table ()"><code class="function">ibus_engine_update_lookup_table()</code></a>, <a class="link" href="IBusEngine.html#ibus-engine-show-lookup-table" title="ibus_engine_show_lookup_table ()"><code class="function">ibus_engine_show_lookup_table()</code></a>,
+and <a class="link" href="IBusEngine.html#ibus-engine-hide-lookup-table" title="ibus_engine_hide_lookup_table ()"><code class="function">ibus_engine_hide_lookup_table()</code></a> to update, show and hide the lookup
+table.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusLookupTable.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBusLookupTable">
+<a name="IBusLookupTable-struct"></a><h3>IBusLookupTable</h3>
+<pre class="programlisting">typedef struct {
+    guint page_size;
+    guint cursor_pos;
+    gboolean cursor_visible;
+    gboolean round;
+    gint orientation;
+
+    GArray *candidates;
+    GArray *labels;
+} IBusLookupTable;
+</pre>
+<p>
+An IBusLookuptable stores the candidate words or phrases for users to choose from.
+Note that some input methods allow you to select candidate by pressing non-numeric
+keys such as "asdfghjkl;".
+Developers of these input methods should change the labels with
+<a class="link" href="IBusLookupTable.html#ibus-lookup-table-append-label" title="ibus_lookup_table_append_label ()"><code class="function">ibus_lookup_table_append_label()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="IBusLookupTable-struct.page-size"></a>page_size</code></em>;</span></p></td>
+<td>number of candidate shown per page.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="IBusLookupTable-struct.cursor-pos"></a>cursor_pos</code></em>;</span></p></td>
+<td>position index of cursor.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="IBusLookupTable-struct.cursor-visible"></a>cursor_visible</code></em>;</span></p></td>
+<td>whether the cursor is visible.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="IBusLookupTable-struct.round"></a>round</code></em>;</span></p></td>
+<td>TRUE for lookup table wrap around.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="IBusLookupTable-struct.orientation"></a>orientation</code></em>;</span></p></td>
+<td>orientation of the table.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Arrays.html#GArray"><span class="type">GArray</span></a> *<em class="structfield"><code><a name="IBusLookupTable-struct.candidates"></a>candidates</code></em>;</span></p></td>
+<td>Candidate words/phrases.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Arrays.html#GArray"><span class="type">GArray</span></a> *<em class="structfield"><code><a name="IBusLookupTable-struct.labels"></a>labels</code></em>;</span></p></td>
+<td>Candidate labels which identify individual candidates in the same page. Default is 1, 2, 3, 4 ...
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="IBusLookupTableClass">
+<a name="IBusLookupTableClass"></a><h3>IBusLookupTableClass</h3>
+<pre class="programlisting">typedef struct {
+    IBusSerializableClass parent;
+} IBusLookupTableClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_new ()">
+<a name="ibus-lookup-table-new"></a><h3>ibus_lookup_table_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="returnvalue">IBusLookupTable</span></a> *   ibus_lookup_table_new               (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> page_size</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> cursor_pos</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> cursor_visible</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> round</code></em>);</pre>
+<p>
+New a IBusLookupTable.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>page_size</code></em> :</span></p></td>
+<td>number of candidate shown per page, the max value is 16.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cursor_pos</code></em> :</span></p></td>
+<td>position index of cursor.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cursor_visible</code></em> :</span></p></td>
+<td>whether the cursor is visible.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>round</code></em> :</span></p></td>
+<td>TRUE for lookup table wrap around.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusLookupTable.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_append_candidate ()">
+<a name="ibus-lookup-table-append-candidate"></a><h3>ibus_lookup_table_append_candidate ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_lookup_table_append_candidate  (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);</pre>
+<p>
+Append a candidate word/phrase to IBusLookupTable, and increase reference.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>candidate word/phrase to be appended (in IBusText format).
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_get_number_of_candidates ()">
+<a name="ibus-lookup-table-get-number-of-candidates"></a><h3>ibus_lookup_table_get_number_of_candidates ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_lookup_table_get_number_of_candidates
+                                                        (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);</pre>
+<p>
+Return the number of candidate in the table.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The number of candidates in the table
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_get_candidate ()">
+<a name="ibus-lookup-table-get-candidate"></a><h3>ibus_lookup_table_get_candidate ()</h3>
+<pre class="programlisting"><a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          ibus_lookup_table_get_candidate     (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>);</pre>
+<p>
+Return IBusText at the given index. Borrowed reference.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>index</code></em> :</span></p></td>
+<td>Index in the Lookup table.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> IBusText at the given index; NULL if no such IBusText. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_append_label ()">
+<a name="ibus-lookup-table-append-label"></a><h3>ibus_lookup_table_append_label ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_lookup_table_append_label      (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);</pre>
+<p>
+Append a candidate word/phrase to IBusLookupTable, and increase reference.
+This function is needed if the input method select candidate with
+non-numeric keys such as "asdfghjkl;".
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>A candidate label to be appended (in IBusText format).
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_set_label ()">
+<a name="ibus-lookup-table-set-label"></a><h3>ibus_lookup_table_set_label ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_lookup_table_set_label         (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);</pre>
+<p>
+Append a candidate word/phrase to IBusLookupTable, and increase reference.
+This function is needed if the input method select candidate with
+non-numeric keys such as "asdfghjkl;".
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>index</code></em> :</span></p></td>
+<td>Intex in the Lookup table.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>A candidate label to be appended (in IBusText format).
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_get_label ()">
+<a name="ibus-lookup-table-get-label"></a><h3>ibus_lookup_table_get_label ()</h3>
+<pre class="programlisting"><a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          ibus_lookup_table_get_label         (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>);</pre>
+<p>
+Return IBusText at the given index. Borrowed reference.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>index</code></em> :</span></p></td>
+<td>Index in the Lookup table.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> IBusText at the given index; NULL if no such IBusText. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_set_cursor_pos ()">
+<a name="ibus-lookup-table-set-cursor-pos"></a><h3>ibus_lookup_table_set_cursor_pos ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_lookup_table_set_cursor_pos    (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> cursor_pos</code></em>);</pre>
+<p>
+Set the cursor position of IBusLookupTable.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cursor_pos</code></em> :</span></p></td>
+<td>The position of cursor.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_get_cursor_pos ()">
+<a name="ibus-lookup-table-get-cursor-pos"></a><h3>ibus_lookup_table_get_cursor_pos ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_lookup_table_get_cursor_pos    (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);</pre>
+<p>
+Get the cursor position of IBusLookupTable.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The position of cursor.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_set_cursor_visible ()">
+<a name="ibus-lookup-table-set-cursor-visible"></a><h3>ibus_lookup_table_set_cursor_visible ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_lookup_table_set_cursor_visible
+                                                        (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);</pre>
+<p>
+Set whether to make the cursor of an IBusLookupTable visible or not.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
+<td>Whether to make the cursor of <em class="parameter"><code>table</code></em> visible.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_is_cursor_visible ()">
+<a name="ibus-lookup-table-is-cursor-visible"></a><h3>ibus_lookup_table_is_cursor_visible ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_lookup_table_is_cursor_visible (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);</pre>
+<p>
+Returns whether the cursor of an IBusLookupTable is visible.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Whether the cursor of <em class="parameter"><code>table</code></em> is visible.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_get_cursor_in_page ()">
+<a name="ibus-lookup-table-get-cursor-in-page"></a><h3>ibus_lookup_table_get_cursor_in_page ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_lookup_table_get_cursor_in_page
+                                                        (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);</pre>
+<p>
+Get the cursor position in current page of IBusLookupTable.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The position of cursor in current page.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_set_page_size ()">
+<a name="ibus-lookup-table-set-page-size"></a><h3>ibus_lookup_table_set_page_size ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_lookup_table_set_page_size     (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> page_size</code></em>);</pre>
+<p>
+Set the number of candidate shown per page.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>page_size</code></em> :</span></p></td>
+<td>number of candidate shown per page.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_get_page_size ()">
+<a name="ibus-lookup-table-get-page-size"></a><h3>ibus_lookup_table_get_page_size ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_lookup_table_get_page_size     (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);</pre>
+<p>
+Get the number of candidate shown per page.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Page size, i.e., number of candidate shown per page.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_set_round ()">
+<a name="ibus-lookup-table-set-round"></a><h3>ibus_lookup_table_set_round ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_lookup_table_set_round         (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> round</code></em>);</pre>
+<p>
+Set whether to make the IBusLookupTable round or not.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>round</code></em> :</span></p></td>
+<td>Whether to make <em class="parameter"><code>table</code></em> round.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_is_round ()">
+<a name="ibus-lookup-table-is-round"></a><h3>ibus_lookup_table_is_round ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_lookup_table_is_round          (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);</pre>
+<p>
+Returns whether the IBusLookupTable is round.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Whether the <em class="parameter"><code>table</code></em> is round.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_set_orientation ()">
+<a name="ibus-lookup-table-set-orientation"></a><h3>ibus_lookup_table_set_orientation ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_lookup_table_set_orientation   (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> orientation</code></em>);</pre>
+<p>
+Set the orientation.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>orientation</code></em> :</span></p></td>
+<td>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_get_orientation ()">
+<a name="ibus-lookup-table-get-orientation"></a><h3>ibus_lookup_table_get_orientation ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                ibus_lookup_table_get_orientation   (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);</pre>
+<p>
+Returns the orientation of the IBusLookupTable.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The orientation of the <em class="parameter"><code>table</code></em>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_clear ()">
+<a name="ibus-lookup-table-clear"></a><h3>ibus_lookup_table_clear ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_lookup_table_clear             (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);</pre>
+<p>
+Clear and remove all candidate from an IBusLookupTable.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_page_up ()">
+<a name="ibus-lookup-table-page-up"></a><h3>ibus_lookup_table_page_up ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_lookup_table_page_up           (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);</pre>
+<p>
+Go to previous page of an IBusLookupTable.
+</p>
+<p>
+It returns FALSE if it is already at the first page,
+unless  <code class="code">table&gt;-round==TRUE</code>, where it will go
+to the last page.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_page_down ()">
+<a name="ibus-lookup-table-page-down"></a><h3>ibus_lookup_table_page_down ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_lookup_table_page_down         (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);</pre>
+<p>
+Go to next page of an IBusLookupTable.
+</p>
+<p>
+It returns FALSE if it is already at the last page,
+unless  <code class="code">table&gt;-round==TRUE</code>, where it will go
+to the first page.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_cursor_up ()">
+<a name="ibus-lookup-table-cursor-up"></a><h3>ibus_lookup_table_cursor_up ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_lookup_table_cursor_up         (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);</pre>
+<p>
+Go to previous candidate of an IBusLookupTable.
+</p>
+<p>
+It returns FALSE if it is already at the first candidate,
+unless  <code class="code">table&gt;-round==TRUE</code>, where it will go
+to the last candidate.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_lookup_table_cursor_down ()">
+<a name="ibus-lookup-table-cursor-down"></a><h3>ibus_lookup_table_cursor_down ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_lookup_table_cursor_down       (<em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *table</code></em>);</pre>
+<p>
+Go to next candidate of an IBusLookupTable.
+</p>
+<p>
+It returns FALSE if it is already at the last candidate,
+unless  <code class="code">table&gt;-round==TRUE</code>, where it will go
+to the first candidate.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="See Also">
+<a name="IBusLookupTable.see-also"></a><h2>See Also</h2>
+<a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

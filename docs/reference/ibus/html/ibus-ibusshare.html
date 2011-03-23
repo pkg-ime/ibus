@@ -1,0 +1,561 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ibusshare</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch06.html" title="Internal">
+<link rel="prev" href="IBusServer.html" title="IBusServer">
+<link rel="next" href="ibus-ibustypes.html" title="ibustypes">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusServer.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch06.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="ibus-ibustypes.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#ibus-ibusshare.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#ibus-ibusshare.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry" title="ibusshare">
+<a name="ibus-ibusshare"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="ibus-ibusshare.top_of_page"></a>ibusshare</span></h2>
+<p>ibusshare — Shared utility functions and definition.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="ibus-ibusshare.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="ibus-ibusshare.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">#define             <a class="link" href="ibus-ibusshare.html#IBUS-SERVICE-IBUS:CAPS" title="IBUS_SERVICE_IBUS">IBUS_SERVICE_IBUS</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-SERVICE-PANEL:CAPS" title="IBUS_SERVICE_PANEL">IBUS_SERVICE_PANEL</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-SERVICE-CONFIG:CAPS" title="IBUS_SERVICE_CONFIG">IBUS_SERVICE_CONFIG</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-SERVICE-NOTIFICATIONS:CAPS" title="IBUS_SERVICE_NOTIFICATIONS">IBUS_SERVICE_NOTIFICATIONS</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-PATH-IBUS:CAPS" title="IBUS_PATH_IBUS">IBUS_PATH_IBUS</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-PATH-FACTORY:CAPS" title="IBUS_PATH_FACTORY">IBUS_PATH_FACTORY</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-PATH-PANEL:CAPS" title="IBUS_PATH_PANEL">IBUS_PATH_PANEL</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-PATH-CONFIG:CAPS" title="IBUS_PATH_CONFIG">IBUS_PATH_CONFIG</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-PATH-NOTIFICATIONS:CAPS" title="IBUS_PATH_NOTIFICATIONS">IBUS_PATH_NOTIFICATIONS</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-PATH-INPUT-CONTEXT:CAPS" title="IBUS_PATH_INPUT_CONTEXT">IBUS_PATH_INPUT_CONTEXT</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-INTERFACE-IBUS:CAPS" title="IBUS_INTERFACE_IBUS">IBUS_INTERFACE_IBUS</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-INTERFACE-INPUT-CONTEXT:CAPS" title="IBUS_INTERFACE_INPUT_CONTEXT">IBUS_INTERFACE_INPUT_CONTEXT</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-INTERFACE-FACTORY:CAPS" title="IBUS_INTERFACE_FACTORY">IBUS_INTERFACE_FACTORY</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-INTERFACE-ENGINE:CAPS" title="IBUS_INTERFACE_ENGINE">IBUS_INTERFACE_ENGINE</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-INTERFACE-PANEL:CAPS" title="IBUS_INTERFACE_PANEL">IBUS_INTERFACE_PANEL</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-INTERFACE-CONFIG:CAPS" title="IBUS_INTERFACE_CONFIG">IBUS_INTERFACE_CONFIG</a>
+#define             <a class="link" href="ibus-ibusshare.html#IBUS-INTERFACE-NOTIFICATIONS:CAPS" title="IBUS_INTERFACE_NOTIFICATIONS">IBUS_INTERFACE_NOTIFICATIONS</a>
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-ibusshare.html#ibus-get-local-machine-id" title="ibus_get_local_machine_id ()">ibus_get_local_machine_id</a>           (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-ibusshare.html#ibus-set-display" title="ibus_set_display ()">ibus_set_display</a>                    (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *display</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-ibusshare.html#ibus-get-address" title="ibus_get_address ()">ibus_get_address</a>                    (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-ibusshare.html#ibus-write-address" title="ibus_write_address ()">ibus_write_address</a>                  (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *address</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-ibusshare.html#ibus-get-user-name" title="ibus_get_user_name ()">ibus_get_user_name</a>                  (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#glong"><span class="returnvalue">glong</span></a>               <a class="link" href="ibus-ibusshare.html#ibus-get-daemon-uid" title="ibus_get_daemon_uid ()">ibus_get_daemon_uid</a>                 (<em class="parameter"><code><span class="type">void</span></code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-ibusshare.html#ibus-get-socket-path" title="ibus_get_socket_path ()">ibus_get_socket_path</a>                (<em class="parameter"><code><span class="type">void</span></code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-ibusshare.html#ibus-keyval-name" title="ibus_keyval_name ()">ibus_keyval_name</a>                    (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="ibus-ibusshare.html#ibus-keyval-from-name" title="ibus_keyval_from_name ()">ibus_keyval_from_name</a>               (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *keyval_name</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-ibusshare.html#ibus-free-strv" title="ibus_free_strv ()">ibus_free_strv</a>                      (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> **strv</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-ibusshare.html#ibus-key-event-to-string" title="ibus_key_event_to_string ()">ibus_key_event_to_string</a>            (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> modifiers</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-ibusshare.html#ibus-key-event-from-string" title="ibus_key_event_from_string ()">ibus_key_event_from_string</a>          (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *string</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *keyval</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *modifiers</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-ibusshare.html#ibus-init" title="ibus_init ()">ibus_init</a>                           (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-ibusshare.html#ibus-main" title="ibus_main ()">ibus_main</a>                           (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-ibusshare.html#ibus-quit" title="ibus_quit ()">ibus_quit</a>                           (<em class="parameter"><code><span class="type">void</span></code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="ibus-ibusshare.description"></a><h2>Description</h2>
+<p>
+This file defines some utility functions and definition
+which are shared among ibus component and services.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="ibus-ibusshare.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBUS_SERVICE_IBUS">
+<a name="IBUS-SERVICE-IBUS:CAPS"></a><h3>IBUS_SERVICE_IBUS</h3>
+<pre class="programlisting">#define IBUS_SERVICE_IBUS       "org.freedesktop.IBus"
+</pre>
+<p>
+Address of IBus service.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_SERVICE_PANEL">
+<a name="IBUS-SERVICE-PANEL:CAPS"></a><h3>IBUS_SERVICE_PANEL</h3>
+<pre class="programlisting">#define IBUS_SERVICE_PANEL      "org.freedesktop.IBus.Panel"
+</pre>
+<p>
+Address of IBus panel service.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_SERVICE_CONFIG">
+<a name="IBUS-SERVICE-CONFIG:CAPS"></a><h3>IBUS_SERVICE_CONFIG</h3>
+<pre class="programlisting">#define IBUS_SERVICE_CONFIG     "org.freedesktop.IBus.Config"
+</pre>
+<p>
+Address of IBus config service.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_SERVICE_NOTIFICATIONS">
+<a name="IBUS-SERVICE-NOTIFICATIONS:CAPS"></a><h3>IBUS_SERVICE_NOTIFICATIONS</h3>
+<pre class="programlisting">#define IBUS_SERVICE_NOTIFICATIONS    "org.freedesktop.IBus.Notifications"
+</pre>
+<p>
+Address of IBus notification service.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_PATH_IBUS">
+<a name="IBUS-PATH-IBUS:CAPS"></a><h3>IBUS_PATH_IBUS</h3>
+<pre class="programlisting">#define IBUS_PATH_IBUS          "/org/freedesktop/IBus"
+</pre>
+<p>
+D-Bus path for IBus
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_PATH_FACTORY">
+<a name="IBUS-PATH-FACTORY:CAPS"></a><h3>IBUS_PATH_FACTORY</h3>
+<pre class="programlisting">#define IBUS_PATH_FACTORY       "/org/freedesktop/IBus/Factory"
+</pre>
+<p>
+D-Bus path for IBus factory.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_PATH_PANEL">
+<a name="IBUS-PATH-PANEL:CAPS"></a><h3>IBUS_PATH_PANEL</h3>
+<pre class="programlisting">#define IBUS_PATH_PANEL         "/org/freedesktop/IBus/Panel"
+</pre>
+<p>
+D-Bus path for IBus panel.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_PATH_CONFIG">
+<a name="IBUS-PATH-CONFIG:CAPS"></a><h3>IBUS_PATH_CONFIG</h3>
+<pre class="programlisting">#define IBUS_PATH_CONFIG        "/org/freedesktop/IBus/Config"
+</pre>
+<p>
+D-Bus path for IBus config.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_PATH_NOTIFICATIONS">
+<a name="IBUS-PATH-NOTIFICATIONS:CAPS"></a><h3>IBUS_PATH_NOTIFICATIONS</h3>
+<pre class="programlisting">#define IBUS_PATH_NOTIFICATIONS "/org/freedesktop/IBus/Notifications"
+</pre>
+<p>
+D-Bus path for IBus notifications.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_PATH_INPUT_CONTEXT">
+<a name="IBUS-PATH-INPUT-CONTEXT:CAPS"></a><h3>IBUS_PATH_INPUT_CONTEXT</h3>
+<pre class="programlisting">#define IBUS_PATH_INPUT_CONTEXT "/org/freedesktop/IBus/InputContext_%d"
+</pre>
+<p>
+Template of D-Bus path for IBus input context.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_INTERFACE_IBUS">
+<a name="IBUS-INTERFACE-IBUS:CAPS"></a><h3>IBUS_INTERFACE_IBUS</h3>
+<pre class="programlisting">#define IBUS_INTERFACE_IBUS     "org.freedesktop.IBus"
+</pre>
+<p>
+D-Bus interface for IBus.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_INTERFACE_INPUT_CONTEXT">
+<a name="IBUS-INTERFACE-INPUT-CONTEXT:CAPS"></a><h3>IBUS_INTERFACE_INPUT_CONTEXT</h3>
+<pre class="programlisting">#define             IBUS_INTERFACE_INPUT_CONTEXT</pre>
+<p>
+D-Bus interface for IBus input context.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_INTERFACE_FACTORY">
+<a name="IBUS-INTERFACE-FACTORY:CAPS"></a><h3>IBUS_INTERFACE_FACTORY</h3>
+<pre class="programlisting">#define IBUS_INTERFACE_FACTORY  "org.freedesktop.IBus.Factory"
+</pre>
+<p>
+D-Bus interface for IBus factory.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_INTERFACE_ENGINE">
+<a name="IBUS-INTERFACE-ENGINE:CAPS"></a><h3>IBUS_INTERFACE_ENGINE</h3>
+<pre class="programlisting">#define IBUS_INTERFACE_ENGINE   "org.freedesktop.IBus.Engine"
+</pre>
+<p>
+D-Bus interface for IBus engine.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_INTERFACE_PANEL">
+<a name="IBUS-INTERFACE-PANEL:CAPS"></a><h3>IBUS_INTERFACE_PANEL</h3>
+<pre class="programlisting">#define IBUS_INTERFACE_PANEL    "org.freedesktop.IBus.Panel"
+</pre>
+<p>
+D-Bus interface for IBus panel.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_INTERFACE_CONFIG">
+<a name="IBUS-INTERFACE-CONFIG:CAPS"></a><h3>IBUS_INTERFACE_CONFIG</h3>
+<pre class="programlisting">#define IBUS_INTERFACE_CONFIG   "org.freedesktop.IBus.Config"
+</pre>
+<p>
+D-Bus interface for IBus config.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_INTERFACE_NOTIFICATIONS">
+<a name="IBUS-INTERFACE-NOTIFICATIONS:CAPS"></a><h3>IBUS_INTERFACE_NOTIFICATIONS</h3>
+<pre class="programlisting">#define IBUS_INTERFACE_NOTIFICATIONS    "org.freedesktop.IBus.Notifications"
+</pre>
+<p>
+D-Bus interface for IBus notifications.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_get_local_machine_id ()">
+<a name="ibus-get-local-machine-id"></a><h3>ibus_get_local_machine_id ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_get_local_machine_id           (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Obtains the machine UUID of the machine this process is running on.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated string that shows the UUID of the machine.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_set_display ()">
+<a name="ibus-set-display"></a><h3>ibus_set_display ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_set_display                    (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *display</code></em>);</pre>
+<p>
+Set the display address.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>display</code></em> :</span></p></td>
+<td>Display address, as in DISPLAY environment for X.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_get_address ()">
+<a name="ibus-get-address"></a><h3>ibus_get_address ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_get_address                    (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Return the D-Bus address of IBus.
+It will find the address from following source:
+</p>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem"><p>Environment variable IBUS_ADDRESS</p></li>
+<li class="listitem"><p>Socket file under ~/.config/ibus/bus/</p></li>
+</ol></div>
+<p>
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="ibus-ibusshare.html#ibus-write-address" title="ibus_write_address ()"><code class="function">ibus_write_address()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>D-Bus address of IBus. <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> for not found.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_write_address ()">
+<a name="ibus-write-address"></a><h3>ibus_write_address ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_write_address                  (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *address</code></em>);</pre>
+<p>
+Write D-Bus address to socket file.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="ibus-ibusshare.html#ibus-get-address" title="ibus_get_address ()"><code class="function">ibus_get_address()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>address</code></em> :</span></p></td>
+<td>D-Bus address of IBus.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_get_user_name ()">
+<a name="ibus-get-user-name"></a><h3>ibus_get_user_name ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_get_user_name                  (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Get the current user name.
+It is determined by:
+</p>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem"><p><code class="function">getlogin()</code></p></li>
+<li class="listitem"><p>Environment variable SUDO_USER</p></li>
+<li class="listitem"><p>Environment variable USERHELPER_UID</p></li>
+<li class="listitem"><p>Environment variable USERNAME</p></li>
+<li class="listitem"><p>Environment variable LOGNAME</p></li>
+<li class="listitem"><p>Environment variable USER</p></li>
+<li class="listitem"><p>Environment variable LNAME</p></li>
+</ol></div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated string that stores current user name.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_get_daemon_uid ()">
+<a name="ibus-get-daemon-uid"></a><h3>ibus_get_daemon_uid ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#glong"><span class="returnvalue">glong</span></a>               ibus_get_daemon_uid                 (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<div class="warning" title="Warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_get_daemon_uid</code> is deprecated and should not be used in newly-written code. This function has been deprecated and should
+not be used in newly written code.</p>
+</div>
+<p>
+Get UID of ibus-daemon.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>UID of ibus-daemon; or 0 if UID is not available.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_get_socket_path ()">
+<a name="ibus-get-socket-path"></a><h3>ibus_get_socket_path ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_get_socket_path                (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Get the path of socket file.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated string that stores the path of socket file.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_keyval_name ()">
+<a name="ibus-keyval-name"></a><h3>ibus_keyval_name ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_keyval_name                    (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>);</pre>
+<p>
+Return the name of a key symbol.
+</p>
+<p>
+Note that the returned string is used internally, so don't free it.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
+<td>Key symbol.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Corresponding key name. <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if no such key symbol.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_keyval_from_name ()">
+<a name="ibus-keyval-from-name"></a><h3>ibus_keyval_from_name ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_keyval_from_name               (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *keyval_name</code></em>);</pre>
+<p>
+Return the key symbol that associate with the key name.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keyval_name</code></em> :</span></p></td>
+<td>Key name in <span class="type">gdk_keys_by_name</span>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Corresponding key symbol.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_free_strv ()">
+<a name="ibus-free-strv"></a><h3>ibus_free_strv ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_free_strv                      (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> **strv</code></em>);</pre>
+<div class="warning" title="Warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_free_strv</code> is deprecated and should not be used in newly-written code. This function has been deprecated and should
+not be used in newly written code.</p>
+</div>
+<p>
+Free a list of strings.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>strv</code></em> :</span></p></td>
+<td>List of strings.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_key_event_to_string ()">
+<a name="ibus-key-event-to-string"></a><h3>ibus_key_event_to_string ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_key_event_to_string            (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> modifiers</code></em>);</pre>
+<p>
+Return the name of a key symbol and modifiers.
+</p>
+<p>
+For example, if press ctrl, shift, and enter, then this function returns:
+Shift+Control+enter.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
+<td>Key symbol.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>modifiers</code></em> :</span></p></td>
+<td>Modifiers such as Ctrl or Shift.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The name of a key symbol and modifier.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_key_event_from_string ()">
+<a name="ibus-key-event-from-string"></a><h3>ibus_key_event_from_string ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_key_event_from_string          (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *string</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *keyval</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *modifiers</code></em>);</pre>
+<p>
+Parse key event string and return key symbol and modifiers.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>string</code></em> :</span></p></td>
+<td>Key event string.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
+<td>Variable that hold key symbol result.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>modifiers</code></em> :</span></p></td>
+<td>Variable that hold modifiers result.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE for succeed; FALSE if failed.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_init ()">
+<a name="ibus-init"></a><h3>ibus_init ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_init                           (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Init the ibus types.
+</p>
+<p>
+It is actually a wrapper of <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#g-type-init"><code class="function">g_type_init()</code></a>.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_main ()">
+<a name="ibus-main"></a><h3>ibus_main ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_main                           (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Runs an IBus main loop until <a class="link" href="ibus-ibusshare.html#ibus-quit" title="ibus_quit ()"><code class="function">ibus_quit()</code></a> is called in the loop.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="ibus-ibusshare.html#ibus-quit" title="ibus_quit ()"><code class="function">ibus_quit()</code></a>.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_quit ()">
+<a name="ibus-quit"></a><h3>ibus_quit ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_quit                           (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Stops an IBus from running.
+</p>
+<p>
+Any calls to <a class="link" href="ibus-ibusshare.html#ibus-quit" title="ibus_quit ()"><code class="function">ibus_quit()</code></a> for the loop will return.
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="ibus-ibusshare.html#ibus-main" title="ibus_main ()"><code class="function">ibus_main()</code></a>.
+</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

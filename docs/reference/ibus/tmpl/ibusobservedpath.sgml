@@ -1,0 +1,83 @@
+<!-- ##### SECTION Title ##### -->
+IBusObservedPath
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusObservedPath ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT IBusObservedPathClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_observed_path_new_from_xml_node ##### -->
+<para>
+
+</para>
+
+@node: 
+@fill_stat: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_observed_path_new ##### -->
+<para>
+
+</para>
+
+@path: 
+@fill_stat: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_observed_path_traverse ##### -->
+<para>
+
+</para>
+
+@path: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_observed_path_check_modification ##### -->
+<para>
+
+</para>
+
+@path: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_observed_path_output ##### -->
+<para>
+
+</para>
+
+@path: 
+@output: 
+@indent: 
+
+

@@ -1,0 +1,2055 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusMessage</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch05.html" title="Communication">
+<link rel="prev" href="IBusConnection.html" title="IBusConnection">
+<link rel="next" href="ibus-IBusPendingCall.html" title="IBusPendingCall">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusConnection.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch05.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="ibus-IBusPendingCall.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#ibus-IBusMessage.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#ibus-IBusMessage.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusMessage">
+<a name="ibus-IBusMessage"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="ibus-IBusMessage.top_of_page"></a>IBusMessage</span></h2>
+<p>IBusMessage — A DBusMessage in IBus.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="ibus-IBusMessage.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="ibus-IBusMessage.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">#define             <a class="link" href="ibus-IBusMessage.html#IBUS-TYPE-OBJECT-PATH:CAPS" title="IBUS_TYPE_OBJECT_PATH">IBUS_TYPE_OBJECT_PATH</a>
+#define             <a class="link" href="ibus-IBusMessage.html#IBUS-TYPE-ARRAY:CAPS" title="IBUS_TYPE_ARRAY">IBUS_TYPE_ARRAY</a>
+#define             <a class="link" href="ibus-IBusMessage.html#IBUS-TYPE-STRUCT:CAPS" title="IBUS_TYPE_STRUCT">IBUS_TYPE_STRUCT</a>
+#define             <a class="link" href="ibus-IBusMessage.html#IBUS-TYPE-DICT-ENTRY:CAPS" title="IBUS_TYPE_DICT_ENTRY">IBUS_TYPE_DICT_ENTRY</a>
+#define             <a class="link" href="ibus-IBusMessage.html#IBUS-TYPE-VARIANT:CAPS" title="IBUS_TYPE_VARIANT">IBUS_TYPE_VARIANT</a>
+typedef             <a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage">IBusMessage</a>;
+typedef             <a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter">IBusMessageIter</a>;
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               <a class="link" href="ibus-IBusMessage.html#ibus-type-get-object-path" title="ibus_type_get_object_path ()">ibus_type_get_object_path</a>           (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               <a class="link" href="ibus-IBusMessage.html#ibus-type-get-array" title="ibus_type_get_array ()">ibus_type_get_array</a>                 (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               <a class="link" href="ibus-IBusMessage.html#ibus-type-get-struct" title="ibus_type_get_struct ()">ibus_type_get_struct</a>                (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               <a class="link" href="ibus-IBusMessage.html#ibus-type-get-dict-entry" title="ibus_type_get_dict_entry ()">ibus_type_get_dict_entry</a>            (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               <a class="link" href="ibus-IBusMessage.html#ibus-type-get-variant" title="ibus_type_get_variant ()">ibus_type_get_variant</a>               (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-new" title="ibus_message_new ()">ibus_message_new</a>                    (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> message_type</code></em>);
+<a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-ref" title="ibus_message_ref ()">ibus_message_ref</a>                    (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-IBusMessage.html#ibus-message-unref" title="ibus_message_unref ()">ibus_message_unref</a>                  (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+<a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-new-method-call" title="ibus_message_new_method_call ()">ibus_message_new_method_call</a>        (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *destination</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>);
+<a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-new-method-return" title="ibus_message_new_method_return ()">ibus_message_new_method_return</a>      (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *reply_to</code></em>);
+<a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-new-error" title="ibus_message_new_error ()">ibus_message_new_error</a>              (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *reply_to</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *error_name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *error_message</code></em>);
+<a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-new-error-printf" title="ibus_message_new_error_printf ()">ibus_message_new_error_printf</a>       (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *reply_to</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *error_name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *error_format</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);
+<a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-new-signal" title="ibus_message_new_signal ()">ibus_message_new_signal</a>             (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-is-method-call" title="ibus_message_is_method_call ()">ibus_message_is_method_call</a>         (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-is-error" title="ibus_message_is_error ()">ibus_message_is_error</a>               (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *error_name</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-is-signal" title="ibus_message_is_signal ()">ibus_message_is_signal</a>              (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *signal_name</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-set-destination" title="ibus_message_set_destination ()">ibus_message_set_destination</a>        (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *destination</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-set-sender" title="ibus_message_set_sender ()">ibus_message_set_sender</a>             (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *sender</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-set-error-name" title="ibus_message_set_error_name ()">ibus_message_set_error_name</a>         (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *error_name</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-set-interface" title="ibus_message_set_interface ()">ibus_message_set_interface</a>          (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-set-member" title="ibus_message_set_member ()">ibus_message_set_member</a>             (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *member</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-set-path" title="ibus_message_set_path ()">ibus_message_set_path</a>               (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-IBusMessage.html#ibus-message-set-no-reply" title="ibus_message_set_no_reply ()">ibus_message_set_no_reply</a>           (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> no_reply</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-set-reply-serial" title="ibus_message_set_reply_serial ()">ibus_message_set_reply_serial</a>       (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> reply_serial</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                <a class="link" href="ibus-IBusMessage.html#ibus-message-get-type" title="ibus_message_get_type ()">ibus_message_get_type</a>               (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-get-destination" title="ibus_message_get_destination ()">ibus_message_get_destination</a>        (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-get-sender" title="ibus_message_get_sender ()">ibus_message_get_sender</a>             (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-get-error-name" title="ibus_message_get_error_name ()">ibus_message_get_error_name</a>         (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-get-error-message" title="ibus_message_get_error_message ()">ibus_message_get_error_message</a>      (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-get-interface" title="ibus_message_get_interface ()">ibus_message_get_interface</a>          (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-get-member" title="ibus_message_get_member ()">ibus_message_get_member</a>             (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-IBusMessage.html#ibus-message-get-path" title="ibus_message_get_path ()">ibus_message_get_path</a>               (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-get-no-reply" title="ibus_message_get_no_reply ()">ibus_message_get_no_reply</a>           (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             <a class="link" href="ibus-IBusMessage.html#ibus-message-get-reply-serial" title="ibus_message_get_reply_serial ()">ibus_message_get_reply_serial</a>       (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             <a class="link" href="ibus-IBusMessage.html#ibus-message-get-serial" title="ibus_message_get_serial ()">ibus_message_get_serial</a>             (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-append-args" title="ibus_message_append_args ()">ibus_message_append_args</a>            (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-append-args-valist" title="ibus_message_append_args_valist ()">ibus_message_append_args_valist</a>     (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code><span class="type">va_list</span> va_args</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-get-args" title="ibus_message_get_args ()">ibus_message_get_args</a>               (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-ibuserror.html#IBusError" title="IBusError"><span class="type">IBusError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-get-args-valist" title="ibus_message_get_args_valist ()">ibus_message_get_args_valist</a>        (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-ibuserror.html#IBusError" title="IBusError"><span class="type">IBusError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code><span class="type">va_list</span> va_args</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-init-append" title="ibus_message_iter_init_append ()">ibus_message_iter_init_append</a>       (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-append" title="ibus_message_iter_append ()">ibus_message_iter_append</a>            (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gconstpointer"><span class="type">gconstpointer</span></a> value</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-copy-data" title="ibus_message_iter_copy_data ()">ibus_message_iter_copy_data</a>         (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *dst</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *src</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-init" title="ibus_message_iter_init ()">ibus_message_iter_init</a>              (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-get-basic" title="ibus_message_iter_get_basic ()">ibus_message_iter_get_basic</a>         (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> value</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-get" title="ibus_message_iter_get ()">ibus_message_iter_get</a>               (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> value</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-next" title="ibus_message_iter_next ()">ibus_message_iter_next</a>              (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-has-next" title="ibus_message_iter_has_next ()">ibus_message_iter_has_next</a>          (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-open-container" title="ibus_message_iter_open_container ()">ibus_message_iter_open_container</a>    (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *contained_signature</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *sub</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-close-container" title="ibus_message_iter_close_container ()">ibus_message_iter_close_container</a>   (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *sub</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-recurse" title="ibus_message_iter_recurse ()">ibus_message_iter_recurse</a>           (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *sub</code></em>);
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-get-arg-type" title="ibus_message_iter_get_arg_type ()">ibus_message_iter_get_arg_type</a>      (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>);
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-get-element-type" title="ibus_message_iter_get_element_type ()">ibus_message_iter_get_element_type</a>  (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             <a class="link" href="ibus-IBusMessage.html#ibus-message-to-string" title="ibus_message_to_string ()">ibus_message_to_string</a>              (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="ibus-IBusMessage.description"></a><h2>Description</h2>
+<p>
+An IBusMessage is essentially a DBusMessage, which representing a message received from or to
+be sent to another application.
+</p>
+<p>
+Besides DBusMessage functions, An IBusMessage can be manipulated
+with its own specific functions, which are defined in this section.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="ibus-IBusMessage.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBUS_TYPE_OBJECT_PATH">
+<a name="IBUS-TYPE-OBJECT-PATH:CAPS"></a><h3>IBUS_TYPE_OBJECT_PATH</h3>
+<pre class="programlisting">#define IBUS_TYPE_OBJECT_PATH   (ibus_type_get_object_path ())
+</pre>
+<p>
+Type of object path.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_TYPE_ARRAY">
+<a name="IBUS-TYPE-ARRAY:CAPS"></a><h3>IBUS_TYPE_ARRAY</h3>
+<pre class="programlisting">#define IBUS_TYPE_ARRAY         (ibus_type_get_array ())
+</pre>
+<p>
+Type of IBusArray.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_TYPE_STRUCT">
+<a name="IBUS-TYPE-STRUCT:CAPS"></a><h3>IBUS_TYPE_STRUCT</h3>
+<pre class="programlisting">#define IBUS_TYPE_STRUCT        (ibus_type_get_struct ())
+</pre>
+<p>
+Type of IBusStruct.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_TYPE_DICT_ENTRY">
+<a name="IBUS-TYPE-DICT-ENTRY:CAPS"></a><h3>IBUS_TYPE_DICT_ENTRY</h3>
+<pre class="programlisting">#define IBUS_TYPE_DICT_ENTRY    (ibus_type_get_dict_entry ())
+</pre>
+<p>
+Type of IBusDictEntry.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBUS_TYPE_VARIANT">
+<a name="IBUS-TYPE-VARIANT:CAPS"></a><h3>IBUS_TYPE_VARIANT</h3>
+<pre class="programlisting">#define IBUS_TYPE_VARIANT       (ibus_type_get_variant ())
+</pre>
+<p>
+Type of IBusVariant.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBusMessage">
+<a name="IBusMessage"></a><h3>IBusMessage</h3>
+<p>
+An opaque data structure that represents IBusMessage.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBusMessageIter">
+<a name="IBusMessageIter"></a><h3>IBusMessageIter</h3>
+<p>
+An opaque data structure that represents IBusMessageIter.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_type_get_object_path ()">
+<a name="ibus-type-get-object-path"></a><h3>ibus_type_get_object_path ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               ibus_type_get_object_path           (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Gets the type of object path.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Type of object path.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_type_get_array ()">
+<a name="ibus-type-get-array"></a><h3>ibus_type_get_array ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               ibus_type_get_array                 (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Gets the type of IBusArray.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Type of IBusArray.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_type_get_struct ()">
+<a name="ibus-type-get-struct"></a><h3>ibus_type_get_struct ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               ibus_type_get_struct                (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Gets the type of IBusStruct.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Type of IBusStruct.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_type_get_dict_entry ()">
+<a name="ibus-type-get-dict-entry"></a><h3>ibus_type_get_dict_entry ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               ibus_type_get_dict_entry            (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Gets the type of IBusDictEntry.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Type of IBusDictEntry.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_type_get_variant ()">
+<a name="ibus-type-get-variant"></a><h3>ibus_type_get_variant ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               ibus_type_get_variant               (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Gets the type of IBusVariant.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Type of IBusVariant.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_new ()">
+<a name="ibus-message-new"></a><h3>ibus_message_new ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       ibus_message_new                    (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> message_type</code></em>);</pre>
+<p>
+New an IBusMessage.
+Valid D-Bus message types include:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p><span class="type">DBUS_MESSAGE_TYPE_METHOD_CALL</span></p></li>
+<li class="listitem"><p><span class="type">DBUS_MESSAGE_TYPE_METHOD_RETURN</span></p></li>
+<li class="listitem"><p><span class="type">DBUS_MESSAGE_TYPE_ERROR</span></p></li>
+<li class="listitem"><p><span class="type">DBUS_MESSAGE_TYPE_SIGNAL</span></p></li>
+</ul></div>
+<p>
+These are defined in dbus-protocol.h in D-Bus.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message_type</code></em> :</span></p></td>
+<td>Type of the message.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusMessage according to <em class="parameter"><code>message_type</code></em>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_ref ()">
+<a name="ibus-message-ref"></a><h3>ibus_message_ref ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       ibus_message_ref                    (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Increments the reference count of an IBusMessage.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The IBusMessage.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_unref ()">
+<a name="ibus-message-unref"></a><h3>ibus_message_unref ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_message_unref                  (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Decrements the reference count of a DBusMessage, freeing the message if the count reaches 0.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_new_method_call ()">
+<a name="ibus-message-new-method-call"></a><h3>ibus_message_new_method_call ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       ibus_message_new_method_call        (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *destination</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>);</pre>
+<p>
+Constructs a new message to invoke a method on a remote object.
+</p>
+<p>
+The destination may be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> in which case no destination is set;
+this is appropriate when using IBus/D-Bus in a peer-to-peer context (no message bus).
+The interface may be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>, which means that if multiple methods with the given name
+exist it is undefined which one will be invoked.
+</p>
+<p>
+The path and method names may not be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</p>
+<p>
+Destination, path, interface, and method name can't contain any invalid characters
+(see the D-Bus specification).
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>destination</code></em> :</span></p></td>
+<td>Where this message to be sent to or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> for no destination.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>Object path the message should be sent to.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>interface</code></em> :</span></p></td>
+<td>Interface to invoke method on, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>method</code></em> :</span></p></td>
+<td>The method to be invoked.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocate IBusMessage; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if memory cannot be allocated.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_new_method_return ()">
+<a name="ibus-message-new-method-return"></a><h3>ibus_message_new_method_return ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       ibus_message_new_method_return      (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *reply_to</code></em>);</pre>
+<p>
+Constructs a message that is a reply to a method call.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>reply_to</code></em> :</span></p></td>
+<td>The IBusMessage being replied to.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocate IBusMessage; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if memory cannot be allocated.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_new_error ()">
+<a name="ibus-message-new-error"></a><h3>ibus_message_new_error ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       ibus_message_new_error              (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *reply_to</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *error_name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *error_message</code></em>);</pre>
+<p>
+Creates a new message that is an error reply to another message.
+Error replies are most common in response to method calls, but can be returned in reply to any message.
+The error name must be a valid error name according to the syntax given in the D-Bus specification.
+If you don't want to make up an error name just use <code class="literal">DBUS_ERROR_FAILED</code>.
+</p>
+<p>
+Use <a class="link" href="ibus-IBusMessage.html#ibus-message-unref" title="ibus_message_unref ()"><code class="function">ibus_message_unref()</code></a> to free the produced IBusMessage.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>reply_to</code></em> :</span></p></td>
+<td>The IBusMessage being replied to.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error_name</code></em> :</span></p></td>
+<td>Name of the error.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error_message</code></em> :</span></p></td>
+<td>Detailed error message string (or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> for none, but please give a message).
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocate IBusMessage with the error information; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if memory cannot be allocated.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_new_error_printf ()">
+<a name="ibus-message-new-error-printf"></a><h3>ibus_message_new_error_printf ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       ibus_message_new_error_printf       (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *reply_to</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *error_name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *error_format</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);</pre>
+<p>
+Creates a new message that is an error reply to another message.
+Error replies are most common in response to method calls, but can be returned in reply to any message.
+The error name must be a valid error name according to the syntax given in the D-Bus specification.
+If you don't want to make up an error name just use <code class="literal">DBUS_ERROR_FAILED</code>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>reply_to</code></em> :</span></p></td>
+<td>The IBusMessage being replied to.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error_name</code></em> :</span></p></td>
+<td>Name of the error.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error_format</code></em> :</span></p></td>
+<td>Error format string as in <code class="function">printf()</code> format.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>Format arguments, as in <code class="function">printf()</code>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocate IBusMessage with the error information; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if memory cannot be allocated.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_new_signal ()">
+<a name="ibus-message-new-signal"></a><h3>ibus_message_new_signal ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       ibus_message_new_signal             (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>);</pre>
+<p>
+Constructs a new message representing a signal emission.
+Returns NULL if memory can't be allocated for the message.
+A signal is identified by its originating object path, interface, and the name of the signal.
+Path, interface, and signal name must all be valid (the D-Bus specification defines the syntax of these fields).
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>Object path the message should be sent to.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>interface</code></em> :</span></p></td>
+<td>Interface to invoke method on, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>method</code></em> :</span></p></td>
+<td>The method to invoke.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocate IBusMessage with the error information; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if memory cannot be allocated.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_is_method_call ()">
+<a name="ibus-message-is-method-call"></a><h3>ibus_message_is_method_call ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_is_method_call         (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>);</pre>
+<p>
+Checks whether the message is a method call with the given interface and member fields.
+</p>
+<p>
+If the message is not DBUS_MESSAGE_TYPE_METHOD_CALL,
+or has a different interface or member field, returns FALSE.
+If the interface field is missing, then it will be assumed equal to the provided interface.
+The D-Bus protocol allows method callers to leave out the interface name.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>interface</code></em> :</span></p></td>
+<td>The interface to check. Cannot be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>method</code></em> :</span></p></td>
+<td>The method to check. Cannot be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>message</code></em> is DBUS_MESSAGE_TYPE_METHOD_CALL and the invoked method is matched with <em class="parameter"><code>method</code></em>;
+          <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_is_error ()">
+<a name="ibus-message-is-error"></a><h3>ibus_message_is_error ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_is_error               (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *error_name</code></em>);</pre>
+<p>
+Checks whether the message is an error reply with the given error name.
+If the message is not DBUS_MESSAGE_TYPE_ERROR, or has a different name, returns FALSE.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error_name</code></em> :</span></p></td>
+<td>Name of the error to check.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>message</code></em> is DBUS_MESSAGE_TYPE_ERROR and the error name is matched with <em class="parameter"><code>error_name</code></em>;
+          <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_is_signal ()">
+<a name="ibus-message-is-signal"></a><h3>ibus_message_is_signal ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_is_signal              (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *signal_name</code></em>);</pre>
+<p>
+Checks whether the message is a signal with the given interface and member fields.
+If the message is not <code class="literal">DBUS_MESSAGE_TYPE_SIGNAL</code>, or has a different interface or member field, returns <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>interface</code></em> :</span></p></td>
+<td>The interface to checked. Cannot be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>signal_name</code></em> :</span></p></td>
+<td>The signal name to check.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>message</code></em> is <code class="literal">DBUS_MESSAGE_SIGNAL</code> and the signal name is matched with <em class="parameter"><code>signal_name</code></em>;
+          <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_set_destination ()">
+<a name="ibus-message-set-destination"></a><h3>ibus_message_set_destination ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_set_destination        (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *destination</code></em>);</pre>
+<p>
+Sets the message's destination.
+</p>
+<p>
+The destination is the name of another connection on the bus
+and may be either the unique name assigned by the bus to each connection,
+or a well-known name specified in advance.
+</p>
+<p>
+The destination name must contain only valid characters as defined in the D-Bus specification.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>destination</code></em> :</span></p></td>
+<td>Destination to set; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to unset.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_set_sender ()">
+<a name="ibus-message-set-sender"></a><h3>ibus_message_set_sender ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_set_sender             (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *sender</code></em>);</pre>
+<p>
+Sets the message sender.
+</p>
+<p>
+The sender must be a valid bus name as defined in the D-Bus specification.
+</p>
+<p>
+Usually you don't want to call this. The message bus daemon will call it to set the origin of each message.
+If you aren't implementing a message bus daemon you shouldn't need to set the sender.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>sender</code></em> :</span></p></td>
+<td>Sender to set; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to unset.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_set_error_name ()">
+<a name="ibus-message-set-error-name"></a><h3>ibus_message_set_error_name ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_set_error_name         (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *error_name</code></em>);</pre>
+<p>
+Sets the name of the error (<code class="literal">DBUS_MESSAGE_TYPE_ERROR</code>).
+</p>
+<p>
+The name is fully-qualified (namespaced).
+</p>
+<p>
+The error name must contain only valid characters as defined in the D-Bus specification.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error_name</code></em> :</span></p></td>
+<td>Error name to set; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to unset.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_set_interface ()">
+<a name="ibus-message-set-interface"></a><h3>ibus_message_set_interface ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_set_interface          (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface</code></em>);</pre>
+<p>
+Sets the interface this message is being sent to
+(for <code class="literal">DBUS_MESSAGE_TYPE_METHOD_CALL</code>) or the interface
+a signal is being emitted from (for <code class="literal">DBUS_MESSAGE_TYPE_SIGNAL</code>).
+</p>
+<p>
+The interface name must contain only valid characters as defined in the D-Bus specification.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>interface</code></em> :</span></p></td>
+<td>Interface to set; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to unset.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_set_member ()">
+<a name="ibus-message-set-member"></a><h3>ibus_message_set_member ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_set_member             (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *member</code></em>);</pre>
+<p>
+Sets the interface member being invoked (<code class="literal">DBUS_MESSAGE_TYPE_METHOD_CALL</code>)
+or emitted (<code class="literal">DBUS_MESSAGE_TYPE_SIGNAL</code>).
+</p>
+<p>
+The member name must contain only valid characters as defined in the D-Bus specification.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>member</code></em> :</span></p></td>
+<td>Member to set; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to unset.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_set_path ()">
+<a name="ibus-message-set-path"></a><h3>ibus_message_set_path ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_set_path               (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>);</pre>
+<p>
+Sets the object path this message is being sent to (for $DBUS_MESSAGE_TYPE_METHOD_CALL)
+or the one a signal is being emitted from (for <code class="literal">DBUS_MESSAGE_TYPE_SIGNAL</code>).
+</p>
+<p>
+The path must contain only valid characters as defined in the D-Bus specification.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>Path to set; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to unset.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_set_no_reply ()">
+<a name="ibus-message-set-no-reply"></a><h3>ibus_message_set_no_reply ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_message_set_no_reply           (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> no_reply</code></em>);</pre>
+<p>
+Sets a flag indicating that the message does not want a reply;
+if this flag is set, the other end of the connection may (but is not required to)
+optimize by not sending method return or error replies.
+</p>
+<p>
+If this flag is set, there is no way to know whether the message successfully arrived
+at the remote end.
+Normally you know a message was received when you receive the reply to it.
+</p>
+<p>
+The flag is FALSE by default, that is by default the other end is required to reply.
+</p>
+<p>
+On the protocol level this toggles <code class="literal">DBUS_HEADER_FLAG_NO_REPLY_EXPECTED</code>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>no_reply</code></em> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if no reply is desired.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_set_reply_serial ()">
+<a name="ibus-message-set-reply-serial"></a><h3>ibus_message_set_reply_serial ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_set_reply_serial       (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> reply_serial</code></em>);</pre>
+<p>
+Sets the reply serial of a message (the serial of the message this is a reply to).
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>reply_serial</code></em> :</span></p></td>
+<td>The serial to be replied.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_type ()">
+<a name="ibus-message-get-type"></a><h3>ibus_message_get_type ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                ibus_message_get_type               (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Gets the type of an IBusMessage.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Type of the IBusMessage.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_destination ()">
+<a name="ibus-message-get-destination"></a><h3>ibus_message_get_destination ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_message_get_destination        (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Gets the destination of a message or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if there is none set.
+</p>
+<p>
+The returned string becomes invalid if the message is modified,
+since it points into the wire-marshaled message data.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Destination of the IBusMessage; NULL if there is none set.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_sender ()">
+<a name="ibus-message-get-sender"></a><h3>ibus_message_get_sender ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_message_get_sender             (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Gets the unique name of the connection which originated this message,
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if unknown or inapplicable.
+</p>
+<p>
+The sender is filled in by the message bus.
+</p>
+<p>
+Note, the returned sender is always the unique bus name.
+Connections may own multiple other bus names, but those are not found in the sender field.
+</p>
+<p>
+The returned string becomes invalid if the message is modified,
+since it points into the wire-marshaled message data.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Sender of the IBusMessage; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if unknown or inapplicable.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_error_name ()">
+<a name="ibus-message-get-error-name"></a><h3>ibus_message_get_error_name ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_message_get_error_name         (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Gets the error name (<code class="literal">DBUS_MESSAGE_TYPE_ERROR</code> only) or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none.
+</p>
+<p>
+The returned string becomes invalid if the message is modified,
+since it points into the wire-marshaled message data.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Error name of the IBusMessage; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_error_message ()">
+<a name="ibus-message-get-error-message"></a><h3>ibus_message_get_error_message ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_message_get_error_message      (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Gets the error message (<code class="literal">DBUS_MESSAGE_TYPE_ERROR</code> only) or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none.
+</p>
+<p>
+The returned string becomes invalid if the message is modified,
+since it points into the wire-marshaled message data.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Error message of the IBusMessage; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_interface ()">
+<a name="ibus-message-get-interface"></a><h3>ibus_message_get_interface ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_message_get_interface          (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Gets the interface this message is being sent to (for <code class="literal">DBUS_MESSAGE_TYPE_METHOD_CALL</code>)
+or being emitted from (for <code class="literal">DBUS_MESSAGE_TYPE_SIGNAL</code>).
+</p>
+<p>
+The interface name is fully-qualified (namespaced). Returns <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none.
+</p>
+<p>
+The returned string becomes invalid if the message is modified,
+since it points into the wire-marshaled message data.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Interface name of the IBusMessage; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_member ()">
+<a name="ibus-message-get-member"></a><h3>ibus_message_get_member ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_message_get_member             (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Gets the interface member being invoked (<code class="literal">DBUS_MESSAGE_TYPE_METHOD_CALL</code>)
+or emitted (<code class="literal">DBUS_MESSAGE_TYPE_SIGNAL</code>).
+</p>
+<p>
+Returns <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none.
+</p>
+<p>
+The returned string becomes invalid if the message is modified,
+since it points into the wire-marshaled message data.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Member name of the IBusMessage; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_path ()">
+<a name="ibus-message-get-path"></a><h3>ibus_message_get_path ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_message_get_path               (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Gets the object path this message is being sent to (for <code class="literal">DBUS_MESSAGE_TYPE_METHOD_CALL</code>)
+or being emitted from (for <code class="literal">DBUS_MESSAGE_TYPE_SIGNAL</code>).
+</p>
+<p>
+Returns <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none.
+</p>
+<p>
+See also <code class="function">dbus_message_get_path_decomposed()</code>.
+</p>
+<p>
+The returned string becomes invalid if the message is modified,
+since it points into the wire-marshaled message data.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Object path of the IBusMessage; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_no_reply ()">
+<a name="ibus-message-get-no-reply"></a><h3>ibus_message_get_no_reply ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_get_no_reply           (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Returns TRUE if the message does not expect a reply.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message does not expect a reply; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_reply_serial ()">
+<a name="ibus-message-get-reply-serial"></a><h3>ibus_message_get_reply_serial ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             ibus_message_get_reply_serial       (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Returns the serial that the message is a reply to or 0 if none.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The serial that the message is a reply to or 0 if none.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_serial ()">
+<a name="ibus-message-get-serial"></a><h3>ibus_message_get_serial ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             ibus_message_get_serial             (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Returns the serial of a message or 0 if none has been specified.
+</p>
+<p>
+The message's serial number is provided by the application sending the message
+and is used to identify replies to this message.
+</p>
+<p>
+All messages received on a connection will have a serial provided by the remote application.
+</p>
+<p>
+For messages you're sending, <code class="function">dbus_connection_send()</code> will assign a serial and return it to you.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The serial of a message or 0 if none has been specified.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_append_args ()">
+<a name="ibus-message-append-args"></a><h3>ibus_message_append_args ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_append_args            (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);</pre>
+<p>
+Appends fields to a message given a variable argument list.
+</p>
+<p>
+The variable argument list should contain the type of each argument followed by the value to append.
+Appendable types are basic types, and arrays of fixed-length basic types.
+To append variable-length basic types, or any more complex value,
+you have to use an iterator rather than this function.
+</p>
+<p>
+To append a basic type, specify its type code followed by the address of the value. For example:
+</p>
+<div class="informalexample"><pre class="programlisting">
+    dbus_int32_t v_INT32 = 42;
+    const char *v_STRING = "Hello World";
+    dbus_message_append_args (message,
+    DBUS_TYPE_INT32, &amp;v_INT32,
+    DBUS_TYPE_STRING, &amp;v_STRING,
+    DBUS_TYPE_INVALID);
+   </pre></div>
+<p>
+</p>
+<p>
+To append an array of fixed-length basic types, pass in the <code class="literal">DBUS_TYPE_ARRAY</code> typecode,
+the element typecode, the address of the array pointer,
+and a 32-bit integer giving the number of elements in the array. So for example:
+</p>
+<div class="informalexample"><pre class="programlisting">
+    const dbus_int32_t array[] = { 1, 2, 3 };
+    const dbus_int32_t *v_ARRAY = array;
+    dbus_message_append_args (message,
+    DBUS_TYPE_ARRAY, DBUS_TYPE_INT32, &amp;v_ARRAY, 3,
+    DBUS_TYPE_INVALID);
+   </pre></div>
+<p>
+</p>
+<p>
+</p>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>
+in C, given "int array[]", "&amp;array == array" (the comp.lang.c FAQ says otherwise, but gcc and the FAQ don't agree).
+So if you're using an array instead of a pointer you have to create a pointer variable,
+assign the array to it, then take the address of the pointer variable.
+For strings it works to write const char *array = "Hello" and then use &amp;array though.
+</p>
+</div>
+<p>
+</p>
+<p>
+The last argument to this function must be <code class="literal">DBUS_TYPE_INVALID</code>, marking the end of the argument list.
+If you don't do this then libdbus won't know to stop and will read invalid memory.
+</p>
+<p>
+String/signature/path arrays should be passed in as "const char*** address_of_array" and "int n_elements"
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="ibus-IBusMessage.html#ibus-message-append-args-valist" title="ibus_message_append_args_valist ()"><code class="function">ibus_message_append_args_valist()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>first_arg_type</code></em> :</span></p></td>
+<td>Type of the first argument.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>Rest of arguments.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_append_args_valist ()">
+<a name="ibus-message-append-args-valist"></a><h3>ibus_message_append_args_valist ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_append_args_valist     (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code><span class="type">va_list</span> va_args</code></em>);</pre>
+<p>
+Like <a class="link" href="ibus-IBusMessage.html#ibus-message-append-args" title="ibus_message_append_args ()"><code class="function">ibus_message_append_args()</code></a> but takes a va_list for use by language bindings.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="ibus-IBusMessage.html#ibus-message-append-args" title="ibus_message_append_args ()"><code class="function">ibus_message_append_args()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>first_arg_type</code></em> :</span></p></td>
+<td>Type of the first argument.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>va_args</code></em> :</span></p></td>
+<td>Rest of arguments.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_args ()">
+<a name="ibus-message-get-args"></a><h3>ibus_message_get_args ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_get_args               (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-ibuserror.html#IBusError" title="IBusError"><span class="type">IBusError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);</pre>
+<p>
+Gets arguments from a message given a variable argument list.
+</p>
+<p>
+The supported types include those supported by <a class="link" href="ibus-IBusMessage.html#ibus-message-append-args" title="ibus_message_append_args ()"><code class="function">ibus_message_append_args()</code></a>;
+that is, basic types and arrays of fixed-length basic types.
+The arguments are the same as they would be for <a class="link" href="ibus-IBusMessage.html#ibus-message-iter-get-basic" title="ibus_message_iter_get_basic ()"><code class="function">ibus_message_iter_get_basic()</code></a>
+or <code class="function">ibus_message_iter_get_fixed_array()</code>.
+</p>
+<p>
+In addition to those types, arrays of string, object path, and signature are supported;
+but these are returned as allocated memory and must be freed with <code class="function">dbus_free_string_array()</code>,
+while the other types are returned as const references.
+To get a string array pass in "char ***array_location" and "int *n_elements".
+</p>
+<p>
+The variable argument list should contain the type of the argument followed by a pointer to
+where the value should be stored. The list is terminated with <code class="literal">DBUS_TYPE_INVALID</code>.
+</p>
+<p>
+Except for string arrays, the returned values are constant; do not free them.
+They point into the IBusMessage.
+</p>
+<p>
+If the requested arguments are not present, or do not have the requested types, then an error will be set.
+</p>
+<p>
+If more arguments than requested are present,
+the requested arguments are returned and the extra arguments are ignored.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="ibus-IBusMessage.html#ibus-message-append-args" title="ibus_message_append_args ()"><code class="function">ibus_message_append_args()</code></a>, <a class="link" href="ibus-IBusMessage.html#ibus-message-get-args-valist" title="ibus_message_get_args_valist ()"><code class="function">ibus_message_get_args_valist()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Error to be filled in on failure.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>first_arg_type</code></em> :</span></p></td>
+<td>Type of the first argument.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>Rest of arguments.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; F<code class="literal">ALSE</code> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_get_args_valist ()">
+<a name="ibus-message-get-args-valist"></a><h3>ibus_message_get_args_valist ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_get_args_valist        (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-ibuserror.html#IBusError" title="IBusError"><span class="type">IBusError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code><span class="type">va_list</span> va_args</code></em>);</pre>
+<p>
+Like ibus_message_get_args but takes a va_list for use by language bindings.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="ibus-IBusMessage.html#ibus-message-append-args-valist" title="ibus_message_append_args_valist ()"><code class="function">ibus_message_append_args_valist()</code></a>, <a class="link" href="ibus-IBusMessage.html#ibus-message-get-args" title="ibus_message_get_args ()"><code class="function">ibus_message_get_args()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Error message is outputted here; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to suppress error.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>first_arg_type</code></em> :</span></p></td>
+<td>Type of the first argument.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>va_args</code></em> :</span></p></td>
+<td>Rest of arguments.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_init_append ()">
+<a name="ibus-message-iter-init-append"></a><h3>ibus_message_iter_init_append ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_message_iter_init_append       (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>);</pre>
+<p>
+Initializes a <a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> for appending arguments to the end of a message.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>iter</code></em> :</span></p></td>
+<td>An IBusMessageIter to to initialize.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_append ()">
+<a name="ibus-message-iter-append"></a><h3>ibus_message_iter_append ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_iter_append            (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gconstpointer"><span class="type">gconstpointer</span></a> value</code></em>);</pre>
+<p>
+Appends a basic-typed value to the message.
+</p>
+<p>
+The basic types are the non-container types such as integer and string.
+</p>
+<p>
+The "value" argument should be the address of a basic-typed value.
+So for string, const char**. For integer, dbus_int32_t*.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>iter</code></em> :</span></p></td>
+<td>An IBusMessageIter.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td>The type of the value.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>The pointer to the value.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_copy_data ()">
+<a name="ibus-message-iter-copy-data"></a><h3>ibus_message_iter_copy_data ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_iter_copy_data         (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *dst</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *src</code></em>);</pre>
+<p>
+Deep copy an IBusMessageIter to another IBusMessageIter.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>dst</code></em> :</span></p></td>
+<td>Destination to be copy to.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>src</code></em> :</span></p></td>
+<td>Source to be copy from.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if failed.
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 1.2.0.20090719</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_init ()">
+<a name="ibus-message-iter-init"></a><h3>ibus_message_iter_init ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_iter_init              (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>);</pre>
+<p>
+Initializes an <a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> for reading the arguments of the message passed in.
+</p>
+<p>
+When possible, <a class="link" href="ibus-IBusMessage.html#ibus-message-get-args" title="ibus_message_get_args ()"><code class="function">ibus_message_get_args()</code></a> is much more convenient.
+Some types of argument can only be read with IBusMessageIter however.
+</p>
+<p>
+The easiest way to iterate is like this:
+</p>
+<div class="informalexample"><pre class="programlisting">
+    dbus_message_iter_init (&amp;iter);
+    while ((current_type = dbus_message_iter_get_arg_type (&amp;iter)) != DBUS_TYPE_INVALID)
+    dbus_message_iter_next (&amp;iter);
+   </pre></div>
+<p>
+</p>
+<p>
+IBusMessageIter contains no allocated memory;
+it need not be freed, and can be copied by assignment or <code class="function">memcpy()</code>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>iter</code></em> :</span></p></td>
+<td>An IBusMessageIter.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if the message has no arguments.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_get_basic ()">
+<a name="ibus-message-iter-get-basic"></a><h3>ibus_message_iter_get_basic ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_message_iter_get_basic         (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> value</code></em>);</pre>
+<p>
+Reads a basic-typed value from the message iterator.
+</p>
+<p>
+Basic types are the non-containers such as integer and string.
+</p>
+<p>
+The value argument should be the address of a location to store the returned value.
+So for int32 it should be a "dbus_int32_t*" and for string a "const char**".
+The returned value is by reference and should not be freed.
+</p>
+<p>
+Be sure you have somehow checked that <code class="function">dbus_message_iter_get_arg_type()</code> matches the type you are expecting,
+or you'll crash when you try to use an integer as a string or something.
+</p>
+<p>
+To read any container type (array, struct, dict) you will need to recurse into the container with
+<code class="function">dbus_message_iter_recurse()</code>.
+If the container is an array of fixed-length values,
+you can get all the array elements at once with <code class="function">dbus_message_iter_get_fixed_array()</code>.
+Otherwise, you have to iterate over the container's contents one value at a time.
+</p>
+<p>
+All basic-typed values are guaranteed to fit in 8 bytes. So you can write code like this:
+</p>
+<div class="informalexample"><pre class="programlisting">
+    dbus_uint64_t value;
+    int type;
+    dbus_message_iter_get_basic (&amp;read_iter, &amp;value);
+    type = dbus_message_iter_get_arg_type (&amp;read_iter);
+    dbus_message_iter_append_basic (&amp;write_iter, type, &amp;value);
+   </pre></div>
+<p>
+</p>
+<p>
+On some really obscure platforms dbus_uint64_t might not exist,
+if you need to worry about this you will know.
+dbus_uint64_t is just one example of a type that's large enough to hold any possible value,
+you could use a struct or char[8] instead if you like.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>iter</code></em> :</span></p></td>
+<td>An IBusMessageIter.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>Result value stores here. Cannot be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_get ()">
+<a name="ibus-message-iter-get"></a><h3>ibus_message_iter_get ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_iter_get               (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> value</code></em>);</pre>
+<p>
+Gets an value from an IBusMessageIter, then move on to the next element.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>iter</code></em> :</span></p></td>
+<td>An IBusMessageIter.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td>The type of the value. Cannot be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>Result value stores here. Cannot be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_next ()">
+<a name="ibus-message-iter-next"></a><h3>ibus_message_iter_next ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_iter_next              (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>);</pre>
+<p>
+Moves the iterator to the next field, if any.
+</p>
+<p>
+If there's no next field, returns <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a>. If the iterator moves forward, returns <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>iter</code></em> :</span></p></td>
+<td>An IBusMessageIter.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the iterator moves forward successfully; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if next element does not exist.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_has_next ()">
+<a name="ibus-message-iter-has-next"></a><h3>ibus_message_iter_has_next ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_iter_has_next          (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>);</pre>
+<p>
+Checks if an iterator has any more fields.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>iter</code></em> :</span></p></td>
+<td>An IBusMessageIter.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if next element exists; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_open_container ()">
+<a name="ibus-message-iter-open-container"></a><h3>ibus_message_iter_open_container ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_iter_open_container    (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *contained_signature</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *sub</code></em>);</pre>
+<p>
+Appends a container-typed value to the message;
+you are required to append the contents of the container using the returned sub-iterator,
+and then call <code class="function">dbus_message_iter_close_container()</code>.
+</p>
+<p>
+Container types are for example struct, variant, and array.
+For variants, the contained_signature should be the type of the single value inside the variant.
+For structs and dict entries, contained_signature should be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>;
+it will be set to whatever types you write into the struct.
+For arrays, contained_signature should be the type of the array elements.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>iter</code></em> :</span></p></td>
+<td>An IBusMessageIter.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td>The type of the value.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>contained_signature</code></em> :</span></p></td>
+<td>The type of container contents.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>sub</code></em> :</span></p></td>
+<td>Sub-iterator to initialize.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_close_container ()">
+<a name="ibus-message-iter-close-container"></a><h3>ibus_message_iter_close_container ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_iter_close_container   (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *sub</code></em>);</pre>
+<p>
+Closes a container-typed value appended to the message;
+may write out more information to the message known only after the entire container is written,
+and may free resources created by <code class="function">dbus_message_iter_open_container()</code>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>iter</code></em> :</span></p></td>
+<td>An IBusMessageIter.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>sub</code></em> :</span></p></td>
+<td>Sub-iterator to close.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_recurse ()">
+<a name="ibus-message-iter-recurse"></a><h3>ibus_message_iter_recurse ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_message_iter_recurse           (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *sub</code></em>);</pre>
+<p>
+Recurses into a container value when reading values from a message,
+initializing a sub-iterator to use for traversing the child values of the container.
+</p>
+<p>
+Note that this recurses into a value, not a type, so you can only recurse if the value exists.
+The main implication of this is that if you have for example an empty array of array of int32,
+you can recurse into the outermost array, but it will have no values, so you won't be able to recurse further.
+There's no array of int32 to recurse into.
+</p>
+<p>
+If a container is an array of fixed-length types, it is much more efficient to use
+ <code class="function">dbus_message_iter_get_fixed_array()</code> to get the whole array in one shot,
+ rather than individually walking over the array elements.
+</p>
+<p>
+Be sure you have somehow checked that <code class="function">dbus_message_iter_get_arg_type()</code>
+matches the type you are expecting to recurse into.
+Results of this function are undefined if there is no container to recurse into at the current iterator position.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>iter</code></em> :</span></p></td>
+<td>An IBusMessageIter.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td>The type of the value.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>sub</code></em> :</span></p></td>
+<td>Sub-iterator to initialize.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_get_arg_type ()">
+<a name="ibus-message-iter-get-arg-type"></a><h3>ibus_message_iter_get_arg_type ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               ibus_message_iter_get_arg_type      (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>);</pre>
+<p>
+Returns the argument type of the argument that the message iterator points to.
+</p>
+<p>
+If the iterator is at the end of the message, returns <code class="literal">DBUS_TYPE_INVALID</code>.
+You can thus write a loop as follows:
+</p>
+<div class="informalexample"><pre class="programlisting">
+    dbus_message_iter_init (&amp;iter);
+    while ((current_type = dbus_message_iter_get_arg_type (&amp;iter)) != DBUS_TYPE_INVALID)
+    dbus_message_iter_next (&amp;iter);
+   </pre></div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>iter</code></em> :</span></p></td>
+<td>An IBusMessageIter.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The argument type.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_iter_get_element_type ()">
+<a name="ibus-message-iter-get-element-type"></a><h3>ibus_message_iter_get_element_type ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>               ibus_message_iter_get_element_type  (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessageIter" title="IBusMessageIter"><span class="type">IBusMessageIter</span></a> *iter</code></em>);</pre>
+<p>
+Returns the element type of the array that the message iterator points to.
+Note that you need to check that the iterator points to an array prior to using this function.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>iter</code></em> :</span></p></td>
+<td>An IBusMessageIter.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The argument type.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_message_to_string ()">
+<a name="ibus-message-to-string"></a><h3>ibus_message_to_string ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             ibus_message_to_string              (<em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Produces a pretty formatted string which show the information of the IBusMessage.
+This string is suitable for debugging information print out.
+</p>
+<p>
+Free the string by <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a> after use.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An IBusMessage.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A string which shows the information of the message.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

@@ -1,0 +1,13945 @@
+<!-- ##### SECTION Title ##### -->
+ibuskeysyms
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO IBUS_VoidSymbol ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_BackSpace ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Tab ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Linefeed ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Clear ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Return ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pause ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Scroll_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Sys_Req ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Escape ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Delete ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Multi_key ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Codeinput ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_SingleCandidate ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_MultipleCandidate ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_PreviousCandidate ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Kanji ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Muhenkan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Henkan_Mode ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Henkan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Romaji ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hiragana ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Katakana ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hiragana_Katakana ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Zenkaku ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hankaku ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Zenkaku_Hankaku ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Touroku ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Massyo ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Kana_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Kana_Shift ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Eisu_Shift ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Eisu_toggle ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Kanji_Bangou ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Zen_Koho ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Mae_Koho ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Home ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Left ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Up ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Right ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Down ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Prior ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Page_Up ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Next ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Page_Down ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_End ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Begin ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Select ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Print ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Execute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Insert ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Undo ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Redo ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Menu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Find ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cancel ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Help ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Break ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Mode_switch ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_script_switch ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Num_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Space ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Tab ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Enter ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_F1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_F2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_F3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_F4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Home ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Left ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Up ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Right ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Down ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Prior ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Page_Up ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Next ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Page_Down ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_End ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Begin ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Insert ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Delete ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Equal ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Multiply ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Add ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Separator ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Subtract ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Decimal ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_Divide ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_0 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_6 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_7 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_8 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_KP_9 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F6 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F7 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F8 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F9 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F10 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F11 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_L1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F12 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_L2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F13 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_L3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F14 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_L4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F15 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_L5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F16 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_L6 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F17 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_L7 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F18 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_L8 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F19 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_L9 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F20 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_L10 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F21 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F22 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F23 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F24 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F25 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F26 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R6 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F27 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R7 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F28 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R8 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F29 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R9 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F30 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R10 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F31 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R11 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F32 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R12 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F33 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R13 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F34 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R14 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F35 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R15 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Shift_L ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Shift_R ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Control_L ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Control_R ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Caps_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Shift_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Meta_L ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Meta_R ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Alt_L ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Alt_R ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Super_L ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Super_R ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hyper_L ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hyper_R ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Level2_Latch ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Level3_Shift ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Level3_Latch ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Level3_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Level5_Shift ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Level5_Latch ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Level5_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Group_Shift ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Group_Latch ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Group_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Next_Group ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Next_Group_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Prev_Group ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Prev_Group_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_First_Group ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_First_Group_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Last_Group ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Last_Group_Lock ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Left_Tab ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Move_Line_Up ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Move_Line_Down ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Partial_Line_Up ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Partial_Line_Down ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Partial_Space_Left ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Partial_Space_Right ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Set_Margin_Left ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Set_Margin_Right ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Release_Margin_Left ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Release_Margin_Right ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Release_Both_Margins ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Fast_Cursor_Left ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Fast_Cursor_Right ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Fast_Cursor_Up ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Fast_Cursor_Down ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Continuous_Underline ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Discontinuous_Underline ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Emphasize ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Center_Object ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ISO_Enter ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_grave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_acute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_circumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_tilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_perispomeni ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_macron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_breve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_abovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_diaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_abovering ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_doubleacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_caron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_cedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_ogonek ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_iota ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_voiced_sound ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_semivoiced_sound ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_belowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_hook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_horn ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_stroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_abovecomma ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_psili ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_abovereversedcomma ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_dasia ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_belowring ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_belowmacron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_belowcircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_belowtilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_belowbreve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dead_belowdiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_First_Virtual_Screen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Prev_Virtual_Screen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Next_Virtual_Screen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Last_Virtual_Screen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Terminate_Server ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_AccessX_Enable ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_AccessX_Feedback_Enable ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_RepeatKeys_Enable ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_SlowKeys_Enable ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_BounceKeys_Enable ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_StickyKeys_Enable ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_MouseKeys_Enable ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_MouseKeys_Accel_Enable ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Overlay1_Enable ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Overlay2_Enable ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_AudibleBell_Enable ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Left ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Right ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Up ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Down ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_UpLeft ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_UpRight ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_DownLeft ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_DownRight ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Button_Dflt ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Button1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Button2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Button3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Button4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Button5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_DblClick_Dflt ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_DblClick1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_DblClick2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_DblClick3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_DblClick4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_DblClick5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Drag_Dflt ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Drag1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Drag2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Drag3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Drag4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Drag5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_EnableKeys ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_Accelerate ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_DfltBtnNext ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pointer_DfltBtnPrev ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Duplicate ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_FieldMark ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Right2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Left2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_BackTab ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_EraseEOF ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_EraseInput ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Reset ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Quit ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_PA1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_PA2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_PA3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Test ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Attn ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_CursorBlink ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_AltCursor ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_KeyClick ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Jump ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Ident ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Rule ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Copy ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Play ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Setup ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Record ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_ChangeScreen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_DeleteWord ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_ExSelect ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_CursorSelect ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_PrintScreen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3270_Enter ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_space ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_exclam ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_quotedbl ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_numbersign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dollar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_percent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ampersand ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_apostrophe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_quoteright ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_parenleft ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_parenright ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_asterisk ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_plus ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_comma ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_minus ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_period ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_slash ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_0 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_6 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_7 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_8 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_9 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_colon ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_semicolon ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_less ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_equal ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_greater ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_question ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_at ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_A ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_B ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_C ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_D ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_E ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_F ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_G ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_H ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_I ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_J ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_K ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_L ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_M ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_N ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_O ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_P ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Q ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_R ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_S ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_T ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_U ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_V ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_W ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_X ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Y ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Z ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_bracketleft ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_backslash ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_bracketright ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_asciicircum ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_underscore ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_grave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_quoteleft ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_a ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_b ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_c ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_d ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_e ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_f ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_g ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_h ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_i ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_j ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_k ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_l ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_m ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_n ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_o ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_p ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_q ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_r ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_s ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_t ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_u ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_v ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_w ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_x ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_y ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_z ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braceleft ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_bar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braceright ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_asciitilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_nobreakspace ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_exclamdown ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_cent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_sterling ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_currency ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_yen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_brokenbar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_section ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_diaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_copyright ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ordfeminine ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_guillemotleft ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_notsign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hyphen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_registered ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_macron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_degree ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_plusminus ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_twosuperior ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_threesuperior ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_acute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_mu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_paragraph ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_periodcentered ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_cedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_onesuperior ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_masculine ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_guillemotright ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_onequarter ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_onehalf ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_threequarters ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_questiondown ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Agrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Aacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Acircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Atilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Adiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Aring ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_AE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ccedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Egrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Eacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ecircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ediaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Igrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Iacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Icircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Idiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ETH ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Eth ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ntilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ograve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Oacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ocircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Otilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Odiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_multiply ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Oslash ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ooblique ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ugrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Uacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ucircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Udiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Yacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_THORN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thorn ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ssharp ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_agrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_aacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_acircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_atilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_adiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_aring ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ae ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ccedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_egrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_eacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ecircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ediaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_igrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_iacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_icircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_idiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_eth ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ntilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ograve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_oacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ocircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_otilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_odiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_division ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_oslash ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ooblique ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ugrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ucircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_udiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_yacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_thorn ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ydiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Aogonek ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_breve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Lstroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Lcaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Sacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Scaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Scedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Tcaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Zacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Zcaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Zabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_aogonek ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ogonek ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_lstroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_lcaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_sacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_caron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_scaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_scedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_tcaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_zacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_doubleacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_zcaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_zabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Racute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Abreve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Lacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ccaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Eogonek ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ecaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Dcaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Dstroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Nacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ncaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Odoubleacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Rcaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Uring ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Udoubleacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Tcedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_racute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_abreve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_lacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_cacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ccaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_eogonek ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ecaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dcaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dstroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_nacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ncaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_odoubleacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_udoubleacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rcaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uring ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_tcedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_abovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hstroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hcircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Iabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Gbreve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Jcircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hstroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hcircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_idotless ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_gbreve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_jcircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ccircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Gabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Gcircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ubreve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Scircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_cabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ccircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_gabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_gcircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ubreve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_scircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kra ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kappa ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Rcedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Itilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Lcedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Emacron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Gcedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Tslash ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rcedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_itilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_lcedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_emacron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_gcedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_tslash ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ENG ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_eng ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Amacron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Iogonek ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Eabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Imacron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ncedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Omacron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Kcedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Uogonek ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Utilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Umacron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_amacron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_iogonek ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_eabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_imacron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ncedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_omacron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kcedilla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uogonek ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_utilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_umacron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Babovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_babovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Dabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Wgrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Wacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ygrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Fabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_fabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Mabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_mabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Pabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_wgrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_pabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_wacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Sabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ygrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Wdiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_wdiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_sabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Wcircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Tabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ycircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_wcircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_tabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ycircumflex ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_OE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_oe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ydiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_overline ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_fullstop ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_openingbracket ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_closingbracket ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_comma ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_conjunctive ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_middledot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_WO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_a ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_i ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_u ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_e ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_o ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_ya ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_yu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_yo ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_tsu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_tu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_prolongedsound ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_A ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_I ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_U ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_E ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_O ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_KA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_KI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_KU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_KE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_KO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_SA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_SHI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_SU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_SE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_SO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_TA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_CHI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_TI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_TSU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_TU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_TE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_TO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_NA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_NI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_NU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_NE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_NO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_HA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_HI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_FU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_HU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_HE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_HO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_MA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_MI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_MU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_ME ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_MO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_YA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_YU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_YO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_RA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_RI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_RU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_RE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_RO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_WA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_N ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_voicedsound ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_semivoicedsound ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_kana_switch ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Farsi_0 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Farsi_1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Farsi_2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Farsi_3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Farsi_4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Farsi_5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Farsi_6 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Farsi_7 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Farsi_8 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Farsi_9 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_percent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_superscript_alef ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_tteh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_peh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_tcheh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_ddal ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_rreh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_comma ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_fullstop ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_0 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_6 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_7 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_8 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_9 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_semicolon ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_question_mark ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_hamza ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_maddaonalef ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_hamzaonalef ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_hamzaonwaw ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_hamzaunderalef ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_hamzaonyeh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_alef ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_beh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_tehmarbuta ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_teh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_theh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_jeem ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_hah ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_khah ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_dal ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_thal ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_ra ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_zain ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_seen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_sheen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_sad ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_dad ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_tah ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_zah ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_ain ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_ghain ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_tatweel ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_feh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_qaf ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_kaf ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_lam ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_meem ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_noon ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_ha ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_heh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_waw ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_alefmaksura ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_yeh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_fathatan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_dammatan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_kasratan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_fatha ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_damma ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_kasra ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_shadda ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_sukun ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_madda_above ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_hamza_above ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_hamza_below ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_jeh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_veh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_keheh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_gaf ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_noon_ghunna ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_heh_doachashmee ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Farsi_yeh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_farsi_yeh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_yeh_baree ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_heh_goal ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Arabic_switch ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_GHE_bar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ghe_bar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ZHE_descender ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_zhe_descender ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_KA_descender ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ka_descender ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_KA_vertstroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ka_vertstroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_EN_descender ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_en_descender ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_U_straight ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_u_straight ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_U_straight_bar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_u_straight_bar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_HA_descender ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ha_descender ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_CHE_descender ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_che_descender ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_CHE_vertstroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_che_vertstroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_SHHA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_shha ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_SCHWA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_schwa ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_I_macron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_i_macron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_O_bar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_o_bar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_U_macron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_u_macron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Serbian_dje ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Macedonia_gje ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_io ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukrainian_ie ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukranian_je ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Macedonia_dse ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukrainian_i ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukranian_i ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukrainian_yi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukranian_yi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_je ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Serbian_je ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_lje ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Serbian_lje ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_nje ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Serbian_nje ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Serbian_tshe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Macedonia_kje ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukrainian_ghe_with_upturn ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Byelorussian_shortu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_dzhe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Serbian_dze ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_numerosign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Serbian_DJE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Macedonia_GJE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_IO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukrainian_IE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukranian_JE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Macedonia_DSE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukrainian_I ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukranian_I ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukrainian_YI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukranian_YI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_JE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Serbian_JE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_LJE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Serbian_LJE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_NJE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Serbian_NJE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Serbian_TSHE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Macedonia_KJE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ukrainian_GHE_WITH_UPTURN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Byelorussian_SHORTU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_DZHE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Serbian_DZE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_yu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_a ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_be ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_tse ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_de ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ie ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ef ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ghe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ha ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_i ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_shorti ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ka ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_el ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_em ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_en ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_o ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_pe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ya ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_er ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_es ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_te ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_u ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_zhe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_softsign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_yeru ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ze ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_sha ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_e ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_shcha ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_che ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_hardsign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_YU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_A ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_BE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_TSE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_DE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_IE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_EF ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_GHE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_HA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_I ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_SHORTI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_KA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_EL ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_EM ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_EN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_O ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_PE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_YA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ER ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ES ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_TE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_U ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ZHE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_VE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_SOFTSIGN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_YERU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_ZE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_SHA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_E ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_SHCHA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_CHE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Cyrillic_HARDSIGN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_ALPHAaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_EPSILONaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_ETAaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_IOTAaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_IOTAdieresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_IOTAdiaeresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_OMICRONaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_UPSILONaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_UPSILONdieresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_OMEGAaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_accentdieresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_horizbar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_alphaaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_epsilonaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_etaaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_iotaaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_iotadieresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_iotaaccentdieresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_omicronaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_upsilonaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_upsilondieresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_upsilonaccentdieresis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_omegaaccent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_ALPHA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_BETA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_GAMMA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_DELTA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_EPSILON ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_ZETA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_ETA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_THETA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_IOTA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_KAPPA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_LAMDA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_LAMBDA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_MU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_NU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_XI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_OMICRON ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_PI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_RHO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_SIGMA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_TAU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_UPSILON ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_PHI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_CHI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_PSI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_OMEGA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_alpha ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_beta ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_gamma ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_delta ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_epsilon ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_zeta ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_eta ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_theta ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_iota ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_kappa ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_lamda ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_lambda ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_mu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_nu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_xi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_omicron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_pi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_rho ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_sigma ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_finalsmallsigma ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_tau ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_upsilon ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_phi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_chi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_psi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_omega ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Greek_switch ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_leftradical ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_topleftradical ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_horizconnector ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_topintegral ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_botintegral ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_vertconnector ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_topleftsqbracket ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_botleftsqbracket ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_toprightsqbracket ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_botrightsqbracket ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_topleftparens ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_botleftparens ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_toprightparens ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_botrightparens ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_leftmiddlecurlybrace ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rightmiddlecurlybrace ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_topleftsummation ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_botleftsummation ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_topvertsummationconnector ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_botvertsummationconnector ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_toprightsummation ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_botrightsummation ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rightmiddlesummation ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_lessthanequal ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_notequal ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_greaterthanequal ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_integral ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_therefore ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_variation ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_infinity ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_nabla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_approximate ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_similarequal ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ifonlyif ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_implies ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_identical ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_radical ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_includedin ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_includes ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_intersection ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_union ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_logicaland ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_logicalor ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_partialderivative ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_function ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_leftarrow ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uparrow ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rightarrow ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_downarrow ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_blank ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_soliddiamond ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_checkerboard ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ht ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ff ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_cr ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_lf ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_nl ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_vt ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_lowrightcorner ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uprightcorner ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_upleftcorner ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_lowleftcorner ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_crossinglines ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_horizlinescan1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_horizlinescan3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_horizlinescan5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_horizlinescan7 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_horizlinescan9 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_leftt ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rightt ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_bott ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_topt ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_vertbar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_emspace ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_enspace ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_em3space ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_em4space ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_digitspace ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_punctspace ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_thinspace ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hairspace ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_emdash ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_endash ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_signifblank ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ellipsis ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_doubbaselinedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_onethird ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_twothirds ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_onefifth ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_twofifths ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_threefifths ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_fourfifths ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_onesixth ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_fivesixths ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_careof ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_figdash ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_leftanglebracket ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_decimalpoint ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rightanglebracket ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_marker ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_oneeighth ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_threeeighths ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_fiveeighths ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_seveneighths ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_trademark ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_signaturemark ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_trademarkincircle ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_leftopentriangle ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rightopentriangle ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_emopencircle ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_emopenrectangle ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_leftsinglequotemark ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rightsinglequotemark ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_leftdoublequotemark ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rightdoublequotemark ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_prescription ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_minutes ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_seconds ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_latincross ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hexagram ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_filledrectbullet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_filledlefttribullet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_filledrighttribullet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_emfilledcircle ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_emfilledrect ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_enopencircbullet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_enopensquarebullet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_openrectbullet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_opentribulletup ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_opentribulletdown ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_openstar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_enfilledcircbullet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_enfilledsqbullet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_filledtribulletup ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_filledtribulletdown ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_leftpointer ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rightpointer ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_club ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_diamond ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_heart ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_maltesecross ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dagger ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_doubledagger ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_checkmark ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ballotcross ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_musicalsharp ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_musicalflat ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_malesymbol ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_femalesymbol ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_telephone ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_telephonerecorder ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_phonographcopyright ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_caret ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_singlelowquotemark ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_doublelowquotemark ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_cursor ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_leftcaret ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rightcaret ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_downcaret ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_upcaret ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_overbar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_downtack ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_upshoe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_downstile ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_underbar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_jot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_quad ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uptack ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_circle ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_upstile ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_downshoe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_rightshoe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_leftshoe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_lefttack ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_righttack ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_doublelowline ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_aleph ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_bet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_beth ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_gimel ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_gimmel ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_dalet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_daleth ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_he ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_waw ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_zain ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_zayin ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_chet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_het ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_tet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_teth ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_yod ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_finalkaph ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_kaph ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_lamed ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_finalmem ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_mem ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_finalnun ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_nun ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_samech ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_samekh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_ayin ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_finalpe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_pe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_finalzade ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_finalzadi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_zade ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_zadi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_qoph ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_kuf ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_resh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_shin ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_taw ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_hebrew_taf ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hebrew_switch ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_kokai ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_khokhai ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_khokhuat ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_khokhwai ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_khokhon ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_khorakhang ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_ngongu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_chochan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_choching ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_chochang ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_soso ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_chochoe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_yoying ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_dochada ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_topatak ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_thothan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_thonangmontho ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_thophuthao ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_nonen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_dodek ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_totao ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_thothung ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_thothahan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_thothong ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_nonu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_bobaimai ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_popla ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_phophung ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_fofa ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_phophan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_fofan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_phosamphao ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_moma ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_yoyak ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_rorua ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_ru ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_loling ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_lu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_wowaen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_sosala ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_sorusi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_sosua ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_hohip ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_lochula ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_oang ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_honokhuk ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_paiyannoi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_saraa ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_maihanakat ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_saraaa ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_saraam ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_sarai ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_saraii ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_saraue ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_sarauee ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_sarau ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_sarauu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_phinthu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_maihanakat_maitho ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_baht ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_sarae ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_saraae ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_sarao ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_saraaimaimuan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_saraaimaimalai ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_lakkhangyao ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_maiyamok ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_maitaikhu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_maiek ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_maitho ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_maitri ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_maichattawa ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_thanthakhat ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_nikhahit ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_leksun ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_leknung ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_leksong ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_leksam ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_leksi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_lekha ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_lekhok ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_lekchet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_lekpaet ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Thai_lekkao ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Start ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_End ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Hanja ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Jamo ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Romaja ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Codeinput ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Jeonja ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Banja ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_PreHanja ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_PostHanja ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_SingleCandidate ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_MultipleCandidate ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_PreviousCandidate ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Special ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_switch ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Kiyeog ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_SsangKiyeog ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_KiyeogSios ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Nieun ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_NieunJieuj ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_NieunHieuh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Dikeud ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_SsangDikeud ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Rieul ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_RieulKiyeog ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_RieulMieum ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_RieulPieub ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_RieulSios ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_RieulTieut ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_RieulPhieuf ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_RieulHieuh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Mieum ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Pieub ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_SsangPieub ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_PieubSios ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Sios ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_SsangSios ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Ieung ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Jieuj ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_SsangJieuj ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Cieuc ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Khieuq ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Tieut ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Phieuf ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_Hieuh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_A ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_AE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_YA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_YAE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_EO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_E ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_YEO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_YE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_O ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_WA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_WAE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_OE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_YO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_U ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_WEO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_WE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_WI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_YU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_EU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_YI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_I ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Kiyeog ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_SsangKiyeog ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_KiyeogSios ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Nieun ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_NieunJieuj ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_NieunHieuh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Dikeud ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Rieul ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_RieulKiyeog ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_RieulMieum ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_RieulPieub ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_RieulSios ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_RieulTieut ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_RieulPhieuf ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_RieulHieuh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Mieum ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Pieub ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_PieubSios ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Sios ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_SsangSios ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Ieung ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Jieuj ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Cieuc ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Khieuq ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Tieut ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Phieuf ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_Hieuh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_RieulYeorinHieuh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_SunkyeongeumMieum ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_SunkyeongeumPieub ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_PanSios ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_KkogjiDalrinIeung ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_SunkyeongeumPhieuf ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_YeorinHieuh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_AraeA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_AraeAE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_PanSios ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_KkogjiDalrinIeung ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Hangul_J_YeorinHieuh ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Korean_Won ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_ligature_ew ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_full_stop ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_verjaket ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_separation_mark ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_but ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_hyphen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_yentamna ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_exclam ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_amanak ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_accent ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_shesht ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_question ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_paruyk ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_AYB ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_ayb ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_BEN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_ben ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_GIM ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_gim ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_DA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_da ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_YECH ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_yech ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_ZA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_za ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_E ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_e ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_AT ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_at ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_TO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_to ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_ZHE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_zhe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_INI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_ini ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_LYUN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_lyun ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_KHE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_khe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_TSA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_tsa ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_KEN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_ken ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_HO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_ho ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_DZA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_dza ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_GHAT ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_ghat ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_TCHE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_tche ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_MEN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_men ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_HI ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_hi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_NU ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_nu ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_SHA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_sha ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_VO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_vo ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_CHA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_cha ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_PE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_pe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_JE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_je ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_RA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_ra ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_SE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_se ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_VEV ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_vev ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_TYUN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_tyun ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_RE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_re ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_TSO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_tso ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_VYUN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_vyun ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_PYUR ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_pyur ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_KE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_ke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_O ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_o ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_FE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_fe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Armenian_apostrophe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_an ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_ban ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_gan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_don ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_en ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_vin ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_zen ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_tan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_in ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_kan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_las ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_man ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_nar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_on ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_par ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_zhar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_rae ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_san ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_tar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_un ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_phar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_khar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_ghan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_qar ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_shin ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_chin ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_can ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_jil ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_cil ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_char ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_xan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_jhan ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_hae ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_he ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_hie ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_we ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_har ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_hoe ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Georgian_fi ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Xabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ibreve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Zstroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Gcaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ocaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Obarred ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_xabovedot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ibreve ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_zstroke ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_gcaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ocaron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_obarred ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_SCHWA ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_schwa ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Lbelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_lbelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Abelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_abelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ahook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ahook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Acircumflexacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_acircumflexacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Acircumflexgrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_acircumflexgrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Acircumflexhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_acircumflexhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Acircumflextilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_acircumflextilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Acircumflexbelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_acircumflexbelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Abreveacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_abreveacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Abrevegrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_abrevegrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Abrevehook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_abrevehook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Abrevetilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_abrevetilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Abrevebelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_abrevebelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ebelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ebelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ehook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ehook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Etilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_etilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ecircumflexacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ecircumflexacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ecircumflexgrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ecircumflexgrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ecircumflexhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ecircumflexhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ecircumflextilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ecircumflextilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ecircumflexbelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ecircumflexbelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ihook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ihook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ibelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ibelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Obelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_obelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ohook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ohook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ocircumflexacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ocircumflexacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ocircumflexgrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ocircumflexgrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ocircumflexhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ocircumflexhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ocircumflextilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ocircumflextilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ocircumflexbelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ocircumflexbelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ohornacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ohornacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ohorngrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ohorngrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ohornhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ohornhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ohorntilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ohorntilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ohornbelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ohornbelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ubelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ubelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Uhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Uhornacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uhornacute ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Uhorngrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uhorngrave ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Uhornhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uhornhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Uhorntilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uhorntilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Uhornbelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uhornbelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ybelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ybelowdot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Yhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_yhook ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ytilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ytilde ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Ohorn ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ohorn ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_Uhorn ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_uhorn ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_EcuSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ColonSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_CruzeiroSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_FFrancSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_LiraSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_MillSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_NairaSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_PesetaSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_RupeeSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_WonSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_NewSheqelSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_DongSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_EuroSign ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_zerosuperior ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_foursuperior ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_fivesuperior ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_sixsuperior ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_sevensuperior ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_eightsuperior ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ninesuperior ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_zerosubscript ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_onesubscript ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_twosubscript ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_threesubscript ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_foursubscript ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_fivesubscript ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_sixsubscript ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_sevensubscript ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_eightsubscript ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_ninesubscript ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_partdifferential ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_emptyset ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_elementof ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_notelementof ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_containsas ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_squareroot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_cuberoot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_fourthroot ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_dintegral ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_tintegral ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_because ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_approxeq ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_notapproxeq ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_notidentical ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_stricteq ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dot_1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dot_2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dot_3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dot_4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dot_5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dot_6 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dot_7 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dot_8 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dot_9 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dot_10 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_blank ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_3 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_13 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_23 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_123 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_14 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_24 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_124 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_34 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_134 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_234 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1234 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_5 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_15 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_25 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_125 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_35 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_135 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_235 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1235 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_45 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_145 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_245 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1245 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_345 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1345 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2345 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12345 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_6 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_16 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_26 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_126 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_36 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_136 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_236 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1236 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_46 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_146 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_246 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1246 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_346 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1346 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2346 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12346 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_56 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_156 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_256 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1256 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_356 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1356 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2356 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12356 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_456 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1456 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2456 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12456 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_3456 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_13456 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_23456 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_123456 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_7 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_17 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_27 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_127 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_37 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_137 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_237 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1237 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_47 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_147 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_247 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1247 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_347 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1347 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2347 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12347 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_57 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_157 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_257 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1257 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_357 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1357 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2357 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12357 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_457 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1457 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2457 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12457 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_3457 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_13457 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_23457 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_123457 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_67 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_167 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_267 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1267 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_367 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1367 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2367 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12367 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_467 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1467 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2467 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12467 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_3467 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_13467 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_23467 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_123467 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_3567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_13567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_23567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_123567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_4567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_14567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_24567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_124567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_34567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_134567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_234567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1234567 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_8 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_18 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_28 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_128 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_38 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_138 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_238 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1238 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_48 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_148 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_248 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1248 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_348 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1348 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2348 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12348 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_58 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_158 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_258 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1258 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_358 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1358 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2358 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12358 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_458 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1458 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2458 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12458 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_3458 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_13458 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_23458 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_123458 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_68 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_168 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_268 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1268 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_368 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1368 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2368 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12368 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_468 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1468 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2468 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12468 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_3468 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_13468 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_23468 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_123468 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_3568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_13568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_23568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_123568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_4568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_14568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_24568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_124568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_34568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_134568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_234568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1234568 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_78 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_178 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_278 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1278 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_378 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1378 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2378 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12378 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_478 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1478 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2478 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12478 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_3478 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_13478 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_23478 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_123478 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_3578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_13578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_23578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_123578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_4578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_14578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_24578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_124578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_34578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_134578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_234578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1234578 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_3678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_13678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_23678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_123678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_4678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_14678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_24678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_124678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_34678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_134678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_234678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1234678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_5678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_15678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_25678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_125678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_35678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_135678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_235678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1235678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_45678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_145678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_245678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1245678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_345678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_1345678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_2345678 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_braille_dots_12345678 ##### -->
+<para>
+
+</para>
+
+
+

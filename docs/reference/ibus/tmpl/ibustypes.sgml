@@ -1,0 +1,96 @@
+<!-- ##### SECTION Title ##### -->
+ibustypes
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### ENUM IBusModifierType ##### -->
+<para>
+
+</para>
+
+@IBUS_SHIFT_MASK: 
+@IBUS_LOCK_MASK: 
+@IBUS_CONTROL_MASK: 
+@IBUS_MOD1_MASK: 
+@IBUS_MOD2_MASK: 
+@IBUS_MOD3_MASK: 
+@IBUS_MOD4_MASK: 
+@IBUS_MOD5_MASK: 
+@IBUS_BUTTON1_MASK: 
+@IBUS_BUTTON2_MASK: 
+@IBUS_BUTTON3_MASK: 
+@IBUS_BUTTON4_MASK: 
+@IBUS_BUTTON5_MASK: 
+@IBUS_HANDLED_MASK: 
+@IBUS_FORWARD_MASK: 
+@IBUS_IGNORED_MASK: 
+@IBUS_SUPER_MASK: 
+@IBUS_HYPER_MASK: 
+@IBUS_META_MASK: 
+@IBUS_RELEASE_MASK: 
+@IBUS_MODIFIER_MASK: 
+
+<!-- ##### ENUM IBusCapabilite ##### -->
+<para>
+
+</para>
+
+@IBUS_CAP_PREEDIT_TEXT: 
+@IBUS_CAP_AUXILIARY_TEXT: 
+@IBUS_CAP_LOOKUP_TABLE: 
+@IBUS_CAP_FOCUS: 
+@IBUS_CAP_PROPERTY: 
+@IBUS_CAP_SURROUNDING_TEXT: 
+
+<!-- ##### ENUM IBusPreeditFocusMode ##### -->
+<para>
+
+</para>
+
+@IBUS_ENGINE_PREEDIT_CLEAR: 
+@IBUS_ENGINE_PREEDIT_COMMIT: 
+
+<!-- ##### ENUM IBusOrientation ##### -->
+<para>
+
+</para>
+
+@IBUS_ORIENTATION_HORIZONTAL: 
+@IBUS_ORIENTATION_VERTICAL: 
+@IBUS_ORIENTATION_SYSTEM: 
+
+<!-- ##### STRUCT IBusRectangle ##### -->
+<para>
+
+</para>
+
+@x: 
+@y: 
+@width: 
+@height: 
+
+<!-- ##### USER_FUNCTION IBusFreeFunc ##### -->
+<para>
+
+</para>
+
+@object: 
+
+

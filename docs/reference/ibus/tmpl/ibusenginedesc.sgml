@@ -1,0 +1,86 @@
+<!-- ##### SECTION Title ##### -->
+IBusEngineDesc
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusEngineDesc ##### -->
+<para>
+
+</para>
+
+@name: 
+@longname: 
+@description: 
+@language: 
+@license: 
+@author: 
+@icon: 
+@layout: 
+@hotkeys: 
+@rank: 
+
+<!-- ##### STRUCT IBusEngineDescClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### STRUCT BusComponent ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION ibus_engine_desc_new ##### -->
+<para>
+
+</para>
+
+@name: 
+@longname: 
+@description: 
+@language: 
+@license: 
+@author: 
+@icon: 
+@layout: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_new_from_xml_node ##### -->
+<para>
+
+</para>
+
+@node: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_output ##### -->
+<para>
+
+</para>
+
+@info: 
+@output: 
+@indent: 
+
+

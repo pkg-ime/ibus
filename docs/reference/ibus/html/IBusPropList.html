@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusPropList</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch02.html" title="Panel (User Interfaces)">
+<link rel="prev" href="IBusProperty.html" title="IBusProperty">
+<link rel="next" href="IBusText.html" title="IBusText">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusProperty.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusText.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusPropList.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusPropList.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusPropList.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusPropList">
+<a name="IBusPropList"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusPropList.top_of_page"></a>IBusPropList</span></h2>
+<p>IBusPropList — An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> container.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="IBusPropList.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusPropList.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="IBusProperty.html#IBusPropList-struct" title="IBusPropList">IBusPropList</a>;
+                    <a class="link" href="IBusProperty.html#IBusPropListClass" title="IBusPropListClass">IBusPropListClass</a>;
+<a class="link" href="IBusProperty.html#IBusPropList"><span class="returnvalue">IBusPropList</span></a> *      <a class="link" href="IBusPropList.html#ibus-prop-list-new" title="ibus_prop_list_new ()">ibus_prop_list_new</a>                  ();
+<span class="returnvalue">void</span>                <a class="link" href="IBusPropList.html#ibus-prop-list-append" title="ibus_prop_list_append ()">ibus_prop_list_append</a>               (<em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+<a class="link" href="IBusProperty.html" title="IBusProperty"><span class="returnvalue">IBusProperty</span></a> *      <a class="link" href="IBusPropList.html#ibus-prop-list-get" title="ibus_prop_list_get ()">ibus_prop_list_get</a>                  (<em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusPropList.html#ibus-prop-list-update-property" title="ibus_prop_list_update_property ()">ibus_prop_list_update_property</a>      (<em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusPropList.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusSerializable.html" title="IBusSerializable">IBusSerializable</a>
+                     +----IBusPropList
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusPropList.description"></a><h2>Description</h2>
+<p>
+<em class="parameter"><code>See_also</code></em>: <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>, <a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusPropList.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBusPropList">
+<a name="IBusPropList-struct"></a><h3>IBusPropList</h3>
+<pre class="programlisting">typedef struct {
+    GArray *properties;
+} IBusPropList;
+</pre>
+<p>
+An array of IBusProperties.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Arrays.html#GArray"><span class="type">GArray</span></a> *<em class="structfield"><code><a name="IBusPropList-struct.properties"></a>properties</code></em>;</span></p></td>
+<td>GArray that holds IBusProperties.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="IBusPropListClass">
+<a name="IBusPropListClass"></a><h3>IBusPropListClass</h3>
+<pre class="programlisting">typedef struct {
+    IBusSerializableClass parent;
+} IBusPropListClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_prop_list_new ()">
+<a name="ibus-prop-list-new"></a><h3>ibus_prop_list_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusProperty.html#IBusPropList"><span class="returnvalue">IBusPropList</span></a> *      ibus_prop_list_new                  ();</pre>
+<p>
+New a IBusPropList.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusPropList.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_prop_list_append ()">
+<a name="ibus-prop-list-append"></a><h3>ibus_prop_list_append ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_prop_list_append               (<em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Append an IBusProperty to an IBusPropList, and increase reference.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_list</code></em> :</span></p></td>
+<td>An IBusPropList.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>IBusProperty to be append to <em class="parameter"><code>prop_list</code></em>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_prop_list_get ()">
+<a name="ibus-prop-list-get"></a><h3>ibus_prop_list_get ()</h3>
+<pre class="programlisting"><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="returnvalue">IBusProperty</span></a> *      ibus_prop_list_get                  (<em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>);</pre>
+<p>
+Returns IBusProperty at given index. Borrowed reference.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_list</code></em> :</span></p></td>
+<td>An IBusPropList.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>index</code></em> :</span></p></td>
+<td>Index of an IBusPropList.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> IBusProperty at given index, NULL if no such IBusProperty. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_prop_list_update_property ()">
+<a name="ibus-prop-list-update-property"></a><h3>ibus_prop_list_update_property ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_prop_list_update_property      (<em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Update an IBusProperty in IBusPropList.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_list</code></em> :</span></p></td>
+<td>An IBusPropList.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>IBusProperty to be update.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeeded, FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

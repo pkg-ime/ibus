@@ -1,0 +1,343 @@
+<!-- ##### SECTION Title ##### -->
+IBusConnection
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusConnection ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusConnection::authenticate-unix-user ##### -->
+<para>
+
+</para>
+
+@ibusconnection: the object which received the signal.
+@arg1: 
+@Returns: 
+
+<!-- ##### SIGNAL IBusConnection::disconnected ##### -->
+<para>
+
+</para>
+
+@ibusconnection: the object which received the signal.
+
+<!-- ##### SIGNAL IBusConnection::ibus-message ##### -->
+<para>
+
+</para>
+
+@ibusconnection: the object which received the signal.
+@arg1: 
+@Returns: 
+
+<!-- ##### SIGNAL IBusConnection::ibus-message-sent ##### -->
+<para>
+
+</para>
+
+@ibusconnection: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusConnection::ibus-signal ##### -->
+<para>
+
+</para>
+
+@ibusconnection: the object which received the signal.
+@arg1: 
+@Returns: 
+
+<!-- ##### STRUCT IBusConnectionClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+@authenticate_unix_user: 
+@ibus_message: 
+@ibus_signal: 
+@ibus_message_sent: 
+@disconnected: 
+
+<!-- ##### USER_FUNCTION IBusIBusMessageFunc ##### -->
+<para>
+
+</para>
+
+@connection: 
+@message: 
+@Returns: 
+
+
+<!-- ##### USER_FUNCTION IBusIBusSignalFunc ##### -->
+<para>
+
+</para>
+
+@connection: 
+@message: 
+@Returns: 
+
+
+<!-- ##### USER_FUNCTION IBusMessageFunc ##### -->
+<para>
+
+</para>
+
+@connection: 
+@message: 
+@user_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_new ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_set_connection ##### -->
+<para>
+
+</para>
+
+@connection: 
+@dbus_connection: 
+@shared: 
+
+
+<!-- ##### FUNCTION ibus_connection_open ##### -->
+<para>
+
+</para>
+
+@address: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_open_private ##### -->
+<para>
+
+</para>
+
+@address: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_close ##### -->
+<para>
+
+</para>
+
+@connection: 
+
+
+<!-- ##### FUNCTION ibus_connection_is_connected ##### -->
+<para>
+
+</para>
+
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_is_authenticated ##### -->
+<para>
+
+</para>
+
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_get_connection ##### -->
+<para>
+
+</para>
+
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_get_unix_user ##### -->
+<para>
+
+</para>
+
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_read_write_dispatch ##### -->
+<para>
+
+</para>
+
+@connection: 
+@timeout: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_send ##### -->
+<para>
+
+</para>
+
+@connection: 
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_send_signal ##### -->
+<para>
+
+</para>
+
+@connection: 
+@path: 
+@interface: 
+@name: 
+@first_arg_type: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_send_signal_valist ##### -->
+<para>
+
+</para>
+
+@connection: 
+@path: 
+@interface: 
+@name: 
+@first_arg_type: 
+@args: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_send_valist ##### -->
+<para>
+
+</para>
+
+@connection: 
+@message_type: 
+@path: 
+@interface: 
+@name: 
+@first_arg_type: 
+@args: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_send_with_reply ##### -->
+<para>
+
+</para>
+
+@connection: 
+@message: 
+@pending_return: 
+@timeout_milliseconds: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_send_with_reply_and_block ##### -->
+<para>
+
+</para>
+
+@connection: 
+@message: 
+@timeout_milliseconds: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_call ##### -->
+<para>
+
+</para>
+
+@connection: 
+@name: 
+@path: 
+@interface: 
+@member: 
+@error: 
+@first_arg_type: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_call_with_reply ##### -->
+<para>
+
+</para>
+
+@connection: 
+@name: 
+@path: 
+@interface: 
+@member: 
+@error: 
+@first_arg_type: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_flush ##### -->
+<para>
+
+</para>
+
+@connection: 
+
+
+<!-- ##### FUNCTION ibus_connection_register_object_path ##### -->
+<para>
+
+</para>
+
+@connection: 
+@path: 
+@message_func: 
+@user_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_connection_unregister_object_path ##### -->
+<para>
+
+</para>
+
+@connection: 
+@path: 
+@Returns: 
+
+

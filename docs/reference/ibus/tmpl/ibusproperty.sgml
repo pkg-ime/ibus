@@ -1,0 +1,168 @@
+<!-- ##### SECTION Title ##### -->
+IBusProperty
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### ENUM IBusPropType ##### -->
+<para>
+
+</para>
+
+@PROP_TYPE_NORMAL: 
+@PROP_TYPE_TOGGLE: 
+@PROP_TYPE_RADIO: 
+@PROP_TYPE_MENU: 
+@PROP_TYPE_SEPARATOR: 
+
+<!-- ##### ENUM IBusPropState ##### -->
+<para>
+
+</para>
+
+@PROP_STATE_UNCHECKED: 
+@PROP_STATE_CHECKED: 
+@PROP_STATE_INCONSISTENT: 
+
+<!-- ##### STRUCT IBusProperty ##### -->
+<para>
+
+</para>
+
+@key: 
+@icon: 
+@label: 
+@tooltip: 
+@sensitive: 
+@visible: 
+@type: 
+@state: 
+@sub_props: 
+
+<!-- ##### STRUCT IBusPropertyClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### STRUCT IBusPropList ##### -->
+<para>
+
+</para>
+
+@properties: 
+
+<!-- ##### STRUCT IBusPropListClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_property_new ##### -->
+<para>
+
+</para>
+
+@key: 
+@type: 
+@label: 
+@icon: 
+@tooltip: 
+@sensitive: 
+@visible: 
+@state: 
+@prop_list: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_set_label ##### -->
+<para>
+
+</para>
+
+@prop: 
+@label: 
+
+
+<!-- ##### FUNCTION ibus_property_set_icon ##### -->
+<para>
+
+</para>
+
+@prop: 
+@icon: 
+
+
+<!-- ##### FUNCTION ibus_property_set_tooltip ##### -->
+<para>
+
+</para>
+
+@prop: 
+@tooltip: 
+
+
+<!-- ##### FUNCTION ibus_property_set_sensitive ##### -->
+<para>
+
+</para>
+
+@prop: 
+@sensitive: 
+
+
+<!-- ##### FUNCTION ibus_property_set_visible ##### -->
+<para>
+
+</para>
+
+@prop: 
+@visible: 
+
+
+<!-- ##### FUNCTION ibus_property_set_state ##### -->
+<para>
+
+</para>
+
+@prop: 
+@state: 
+
+
+<!-- ##### FUNCTION ibus_property_set_sub_props ##### -->
+<para>
+
+</para>
+
+@prop: 
+@prop_list: 
+
+
+<!-- ##### FUNCTION ibus_property_update ##### -->
+<para>
+
+</para>
+
+@prop: 
+@prop_update: 
+@Returns: 
+
+

@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusPendingCall</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch05.html" title="Communication">
+<link rel="prev" href="ibus-IBusMessage.html" title="IBusMessage">
+<link rel="next" href="IBusProxy.html" title="IBusProxy">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ibus-IBusMessage.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch05.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusProxy.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#ibus-IBusPendingCall.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#ibus-IBusPendingCall.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusPendingCall">
+<a name="ibus-IBusPendingCall"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="ibus-IBusPendingCall.top_of_page"></a>IBusPendingCall</span></h2>
+<p>IBusPendingCall — A DBusPendingCall in IBus.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="ibus-IBusPendingCall.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="ibus-IBusPendingCall.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">typedef             <a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall">IBusPendingCall</a>;
+<span class="returnvalue">void</span>                (<a class="link" href="ibus-IBusPendingCall.html#IBusPendingCallNotifyFunction" title="IBusPendingCallNotifyFunction ()">*IBusPendingCallNotifyFunction</a>)    (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
+<a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="returnvalue">IBusPendingCall</span></a>*    <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-ref" title="ibus_pending_call_ref ()">ibus_pending_call_ref</a>               (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-unref" title="ibus_pending_call_unref ()">ibus_pending_call_unref</a>             (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-set-notify" title="ibus_pending_call_set_notify ()">ibus_pending_call_set_notify</a>        (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCallNotifyFunction" title="IBusPendingCallNotifyFunction ()"><span class="type">IBusPendingCallNotifyFunction</span></a> function</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Datasets.html#GDestroyNotify"><span class="type">GDestroyNotify</span></a> free_user_data</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-cancel" title="ibus_pending_call_cancel ()">ibus_pending_call_cancel</a>            (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-get-completed" title="ibus_pending_call_get_completed ()">ibus_pending_call_get_completed</a>     (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);
+<a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a>*        <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-steal-reply" title="ibus_pending_call_steal_reply ()">ibus_pending_call_steal_reply</a>       (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-block" title="ibus_pending_call_block ()">ibus_pending_call_block</a>             (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-wait" title="ibus_pending_call_wait ()">ibus_pending_call_wait</a>              (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-allocate-data-slot" title="ibus_pending_call_allocate_data_slot ()">ibus_pending_call_allocate_data_slot</a>
+                                                        (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> *slot_p</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-free-data-slot" title="ibus_pending_call_free_data_slot ()">ibus_pending_call_free_data_slot</a>    (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> *slot_p</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-set-data" title="ibus_pending_call_set_data ()">ibus_pending_call_set_data</a>          (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> slot</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Datasets.html#GDestroyNotify"><span class="type">GDestroyNotify</span></a> free_data_func</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="returnvalue">gpointer</span></a>            <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-get-data" title="ibus_pending_call_get_data ()">ibus_pending_call_get_data</a>          (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> slot</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="ibus-IBusPendingCall.description"></a><h2>Description</h2>
+<p>
+An IBusPendingCall is essentially a DBusPendingCall, which representing an expected reply.
+A IBusPendingCall can be created when you send a message that should have a reply.
+</p>
+<p>
+Besides DBusPendingCall functions, An IBusPendingCall can be manipulated
+with its own specific functions, which are defined in this section.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="ibus-IBusPendingCall.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBusPendingCall">
+<a name="IBusPendingCall"></a><h3>IBusPendingCall</h3>
+<p>
+An opaque data structure that represents IBusPendingCall.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBusPendingCallNotifyFunction ()">
+<a name="IBusPendingCallNotifyFunction"></a><h3>IBusPendingCallNotifyFunction ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                (*IBusPendingCallNotifyFunction)    (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+<p>
+Callback prototype of pending call notify function.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>An IBusPendingCall.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>User data for the callback function.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_pending_call_ref ()">
+<a name="ibus-pending-call-ref"></a><h3>ibus_pending_call_ref ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="returnvalue">IBusPendingCall</span></a>*    ibus_pending_call_ref               (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);</pre>
+<p>
+Increases the reference count on a pending call.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>An IBusPendingCall.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A reference of IBusPendingCall.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_pending_call_unref ()">
+<a name="ibus-pending-call-unref"></a><h3>ibus_pending_call_unref ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_pending_call_unref             (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);</pre>
+<p>
+Decreases the reference count on a pending call.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>An IBusPendingCall.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_pending_call_set_notify ()">
+<a name="ibus-pending-call-set-notify"></a><h3>ibus_pending_call_set_notify ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_pending_call_set_notify        (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCallNotifyFunction" title="IBusPendingCallNotifyFunction ()"><span class="type">IBusPendingCallNotifyFunction</span></a> function</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Datasets.html#GDestroyNotify"><span class="type">GDestroyNotify</span></a> free_user_data</code></em>);</pre>
+<p>
+Sets a notification function to be called when the reply is received or the pending call times out.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>An IBusPendingCall.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>function</code></em> :</span></p></td>
+<td>An pending call notify callback function.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>User data for the callback function.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>free_user_data</code></em> :</span></p></td>
+<td>Callback to free the user_data.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed; FALSE if not enough memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_pending_call_cancel ()">
+<a name="ibus-pending-call-cancel"></a><h3>ibus_pending_call_cancel ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_pending_call_cancel            (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);</pre>
+<p>
+Cancels the pending call, such that any reply or error received will just be ignored.
+</p>
+<p>
+Drops the dbus library's internal reference to the DBusPendingCall so will free the call
+if nobody else is holding a reference.
+But usually application owns a reference from <code class="function">dbus_connection_send_with_reply()</code>.
+</p>
+<p>
+Note that canceling a pending call will not simulate a timed-out call;
+if a call times out, then a timeout error reply is received.
+If you cancel the call, no reply is received unless the reply was already received before you canceled.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>An IBusPendingCall.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_pending_call_get_completed ()">
+<a name="ibus-pending-call-get-completed"></a><h3>ibus_pending_call_get_completed ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_pending_call_get_completed     (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);</pre>
+<p>
+Whether the pending call has received a reply or not.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>An IBusPendingCall.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if pending call has received a reply; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_pending_call_steal_reply ()">
+<a name="ibus-pending-call-steal-reply"></a><h3>ibus_pending_call_steal_reply ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a>*        ibus_pending_call_steal_reply       (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);</pre>
+<p>
+Gets the reply, or returns NULL if none has been received yet.
+</p>
+<p>
+Ownership of the reply message passes to the caller.
+This function can only be called once per pending call,
+since the reply message is transferred to the caller.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>An IBusPendingCall.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Replied message; NULL if none has been received yet.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_pending_call_block ()">
+<a name="ibus-pending-call-block"></a><h3>ibus_pending_call_block ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_pending_call_block             (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);</pre>
+<p>
+Block until the pending call is completed.
+The blocking is as with <a class="link" href="IBusConnection.html#ibus-connection-send-with-reply-and-block" title="ibus_connection_send_with_reply_and_block ()"><code class="function">ibus_connection_send_with_reply_and_block()</code></a>;
+it does not enter the main loop or process other messages,
+it simply waits for the reply in question.
+</p>
+<p>
+If the pending call is already completed, this function returns immediately.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>An IBusPendingCall.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_pending_call_wait ()">
+<a name="ibus-pending-call-wait"></a><h3>ibus_pending_call_wait ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_pending_call_wait              (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>);</pre>
+<p>
+Wait until the pending call is completed.
+</p>
+<p>
+See also: <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-get-completed" title="ibus_pending_call_get_completed ()"><code class="function">ibus_pending_call_get_completed()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>An IBusPendingCall.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_pending_call_allocate_data_slot ()">
+<a name="ibus-pending-call-allocate-data-slot"></a><h3>ibus_pending_call_allocate_data_slot ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_pending_call_allocate_data_slot
+                                                        (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> *slot_p</code></em>);</pre>
+<p>
+Allocates an integer ID to be used for storing application-specific data on any IBusPendingCall.
+</p>
+<p>
+The allocated ID may then be used with <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-set-data" title="ibus_pending_call_set_data ()"><code class="function">ibus_pending_call_set_data()</code></a> and <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-get-data" title="ibus_pending_call_get_data ()"><code class="function">ibus_pending_call_get_data()</code></a>.
+The passed-in slot must be initialized to -1, and is filled in with the slot ID.
+If the passed-in slot is not -1, it's assumed to be already allocated, and
+its reference count is increased.
+</p>
+<p>
+The allocated slot is global, i.e. all DBusPendingCall objects
+will have a slot with the given integer ID reserved.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>slot_p</code></em> :</span></p></td>
+<td>Address of a global variable storing the slot.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed; FALSE if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_pending_call_free_data_slot ()">
+<a name="ibus-pending-call-free-data-slot"></a><h3>ibus_pending_call_free_data_slot ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_pending_call_free_data_slot    (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> *slot_p</code></em>);</pre>
+<p>
+Deallocates a global ID for IBusPendingCall data slots.
+</p>
+<p>
+<a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-get-data" title="ibus_pending_call_get_data ()"><code class="function">ibus_pending_call_get_data()</code></a> and <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-set-data" title="ibus_pending_call_set_data ()"><code class="function">ibus_pending_call_set_data()</code></a> may no longer be used with this slot.
+Existing data stored on existing IBusPendingCall objects will be freed when
+the IBusPendingCall is finalized, but may not be retrieved
+(and may only be replaced if someone else reallocates the slot).
+When the reference count on the passed-in slot reaches 0, it is set to -1.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>slot_p</code></em> :</span></p></td>
+<td>Address of a global variable storing the slot.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_pending_call_set_data ()">
+<a name="ibus-pending-call-set-data"></a><h3>ibus_pending_call_set_data ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_pending_call_set_data          (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> slot</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Datasets.html#GDestroyNotify"><span class="type">GDestroyNotify</span></a> free_data_func</code></em>);</pre>
+<p>
+Stores a pointer on a IBusPendingCall, along with an optional function
+to be used for freeing the data when the data is set again, or when the pending call is finalized.
+</p>
+<p>
+The slot number must have been allocated with <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-allocate-data-slot" title="ibus_pending_call_allocate_data_slot ()"><code class="function">ibus_pending_call_allocate_data_slot()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>An IBusPendingCall.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>slot</code></em> :</span></p></td>
+<td>The slot number.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>data</code></em> :</span></p></td>
+<td>The data to store
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>free_data_func</code></em> :</span></p></td>
+<td>Callback to free the data.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if there was enough memory to store the data; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_pending_call_get_data ()">
+<a name="ibus-pending-call-get-data"></a><h3>ibus_pending_call_get_data ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="returnvalue">gpointer</span></a>            ibus_pending_call_get_data          (<em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> *pending</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> slot</code></em>);</pre>
+<p>
+Retrieves data previously set with <a class="link" href="ibus-IBusPendingCall.html#ibus-pending-call-set-data" title="ibus_pending_call_set_data ()"><code class="function">ibus_pending_call_set_data()</code></a>.
+</p>
+<p>
+The slot must still be allocated (must not have been freed).
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>An IBusPendingCall.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>slot</code></em> :</span></p></td>
+<td>The slot number.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The stored data; NULL if no such data.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!-- ##### SECTION Title ##### -->
+ibusshare
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO IBUS_SERVICE_IBUS ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_SERVICE_PANEL ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_SERVICE_CONFIG ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_SERVICE_NOTIFICATIONS ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_PATH_IBUS ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_PATH_FACTORY ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_PATH_PANEL ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_PATH_CONFIG ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_PATH_NOTIFICATIONS ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_PATH_INPUT_CONTEXT ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_INTERFACE_IBUS ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_INTERFACE_INPUT_CONTEXT ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_INTERFACE_FACTORY ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_INTERFACE_ENGINE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_INTERFACE_PANEL ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_INTERFACE_CONFIG ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_INTERFACE_NOTIFICATIONS ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION ibus_get_local_machine_id ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_set_display ##### -->
+<para>
+
+</para>
+
+@display: 
+
+
+<!-- ##### FUNCTION ibus_get_address ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_write_address ##### -->
+<para>
+
+</para>
+
+@address: 
+
+
+<!-- ##### FUNCTION ibus_get_user_name ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_get_daemon_uid ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_get_socket_path ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_keyval_name ##### -->
+<para>
+
+</para>
+
+@keyval: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_keyval_from_name ##### -->
+<para>
+
+</para>
+
+@keyval_name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_free_strv ##### -->
+<para>
+
+</para>
+
+@strv: 
+
+
+<!-- ##### FUNCTION ibus_key_event_to_string ##### -->
+<para>
+
+</para>
+
+@keyval: 
+@modifiers: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_key_event_from_string ##### -->
+<para>
+
+</para>
+
+@string: 
+@keyval: 
+@modifiers: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_init ##### -->
+<para>
+
+</para>
+
+@void: 
+
+
+<!-- ##### FUNCTION ibus_main ##### -->
+<para>
+
+</para>
+
+@void: 
+
+
+<!-- ##### FUNCTION ibus_quit ##### -->
+<para>
+
+</para>
+
+@void: 
+
+

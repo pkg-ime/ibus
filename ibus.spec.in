@@ -1,0 +1,254 @@
+%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
+%{!?gtk2_binary_version: %define gtk2_binary_version %(pkg-config  --variable=gtk_binary_version gtk+-2.0)}
+%{!?gtk3_binary_version: %define gtk3_binary_version %(pkg-config  --variable=gtk_binary_version gtk+-3.0)}
+
+%define glib_ver %([ -a %{_libdir}/pkgconfig/glib-2.0.pc ] && pkg-config --modversion glib-2.0 | cut -d. -f 1,2 || echo -n "999")
+%define gconf2_version 2.12.0
+%define dbus_python_version 0.83.0
+%define im_chooser_version 1.2.5
+
+Name:       ibus
+Version:    @PACKAGE_VERSION@
+Release:    1%{?dist}
+Summary:    Intelligent Input Bus for Linux OS
+License:    LGPLv2+
+Group:      System Environment/Libraries
+URL:        http://code.google.com/p/ibus/
+Source0:    http://ibus.googlecode.com/files/%{name}-%{version}.tar.gz
+Source1:    xinput-ibus
+# Patch0:     ibus-HEAD.patch
+
+BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+
+BuildRequires:  cvs
+BuildRequires:  gettext-devel
+BuildRequires:  libtool
+BuildRequires:  python
+BuildRequires:  gtk2-devel
+BuildRequires:  gtk3-devel
+BuildRequires:  dbus-glib-devel
+BuildRequires:  dbus-python-devel >= %{dbus_python_version}
+BuildRequires:  desktop-file-utils
+BuildRequires:  gtk-doc
+BuildRequires:  GConf2-devel
+BuildRequires:  pygobject2-devel
+BuildRequires:  intltool
+BuildRequires:  iso-codes-devel
+
+Requires:   %{name}-libs = %{version}-%{release}
+Requires:   %{name}-gtk2 = %{version}-%{release}
+Requires:   %{name}-gtk3 = %{version}-%{release}
+
+Requires:   pygtk2
+Requires:   pyxdg
+Requires:   iso-codes
+Requires:   dbus-python >= %{dbus_python_version}
+Requires:   im-chooser >= %{im_chooser_version}
+Requires:   GConf2 >= %{gconf2_version}
+Requires:   notify-python
+Requires:   librsvg2
+
+Requires(post):  desktop-file-utils
+Requires(postun):  desktop-file-utils
+
+Requires(pre): GConf2 >= %{gconf2_version}
+Requires(post): GConf2 >= %{gconf2_version}
+Requires(preun): GConf2 >= %{gconf2_version}
+
+Requires(post):  %{_sbindir}/alternatives
+Requires(postun):  %{_sbindir}/alternatives
+
+Obsoletes:  ibus-qt < 1.1.0
+
+%define _xinputconf %{_sysconfdir}/X11/xinit/xinput.d/ibus.conf
+
+%description
+IBus means Intelligent Input Bus. It is an input framework for Linux OS.
+
+%package libs
+Summary:    IBus libraries
+Group:      System Environment/Libraries
+
+Requires:   glib2 >= %{glib_ver}
+Requires:   dbus >= 1.2.4
+
+%description libs
+This package contains the libraries for IBus
+
+%package gtk2
+Summary:    IBus im module for gtk2
+Group:      System Environment/Libraries
+Requires:   %{name} = %{version}-%{release}
+Requires(post): glib2 >= %{glib_ver}
+
+%description gtk2
+This package contains ibus im module for gtk2
+
+%package gtk3
+Summary:    IBus im module for gtk3
+Group:      System Environment/Libraries
+Requires:   %{name} = %{version}-%{release}
+Requires(post): glib2 >= %{glib_ver}
+
+%description gtk3
+This package contains ibus im module for gtk3
+
+%package devel
+Summary:    Development tools for ibus
+Group:      Development/Libraries
+Requires:   %{name} = %{version}-%{release}
+Requires:   glib2-devel
+Requires:   dbus-devel
+
+%description devel
+The ibus-devel package contains the header files and developer
+docs for ibus.
+
+%package devel-docs
+Summary:    Developer documents for ibus
+Group:      Development/Libraries
+Requires:   %{name} = %{version}-%{release}
+Requires:   gtk-doc
+
+%description devel-docs
+The ibus-devel-docs package contains developer documentation for ibus
+
+
+%prep
+%setup -q
+# %patch0 -p1
+
+%build
+%configure \
+    --disable-static \
+    --enable-gtk2 \
+    --enable-gtk3 \
+    --enable-xim \
+    --disable-gtk-doc \
+    --enable-introspection
+
+# make -C po update-gmo
+make %{?_smp_mflags}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make DESTDIR=$RPM_BUILD_ROOT install
+rm -f $RPM_BUILD_ROOT%{_libdir}/libibus.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/gtk-2.0/%{gtk2_binary_version}/immodules/im-ibus.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/gtk-3.0/%{gtk3_binary_version}/immodules/im-ibus.la
+
+# install xinput config file
+install -pm 644 -D %{SOURCE1} $RPM_BUILD_ROOT%{_xinputconf}
+
+# install .desktop files
+echo "NoDisplay=true" >> $RPM_BUILD_ROOT%{_datadir}/applications/ibus.desktop
+echo "NoDisplay=true" >> $RPM_BUILD_ROOT%{_datadir}/applications/ibus-setup.desktop
+echo "X-GNOME-Autostart-enabled=false" >> $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/ibus.desktop
+rm -rf $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/ibus.desktop
+desktop-file-install --delete-original          \
+  --dir $RPM_BUILD_ROOT%{_datadir}/applications \
+  $RPM_BUILD_ROOT%{_datadir}/applications/*
+
+%find_lang %{name}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post
+# recreate icon cache
+touch --no-create %{_datadir}/icons/hicolor || :
+[ -x %{_bindir}/gtk-update-icon-cache ] && \
+  %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
+
+%{_sbindir}/alternatives --install %{_sysconfdir}/X11/xinit/xinputrc xinputrc %{_xinputconf} 83 || :
+
+export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/ibus.schemas >& /dev/null || :
+
+%pre
+if [ "$1" -gt 1 ]; then
+    export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+    gconftool-2 --makefile-uninstall-rule %{_sysconfdir}/gconf/schemas/ibus.schemas >& /dev/null || :
+fi
+
+%preun
+if [ "$1" -eq 0 ]; then
+    export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+    gconftool-2 --makefile-uninstall-rule %{_sysconfdir}/gconf/schemas/ibus.schemas >& /dev/null || :
+fi
+
+%postun
+# recreate icon cache
+touch --no-create %{_datadir}/icons/hicolor || :
+[ -x %{_bindir}/gtk-update-icon-cache ] && \
+  %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
+
+if [ "$1" = "0" ]; then
+  %{_sbindir}/alternatives --remove xinputrc %{_xinputconf} || :
+  # if alternative was set to manual, reset to auto
+  [ -L %{_sysconfdir}/alternatives/xinputrc -a "`readlink %{_sysconfdir}/alternatives/xinputrc`" = "%{_xinputconf}" ] && %{_sbindir}/alternatives --auto xinputrc || :
+fi
+
+%post libs -p /sbin/ldconfig
+
+%postun libs -p /sbin/ldconfig
+
+%post gtk2
+%{_bindir}/update-gtk-immodules %{_host}
+
+%postun gtk2
+%{_bindir}/update-gtk-immodules %{_host}
+
+%post gtk3
+%{_bindir}/gtk-query-immodules-3.0-%{__isa_bits} --update-cache
+
+%postun gtk3
+%{_bindir}/gtk-query-immodules-3.0-%{__isa_bits} --update-cache
+
+%files -f %{name}.lang
+%defattr(-,root,root,-)
+%doc AUTHORS COPYING README
+%dir %{python_sitelib}/ibus
+%{python_sitelib}/ibus/*
+%dir %{_datadir}/ibus/
+%{_bindir}/ibus-daemon
+%{_bindir}/ibus-setup
+%{_datadir}/ibus/*
+%{_datadir}/applications/*
+%{_datadir}/icons/hicolor/*/apps/*
+%{_libexecdir}/ibus-gconf
+%{_libexecdir}/ibus-ui-gtk
+%{_libexecdir}/ibus-x11
+# %{_sysconfdir}/xdg/autostart/ibus.desktop
+%{_sysconfdir}/gconf/schemas/ibus.schemas
+%config %{_xinputconf}
+
+%files libs
+%defattr(-,root,root,-)
+%{_libdir}/libibus.so.*
+%{_libdir}/girepository-1.0/IBus-1.0.typelib
+
+%files gtk2
+%defattr(-,root,root,-)
+%{_libdir}/gtk-2.0/%{gtk2_binary_version}/immodules/im-ibus.so
+
+%files gtk3
+%defattr(-,root,root,-)
+%{_libdir}/gtk-3.0/%{gtk3_binary_version}/immodules/im-ibus.so
+
+%files devel
+%defattr(-,root,root,-)
+%{_libdir}/lib*.so
+%{_libdir}/pkgconfig/*
+%{_includedir}/*
+%{_datadir}/gir-1.0/IBus-1.0.gir
+%{_datadir}/vala/vapi/ibus-1.0.vapi
+
+%files devel-docs
+%defattr(-,root,root,-)
+%{_datadir}/gtk-doc/html/*
+
+%changelog
+* @DATE_DISPLAY@ Peng Huang <shawn.p.huang@gmail.com> - @VERSION@-1
+- Current version.

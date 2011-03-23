@@ -1,0 +1,165 @@
+<!-- ##### SECTION Title ##### -->
+IBusSerializable
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO ibus_serializable_set_attachment ##### -->
+<para>
+
+</para>
+
+@o: 
+@k: 
+@v: 
+
+
+<!-- ##### MACRO ibus_serializable_get_attachment ##### -->
+<para>
+
+</para>
+
+@o: 
+@k: 
+@v: 
+
+
+<!-- ##### MACRO ibus_serializable_remove_attachment ##### -->
+<para>
+
+</para>
+
+@o: 
+@k: 
+
+
+<!-- ##### STRUCT IBusSerializable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT IBusSerializableClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+@signature: 
+@serialize: 
+@deserialize: 
+@copy: 
+
+<!-- ##### USER_FUNCTION IBusSerializableSerializeFunc ##### -->
+<para>
+
+</para>
+
+@object: 
+@iter: 
+@Returns: 
+
+
+<!-- ##### USER_FUNCTION IBusSerializableDeserializeFunc ##### -->
+<para>
+
+</para>
+
+@object: 
+@iter: 
+@Returns: 
+
+
+<!-- ##### USER_FUNCTION IBusSerializableCopyFunc ##### -->
+<para>
+
+</para>
+
+@dest: 
+@src: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_serializable_new ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_serializable_set_qattachment ##### -->
+<para>
+
+</para>
+
+@object: 
+@key: 
+@value: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_serializable_get_qattachment ##### -->
+<para>
+
+</para>
+
+@object: 
+@key: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_serializable_remove_qattachment ##### -->
+<para>
+
+</para>
+
+@object: 
+@key: 
+
+
+<!-- ##### FUNCTION ibus_serializable_copy ##### -->
+<para>
+
+</para>
+
+@object: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_serializable_serialize ##### -->
+<para>
+
+</para>
+
+@object: 
+@iter: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_serializable_deserialize ##### -->
+<para>
+
+</para>
+
+@iter: 
+@Returns: 
+
+

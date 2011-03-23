@@ -1,0 +1,164 @@
+<!-- ##### SECTION Title ##### -->
+IBusService
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusService ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusService::ibus-message ##### -->
+<para>
+
+</para>
+
+@ibusservice: the object which received the signal.
+@arg1: 
+@arg2: 
+@Returns: 
+
+<!-- ##### SIGNAL IBusService::ibus-signal ##### -->
+<para>
+
+</para>
+
+@ibusservice: the object which received the signal.
+@arg1: 
+@arg2: 
+@Returns: 
+
+<!-- ##### ARG IBusService:path ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT IBusServiceClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+@ibus_message: 
+@ibus_signal: 
+
+<!-- ##### USER_FUNCTION ServiceIBusMessageFunc ##### -->
+<para>
+
+</para>
+
+@service: 
+@connection: 
+@message: 
+@Returns: 
+
+
+<!-- ##### USER_FUNCTION ServiceIBusSignalFunc ##### -->
+<para>
+
+</para>
+
+@service: 
+@connection: 
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_new ##### -->
+<para>
+
+</para>
+
+@path: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_get_path ##### -->
+<para>
+
+</para>
+
+@service: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_handle_message ##### -->
+<para>
+
+</para>
+
+@service: 
+@connection: 
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_add_to_connection ##### -->
+<para>
+
+</para>
+
+@service: 
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_get_connections ##### -->
+<para>
+
+</para>
+
+@service: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_remove_from_connection ##### -->
+<para>
+
+</para>
+
+@service: 
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_remove_from_all_connections ##### -->
+<para>
+
+</para>
+
+@service: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_send_signal ##### -->
+<para>
+
+</para>
+
+@service: 
+@interface: 
+@name: 
+@first_arg_type: 
+@Varargs: 
+@Returns: 
+
+

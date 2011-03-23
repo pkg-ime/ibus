@@ -1,0 +1,717 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusProxy</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch05.html" title="Communication">
+<link rel="prev" href="ibus-IBusPendingCall.html" title="IBusPendingCall">
+<link rel="next" href="IBusSerializable.html" title="IBusSerializable">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ibus-IBusPendingCall.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch05.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusSerializable.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusProxy.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusProxy.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusProxy.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusProxy.properties" class="shortcut">Properties</a>
+                   | 
+                  <a href="#IBusProxy.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusProxy">
+<a name="IBusProxy"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusProxy.top_of_page"></a>IBusProxy</span></h2>
+<p>IBusProxy — Base proxy object.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="IBusProxy.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusProxy.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="IBusProxy.html#IBusProxy-struct" title="IBusProxy">IBusProxy</a>;
+                    <a class="link" href="IBusProxy.html#IBusProxyClass" title="IBusProxyClass">IBusProxyClass</a>;
+<a class="link" href="IBusProxy.html" title="IBusProxy"><span class="returnvalue">IBusProxy</span></a> *         <a class="link" href="IBusProxy.html#ibus-proxy-new" title="ibus_proxy_new ()">ibus_proxy_new</a>                      (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusProxy.html#ibus-proxy-send" title="ibus_proxy_send ()">ibus_proxy_send</a>                     (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusProxy.html#ibus-proxy-call" title="ibus_proxy_call ()">ibus_proxy_call</a>                     (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusProxy.html#ibus-proxy-call-with-reply" title="ibus_proxy_call_with_reply ()">ibus_proxy_call_with_reply</a>          (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> **pending</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_milliseconds</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-ibuserror.html#IBusError" title="IBusError"><span class="type">IBusError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);
+<a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       <a class="link" href="IBusProxy.html#ibus-proxy-call-with-reply-and-block" title="ibus_proxy_call_with_reply_and_block ()">ibus_proxy_call_with_reply_and_block</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_milliseconds</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-ibuserror.html#IBusError" title="IBusError"><span class="type">IBusError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusProxy.html#ibus-proxy-send-with-reply" title="ibus_proxy_send_with_reply ()">ibus_proxy_send_with_reply</a>          (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> **pending</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_milliseconds</code></em>);
+<a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       <a class="link" href="IBusProxy.html#ibus-proxy-send-with-reply-and-block" title="ibus_proxy_send_with_reply_and_block ()">ibus_proxy_send_with_reply_and_block</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusProxy.html#ibus-proxy-handle-signal" title="ibus_proxy_handle_signal ()">ibus_proxy_handle_signal</a>            (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusProxy.html#ibus-proxy-get-name" title="ibus_proxy_get_name ()">ibus_proxy_get_name</a>                 (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusProxy.html#ibus-proxy-get-unique-name" title="ibus_proxy_get_unique_name ()">ibus_proxy_get_unique_name</a>          (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusProxy.html#ibus-proxy-get-path" title="ibus_proxy_get_path ()">ibus_proxy_get_path</a>                 (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusProxy.html#ibus-proxy-get-interface" title="ibus_proxy_get_interface ()">ibus_proxy_get_interface</a>            (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>);
+<a class="link" href="IBusConnection.html" title="IBusConnection"><span class="returnvalue">IBusConnection</span></a> *    <a class="link" href="IBusProxy.html#ibus-proxy-get-connection" title="ibus_proxy_get_connection ()">ibus_proxy_get_connection</a>           (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusProxy.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----IBusProxy
+                     +----<a class="link" href="IBusConfig.html" title="IBusConfig">IBusConfig</a>
+                     +----<a class="link" href="IBusInputContext.html" title="IBusInputContext">IBusInputContext</a>
+</pre>
+</div>
+<div class="refsect1" title="Properties">
+<a name="IBusProxy.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusProxy.html#IBusProxy--connection" title='The "connection" property'>connection</a>"               <a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a>*       : Read / Write / Construct Only
+  "<a class="link" href="IBusProxy.html#IBusProxy--interface" title='The "interface" property'>interface</a>"                <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only
+  "<a class="link" href="IBusProxy.html#IBusProxy--name" title='The "name" property'>name</a>"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only
+  "<a class="link" href="IBusProxy.html#IBusProxy--path" title='The "path" property'>path</a>"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="IBusProxy.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusProxy.html#IBusProxy-ibus-signal" title='The "ibus-signal" signal'>ibus-signal</a>"                                    : Run Last
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusProxy.description"></a><h2>Description</h2>
+<p>
+An IBusProxy is the base of all proxy objects,
+which communicate the corresponding <a href="IBusService.html"><span class="type">IBusServices</span></a> on the other end of IBusConnection.
+For example, IBus clients (such as editors, web browsers) invoke the proxy object,
+IBusInputContext to communicate with the InputContext service of the ibus-daemon.
+</p>
+<p>
+Almost all services have corresponding proxies, except very simple services.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusProxy.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBusProxy">
+<a name="IBusProxy-struct"></a><h3>IBusProxy</h3>
+<pre class="programlisting">typedef struct _IBusProxy IBusProxy;</pre>
+<p>
+An opaque data type representing an IBusProxy.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBusProxyClass">
+<a name="IBusProxyClass"></a><h3>IBusProxyClass</h3>
+<pre class="programlisting">typedef struct {
+    IBusObjectClass parent;
+
+    /* class members */
+    gboolean    (* ibus_signal)     (IBusProxy      *proxy,
+                                     IBusMessage    *message);
+} IBusProxyClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_new ()">
+<a name="ibus-proxy-new"></a><h3>ibus_proxy_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="returnvalue">IBusProxy</span></a> *         ibus_proxy_new                      (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);</pre>
+<p>
+New an IBusProxy instance.
+Property IBusProxy:name is set as <em class="parameter"><code>name</code></em>, and
+IBusProxy:path is set as <em class="parameter"><code>path</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>The service name of proxy object.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>The path of proxy object.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>An IBusConnection.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusProxy instance.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_send ()">
+<a name="ibus-proxy-send"></a><h3>ibus_proxy_send ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_proxy_send                     (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Send an <a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> to the corresponding service.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em> <a class="link" href="IBusProxy.html#ibus-proxy-call" title="ibus_proxy_call ()"><code class="function">ibus_proxy_call()</code></a>, <a class="link" href="IBusProxy.html#ibus-proxy-send-with-reply" title="ibus_proxy_send_with_reply ()"><code class="function">ibus_proxy_send_with_reply()</code></a>, <a class="link" href="IBusProxy.html#ibus-proxy-send-with-reply-and-block" title="ibus_proxy_send_with_reply_and_block ()"><code class="function">ibus_proxy_send_with_reply_and_block()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>The IBusMessage to be sent.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_call ()">
+<a name="ibus-proxy-call"></a><h3>ibus_proxy_call ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_proxy_call                     (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);</pre>
+<p>
+Call a method of the corresponding service.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em> <a class="link" href="IBusProxy.html#ibus-proxy-send" title="ibus_proxy_send ()"><code class="function">ibus_proxy_send()</code></a>, <a class="link" href="IBusProxy.html#ibus-proxy-call-with-reply" title="ibus_proxy_call_with_reply ()"><code class="function">ibus_proxy_call_with_reply()</code></a>, <a class="link" href="IBusProxy.html#ibus-proxy-call-with-reply-and-block" title="ibus_proxy_call_with_reply_and_block ()"><code class="function">ibus_proxy_call_with_reply_and_block()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>method</code></em> :</span></p></td>
+<td>The method to be called.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>first_arg_type</code></em> :</span></p></td>
+<td>Type of first argument.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>Rest of arguments, NULL to mark the end.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_call_with_reply ()">
+<a name="ibus-proxy-call-with-reply"></a><h3>ibus_proxy_call_with_reply ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_proxy_call_with_reply          (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> **pending</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_milliseconds</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-ibuserror.html#IBusError" title="IBusError"><span class="type">IBusError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);</pre>
+<p>
+Call a method of the corresponding service, and returns an IBusPendingCall used to receive a reply to the message.
+This function calls <a class="link" href="IBusConnection.html#ibus-connection-send-with-reply" title="ibus_connection_send_with_reply ()"><code class="function">ibus_connection_send_with_reply()</code></a> to do the actual sending.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusConnection.html#ibus-connection-send-with-reply" title="ibus_connection_send_with_reply ()"><code class="function">ibus_connection_send_with_reply()</code></a>, <a class="link" href="IBusProxy.html#ibus-proxy-call" title="ibus_proxy_call ()"><code class="function">ibus_proxy_call()</code></a>,
+<a class="link" href="IBusProxy.html#ibus-proxy-send-with-reply" title="ibus_proxy_send_with_reply ()"><code class="function">ibus_proxy_send_with_reply()</code></a>, <a class="link" href="IBusProxy.html#ibus-proxy-call-with-reply-and-block" title="ibus_proxy_call_with_reply_and_block ()"><code class="function">ibus_proxy_call_with_reply_and_block()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>method</code></em> :</span></p></td>
+<td>The method to be called.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>Return location of a IBusPendingCall object, or NULL if connection is disconnected.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_milliseconds</code></em> :</span></p></td>
+<td>Time out in milliseconds.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Returned error is stored here; NULL to ignore error.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>first_arg_type</code></em> :</span></p></td>
+<td>Type of first argument.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>Rest of arguments, NULL to mark the end.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_call_with_reply_and_block ()">
+<a name="ibus-proxy-call-with-reply-and-block"></a><h3>ibus_proxy_call_with_reply_and_block ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       ibus_proxy_call_with_reply_and_block
+                                                        (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_milliseconds</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-ibuserror.html#IBusError" title="IBusError"><span class="type">IBusError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);</pre>
+<p>
+Call a method of the corresponding service and blocks a certain time period while waiting for
+an IBusMessage as reply.
+If the IBusMessage is not NULL, it calls <a class="link" href="IBusConnection.html#ibus-connection-send-with-reply-and-block" title="ibus_connection_send_with_reply_and_block ()"><code class="function">ibus_connection_send_with_reply_and_block()</code></a> to do the
+actual sending.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusConnection.html#ibus-connection-send-with-reply-and-block" title="ibus_connection_send_with_reply_and_block ()"><code class="function">ibus_connection_send_with_reply_and_block()</code></a>, <a class="link" href="IBusProxy.html#ibus-proxy-call" title="ibus_proxy_call ()"><code class="function">ibus_proxy_call()</code></a>, 
+<a class="link" href="IBusProxy.html#ibus-proxy-send-with-reply" title="ibus_proxy_send_with_reply ()"><code class="function">ibus_proxy_send_with_reply()</code></a>, <a class="link" href="IBusProxy.html#ibus-proxy-call-with-reply-and-block" title="ibus_proxy_call_with_reply_and_block ()"><code class="function">ibus_proxy_call_with_reply_and_block()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>method</code></em> :</span></p></td>
+<td>The method to be called.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_milliseconds</code></em> :</span></p></td>
+<td>Time out in milliseconds.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Returned error is stored here; NULL to ignore error.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>first_arg_type</code></em> :</span></p></td>
+<td>Type of first argument.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>Rest of arguments, NULL to mark the end.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An IBusMessage that is the reply or NULL with an error code if the function fails.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_send_with_reply ()">
+<a name="ibus-proxy-send-with-reply"></a><h3>ibus_proxy_send_with_reply ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_proxy_send_with_reply          (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusPendingCall.html#IBusPendingCall" title="IBusPendingCall"><span class="type">IBusPendingCall</span></a> **pending</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_milliseconds</code></em>);</pre>
+<p>
+Send an IBusMessage to the corresponding service and returns
+an IBusPendingCall used to receive a reply to the message.
+This function calls <a class="link" href="IBusConnection.html#ibus-connection-send-with-reply" title="ibus_connection_send_with_reply ()"><code class="function">ibus_connection_send_with_reply()</code></a> to do the actual sending.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusConnection.html#ibus-connection-send-with-reply" title="ibus_connection_send_with_reply ()"><code class="function">ibus_connection_send_with_reply()</code></a>, <a class="link" href="IBusProxy.html#ibus-proxy-send" title="ibus_proxy_send ()"><code class="function">ibus_proxy_send()</code></a>,
+<a class="link" href="IBusProxy.html#ibus-proxy-call-with-reply" title="ibus_proxy_call_with_reply ()"><code class="function">ibus_proxy_call_with_reply()</code></a>, <a class="link" href="IBusProxy.html#ibus-proxy-send-with-reply-and-block" title="ibus_proxy_send_with_reply_and_block ()"><code class="function">ibus_proxy_send_with_reply_and_block()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>The IBusMessage to be sent.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pending</code></em> :</span></p></td>
+<td>Return location of a IBusPendingCall object, or NULL if connection is disconnected.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_milliseconds</code></em> :</span></p></td>
+<td>Time out in milliseconds.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_send_with_reply_and_block ()">
+<a name="ibus-proxy-send-with-reply-and-block"></a><h3>ibus_proxy_send_with_reply_and_block ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="returnvalue">IBusMessage</span></a> *       ibus_proxy_send_with_reply_and_block
+                                                        (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Send an IBusMessage to the corresponding service and blocks a certain time period while waiting for
+an IBusMessage as reply.
+If the IBusMessage is not NULL, it calls <a class="link" href="IBusConnection.html#ibus-connection-send-with-reply-and-block" title="ibus_connection_send_with_reply_and_block ()"><code class="function">ibus_connection_send_with_reply_and_block()</code></a> to do the
+actual sending.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusConnection.html#ibus-connection-send-with-reply-and-block" title="ibus_connection_send_with_reply_and_block ()"><code class="function">ibus_connection_send_with_reply_and_block()</code></a>, <a class="link" href="IBusProxy.html#ibus-proxy-send" title="ibus_proxy_send ()"><code class="function">ibus_proxy_send()</code></a>, <a class="link" href="IBusProxy.html#ibus-proxy-send-with-reply" title="ibus_proxy_send_with_reply ()"><code class="function">ibus_proxy_send_with_reply()</code></a>, 
+<a class="link" href="IBusProxy.html#ibus-proxy-call-with-reply-and-block" title="ibus_proxy_call_with_reply_and_block ()"><code class="function">ibus_proxy_call_with_reply_and_block()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>The IBusMessage to be sent.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An IBusMessage that is the reply or NULL with an error code if the function fails.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_handle_signal ()">
+<a name="ibus-proxy-handle-signal"></a><h3>ibus_proxy_handle_signal ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_proxy_handle_signal            (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<p>
+Handle a signal by emitting IBusProxy::ibus-signal.
+</p>
+<p>
+If signal name is <code class="constant">NameOwnerChanged</code>
+and the service name is identical to the old name, then
+<em class="parameter"><code>proxy</code></em> will be destroyed by <a class="link" href="IBusObject.html#ibus-object-destroy" title="ibus_object_destroy ()"><code class="function">ibus_object_destroy()</code></a> and FALSE is returned.
+Otherwise TRUE is returned.
+</p>
+<p>
+Note that if the path of of message is not identical to the IBusProxy:path
+this function will not emit IBusProxy::ibus-signal.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>The IBusMessage to be sent.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_get_name ()">
+<a name="ibus-proxy-get-name"></a><h3>ibus_proxy_get_name ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_proxy_get_name                 (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>);</pre>
+<p>
+Get the service name of a proxy object.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The service name of the proxy object.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_get_unique_name ()">
+<a name="ibus-proxy-get-unique-name"></a><h3>ibus_proxy_get_unique_name ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_proxy_get_unique_name          (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>);</pre>
+<p>
+Get the unique name of the proxy object.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The service name of the proxy object.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_get_path ()">
+<a name="ibus-proxy-get-path"></a><h3>ibus_proxy_get_path ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_proxy_get_path                 (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>);</pre>
+<p>
+Get the path of a proxy object.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The path of proxy object.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_get_interface ()">
+<a name="ibus-proxy-get-interface"></a><h3>ibus_proxy_get_interface ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_proxy_get_interface            (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>);</pre>
+<p>
+Get interface of a proxy object.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The service name of the proxy object.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_proxy_get_connection ()">
+<a name="ibus-proxy-get-connection"></a><h3>ibus_proxy_get_connection ()</h3>
+<pre class="programlisting"><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="returnvalue">IBusConnection</span></a> *    ibus_proxy_get_connection           (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>);</pre>
+<p>
+Get the connection of a proxy object.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> The connection of the proxy object. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="IBusProxy.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" title='The "connection" property'>
+<a name="IBusProxy--connection"></a><h3>The <code class="literal">"connection"</code> property</h3>
+<pre class="programlisting">  "connection"               <a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a>*       : Read / Write / Construct Only</pre>
+<p>
+The connection of the proxy object.
+</p>
+</div>
+<hr>
+<div class="refsect2" title='The "interface" property'>
+<a name="IBusProxy--interface"></a><h3>The <code class="literal">"interface"</code> property</h3>
+<pre class="programlisting">  "interface"                <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
+<p>
+The interface of the proxy object.
+</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2" title='The "name" property'>
+<a name="IBusProxy--name"></a><h3>The <code class="literal">"name"</code> property</h3>
+<pre class="programlisting">  "name"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
+<p>
+The service name of the proxy object.
+</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2" title='The "path" property'>
+<a name="IBusProxy--path"></a><h3>The <code class="literal">"path"</code> property</h3>
+<pre class="programlisting">  "path"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
+<p>
+The path of the proxy object.
+</p>
+<p>Default value: NULL</p>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="IBusProxy.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "ibus-signal" signal'>
+<a name="IBusProxy-ibus-signal"></a><h3>The <code class="literal">"ibus-signal"</code> signal</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            user_function                      (<a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>   message,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>   user_data)      : Run Last</pre>
+<p>
+Emitted when sending a signal.
+Implement the member function <code class="function">ibus_signal()</code> in extended class to receive this signal.
+</p>
+<p>
+</p>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.</p>
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td>An IBusProxy.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An message that contains the signal.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> TRUE if the path of <em class="parameter"><code>message</code></em> is identical to IBusProxy:path and successfully handled.
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusProxy.html#ibus-proxy-handle-signal" title="ibus_proxy_handle_signal ()"><code class="function">ibus_proxy_handle_signal()</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

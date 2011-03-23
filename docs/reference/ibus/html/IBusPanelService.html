@@ -1,0 +1,402 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusPanelService</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch02.html" title="Panel (User Interfaces)">
+<link rel="prev" href="IBusLookupTable.html" title="IBusLookupTable">
+<link rel="next" href="IBusProperty.html" title="IBusProperty">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusLookupTable.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusProperty.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusPanelService.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusPanelService.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusPanelService.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusPanelService.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusPanelService">
+<a name="IBusPanelService"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusPanelService.top_of_page"></a>IBusPanelService</span></h2>
+<p>IBusPanelService — Panel service back-end.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="IBusPanelService.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusPanelService.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="IBusPanelService.html#IBusPanelService-struct" title="IBusPanelService">IBusPanelService</a>;
+                    <a class="link" href="IBusPanelService.html#IBusPanelServiceClass" title="IBusPanelServiceClass">IBusPanelServiceClass</a>;
+<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="returnvalue">IBusPanelService</span></a> *  <a class="link" href="IBusPanelService.html#ibus-panel-service-new" title="ibus_panel_service_new ()">ibus_panel_service_new</a>              (<em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-candidate-clicked" title="ibus_panel_service_candidate_clicked ()">ibus_panel_service_candidate_clicked</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> button</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> state</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-cursor-down" title="ibus_panel_service_cursor_down ()">ibus_panel_service_cursor_down</a>      (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-cursor-up" title="ibus_panel_service_cursor_up ()">ibus_panel_service_cursor_up</a>        (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-page-down" title="ibus_panel_service_page_down ()">ibus_panel_service_page_down</a>        (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-page-up" title="ibus_panel_service_page_up ()">ibus_panel_service_page_up</a>          (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-property-active" title="ibus_panel_service_property_active ()">ibus_panel_service_property_active</a>  (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *prop_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> prop_state</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-property-show" title="ibus_panel_service_property_show ()">ibus_panel_service_property_show</a>    (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *prop_name</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-property-hide" title="ibus_panel_service_property_hide ()">ibus_panel_service_property_hide</a>    (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *prop_name</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusPanelService.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusService.html" title="IBusService">IBusService</a>
+                     +----IBusPanelService
+</pre>
+</div>
+<div class="refsect1" title="Properties">
+<a name="IBusPanelService.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusPanelService.html#IBusPanelService--connection" title='The "connection" property'>connection</a>"               <a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a>*       : Read / Write / Construct Only
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusPanelService.description"></a><h2>Description</h2>
+<p>
+An IBusPanelService is a base class for UI services.
+Developers can "extend" this class for panel UI development.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusPanelService.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBusPanelService">
+<a name="IBusPanelService-struct"></a><h3>IBusPanelService</h3>
+<pre class="programlisting">typedef struct _IBusPanelService IBusPanelService;</pre>
+<p>
+An opaque data type representing an IBusPanelService.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBusPanelServiceClass">
+<a name="IBusPanelServiceClass"></a><h3>IBusPanelServiceClass</h3>
+<pre class="programlisting">typedef struct {
+    IBusServiceClass parent;
+
+    /* class members */
+    gboolean (* focus_in)                  (IBusPanelService       *panel,
+                                            const gchar            *input_context_path,
+                                            IBusError             **error);
+    gboolean (* focus_out)                 (IBusPanelService       *panel,
+                                            const gchar            *input_context_path,
+                                            IBusError             **error);
+    gboolean (* register_properties)       (IBusPanelService       *panel,
+                                            IBusPropList           *prop_list,
+                                            IBusError             **error);
+    gboolean (* set_cursor_location)       (IBusPanelService       *panel,
+                                            gint                    x,
+                                            gint                    y,
+                                            gint                    w,
+                                            gint                    h,
+                                            IBusError             **error);
+    gboolean (* update_auxiliary_text)     (IBusPanelService       *panel,
+                                            IBusText               *text,
+                                            gboolean                visible,
+                                            IBusError             **error);
+    gboolean (* update_lookup_table)       (IBusPanelService       *panel,
+                                            IBusLookupTable        *lookup_table,
+                                            gboolean                visible,
+                                            IBusError             **error);
+    gboolean (* update_preedit_text)       (IBusPanelService       *panel,
+                                            IBusText              *text,
+                                            guint                  cursor_pos,
+                                            gboolean               visible,
+                                            IBusError             **error);
+    gboolean (* update_property)           (IBusPanelService       *panel,
+                                            IBusProperty           *prop,
+                                            IBusError             **error);
+    gboolean (* cursor_down_lookup_table)  (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* cursor_up_lookup_table)    (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* destroy)                   (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* hide_auxiliary_text)       (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* hide_language_bar)         (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* hide_lookup_table)         (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* hide_preedit_text)         (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* page_down_lookup_table)    (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* page_up_lookup_table)      (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* reset)                     (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* show_auxiliary_text)       (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* show_language_bar)         (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* show_lookup_table)         (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* show_preedit_text)         (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* start_setup)               (IBusPanelService       *panel,
+                                            IBusError             **error);
+    gboolean (* state_changed)             (IBusPanelService       *panel,
+                                            IBusError             **error);
+} IBusPanelServiceClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_panel_service_new ()">
+<a name="ibus-panel-service-new"></a><h3>ibus_panel_service_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="returnvalue">IBusPanelService</span></a> *  ibus_panel_service_new              (<em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);</pre>
+<p>
+New an IBusPanelService from an IBusConnection.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>An IBusConnection.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusPanelService.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_panel_service_candidate_clicked ()">
+<a name="ibus-panel-service-candidate-clicked"></a><h3>ibus_panel_service_candidate_clicked ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_panel_service_candidate_clicked
+                                                        (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> button</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> state</code></em>);</pre>
+<p>
+Notify that a candidate is clicked
+by sending a "CandidateClicked" to IBus service.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>panel</code></em> :</span></p></td>
+<td>An IBusPanelService
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>index</code></em> :</span></p></td>
+<td>Index in the Lookup table
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>button</code></em> :</span></p></td>
+<td>GdkEventButton::button (1: left button, etc.)
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
+<td>GdkEventButton::state (key modifier flags)
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_panel_service_cursor_down ()">
+<a name="ibus-panel-service-cursor-down"></a><h3>ibus_panel_service_cursor_down ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_panel_service_cursor_down      (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>);</pre>
+<p>
+Notify that the cursor is down
+by sending a "CursorDown" to IBus service.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>panel</code></em> :</span></p></td>
+<td>An IBusPanelService
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_panel_service_cursor_up ()">
+<a name="ibus-panel-service-cursor-up"></a><h3>ibus_panel_service_cursor_up ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_panel_service_cursor_up        (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>);</pre>
+<p>
+Notify that the cursor is up
+by sending a "CursorUp" to IBus service.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>panel</code></em> :</span></p></td>
+<td>An IBusPanelService
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_panel_service_page_down ()">
+<a name="ibus-panel-service-page-down"></a><h3>ibus_panel_service_page_down ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_panel_service_page_down        (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>);</pre>
+<p>
+Notify that the page is down
+by sending a "PageDown" to IBus service.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>panel</code></em> :</span></p></td>
+<td>An IBusPanelService
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_panel_service_page_up ()">
+<a name="ibus-panel-service-page-up"></a><h3>ibus_panel_service_page_up ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_panel_service_page_up          (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>);</pre>
+<p>
+Notify that the page is up
+by sending a "PageUp" to IBus service.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>panel</code></em> :</span></p></td>
+<td>An IBusPanelService
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_panel_service_property_active ()">
+<a name="ibus-panel-service-property-active"></a><h3>ibus_panel_service_property_active ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_panel_service_property_active  (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *prop_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> prop_state</code></em>);</pre>
+<p>
+Notify that a property is active
+by sending a "PropertyActivate" message to IBus service.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>panel</code></em> :</span></p></td>
+<td>An IBusPanelService
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_name</code></em> :</span></p></td>
+<td>A property name
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_state</code></em> :</span></p></td>
+<td>State of the property
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_panel_service_property_show ()">
+<a name="ibus-panel-service-property-show"></a><h3>ibus_panel_service_property_show ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_panel_service_property_show    (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *prop_name</code></em>);</pre>
+<p>
+Notify that a property is shown
+by sending a "ValueChanged" message to IBus service.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>panel</code></em> :</span></p></td>
+<td>An IBusPanelService
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_name</code></em> :</span></p></td>
+<td>A property name
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_panel_service_property_hide ()">
+<a name="ibus-panel-service-property-hide"></a><h3>ibus_panel_service_property_hide ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_panel_service_property_hide    (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *prop_name</code></em>);</pre>
+<p>
+Notify that a property is hidden
+by sending a "ValueChanged" message to IBus service.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>panel</code></em> :</span></p></td>
+<td>An IBusPanelService
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_name</code></em> :</span></p></td>
+<td>A property name
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="IBusPanelService.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" title='The "connection" property'>
+<a name="IBusPanelService--connection"></a><h3>The <code class="literal">"connection"</code> property</h3>
+<pre class="programlisting">  "connection"               <a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a>*       : Read / Write / Construct Only</pre>
+<p>
+Connection of this IBusPanelService.
+</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

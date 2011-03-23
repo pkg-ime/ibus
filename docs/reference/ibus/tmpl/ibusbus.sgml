@@ -1,0 +1,244 @@
+<!-- ##### SECTION Title ##### -->
+IBusBus
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusBus ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusBus::connected ##### -->
+<para>
+
+</para>
+
+@ibusbus: the object which received the signal.
+
+<!-- ##### SIGNAL IBusBus::disconnected ##### -->
+<para>
+
+</para>
+
+@ibusbus: the object which received the signal.
+
+<!-- ##### SIGNAL IBusBus::global-engine-changed ##### -->
+<para>
+
+</para>
+
+@ibusbus: the object which received the signal.
+
+<!-- ##### STRUCT IBusBusClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_bus_new ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_is_connected ##### -->
+<para>
+
+</para>
+
+@bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_hello ##### -->
+<para>
+
+</para>
+
+@bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_request_name ##### -->
+<para>
+
+</para>
+
+@bus: 
+@name: 
+@flags: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_release_name ##### -->
+<para>
+
+</para>
+
+@bus: 
+@name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_name_has_owner ##### -->
+<para>
+
+</para>
+
+@bus: 
+@name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_list_names ##### -->
+<para>
+
+</para>
+
+@bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_add_match ##### -->
+<para>
+
+</para>
+
+@bus: 
+@rule: 
+
+
+<!-- ##### FUNCTION ibus_bus_remove_match ##### -->
+<para>
+
+</para>
+
+@bus: 
+@rule: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_name_owner ##### -->
+<para>
+
+</para>
+
+@bus: 
+@name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_exit ##### -->
+<para>
+
+</para>
+
+@bus: 
+@restart: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_current_input_context ##### -->
+<para>
+
+</para>
+
+@bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_register_component ##### -->
+<para>
+
+</para>
+
+@bus: 
+@component: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_list_engines ##### -->
+<para>
+
+</para>
+
+@bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_list_active_engines ##### -->
+<para>
+
+</para>
+
+@bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_use_sys_layout ##### -->
+<para>
+
+</para>
+
+@bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_use_global_engine ##### -->
+<para>
+
+</para>
+
+@bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_is_global_engine_enabled ##### -->
+<para>
+
+</para>
+
+@bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_set_global_engine ##### -->
+<para>
+
+</para>
+
+@bus: 
+@global_engine: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_config ##### -->
+<para>
+
+</para>
+
+@bus: 
+@Returns: 
+
+

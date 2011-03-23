@@ -1,0 +1,725 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusBus</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch05.html" title="Communication">
+<link rel="prev" href="ch05.html" title="Communication">
+<link rel="next" href="IBusConnection.html" title="IBusConnection">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch05.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch05.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusConnection.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusBus.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusBus.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusBus.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusBus.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusBus">
+<a name="IBusBus"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusBus.top_of_page"></a>IBusBus</span></h2>
+<p>IBusBus — Connect with IBus daemon.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="IBusBus.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusBus.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="IBusBus.html#IBusBus-struct" title="IBusBus">IBusBus</a>;
+                    <a class="link" href="IBusBus.html#IBusBusClass" title="IBusBusClass">IBusBusClass</a>;
+<a class="link" href="IBusBus.html" title="IBusBus"><span class="returnvalue">IBusBus</span></a> *           <a class="link" href="IBusBus.html#ibus-bus-new" title="ibus_bus_new ()">ibus_bus_new</a>                        (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusBus.html#ibus-bus-is-connected" title="ibus_bus_is_connected ()">ibus_bus_is_connected</a>               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusBus.html#ibus-bus-hello" title="ibus_bus_hello ()">ibus_bus_hello</a>                      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusBus.html#ibus-bus-request-name" title="ibus_bus_request_name ()">ibus_bus_request_name</a>               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> flags</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusBus.html#ibus-bus-release-name" title="ibus_bus_release_name ()">ibus_bus_release_name</a>               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusBus.html#ibus-bus-name-has-owner" title="ibus_bus_name_has_owner ()">ibus_bus_name_has_owner</a>             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="IBusBus.html#ibus-bus-list-names" title="ibus_bus_list_names ()">ibus_bus_list_names</a>                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-add-match" title="ibus_bus_add_match ()">ibus_bus_add_match</a>                  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *rule</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-remove-match" title="ibus_bus_remove_match ()">ibus_bus_remove_match</a>               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *rule</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             <a class="link" href="IBusBus.html#ibus-bus-get-name-owner" title="ibus_bus_get_name_owner ()">ibus_bus_get_name_owner</a>             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusBus.html#ibus-bus-exit" title="ibus_bus_exit ()">ibus_bus_exit</a>                       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> restart</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             <a class="link" href="IBusBus.html#ibus-bus-current-input-context" title="ibus_bus_current_input_context ()">ibus_bus_current_input_context</a>      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusBus.html#ibus-bus-register-component" title="ibus_bus_register_component ()">ibus_bus_register_component</a>         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="IBusBus.html#ibus-bus-list-engines" title="ibus_bus_list_engines ()">ibus_bus_list_engines</a>               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="IBusBus.html#ibus-bus-list-active-engines" title="ibus_bus_list_active_engines ()">ibus_bus_list_active_engines</a>        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusBus.html#ibus-bus-get-use-sys-layout" title="ibus_bus_get_use_sys_layout ()">ibus_bus_get_use_sys_layout</a>         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusBus.html#ibus-bus-get-use-global-engine" title="ibus_bus_get_use_global_engine ()">ibus_bus_get_use_global_engine</a>      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusBus.html#ibus-bus-is-global-engine-enabled" title="ibus_bus_is_global_engine_enabled ()">ibus_bus_is_global_engine_enabled</a>   (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusBus.html#ibus-bus-set-global-engine" title="ibus_bus_set_global_engine ()">ibus_bus_set_global_engine</a>          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *global_engine</code></em>);
+<a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        <a class="link" href="IBusBus.html#ibus-bus-get-config" title="ibus_bus_get_config ()">ibus_bus_get_config</a>                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusBus.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----IBusBus
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="IBusBus.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusBus.html#IBusBus-connected" title='The "connected" signal'>connected</a>"                                      : Run Last
+  "<a class="link" href="IBusBus.html#IBusBus-disconnected" title='The "disconnected" signal'>disconnected</a>"                                   : Run Last
+  "<a class="link" href="IBusBus.html#IBusBus-global-engine-changed" title='The "global-engine-changed" signal'>global-engine-changed</a>"                          : Run Last
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusBus.description"></a><h2>Description</h2>
+<p>
+An IBusBus connects with IBus daemon.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusBus.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBusBus">
+<a name="IBusBus-struct"></a><h3>IBusBus</h3>
+<pre class="programlisting">typedef struct _IBusBus IBusBus;</pre>
+<p>
+An opaque data type representing IBus bus (daemon communication) status.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBusBusClass">
+<a name="IBusBusClass"></a><h3>IBusBusClass</h3>
+<pre class="programlisting">typedef struct {
+  IBusObjectClass parent;
+  /* class members */
+} IBusBusClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_new ()">
+<a name="ibus-bus-new"></a><h3>ibus_bus_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusBus.html" title="IBusBus"><span class="returnvalue">IBusBus</span></a> *           ibus_bus_new                        (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+New an IBusBus instance.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusBus instance, and the instance is not floating.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_is_connected ()">
+<a name="ibus-bus-is-connected"></a><h3>ibus_bus_is_connected ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_is_connected               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Return TRUE if <em class="parameter"><code>bus</code></em> is connected to IBus daemon.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if <em class="parameter"><code>bus</code></em> is connected, FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_hello ()">
+<a name="ibus-bus-hello"></a><h3>ibus_bus_hello ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_bus_hello                      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+This function sends a "HELLO" message to DBus daemon,
+which replies the unique name of current IBus process.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The unique name of IBus process in DBus.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_request_name ()">
+<a name="ibus-bus-request-name"></a><h3>ibus_bus_request_name ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_bus_request_name               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> flags</code></em>);</pre>
+<p>
+Request a name from IBus daemon.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>the IBusBus instance to be processed.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name to be requested.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
+<td>Flags (FixMe).
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>0 if failed; positive number otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_release_name ()">
+<a name="ibus-bus-release-name"></a><h3>ibus_bus_release_name ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_bus_release_name               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
+<p>
+Release a name to IBus daemon.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name to be released.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>0 if failed; positive number otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_name_has_owner ()">
+<a name="ibus-bus-name-has-owner"></a><h3>ibus_bus_name_has_owner ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_name_has_owner             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
+<p>
+Whether the name has owner.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name to be released.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the name has owner, FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_list_names ()">
+<a name="ibus-bus-list-names"></a><h3>ibus_bus_list_names ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             ibus_bus_list_names                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Return lists that attached to <em class="parameter"><code>bus</code></em>.
+</p>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>[FixMe] Not implemented yet, only return NULL.</p>
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> Lists that attached to <em class="parameter"><code>bus</code></em>. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> utf8]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_add_match ()">
+<a name="ibus-bus-add-match"></a><h3>ibus_bus_add_match ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_add_match                  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *rule</code></em>);</pre>
+<p>
+Add a match rule to an IBusBus.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rule</code></em> :</span></p></td>
+<td>Match rule.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_remove_match ()">
+<a name="ibus-bus-remove-match"></a><h3>ibus_bus_remove_match ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_remove_match               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *rule</code></em>);</pre>
+<p>
+Remove a match rule to an IBusBus.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rule</code></em> :</span></p></td>
+<td>Match rule.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_get_name_owner ()">
+<a name="ibus-bus-get-name-owner"></a><h3>ibus_bus_get_name_owner ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             ibus_bus_get_name_owner             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
+<p>
+Return the name owner.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Owner of the name. The returned value must be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_exit ()">
+<a name="ibus-bus-exit"></a><h3>ibus_bus_exit ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_exit                       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> restart</code></em>);</pre>
+<p>
+Exit or restart an IBusBus.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>restart</code></em> :</span></p></td>
+<td>Whether restarting the ibus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the "Exit" call is suceeded, FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_current_input_context ()">
+<a name="ibus-bus-current-input-context"></a><h3>ibus_bus_current_input_context ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             ibus_bus_current_input_context      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Get the current focused input context.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The named of currently focued IBusInputContext if the
+           "CurrentInputContext" call suceeded, NULL otherwise. The return
+           value must be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_register_component ()">
+<a name="ibus-bus-register-component"></a><h3>ibus_bus_register_component ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_register_component         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);</pre>
+<p>
+Register a componet to an IBusBus.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>A input engine component.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the "RegisterComponent" call is suceeded, FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_list_engines ()">
+<a name="ibus-bus-list-engines"></a><h3>ibus_bus_list_engines ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             ibus_bus_list_engines               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+List engines.
+Note that this function is not yet implemented.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A List of engines. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusEngineDesc]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_list_active_engines ()">
+<a name="ibus-bus-list-active-engines"></a><h3>ibus_bus_list_active_engines ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             ibus_bus_list_active_engines        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+List active engines.
+Note that this function is not yet implemented.
+</p>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>Not yet implemented.</p>
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A List of active engines. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusEngineDesc]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_get_use_sys_layout ()">
+<a name="ibus-bus-get-use-sys-layout"></a><h3>ibus_bus_get_use_sys_layout ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_get_use_sys_layout         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Check if the bus's "use_sys_layout" option is enabled or not.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if "use_sys_layout" option is enabled.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_get_use_global_engine ()">
+<a name="ibus-bus-get-use-global-engine"></a><h3>ibus_bus_get_use_global_engine ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_get_use_global_engine      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Check if the bus's "use_global_engine" option is enabled or not.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if "use_global_engine" option is enabled.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_is_global_engine_enabled ()">
+<a name="ibus-bus-is-global-engine-enabled"></a><h3>ibus_bus_is_global_engine_enabled ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_is_global_engine_enabled   (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Check if the current global engine is enabled or not.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the current global engine is enabled.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_set_global_engine ()">
+<a name="ibus-bus-set-global-engine"></a><h3>ibus_bus_set_global_engine ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_set_global_engine          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *global_engine</code></em>);</pre>
+<p>
+Set current global engine.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>global_engine</code></em> :</span></p></td>
+<td>A new engine name.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the global engine was set successfully.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_bus_get_config ()">
+<a name="ibus-bus-get-config"></a><h3>ibus_bus_get_config ()</h3>
+<pre class="programlisting"><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        ibus_bus_get_config                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Get the config instance from IBusBus.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An newly allocated IBusConfig which is configurable with <em class="parameter"><code>bus</code></em>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="IBusBus.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "connected" signal'>
+<a name="IBusBus-connected"></a><h3>The <code class="literal">"connected"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)      : Run Last</pre>
+<p>
+Emitted when IBusBus is connected.
+</p>
+<p>
+</p>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.</p>
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "disconnected" signal'>
+<a name="IBusBus-disconnected"></a><h3>The <code class="literal">"disconnected"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)      : Run Last</pre>
+<p>
+Emitted when IBusBus is disconnected.
+</p>
+<p>
+</p>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.</p>
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "global-engine-changed" signal'>
+<a name="IBusBus-global-engine-changed"></a><h3>The <code class="literal">"global-engine-changed"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)      : Run Last</pre>
+<p>
+Emitted when global engine is changed.
+</p>
+<p>
+</p>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.</p>
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusConfig</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch04.html" title="Configuration">
+<link rel="prev" href="ch04.html" title="Configuration">
+<link rel="next" href="IBusConfigService.html" title="IBusConfigService">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch04.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch04.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusConfigService.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusConfig.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusConfig.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusConfig.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusConfig.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusConfig">
+<a name="IBusConfig"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusConfig.top_of_page"></a>IBusConfig</span></h2>
+<p>IBusConfig — IBus engine configuration module.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusConfig.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="IBusConfig.html#IBusConfig-struct" title="IBusConfig">IBusConfig</a>;
+                    <a class="link" href="IBusConfig.html#IBusConfigClass" title="IBusConfigClass">IBusConfigClass</a>;
+<a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        <a class="link" href="IBusConfig.html#ibus-config-new" title="ibus_config_new ()">ibus_config_new</a>                     (<em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusConfig.html#ibus-config-get-value" title="ibus_config_get_value ()">ibus_config_get_value</a>               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusConfig.html#ibus-config-set-value" title="ibus_config_set_value ()">ibus_config_set_value</a>               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusConfig.html#ibus-config-unset" title="ibus_config_unset ()">ibus_config_unset</a>                   (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusConfig.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusProxy.html" title="IBusProxy">IBusProxy</a>
+                     +----IBusConfig
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="IBusConfig.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusConfig.html#IBusConfig-value-changed" title='The "value-changed" signal'>value-changed</a>"                                  : Run Last
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusConfig.description"></a><h2>Description</h2>
+<p>
+An IBusConfig provides engine configuration methods
+such as get and set the configure settings to configuration file.
+</p>
+<p>
+Currently, IBusConfig supports gconf.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusConfig.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBusConfig">
+<a name="IBusConfig-struct"></a><h3>IBusConfig</h3>
+<pre class="programlisting">typedef struct _IBusConfig IBusConfig;</pre>
+<p>
+An opaque data type representing an IBusConfig.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBusConfigClass">
+<a name="IBusConfigClass"></a><h3>IBusConfigClass</h3>
+<pre class="programlisting">typedef struct {
+    IBusProxyClass parent;
+    /* class members */
+} IBusConfigClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_config_new ()">
+<a name="ibus-config-new"></a><h3>ibus_config_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        ibus_config_new                     (<em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);</pre>
+<p>
+New a IBusConfig from existing IBusConnection.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>An IBusConnection.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An newly allocated IBusConfig corresponding to <em class="parameter"><code>connection</code></em>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_config_get_value ()">
+<a name="ibus-config-get-value"></a><h3>ibus_config_get_value ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_config_get_value               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
+<p>
+Get the value of a configuration option.
+</p>
+<p>
+GConf stores configure options in a tree-like structure,
+and the IBus related setting is at /desktop/ibus,
+thus, <em class="parameter"><code>section</code></em> here is a path from there,
+while <em class="parameter"><code>name</code></em> is the key of that configuration option.
+</p>
+<p>
+ibus-chewing, for example, stores its setting in /desktop/ibus/engine/Chewing,
+so the section name for it is "engine/Chewing".
+<em class="parameter"><code>see_also</code></em>: ibus_config_set_value.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An IBusConfig
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the configure option.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>GValue that holds the value.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_config_set_value ()">
+<a name="ibus-config-set-value"></a><h3>ibus_config_set_value ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_config_set_value               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
+<p>
+Set the value of a configuration option.
+<em class="parameter"><code>see_also</code></em>: ibus_config_get_value.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An IBusConfig
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the configure option its self.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>GValue that holds the value.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_config_unset ()">
+<a name="ibus-config-unset"></a><h3>ibus_config_unset ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_config_unset                   (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
+<p>
+Remove an entry of a configuration option.
+<em class="parameter"><code>see_also</code></em>: ibus_config_get_value.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An IBusConfig
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the configure option its self.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="IBusConfig.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "value-changed" signal'>
+<a name="IBusConfig-value-changed"></a><h3>The <code class="literal">"value-changed"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>      *section,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>      *name,
+                                                        <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>     *value,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>    user_data)      : Run Last</pre>
+<p>
+Emitted when configuration value is changed.
+</p>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.</p>
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An IBusConfig.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the property.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>Value.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

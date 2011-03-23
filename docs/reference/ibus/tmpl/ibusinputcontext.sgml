@@ -1,0 +1,291 @@
+<!-- ##### SECTION Title ##### -->
+IBusInputContext
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusInputContext ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusInputContext::commit-text ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusInputContext::cursor-down-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+
+<!-- ##### SIGNAL IBusInputContext::cursor-up-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+
+<!-- ##### SIGNAL IBusInputContext::delete-surrounding-text ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### SIGNAL IBusInputContext::disabled ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+
+<!-- ##### SIGNAL IBusInputContext::enabled ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+
+<!-- ##### SIGNAL IBusInputContext::forward-key-event ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+
+<!-- ##### SIGNAL IBusInputContext::hide-auxiliary-text ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+
+<!-- ##### SIGNAL IBusInputContext::hide-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+
+<!-- ##### SIGNAL IBusInputContext::hide-preedit-text ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+
+<!-- ##### SIGNAL IBusInputContext::page-down-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+
+<!-- ##### SIGNAL IBusInputContext::page-up-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+
+<!-- ##### SIGNAL IBusInputContext::register-properties ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusInputContext::show-auxiliary-text ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+
+<!-- ##### SIGNAL IBusInputContext::show-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+
+<!-- ##### SIGNAL IBusInputContext::show-preedit-text ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+
+<!-- ##### SIGNAL IBusInputContext::update-auxiliary-text ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### SIGNAL IBusInputContext::update-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### SIGNAL IBusInputContext::update-preedit-text ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+
+<!-- ##### SIGNAL IBusInputContext::update-property ##### -->
+<para>
+
+</para>
+
+@ibusinputcontext: the object which received the signal.
+@arg1: 
+
+<!-- ##### STRUCT IBusInputContextClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_input_context_process_key_event ##### -->
+<para>
+
+</para>
+
+@context: 
+@keyval: 
+@keycode: 
+@state: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_input_context_set_cursor_location ##### -->
+<para>
+
+</para>
+
+@context: 
+@x: 
+@y: 
+@w: 
+@h: 
+
+
+<!-- ##### FUNCTION ibus_input_context_set_capabilities ##### -->
+<para>
+
+</para>
+
+@context: 
+@capabilities: 
+
+
+<!-- ##### FUNCTION ibus_input_context_property_activate ##### -->
+<para>
+
+</para>
+
+@context: 
+@prop_name: 
+@state: 
+
+
+<!-- ##### FUNCTION ibus_input_context_focus_in ##### -->
+<para>
+
+</para>
+
+@context: 
+
+
+<!-- ##### FUNCTION ibus_input_context_focus_out ##### -->
+<para>
+
+</para>
+
+@context: 
+
+
+<!-- ##### FUNCTION ibus_input_context_reset ##### -->
+<para>
+
+</para>
+
+@context: 
+
+
+<!-- ##### FUNCTION ibus_input_context_enable ##### -->
+<para>
+
+</para>
+
+@context: 
+
+
+<!-- ##### FUNCTION ibus_input_context_disable ##### -->
+<para>
+
+</para>
+
+@context: 
+
+
+<!-- ##### FUNCTION ibus_input_context_is_enabled ##### -->
+<para>
+
+</para>
+
+@context: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_input_context_set_engine ##### -->
+<para>
+
+</para>
+
+@context: 
+@name: 
+
+

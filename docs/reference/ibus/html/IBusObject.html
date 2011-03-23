@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusObject</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch06.html" title="Internal">
+<link rel="prev" href="ibus-ibusmainloop.html" title="ibusmainloop">
+<link rel="next" href="IBusServer.html" title="IBusServer">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ibus-ibusmainloop.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch06.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusServer.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusObject.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusObject.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusObject.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusObject.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusObject">
+<a name="IBusObject"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusObject.top_of_page"></a>IBusObject</span></h2>
+<p>IBusObject — Base object of IBus.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="IBusObject.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusObject.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">#define             <a class="link" href="IBusObject.html#IBUS-OBJECT-DESTROYED:CAPS" title="IBUS_OBJECT_DESTROYED()">IBUS_OBJECT_DESTROYED</a>               (obj)
+                    <a class="link" href="IBusObject.html#IBusObject-struct" title="IBusObject">IBusObject</a>;
+                    <a class="link" href="IBusObject.html#IBusObjectClass" title="IBusObjectClass">IBusObjectClass</a>;
+<a class="link" href="IBusObject.html" title="IBusObject"><span class="returnvalue">IBusObject</span></a> *        <a class="link" href="IBusObject.html#ibus-object-new" title="ibus_object_new ()">ibus_object_new</a>                     (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusObject.html#ibus-object-destroy" title="ibus_object_destroy ()">ibus_object_destroy</a>                 (<em class="parameter"><code><a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a> *object</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusObject.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----IBusObject
+               +----<a class="link" href="IBusConnection.html" title="IBusConnection">IBusConnection</a>
+               +----<a class="link" href="IBusSerializable.html" title="IBusSerializable">IBusSerializable</a>
+               +----<a class="link" href="IBusProxy.html" title="IBusProxy">IBusProxy</a>
+               +----<a class="link" href="IBusBus.html" title="IBusBus">IBusBus</a>
+               +----<a class="link" href="IBusService.html" title="IBusService">IBusService</a>
+               +----<a class="link" href="IBusServer.html" title="IBusServer">IBusServer</a>
+               +----<a class="link" href="IBusKeymap.html" title="IBusKeymap">IBusKeymap</a>
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="IBusObject.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusObject.html#IBusObject-destroy" title='The "destroy" signal'>destroy</a>"                                        : Run Last
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusObject.description"></a><h2>Description</h2>
+<p>
+IBusObject is the base object for all objects in IBus.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusObject.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBUS_OBJECT_DESTROYED()">
+<a name="IBUS-OBJECT-DESTROYED:CAPS"></a><h3>IBUS_OBJECT_DESTROYED()</h3>
+<pre class="programlisting">#define IBUS_OBJECT_DESTROYED(obj)         (IBUS_OBJECT_FLAGS (obj) &amp; IBUS_DESTROYED)
+</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>obj</code></em> :</span></p></td>
+<td>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="IBusObject">
+<a name="IBusObject-struct"></a><h3>IBusObject</h3>
+<pre class="programlisting">typedef struct _IBusObject IBusObject;</pre>
+<p>
+All the fields in the <span class="structname">IBusObject</span> structure are
+private to the <a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a> and should never be accessed directly.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBusObjectClass">
+<a name="IBusObjectClass"></a><h3>IBusObjectClass</h3>
+<pre class="programlisting">typedef struct {
+    GInitiallyUnownedClass parent;
+
+    /* signals */
+    void (* destroy)        (IBusObject   *object);
+} IBusObjectClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_object_new ()">
+<a name="ibus-object-new"></a><h3>ibus_object_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusObject.html" title="IBusObject"><span class="returnvalue">IBusObject</span></a> *        ibus_object_new                     (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Creates a new instance of an <a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a new instance of <a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a>.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_object_destroy ()">
+<a name="ibus-object-destroy"></a><h3>ibus_object_destroy ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_object_destroy                 (<em class="parameter"><code><a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a> *object</code></em>);</pre>
+<p>
+Emit the "destory" signal notifying all reference holders that they should
+release the <a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a>.
+</p>
+<p>
+The memory for the object itself won't be deleted until its reference count
+actually drops to 0; ibus_object_destroy merely asks reference holders to
+release their references. It does not free the object.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>an <a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a> to destroy.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="IBusObject.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "destroy" signal'>
+<a name="IBusObject-destroy"></a><h3>The <code class="literal">"destroy"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a> *object,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>    user_data)      : Run Last</pre>
+<p>
+Destroy and free an IBusObject
+</p>
+<p>
+See also:  <a class="link" href="IBusObject.html#ibus-object-destroy" title="ibus_object_destroy ()"><code class="function">ibus_object_destroy()</code></a>.
+</p>
+<p>
+</p>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.</p>
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>An IBusObject.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

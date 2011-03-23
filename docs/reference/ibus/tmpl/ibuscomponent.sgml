@@ -1,0 +1,180 @@
+<!-- ##### SECTION Title ##### -->
+IBusComponent
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusComponent ##### -->
+<para>
+
+</para>
+
+@name: 
+@description: 
+@version: 
+@license: 
+@author: 
+@homepage: 
+@exec: 
+@textdomain: 
+
+<!-- ##### STRUCT IBusComponentClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_component_new ##### -->
+<para>
+
+</para>
+
+@name: 
+@description: 
+@version: 
+@license: 
+@author: 
+@homepage: 
+@exec: 
+@textdomain: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_new_from_xml_node ##### -->
+<para>
+
+</para>
+
+@node: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_new_from_file ##### -->
+<para>
+
+</para>
+
+@filename: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_add_observed_path ##### -->
+<para>
+
+</para>
+
+@component: 
+@path: 
+@access_fs: 
+
+
+<!-- ##### FUNCTION ibus_component_add_engine ##### -->
+<para>
+
+</para>
+
+@component: 
+@engine: 
+
+
+<!-- ##### FUNCTION ibus_component_get_engines ##### -->
+<para>
+
+</para>
+
+@component: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_output ##### -->
+<para>
+
+</para>
+
+@component: 
+@output: 
+@indent: 
+
+
+<!-- ##### FUNCTION ibus_component_output_engines ##### -->
+<para>
+
+</para>
+
+@component: 
+@output: 
+@indent: 
+
+
+<!-- ##### FUNCTION ibus_component_check_modification ##### -->
+<para>
+
+</para>
+
+@component: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_start ##### -->
+<para>
+
+</para>
+
+@component: 
+@verbose: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_stop ##### -->
+<para>
+
+</para>
+
+@component: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_is_running ##### -->
+<para>
+
+</para>
+
+@component: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_get_from_engine ##### -->
+<para>
+
+</para>
+
+@engine: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_set_restart ##### -->
+<para>
+
+</para>
+
+@component: 
+@restart: 
+
+

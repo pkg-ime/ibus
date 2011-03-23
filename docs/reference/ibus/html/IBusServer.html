@@ -1,0 +1,403 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusServer</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch06.html" title="Internal">
+<link rel="prev" href="IBusObject.html" title="IBusObject">
+<link rel="next" href="ibus-ibusshare.html" title="ibusshare">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusObject.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch06.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="ibus-ibusshare.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusServer.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusServer.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusServer.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusServer.properties" class="shortcut">Properties</a>
+                   | 
+                  <a href="#IBusServer.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusServer">
+<a name="IBusServer"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusServer.top_of_page"></a>IBusServer</span></h2>
+<p>IBusServer — Server that listen on a socket and wait for connection requests.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="IBusServer.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusServer.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="IBusServer.html#IBusServer-struct" title="IBusServer">IBusServer</a>;
+                    <a class="link" href="IBusServer.html#IBusServerClass" title="IBusServerClass">IBusServerClass</a>;
+<span class="returnvalue">void</span>                (<a class="link" href="IBusServer.html#IBusNewConnectionFunc" title="IBusNewConnectionFunc ()">*IBusNewConnectionFunc</a>)            (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);
+<a class="link" href="IBusServer.html" title="IBusServer"><span class="returnvalue">IBusServer</span></a> *        <a class="link" href="IBusServer.html#ibus-server-new" title="ibus_server_new ()">ibus_server_new</a>                     (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusServer.html#ibus-server-listen" title="ibus_server_listen ()">ibus_server_listen</a>                  (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *address</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusServer.html#ibus-server-disconnect" title="ibus_server_disconnect ()">ibus_server_disconnect</a>              (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusServer.html#ibus-server-get-address" title="ibus_server_get_address ()">ibus_server_get_address</a>             (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusServer.html#ibus-server-get-id" title="ibus_server_get_id ()">ibus_server_get_id</a>                  (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusServer.html#ibus-server-is-connected" title="ibus_server_is_connected ()">ibus_server_is_connected</a>            (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusServer.html#ibus-server-set-auth-mechanisms" title="ibus_server_set_auth_mechanisms ()">ibus_server_set_auth_mechanisms</a>     (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> **mechanisms</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusServer.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----IBusServer
+</pre>
+</div>
+<div class="refsect1" title="Properties">
+<a name="IBusServer.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusServer.html#IBusServer--connection-type" title='The "connection-type" property'>connection-type</a>"          <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>*                : Read / Write
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="IBusServer.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusServer.html#IBusServer-new-connection" title='The "new-connection" signal'>new-connection</a>"                                 : Run Last
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusServer.description"></a><h2>Description</h2>
+<p>
+An IBusServer listen on a socket and wait for connections requests,
+just like DBusServer.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusServer.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBusServer">
+<a name="IBusServer-struct"></a><h3>IBusServer</h3>
+<pre class="programlisting">typedef struct _IBusServer IBusServer;</pre>
+<p>
+An opaque object representing an IBusServer.
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBusServerClass">
+<a name="IBusServerClass"></a><h3>IBusServerClass</h3>
+<pre class="programlisting">typedef struct {
+    IBusObjectClass parent;
+
+    /* signals */
+    void  (* new_connection)    (IBusServer     *server,
+                                 IBusConnection *connectin);
+} IBusServerClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="IBusNewConnectionFunc ()">
+<a name="IBusNewConnectionFunc"></a><h3>IBusNewConnectionFunc ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                (*IBusNewConnectionFunc)            (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);</pre>
+<p>
+Prototype of new connection callback function.
+</p>
+<p>
+This callback should be connected to signal ::new-connection
+to handle the event that a new connection is coming in.
+In this handler, IBus could add a reference and continue processing the connection.
+If no reference is added, the new connection will be released and closed after this signal.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: ::new-connection
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>server</code></em> :</span></p></td>
+<td>An IBusServer.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>The corresponding IBusConnection.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_server_new ()">
+<a name="ibus-server-new"></a><h3>ibus_server_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusServer.html" title="IBusServer"><span class="returnvalue">IBusServer</span></a> *        ibus_server_new                     (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+New an IBusServer.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusServer instance.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_server_listen ()">
+<a name="ibus-server-listen"></a><h3>ibus_server_listen ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_server_listen                  (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *address</code></em>);</pre>
+<p>
+Listens for new connections on the given address.
+</p>
+<p>
+If there are multiple semicolon-separated address entries in the address,
+tries each one and listens on the first one that works.
+</p>
+<p>
+Returns FALSE if listening fails for any reason.
+</p>
+<p>
+To free the server, applications must call first <a class="link" href="IBusServer.html#ibus-server-disconnect" title="ibus_server_disconnect ()"><code class="function">ibus_server_disconnect()</code></a> and then <code class="function">dbus_server_unref()</code>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>server</code></em> :</span></p></td>
+<td>An IBusServer.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>address</code></em> :</span></p></td>
+<td>Address of this server.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed ; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_server_disconnect ()">
+<a name="ibus-server-disconnect"></a><h3>ibus_server_disconnect ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_server_disconnect              (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>);</pre>
+<p>
+Releases the server's address and stops listening for new clients.
+</p>
+<p>
+If called more than once, only the first call has an effect. Does not modify the server's reference count.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>server</code></em> :</span></p></td>
+<td>An IBusServer.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_server_get_address ()">
+<a name="ibus-server-get-address"></a><h3>ibus_server_get_address ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_server_get_address             (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>);</pre>
+<p>
+Returns the address of the server, as a newly-allocated string which must be freed by the caller.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>server</code></em> :</span></p></td>
+<td>An IBusServer.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated string which contain address.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_server_get_id ()">
+<a name="ibus-server-get-id"></a><h3>ibus_server_get_id ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_server_get_id                  (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>);</pre>
+<p>
+Returns the unique ID of the server, as a newly-allocated string which must be freed by the caller.
+</p>
+<p>
+This ID is normally used by clients to tell when two IBusConnection would be equivalent
+(because the server address passed to <a class="link" href="IBusConnection.html#ibus-connection-open" title="ibus_connection_open ()"><code class="function">ibus_connection_open()</code></a> will have the same guid in the two cases).
+<a class="link" href="IBusConnection.html#ibus-connection-open" title="ibus_connection_open ()"><code class="function">ibus_connection_open()</code></a> can re-use an existing connection with the same ID instead of opening a new connection.
+</p>
+<p>
+This is an ID unique to each IBusServer. Remember that an IBusServer represents only one mode of connecting,
+so e.g. a bus daemon can listen on multiple addresses which will mean it has multiple IBusServer each with
+their own ID.
+</p>
+<p>
+The ID is not a UUID in the sense of RFC4122; the details are explained in the D-Bus specification.
+Returns the address of the server, as a newly-allocated string which must be freed by the caller.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>server</code></em> :</span></p></td>
+<td>An IBusServer.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated string which contain address.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_server_is_connected ()">
+<a name="ibus-server-is-connected"></a><h3>ibus_server_is_connected ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_server_is_connected            (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>);</pre>
+<p>
+Returns TRUE if the server is still listening for new connections.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>server</code></em> :</span></p></td>
+<td>An IBusServer.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the server is still listening for new connections; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_server_set_auth_mechanisms ()">
+<a name="ibus-server-set-auth-mechanisms"></a><h3>ibus_server_set_auth_mechanisms ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_server_set_auth_mechanisms     (<em class="parameter"><code><a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> **mechanisms</code></em>);</pre>
+<p>
+Sets the authentication mechanisms that this server offers to clients,
+as a NULL-terminated array of mechanism names.
+</p>
+<p>
+This function only affects connections created after it is called.
+Pass NULL instead of an array to use all available mechanisms (this is the default behavior).
+</p>
+<p>
+The D-Bus specification describes some of the supported mechanisms.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>server</code></em> :</span></p></td>
+<td>An IBusServer.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>mechanisms</code></em> :</span></p></td>
+<td>NULL-terminated array of mechanisms.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if succeed; FALSE if insufficient memory.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="IBusServer.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" title='The "connection-type" property'>
+<a name="IBusServer--connection-type"></a><h3>The <code class="literal">"connection-type"</code> property</h3>
+<pre class="programlisting">  "connection-type"          <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>*                : Read / Write</pre>
+<p>
+The connection type of server object.
+</p>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="IBusServer.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "new-connection" signal'>
+<a name="IBusServer-new-connection"></a><h3>The <code class="literal">"new-connection"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusServer.html" title="IBusServer"><span class="type">IBusServer</span></a> *server,
+                                                        <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"><span class="type">GObject</span></a>    *connection,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>    user_data)       : Run Last</pre>
+<p>
+Emitted when a new connection is coming in.
+In this handler, IBus could add a reference and continue processing the connection.
+If no reference is added, the new connection will be released and closed after this signal.
+</p>
+<p>
+</p>
+<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.</p>
+</div>
+<p>
+</p>
+<p>
+See also: <a class="link" href="IBusServer.html#IBusNewConnectionFunc" title="IBusNewConnectionFunc ()"><code class="function">IBusNewConnectionFunc()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>server</code></em> :</span></p></td>
+<td>An IBusServer.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>The corresponding IBusConnection.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

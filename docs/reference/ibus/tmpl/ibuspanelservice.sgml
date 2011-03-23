@@ -1,0 +1,144 @@
+<!-- ##### SECTION Title ##### -->
+IBusPanelService
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusPanelService ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ARG IBusPanelService:connection ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT IBusPanelServiceClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+@focus_in: 
+@focus_out: 
+@register_properties: 
+@set_cursor_location: 
+@update_auxiliary_text: 
+@update_lookup_table: 
+@update_preedit_text: 
+@update_property: 
+@cursor_down_lookup_table: 
+@cursor_up_lookup_table: 
+@destroy: 
+@hide_auxiliary_text: 
+@hide_language_bar: 
+@hide_lookup_table: 
+@hide_preedit_text: 
+@page_down_lookup_table: 
+@page_up_lookup_table: 
+@reset: 
+@show_auxiliary_text: 
+@show_language_bar: 
+@show_lookup_table: 
+@show_preedit_text: 
+@start_setup: 
+@state_changed: 
+
+<!-- ##### FUNCTION ibus_panel_service_new ##### -->
+<para>
+
+</para>
+
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_candidate_clicked ##### -->
+<para>
+
+</para>
+
+@panel: 
+@index: 
+@button: 
+@state: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_cursor_down ##### -->
+<para>
+
+</para>
+
+@panel: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_cursor_up ##### -->
+<para>
+
+</para>
+
+@panel: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_page_down ##### -->
+<para>
+
+</para>
+
+@panel: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_page_up ##### -->
+<para>
+
+</para>
+
+@panel: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_property_active ##### -->
+<para>
+
+</para>
+
+@panel: 
+@prop_name: 
+@prop_state: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_property_show ##### -->
+<para>
+
+</para>
+
+@panel: 
+@prop_name: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_property_hide ##### -->
+<para>
+
+</para>
+
+@panel: 
+@prop_name: 
+
+

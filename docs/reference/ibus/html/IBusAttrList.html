@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusAttrList</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch02.html" title="Panel (User Interfaces)">
+<link rel="prev" href="IBusAttribute.html" title="IBusAttribute">
+<link rel="next" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusAttribute.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusHotkeyProfile.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusAttrList.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusAttrList.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusAttrList.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusAttrList">
+<a name="IBusAttrList"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusAttrList.top_of_page"></a>IBusAttrList</span></h2>
+<p>IBusAttrList — AttrList of IBusText.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="IBusAttrList.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusAttrList.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="IBusAttrList.html#IBusAttrList-struct" title="IBusAttrList">IBusAttrList</a>;
+                    <a class="link" href="IBusAttrList.html#IBusAttrListClass" title="IBusAttrListClass">IBusAttrListClass</a>;
+<a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="returnvalue">IBusAttrList</span></a> *      <a class="link" href="IBusAttrList.html#ibus-attr-list-new" title="ibus_attr_list_new ()">ibus_attr_list_new</a>                  ();
+<span class="returnvalue">void</span>                <a class="link" href="IBusAttrList.html#ibus-attr-list-append" title="ibus_attr_list_append ()">ibus_attr_list_append</a>               (<em class="parameter"><code><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="type">IBusAttrList</span></a> *attr_list</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a> *attr</code></em>);
+<a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     <a class="link" href="IBusAttrList.html#ibus-attr-list-get" title="ibus_attr_list_get ()">ibus_attr_list_get</a>                  (<em class="parameter"><code><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="type">IBusAttrList</span></a> *attr_list</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusAttrList.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusSerializable.html" title="IBusSerializable">IBusSerializable</a>
+                     +----IBusAttrList
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusAttrList.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusAttrList.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBusAttrList">
+<a name="IBusAttrList-struct"></a><h3>IBusAttrList</h3>
+<pre class="programlisting">typedef struct {
+    GArray *attributes;
+} IBusAttrList;
+</pre>
+<p>
+Array of IBusAttribute.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Arrays.html#GArray"><span class="type">GArray</span></a> *<em class="structfield"><code><a name="IBusAttrList-struct.attributes"></a>attributes</code></em>;</span></p></td>
+<td>GArray that holds <a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a>.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="IBusAttrListClass">
+<a name="IBusAttrListClass"></a><h3>IBusAttrListClass</h3>
+<pre class="programlisting">typedef struct {
+    IBusSerializableClass parent;
+} IBusAttrListClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_attr_list_new ()">
+<a name="ibus-attr-list-new"></a><h3>ibus_attr_list_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="returnvalue">IBusAttrList</span></a> *      ibus_attr_list_new                  ();</pre>
+<p>
+New an IBusAttrList.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusAttrList.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_attr_list_append ()">
+<a name="ibus-attr-list-append"></a><h3>ibus_attr_list_append ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_attr_list_append               (<em class="parameter"><code><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="type">IBusAttrList</span></a> *attr_list</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a> *attr</code></em>);</pre>
+<p>
+Append an IBusAttribute to IBusAttrList, and increase reference.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>attr_list</code></em> :</span></p></td>
+<td>An IBusAttrList instance.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>attr</code></em> :</span></p></td>
+<td>The IBusAttribute instance to be appended.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_attr_list_get ()">
+<a name="ibus-attr-list-get"></a><h3>ibus_attr_list_get ()</h3>
+<pre class="programlisting"><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     ibus_attr_list_get                  (<em class="parameter"><code><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="type">IBusAttrList</span></a> *attr_list</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>);</pre>
+<p>
+Returns IBusAttribute at given index. Borrowed reference.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>attr_list</code></em> :</span></p></td>
+<td>An IBusAttrList instance.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>index</code></em> :</span></p></td>
+<td>Index of the <em class="parameter"><code>attr_list</code></em>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> IBusAttribute at given index, NULL if no such IBusAttribute. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="See Also">
+<a name="IBusAttrList.see-also"></a><h2>See Also</h2>
+<a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

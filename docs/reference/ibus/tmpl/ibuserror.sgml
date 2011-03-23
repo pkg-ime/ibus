@@ -1,0 +1,75 @@
+<!-- ##### SECTION Title ##### -->
+ibuserror
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### TYPEDEF IBusError ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION ibus_error_new ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_error_new_from_text ##### -->
+<para>
+
+</para>
+
+@name: 
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_error_new_from_printf ##### -->
+<para>
+
+</para>
+
+@name: 
+@format_message: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_error_new_from_message ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_error_free ##### -->
+<para>
+
+</para>
+
+@error: 
+
+

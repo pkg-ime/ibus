@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusAttribute</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch02.html" title="Panel (User Interfaces)">
+<link rel="prev" href="ch02.html" title="Panel (User Interfaces)">
+<link rel="next" href="IBusAttrList.html" title="IBusAttrList">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch02.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusAttrList.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusAttribute.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusAttribute.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusAttribute.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusAttribute">
+<a name="IBusAttribute"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusAttribute.top_of_page"></a>IBusAttribute</span></h2>
+<p>IBusAttribute — Attributes of IBusText.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="IBusAttribute.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusAttribute.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">enum                <a class="link" href="IBusAttribute.html#IBusAttrType" title="enum IBusAttrType">IBusAttrType</a>;
+enum                <a class="link" href="IBusAttribute.html#IBusAttrUnderline" title="enum IBusAttrUnderline">IBusAttrUnderline</a>;
+                    <a class="link" href="IBusAttribute.html#IBusAttribute-struct" title="IBusAttribute">IBusAttribute</a>;
+                    <a class="link" href="IBusAttribute.html#IBusAttributeClass" title="IBusAttributeClass">IBusAttributeClass</a>;
+<a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     <a class="link" href="IBusAttribute.html#ibus-attribute-new" title="ibus_attribute_new ()">ibus_attribute_new</a>                  (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> value</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);
+<a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     <a class="link" href="IBusAttribute.html#ibus-attr-underline-new" title="ibus_attr_underline_new ()">ibus_attr_underline_new</a>             (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> underline_type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);
+<a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     <a class="link" href="IBusAttribute.html#ibus-attr-foreground-new" title="ibus_attr_foreground_new ()">ibus_attr_foreground_new</a>            (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> color</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);
+<a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     <a class="link" href="IBusAttribute.html#ibus-attr-background-new" title="ibus_attr_background_new ()">ibus_attr_background_new</a>            (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> color</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusAttribute.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusSerializable.html" title="IBusSerializable">IBusSerializable</a>
+                     +----IBusAttribute
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusAttribute.description"></a><h2>Description</h2>
+<p>
+An IBusAttribute represents an attribute that associate to IBusText.
+It decorates preedit buffer and auxiliary text with underline, foreground and background colors.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusAttribute.details"></a><h2>Details</h2>
+<div class="refsect2" title="enum IBusAttrType">
+<a name="IBusAttrType"></a><h3>enum IBusAttrType</h3>
+<pre class="programlisting">typedef enum {
+    IBUS_ATTR_TYPE_UNDERLINE    = 1,
+    IBUS_ATTR_TYPE_FOREGROUND   = 2,
+    IBUS_ATTR_TYPE_BACKGROUND   = 3,
+} IBusAttrType;
+</pre>
+<p>
+Type enumeration of IBusText attribute.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="IBUS-ATTR-TYPE-UNDERLINE:CAPS"></a><span class="term"><code class="literal">IBUS_ATTR_TYPE_UNDERLINE</code></span></p></td>
+<td>Decorate with underline.
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-ATTR-TYPE-FOREGROUND:CAPS"></a><span class="term"><code class="literal">IBUS_ATTR_TYPE_FOREGROUND</code></span></p></td>
+<td>Foreground color.
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-ATTR-TYPE-BACKGROUND:CAPS"></a><span class="term"><code class="literal">IBUS_ATTR_TYPE_BACKGROUND</code></span></p></td>
+<td>Background color.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="enum IBusAttrUnderline">
+<a name="IBusAttrUnderline"></a><h3>enum IBusAttrUnderline</h3>
+<pre class="programlisting">typedef enum {
+    IBUS_ATTR_UNDERLINE_NONE    = 0,
+    IBUS_ATTR_UNDERLINE_SINGLE  = 1,
+    IBUS_ATTR_UNDERLINE_DOUBLE  = 2,
+    IBUS_ATTR_UNDERLINE_LOW     = 3,
+    IBUS_ATTR_UNDERLINE_ERROR   = 4,
+} IBusAttrUnderline;
+</pre>
+<p>
+Type of IBusText attribute.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="IBUS-ATTR-UNDERLINE-NONE:CAPS"></a><span class="term"><code class="literal">IBUS_ATTR_UNDERLINE_NONE</code></span></p></td>
+<td>No underline.
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-ATTR-UNDERLINE-SINGLE:CAPS"></a><span class="term"><code class="literal">IBUS_ATTR_UNDERLINE_SINGLE</code></span></p></td>
+<td>Single underline.
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-ATTR-UNDERLINE-DOUBLE:CAPS"></a><span class="term"><code class="literal">IBUS_ATTR_UNDERLINE_DOUBLE</code></span></p></td>
+<td>Double underline.
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-ATTR-UNDERLINE-LOW:CAPS"></a><span class="term"><code class="literal">IBUS_ATTR_UNDERLINE_LOW</code></span></p></td>
+<td>Low underline ? <code class="literal">FIXME</code>
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-ATTR-UNDERLINE-ERROR:CAPS"></a><span class="term"><code class="literal">IBUS_ATTR_UNDERLINE_ERROR</code></span></p></td>
+<td>Error underline
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="IBusAttribute">
+<a name="IBusAttribute-struct"></a><h3>IBusAttribute</h3>
+<pre class="programlisting">typedef struct {
+    guint type;
+    guint value;
+    guint start_index;
+    guint end_index;
+} IBusAttribute;
+</pre>
+<p>
+Signify the type, value and scope of the attribute.
+The scope starts from <em class="parameter"><code>start_index</code></em> till the <em class="parameter"><code>end_index</code></em>-1.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="IBusAttribute-struct.type"></a>type</code></em>;</span></p></td>
+<td>IBusAttributeType
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="IBusAttribute-struct.value"></a>value</code></em>;</span></p></td>
+<td>Value for the type.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="IBusAttribute-struct.start-index"></a>start_index</code></em>;</span></p></td>
+<td>The starting index, inclusive.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="IBusAttribute-struct.end-index"></a>end_index</code></em>;</span></p></td>
+<td>The ending index, exclusive.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="IBusAttributeClass">
+<a name="IBusAttributeClass"></a><h3>IBusAttributeClass</h3>
+<pre class="programlisting">typedef struct {
+    IBusSerializableClass parent;
+} IBusAttributeClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_attribute_new ()">
+<a name="ibus-attribute-new"></a><h3>ibus_attribute_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     ibus_attribute_new                  (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> value</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);</pre>
+<p>
+New an IBusAttribute.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td>Type of the attribute.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>Value of the attribute.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>start_index</code></em> :</span></p></td>
+<td>Where attribute starts.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>end_index</code></em> :</span></p></td>
+<td>Where attribute ends.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusAttribute.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_attr_underline_new ()">
+<a name="ibus-attr-underline-new"></a><h3>ibus_attr_underline_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     ibus_attr_underline_new             (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> underline_type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);</pre>
+<p>
+New an underline IBusAttribute.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>underline_type</code></em> :</span></p></td>
+<td>Type of underline.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>start_index</code></em> :</span></p></td>
+<td>Where attribute starts.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>end_index</code></em> :</span></p></td>
+<td>Where attribute ends.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusAttribute.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_attr_foreground_new ()">
+<a name="ibus-attr-foreground-new"></a><h3>ibus_attr_foreground_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     ibus_attr_foreground_new            (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> color</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);</pre>
+<p>
+New an foreground IBusAttribute.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>color</code></em> :</span></p></td>
+<td>Color in RGB.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>start_index</code></em> :</span></p></td>
+<td>Where attribute starts.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>end_index</code></em> :</span></p></td>
+<td>Where attribute ends.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusAttribute.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_attr_background_new ()">
+<a name="ibus-attr-background-new"></a><h3>ibus_attr_background_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     ibus_attr_background_new            (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> color</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);</pre>
+<p>
+New an background IBusAttribute.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>color</code></em> :</span></p></td>
+<td>Color in RGB.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>start_index</code></em> :</span></p></td>
+<td>Where attribute starts.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>end_index</code></em> :</span></p></td>
+<td>Where attribute ends.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusAttribute.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="See Also">
+<a name="IBusAttribute.see-also"></a><h2>See Also</h2>
+<a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

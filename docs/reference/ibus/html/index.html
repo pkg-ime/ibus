@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBus Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="next" href="ch01.html" title="Overview">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="book" title="IBus Reference Manual">
+<div class="titlepage">
+<div>
+<div><table class="navigation" id="top" width="100%" cellpadding="2" cellspacing="0"><tr><th valign="middle"><p class="title">IBus Reference Manual</p></th></tr></table></div>
+<div><p class="releaseinfo">
+      Intelligent Input Bus (IBus) 1.3.9 reference manual.
+      The latest version of this documentation can be found on-line at
+      <a class="ulink" href="http://code.google.com/p/ibus" target="_top">http://code.google.com/p/ibus</a>.
+    </p></div>
+</div>
+<hr>
+</div>
+<div class="toc"><dl>
+<dt><span class="chapter"><a href="ch01.html">Overview</a></span></dt>
+<dt><span class="chapter"><a href="ch02.html">Panel (User Interfaces)</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="IBusAttribute.html">IBusAttribute</a></span><span class="refpurpose"> — Attributes of IBusText.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusAttrList.html">IBusAttrList</a></span><span class="refpurpose"> — AttrList of IBusText.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusHotkeyProfile.html">IBusHotkeyProfile</a></span><span class="refpurpose"> — Hotkeys and associated events.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusLookupTable.html">IBusLookupTable</a></span><span class="refpurpose"> — Candidate word/phrase lookup table.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusPanelService.html">IBusPanelService</a></span><span class="refpurpose"> — Panel service back-end.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusProperty.html">IBusProperty</a></span><span class="refpurpose"> — UI component for input method engine property.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusPropList.html">IBusPropList</a></span><span class="refpurpose"> — An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> container.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusText.html">IBusText</a></span><span class="refpurpose"> — Text with decorating information.</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="ch03.html">Input method engine</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="IBusComponent.html">IBusComponent</a></span><span class="refpurpose"> — Component (executable) specification.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusEngine.html">IBusEngine</a></span><span class="refpurpose"> — Input method engine abstract.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusEngineDesc.html">IBusEngineDesc</a></span><span class="refpurpose"> — Input method engine description data.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusFactory.html">IBusFactory</a></span><span class="refpurpose"> — Factory for creating engine instances.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusInputContext.html">IBusInputContext</a></span><span class="refpurpose"> — IBus input context proxy object.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusKeymap.html">IBusKeymap</a></span><span class="refpurpose"> — Keyboard mapping handling.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ibus-IBusKeysyms.html">IBusKeysyms</a></span><span class="refpurpose"> — Key symbol definition.</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="ch04.html">Configuration</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="IBusConfig.html">IBusConfig</a></span><span class="refpurpose"> — IBus engine configuration module.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusConfigService.html">IBusConfigService</a></span><span class="refpurpose"> — Configuration service back-end.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusObservedPath.html">IBusObservedPath</a></span><span class="refpurpose"> — Path object of IBus.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ibus-ibusversion.html">ibusversion</a></span><span class="refpurpose"> — Current version of IBus.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ibus-ibusxml.html">ibusxml</a></span><span class="refpurpose"> — XML handling functions for IBus.</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="ch05.html">Communication</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="IBusBus.html">IBusBus</a></span><span class="refpurpose"> — Connect with IBus daemon.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusConnection.html">IBusConnection</a></span><span class="refpurpose"> — DBusConnection wrapper.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ibus-IBusMessage.html">IBusMessage</a></span><span class="refpurpose"> — A DBusMessage in IBus.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ibus-IBusPendingCall.html">IBusPendingCall</a></span><span class="refpurpose"> — A DBusPendingCall in IBus.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusProxy.html">IBusProxy</a></span><span class="refpurpose"> — Base proxy object.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusSerializable.html">IBusSerializable</a></span><span class="refpurpose"> — A serializable object.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusService.html">IBusService</a></span><span class="refpurpose"> — IBus service back-end.</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="ch06.html">Internal</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="ibus-ibusdebug.html">ibusdebug</a></span><span class="refpurpose"> — Debug message output.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ibus-ibuserror.html">ibuserror</a></span><span class="refpurpose"> — Error message output.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ibus-ibusmainloop.html">ibusmainloop</a></span><span class="refpurpose"> — DBus server and connection setup functions.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusObject.html">IBusObject</a></span><span class="refpurpose"> — Base object of IBus.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="IBusServer.html">IBusServer</a></span><span class="refpurpose"> — Server that listen on a socket and wait for connection requests.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ibus-ibusshare.html">ibusshare</a></span><span class="refpurpose"> — Shared utility functions and definition.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ibus-ibustypes.html">ibustypes</a></span><span class="refpurpose"> — Generic types for  IBus.</span>
+</dt>
+</dl></dd>
+</dl></div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

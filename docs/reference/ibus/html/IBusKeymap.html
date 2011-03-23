@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusKeymap</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch03.html" title="Input method engine">
+<link rel="prev" href="IBusInputContext.html" title="IBusInputContext">
+<link rel="next" href="ibus-IBusKeysyms.html" title="IBusKeysyms">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusInputContext.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="ibus-IBusKeysyms.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusKeymap.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusKeymap.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusKeymap.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry" title="IBusKeymap">
+<a name="IBusKeymap"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusKeymap.top_of_page"></a>IBusKeymap</span></h2>
+<p>IBusKeymap — Keyboard mapping handling.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="IBusKeymap.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="IBusKeymap.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="IBusKeymap.html#IBusKeymap-struct" title="IBusKeymap">IBusKeymap</a>;
+                    <a class="link" href="IBusKeymap.html#IBusKeymapClass" title="IBusKeymapClass">IBusKeymapClass</a>;
+<a class="link" href="IBusKeymap.html" title="IBusKeymap"><span class="returnvalue">IBusKeymap</span></a> *        <a class="link" href="IBusKeymap.html#ibus-keymap-new" title="ibus_keymap_new ()">ibus_keymap_new</a>                     (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
+<a class="link" href="IBusKeymap.html" title="IBusKeymap"><span class="returnvalue">IBusKeymap</span></a> *        <a class="link" href="IBusKeymap.html#ibus-keymap-get" title="ibus_keymap_get ()">ibus_keymap_get</a>                     (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusKeymap.html#ibus-keymap-lookup-keysym" title="ibus_keymap_lookup_keysym ()">ibus_keymap_lookup_keysym</a>           (<em class="parameter"><code><a class="link" href="IBusKeymap.html" title="IBusKeymap"><span class="type">IBusKeymap</span></a> *keymap</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint16"><span class="type">guint16</span></a> keycode</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> state</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="IBusKeymap.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----IBusKeymap
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="IBusKeymap.description"></a><h2>Description</h2>
+<p>
+An IBusKeymap defines the mapping between keyboard scancodes and
+keyboard symbols such as numbers, alphabets, and punctuation marks.
+</p>
+<p>
+Some input methods assume certain keyboard layout
+(such as Chewing and Wubi requires an US-QWERTY layout),
+and expect key symbols to be arranged in that order.
+These input methods should new an IBusKeymap
+instance and define the keyboard layout.
+Then <a class="link" href="IBusKeymap.html#ibus-keymap-lookup-keysym" title="ibus_keymap_lookup_keysym ()"><code class="function">ibus_keymap_lookup_keysym()</code></a> can
+convert scancodes back to the key symbols.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a>, <a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="IBusKeymap.details"></a><h2>Details</h2>
+<div class="refsect2" title="IBusKeymap">
+<a name="IBusKeymap-struct"></a><h3>IBusKeymap</h3>
+<pre class="programlisting">typedef struct {
+    gchar *name;
+    guint keymap[256][7];
+} IBusKeymap;
+</pre>
+<p>
+A keymap object in IBus.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="IBusKeymap-struct.name"></a>name</code></em>;</span></p></td>
+<td>The name of the keymap, such as 'us', 'jp'.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="IBusKeymap-struct.keymap"></a>keymap</code></em>[256][7];</span></p></td>
+<td>Keymap table. IME developers normally don have to touch this.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="IBusKeymapClass">
+<a name="IBusKeymapClass"></a><h3>IBusKeymapClass</h3>
+<pre class="programlisting">typedef struct {
+    IBusObjectClass parent;
+} IBusKeymapClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_keymap_new ()">
+<a name="ibus-keymap-new"></a><h3>ibus_keymap_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusKeymap.html" title="IBusKeymap"><span class="returnvalue">IBusKeymap</span></a> *        ibus_keymap_new                     (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
+<div class="warning" title="Warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_keymap_new</code> is deprecated and should not be used in newly-written code. This function has been deprecated and should
+not be used in newly written code. Please use <a class="link" href="IBusKeymap.html#ibus-keymap-get" title="ibus_keymap_get ()"><code class="function">ibus_keymap_get()</code></a>.</p>
+</div>
+<p>
+Get an IBusKeymap associated with the giving name.
+</p>
+<p>
+This function loads the keymap file specified in <em class="parameter"><code>name</code></em>
+in the IBUS_DATA_DIR/keymaps directory.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>The keymap file to be loaded, such as 'us', 'jp'.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An IBusKeymap associated with the giving name; or NULL if failed.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_keymap_get ()">
+<a name="ibus-keymap-get"></a><h3>ibus_keymap_get ()</h3>
+<pre class="programlisting"><a class="link" href="IBusKeymap.html" title="IBusKeymap"><span class="returnvalue">IBusKeymap</span></a> *        ibus_keymap_get                     (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
+<p>
+Get an IBusKeymap associated with the giving name.
+</p>
+<p>
+This function loads the keymap file specified in <em class="parameter"><code>name</code></em>
+in the IBUS_DATA_DIR/keymaps directory.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>The keymap file to be loaded, such as 'us', 'jp'.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An IBusKeymap associated with the giving name; or NULL if failed.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_keymap_lookup_keysym ()">
+<a name="ibus-keymap-lookup-keysym"></a><h3>ibus_keymap_lookup_keysym ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_keymap_lookup_keysym           (<em class="parameter"><code><a class="link" href="IBusKeymap.html" title="IBusKeymap"><span class="type">IBusKeymap</span></a> *keymap</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint16"><span class="type">guint16</span></a> keycode</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> state</code></em>);</pre>
+<p>
+Convert the scancode to keysym, given the keymap.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keymap</code></em> :</span></p></td>
+<td>An IBusKeymap.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keycode</code></em> :</span></p></td>
+<td>A scancode to be converted.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
+<td>Modifier flags(such as Ctrl, Shift).
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Corresponding keysym.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

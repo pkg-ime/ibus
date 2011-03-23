@@ -1,0 +1,122 @@
+<!-- ##### SECTION Title ##### -->
+IBusServer
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusServer ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusServer::new-connection ##### -->
+<para>
+
+</para>
+
+@ibusserver: the object which received the signal.
+@arg1: 
+
+<!-- ##### ARG IBusServer:connection-type ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT IBusServerClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+@new_connection: 
+
+<!-- ##### USER_FUNCTION IBusNewConnectionFunc ##### -->
+<para>
+
+</para>
+
+@server: 
+@connection: 
+
+
+<!-- ##### FUNCTION ibus_server_new ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_server_listen ##### -->
+<para>
+
+</para>
+
+@server: 
+@address: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_server_disconnect ##### -->
+<para>
+
+</para>
+
+@server: 
+
+
+<!-- ##### FUNCTION ibus_server_get_address ##### -->
+<para>
+
+</para>
+
+@server: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_server_get_id ##### -->
+<para>
+
+</para>
+
+@server: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_server_is_connected ##### -->
+<para>
+
+</para>
+
+@server: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_server_set_auth_mechanisms ##### -->
+<para>
+
+</para>
+
+@server: 
+@mechanisms: 
+@Returns: 
+
+

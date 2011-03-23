@@ -1,0 +1,63 @@
+<!-- ##### SECTION Title ##### -->
+IBusConfigService
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusConfigService ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ARG IBusConfigService:connection ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT IBusConfigServiceClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+@set_value: 
+@get_value: 
+@unset: 
+
+<!-- ##### FUNCTION ibus_config_service_new ##### -->
+<para>
+
+</para>
+
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_config_service_value_changed ##### -->
+<para>
+
+</para>
+
+@config: 
+@section: 
+@name: 
+@value: 
+
+

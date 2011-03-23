@@ -1,0 +1,66 @@
+<!-- ##### SECTION Title ##### -->
+ibusmainloop
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### USER_FUNCTION DBusConnectionSetupFunc ##### -->
+<para>
+
+</para>
+
+@connection: 
+@user_data: 
+
+
+<!-- ##### USER_FUNCTION DBusServerSetupFunc ##### -->
+<para>
+
+</para>
+
+@server: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_mainloop_setup ##### -->
+<para>
+
+</para>
+
+@connection_func: 
+@server_func: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_dbus_server_setup ##### -->
+<para>
+
+</para>
+
+@server: 
+
+
+<!-- ##### FUNCTION ibus_dbus_connection_setup ##### -->
+<para>
+
+</para>
+
+@connection: 
+
+

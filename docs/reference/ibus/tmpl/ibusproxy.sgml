@@ -1,0 +1,204 @@
+<!-- ##### SECTION Title ##### -->
+IBusProxy
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusProxy ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusProxy::ibus-signal ##### -->
+<para>
+
+</para>
+
+@ibusproxy: the object which received the signal.
+@arg1: 
+@Returns: 
+
+<!-- ##### ARG IBusProxy:connection ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusProxy:interface ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusProxy:name ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusProxy:path ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT IBusProxyClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+@ibus_signal: 
+
+<!-- ##### FUNCTION ibus_proxy_new ##### -->
+<para>
+
+</para>
+
+@name: 
+@path: 
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_proxy_send ##### -->
+<para>
+
+</para>
+
+@proxy: 
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_proxy_call ##### -->
+<para>
+
+</para>
+
+@proxy: 
+@method: 
+@first_arg_type: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_proxy_call_with_reply ##### -->
+<para>
+
+</para>
+
+@proxy: 
+@method: 
+@pending: 
+@timeout_milliseconds: 
+@error: 
+@first_arg_type: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_proxy_call_with_reply_and_block ##### -->
+<para>
+
+</para>
+
+@proxy: 
+@method: 
+@timeout_milliseconds: 
+@error: 
+@first_arg_type: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_proxy_send_with_reply ##### -->
+<para>
+
+</para>
+
+@proxy: 
+@message: 
+@pending: 
+@timeout_milliseconds: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_proxy_send_with_reply_and_block ##### -->
+<para>
+
+</para>
+
+@proxy: 
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_proxy_handle_signal ##### -->
+<para>
+
+</para>
+
+@proxy: 
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_proxy_get_name ##### -->
+<para>
+
+</para>
+
+@proxy: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_proxy_get_unique_name ##### -->
+<para>
+
+</para>
+
+@proxy: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_proxy_get_path ##### -->
+<para>
+
+</para>
+
+@proxy: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_proxy_get_interface ##### -->
+<para>
+
+</para>
+
+@proxy: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_proxy_get_connection ##### -->
+<para>
+
+</para>
+
+@proxy: 
+@Returns: 
+
+

@@ -1,0 +1,589 @@
+<!-- ##### SECTION Title ##### -->
+ibusmessage
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO IBUS_TYPE_OBJECT_PATH ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_TYPE_ARRAY ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_TYPE_STRUCT ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_TYPE_DICT_ENTRY ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO IBUS_TYPE_VARIANT ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### TYPEDEF IBusMessage ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF IBusMessageIter ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION ibus_type_get_object_path ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_type_get_array ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_type_get_struct ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_type_get_dict_entry ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_type_get_variant ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_new ##### -->
+<para>
+
+</para>
+
+@message_type: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_ref ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_unref ##### -->
+<para>
+
+</para>
+
+@message: 
+
+
+<!-- ##### FUNCTION ibus_message_new_method_call ##### -->
+<para>
+
+</para>
+
+@destination: 
+@path: 
+@interface: 
+@method: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_new_method_return ##### -->
+<para>
+
+</para>
+
+@reply_to: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_new_error ##### -->
+<para>
+
+</para>
+
+@reply_to: 
+@error_name: 
+@error_message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_new_error_printf ##### -->
+<para>
+
+</para>
+
+@reply_to: 
+@error_name: 
+@error_format: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_new_signal ##### -->
+<para>
+
+</para>
+
+@path: 
+@interface: 
+@method: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_is_method_call ##### -->
+<para>
+
+</para>
+
+@message: 
+@interface: 
+@method: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_is_error ##### -->
+<para>
+
+</para>
+
+@message: 
+@error_name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_is_signal ##### -->
+<para>
+
+</para>
+
+@message: 
+@interface: 
+@signal_name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_set_destination ##### -->
+<para>
+
+</para>
+
+@message: 
+@destination: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_set_sender ##### -->
+<para>
+
+</para>
+
+@message: 
+@sender: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_set_error_name ##### -->
+<para>
+
+</para>
+
+@message: 
+@error_name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_set_interface ##### -->
+<para>
+
+</para>
+
+@message: 
+@interface: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_set_member ##### -->
+<para>
+
+</para>
+
+@message: 
+@member: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_set_path ##### -->
+<para>
+
+</para>
+
+@message: 
+@path: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_set_no_reply ##### -->
+<para>
+
+</para>
+
+@message: 
+@no_reply: 
+
+
+<!-- ##### FUNCTION ibus_message_set_reply_serial ##### -->
+<para>
+
+</para>
+
+@message: 
+@reply_serial: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_type ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_destination ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_sender ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_error_name ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_error_message ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_interface ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_member ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_path ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_no_reply ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_reply_serial ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_serial ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_append_args ##### -->
+<para>
+
+</para>
+
+@message: 
+@first_arg_type: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_append_args_valist ##### -->
+<para>
+
+</para>
+
+@message: 
+@first_arg_type: 
+@va_args: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_args ##### -->
+<para>
+
+</para>
+
+@message: 
+@error: 
+@first_arg_type: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_get_args_valist ##### -->
+<para>
+
+</para>
+
+@message: 
+@error: 
+@first_arg_type: 
+@va_args: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_init_append ##### -->
+<para>
+
+</para>
+
+@message: 
+@iter: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_append ##### -->
+<para>
+
+</para>
+
+@iter: 
+@type: 
+@value: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_copy_data ##### -->
+<para>
+
+</para>
+
+@dst: 
+@src: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_init ##### -->
+<para>
+
+</para>
+
+@message: 
+@iter: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_get_basic ##### -->
+<para>
+
+</para>
+
+@iter: 
+@value: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_get ##### -->
+<para>
+
+</para>
+
+@iter: 
+@type: 
+@value: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_next ##### -->
+<para>
+
+</para>
+
+@iter: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_has_next ##### -->
+<para>
+
+</para>
+
+@iter: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_open_container ##### -->
+<para>
+
+</para>
+
+@iter: 
+@type: 
+@contained_signature: 
+@sub: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_close_container ##### -->
+<para>
+
+</para>
+
+@iter: 
+@sub: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_recurse ##### -->
+<para>
+
+</para>
+
+@iter: 
+@type: 
+@sub: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_get_arg_type ##### -->
+<para>
+
+</para>
+
+@iter: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_iter_get_element_type ##### -->
+<para>
+
+</para>
+
+@iter: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_message_to_string ##### -->
+<para>
+
+</para>
+
+@message: 
+@Returns: 
+
+

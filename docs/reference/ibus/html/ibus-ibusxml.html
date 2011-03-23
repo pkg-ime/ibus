@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ibusxml</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch04.html" title="Configuration">
+<link rel="prev" href="ibus-ibusversion.html" title="ibusversion">
+<link rel="next" href="ch05.html" title="Communication">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ibus-ibusversion.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch04.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="ch05.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#ibus-ibusxml.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#ibus-ibusxml.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry" title="ibusxml">
+<a name="ibus-ibusxml"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="ibus-ibusxml.top_of_page"></a>ibusxml</span></h2>
+<p>ibusxml — XML handling functions for IBus.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" title="Stability Level">
+<a name="ibus-ibusxml.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="ibus-ibusxml.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode">XMLNode</a>;
+<a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="returnvalue">XMLNode</span></a> *           <a class="link" href="ibus-ibusxml.html#ibus-xml-parse-file" title="ibus_xml_parse_file ()">ibus_xml_parse_file</a>                 (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
+<a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="returnvalue">XMLNode</span></a> *           <a class="link" href="ibus-ibusxml.html#ibus-xml-parse-buffer" title="ibus_xml_parse_buffer ()">ibus_xml_parse_buffer</a>               (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *buffer</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-ibusxml.html#ibus-xml-free" title="ibus_xml_free ()">ibus_xml_free</a>                       (<em class="parameter"><code><a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="type">XMLNode</span></a> *node</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-ibusxml.html#ibus-xml-output" title="ibus_xml_output ()">ibus_xml_output</a>                     (<em class="parameter"><code>const <a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="type">XMLNode</span></a> *node</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Strings.html#GString"><span class="type">GString</span></a> *output</code></em>);
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="ibus-ibusxml.description"></a><h2>Description</h2>
+<p>
+IBusXML lists data structure and handling function for XML in IBus.
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="ibus-ibusxml.details"></a><h2>Details</h2>
+<div class="refsect2" title="XMLNode">
+<a name="XMLNode"></a><h3>XMLNode</h3>
+<pre class="programlisting">typedef struct {
+    gchar  *name;
+    gchar  *text;
+    gchar  **attributes;
+    GList *sub_nodes;
+} XMLNode;
+</pre>
+<p>
+A data type representing an XML nod.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="XMLNode.name"></a>name</code></em>;</span></p></td>
+<td>Name of XML tag.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="XMLNode.text"></a>text</code></em>;</span></p></td>
+<td>Text enclosed by XML start tag and end tag. i.e. <code class="sgmltag-element">text</code>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> **<em class="structfield"><code><a name="XMLNode.attributes"></a>attributes</code></em>;</span></p></td>
+<td>Attributes of the XML node.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="XMLNode.sub-nodes"></a>sub_nodes</code></em>;</span></p></td>
+<td>Children node of this XML node.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_xml_parse_file ()">
+<a name="ibus-xml-parse-file"></a><h3>ibus_xml_parse_file ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="returnvalue">XMLNode</span></a> *           ibus_xml_parse_file                 (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
+<p>
+Parse an XML file and return a corresponding XML tree.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>File name to be parsed.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Root node of parsed XML tree.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_xml_parse_buffer ()">
+<a name="ibus-xml-parse-buffer"></a><h3>ibus_xml_parse_buffer ()</h3>
+<pre class="programlisting"><a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="returnvalue">XMLNode</span></a> *           ibus_xml_parse_buffer               (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *buffer</code></em>);</pre>
+<p>
+Parse a string buffer which contains an XML-formatted string,
+and return a corresponding XML tree.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>buffer</code></em> :</span></p></td>
+<td>Buffer to be parsed.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Root node of parsed XML tree.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_xml_free ()">
+<a name="ibus-xml-free"></a><h3>ibus_xml_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_xml_free                       (<em class="parameter"><code><a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="type">XMLNode</span></a> *node</code></em>);</pre>
+<p>
+Free an XML tree.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>node</code></em> :</span></p></td>
+<td>Root node of an XML tree.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_xml_output ()">
+<a name="ibus-xml-output"></a><h3>ibus_xml_output ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_xml_output                     (<em class="parameter"><code>const <a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="type">XMLNode</span></a> *node</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Strings.html#GString"><span class="type">GString</span></a> *output</code></em>);</pre>
+<p>
+Output an XML tree to a GString.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>node</code></em> :</span></p></td>
+<td>Root node of an XML tree.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>output</code></em> :</span></p></td>
+<td>GString which stores the output.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.15</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!-- ##### SECTION Title ##### -->
+IBusConfig
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusConfig ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusConfig::value-changed ##### -->
+<para>
+
+</para>
+
+@ibusconfig: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+
+<!-- ##### STRUCT IBusConfigClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_config_new ##### -->
+<para>
+
+</para>
+
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_config_get_value ##### -->
+<para>
+
+</para>
+
+@config: 
+@section: 
+@name: 
+@value: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_config_set_value ##### -->
+<para>
+
+</para>
+
+@config: 
+@section: 
+@name: 
+@value: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_config_unset ##### -->
+<para>
+
+</para>
+
+@config: 
+@section: 
+@name: 
+@Returns: 
+
+
