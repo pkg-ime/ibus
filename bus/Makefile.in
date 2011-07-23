@@ -57,14 +57,13 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-TESTS = test-matchrule$(EXEEXT) test-stress$(EXEEXT)
-noinst_PROGRAMS = $(am__EXEEXT_1)
+noinst_PROGRAMS =
 bin_PROGRAMS = ibus-daemon$(EXEEXT)
 subdir = bus
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/as-version.m4 \
-	$(top_srcdir)/m4/gtk-doc.m4 $(top_srcdir)/m4/intltool.m4 \
+am__aclocal_m4_deps = $(top_srcdir)/m4/gtk-doc.m4 \
+	$(top_srcdir)/m4/intltool.m4 $(top_srcdir)/m4/introspection.m4 \
 	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
 	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
 	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/configure.ac
@@ -74,41 +73,27 @@ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(desktopdir)" \
-	"$(DESTDIR)$(xdgautostartdir)"
-am__EXEEXT_1 = test-matchrule$(EXEEXT) test-stress$(EXEEXT)
+am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(desktopdir)"
 PROGRAMS = $(bin_PROGRAMS) $(noinst_PROGRAMS)
+am__objects_1 =
 am_ibus_daemon_OBJECTS = ibus_daemon-main.$(OBJEXT) \
-	ibus_daemon-dbusimpl.$(OBJEXT) ibus_daemon-ibusimpl.$(OBJEXT) \
+	ibus_daemon-component.$(OBJEXT) ibus_daemon-dbusimpl.$(OBJEXT) \
+	ibus_daemon-ibusimpl.$(OBJEXT) \
 	ibus_daemon-inputcontext.$(OBJEXT) \
 	ibus_daemon-engineproxy.$(OBJEXT) \
 	ibus_daemon-panelproxy.$(OBJEXT) \
 	ibus_daemon-factoryproxy.$(OBJEXT) \
 	ibus_daemon-server.$(OBJEXT) ibus_daemon-connection.$(OBJEXT) \
-	ibus_daemon-matchrule.$(OBJEXT) ibus_daemon-registry.$(OBJEXT)
+	ibus_daemon-matchrule.$(OBJEXT) ibus_daemon-registry.$(OBJEXT) \
+	ibus_daemon-marshalers.$(OBJEXT) $(am__objects_1)
 ibus_daemon_OBJECTS = $(am_ibus_daemon_OBJECTS)
-am__DEPENDENCIES_1 = $(libibus)
+am__DEPENDENCIES_1 =
+am__DEPENDENCIES_2 = $(libibus) $(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
 ibus_daemon_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(ibus_daemon_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-am_test_matchrule_OBJECTS = test_matchrule-connection.$(OBJEXT) \
-	test_matchrule-matchrule.$(OBJEXT) \
-	test_matchrule-test-matchrule.$(OBJEXT)
-test_matchrule_OBJECTS = $(am_test_matchrule_OBJECTS)
-test_matchrule_DEPENDENCIES = $(am__DEPENDENCIES_1)
-test_matchrule_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(test_matchrule_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o \
-	$@
-am_test_stress_OBJECTS = test_stress-test-client.$(OBJEXT) \
-	test_stress-test-stress.$(OBJEXT)
-test_stress_OBJECTS = $(am_test_stress_OBJECTS)
-test_stress_DEPENDENCIES = $(am__DEPENDENCIES_1)
-test_stress_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(test_stress_CFLAGS) \
 	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -136,10 +121,8 @@ am__v_CCLD_0 = @echo "  CCLD  " $@;
 AM_V_GEN = $(am__v_GEN_$(V))
 am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))
 am__v_GEN_0 = @echo "  GEN   " $@;
-SOURCES = $(ibus_daemon_SOURCES) $(test_matchrule_SOURCES) \
-	$(test_stress_SOURCES)
-DIST_SOURCES = $(ibus_daemon_SOURCES) $(test_matchrule_SOURCES) \
-	$(test_stress_SOURCES)
+SOURCES = $(ibus_daemon_SOURCES)
+DIST_SOURCES = $(ibus_daemon_SOURCES)
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
     $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
@@ -161,11 +144,9 @@ am__nobase_list = $(am__nobase_strip_setup); \
 am__base_list = \
   sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
   sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
-DATA = $(desktop_DATA) $(xdgautostart_DATA)
+DATA = $(desktop_DATA)
 ETAGS = etags
 CTAGS = ctags
-am__tty_colors = \
-red=; grn=; lgn=; blu=; std=
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 ALL_LINGUAS = @ALL_LINGUAS@
@@ -189,7 +170,6 @@ CXXDEPMODE = @CXXDEPMODE@
 CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DATADIRNAME = @DATADIRNAME@
-DATE_DISPLAY = @DATE_DISPLAY@
 DBUS_CFLAGS = @DBUS_CFLAGS@
 DBUS_LIBS = @DBUS_LIBS@
 DBUS_PYTHON_CFLAGS = @DBUS_PYTHON_CFLAGS@
@@ -241,7 +221,12 @@ GTKDOC_CHECK = @GTKDOC_CHECK@
 GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
 HTML_DIR = @HTML_DIR@
+IBUS_API_VERSION = @IBUS_API_VERSION@
 IBUS_GIR_SCANNERFLAGS = @IBUS_GIR_SCANNERFLAGS@
+IBUS_ICON_KEYBOARD = @IBUS_ICON_KEYBOARD@
+IBUS_MAJOR_VERSION = @IBUS_MAJOR_VERSION@
+IBUS_MICRO_VERSION = @IBUS_MICRO_VERSION@
+IBUS_MINOR_VERSION = @IBUS_MINOR_VERSION@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -293,11 +278,6 @@ PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
-PACKAGE_VERSION_MAJOR = @PACKAGE_VERSION_MAJOR@
-PACKAGE_VERSION_MICRO = @PACKAGE_VERSION_MICRO@
-PACKAGE_VERSION_MINOR = @PACKAGE_VERSION_MINOR@
-PACKAGE_VERSION_NANO = @PACKAGE_VERSION_NANO@
-PACKAGE_VERSION_RELEASE = @PACKAGE_VERSION_RELEASE@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
 PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
@@ -382,96 +362,80 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-libibus = $(top_builddir)/src/libibus.la
+NULL = 
+libibus = $(top_builddir)/src/libibus-@IBUS_API_VERSION@.la
 INCLUDES = \
-	-I$(top_srcdir)/src \
+	-I$(top_srcdir)/src   \
 	-I$(top_builddir)/src \
 	$(NULL)
 
 AM_CFLAGS = \
-	@GLIB2_CFLAGS@ \
-	@GTHREAD2_CFLAGS@ \
-	@DBUS_CFLAGS@ \
-	-DG_LOG_DOMAIN=\"IBUS\" \
+	@GLIB2_CFLAGS@                 \
+	@GIO2_CFLAGS@                  \
+	@GTHREAD2_CFLAGS@              \
+	-DG_LOG_DOMAIN=\"IBUS\"        \
 	-DPKGDATADIR=\"$(pkgdatadir)\" \
 	-DLIBEXECDIR=\"$(libexecdir)\" \
-	-DBINDIR=\"@bindir@\" \
-	$(INCLUDES) \
+	-DBINDIR=\"@bindir@\"          \
+	$(INCLUDES)                    \
 	$(NULL)
 
 AM_LDADD = \
-	@GOBJECT2_LIBS@ \
-	@GLIB2_LIBS@ \
-	@GTHREAD2_LIBS@ \
-	@DBUS_LIBS@ \
-	$(libibus) \
+	@GOBJECT2_LIBS@         \
+	@GLIB2_LIBS@            \
+	@GIO2_LIBS@             \
+	@GTHREAD2_LIBS@         \
+	$(libibus)              \
 	$(NULL)
 
-xdgautostart_DATA = \
-	ibus.desktop \
-	$(NULL)
-
-xdgautostartdir = $(sysconfdir)/xdg/autostart
 desktopdir = $(datadir)/applications
 desktop_in_files = ibus.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 ibus_daemon_DEPENDENCIES = \
-	$(libibus) \
+	$(libibus)              \
 	$(NULL)
 
 ibus_daemon_SOURCES = \
-	main.c \
-	dbusimpl.c \
-	dbusimpl.h \
-	ibusimpl.c \
-	ibusimpl.h \
-	inputcontext.c \
-	inputcontext.h \
-	engineproxy.c \
-	engineproxy.h \
-	panelproxy.c \
-	panelproxy.h \
-	factoryproxy.c \
-	factoryproxy.h \
-	server.c \
-	server.h \
-	connection.c \
-	connection.h \
-	matchrule.c \
-	matchrule.h \
-	registry.c \
-	registry.h \
-	option.h \
+	main.c                  \
+	component.c             \
+	component.h             \
+	dbusimpl.c              \
+	dbusimpl.h              \
+	ibusimpl.c              \
+	ibusimpl.h              \
+	inputcontext.c          \
+	inputcontext.h          \
+	engineproxy.c           \
+	engineproxy.h           \
+	panelproxy.c            \
+	panelproxy.h            \
+	factoryproxy.c          \
+	factoryproxy.h          \
+	server.c                \
+	server.h                \
+	connection.c            \
+	connection.h            \
+	matchrule.c             \
+	matchrule.h             \
+	registry.c              \
+	registry.h              \
+	option.h                \
+	marshalers.c            \
+	marshalers.h            \
+	types.h                 \
 	$(NULL)
 
 ibus_daemon_CFLAGS = \
-	$(AM_CFLAGS) \
+	$(AM_CFLAGS)            \
 	$(NULL)
 
 ibus_daemon_LDADD = \
-	$(AM_LDADD) \
+	$(AM_LDADD)             \
 	$(NULL)
 
-
-# test_registry_SOURCES = \
-# 	registry.c \
-# 	registry.h \
-# 	factoryproxy.c \
-# 	factoryproxy.h \
-# 	test-registry.c \
-# 	$(NULL)
-test_matchrule_SOURCES = \
-	connection.c \
-	matchrule.c \
-	test-matchrule.c \
-	$(NULL)
-
-test_matchrule_CFLAGS = \
-	$(AM_CFLAGS) \
-	$(NULL)
-
-test_matchrule_LDADD = \
-	$(AM_LDADD) \
+BUILT_SOURCES = \
+	marshalers.h            \
+	marshalers.c            \
 	$(NULL)
 
 test_stress_SOURCES = \
@@ -493,14 +457,16 @@ test_stress_LDADD = \
 	$(NULL)
 
 EXTRA_DIST = \
-	$(desktop_in_files) \
+	$(desktop_in_files)     \
+	marshalers.list         \
 	$(NULL)
 
 DISTCLEANFILES = \
-	$(desktop_DATA) \
+	$(desktop_DATA)         \
 	$(NULL)
 
-all: all-am
+all: $(BUILT_SOURCES)
+	$(MAKE) $(AM_MAKEFLAGS) all-am
 
 .SUFFIXES:
 .SUFFIXES: .c .lo .o .obj
@@ -589,12 +555,6 @@ clean-noinstPROGRAMS:
 ibus-daemon$(EXEEXT): $(ibus_daemon_OBJECTS) $(ibus_daemon_DEPENDENCIES) 
 	@rm -f ibus-daemon$(EXEEXT)
 	$(AM_V_CCLD)$(ibus_daemon_LINK) $(ibus_daemon_OBJECTS) $(ibus_daemon_LDADD) $(LIBS)
-test-matchrule$(EXEEXT): $(test_matchrule_OBJECTS) $(test_matchrule_DEPENDENCIES) 
-	@rm -f test-matchrule$(EXEEXT)
-	$(AM_V_CCLD)$(test_matchrule_LINK) $(test_matchrule_OBJECTS) $(test_matchrule_LDADD) $(LIBS)
-test-stress$(EXEEXT): $(test_stress_OBJECTS) $(test_stress_DEPENDENCIES) 
-	@rm -f test-stress$(EXEEXT)
-	$(AM_V_CCLD)$(test_stress_LINK) $(test_stress_OBJECTS) $(test_stress_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -602,6 +562,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus_daemon-component.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus_daemon-connection.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus_daemon-dbusimpl.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus_daemon-engineproxy.Po@am__quote@
@@ -609,15 +570,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus_daemon-ibusimpl.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus_daemon-inputcontext.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus_daemon-main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus_daemon-marshalers.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus_daemon-matchrule.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus_daemon-panelproxy.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus_daemon-registry.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus_daemon-server.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test_matchrule-connection.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test_matchrule-matchrule.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test_matchrule-test-matchrule.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test_stress-test-client.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test_stress-test-stress.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -658,6 +615,22 @@ ibus_daemon-main.obj: main.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='main.c' object='ibus_daemon-main.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ibus_daemon_CFLAGS) $(CFLAGS) -c -o ibus_daemon-main.obj `if test -f 'main.c'; then $(CYGPATH_W) 'main.c'; else $(CYGPATH_W) '$(srcdir)/main.c'; fi`
+
+ibus_daemon-component.o: component.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ibus_daemon_CFLAGS) $(CFLAGS) -MT ibus_daemon-component.o -MD -MP -MF $(DEPDIR)/ibus_daemon-component.Tpo -c -o ibus_daemon-component.o `test -f 'component.c' || echo '$(srcdir)/'`component.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ibus_daemon-component.Tpo $(DEPDIR)/ibus_daemon-component.Po
+@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='component.c' object='ibus_daemon-component.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ibus_daemon_CFLAGS) $(CFLAGS) -c -o ibus_daemon-component.o `test -f 'component.c' || echo '$(srcdir)/'`component.c
+
+ibus_daemon-component.obj: component.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ibus_daemon_CFLAGS) $(CFLAGS) -MT ibus_daemon-component.obj -MD -MP -MF $(DEPDIR)/ibus_daemon-component.Tpo -c -o ibus_daemon-component.obj `if test -f 'component.c'; then $(CYGPATH_W) 'component.c'; else $(CYGPATH_W) '$(srcdir)/component.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ibus_daemon-component.Tpo $(DEPDIR)/ibus_daemon-component.Po
+@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='component.c' object='ibus_daemon-component.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ibus_daemon_CFLAGS) $(CFLAGS) -c -o ibus_daemon-component.obj `if test -f 'component.c'; then $(CYGPATH_W) 'component.c'; else $(CYGPATH_W) '$(srcdir)/component.c'; fi`
 
 ibus_daemon-dbusimpl.o: dbusimpl.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ibus_daemon_CFLAGS) $(CFLAGS) -MT ibus_daemon-dbusimpl.o -MD -MP -MF $(DEPDIR)/ibus_daemon-dbusimpl.Tpo -c -o ibus_daemon-dbusimpl.o `test -f 'dbusimpl.c' || echo '$(srcdir)/'`dbusimpl.c
@@ -819,85 +792,21 @@ ibus_daemon-registry.obj: registry.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ibus_daemon_CFLAGS) $(CFLAGS) -c -o ibus_daemon-registry.obj `if test -f 'registry.c'; then $(CYGPATH_W) 'registry.c'; else $(CYGPATH_W) '$(srcdir)/registry.c'; fi`
 
-test_matchrule-connection.o: connection.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_matchrule_CFLAGS) $(CFLAGS) -MT test_matchrule-connection.o -MD -MP -MF $(DEPDIR)/test_matchrule-connection.Tpo -c -o test_matchrule-connection.o `test -f 'connection.c' || echo '$(srcdir)/'`connection.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/test_matchrule-connection.Tpo $(DEPDIR)/test_matchrule-connection.Po
+ibus_daemon-marshalers.o: marshalers.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ibus_daemon_CFLAGS) $(CFLAGS) -MT ibus_daemon-marshalers.o -MD -MP -MF $(DEPDIR)/ibus_daemon-marshalers.Tpo -c -o ibus_daemon-marshalers.o `test -f 'marshalers.c' || echo '$(srcdir)/'`marshalers.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ibus_daemon-marshalers.Tpo $(DEPDIR)/ibus_daemon-marshalers.Po
 @am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='connection.c' object='test_matchrule-connection.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='marshalers.c' object='ibus_daemon-marshalers.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_matchrule_CFLAGS) $(CFLAGS) -c -o test_matchrule-connection.o `test -f 'connection.c' || echo '$(srcdir)/'`connection.c
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ibus_daemon_CFLAGS) $(CFLAGS) -c -o ibus_daemon-marshalers.o `test -f 'marshalers.c' || echo '$(srcdir)/'`marshalers.c
 
-test_matchrule-connection.obj: connection.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_matchrule_CFLAGS) $(CFLAGS) -MT test_matchrule-connection.obj -MD -MP -MF $(DEPDIR)/test_matchrule-connection.Tpo -c -o test_matchrule-connection.obj `if test -f 'connection.c'; then $(CYGPATH_W) 'connection.c'; else $(CYGPATH_W) '$(srcdir)/connection.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/test_matchrule-connection.Tpo $(DEPDIR)/test_matchrule-connection.Po
+ibus_daemon-marshalers.obj: marshalers.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ibus_daemon_CFLAGS) $(CFLAGS) -MT ibus_daemon-marshalers.obj -MD -MP -MF $(DEPDIR)/ibus_daemon-marshalers.Tpo -c -o ibus_daemon-marshalers.obj `if test -f 'marshalers.c'; then $(CYGPATH_W) 'marshalers.c'; else $(CYGPATH_W) '$(srcdir)/marshalers.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ibus_daemon-marshalers.Tpo $(DEPDIR)/ibus_daemon-marshalers.Po
 @am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='connection.c' object='test_matchrule-connection.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='marshalers.c' object='ibus_daemon-marshalers.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_matchrule_CFLAGS) $(CFLAGS) -c -o test_matchrule-connection.obj `if test -f 'connection.c'; then $(CYGPATH_W) 'connection.c'; else $(CYGPATH_W) '$(srcdir)/connection.c'; fi`
-
-test_matchrule-matchrule.o: matchrule.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_matchrule_CFLAGS) $(CFLAGS) -MT test_matchrule-matchrule.o -MD -MP -MF $(DEPDIR)/test_matchrule-matchrule.Tpo -c -o test_matchrule-matchrule.o `test -f 'matchrule.c' || echo '$(srcdir)/'`matchrule.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/test_matchrule-matchrule.Tpo $(DEPDIR)/test_matchrule-matchrule.Po
-@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='matchrule.c' object='test_matchrule-matchrule.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_matchrule_CFLAGS) $(CFLAGS) -c -o test_matchrule-matchrule.o `test -f 'matchrule.c' || echo '$(srcdir)/'`matchrule.c
-
-test_matchrule-matchrule.obj: matchrule.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_matchrule_CFLAGS) $(CFLAGS) -MT test_matchrule-matchrule.obj -MD -MP -MF $(DEPDIR)/test_matchrule-matchrule.Tpo -c -o test_matchrule-matchrule.obj `if test -f 'matchrule.c'; then $(CYGPATH_W) 'matchrule.c'; else $(CYGPATH_W) '$(srcdir)/matchrule.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/test_matchrule-matchrule.Tpo $(DEPDIR)/test_matchrule-matchrule.Po
-@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='matchrule.c' object='test_matchrule-matchrule.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_matchrule_CFLAGS) $(CFLAGS) -c -o test_matchrule-matchrule.obj `if test -f 'matchrule.c'; then $(CYGPATH_W) 'matchrule.c'; else $(CYGPATH_W) '$(srcdir)/matchrule.c'; fi`
-
-test_matchrule-test-matchrule.o: test-matchrule.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_matchrule_CFLAGS) $(CFLAGS) -MT test_matchrule-test-matchrule.o -MD -MP -MF $(DEPDIR)/test_matchrule-test-matchrule.Tpo -c -o test_matchrule-test-matchrule.o `test -f 'test-matchrule.c' || echo '$(srcdir)/'`test-matchrule.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/test_matchrule-test-matchrule.Tpo $(DEPDIR)/test_matchrule-test-matchrule.Po
-@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='test-matchrule.c' object='test_matchrule-test-matchrule.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_matchrule_CFLAGS) $(CFLAGS) -c -o test_matchrule-test-matchrule.o `test -f 'test-matchrule.c' || echo '$(srcdir)/'`test-matchrule.c
-
-test_matchrule-test-matchrule.obj: test-matchrule.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_matchrule_CFLAGS) $(CFLAGS) -MT test_matchrule-test-matchrule.obj -MD -MP -MF $(DEPDIR)/test_matchrule-test-matchrule.Tpo -c -o test_matchrule-test-matchrule.obj `if test -f 'test-matchrule.c'; then $(CYGPATH_W) 'test-matchrule.c'; else $(CYGPATH_W) '$(srcdir)/test-matchrule.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/test_matchrule-test-matchrule.Tpo $(DEPDIR)/test_matchrule-test-matchrule.Po
-@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='test-matchrule.c' object='test_matchrule-test-matchrule.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_matchrule_CFLAGS) $(CFLAGS) -c -o test_matchrule-test-matchrule.obj `if test -f 'test-matchrule.c'; then $(CYGPATH_W) 'test-matchrule.c'; else $(CYGPATH_W) '$(srcdir)/test-matchrule.c'; fi`
-
-test_stress-test-client.o: test-client.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_stress_CFLAGS) $(CFLAGS) -MT test_stress-test-client.o -MD -MP -MF $(DEPDIR)/test_stress-test-client.Tpo -c -o test_stress-test-client.o `test -f 'test-client.c' || echo '$(srcdir)/'`test-client.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/test_stress-test-client.Tpo $(DEPDIR)/test_stress-test-client.Po
-@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='test-client.c' object='test_stress-test-client.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_stress_CFLAGS) $(CFLAGS) -c -o test_stress-test-client.o `test -f 'test-client.c' || echo '$(srcdir)/'`test-client.c
-
-test_stress-test-client.obj: test-client.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_stress_CFLAGS) $(CFLAGS) -MT test_stress-test-client.obj -MD -MP -MF $(DEPDIR)/test_stress-test-client.Tpo -c -o test_stress-test-client.obj `if test -f 'test-client.c'; then $(CYGPATH_W) 'test-client.c'; else $(CYGPATH_W) '$(srcdir)/test-client.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/test_stress-test-client.Tpo $(DEPDIR)/test_stress-test-client.Po
-@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='test-client.c' object='test_stress-test-client.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_stress_CFLAGS) $(CFLAGS) -c -o test_stress-test-client.obj `if test -f 'test-client.c'; then $(CYGPATH_W) 'test-client.c'; else $(CYGPATH_W) '$(srcdir)/test-client.c'; fi`
-
-test_stress-test-stress.o: test-stress.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_stress_CFLAGS) $(CFLAGS) -MT test_stress-test-stress.o -MD -MP -MF $(DEPDIR)/test_stress-test-stress.Tpo -c -o test_stress-test-stress.o `test -f 'test-stress.c' || echo '$(srcdir)/'`test-stress.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/test_stress-test-stress.Tpo $(DEPDIR)/test_stress-test-stress.Po
-@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='test-stress.c' object='test_stress-test-stress.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_stress_CFLAGS) $(CFLAGS) -c -o test_stress-test-stress.o `test -f 'test-stress.c' || echo '$(srcdir)/'`test-stress.c
-
-test_stress-test-stress.obj: test-stress.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_stress_CFLAGS) $(CFLAGS) -MT test_stress-test-stress.obj -MD -MP -MF $(DEPDIR)/test_stress-test-stress.Tpo -c -o test_stress-test-stress.obj `if test -f 'test-stress.c'; then $(CYGPATH_W) 'test-stress.c'; else $(CYGPATH_W) '$(srcdir)/test-stress.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/test_stress-test-stress.Tpo $(DEPDIR)/test_stress-test-stress.Po
-@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='test-stress.c' object='test_stress-test-stress.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(test_stress_CFLAGS) $(CFLAGS) -c -o test_stress-test-stress.obj `if test -f 'test-stress.c'; then $(CYGPATH_W) 'test-stress.c'; else $(CYGPATH_W) '$(srcdir)/test-stress.c'; fi`
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ibus_daemon_CFLAGS) $(CFLAGS) -c -o ibus_daemon-marshalers.obj `if test -f 'marshalers.c'; then $(CYGPATH_W) 'marshalers.c'; else $(CYGPATH_W) '$(srcdir)/marshalers.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -924,26 +833,6 @@ uninstall-desktopDATA:
 	test -n "$$files" || exit 0; \
 	echo " ( cd '$(DESTDIR)$(desktopdir)' && rm -f" $$files ")"; \
 	cd "$(DESTDIR)$(desktopdir)" && rm -f $$files
-install-xdgautostartDATA: $(xdgautostart_DATA)
-	@$(NORMAL_INSTALL)
-	test -z "$(xdgautostartdir)" || $(MKDIR_P) "$(DESTDIR)$(xdgautostartdir)"
-	@list='$(xdgautostart_DATA)'; test -n "$(xdgautostartdir)" || list=; \
-	for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  echo "$$d$$p"; \
-	done | $(am__base_list) | \
-	while read files; do \
-	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(xdgautostartdir)'"; \
-	  $(INSTALL_DATA) $$files "$(DESTDIR)$(xdgautostartdir)" || exit $$?; \
-	done
-
-uninstall-xdgautostartDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(xdgautostart_DATA)'; test -n "$(xdgautostartdir)" || list=; \
-	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	test -n "$$files" || exit 0; \
-	echo " ( cd '$(DESTDIR)$(xdgautostartdir)' && rm -f" $$files ")"; \
-	cd "$(DESTDIR)$(xdgautostartdir)" && rm -f $$files
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -997,98 +886,6 @@ GTAGS:
 distclean-tags:
 	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
 
-check-TESTS: $(TESTS)
-	@failed=0; all=0; xfail=0; xpass=0; skip=0; \
-	srcdir=$(srcdir); export srcdir; \
-	list=' $(TESTS) '; \
-	$(am__tty_colors); \
-	if test -n "$$list"; then \
-	  for tst in $$list; do \
-	    if test -f ./$$tst; then dir=./; \
-	    elif test -f $$tst; then dir=; \
-	    else dir="$(srcdir)/"; fi; \
-	    if $(TESTS_ENVIRONMENT) $${dir}$$tst; then \
-	      all=`expr $$all + 1`; \
-	      case " $(XFAIL_TESTS) " in \
-	      *[\ \	]$$tst[\ \	]*) \
-		xpass=`expr $$xpass + 1`; \
-		failed=`expr $$failed + 1`; \
-		col=$$red; res=XPASS; \
-	      ;; \
-	      *) \
-		col=$$grn; res=PASS; \
-	      ;; \
-	      esac; \
-	    elif test $$? -ne 77; then \
-	      all=`expr $$all + 1`; \
-	      case " $(XFAIL_TESTS) " in \
-	      *[\ \	]$$tst[\ \	]*) \
-		xfail=`expr $$xfail + 1`; \
-		col=$$lgn; res=XFAIL; \
-	      ;; \
-	      *) \
-		failed=`expr $$failed + 1`; \
-		col=$$red; res=FAIL; \
-	      ;; \
-	      esac; \
-	    else \
-	      skip=`expr $$skip + 1`; \
-	      col=$$blu; res=SKIP; \
-	    fi; \
-	    echo "$${col}$$res$${std}: $$tst"; \
-	  done; \
-	  if test "$$all" -eq 1; then \
-	    tests="test"; \
-	    All=""; \
-	  else \
-	    tests="tests"; \
-	    All="All "; \
-	  fi; \
-	  if test "$$failed" -eq 0; then \
-	    if test "$$xfail" -eq 0; then \
-	      banner="$$All$$all $$tests passed"; \
-	    else \
-	      if test "$$xfail" -eq 1; then failures=failure; else failures=failures; fi; \
-	      banner="$$All$$all $$tests behaved as expected ($$xfail expected $$failures)"; \
-	    fi; \
-	  else \
-	    if test "$$xpass" -eq 0; then \
-	      banner="$$failed of $$all $$tests failed"; \
-	    else \
-	      if test "$$xpass" -eq 1; then passes=pass; else passes=passes; fi; \
-	      banner="$$failed of $$all $$tests did not behave as expected ($$xpass unexpected $$passes)"; \
-	    fi; \
-	  fi; \
-	  dashes="$$banner"; \
-	  skipped=""; \
-	  if test "$$skip" -ne 0; then \
-	    if test "$$skip" -eq 1; then \
-	      skipped="($$skip test was not run)"; \
-	    else \
-	      skipped="($$skip tests were not run)"; \
-	    fi; \
-	    test `echo "$$skipped" | wc -c` -le `echo "$$banner" | wc -c` || \
-	      dashes="$$skipped"; \
-	  fi; \
-	  report=""; \
-	  if test "$$failed" -ne 0 && test -n "$(PACKAGE_BUGREPORT)"; then \
-	    report="Please report to $(PACKAGE_BUGREPORT)"; \
-	    test `echo "$$report" | wc -c` -le `echo "$$banner" | wc -c` || \
-	      dashes="$$report"; \
-	  fi; \
-	  dashes=`echo "$$dashes" | sed s/./=/g`; \
-	  if test "$$failed" -eq 0; then \
-	    echo "$$grn$$dashes"; \
-	  else \
-	    echo "$$red$$dashes"; \
-	  fi; \
-	  echo "$$banner"; \
-	  test -z "$$skipped" || echo "$$skipped"; \
-	  test -z "$$report" || echo "$$report"; \
-	  echo "$$dashes$$std"; \
-	  test "$$failed" -eq 0; \
-	else :; fi
-
 distdir: $(DISTFILES)
 	@srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*]/\\\\&/g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's/[].[^$$\\*]/\\\\&/g'`; \
@@ -1120,14 +917,15 @@ distdir: $(DISTFILES)
 	  fi; \
 	done
 check-am: all-am
-	$(MAKE) $(AM_MAKEFLAGS) check-TESTS
-check: check-am
+check: $(BUILT_SOURCES)
+	$(MAKE) $(AM_MAKEFLAGS) check-am
 all-am: Makefile $(PROGRAMS) $(DATA)
 installdirs:
-	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(xdgautostartdir)"; do \
+	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(desktopdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
-install: install-am
+install: $(BUILT_SOURCES)
+	$(MAKE) $(AM_MAKEFLAGS) install-am
 install-exec: install-exec-am
 install-data: install-data-am
 uninstall: uninstall-am
@@ -1153,6 +951,7 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
+	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 clean: clean-am
 
 clean-am: clean-binPROGRAMS clean-generic clean-libtool \
@@ -1176,7 +975,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-desktopDATA install-xdgautostartDATA
+install-data-am: install-desktopDATA
 
 install-dvi: install-dvi-am
 
@@ -1222,29 +1021,56 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-binPROGRAMS uninstall-desktopDATA \
-	uninstall-xdgautostartDATA
+uninstall-am: uninstall-binPROGRAMS uninstall-desktopDATA
 
-.MAKE: check-am install-am install-strip
+.MAKE: all check install install-am install-strip
 
-.PHONY: CTAGS GTAGS all all-am check check-TESTS check-am clean \
-	clean-binPROGRAMS clean-generic clean-libtool \
-	clean-noinstPROGRAMS ctags distclean distclean-compile \
-	distclean-generic distclean-libtool distclean-tags distdir dvi \
-	dvi-am html html-am info info-am install install-am \
-	install-binPROGRAMS install-data install-data-am \
-	install-desktopDATA install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am install-info \
-	install-info-am install-man install-pdf install-pdf-am \
-	install-ps install-ps-am install-strip \
-	install-xdgautostartDATA installcheck installcheck-am \
-	installdirs maintainer-clean maintainer-clean-generic \
-	mostlyclean mostlyclean-compile mostlyclean-generic \
-	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
-	uninstall-am uninstall-binPROGRAMS uninstall-desktopDATA \
-	uninstall-xdgautostartDATA
+.PHONY: CTAGS GTAGS all all-am check check-am clean clean-binPROGRAMS \
+	clean-generic clean-libtool clean-noinstPROGRAMS ctags \
+	distclean distclean-compile distclean-generic \
+	distclean-libtool distclean-tags distdir dvi dvi-am html \
+	html-am info info-am install install-am install-binPROGRAMS \
+	install-data install-data-am install-desktopDATA install-dvi \
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+	pdf pdf-am ps ps-am tags uninstall uninstall-am \
+	uninstall-binPROGRAMS uninstall-desktopDATA
 
 @INTLTOOL_DESKTOP_RULE@
+
+# test_registry_SOURCES =     \
+# 	registry.c              \
+# 	registry.h              \
+# 	factoryproxy.c          \
+# 	factoryproxy.h          \
+# 	test-registry.c         \
+# 	$(NULL)
+# 
+# test_matchrule_SOURCES =    \
+# 	connection.c            \
+# 	matchrule.c             \
+# 	test-matchrule.c        \
+# 	$(NULL)
+# test_matchrule_CFLAGS =     \
+# 	$(AM_CFLAGS)            \
+# 	$(NULL)
+# test_matchrule_LDADD =      \
+# 	$(AM_LDADD)             \
+# 	$(NULL)
+
+# gen marshal
+marshalers.h: marshalers.list
+	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=bus_marshal $(srcdir)/marshalers.list --header --internal > $@.tmp && \
+	mv $@.tmp $@
+
+marshalers.c: marshalers.h marshalers.list
+	$(AM_V_GEN) (echo "#include \"marshalers.h\""; \
+	$(GLIB_GENMARSHAL) --prefix=bus_marshal $(srcdir)/marshalers.list --body --internal) > $@.tmp && \
+	mv $@.tmp $@
 
 $(libibus):
 	$(MAKE) -C $(top_builddir)/src
@@ -1253,6 +1079,8 @@ test: ibus-daemon
 	$(ENV_IBUS_TEST) \
 		G_DEBUG=fatal_warnings \
 		$(builddir)/ibus-daemon -v
+
+-include $(top_srcdir)/git.mk
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -44,6 +44,8 @@ Stable, unless otherwise indicated
 enum                <a class="link" href="ibus-ibustypes.html#IBusCapabilite" title="enum IBusCapabilite">IBusCapabilite</a>;
 enum                <a class="link" href="ibus-ibustypes.html#IBusPreeditFocusMode" title="enum IBusPreeditFocusMode">IBusPreeditFocusMode</a>;
 enum                <a class="link" href="ibus-ibustypes.html#IBusOrientation" title="enum IBusOrientation">IBusOrientation</a>;
+enum                <a class="link" href="ibus-ibustypes.html#IBusBusNameFlag" title="enum IBusBusNameFlag">IBusBusNameFlag</a>;
+enum                <a class="link" href="ibus-ibustypes.html#IBusBusRequestNameReply" title="enum IBusBusRequestNameReply">IBusBusRequestNameReply</a>;
                     <a class="link" href="ibus-ibustypes.html#IBusRectangle" title="IBusRectangle">IBusRectangle</a>;
 <span class="returnvalue">void</span>                (<a class="link" href="ibus-ibustypes.html#IBusFreeFunc" title="IBusFreeFunc ()">*IBusFreeFunc</a>)                     (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> object</code></em>);
 </pre>
@@ -315,6 +317,72 @@ Orientation of UI.
 <tr>
 <td><p><a name="IBUS-ORIENTATION-SYSTEM:CAPS"></a><span class="term"><code class="literal">IBUS_ORIENTATION_SYSTEM</code></span></p></td>
 <td>Use ibus global orientation setup.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="enum IBusBusNameFlag">
+<a name="IBusBusNameFlag"></a><h3>enum IBusBusNameFlag</h3>
+<pre class="programlisting">typedef enum {
+    IBUS_BUS_NAME_FLAG_ALLOW_REPLACEMENT   = (1 &lt;&lt; 0),
+    IBUS_BUS_NAME_FLAG_REPLACE_EXISTING    = (1 &lt;&lt; 1),
+    IBUS_BUS_NAME_FLAG_DO_NOT_QUEUE        = (1 &lt;&lt; 2),
+} IBusBusNameFlag;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="IBUS-BUS-NAME-FLAG-ALLOW-REPLACEMENT:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_NAME_FLAG_ALLOW_REPLACEMENT</code></span></p></td>
+<td>   same as DBUS_NAME_FLAG_ALLOW_REPLACEMENT	
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-BUS-NAME-FLAG-REPLACE-EXISTING:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_NAME_FLAG_REPLACE_EXISTING</code></span></p></td>
+<td>   same as DBUS_NAME_FLAG_REPLACE_EXISTING
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-BUS-NAME-FLAG-DO-NOT-QUEUE:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_NAME_FLAG_DO_NOT_QUEUE</code></span></p></td>
+<td>   same as DBUS_NAME_FLAG_DO_NOT_QUEUE 
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="enum IBusBusRequestNameReply">
+<a name="IBusBusRequestNameReply"></a><h3>enum IBusBusRequestNameReply</h3>
+<pre class="programlisting">typedef enum {
+    IBUS_BUS_REQUEST_NAME_REPLY_PRIMARY_OWNER   = 1,
+    IBUS_BUS_REQUEST_NAME_REPLY_IN_QUEUE        = 2,
+    IBUS_BUS_REQUEST_NAME_REPLY_EXISTS          = 3,
+    IBUS_BUS_REQUEST_NAME_REPLY_ALREADY_OWNER   = 4,
+} IBusBusRequestNameReply;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-PRIMARY-OWNER:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_PRIMARY_OWNER</code></span></p></td>
+<td>   same as DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-IN-QUEUE:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_IN_QUEUE</code></span></p></td>
+<td>   same as DBUS_REQUEST_NAME_REPLY_IN_QUEUE
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-EXISTS:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_EXISTS</code></span></p></td>
+<td>   same as DBUS_REQUEST_NAME_REPLY_EXISTS
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-ALREADY-OWNER:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_ALREADY_OWNER</code></span></p></td>
+<td>   same as DBUS_REQUEST_NAME_REPLY_ALREADY_OWNER
 </td>
 </tr>
 </tbody>

@@ -22,6 +22,7 @@
 
 ibussetup_PYTHON = \
 	main.py \
+	i18n.py \
 	icon.py \
 	enginecombobox.py \
 	enginetreeview.py \
@@ -63,3 +64,5 @@ test:
 		IBUS_LOCALEDIR="@localedir@" \
 		$(PYTHON) \
 		$(srcdir)/main.py
+
+-include $(top_srcdir)/git.mk

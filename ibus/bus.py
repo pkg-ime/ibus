@@ -108,6 +108,9 @@ class Bus(object.Object):
     def release_name(self, name):
         return self.__dbus.ReleaseName(name)
 
+    def list_queued_owners(self, name):
+        return self.__dbus.ListQueuedOwners(name)
+
     def get_name_owner(self, name):
         return self.__dbus.GetNameOwner(name)
 
@@ -135,6 +138,9 @@ class Bus(object.Object):
     def list_active_engines(self):
         engines = self.__ibus.ListActiveEngines()
         return map(serializable.deserialize_object, engines)
+
+    def set_global_engine(self, name):
+        return self.__ibus.SetGlobalEngine(name)
 
     def create_input_context(self, client_name):
         return self.__ibus.CreateInputContext(client_name)

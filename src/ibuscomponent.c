@@ -19,7 +19,6 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
-#include <dbus/dbus.h>
 #include <glib/gstdio.h>
 #include "ibuscomponent.h"
 
@@ -27,15 +26,35 @@ enum {
     LAST_SIGNAL,
 };
 
+enum {
+    PROP_0 = 0,
+    PROP_NAME,
+    PROP_DESCRIPTION,
+    PROP_VERSION,
+    PROP_LICENSE,
+    PROP_AUTHOR,
+    PROP_HOMEPAGE,
+    PROP_EXEC,
+    PROP_TEXTDOMAIN,
+};
 
 /* IBusComponentPriv */
 struct _IBusComponentPrivate {
-    // TRUE if the component started in the verbose mode.
-    gboolean verbose;
-    // TRUE if the component needs to be restarted when it dies.
-    gboolean restart;
+    gchar *name;
+    gchar *description;
+    gchar *version;
+    gchar *license;
+    gchar *author;
+    gchar *homepage;
+    gchar *exec;
+    gchar *textdomain;
+
+    /* engines */
+    GList *engines;
+
+    /* observed paths */
+    GList *observed_paths;
 };
-typedef struct _IBusComponentPrivate IBusComponentPrivate;
 
 #define IBUS_COMPONENT_GET_PRIVATE(o)  \
    (G_TYPE_INSTANCE_GET_PRIVATE ((o), IBUS_TYPE_COMPONENT, IBusComponentPrivate))
@@ -43,11 +62,19 @@ typedef struct _IBusComponentPrivate IBusComponentPrivate;
 // static guint            _signals[LAST_SIGNAL] = { 0 };
 
 /* functions prototype */
+static void         ibus_component_set_property (IBusComponent          *component,
+                                                 guint                   prop_id,
+                                                 const GValue           *value,
+                                                 GParamSpec             *pspec);
+static void         ibus_component_get_property (IBusComponent          *component,
+                                                 guint                   prop_id,
+                                                 GValue                 *value,
+                                                 GParamSpec             *pspec);
 static void         ibus_component_destroy      (IBusComponent          *component);
 static gboolean     ibus_component_serialize    (IBusComponent          *component,
-                                                 IBusMessageIter        *iter);
-static gboolean     ibus_component_deserialize  (IBusComponent          *component,
-                                                 IBusMessageIter        *iter);
+                                                 GVariantBuilder        *builder);
+static gint         ibus_component_deserialize  (IBusComponent          *component,
+                                                 GVariant               *variant);
 static gboolean     ibus_component_copy         (IBusComponent          *dest,
                                                  const IBusComponent    *src);
 static gboolean     ibus_component_parse_xml_node
@@ -65,42 +92,148 @@ static void         ibus_component_parse_observed_paths
 G_DEFINE_TYPE (IBusComponent, ibus_component, IBUS_TYPE_SERIALIZABLE)
 
 static void
-ibus_component_class_init (IBusComponentClass *klass)
+ibus_component_class_init (IBusComponentClass *class)
 {
-    IBusObjectClass *object_class = IBUS_OBJECT_CLASS (klass);
-    IBusSerializableClass *serializable_class = IBUS_SERIALIZABLE_CLASS (klass);
+    GObjectClass *gobject_class = G_OBJECT_CLASS (class);
+    IBusObjectClass *object_class = IBUS_OBJECT_CLASS (class);
+    IBusSerializableClass *serializable_class = IBUS_SERIALIZABLE_CLASS (class);
 
-    g_type_class_add_private (klass, sizeof (IBusComponentPrivate));
+    g_type_class_add_private (class, sizeof (IBusComponentPrivate));
 
+    gobject_class->set_property = (GObjectSetPropertyFunc) ibus_component_set_property;
+    gobject_class->get_property = (GObjectGetPropertyFunc) ibus_component_get_property;
     object_class->destroy = (IBusObjectDestroyFunc) ibus_component_destroy;
 
     serializable_class->serialize   = (IBusSerializableSerializeFunc) ibus_component_serialize;
     serializable_class->deserialize = (IBusSerializableDeserializeFunc) ibus_component_deserialize;
     serializable_class->copy        = (IBusSerializableCopyFunc) ibus_component_copy;
 
-    g_string_append (serializable_class->signature, "ssssssssavav");
+    /* install properties */
+    /**
+     * IBusComponent:name:
+     *
+     * The name of component
+     */
+    g_object_class_install_property (gobject_class,
+                    PROP_NAME,
+                    g_param_spec_string ("name",
+                        "component name",
+                        "The name of component",
+                        NULL,
+                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+
+    /**
+     * IBusComponent:description:
+     *
+     * The description of component
+     */
+    g_object_class_install_property (gobject_class,
+                    PROP_DESCRIPTION,
+                    g_param_spec_string ("description",
+                        "component description",
+                        "The description of component",
+                        NULL,
+                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+
+    /**
+     * IBusComponent:version:
+     *
+     * The version of component
+     */
+    g_object_class_install_property (gobject_class,
+                    PROP_VERSION,
+                    g_param_spec_string ("version",
+                        "component version",
+                        "The version of component",
+                        NULL,
+                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+
+    /**
+     * IBusComponent:license:
+     *
+     * The license of component
+     */
+    g_object_class_install_property (gobject_class,
+                    PROP_LICENSE,
+                    g_param_spec_string ("license",
+                        "component license",
+                        "The license of component",
+                        NULL,
+                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+
+    /**
+     * IBusComponent:author:
+     *
+     * The author of component
+     */
+    g_object_class_install_property (gobject_class,
+                    PROP_AUTHOR,
+                    g_param_spec_string ("author",
+                        "component author",
+                        "The author of component",
+                        NULL,
+                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+
+    /**
+     * IBusComponent:homepage:
+     *
+     * The homepage of component
+     */
+    g_object_class_install_property (gobject_class,
+                    PROP_HOMEPAGE,
+                    g_param_spec_string ("homepage",
+                        "component homepage",
+                        "The homepage of component",
+                        NULL,
+                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+
+    /**
+     * IBusComponent:exec:
+     *
+     * The exec path of component
+     */
+    g_object_class_install_property (gobject_class,
+                    PROP_EXEC,
+                    g_param_spec_string ("exec",
+                        "component exec",
+                        "The exec path of component",
+                        NULL,
+                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+
+    /**
+     * IBusComponent:textdomain:
+     *
+     * The textdomain of component
+     */
+    g_object_class_install_property (gobject_class,
+                    PROP_TEXTDOMAIN,
+                    g_param_spec_string ("textdomain",
+                        "component textdomain",
+                        "The textdomain path of component",
+                        NULL,
+                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
 
 static void
 ibus_component_init (IBusComponent *component)
 {
-    component->name = NULL;
-    component->description = NULL;
-    component->version = NULL;
-    component->license = NULL;
-    component->author = NULL;
-    component->homepage = NULL;
-    component->exec = NULL;
-    component->textdomain = NULL;
-    component->engines = NULL;
-    component->observed_paths = NULL;
-    component->pid = 0;
-    component->child_source_id = 0;
+    component->priv = IBUS_COMPONENT_GET_PRIVATE (component);
 
-    IBusComponentPrivate * priv = IBUS_COMPONENT_GET_PRIVATE (component);
-    priv->verbose = FALSE;
-    priv->restart = FALSE;
+    /* FIXME: Is it necessary? */
+#if 0
+    component->priv->engines = NULL;
+    component->priv->observed_paths = NULL;
+
+    component->priv->name = NULL;
+    component->priv->description = NULL;
+    component->priv->version = NULL;
+    component->priv->license = NULL;
+    component->priv->author = NULL;
+    component->priv->homepage = NULL;
+    component->priv->exec = NULL;
+    component->priv->textdomain = NULL;
+#endif
 }
 
 static void
@@ -108,190 +241,191 @@ ibus_component_destroy (IBusComponent *component)
 {
     GList *p;
 
-    g_free (component->name);
-    g_free (component->description);
-    g_free (component->version);
-    g_free (component->license);
-    g_free (component->author);
-    g_free (component->homepage);
-    g_free (component->exec);
-    g_free (component->textdomain);
+    g_free (component->priv->name);
+    g_free (component->priv->description);
+    g_free (component->priv->version);
+    g_free (component->priv->license);
+    g_free (component->priv->author);
+    g_free (component->priv->homepage);
+    g_free (component->priv->exec);
+    g_free (component->priv->textdomain);
 
-    component->name = NULL;
-    component->description = NULL;
-    component->version = NULL;
-    component->license = NULL;
-    component->author = NULL;
-    component->homepage = NULL;
-    component->exec = NULL;
-    component->textdomain = NULL;
+    component->priv->name = NULL;
+    component->priv->description = NULL;
+    component->priv->version = NULL;
+    component->priv->license = NULL;
+    component->priv->author = NULL;
+    component->priv->homepage = NULL;
+    component->priv->exec = NULL;
+    component->priv->textdomain = NULL;
 
-    g_list_foreach (component->observed_paths, (GFunc)g_object_unref, NULL);
-    g_list_free (component->observed_paths);
-    component->observed_paths = NULL;
+    g_list_foreach (component->priv->observed_paths, (GFunc)g_object_unref, NULL);
+    g_list_free (component->priv->observed_paths);
+    component->priv->observed_paths = NULL;
 
-    for (p = component->engines; p != NULL; p = p->next) {
+    for (p = component->priv->engines; p != NULL; p = p->next) {
         g_object_steal_data ((GObject *)p->data, "component");
         ibus_object_destroy ((IBusObject *)p->data);
         g_object_unref (p->data);
     }
-    g_list_free (component->engines);
-    component->engines = NULL;
-
-    if (component->pid != 0) {
-        ibus_component_stop (component);
-        g_spawn_close_pid (component->pid);
-        component->pid = 0;
-    }
-
-    if (component->child_source_id != 0) {
-        g_source_remove (component->child_source_id);
-        component->child_source_id = 0;
-    }
+    g_list_free (component->priv->engines);
+    component->priv->engines = NULL;
 
     IBUS_OBJECT_CLASS (ibus_component_parent_class)->destroy (IBUS_OBJECT (component));
 }
 
+static void
+ibus_component_set_property (IBusComponent *component,
+                             guint          prop_id,
+                             const GValue  *value,
+                             GParamSpec    *pspec)
+{
+    switch (prop_id) {
+    case PROP_NAME:
+        g_assert (component->priv->name == NULL);
+        component->priv->name = g_value_dup_string (value);
+        break;
+    case PROP_DESCRIPTION:
+        g_assert (component->priv->description == NULL);
+        component->priv->description = g_value_dup_string (value);
+        break;
+    case PROP_VERSION:
+        g_assert (component->priv->version == NULL);
+        component->priv->version = g_value_dup_string (value);
+        break;
+    case PROP_LICENSE:
+        g_assert (component->priv->license == NULL);
+        component->priv->license = g_value_dup_string (value);
+        break;
+    case PROP_AUTHOR:
+        g_assert (component->priv->author == NULL);
+        component->priv->author = g_value_dup_string (value);
+        break;
+    case PROP_HOMEPAGE:
+        g_assert (component->priv->homepage == NULL);
+        component->priv->homepage = g_value_dup_string (value);
+        break;
+    case PROP_EXEC:
+        g_assert (component->priv->exec == NULL);
+        component->priv->exec = g_value_dup_string (value);
+        break;
+    case PROP_TEXTDOMAIN:
+        g_assert (component->priv->textdomain == NULL);
+        component->priv->textdomain = g_value_dup_string (value);
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (component, prop_id, pspec);
+    }
+}
+
+static void
+ibus_component_get_property (IBusComponent *component,
+                             guint          prop_id,
+                             GValue        *value,
+                             GParamSpec    *pspec)
+{
+    switch (prop_id) {
+    case PROP_NAME:
+        g_value_set_string (value, ibus_component_get_name (component));
+        break;
+    case PROP_DESCRIPTION:
+        g_value_set_string (value, ibus_component_get_description (component));
+        break;
+    case PROP_VERSION:
+        g_value_set_string (value, ibus_component_get_version (component));
+        break;
+    case PROP_LICENSE:
+        g_value_set_string (value, ibus_component_get_license (component));
+        break;
+    case PROP_AUTHOR:
+        g_value_set_string (value, ibus_component_get_author (component));
+        break;
+    case PROP_HOMEPAGE:
+        g_value_set_string (value, ibus_component_get_homepage (component));
+        break;
+    case PROP_EXEC:
+        g_value_set_string (value, ibus_component_get_exec (component));
+        break;
+    case PROP_TEXTDOMAIN:
+        g_value_set_string (value, ibus_component_get_textdomain (component));
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (component, prop_id, pspec);
+    }
+}
+
 static gboolean
 ibus_component_serialize (IBusComponent   *component,
-                          IBusMessageIter *iter)
+                          GVariantBuilder *builder)
 {
     gboolean retval;
-    IBusMessageIter array_iter;
+
+    retval = IBUS_SERIALIZABLE_CLASS (ibus_component_parent_class)->serialize ((IBusSerializable *)component, builder);
+    g_return_val_if_fail (retval, FALSE);
+
+    g_variant_builder_add (builder, "s", component->priv->name);
+    g_variant_builder_add (builder, "s", component->priv->description);
+    g_variant_builder_add (builder, "s", component->priv->version);
+    g_variant_builder_add (builder, "s", component->priv->license);
+    g_variant_builder_add (builder, "s", component->priv->author);
+    g_variant_builder_add (builder, "s", component->priv->homepage);
+    g_variant_builder_add (builder, "s", component->priv->exec);
+    g_variant_builder_add (builder, "s", component->priv->textdomain);
+
     GList *p;
-
-    retval = IBUS_SERIALIZABLE_CLASS (ibus_component_parent_class)->serialize ((IBusSerializable *)component, iter);
-    g_return_val_if_fail (retval, FALSE);
-
-    retval = ibus_message_iter_append (iter, G_TYPE_STRING, &component->name);
-    g_return_val_if_fail (retval, FALSE);
-
-    retval = ibus_message_iter_append (iter, G_TYPE_STRING, &component->description);
-    g_return_val_if_fail (retval, FALSE);
-
-    retval = ibus_message_iter_append (iter, G_TYPE_STRING, &component->version);
-    g_return_val_if_fail (retval, FALSE);
-
-    retval = ibus_message_iter_append (iter, G_TYPE_STRING, &component->license);
-    g_return_val_if_fail (retval, FALSE);
-
-    retval = ibus_message_iter_append (iter, G_TYPE_STRING, &component->author);
-    g_return_val_if_fail (retval, FALSE);
-
-    retval = ibus_message_iter_append (iter, G_TYPE_STRING, &component->homepage);
-    g_return_val_if_fail (retval, FALSE);
-
-    retval = ibus_message_iter_append (iter, G_TYPE_STRING, &component->exec);
-    g_return_val_if_fail (retval, FALSE);
-
-    retval = ibus_message_iter_append (iter, G_TYPE_STRING, &component->textdomain);
-    g_return_val_if_fail (retval, FALSE);
-
+    GVariantBuilder *array;
     /* serialize observed paths */
-    retval = ibus_message_iter_open_container (iter, IBUS_TYPE_ARRAY, "v", &array_iter);
-    g_return_val_if_fail (retval, FALSE);
-
-    for (p = component->observed_paths; p != NULL; p = p->next) {
-        retval = ibus_message_iter_append (&array_iter, IBUS_TYPE_OBSERVED_PATH, &(p->data));
-        g_return_val_if_fail (retval, FALSE);
+    array = g_variant_builder_new (G_VARIANT_TYPE ("av"));
+    for (p = component->priv->observed_paths; p != NULL; p = p->next) {
+        g_variant_builder_add (array, "v", ibus_serializable_serialize ((IBusSerializable *)p->data));
     }
-    retval = ibus_message_iter_close_container (iter, &array_iter);
-    g_return_val_if_fail (retval, FALSE);
+    g_variant_builder_add (builder, "av", array);
 
-    /* serialize engine desc */
-    retval = ibus_message_iter_open_container (iter, IBUS_TYPE_ARRAY, "v", &array_iter);
-    g_return_val_if_fail (retval, FALSE);
-
-    for (p = component->engines; p != NULL; p = p->next) {
-        retval = ibus_message_iter_append (&array_iter, IBUS_TYPE_ENGINE_DESC, &(p->data));
-        g_return_val_if_fail (retval, FALSE);
+    /* serialize engine desc list */
+    array = g_variant_builder_new (G_VARIANT_TYPE ("av"));
+    for (p = component->priv->engines; p != NULL; p = p->next) {
+        g_variant_builder_add (array, "v", ibus_serializable_serialize ((IBusSerializable *)p->data));
     }
-    retval = ibus_message_iter_close_container (iter, &array_iter);
-    g_return_val_if_fail (retval, FALSE);
+    g_variant_builder_add (builder, "av", array);
 
     return TRUE;
 }
 
-static gboolean
+static gint
 ibus_component_deserialize (IBusComponent   *component,
-                            IBusMessageIter *iter)
+                            GVariant        *variant)
 {
     gboolean retval;
-    gchar *str;
-    IBusMessageIter array_iter;
 
-    retval = IBUS_SERIALIZABLE_CLASS (ibus_component_parent_class)->deserialize ((IBusSerializable *)component, iter);
-    g_return_val_if_fail (retval, FALSE);
+    retval = IBUS_SERIALIZABLE_CLASS (ibus_component_parent_class)->deserialize ((IBusSerializable *)component, variant);
+    g_return_val_if_fail (retval, 0);
 
-    retval = ibus_message_iter_get (iter, G_TYPE_STRING, &str);
-    g_return_val_if_fail (retval, FALSE);
-    ibus_message_iter_next (iter);
-    component->name = g_strdup (str);
+    g_variant_get_child (variant, retval++, "s", &component->priv->name);
+    g_variant_get_child (variant, retval++, "s", &component->priv->description);
+    g_variant_get_child (variant, retval++, "s", &component->priv->version);
+    g_variant_get_child (variant, retval++, "s", &component->priv->license);
+    g_variant_get_child (variant, retval++, "s", &component->priv->author);
+    g_variant_get_child (variant, retval++, "s", &component->priv->homepage);
+    g_variant_get_child (variant, retval++, "s", &component->priv->exec);
+    g_variant_get_child (variant, retval++, "s", &component->priv->textdomain);
 
-    retval = ibus_message_iter_get (iter, G_TYPE_STRING, &str);
-    g_return_val_if_fail (retval, FALSE);
-    ibus_message_iter_next (iter);
-    component->description = g_strdup (str);
-
-    retval = ibus_message_iter_get (iter, G_TYPE_STRING, &str);
-    g_return_val_if_fail (retval, FALSE);
-    ibus_message_iter_next (iter);
-    component->version = g_strdup (str);
-
-    retval = ibus_message_iter_get (iter, G_TYPE_STRING, &str);
-    g_return_val_if_fail (retval, FALSE);
-    ibus_message_iter_next (iter);
-    component->license = g_strdup (str);
-
-    retval = ibus_message_iter_get (iter, G_TYPE_STRING, &str);
-    g_return_val_if_fail (retval, FALSE);
-    ibus_message_iter_next (iter);
-    component->author = g_strdup (str);
-
-    retval = ibus_message_iter_get (iter, G_TYPE_STRING, &str);
-    g_return_val_if_fail (retval, FALSE);
-    ibus_message_iter_next (iter);
-    component->homepage = g_strdup (str);
-
-    retval = ibus_message_iter_get (iter, G_TYPE_STRING, &str);
-    g_return_val_if_fail (retval, FALSE);
-    ibus_message_iter_next (iter);
-    component->exec = g_strdup (str);
-
-    retval = ibus_message_iter_get (iter, G_TYPE_STRING, &str);
-    g_return_val_if_fail (retval, FALSE);
-    ibus_message_iter_next (iter);
-    component->textdomain = g_strdup (str);
-
-    retval = ibus_message_iter_recurse (iter, IBUS_TYPE_ARRAY, &array_iter);
-    g_return_val_if_fail (retval, FALSE);
-    while (ibus_message_iter_get_arg_type (&array_iter) != G_TYPE_INVALID) {
-        IBusObservedPath *path;
-
-        retval = ibus_message_iter_get (&array_iter, IBUS_TYPE_OBSERVED_PATH, &path);
-        g_return_val_if_fail (retval, FALSE);
-        ibus_message_iter_next (&array_iter);
-
-        g_object_ref_sink (path);
-        component->observed_paths = g_list_append (component->observed_paths, path);
+    GVariant *var;
+    GVariantIter *iter = NULL;
+    g_variant_get_child (variant, retval++, "av", &iter);
+    while (g_variant_iter_loop (iter, "v", &var)) {
+        component->priv->observed_paths = g_list_append (component->priv->observed_paths,
+                        IBUS_OBSERVED_PATH (ibus_serializable_deserialize (var)));
     }
-    ibus_message_iter_next (iter);
+    g_variant_iter_free (iter);
 
-    retval = ibus_message_iter_recurse (iter, IBUS_TYPE_ARRAY, &array_iter);
-    g_return_val_if_fail (retval, FALSE);
-
-    while (ibus_message_iter_get_arg_type (&array_iter) != G_TYPE_INVALID) {
-        IBusEngineDesc *engine;
-
-        retval = ibus_message_iter_get (&array_iter, IBUS_TYPE_ENGINE_DESC, &engine);
-        g_return_val_if_fail (retval, FALSE);
-        ibus_message_iter_next (&array_iter);
-
-        ibus_component_add_engine (component, engine);
+    g_variant_get_child (variant, retval++, "av", &iter);
+    while (g_variant_iter_loop (iter, "v", &var)) {
+        ibus_component_add_engine (component,
+                                   IBUS_ENGINE_DESC (ibus_serializable_deserialize (var)));
     }
-    ibus_message_iter_next (iter);
+    g_variant_iter_free (iter);
 
-    return TRUE;
+    return retval;
 }
 
 static gboolean
@@ -304,21 +438,20 @@ ibus_component_copy (IBusComponent       *dest,
                                  (IBusSerializable *)src);
     g_return_val_if_fail (retval, FALSE);
 
+    dest->priv->name          = g_strdup (src->priv->name);
+    dest->priv->description   = g_strdup (src->priv->description);
+    dest->priv->version       = g_strdup (src->priv->version);
+    dest->priv->license       = g_strdup (src->priv->license);
+    dest->priv->author        = g_strdup (src->priv->author);
+    dest->priv->homepage      = g_strdup (src->priv->homepage);
+    dest->priv->exec          = g_strdup (src->priv->exec);
+    dest->priv->textdomain    = g_strdup (src->priv->textdomain);
 
-    dest->name          = g_strdup (src->name);
-    dest->description   = g_strdup (src->description);
-    dest->version       = g_strdup (src->version);
-    dest->license       = g_strdup (src->license);
-    dest->author        = g_strdup (src->author);
-    dest->homepage      = g_strdup (src->homepage);
-    dest->exec          = g_strdup (src->exec);
-    dest->textdomain    = g_strdup (src->textdomain);
+    dest->priv->observed_paths = g_list_copy (src->priv->observed_paths);
+    g_list_foreach (dest->priv->observed_paths, (GFunc) g_object_ref, NULL);
 
-    dest->observed_paths = g_list_copy (src->observed_paths);
-    g_list_foreach (dest->observed_paths, (GFunc) g_object_ref, NULL);
-
-    dest->engines = g_list_copy (src->engines);
-    g_list_foreach (dest->engines, (GFunc) g_object_ref, NULL);
+    dest->priv->engines = g_list_copy (src->priv->engines);
+    g_list_foreach (dest->priv->engines, (GFunc) g_object_ref, NULL);
 
     return TRUE;
 }
@@ -346,8 +479,8 @@ ibus_component_output (IBusComponent *component,
 #define OUTPUT_ENTRY(field, element)                                        \
     {                                                                       \
         gchar *escape_text =                                                \
-            g_markup_escape_text (component->field ?                        \
-                                    component->field : "", -1);             \
+            g_markup_escape_text (component->priv->field ?                  \
+                                  component->priv->field : "", -1);         \
         g_string_append_indent (output, indent + 1);                        \
         g_string_append_printf (output, "<"element">%s</"element">\n",      \
                                 escape_text);                               \
@@ -365,11 +498,11 @@ ibus_component_output (IBusComponent *component,
 #undef OUTPUT_ENTRY
 #undef OUTPUT_ENTRY_1
 
-    if (component->observed_paths) {
+    if (component->priv->observed_paths) {
         g_string_append_indent (output, indent + 1);
         g_string_append (output, "<observed-paths>\n");
 
-        for (p = component->observed_paths; p != NULL; p = p->next ) {
+        for (p = component->priv->observed_paths; p != NULL; p = p->next ) {
             IBusObservedPath *path = (IBusObservedPath *) p->data;
 
             g_string_append_indent (output, indent + 2);
@@ -401,7 +534,7 @@ ibus_component_output_engines (IBusComponent  *component,
     g_string_append_indent (output, indent);
     g_string_append (output, "<engines>\n");
 
-    for (p = component->engines; p != NULL; p = p->next) {
+    for (p = component->priv->engines; p != NULL; p = p->next) {
         ibus_engine_desc_output ((IBusEngineDesc *)p->data, output, indent + 2);
     }
 
@@ -411,8 +544,8 @@ ibus_component_output_engines (IBusComponent  *component,
 
 static gboolean
 ibus_component_parse_xml_node (IBusComponent   *component,
-                              XMLNode        *node,
-                              gboolean        access_fs)
+                              XMLNode          *node,
+                              gboolean          access_fs)
 {
     g_assert (component);
     g_assert (node);
@@ -425,13 +558,13 @@ ibus_component_parse_xml_node (IBusComponent   *component,
     for (p = node->sub_nodes; p != NULL; p = p->next) {
         XMLNode *sub_node = (XMLNode *)p->data;
 
-#define PARSE_ENTRY(field_name, element_name)                   \
-        if (g_strcmp0 (sub_node->name, element_name) == 0) {    \
-            if (component->field_name != NULL) {                \
-                g_free (component->field_name);                 \
-            }                                                   \
-            component->field_name = g_strdup (sub_node->text);  \
-            continue;                                           \
+#define PARSE_ENTRY(field_name, element_name)                           \
+        if (g_strcmp0 (sub_node->name, element_name) == 0) {            \
+            if (component->priv->field_name != NULL) {                  \
+                g_free (component->priv->field_name);                   \
+            }                                                           \
+            component->priv->field_name = g_strdup (sub_node->text);    \
+            continue;                                                   \
         }
 #define PARSE_ENTRY_1(name) PARSE_ENTRY (name, #name)
         PARSE_ENTRY_1 (name);
@@ -531,14 +664,32 @@ ibus_component_parse_observed_paths (IBusComponent    *component,
 
         path = ibus_observed_path_new_from_xml_node ((XMLNode *)p->data, access_fs);
         g_object_ref_sink (path);
-        component->observed_paths = g_list_append (component->observed_paths, path);
+        component->priv->observed_paths = g_list_append (component->priv->observed_paths, path);
 
         if (access_fs && path->is_dir && path->is_exist) {
-            component->observed_paths = g_list_concat (component->observed_paths,
-                                            ibus_observed_path_traverse (path));
+            component->priv->observed_paths =
+                    g_list_concat(component->priv->observed_paths,
+                                  ibus_observed_path_traverse(path));
         }
     }
 }
+
+#define IBUS_COMPONENT_GET_PROPERTY(property, return_type)  \
+return_type                                                 \
+ibus_component_get_ ## property (IBusComponent *component)  \
+{                                                           \
+    return component->priv->property;                       \
+}
+
+IBUS_COMPONENT_GET_PROPERTY (name, const gchar *)
+IBUS_COMPONENT_GET_PROPERTY (description, const gchar *)
+IBUS_COMPONENT_GET_PROPERTY (version, const gchar *)
+IBUS_COMPONENT_GET_PROPERTY (license, const gchar *)
+IBUS_COMPONENT_GET_PROPERTY (author, const gchar *)
+IBUS_COMPONENT_GET_PROPERTY (homepage, const gchar *)
+IBUS_COMPONENT_GET_PROPERTY (exec, const gchar *)
+IBUS_COMPONENT_GET_PROPERTY (textdomain, const gchar *)
+#undef IBUS_COMPONENT_GET_PROPERTY
 
 IBusComponent *
 ibus_component_new (const gchar *name,
@@ -550,18 +701,37 @@ ibus_component_new (const gchar *name,
                     const gchar *exec,
                     const gchar *textdomain)
 {
+    return ibus_component_new_varargs ("name", name,
+                                       "description", description,
+                                       "version", version,
+                                       "license", license,
+                                       "author", author,
+                                       "homepage", homepage,
+                                       "exec", exec,
+                                       "textdomain", textdomain,
+                                       NULL);
+}
 
+
+IBusComponent *
+ibus_component_new_varargs (const gchar *first_property_name, ...)
+{
+    va_list var_args;
     IBusComponent *component;
-    component = (IBusComponent *)g_object_new (IBUS_TYPE_COMPONENT, NULL);
+    IBusComponentPrivate *priv;
 
-    component->name         = g_strdup (name);
-    component->description  = g_strdup (description);
-    component->version      = g_strdup (version);
-    component->license      = g_strdup (license);
-    component->author       = g_strdup (author);
-    component->homepage     = g_strdup (homepage);
-    component->exec         = g_strdup (exec);
-    component->textdomain   = g_strdup (textdomain);
+    g_assert (first_property_name);
+
+    va_start (var_args, first_property_name);
+    component = (IBusComponent *) g_object_new_valist (IBUS_TYPE_COMPONENT,
+                                                       first_property_name,
+                                                       var_args);
+    va_end (var_args);
+
+    priv = IBUS_COMPONENT_GET_PRIVATE (component);
+
+    /* name is required. Other properties are set in class_init by default. */
+    g_assert (priv->name);
 
     return component;
 }
@@ -615,7 +785,8 @@ ibus_component_new_from_file (const gchar *filename)
     else {
         IBusObservedPath *path;
         path = ibus_observed_path_new (filename, TRUE);
-        component->observed_paths = g_list_prepend (component->observed_paths, path);
+        component->priv->observed_paths =
+                g_list_prepend(component->priv->observed_paths, path);
     }
 
     return component;
@@ -630,11 +801,13 @@ ibus_component_add_observed_path (IBusComponent *component,
 
     p = ibus_observed_path_new (path, access_fs);
     g_object_ref_sink (p);
-    component->observed_paths = g_list_append (component->observed_paths, p);
+    component->priv->observed_paths =
+            g_list_append (component->priv->observed_paths, p);
 
     if (access_fs && p->is_dir && p->is_exist) {
-        component->observed_paths = g_list_concat (component->observed_paths,
-                                                   ibus_observed_path_traverse (p));
+        component->priv->observed_paths =
+                g_list_concat(component->priv->observed_paths,
+                              ibus_observed_path_traverse(p));
     }
 }
 
@@ -646,101 +819,15 @@ ibus_component_add_engine (IBusComponent  *component,
     g_assert (IBUS_IS_ENGINE_DESC (engine));
 
     g_object_ref_sink (engine);
-    component->engines = g_list_append (component->engines, engine);
-    g_object_set_data ((GObject *)engine, "component", component);
+    component->priv->engines =
+            g_list_append (component->priv->engines, engine);
 }
 
 GList *
 ibus_component_get_engines (IBusComponent *component)
 {
-    return g_list_copy (component->engines);
+    return g_list_copy (component->priv->engines);
 }
-
-static void
-ibus_component_child_cb (GPid            pid,
-                         gint            status,
-                         IBusComponent  *component)
-{
-    g_assert (IBUS_IS_COMPONENT (component));
-    g_assert (component->pid == pid);
-
-    g_spawn_close_pid (pid);
-    component->pid = 0;
-    component->child_source_id = 0;
-
-    IBusComponentPrivate *priv = IBUS_COMPONENT_GET_PRIVATE (component);
-    if (priv->restart) {
-        g_debug ("==== Restarting %s", component->exec);
-        ibus_component_start (component, priv->verbose);
-    }
-}
-
-gboolean
-ibus_component_start (IBusComponent *component, gboolean verbose)
-{
-    g_assert (IBUS_IS_COMPONENT (component));
-
-    if (component->pid != 0)
-        return TRUE;
-
-    IBusComponentPrivate *priv = IBUS_COMPONENT_GET_PRIVATE (component);
-    priv->verbose = verbose;
-
-    gint argc;
-    gchar **argv;
-    gboolean retval;
-    GError *error;
-    GSpawnFlags flags;
-
-    error = NULL;
-    if (!g_shell_parse_argv (component->exec, &argc, &argv, &error)) {
-        g_warning ("Can not parse component %s exec: %s", component->name, error->message);
-        g_error_free (error);
-        return FALSE;
-    }
-
-    error = NULL;
-    flags = G_SPAWN_DO_NOT_REAP_CHILD;
-    if (!verbose) {
-        flags |= G_SPAWN_STDOUT_TO_DEV_NULL | G_SPAWN_STDERR_TO_DEV_NULL;
-    }
-    retval = g_spawn_async (NULL, argv, NULL,
-                            flags,
-                            NULL, NULL,
-                            &(component->pid), &error);
-    g_strfreev (argv);
-    if (!retval) {
-        g_warning ("Can not execute component %s: %s", component->name, error->message);
-        g_error_free (error);
-        return FALSE;
-    }
-
-    component->child_source_id =
-        g_child_watch_add (component->pid, (GChildWatchFunc) ibus_component_child_cb, component);
-
-    return TRUE;
-}
-
-gboolean
-ibus_component_stop (IBusComponent *component)
-{
-    g_assert (IBUS_IS_COMPONENT (component));
-
-    if (component->pid == 0)
-        return TRUE;
-
-    kill (component->pid, SIGTERM);
-    return TRUE;
-}
-
-gboolean
-ibus_component_is_running (IBusComponent *component)
-{
-    g_assert (IBUS_IS_COMPONENT (component));
-
-    return (component->pid != 0);
-}
-
 
 gboolean
 ibus_component_check_modification (IBusComponent *component)
@@ -749,30 +836,9 @@ ibus_component_check_modification (IBusComponent *component)
 
     GList *p;
 
-    for (p = component->observed_paths; p != NULL; p = p->next) {
+    for (p = component->priv->observed_paths; p != NULL; p = p->next) {
         if (ibus_observed_path_check_modification ((IBusObservedPath *)p->data))
             return TRUE;
     }
     return FALSE;
-}
-
-
-IBusComponent *
-ibus_component_get_from_engine (IBusEngineDesc *engine)
-{
-    g_assert (IBUS_IS_ENGINE_DESC (engine));
-
-    IBusComponent *component;
-
-    component = (IBusComponent *)g_object_get_data ((GObject *)engine, "component");
-    return component;
-}
-
-void
-ibus_component_set_restart (IBusComponent *component, gboolean restart)
-{
-    g_assert (IBUS_IS_COMPONENT (component));
-
-    IBusComponentPrivate *priv = IBUS_COMPONENT_GET_PRIVATE (component);
-    priv->restart = restart;
 }

@@ -20,19 +20,22 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include "ibusbus.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <glib/gstdio.h>
 #include <gio/gio.h>
-#include <dbus/dbus.h>
-#include "ibusbus.h"
+#include "ibusmarshalers.h"
 #include "ibusinternal.h"
 #include "ibusshare.h"
-#include "ibusconnection.h"
 #include "ibusenginedesc.h"
 #include "ibusserializable.h"
 #include "ibusconfig.h"
+
+#define DBUS_PATH_DBUS "/org/freedesktop/DBus"
+#define DBUS_SERVICE_DBUS "org.freedesktop.DBus"
+#define DBUS_INTERFACE_DBUS "org.freedesktop.DBus"
 
 #define IBUS_BUS_GET_PRIVATE(o)  \
    (G_TYPE_INSTANCE_GET_PRIVATE ((o), IBUS_TYPE_BUS, IBusBusPrivate))
@@ -41,6 +44,7 @@ enum {
     CONNECTED,
     DISCONNECTED,
     GLOBAL_ENGINE_CHANGED,
+    NAME_OWNER_CHANGED,
     LAST_SIGNAL,
 };
 
@@ -48,140 +52,205 @@ enum {
 /* IBusBusPriv */
 struct _IBusBusPrivate {
     GFileMonitor *monitor;
-    IBusConnection *connection;
+    GDBusConnection *connection;
     gboolean watch_dbus_signal;
+    guint watch_dbus_signal_id;
+    gboolean watch_ibus_signal;
+    guint watch_ibus_signal_id;
     IBusConfig *config;
     gchar *unique_name;
 };
-typedef struct _IBusBusPrivate IBusBusPrivate;
 
 static guint    bus_signals[LAST_SIGNAL] = { 0 };
 
 static IBusBus *_bus = NULL;
 
 /* functions prototype */
-static GObject* ibus_bus_constructor    (GType          type,
-                                         guint          n_params,
-                                         GObjectConstructParam
-                                                        *params);
-static void     ibus_bus_destroy        (IBusObject     *object);
-static void     ibus_bus_watch_dbus_signal
-                                        (IBusBus        *bus);
-static void     ibus_bus_unwatch_dbus_signal
-                                        (IBusBus        *bus);
+static GObject  *ibus_bus_constructor           (GType                   type,
+                                                 guint                   n_params,
+                                                 GObjectConstructParam  *params);
+static void      ibus_bus_destroy               (IBusObject             *object);
+static void      ibus_bus_watch_dbus_signal     (IBusBus                *bus);
+static void      ibus_bus_unwatch_dbus_signal   (IBusBus                *bus);
+static void      ibus_bus_watch_ibus_signal     (IBusBus                *bus);
+static void      ibus_bus_unwatch_ibus_signal   (IBusBus                *bus);
+static GVariant *ibus_bus_call_sync             (IBusBus                *bus,
+                                                 const gchar            *service,
+                                                 const gchar            *path,
+                                                 const gchar            *interface,
+                                                 const gchar            *member,
+                                                 GVariant               *parameters,
+                                                 const GVariantType     *reply_type);
+static void      ibus_bus_call_async             (IBusBus                *bus,
+                                                  const gchar            *service,
+                                                  const gchar            *path,
+                                                  const gchar            *interface,
+                                                  const gchar            *member,
+                                                  GVariant               *parameters,
+                                                  const GVariantType     *reply_type,
+                                                  gpointer                source_tag,
+                                                  gint                    timeout_msec,
+                                                  GCancellable           *cancellable,
+                                                  GAsyncReadyCallback     callback,
+                                                  gpointer                user_data);
 
 G_DEFINE_TYPE (IBusBus, ibus_bus, IBUS_TYPE_OBJECT)
 
-IBusBus *
-ibus_bus_new (void)
-{
-    IBusBus *bus = IBUS_BUS (g_object_new (IBUS_TYPE_BUS, NULL));
-
-    return bus;
-}
-
 static void
-ibus_bus_class_init (IBusBusClass *klass)
+ibus_bus_class_init (IBusBusClass *class)
 {
-    GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-    IBusObjectClass *ibus_object_class = IBUS_OBJECT_CLASS (klass);
-
-    g_type_class_add_private (klass, sizeof (IBusBusPrivate));
+    GObjectClass *gobject_class = G_OBJECT_CLASS (class);
+    IBusObjectClass *ibus_object_class = IBUS_OBJECT_CLASS (class);
 
     gobject_class->constructor = ibus_bus_constructor;
     ibus_object_class->destroy = ibus_bus_destroy;
 
-    // install signals
+    /* install signals */
     /**
      * IBusBus::connected:
+     * @bus: The #IBusBus object which recevied the signal
      *
-     * Emitted when IBusBus is connected.
+     * Emitted when #IBusBus is connected to ibus-daemon.
      *
-     * <note><para>Argument @user_data is ignored in this function.</para></note>
      */
     bus_signals[CONNECTED] =
         g_signal_new (I_("connected"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            _ibus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     /**
      * IBusBus::disconnected:
+     * @bus: The #IBusBus object which recevied the signal
      *
-     * Emitted when IBusBus is disconnected.
+     * Emitted when #IBusBus is disconnected from ibus-daemon.
      *
-     * <note><para>Argument @user_data is ignored in this function.</para></note>
      */
     bus_signals[DISCONNECTED] =
         g_signal_new (I_("disconnected"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            _ibus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     /**
      * IBusBus::global-engine-changed:
+     * @bus: The #IBusBus object which recevied the signal
+     * @name: The name of the new global engine.
      *
      * Emitted when global engine is changed.
      *
-     * <note><para>Argument @user_data is ignored in this function.</para></note>
      */
     bus_signals[GLOBAL_ENGINE_CHANGED] =
         g_signal_new (I_("global-engine-changed"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            _ibus_marshal_VOID__STRING,
             G_TYPE_NONE,
-            0);
-}
+            1,
+            G_TYPE_STRING);
 
-static gboolean
-_connection_ibus_signal_cb (IBusConnection *connection,
-                            IBusMessage    *message,
-                            IBusBus        *bus)
-{
-    IBusBusPrivate *priv;
-    priv = IBUS_BUS_GET_PRIVATE (bus);
+    /**
+     * IBusBus::name-owner-changed:
+     * @bus: The #IBusBus object which recevied the signal
+     * @name: The name which ower is changed.
+     * @old_owner: The unique bus name of the old owner.
+     * @new_owner: The unique bus name of the new owner.
+     *
+     * Emitted when D-Bus name owner is changed.
+     *
+     */
+    bus_signals[NAME_OWNER_CHANGED] =
+        g_signal_new (I_("name-owner-changed"),
+            G_TYPE_FROM_CLASS (class),
+            G_SIGNAL_RUN_LAST,
+            0,
+            NULL, NULL,
+            _ibus_marshal_VOID__STRING_STRING_STRING,
+            G_TYPE_NONE,
+            3,
+            G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 
-    if (ibus_message_is_signal (message, IBUS_INTERFACE_IBUS,
-                                "GlobalEngineChanged")) {
-        g_signal_emit (bus, bus_signals[GLOBAL_ENGINE_CHANGED], 0);
-        return TRUE;
-    }
-    return FALSE;
+    g_type_class_add_private (class, sizeof (IBusBusPrivate));
 }
 
 static void
-_connection_destroy_cb (IBusConnection  *connection,
-                        IBusBus         *bus)
+_connection_dbus_signal_cb (GDBusConnection *connection,
+                            const gchar *sender_name,
+                            const gchar *object_path,
+                            const gchar *interface_name,
+                            const gchar *signal_name,
+                            GVariant *parameters,
+                            gpointer user_data)
 {
-    g_assert (IBUS_IS_BUS (bus));
-    g_assert (IBUS_IS_CONNECTION (connection));
+    g_return_if_fail (user_data != NULL);
+    g_return_if_fail (IBUS_IS_BUS (user_data));
 
-    IBusBusPrivate *priv;
-    priv = IBUS_BUS_GET_PRIVATE (bus);
+    if (g_strcmp0 (signal_name, "NameOwnerChanged") == 0) {
+        gchar *name = NULL;
+        gchar *old_owner = NULL;
+        gchar *new_owner = NULL;
+        g_variant_get (parameters, "(&s&s&s)", &name, &old_owner, &new_owner);
+        g_signal_emit (IBUS_BUS (user_data),
+                       bus_signals[NAME_OWNER_CHANGED], 0,
+                       name, old_owner, new_owner);
+    }
+    /* FIXME handle other D-Bus signals if needed */
+}
 
-    g_assert (priv->connection == connection);
-    g_signal_handlers_disconnect_by_func (priv->connection,
-                                          G_CALLBACK (_connection_destroy_cb),
+static void
+_connection_ibus_signal_cb (GDBusConnection *connection,
+                            const gchar *sender_name,
+                            const gchar *object_path,
+                            const gchar *interface_name,
+                            const gchar *signal_name,
+                            GVariant *parameters,
+                            gpointer user_data)
+{
+    g_return_if_fail (user_data != NULL);
+    g_return_if_fail (IBUS_IS_BUS (user_data));
+
+    if (g_strcmp0 (signal_name, "GlobalEngineChanged") == 0) {
+        gchar *engine_name = NULL;
+        g_variant_get (parameters, "(&s)", &engine_name);
+        g_signal_emit (IBUS_BUS (user_data),
+                       bus_signals[GLOBAL_ENGINE_CHANGED], 0,
+                       engine_name);
+    }
+    /* FIXME handle org.freedesktop.IBus.RegistryChanged signal if needed */
+}
+
+static void
+_connection_closed_cb (GDBusConnection  *connection,
+                       gboolean          remote_peer_vanished,
+                       GError           *error,
+                       IBusBus          *bus)
+{
+    if (error) {
+        g_warning ("_connection_closed_cb: %s", error->message);
+    }
+
+    g_assert (bus->priv->connection == connection);
+    g_signal_handlers_disconnect_by_func (bus->priv->connection,
+                                          G_CALLBACK (_connection_closed_cb),
                                           bus);
-    g_signal_handlers_disconnect_by_func (priv->connection,
-                                          G_CALLBACK (_connection_ibus_signal_cb),
-                                          bus);
-    g_object_unref (priv->connection);
-    priv->connection = NULL;
+    g_object_unref (bus->priv->connection);
+    bus->priv->connection = NULL;
 
-    g_free (priv->unique_name);
-    priv->unique_name = NULL;
+    g_free (bus->priv->unique_name);
+    bus->priv->unique_name = NULL;
+
+    bus->priv->watch_dbus_signal_id = 0;
+    bus->priv->watch_ibus_signal_id = 0;
 
     g_signal_emit (bus, bus_signals[DISCONNECTED], 0);
 }
@@ -189,43 +258,39 @@ _connection_destroy_cb (IBusConnection  *connection,
 static void
 ibus_bus_connect (IBusBus *bus)
 {
-    IBusBusPrivate *priv;
-    priv = IBUS_BUS_GET_PRIVATE (bus);
-
-    /* destry old connection at first */
-    if (priv->connection != NULL) {
-        ibus_object_destroy ((IBusObject *)priv->connection);
-        g_assert (priv->connection == NULL);
+    /* unref the old connection at first */
+    if (bus->priv->connection != NULL) {
+        g_signal_handlers_disconnect_by_func (bus->priv->connection,
+                                              G_CALLBACK (_connection_closed_cb),
+                                              bus);
+        g_object_unref (bus->priv->connection);
+        bus->priv->connection = NULL;
     }
 
     if (ibus_get_address () != NULL) {
-        priv->connection = ibus_connection_open (ibus_get_address ());
+        bus->priv->connection =
+            g_dbus_connection_new_for_address_sync (ibus_get_address (),
+                                                    G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_CLIENT |
+                                                    G_DBUS_CONNECTION_FLAGS_MESSAGE_BUS_CONNECTION,
+                                                    NULL, NULL, NULL);
     }
 
-    if (priv->connection) {
+    if (bus->priv->connection) {
+        /* FIXME */
         ibus_bus_hello (bus);
 
-        g_signal_connect (priv->connection,
-                          "destroy",
-                          (GCallback) _connection_destroy_cb,
+        g_signal_connect (bus->priv->connection,
+                          "closed",
+                          (GCallback) _connection_closed_cb,
                           bus);
-        g_signal_emit (bus, bus_signals[CONNECTED], 0);
-
-        if (priv->watch_dbus_signal) {
+        if (bus->priv->watch_dbus_signal) {
             ibus_bus_watch_dbus_signal (bus);
         }
+        if (bus->priv->watch_ibus_signal) {
+            ibus_bus_watch_ibus_signal (bus);
+        }
 
-        /** Watch ibus signals. */
-        const gchar *rule =
-            "type='signal',"
-            "path='" IBUS_PATH_IBUS "',"
-            "interface='" IBUS_INTERFACE_IBUS "'";
-
-        ibus_bus_add_match (bus, rule);
-        g_signal_connect (priv->connection,
-                          "ibus-signal",
-                          (GCallback) _connection_ibus_signal_cb,
-                          bus);
+        g_signal_emit (bus, bus_signals[CONNECTED], 0);
     }
 }
 
@@ -254,13 +319,15 @@ ibus_bus_init (IBusBus *bus)
     gchar *path;
     GFile *file;
 
-    IBusBusPrivate *priv;
-    priv = IBUS_BUS_GET_PRIVATE (bus);
+    bus->priv = IBUS_BUS_GET_PRIVATE (bus);
 
-    priv->config = NULL;
-    priv->connection = NULL;
-    priv->watch_dbus_signal = FALSE;
-    priv->unique_name = NULL;
+    bus->priv->config = NULL;
+    bus->priv->connection = NULL;
+    bus->priv->watch_dbus_signal = FALSE;
+    bus->priv->watch_dbus_signal_id = 0;
+    bus->priv->watch_ibus_signal = FALSE;
+    bus->priv->watch_ibus_signal_id = 0;
+    bus->priv->unique_name = NULL;
 
     path = g_path_get_dirname (ibus_get_socket_path ());
 
@@ -277,9 +344,9 @@ ibus_bus_init (IBusBus *bus)
     ibus_bus_connect (bus);
 
     file = g_file_new_for_path (ibus_get_socket_path ());
-    priv->monitor = g_file_monitor_file (file, 0, NULL, NULL);
+    bus->priv->monitor = g_file_monitor_file (file, 0, NULL, NULL);
 
-    g_signal_connect (priv->monitor, "changed", (GCallback) _changed_cb, bus);
+    g_signal_connect (bus->priv->monitor, "changed", (GCallback) _changed_cb, bus);
 
     g_object_unref (file);
     g_free (path);
@@ -309,49 +376,119 @@ ibus_bus_constructor (GType                  type,
 static void
 ibus_bus_destroy (IBusObject *object)
 {
-    IBusBus *bus;
-    IBusBusPrivate *priv;
-
-    bus = IBUS_BUS (object);
-    priv = IBUS_BUS_GET_PRIVATE (bus);
-
     g_assert (_bus == (IBusBus *)object);
+
+    IBusBus * bus = _bus;
     _bus = NULL;
 
-    if (priv->monitor) {
-        g_object_unref (priv->monitor);
-        priv->monitor = NULL;
+    if (bus->priv->monitor) {
+        g_object_unref (bus->priv->monitor);
+        bus->priv->monitor = NULL;
     }
 
-    if (priv->config) {
-        ibus_object_destroy ((IBusObject *) priv->config);
-        priv->config = NULL;
+    if (bus->priv->config) {
+        ibus_proxy_destroy ((IBusProxy *) bus->priv->config);
+        bus->priv->config = NULL;
     }
 
-    if (priv->connection) {
-        ibus_object_destroy ((IBusObject *) priv->connection);
-        priv->connection = NULL;
+    if (bus->priv->connection) {
+        /* FIXME should use async close function */
+        g_dbus_connection_close_sync (bus->priv->connection, NULL, NULL);
+        bus->priv->connection = NULL;
     }
 
-    g_free (priv->unique_name);
-    priv->unique_name = NULL;
+    g_free (bus->priv->unique_name);
+    bus->priv->unique_name = NULL;
 
     IBUS_OBJECT_CLASS (ibus_bus_parent_class)->destroy (object);
 }
 
+static gboolean
+_async_finish_void (GAsyncResult *res,
+                    GError      **error)
+{
+    GSimpleAsyncResult *simple = (GSimpleAsyncResult *) res;
+    if (g_simple_async_result_propagate_error (simple, error))
+        return FALSE;
+    return TRUE;
+}
+
+static gchar *
+_async_finish_object_path (GAsyncResult *res,
+                           GError      **error)
+{
+    GSimpleAsyncResult *simple = (GSimpleAsyncResult *) res;
+    if (g_simple_async_result_propagate_error (simple, error))
+        return NULL;
+    GVariant *variant = g_simple_async_result_get_op_res_gpointer (simple);
+    g_return_val_if_fail (variant != NULL, NULL);
+    gchar *path = NULL;
+    g_variant_get (variant, "(&o)", &path);
+    return path;
+}
+
+static gchar *
+_async_finish_string (GAsyncResult *res,
+                      GError      **error)
+{
+    GSimpleAsyncResult *simple = (GSimpleAsyncResult *) res;
+    if (g_simple_async_result_propagate_error (simple, error))
+        return NULL;
+    GVariant *variant = g_simple_async_result_get_op_res_gpointer (simple);
+    g_return_val_if_fail (variant != NULL, NULL);
+    gchar *s = NULL;
+    g_variant_get (variant, "(&s)", &s);
+    return s;
+}
+
+static gboolean
+_async_finish_gboolean (GAsyncResult *res,
+                        GError      **error)
+{
+    GSimpleAsyncResult *simple = (GSimpleAsyncResult *) res;
+    if (g_simple_async_result_propagate_error (simple, error))
+        return FALSE;
+    GVariant *variant = g_simple_async_result_get_op_res_gpointer (simple);
+    g_return_val_if_fail (variant != NULL, FALSE);
+    gboolean retval = FALSE;
+    g_variant_get (variant, "(b)", &retval);
+    return retval;
+}
+
+static guint
+_async_finish_guint (GAsyncResult *res,
+                     GError      **error)
+{
+    static const guint bad_id = 0;
+    GSimpleAsyncResult *simple = (GSimpleAsyncResult *) res;
+    if (g_simple_async_result_propagate_error (simple, error))
+        return bad_id;
+    GVariant *variant = g_simple_async_result_get_op_res_gpointer (simple);
+    g_return_val_if_fail (variant != NULL, bad_id);
+
+    guint id = 0;
+    g_variant_get (variant, "(u)", &id);
+    return id;
+}
+
+IBusBus *
+ibus_bus_new (void)
+{
+    IBusBus *bus = IBUS_BUS (g_object_new (IBUS_TYPE_BUS, NULL));
+
+    return bus;
+}
+
+
 gboolean
 ibus_bus_is_connected (IBusBus *bus)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), FALSE);
 
-    IBusBusPrivate *priv;
-    priv = IBUS_BUS_GET_PRIVATE (bus);
+    if (bus->priv->connection == NULL || g_dbus_connection_is_closed (bus->priv->connection))
+        return FALSE;
 
-    if (priv->connection) {
-        return ibus_connection_is_connected (priv->connection);
-    }
-
-    return FALSE;
+    return TRUE;
 }
 
 
@@ -359,233 +496,257 @@ IBusInputContext *
 ibus_bus_create_input_context (IBusBus      *bus,
                                const gchar  *client_name)
 {
-    g_assert (IBUS_IS_BUS (bus));
-    g_assert (client_name != NULL);
-
-    g_return_val_if_fail (ibus_bus_is_connected (bus), NULL);
+    g_return_val_if_fail (IBUS_IS_BUS (bus), NULL);
+    g_return_val_if_fail (client_name != NULL, NULL);
 
     gchar *path;
-    DBusMessage *call = NULL;
-    DBusMessage *reply = NULL;
-    IBusError *error;
     IBusInputContext *context = NULL;
-    IBusBusPrivate *priv;
-    priv = IBUS_BUS_GET_PRIVATE (bus);
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 IBUS_SERVICE_IBUS,
+                                 IBUS_PATH_IBUS,
+                                 IBUS_INTERFACE_IBUS,
+                                 "CreateInputContext",
+                                 g_variant_new ("(s)", client_name),
+                                 G_VARIANT_TYPE ("(o)"));
 
-    call = ibus_message_new_method_call (IBUS_SERVICE_IBUS,
-                                         IBUS_PATH_IBUS,
-                                         IBUS_INTERFACE_IBUS,
-                                         "CreateInputContext");
-    ibus_message_append_args (call,
-                              G_TYPE_STRING, &client_name,
-                              G_TYPE_INVALID);
-
-    reply = ibus_connection_send_with_reply_and_block (priv->connection,
-                                                       call,
-                                                       -1,
-                                                       &error);
-    ibus_message_unref (call);
-
-    if (reply == NULL) {
-        g_warning ("%s: %s", error->name, error->message);
-        ibus_error_free (error);
-        return NULL;
+    if (result != NULL) {
+        GError *error = NULL;
+        g_variant_get (result, "(&o)", &path);
+        context = ibus_input_context_new (path, bus->priv->connection, NULL, &error);
+        g_variant_unref (result);
+        if (context == NULL) {
+            g_warning ("ibus_bus_create_input_context: %s", error->message);
+            g_error_free (error);
+        }
     }
-
-    if ((error = ibus_error_new_from_message (reply)) != NULL) {
-        g_warning ("%s: %s", error->name, error->message);
-        ibus_message_unref (reply);
-        ibus_error_free (error);
-        return NULL;
-    }
-
-    if (!ibus_message_get_args (reply,
-                                &error,
-                                IBUS_TYPE_OBJECT_PATH, &path,
-                                G_TYPE_INVALID)) {
-        g_warning ("%s: %s", error->name, error->message);
-        ibus_message_unref (reply);
-        ibus_error_free (error);
-
-        return NULL;
-    }
-
-    context = ibus_input_context_new (path, priv->connection);
-    ibus_message_unref (reply);
 
     return context;
 }
 
-IBusMessage *
-ibus_bus_call_with_reply_valist (IBusBus      *bus,
-                                 const gchar  *name,
-                                 const gchar  *path,
-                                 const gchar  *interface,
-                                 const gchar  *member,
-                                 GType         first_arg_type,
-                                 va_list       va_args)
+static void
+_create_input_context_async_step_two_done (GObject            *source_object,
+                                           GAsyncResult       *res,
+                                           GSimpleAsyncResult *simple)
+{
+    GError *error = NULL;
+    IBusInputContext *context =
+            ibus_input_context_new_async_finish (res, &error);
+    if (context == NULL) {
+        g_simple_async_result_set_from_error (simple, error);
+        g_error_free (error);
+    }
+    else {
+        g_simple_async_result_set_op_res_gpointer (simple, context, NULL);
+    }
+    g_simple_async_result_complete_in_idle (simple);
+    g_object_unref (simple);
+}
+
+static void
+_create_input_context_async_step_one_done (GDBusConnection    *connection,
+                                           GAsyncResult       *res,
+                                           GSimpleAsyncResult *simple)
+{
+    GError *error = NULL;
+    GVariant *variant = g_dbus_connection_call_finish (connection, res, &error);
+
+    if (variant == NULL) {
+        g_simple_async_result_set_from_error (simple, error);
+        g_error_free (error);
+        g_simple_async_result_complete_in_idle (simple);
+        g_object_unref (simple);
+        return;
+    }
+
+    if (g_dbus_connection_is_closed (connection)) {
+        /*
+         * The connection is closed, can not contine next steps, so complete
+         * the asynchronous request with error.
+         */
+        g_simple_async_result_set_error (simple,
+                G_DBUS_ERROR, G_DBUS_ERROR_FAILED, "Connection is closed.");
+        g_simple_async_result_complete_in_idle (simple);
+        return;
+    }
+
+    const gchar *path = NULL;
+    g_variant_get (variant, "(&o)", &path);
+
+
+    IBusBus *bus = (IBusBus *)g_async_result_get_source_object (
+            (GAsyncResult *)simple);
+    g_assert (IBUS_IS_BUS (bus));
+
+    GCancellable *cancellable =
+            (GCancellable *)g_object_get_data ((GObject *)simple,
+                                               "cancellable");
+
+    ibus_input_context_new_async (path,
+            bus->priv->connection,
+            cancellable,
+            (GAsyncReadyCallback)_create_input_context_async_step_two_done,
+            simple);
+    /* release the reference from g_async_result_get_source_object() */
+    g_object_unref (bus);
+}
+
+void
+ibus_bus_create_input_context_async (IBusBus            *bus,
+                                     const gchar        *client_name,
+                                     gint                timeout_msec,
+                                     GCancellable       *cancellable,
+                                     GAsyncReadyCallback callback,
+                                     gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+    g_return_if_fail (client_name != NULL);
+    g_return_if_fail (callback != NULL);
+
+    GSimpleAsyncResult *simple = g_simple_async_result_new ((GObject *)bus,
+            callback, user_data, ibus_bus_create_input_context_async);
+
+    if (cancellable != NULL) {
+        g_object_set_data_full ((GObject *)simple,
+                                "concellable",
+                                g_object_ref (cancellable),
+                                (GDestroyNotify)g_object_unref);
+    }
+
+    /* do not use ibus_bus_call_async, instread use g_dbus_connection_call
+     * directly, because we need two async steps for create an IBusInputContext.
+     * 1. Call CreateInputContext to request ibus-daemon create a remote IC.
+     * 2. New local IBusInputContext proxy of the remote IC
+     */
+    g_dbus_connection_call (bus->priv->connection,
+            IBUS_SERVICE_IBUS,
+            IBUS_PATH_IBUS,
+            IBUS_INTERFACE_IBUS,
+            "CreateInputContext",
+            g_variant_new ("(s)", client_name),
+            G_VARIANT_TYPE("(o)"),
+            G_DBUS_CALL_FLAGS_NO_AUTO_START,
+            timeout_msec,
+            cancellable,
+            (GAsyncReadyCallback)_create_input_context_async_step_one_done,
+            simple);
+}
+
+IBusInputContext *
+ibus_bus_create_input_context_async_finish (IBusBus      *bus,
+                                            GAsyncResult *res,
+                                            GError      **error)
 {
     g_assert (IBUS_IS_BUS (bus));
-    g_assert (name != NULL);
-    g_assert (path != NULL);
-    g_assert (interface != NULL);
-    g_assert (member);
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_create_input_context_async));
 
-    IBusMessage *message, *reply;
-    IBusError *error;
-    IBusBusPrivate *priv;
-
-    g_return_val_if_fail (ibus_bus_is_connected (bus), FALSE);
-
-    priv = IBUS_BUS_GET_PRIVATE (bus);
-
-    message = ibus_message_new_method_call (name, path, interface, member);
-
-    ibus_message_append_args_valist (message, first_arg_type, va_args);
-
-    reply = ibus_connection_send_with_reply_and_block (
-                                        priv->connection,
-                                        message,
-                                        -1,
-                                        &error);
-    ibus_message_unref (message);
-
-    if (reply == NULL) {
-        g_warning ("%s : %s", error->name, error->message);
-        ibus_error_free (error);
+    GSimpleAsyncResult *simple = (GSimpleAsyncResult *) res;
+    if (g_simple_async_result_propagate_error (simple, error))
         return NULL;
-    }
-
-    if ((error = ibus_error_new_from_message (reply)) != NULL) {
-        g_warning ("%s : %s", error->name, error->message);
-        ibus_error_free (error);
-        ibus_message_unref (reply);
-        return NULL;
-    }
-
-    return reply;
-}
-
-IBusMessage *
-ibus_bus_call_with_reply (IBusBus      *bus,
-                          const gchar  *name,
-                          const gchar  *path,
-                          const gchar  *interface,
-                          const gchar  *member,
-                          GType         first_arg_type,
-                          ...)
-{
-    IBusMessage *reply;
-    va_list va_args;
-
-    va_start (va_args, first_arg_type);
-    reply = ibus_bus_call_with_reply_valist (
-        bus, name, path, interface, member, first_arg_type, va_args);
-    va_end (va_args);
-
-    return reply;
-}
-
-gboolean
-ibus_bus_call (IBusBus      *bus,
-               const gchar  *name,
-               const gchar  *path,
-               const gchar  *interface,
-               const gchar  *member,
-               GType         first_arg_type,
-               ...)
-{
-    IBusMessage *reply;
-    va_list va_args;
-
-    va_start (va_args, first_arg_type);
-    reply = ibus_bus_call_with_reply_valist (
-        bus, name, path, interface, member, first_arg_type, va_args);
-    va_end (va_args);
-
-    if (reply) {
-      ibus_message_unref (reply);
-      return TRUE;
-    }
-
-    return FALSE;
+    IBusInputContext *context =
+            g_simple_async_result_get_op_res_gpointer (simple);
+    g_assert (IBUS_IS_INPUT_CONTEXT (context));
+    return context;
 }
 
 gchar *
-ibus_bus_current_input_context(IBusBus      *bus)
+ibus_bus_current_input_context (IBusBus      *bus)
 {
-    g_assert (IBUS_IS_BUS (bus));
-    g_return_val_if_fail (ibus_bus_is_connected (bus), NULL);
+    g_return_val_if_fail (IBUS_IS_BUS (bus), NULL);
 
     gchar *path = NULL;
-    IBusMessage *reply = NULL;
-    IBusError *error = NULL;
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 IBUS_SERVICE_IBUS,
+                                 IBUS_PATH_IBUS,
+                                 IBUS_INTERFACE_IBUS,
+                                 "CurrentInputContext",
+                                 NULL,
+                                 G_VARIANT_TYPE ("(o)"));
 
-    reply = ibus_bus_call_with_reply (bus,
-                                      IBUS_SERVICE_IBUS,
-                                      IBUS_PATH_IBUS,
-                                      IBUS_INTERFACE_IBUS,
-                                      "CurrentInputContext",
-                                      G_TYPE_INVALID);
-
-    if (reply) {
-        if (ibus_message_get_args (reply, &error,
-                                   IBUS_TYPE_OBJECT_PATH, &path,
-                                   G_TYPE_INVALID)) {
-            path = g_strdup (path);
-        } else {
-            g_warning ("%s: %s", error->name, error->message);
-            ibus_error_free (error);
-        }
-
-        ibus_message_unref (reply);
+    if (result != NULL) {
+        g_variant_get (result, "(o)", &path);
+        g_variant_unref (result);
     }
 
     return path;
 }
 
+void
+ibus_bus_current_input_context_async (IBusBus            *bus,
+                                      gint                timeout_msec,
+                                      GCancellable       *cancellable,
+                                      GAsyncReadyCallback callback,
+                                      gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+
+    ibus_bus_call_async (bus,
+                         IBUS_SERVICE_IBUS,
+                         IBUS_PATH_IBUS,
+                         IBUS_INTERFACE_IBUS,
+                         "CurrentInputContext",
+                         NULL,
+                         G_VARIANT_TYPE ("(o)"),
+                         ibus_bus_current_input_context_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+gchar *
+ibus_bus_current_input_context_async_finish (IBusBus      *bus,
+                                             GAsyncResult *res,
+                                             GError      **error)
+{
+    g_assert (IBUS_IS_BUS (bus));
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_current_input_context_async));
+    return g_strdup (_async_finish_object_path (res, error));
+}
+
 static void
 ibus_bus_watch_dbus_signal (IBusBus *bus)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_if_fail (bus->priv->connection != NULL);
+    g_return_if_fail (bus->priv->watch_dbus_signal_id == 0);
 
-    const gchar *rule;
-
-    rule = "type='signal'," \
-           "path='" DBUS_PATH_DBUS "'," \
-           "interface='" DBUS_INTERFACE_DBUS "'";
-
-    ibus_bus_add_match (bus, rule);
-
+    /* Subscribe to dbus signals such as NameOwnerChanged. */
+    bus->priv->watch_dbus_signal_id
+        = g_dbus_connection_signal_subscribe (bus->priv->connection,
+                                              DBUS_SERVICE_DBUS,
+                                              DBUS_INTERFACE_DBUS,
+                                              "NameOwnerChanged",
+                                              DBUS_PATH_DBUS,
+                                              NULL /* arg0 */,
+                                              (GDBusSignalFlags) 0,
+                                              _connection_dbus_signal_cb,
+                                              bus,
+                                              NULL /* user_data_free_func */);
+    /* FIXME handle other D-Bus signals if needed */
 }
 
 static void
 ibus_bus_unwatch_dbus_signal (IBusBus *bus)
 {
-    g_assert (IBUS_IS_BUS (bus));
-
-    const gchar *rule;
-
-    rule = "type='signal'," \
-           "path='" DBUS_PATH_DBUS "'," \
-           "interface='" DBUS_INTERFACE_DBUS "'";
-
-    ibus_bus_remove_match (bus, rule);
+    g_return_if_fail (bus->priv->watch_dbus_signal_id != 0);
+    g_dbus_connection_signal_unsubscribe (bus->priv->connection,
+                                          bus->priv->watch_dbus_signal_id);
+    bus->priv->watch_dbus_signal_id = 0;
 }
 
 void
 ibus_bus_set_watch_dbus_signal (IBusBus        *bus,
                                 gboolean        watch)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_if_fail (IBUS_IS_BUS (bus));
 
-    IBusBusPrivate *priv;
-    priv = IBUS_BUS_GET_PRIVATE (bus);
-
-    if (priv->watch_dbus_signal == watch)
+    if (bus->priv->watch_dbus_signal == watch)
         return;
 
-    priv->watch_dbus_signal = watch;
+    bus->priv->watch_dbus_signal = watch;
 
     if (ibus_bus_is_connected (bus)) {
         if (watch) {
@@ -597,102 +758,223 @@ ibus_bus_set_watch_dbus_signal (IBusBus        *bus,
     }
 }
 
+static void
+ibus_bus_watch_ibus_signal (IBusBus *bus)
+{
+    g_return_if_fail (bus->priv->connection != NULL);
+    g_return_if_fail (bus->priv->watch_ibus_signal_id == 0);
+
+    /* Subscribe to ibus signals such as GlboalEngineChanged. */
+    bus->priv->watch_ibus_signal_id
+        = g_dbus_connection_signal_subscribe (bus->priv->connection,
+                                              "org.freedesktop.IBus",
+                                              IBUS_INTERFACE_IBUS,
+                                              "GlobalEngineChanged",
+                                              IBUS_PATH_IBUS,
+                                              NULL /* arg0 */,
+                                              (GDBusSignalFlags) 0,
+                                              _connection_ibus_signal_cb,
+                                              bus,
+                                              NULL /* user_data_free_func */);
+    /* FIXME handle org.freedesktop.IBus.RegistryChanged signal if needed */
+}
+
+static void
+ibus_bus_unwatch_ibus_signal (IBusBus *bus)
+{
+    g_return_if_fail (bus->priv->watch_ibus_signal_id != 0);
+    g_dbus_connection_signal_unsubscribe (bus->priv->connection,
+                                          bus->priv->watch_ibus_signal_id);
+    bus->priv->watch_ibus_signal_id = 0;
+}
+
+void
+ibus_bus_set_watch_ibus_signal (IBusBus        *bus,
+                                gboolean        watch)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+
+    if (bus->priv->watch_ibus_signal == watch)
+        return;
+
+    bus->priv->watch_ibus_signal = watch;
+
+    if (ibus_bus_is_connected (bus)) {
+        if (watch) {
+            ibus_bus_watch_ibus_signal (bus);
+        }
+        else {
+            ibus_bus_unwatch_ibus_signal (bus);
+        }
+    }
+}
+
 const gchar *
 ibus_bus_hello (IBusBus *bus)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), NULL);
+    g_return_val_if_fail (ibus_bus_is_connected (bus), NULL);
 
-    gchar *unique_name = NULL;
-    IBusMessage *reply = NULL;
-    IBusError *error = NULL;
-    IBusBusPrivate *priv;
-
-    priv = IBUS_BUS_GET_PRIVATE (bus);
-
-    g_free (priv->unique_name);
-    priv->unique_name = NULL;
-
-    reply = ibus_bus_call_with_reply (bus,
-                                      DBUS_SERVICE_DBUS,
-                                      DBUS_PATH_DBUS,
-                                      DBUS_INTERFACE_DBUS,
-                                      "Hello",
-                                      G_TYPE_INVALID);
-
-    if (reply) {
-        if (ibus_message_get_args (reply, &error, G_TYPE_STRING, &unique_name,
-                                   G_TYPE_INVALID)) {
-            priv->unique_name = g_strdup (unique_name);
-        } else {
-            g_warning ("%s: %s", error->name, error->message);
-            ibus_error_free (error);
-        }
-
-        ibus_message_unref (reply);
-    }
-
-    return priv->unique_name;
+    /* gdbus connection will say hello by self. */
+    if (bus->priv->connection)
+        return g_dbus_connection_get_unique_name (bus->priv->connection);
+    return NULL;
 }
 
-guint
+guint32
 ibus_bus_request_name (IBusBus      *bus,
                        const gchar  *name,
-                       guint         flags)
+                       guint32       flags)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), 0);
+    g_return_val_if_fail (name != NULL, 0);
 
-    IBusMessage *reply = NULL;
-    IBusError *error = NULL;
-    guint retval = 0;
+    guint32 retval = 0;
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 DBUS_SERVICE_DBUS,
+                                 DBUS_PATH_DBUS,
+                                 DBUS_INTERFACE_DBUS,
+                                 "RequestName",
+                                 g_variant_new ("(su)", name, flags),
+                                 G_VARIANT_TYPE ("(u)"));
 
-    reply = ibus_bus_call_with_reply (bus,
-                                      DBUS_SERVICE_DBUS,
-                                      DBUS_PATH_DBUS,
-                                      DBUS_INTERFACE_DBUS,
-                                      "RequestName",
-                                      G_TYPE_STRING, &name,
-                                      G_TYPE_UINT, &flags,
-                                      G_TYPE_INVALID);
-
-    if (reply) {
-        if (!ibus_message_get_args (reply, &error, G_TYPE_UINT, &retval,
-                                    G_TYPE_INVALID)) {
-            g_warning ("%s: %s", error->name, error->message);
-            ibus_error_free (error);
-        }
-
-        ibus_message_unref (reply);
+    if (result) {
+        g_variant_get (result, "(u)", &retval);
+        g_variant_unref (result);
     }
 
     return retval;
+}
+
+void
+ibus_bus_request_name_async (IBusBus            *bus,
+                             const gchar        *name,
+                             guint               flags,
+                             gint                timeout_msec,
+                             GCancellable       *cancellable,
+                             GAsyncReadyCallback callback,
+                             gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+    g_return_if_fail (name != NULL);
+
+    ibus_bus_call_async (bus,
+                         DBUS_SERVICE_DBUS,
+                         DBUS_PATH_DBUS,
+                         DBUS_INTERFACE_DBUS,
+                         "RequestName",
+                         g_variant_new ("(su)", name, flags),
+                         G_VARIANT_TYPE ("(u)"),
+                         ibus_bus_request_name_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+guint
+ibus_bus_request_name_async_finish (IBusBus      *bus,
+                                    GAsyncResult *res,
+                                    GError      **error)
+{
+    g_assert (IBUS_IS_BUS (bus));
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_request_name_async));
+    return _async_finish_guint (res, error);
 }
 
 guint
 ibus_bus_release_name (IBusBus      *bus,
                        const gchar  *name)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), 0);
+    g_return_val_if_fail (name != NULL, 0);
 
-    IBusMessage *reply = NULL;
-    IBusError *error = NULL;
     guint retval = 0;
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 DBUS_SERVICE_DBUS,
+                                 DBUS_PATH_DBUS,
+                                 DBUS_INTERFACE_DBUS,
+                                 "ReleaseName",
+                                 g_variant_new ("(s)", name),
+                                 G_VARIANT_TYPE ("(u)"));
 
-    reply = ibus_bus_call_with_reply (bus,
-                                      DBUS_SERVICE_DBUS,
-                                      DBUS_PATH_DBUS,
-                                      DBUS_INTERFACE_DBUS,
-                                      "ReleaseName",
-                                      G_TYPE_STRING, &name,
-                                      G_TYPE_INVALID);
+    if (result) {
+        g_variant_get (result, "(u)", &retval);
+        g_variant_unref (result);
+    }
 
-    if (reply) {
-        if (!ibus_message_get_args (reply, &error, G_TYPE_UINT, &retval,
-                                    G_TYPE_INVALID)) {
-            g_warning ("%s: %s", error->name, error->message);
-            ibus_error_free (error);
+    return retval;
+}
+
+void
+ibus_bus_release_name_async (IBusBus            *bus,
+                             const gchar        *name,
+                             gint                timeout_msec,
+                             GCancellable       *cancellable,
+                             GAsyncReadyCallback callback,
+                             gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+    g_return_if_fail (name != NULL);
+
+    ibus_bus_call_async (bus,
+                         DBUS_SERVICE_DBUS,
+                         DBUS_PATH_DBUS,
+                         DBUS_INTERFACE_DBUS,
+                         "ReleaseName",
+                         g_variant_new ("(s)", name),
+                         G_VARIANT_TYPE ("(u)"),
+                         ibus_bus_release_name_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+guint
+ibus_bus_release_name_async_finish (IBusBus      *bus,
+                                    GAsyncResult *res,
+                                    GError      **error)
+{
+    g_assert (IBUS_IS_BUS (bus));
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_release_name_async));
+    return _async_finish_guint (res, error);
+}
+
+GList *
+ibus_bus_list_queued_owners (IBusBus      *bus,
+                             const gchar  *name)
+{
+    GList *retval = NULL;
+    GVariant *result;
+
+    g_return_val_if_fail (IBUS_IS_BUS (bus), NULL);
+    g_return_val_if_fail (name != NULL, NULL);
+
+    result = ibus_bus_call_sync (bus,
+                                 DBUS_SERVICE_DBUS,
+                                 DBUS_PATH_DBUS,
+                                 DBUS_INTERFACE_DBUS,
+                                 "ListQueuedOwners",
+                                 g_variant_new ("(s)", name),
+                                 G_VARIANT_TYPE ("(as)"));
+
+    if (result) {
+        GVariantIter *iter = NULL;
+        const gchar *name = NULL;
+        g_variant_get (result, "(as)", &iter);
+        while (g_variant_iter_loop (iter, "&s", &name)) {
+            if (name == NULL) {
+                continue;
+            }
+            retval = g_list_append (retval, g_strdup (name));
         }
-
-        ibus_message_unref (reply);
+        g_variant_iter_free (iter);
+        g_variant_unref (result);
     }
 
     return retval;
@@ -702,218 +984,400 @@ gboolean
 ibus_bus_name_has_owner (IBusBus        *bus,
                          const gchar    *name)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), FALSE);
+    g_return_val_if_fail (name != NULL, FALSE);
 
-    IBusMessage *reply = NULL;
-    IBusError *error = NULL;
     gboolean retval = FALSE;
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 DBUS_SERVICE_DBUS,
+                                 DBUS_PATH_DBUS,
+                                 DBUS_INTERFACE_DBUS,
+                                 "NameHasOwner",
+                                 g_variant_new ("(s)", name),
+                                 G_VARIANT_TYPE ("(b)"));
 
-    reply = ibus_bus_call_with_reply (bus,
-                                      DBUS_SERVICE_DBUS,
-                                      DBUS_PATH_DBUS,
-                                      DBUS_INTERFACE_DBUS,
-                                      "NameHasOwner",
-                                      G_TYPE_STRING, &name,
-                                      G_TYPE_INVALID);
-
-    if (reply) {
-        if (!ibus_message_get_args (reply, &error, G_TYPE_BOOLEAN, &retval,
-                                    G_TYPE_INVALID)) {
-            g_warning ("%s: %s", error->name, error->message);
-            ibus_error_free (error);
-        }
-
-        ibus_message_unref (reply);
+    if (result) {
+        g_variant_get (result, "(b)", &retval);
+        g_variant_unref (result);
     }
 
     return retval;
 }
 
+void
+ibus_bus_name_has_owner_async (IBusBus            *bus,
+                               const gchar        *name,
+                               gint                timeout_msec,
+                               GCancellable       *cancellable,
+                               GAsyncReadyCallback callback,
+                               gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+    g_return_if_fail (name != NULL);
+
+    ibus_bus_call_async (bus,
+                         DBUS_SERVICE_DBUS,
+                         DBUS_PATH_DBUS,
+                         DBUS_INTERFACE_DBUS,
+                         "NameHasOwner",
+                         g_variant_new ("(s)", name),
+                         G_VARIANT_TYPE ("(b)"),
+                         ibus_bus_name_has_owner_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+gboolean
+ibus_bus_name_has_owner_async_finish (IBusBus      *bus,
+                                      GAsyncResult *res,
+                                      GError      **error)
+{
+    g_assert (IBUS_IS_BUS (bus));
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_name_has_owner_async));
+    return _async_finish_gboolean (res, error);
+}
+
 GList *
 ibus_bus_list_names (IBusBus    *bus)
 {
+    g_return_val_if_fail (IBUS_IS_BUS (bus), NULL);
     return NULL;
 }
 
-void
+gboolean
 ibus_bus_add_match (IBusBus     *bus,
                     const gchar *rule)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), FALSE);
+    g_return_val_if_fail (rule != NULL, FALSE);
 
-    ibus_bus_call (bus,
-                   DBUS_SERVICE_DBUS,
-                   DBUS_PATH_DBUS,
-                   DBUS_INTERFACE_DBUS,
-                   "AddMatch",
-                   G_TYPE_STRING, &rule,
-                   G_TYPE_INVALID);
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 DBUS_SERVICE_DBUS,
+                                 DBUS_PATH_DBUS,
+                                 DBUS_INTERFACE_DBUS,
+                                 "AddMatch",
+                                 g_variant_new ("(s)", rule),
+                                 NULL);
+
+    if (result) {
+        g_variant_unref (result);
+        return TRUE;
+    }
+    return FALSE;
 }
 
 void
+ibus_bus_add_match_async (IBusBus            *bus,
+                          const gchar        *rule,
+                          gint                timeout_msec,
+                          GCancellable       *cancellable,
+                          GAsyncReadyCallback callback,
+                          gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+    g_return_if_fail (rule != NULL);
+
+    ibus_bus_call_async (bus,
+                         DBUS_SERVICE_DBUS,
+                         DBUS_PATH_DBUS,
+                         DBUS_INTERFACE_DBUS,
+                         "AddMatch",
+                         g_variant_new ("(s)", rule),
+                         NULL,
+                         ibus_bus_add_match_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+gboolean
+ibus_bus_add_match_async_finish (IBusBus      *bus,
+                                 GAsyncResult *res,
+                                 GError      **error)
+{
+    g_assert (IBUS_IS_BUS (bus));
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_add_match_async));
+    return _async_finish_void (res, error);
+}
+
+gboolean
 ibus_bus_remove_match (IBusBus      *bus,
                        const gchar  *rule)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), FALSE);
+    g_return_val_if_fail (rule != NULL, FALSE);
 
-    ibus_bus_call (bus,
-                   DBUS_SERVICE_DBUS,
-                   DBUS_PATH_DBUS,
-                   DBUS_INTERFACE_DBUS,
-                   "RemoveMatch",
-                   G_TYPE_STRING, &rule,
-                   G_TYPE_INVALID);
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 DBUS_SERVICE_DBUS,
+                                 DBUS_PATH_DBUS,
+                                 DBUS_INTERFACE_DBUS,
+                                 "RemoveMatch",
+                                 g_variant_new ("(s)", rule),
+                                 NULL);
+
+    if (result) {
+        g_variant_unref (result);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void
+ibus_bus_remove_match_async (IBusBus            *bus,
+                             const gchar        *rule,
+                             gint                timeout_msec,
+                             GCancellable       *cancellable,
+                             GAsyncReadyCallback callback,
+                             gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+    g_return_if_fail (rule != NULL);
+
+    ibus_bus_call_async (bus,
+                         DBUS_SERVICE_DBUS,
+                         DBUS_PATH_DBUS,
+                         DBUS_INTERFACE_DBUS,
+                         "RemoveMatch",
+                         g_variant_new ("(s)", rule),
+                         NULL,
+                         ibus_bus_remove_match_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+gboolean
+ibus_bus_remove_match_async_finish (IBusBus      *bus,
+                                    GAsyncResult *res,
+                                    GError      **error)
+{
+    g_assert (IBUS_IS_BUS (bus));
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_remove_match_async));
+    return _async_finish_void (res, error);
 }
 
 gchar *
 ibus_bus_get_name_owner (IBusBus        *bus,
                          const gchar    *name)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), NULL);
+    g_return_val_if_fail (name != NULL, NULL);
 
-    gchar *owner = NULL;
-    IBusMessage *reply = NULL;
-    IBusError *error = NULL;
+    gchar *retval = NULL;
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 DBUS_SERVICE_DBUS,
+                                 DBUS_PATH_DBUS,
+                                 DBUS_INTERFACE_DBUS,
+                                 "GetNameOwner",
+                                 g_variant_new ("(s)", name),
+                                 G_VARIANT_TYPE ("(s)"));
 
-    reply = ibus_bus_call_with_reply (bus,
-                                      DBUS_SERVICE_DBUS,
-                                      DBUS_PATH_DBUS,
-                                      DBUS_INTERFACE_DBUS,
-                                      "GetNameOwner",
-                                      G_TYPE_STRING, &name,
-                                      G_TYPE_INVALID);
-
-    if (reply) {
-        if (ibus_message_get_args (reply, &error, G_TYPE_STRING, &owner,
-                                   G_TYPE_INVALID)) {
-            owner = g_strdup (owner);
-        } else {
-            g_warning ("%s: %s", error->name, error->message);
-            ibus_error_free (error);
-        }
-
-        ibus_message_unref (reply);
+    if (result) {
+        g_variant_get (result, "(s)", &retval);
+        g_variant_unref (result);
     }
 
-    return owner;
+    return retval;
 }
 
-IBusConnection *
-ibus_bus_get_connection (IBusBus *bus)
+void
+ibus_bus_get_name_owner_async (IBusBus            *bus,
+                               const gchar        *name,
+                               gint                timeout_msec,
+                               GCancellable       *cancellable,
+                               GAsyncReadyCallback callback,
+                               gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+    g_return_if_fail (name != NULL);
+
+    ibus_bus_call_async (bus,
+                         DBUS_SERVICE_DBUS,
+                         DBUS_PATH_DBUS,
+                         DBUS_INTERFACE_DBUS,
+                         "GetNameOwner",
+                         g_variant_new ("(s)", name),
+                         G_VARIANT_TYPE ("(s)"),
+                         ibus_bus_get_name_owner_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+gchar *
+ibus_bus_get_name_owner_async_finish (IBusBus      *bus,
+                                      GAsyncResult *res,
+                                      GError      **error)
 {
     g_assert (IBUS_IS_BUS (bus));
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_get_name_owner_async));
+    return g_strdup (_async_finish_string (res, error));
+}
 
-    IBusBusPrivate *priv;
-    priv = IBUS_BUS_GET_PRIVATE (bus);
+GDBusConnection *
+ibus_bus_get_connection (IBusBus *bus)
+{
+    g_return_val_if_fail (IBUS_IS_BUS (bus), NULL);
 
-    return priv->connection;
+    return bus->priv->connection;
 }
 
 gboolean
 ibus_bus_exit (IBusBus *bus,
                gboolean restart)
 {
+    g_return_val_if_fail (IBUS_IS_BUS (bus), FALSE);
+
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 IBUS_SERVICE_IBUS,
+                                 IBUS_PATH_IBUS,
+                                 IBUS_INTERFACE_IBUS,
+                                 "Exit",
+                                 g_variant_new ("(b)", restart),
+                                 NULL);
+
+    if (result) {
+        g_variant_unref (result);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void
+ibus_bus_exit_async (IBusBus            *bus,
+                     gboolean            restart,
+                     gint                timeout_msec,
+                     GCancellable       *cancellable,
+                     GAsyncReadyCallback callback,
+                     gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+
+    ibus_bus_call_async (bus,
+                         IBUS_SERVICE_IBUS,
+                         IBUS_PATH_IBUS,
+                         IBUS_INTERFACE_IBUS,
+                         "Exit",
+                         g_variant_new ("(b)", restart),
+                         NULL,
+                         ibus_bus_exit_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+gboolean
+ibus_bus_exit_async_finish (IBusBus      *bus,
+                            GAsyncResult *res,
+                            GError      **error)
+{
     g_assert (IBUS_IS_BUS (bus));
-
-    IBusBusPrivate *priv;
-    priv = IBUS_BUS_GET_PRIVATE (bus);
-
-    gboolean result;
-    result = ibus_bus_call (bus,
-                            IBUS_SERVICE_IBUS,
-                            IBUS_PATH_IBUS,
-                            IBUS_INTERFACE_IBUS,
-                            "Exit",
-                            G_TYPE_BOOLEAN, &restart,
-                            G_TYPE_INVALID);
-    return result;
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_exit_async));
+    return _async_finish_void (res, error);
 }
 
 gboolean
 ibus_bus_register_component (IBusBus       *bus,
                              IBusComponent *component)
 {
+    g_return_val_if_fail (IBUS_IS_BUS (bus), FALSE);
+    g_return_val_if_fail (IBUS_IS_COMPONENT (component), FALSE);
+
+    GVariant *variant = ibus_serializable_serialize ((IBusSerializable *)component);
+    GVariant *result = ibus_bus_call_sync (bus,
+                                           IBUS_SERVICE_IBUS,
+                                           IBUS_PATH_IBUS,
+                                           IBUS_INTERFACE_IBUS,
+                                           "RegisterComponent",
+                                           g_variant_new ("(v)", variant),
+                                           NULL);
+    if (result) {
+        g_variant_unref (result);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void
+ibus_bus_register_component_async (IBusBus            *bus,
+                                   IBusComponent      *component,
+                                   gint                timeout_msec,
+                                   GCancellable       *cancellable,
+                                   GAsyncReadyCallback callback,
+                                   gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+    g_return_if_fail (IBUS_IS_COMPONENT (component));
+
+    GVariant *variant = ibus_serializable_serialize ((IBusSerializable *)component);
+    ibus_bus_call_async (bus,
+                         IBUS_SERVICE_IBUS,
+                         IBUS_PATH_IBUS,
+                         IBUS_INTERFACE_IBUS,
+                         "RegisterComponent",
+                         g_variant_new ("(v)", variant),
+                         NULL,
+                         ibus_bus_register_component_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+gboolean
+ibus_bus_register_component_async_finish (IBusBus      *bus,
+                                          GAsyncResult *res,
+                                          GError      **error)
+{
     g_assert (IBUS_IS_BUS (bus));
-    g_assert (IBUS_IS_COMPONENT (component));
-
-    gboolean result;
-
-    result = ibus_bus_call (bus,
-                            IBUS_SERVICE_IBUS,
-                            IBUS_PATH_IBUS,
-                            IBUS_INTERFACE_IBUS,
-                            "RegisterComponent",
-                            IBUS_TYPE_COMPONENT, &component,
-                            G_TYPE_INVALID);
-
-    return result;
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_register_component_async));
+    return _async_finish_void (res, error);
 }
 
 static GList *
 ibus_bus_do_list_engines (IBusBus *bus, gboolean active_engines_only)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), NULL);
 
-    IBusMessage *message, *reply;
-    IBusError *error;
-    gboolean retval;
-    IBusBusPrivate *priv;
-    IBusMessageIter iter, subiter;
-    GList *engines;
-    const gchar* member = active_engines_only ? "ListActiveEngines" : "ListEngines";
+    GList *retval = NULL;
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 IBUS_SERVICE_IBUS,
+                                 IBUS_PATH_IBUS,
+                                 IBUS_INTERFACE_IBUS,
+                                 active_engines_only ? "ListActiveEngines" : "ListEngines",
+                                 NULL,
+                                 G_VARIANT_TYPE ("(av)"));
 
-    priv = IBUS_BUS_GET_PRIVATE (bus);
-    message = ibus_message_new_method_call (IBUS_SERVICE_IBUS,
-                                            IBUS_PATH_IBUS,
-                                            IBUS_INTERFACE_IBUS,
-                                            member);
-    reply = ibus_connection_send_with_reply_and_block (priv->connection,
-                                                       message,
-                                                       -1,
-                                                       &error);
-    ibus_message_unref (message);
-
-    if (reply == NULL) {
-        g_warning ("%s : %s", error->name, error->message);
-        ibus_error_free (error);
-        return NULL;
-    }
-
-    if ((error = ibus_error_new_from_message (reply)) != NULL) {
-        g_warning ("%s : %s", error->name, error->message);
-        ibus_error_free (error);
-        ibus_message_unref (reply);
-        return NULL;
-    }
-
-    retval = ibus_message_iter_init (reply, &iter);
-    if (!retval) {
-        error = ibus_error_new_from_printf (DBUS_ERROR_INVALID_ARGS,
-                                            "Message does not have arguments!");
-        g_warning ("%s : %s", error->name, error->message);
-        ibus_error_free (error);
-        ibus_message_unref (reply);
-        return NULL;
-    }
-
-    if (!ibus_message_iter_recurse (&iter, IBUS_TYPE_ARRAY, &subiter)) {
-        ibus_message_unref (reply);
-        return NULL;
-    }
-
-    engines = NULL;
-    while (ibus_message_iter_get_arg_type (&subiter) != G_TYPE_INVALID) {
-        IBusSerializable *object = NULL;
-        if (!ibus_message_iter_get (&subiter, IBUS_TYPE_ENGINE_DESC, &object) || !object) {
-            g_warning ("Unexpected type is returned from %s", member);
-            continue;
+    if (result) {
+        GVariantIter *iter = NULL;
+        g_variant_get (result, "(av)", &iter);
+        GVariant *var;
+        while (g_variant_iter_loop (iter, "v", &var)) {
+            retval = g_list_append (retval, ibus_serializable_deserialize (var));
         }
-        engines = g_list_append (engines, object);
-        ibus_message_iter_next (&subiter);
-    };
+        g_variant_iter_free (iter);
+        g_variant_unref (result);
+    }
 
-    ibus_message_unref (reply);
-    return engines;
+    return retval;
 }
 
 GList *
@@ -922,10 +1386,86 @@ ibus_bus_list_engines (IBusBus *bus)
     return ibus_bus_do_list_engines (bus, FALSE);
 }
 
+void
+ibus_bus_list_engines_async (IBusBus            *bus,
+                             gint                timeout_msec,
+                             GCancellable       *cancellable,
+                             GAsyncReadyCallback callback,
+                             gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+
+    ibus_bus_call_async (bus,
+                         IBUS_SERVICE_IBUS,
+                         IBUS_PATH_IBUS,
+                         IBUS_INTERFACE_IBUS,
+                         "ListEngines",
+                         NULL,
+                         G_VARIANT_TYPE ("(av)"),
+                         ibus_bus_list_engines_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+GList *
+ibus_bus_list_engines_async_finish (IBusBus      *bus,
+                                    GAsyncResult *res,
+                                    GError      **error)
+{
+    GSimpleAsyncResult *simple = (GSimpleAsyncResult *) res;
+    if (g_simple_async_result_propagate_error (simple, error))
+        return NULL;
+    GVariant *variant = g_simple_async_result_get_op_res_gpointer (simple);
+    g_return_val_if_fail (variant != NULL, NULL);
+
+    GList *retval = NULL;
+    GVariantIter *iter = NULL;
+    g_variant_get (variant, "(av)", &iter);
+    GVariant *var;
+    while (g_variant_iter_loop (iter, "v", &var)) {
+        retval = g_list_append (retval, ibus_serializable_deserialize (var));
+    }
+    g_variant_iter_free (iter);
+    return retval;
+}
+
 GList *
 ibus_bus_list_active_engines (IBusBus *bus)
 {
     return ibus_bus_do_list_engines (bus, TRUE);
+}
+
+void
+ibus_bus_list_active_engines_async (IBusBus            *bus,
+                                    gint                timeout_msec,
+                                    GCancellable       *cancellable,
+                                    GAsyncReadyCallback callback,
+                                    gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+
+    ibus_bus_call_async (bus,
+                         IBUS_SERVICE_IBUS,
+                         IBUS_PATH_IBUS,
+                         IBUS_INTERFACE_IBUS,
+                         "ListActiveEngines",
+                         NULL,
+                         G_VARIANT_TYPE ("(av)"),
+                         ibus_bus_list_active_engines_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+GList *
+ibus_bus_list_active_engines_async_finish (IBusBus      *bus,
+                                           GAsyncResult *res,
+                                           GError      **error)
+{
+    return ibus_bus_list_engines_async_finish (bus, res, error);
 }
 
 static void
@@ -951,7 +1491,7 @@ ibus_bus_get_config (IBusBus *bus)
     priv = IBUS_BUS_GET_PRIVATE (bus);
 
     if (priv->config == NULL && priv->connection) {
-        priv->config = ibus_config_new (priv->connection);
+        priv->config = ibus_config_new (priv->connection, NULL, NULL);
         if (priv->config) {
             g_signal_connect (priv->config, "destroy", G_CALLBACK (_config_destroy_cb), bus);
         }
@@ -963,129 +1503,396 @@ ibus_bus_get_config (IBusBus *bus)
 gboolean
 ibus_bus_get_use_sys_layout (IBusBus *bus)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), FALSE);
 
-    IBusMessage *reply = NULL;
-    IBusError *error = NULL;
-    gboolean use_sys_layout = FALSE;
+    gboolean retval = FALSE;
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 IBUS_SERVICE_IBUS,
+                                 IBUS_PATH_IBUS,
+                                 IBUS_INTERFACE_IBUS,
+                                 "GetUseSysLayout",
+                                 NULL,
+                                 G_VARIANT_TYPE ("(b)"));
 
-    reply = ibus_bus_call_with_reply (bus,
-                                      IBUS_SERVICE_IBUS,
-                                      IBUS_PATH_IBUS,
-                                      IBUS_INTERFACE_IBUS,
-                                      "GetUseSysLayout",
-                                      G_TYPE_INVALID);
-    if (reply) {
-        if (!ibus_message_get_args (reply, &error, G_TYPE_BOOLEAN,
-                                    &use_sys_layout, G_TYPE_INVALID)) {
-            g_warning ("%s: %s", error->name, error->message);
-            ibus_error_free (error);
-        }
-
-        ibus_message_unref (reply);
+    if (result) {
+        g_variant_get (result, "(b)", &retval);
+        g_variant_unref (result);
     }
 
-    return use_sys_layout;
+    return retval;
+}
+
+void
+ibus_bus_get_use_sys_layout_async (IBusBus            *bus,
+                                   gint                timeout_msec,
+                                   GCancellable       *cancellable,
+                                   GAsyncReadyCallback callback,
+                                   gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+
+    ibus_bus_call_async (bus,
+                         IBUS_SERVICE_IBUS,
+                         IBUS_PATH_IBUS,
+                         IBUS_INTERFACE_IBUS,
+                         "GetUseSysLayout",
+                         NULL,
+                         G_VARIANT_TYPE ("(b)"),
+                         ibus_bus_get_use_sys_layout_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+gboolean
+ibus_bus_get_use_sys_layout_async_finish (IBusBus      *bus,
+                                          GAsyncResult *res,
+                                          GError      **error)
+{
+    g_assert (IBUS_IS_BUS (bus));
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_get_use_sys_layout_async));
+    return _async_finish_gboolean (res, error);
 }
 
 gboolean
 ibus_bus_get_use_global_engine (IBusBus *bus)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), FALSE);
 
-    IBusMessage *reply = NULL;
-    IBusError *error = NULL;
-    gboolean use_global_engine = FALSE;
+    gboolean retval = FALSE;
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 IBUS_SERVICE_IBUS,
+                                 IBUS_PATH_IBUS,
+                                 IBUS_INTERFACE_IBUS,
+                                 "GetUseGlobalEngine",
+                                 NULL,
+                                 G_VARIANT_TYPE ("(b)"));
 
-    reply = ibus_bus_call_with_reply (bus,
-                                      IBUS_SERVICE_IBUS,
-                                      IBUS_PATH_IBUS,
-                                      IBUS_INTERFACE_IBUS,
-                                      "GetUseGlobalEngine",
-                                      G_TYPE_INVALID);
-    if (reply) {
-        if (!ibus_message_get_args (reply, &error, G_TYPE_BOOLEAN,
-                                    &use_global_engine, G_TYPE_INVALID)) {
-            g_warning ("%s: %s", error->name, error->message);
-            ibus_error_free (error);
-        }
-
-        ibus_message_unref (reply);
+    if (result) {
+        g_variant_get (result, "(b)", &retval);
+        g_variant_unref (result);
     }
 
-    return use_global_engine;
+    return retval;
+}
+
+void
+ibus_bus_get_use_global_engine_async (IBusBus            *bus,
+                                      gint                timeout_msec,
+                                      GCancellable       *cancellable,
+                                      GAsyncReadyCallback callback,
+                                      gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+
+    ibus_bus_call_async (bus,
+                         IBUS_SERVICE_IBUS,
+                         IBUS_PATH_IBUS,
+                         IBUS_INTERFACE_IBUS,
+                         "GetUseGlobalEngine",
+                         NULL,
+                         G_VARIANT_TYPE ("(b)"),
+                         ibus_bus_get_use_global_engine_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+gboolean
+ibus_bus_get_use_global_engine_async_finish (IBusBus      *bus,
+                                             GAsyncResult *res,
+                                             GError      **error)
+{
+    g_assert (IBUS_IS_BUS (bus));
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_get_use_global_engine_async));
+    return _async_finish_gboolean (res, error);
 }
 
 gboolean
 ibus_bus_is_global_engine_enabled (IBusBus *bus)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), FALSE);
 
-    IBusMessage *reply = NULL;
-    IBusError *error = NULL;
-    gboolean global_engine_enabled = FALSE;
+    gboolean retval = FALSE;
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 IBUS_SERVICE_IBUS,
+                                 IBUS_PATH_IBUS,
+                                 IBUS_INTERFACE_IBUS,
+                                 "IsGlobalEngineEnabled",
+                                 NULL,
+                                 G_VARIANT_TYPE ("(b)"));
 
-    reply = ibus_bus_call_with_reply (bus,
-                                      IBUS_SERVICE_IBUS,
-                                      IBUS_PATH_IBUS,
-                                      IBUS_INTERFACE_IBUS,
-                                      "IsGlobalEngineEnabled",
-                                      G_TYPE_INVALID);
-    if (reply) {
-        if (!ibus_message_get_args (reply, &error, G_TYPE_BOOLEAN,
-                                    &global_engine_enabled, G_TYPE_INVALID)) {
-            g_warning ("%s: %s", error->name, error->message);
-            ibus_error_free (error);
-        }
-
-        ibus_message_unref (reply);
+    if (result) {
+        g_variant_get (result, "(b)", &retval);
+        g_variant_unref (result);
     }
 
-    return global_engine_enabled;
+    return retval;
+}
+
+void ibus_bus_is_global_engine_enabled_async (IBusBus            *bus,
+                                              gint                timeout_msec,
+                                              GCancellable       *cancellable,
+                                              GAsyncReadyCallback callback,
+                                              gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+
+    ibus_bus_call_async (bus,
+                         IBUS_SERVICE_IBUS,
+                         IBUS_PATH_IBUS,
+                         IBUS_INTERFACE_IBUS,
+                         "IsGlobalEngineEnabled",
+                         NULL,
+                         G_VARIANT_TYPE ("(b)"),
+                         ibus_bus_is_global_engine_enabled_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+gboolean ibus_bus_is_global_engine_enabled_async_finish (IBusBus      *bus,
+                                                         GAsyncResult *res,
+                                                         GError      **error)
+{
+    g_assert (IBUS_IS_BUS (bus));
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_is_global_engine_enabled_async));
+    return _async_finish_gboolean (res, error);
 }
 
 IBusEngineDesc *
 ibus_bus_get_global_engine (IBusBus *bus)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), NULL);
 
-    IBusMessage *reply = NULL;
-    IBusError *error = NULL;
-    IBusEngineDesc *global_engine = NULL;
+    GVariant *result;
+    IBusEngineDesc *engine = NULL;
+    result = ibus_bus_call_sync (bus,
+                                 IBUS_SERVICE_IBUS,
+                                 IBUS_PATH_IBUS,
+                                 IBUS_INTERFACE_IBUS,
+                                 "GetGlobalEngine",
+                                 NULL,
+                                 G_VARIANT_TYPE ("(v)"));
 
-    reply = ibus_bus_call_with_reply (bus,
-                                      IBUS_SERVICE_IBUS,
-                                      IBUS_PATH_IBUS,
-                                      IBUS_INTERFACE_IBUS,
-                                      "GetGlobalEngine",
-                                      G_TYPE_INVALID);
-    if (reply) {
-        if (!ibus_message_get_args (reply, &error, IBUS_TYPE_ENGINE_DESC,
-                                    &global_engine, G_TYPE_INVALID)) {
-            g_warning ("%s: %s", error->name, error->message);
-            ibus_error_free (error);
+    if (result) {
+        GVariant *variant = NULL;
+        g_variant_get (result, "(v)", &variant);
+        if (variant) {
+            engine = IBUS_ENGINE_DESC (ibus_serializable_deserialize (variant));
+            g_variant_unref (variant);
         }
-
-        ibus_message_unref (reply);
+        g_variant_unref (result);
     }
 
-    return global_engine;
+    return engine;
+}
+
+void
+ibus_bus_get_global_engine_async (IBusBus            *bus,
+                                  gint                timeout_msec,
+                                  GCancellable       *cancellable,
+                                  GAsyncReadyCallback callback,
+                                  gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+
+    ibus_bus_call_async (bus,
+                         IBUS_SERVICE_IBUS,
+                         IBUS_PATH_IBUS,
+                         IBUS_INTERFACE_IBUS,
+                         "GetGlobalEngine",
+                         NULL,
+                         G_VARIANT_TYPE ("(v)"),
+                         ibus_bus_get_global_engine_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+IBusEngineDesc *
+ibus_bus_get_global_engine_async_finish (IBusBus      *bus,
+                                         GAsyncResult *res,
+                                         GError      **error)
+{
+    GSimpleAsyncResult *simple = (GSimpleAsyncResult *) res;
+    if (g_simple_async_result_propagate_error (simple, error))
+        return NULL;
+    GVariant *variant = g_simple_async_result_get_op_res_gpointer (simple);
+    g_return_val_if_fail (variant != NULL, NULL);
+    GVariant *inner_variant = NULL;
+    g_variant_get (variant, "(v)", &inner_variant);
+
+    IBusEngineDesc *engine = NULL;
+    if (inner_variant) {
+        engine = IBUS_ENGINE_DESC (ibus_serializable_deserialize (inner_variant));
+        g_variant_unref (inner_variant);
+    }
+    return engine;
 }
 
 gboolean
 ibus_bus_set_global_engine (IBusBus     *bus,
                             const gchar *global_engine)
 {
-    g_assert (IBUS_IS_BUS (bus));
+    g_return_val_if_fail (IBUS_IS_BUS (bus), FALSE);
+    g_return_val_if_fail (global_engine != NULL, FALSE);
 
-    gboolean result;
-    result = ibus_bus_call (bus,
-                            IBUS_SERVICE_IBUS,
-                            IBUS_PATH_IBUS,
-                            IBUS_INTERFACE_IBUS,
-                            "SetGlobalEngine",
-                            G_TYPE_STRING, &global_engine,
-                            G_TYPE_INVALID);
+    GVariant *result;
+    result = ibus_bus_call_sync (bus,
+                                 IBUS_SERVICE_IBUS,
+                                 IBUS_PATH_IBUS,
+                                 IBUS_INTERFACE_IBUS,
+                                 "SetGlobalEngine",
+                                 g_variant_new ("(s)", global_engine),
+                                 NULL);
+
+    if (result) {
+        g_variant_unref (result);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void
+ibus_bus_set_global_engine_async (IBusBus            *bus,
+                                  const gchar        *global_engine,
+                                  gint                timeout_msec,
+                                  GCancellable       *cancellable,
+                                  GAsyncReadyCallback callback,
+                                  gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_BUS (bus));
+    g_return_if_fail (global_engine != NULL);
+
+    ibus_bus_call_async (bus,
+                         IBUS_SERVICE_IBUS,
+                         IBUS_PATH_IBUS,
+                         IBUS_INTERFACE_IBUS,
+                         "SetGlobalEngine",
+                         g_variant_new ("(s)", global_engine),
+                         NULL, /* no return value */
+                         ibus_bus_set_global_engine_async,
+                         timeout_msec,
+                         cancellable,
+                         callback,
+                         user_data);
+}
+
+gboolean
+ibus_bus_set_global_engine_async_finish (IBusBus      *bus,
+                                         GAsyncResult *res,
+                                         GError      **error)
+{
+    g_assert (IBUS_IS_BUS (bus));
+    g_assert (g_simple_async_result_is_valid (res, (GObject *) bus,
+                                              ibus_bus_set_global_engine_async));
+    return _async_finish_void (res, error);
+}
+
+static GVariant *
+ibus_bus_call_sync (IBusBus            *bus,
+                    const gchar        *bus_name,
+                    const gchar        *path,
+                    const gchar        *interface,
+                    const gchar        *member,
+                    GVariant           *parameters,
+                    const GVariantType *reply_type)
+{
+    g_assert (IBUS_IS_BUS (bus));
+    g_assert (member != NULL);
+    g_return_val_if_fail (ibus_bus_is_connected (bus), NULL);
+
+    GError *error = NULL;
+    GVariant *result;
+    result = g_dbus_connection_call_sync (bus->priv->connection,
+                                          bus_name,
+                                          path,
+                                          interface,
+                                          member,
+                                          parameters,
+                                          reply_type,
+                                          G_DBUS_CALL_FLAGS_NO_AUTO_START,
+                                          ibus_get_timeout (),
+                                          NULL,
+                                          &error);
+
+    if (result == NULL) {
+        g_warning ("ibus_bus_call_sync: %s.%s: %s", interface, member, error->message);
+        g_error_free (error);
+        return NULL;
+    }
 
     return result;
+}
+
+static void
+ibus_bus_call_async_done (GDBusConnection *connection,
+                          GAsyncResult    *res,
+                          gpointer         user_data)
+{
+    g_assert (G_IS_DBUS_CONNECTION (connection));
+
+    GSimpleAsyncResult *simple = (GSimpleAsyncResult *) user_data;
+    GError *error = NULL;
+    GVariant *variant = g_dbus_connection_call_finish (connection, res, &error);
+
+    if (variant == NULL) {
+        /* Replace with g_simple_async_result_take_error in glib 2.28 */
+        g_simple_async_result_set_from_error (simple, error);
+        g_error_free (error);
+    }
+    else {
+        g_simple_async_result_set_op_res_gpointer (simple, variant,
+                                                   (GDestroyNotify) g_variant_unref);
+    }
+    g_simple_async_result_complete (simple);
+    g_object_unref (simple);
+}
+
+static void
+ibus_bus_call_async (IBusBus            *bus,
+                     const gchar        *bus_name,
+                     const gchar        *path,
+                     const gchar        *interface,
+                     const gchar        *member,
+                     GVariant           *parameters,
+                     const GVariantType *reply_type,
+                     gpointer            source_tag,
+                     gint                timeout_msec,
+                     GCancellable       *cancellable,
+                     GAsyncReadyCallback callback,
+                     gpointer            user_data)
+{
+    g_assert (IBUS_IS_BUS (bus));
+    g_assert (member != NULL);
+    g_return_if_fail (ibus_bus_is_connected (bus));
+
+    GSimpleAsyncResult *simple = g_simple_async_result_new ((GObject*) bus,
+                                                            callback,
+                                                            user_data,
+                                                            source_tag);
+
+    g_dbus_connection_call (bus->priv->connection,
+                            bus_name,
+                            path,
+                            interface,
+                            member,
+                            parameters,
+                            reply_type,
+                            G_DBUS_CALL_FLAGS_NO_AUTO_START,
+                            timeout_msec,
+                            cancellable,
+                            (GAsyncReadyCallback) ibus_bus_call_async_done,
+                            simple);
 }

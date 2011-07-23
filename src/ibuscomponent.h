@@ -19,6 +19,11 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
+
+#if !defined (__IBUS_H_INSIDE__) && !defined (IBUS_COMPILATION)
+#error "Only <ibus.h> can be included directly"
+#endif
+
 /**
  * SECTION: ibuscomponent
  * @short_description:  Component (executable) specification.
@@ -66,48 +71,32 @@ G_BEGIN_DECLS
 
 typedef struct _IBusComponent IBusComponent;
 typedef struct _IBusComponentClass IBusComponentClass;
+typedef struct _IBusComponentPrivate IBusComponentPrivate;
 
 /**
  * IBusComponent:
- * @name: Name of the component.
- * @description: Detailed description of component.
- * @version: Component version.
- * @license: Distribution license of this component.
- * @author: Author(s) of the component.
- * @homepage: Homepage of the component.
- * @exec: path to component executable.
- * @textdomain: Domain name for dgettext()
  *
  * An IBusComponent stores component information.
+ * You can get extended values with g_object_get_properties.
+ * name: Name of the component.
+ * description: Detailed description of component.
+ * version: Component version.
+ * license: Distribution license of this component.
+ * author: Author(s) of the component.
+ * homepage: Homepage of the component.
+ * exec: path to component executable.
+ * textdomain: Domain name for dgettext()
  */
 struct _IBusComponent {
+    /*< private >*/
     IBusSerializable parent;
+    IBusComponentPrivate *priv;
     /* instance members */
 
     /*< public >*/
-    gchar *name;
-    gchar *description;
-    gchar *version;
-    gchar *license;
-    gchar *author;
-    gchar *homepage;
-    gchar *exec;
-
-    /* text domain for dgettext */
-    gchar *textdomain;
-
-    /*< private >*/
-    /* engines */
-    GList *engines;
-
-    /* observed paths */
-    GList *observed_paths;
-
-    GPid     pid;
-    guint    child_source_id;
 
     /* padding */
-    gpointer pdummy[5];  // We can add 5 pointers without breaking the ABI.
+    gpointer pdummy[7];  // We can add 7 pointers without breaking the ABI.
 };
 
 struct _IBusComponentClass {
@@ -142,6 +131,21 @@ IBusComponent   *ibus_component_new             (const gchar    *name,
                                                  const gchar    *textdomain);
 
 /**
+ * ibus_component_new_varargs:
+ * @first_property_name: Name of the first property.
+ * @Varargs: the NULL-terminated arguments of the properties and values.
+ *
+ * New an IBusComponent.
+ * ibus_component_new_varargs() supports the va_list format.
+ * name property is required. e.g.
+ * IBusComponent *component = ibus_component_new_varargs ("name", "ibus-foo",
+ *                                                     "exec", "/usr/libexec/ibus-engine-foo --ibus",
+ *                                                     NULL)
+ */
+IBusComponent   *ibus_component_new_varargs     (const gchar    *first_property_name,
+                                                 ...);
+
+/**
  * ibus_component_new_from_xml_node:
  * @node: Root node of component XML tree.
  * @returns: A newly allocated IBusComponent.
@@ -162,6 +166,78 @@ IBusComponent   *ibus_component_new_from_xml_node
  * to load the engine descriptions.
  */
 IBusComponent   *ibus_component_new_from_file   (const gchar    *filename);
+
+/**
+ * ibus_component_get_name:
+ * @component: An IBusComponent
+ * @returns: name property in IBusComponent
+ *
+ * Return the name property in IBusComponent. It should not be freed.
+ */
+const gchar     *ibus_component_get_name        (IBusComponent  *component);
+
+/**
+ * ibus_component_get_description:
+ * @component: An IBusComponent
+ * @returns: description property in IBusComponent
+ *
+ * Return the description property in IBusComponent. It should not be freed.
+ */
+const gchar     *ibus_component_get_description (IBusComponent  *component);
+
+/**
+ * ibus_component_get_version:
+ * @component: An IBusComponent
+ * @returns: version property in IBusComponent
+ *
+ * Return the version property in IBusComponent. It should not be freed.
+ */
+const gchar     *ibus_component_get_version     (IBusComponent  *component);
+
+/**
+ * ibus_component_get_license:
+ * @component: An IBusComponent
+ * @returns: license property in IBusComponent
+ *
+ * Return the license property in IBusComponent. It should not be freed.
+ */
+const gchar     *ibus_component_get_license     (IBusComponent  *component);
+
+/**
+ * ibus_component_get_author:
+ * @component: An IBusComponent
+ * @returns: author property in IBusComponent
+ *
+ * Return the author property in IBusComponent. It should not be freed.
+ */
+const gchar     *ibus_component_get_author      (IBusComponent  *component);
+
+/**
+ * ibus_component_get_homepage:
+ * @component: An IBusComponent
+ * @returns: homepage property in IBusComponent
+ *
+ * Return the homepage property in IBusComponent. It should not be freed.
+ */
+const gchar     *ibus_component_get_homepage    (IBusComponent  *component);
+
+/**
+ * ibus_component_get_exec:
+ * @component: An IBusComponent
+ * @returns: exec property in IBusComponent
+ *
+ * Return the exec property in IBusComponent. It should not be freed.
+ */
+const gchar     *ibus_component_get_exec        (IBusComponent  *component);
+
+/**
+ * ibus_component_get_textdomain:
+ * @component: An IBusComponent
+ * @returns: textdomain property in IBusComponent
+ *
+ * Return the textdomain property in IBusComponent. It should not be freed.
+ */
+const gchar     *ibus_component_get_textdomain  (IBusComponent  *component);
 
 /**
  * ibus_component_add_observed_path:
@@ -189,7 +265,7 @@ void             ibus_component_add_engine      (IBusComponent  *component,
 /**
  * ibus_component_get_engines:
  * @component: An IBusComponent.
- * @returns: (transfer none) (element-type IBusEngineDesc): A newly allocated GList that contains engines.
+ * @returns: (transfer container) (element-type IBusEngineDesc): A newly allocated GList that contains engines.
  *
  * Get the engines of this component.
  */
@@ -230,56 +306,6 @@ void             ibus_component_output_engines  (IBusComponent  *component,
  */
 gboolean         ibus_component_check_modification
                                                 (IBusComponent  *component);
-
-/**
- * ibus_component_start:
- * @component: An IBusComponent.
- * @verbose: if FALSE, redirect the child output to /dev/null
- * @returns: TRUE if the component is started; FALSE otherwise.
- *
- * Whether the IBusComponent is started.
- */
-gboolean         ibus_component_start           (IBusComponent  *component,
-                                                 gboolean        verbose);
-
-/**
- * ibus_component_stop:
- * @component: An IBusComponent.
- * @returns: TRUE if the component is stopped; FALSE otherwise.
- *
- * Whether the IBusComponent is stopped.
- */
-gboolean         ibus_component_stop            (IBusComponent  *component);
-
-/**
- * ibus_component_is_running:
- * @component: An IBusComponent.
- * @returns: TRUE if the component is running; FALSE otherwise.
- *
- * Whether the IBusComponent is running.
- */
-gboolean         ibus_component_is_running      (IBusComponent  *component);
-
-/**
- * ibus_component_get_from_engine:
- * @engine: A description of an engine.
- * @returns: (transfer none): An IBusComponent of the engine.
- *
- * Get the IBusComponent from an engine description.
- */
-IBusComponent   *ibus_component_get_from_engine (IBusEngineDesc *engine);
-
-/**
- * ibus_component_set_restart:
- * @component: An IBusComponent.
- * @restart: if TRUE, the component will be restartd when it dies.
- *
- * Set whether the component needs to be restarted when it dies.
- */
-void             ibus_component_set_restart     (IBusComponent  *component,
-                                                 gboolean        restart);
-
-
 G_END_DECLS
 #endif
 

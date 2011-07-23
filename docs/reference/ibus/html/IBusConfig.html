@@ -27,6 +27,8 @@
                    | 
                   <a href="#IBusConfig.object-hierarchy" class="shortcut">Object Hierarchy</a>
                    | 
+                  <a href="#IBusConfig.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
                   <a href="#IBusConfig.signals" class="shortcut">Signals</a>
 </td></tr>
 </table>
@@ -43,15 +45,37 @@
 <a name="IBusConfig.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">                    <a class="link" href="IBusConfig.html#IBusConfig-struct" title="IBusConfig">IBusConfig</a>;
                     <a class="link" href="IBusConfig.html#IBusConfigClass" title="IBusConfigClass">IBusConfigClass</a>;
-<a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        <a class="link" href="IBusConfig.html#ibus-config-new" title="ibus_config_new ()">ibus_config_new</a>                     (<em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusConfig.html#ibus-config-get-value" title="ibus_config_get_value ()">ibus_config_get_value</a>               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+<a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        <a class="link" href="IBusConfig.html#ibus-config-new" title="ibus_config_new ()">ibus_config_new</a>                     (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> *cancellable</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *          <a class="link" href="IBusConfig.html#ibus-config-get-value" title="ibus_config_get_value ()">ibus_config_get_value</a>               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusConfig.html#ibus-config-get-value-async" title="ibus_config_get_value_async ()">ibus_config_get_value_async</a>         (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_ms</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> *cancellable</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> callback</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *          <a class="link" href="IBusConfig.html#ibus-config-get-value-async-finish" title="ibus_config_get_value_async_finish ()">ibus_config_get_value_async_finish</a>  (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *result</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusConfig.html#ibus-config-set-value" title="ibus_config_set_value ()">ibus_config_set_value</a>               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *value</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusConfig.html#ibus-config-set-value-async" title="ibus_config_set_value_async ()">ibus_config_set_value_async</a>         (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *value</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_ms</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> *cancellable</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> callback</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusConfig.html#ibus-config-set-value-async-finish" title="ibus_config_set_value_async_finish ()">ibus_config_set_value_async_finish</a>  (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *result</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusConfig.html#ibus-config-unset" title="ibus_config_unset ()">ibus_config_unset</a>                   (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
@@ -61,11 +85,16 @@
 <a name="IBusConfig.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
   <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
-   +----<a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
-         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
-               +----<a class="link" href="IBusProxy.html" title="IBusProxy">IBusProxy</a>
-                     +----IBusConfig
+   +----<a href="http://library.gnome.org/devel/gio/unstable/GDBusProxy.html">GDBusProxy</a>
+         +----<a class="link" href="IBusProxy.html" title="IBusProxy">IBusProxy</a>
+               +----IBusConfig
 </pre>
+</div>
+<div class="refsect1" title="Implemented Interfaces">
+<a name="IBusConfig.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+IBusConfig implements
+ <a href="http://library.gnome.org/devel/gio/unstable/GInitable.html">GInitable</a> and  <a href="http://library.gnome.org/devel/gio/unstable/GAsyncInitable.html">GAsyncInitable</a>.</p>
 </div>
 <div class="refsect1" title="Signals">
 <a name="IBusConfig.signals"></a><h2>Signals</h2>
@@ -106,16 +135,28 @@ An opaque data type representing an IBusConfig.
 <hr>
 <div class="refsect2" title="ibus_config_new ()">
 <a name="ibus-config-new"></a><h3>ibus_config_new ()</h3>
-<pre class="programlisting"><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        ibus_config_new                     (<em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        ibus_config_new                     (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> *cancellable</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>
-New a IBusConfig from existing IBusConnection.
+New a IBusConfig from existing GDBusConnection.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>An IBusConnection.
+<td>An GDBusConnection.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>
 </td>
 </tr>
 <tr>
@@ -129,12 +170,11 @@ New a IBusConfig from existing IBusConnection.
 <hr>
 <div class="refsect2" title="ibus_config_get_value ()">
 <a name="ibus-config-get-value"></a><h3>ibus_config_get_value ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_config_get_value               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *          ibus_config_get_value               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
 <p>
-Get the value of a configuration option.
+Get the value of a configuration option synchronously.
 </p>
 <p>
 GConf stores configure options in a tree-like structure,
@@ -166,13 +206,103 @@ so the section name for it is "engine/Chewing".
 </td>
 </tr>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
-<td>GValue that holds the value.
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. Free with <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#g-variant-unref"><code class="function">g_variant_unref()</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_config_get_value_async ()">
+<a name="ibus-config-get-value-async"></a><h3>ibus_config_get_value_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_config_get_value_async         (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_ms</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> *cancellable</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> callback</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+<p>
+Get the value of a configuration option asynchronously.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: ibus_config_get_value.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An IBusConfig
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the configure option.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_ms</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>Callback function to invoke when the return value is ready.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_config_get_value_async_finish ()">
+<a name="ibus-config-get-value-async-finish"></a><h3>ibus_config_get_value_async_finish ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *          ibus_config_get_value_async_finish  (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *result</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Finish get value of a configuration option.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: ibus_config_get_value_async.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>result</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if succeed; FALSE otherwise.
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if error is set. Free with <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#g-variant-unref"><code class="function">g_variant_unref()</code></a>.
 </td>
 </tr>
 </tbody>
@@ -184,9 +314,9 @@ so the section name for it is "engine/Chewing".
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_config_set_value               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *value</code></em>);</pre>
 <p>
-Set the value of a configuration option.
+Set the value of a configuration option synchronously.
 <em class="parameter"><code>see_also</code></em>: ibus_config_get_value.
 </p>
 <div class="variablelist"><table border="0">
@@ -209,12 +339,116 @@ Set the value of a configuration option.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
-<td>GValue that holds the value.
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> that holds the value. If the value is floating, the
+function takes ownership of it.
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>TRUE if succeed; FALSE otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_config_set_value_async ()">
+<a name="ibus-config-set-value-async"></a><h3>ibus_config_set_value_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_config_set_value_async         (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *section</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *value</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_ms</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> *cancellable</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> callback</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+<p>
+Set the value of a configuration option asynchronously.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: ibus_config_set_value.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the configure option.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> that holds the value. If the value is floating, the
+function takes ownership of it.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_ms</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>Callback function to invoke when the return value is ready.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_config_set_value_async_finish ()">
+<a name="ibus-config-set-value-async-finish"></a><h3>ibus_config_set_value_async_finish ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_config_set_value_async_finish  (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *result</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Finish set value of a configuration option.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: ibus_config_set_value_async.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>result</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if error is set.
 </td>
 </tr>
 </tbody>
@@ -264,16 +498,11 @@ Remove an entry of a configuration option.
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>      *section,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>      *name,
-                                                        <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>     *value,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a>    value,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>    user_data)      : Run Last</pre>
 <p>
 Emitted when configuration value is changed.
-</p>
-<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
-<h3 class="title">Note</h3>
-<p>Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.</p>
-</div>
-<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">

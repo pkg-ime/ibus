@@ -19,6 +19,11 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
+
+#if !defined (__IBUS_H_INSIDE__) && !defined (IBUS_COMPILATION)
+#error "Only <ibus.h> can be included directly"
+#endif
+
 /**
  * SECTION: ibustext
  * @short_description: Text with decorating information.
@@ -105,7 +110,7 @@ IBusText        *ibus_text_new_from_string          (const gchar    *str);
 IBusText        *ibus_text_new_from_ucs4            (const gunichar *str);
 
 /**
- * ibus_text_new_from_static_string:
+ * ibus_text_new_from_static_string: (skip)
  * @str: An text string to be set.
  * @returns: A newly allocated IBusText.
  *
@@ -164,6 +169,33 @@ void             ibus_text_append_attribute         (IBusText       *text,
  */
 guint            ibus_text_get_length               (IBusText       *text);
 
+/**
+ * ibus_text_get_is_static: (skip)
+ * @text: An IBusText.
+ * @returns: the is_static in @text.
+ *
+ * Return the is_static in an IBusText.
+ */
+gboolean         ibus_text_get_is_static            (IBusText       *text);
+
+/**
+ * ibus_text_get_text:
+ * @text: An IBusText.
+ * @returns: the text in @text.
+ *
+ * Return the text in an IBusText. Should not be freed.
+ */
+const gchar *    ibus_text_get_text                 (IBusText       *text);
+
+/**
+ * ibus_text_get_attributes:
+ * @text: An IBusText.
+ * @returns: the attrs in @text.
+ *
+ * Return the attributes in an IBusText. Should not be freed.
+ */
+const IBusAttrList *
+                 ibus_text_get_attributes           (IBusText       *text);
 G_END_DECLS
 #endif
 

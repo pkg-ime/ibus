@@ -25,14 +25,47 @@ IBusComponent
 
 </para>
 
-@name: 
-@description: 
-@version: 
-@license: 
-@author: 
-@homepage: 
-@exec: 
-@textdomain: 
+@pdummy: 
+
+<!-- ##### ARG IBusComponent:author ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusComponent:description ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusComponent:exec ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusComponent:homepage ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusComponent:license ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusComponent:name ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusComponent:textdomain ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusComponent:version ##### -->
+<para>
+
+</para>
 
 <!-- ##### STRUCT IBusComponentClass ##### -->
 <para>
@@ -57,6 +90,16 @@ IBusComponent
 @Returns: 
 
 
+<!-- ##### FUNCTION ibus_component_new_varargs ##### -->
+<para>
+
+</para>
+
+@first_property_name: 
+@Varargs: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_component_new_from_xml_node ##### -->
 <para>
 
@@ -72,6 +115,78 @@ IBusComponent
 </para>
 
 @filename: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_get_name ##### -->
+<para>
+
+</para>
+
+@component: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_get_description ##### -->
+<para>
+
+</para>
+
+@component: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_get_version ##### -->
+<para>
+
+</para>
+
+@component: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_get_license ##### -->
+<para>
+
+</para>
+
+@component: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_get_author ##### -->
+<para>
+
+</para>
+
+@component: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_get_homepage ##### -->
+<para>
+
+</para>
+
+@component: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_get_exec ##### -->
+<para>
+
+</para>
+
+@component: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_component_get_textdomain ##### -->
+<para>
+
+</para>
+
+@component: 
 @Returns: 
 
 
@@ -130,51 +245,5 @@ IBusComponent
 
 @component: 
 @Returns: 
-
-
-<!-- ##### FUNCTION ibus_component_start ##### -->
-<para>
-
-</para>
-
-@component: 
-@verbose: 
-@Returns: 
-
-
-<!-- ##### FUNCTION ibus_component_stop ##### -->
-<para>
-
-</para>
-
-@component: 
-@Returns: 
-
-
-<!-- ##### FUNCTION ibus_component_is_running ##### -->
-<para>
-
-</para>
-
-@component: 
-@Returns: 
-
-
-<!-- ##### FUNCTION ibus_component_get_from_engine ##### -->
-<para>
-
-</para>
-
-@engine: 
-@Returns: 
-
-
-<!-- ##### FUNCTION ibus_component_set_restart ##### -->
-<para>
-
-</para>
-
-@component: 
-@restart: 
 
 

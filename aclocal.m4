@@ -157,14 +157,14 @@ dnl
 int 
 main ()
 {
-  unsigned int major, minor, micro;
+  int major, minor, micro;
   char *tmp_version;
 
   fclose (fopen ("conf.glibtest", "w"));
 
   /* HP/UX 9 (%@#!) writes to sscanf strings */
   tmp_version = g_strdup("$min_glib_version");
-  if (sscanf(tmp_version, "%u.%u.%u", &major, &minor, &micro) != 3) {
+  if (sscanf(tmp_version, "%d.%d.%d", &major, &minor, &micro) != 3) {
      printf("%s, bad version string\n", "$min_glib_version");
      exit(1);
    }
@@ -203,9 +203,9 @@ main ()
        }
      else
       {
-        printf("\n*** An old version of GLIB (%u.%u.%u) was found.\n",
+        printf("\n*** An old version of GLIB (%d.%d.%d) was found.\n",
                glib_major_version, glib_minor_version, glib_micro_version);
-        printf("*** You need a version of GLIB newer than %u.%u.%u. The latest version of\n",
+        printf("*** You need a version of GLIB newer than %d.%d.%d. The latest version of\n",
 	       major, minor, micro);
         printf("*** GLIB is always available from ftp://ftp.gtk.org.\n");
         printf("***\n");
@@ -708,101 +708,6 @@ echo "$as_me: failed input was:" >&AS_MESSAGE_LOG_FD
 sed 's/^/| /' conftest.foo >&AS_MESSAGE_LOG_FD
 fi])
 
-
-dnl -*- mode: autoconf -*-
-dnl Copyright 2009 Johan Dahlin
-dnl
-dnl This file is free software; the author(s) gives unlimited
-dnl permission to copy and/or distribute it, with or without
-dnl modifications, as long as this notice is preserved.
-dnl
-
-# serial 1
-
-m4_define([_GOBJECT_INTROSPECTION_CHECK_INTERNAL],
-[
-    AC_BEFORE([AC_PROG_LIBTOOL],[$0])dnl setup libtool first
-    AC_BEFORE([AM_PROG_LIBTOOL],[$0])dnl setup libtool first
-    AC_BEFORE([LT_INIT],[$0])dnl setup libtool first
-
-    dnl enable/disable introspection
-    m4_if([$2], [require],
-    [dnl
-        enable_introspection=yes
-    ],[dnl
-        AC_ARG_ENABLE(introspection,
-                  AS_HELP_STRING([--enable-introspection[=@<:@no/auto/yes@:>@]],
-                                 [Enable introspection for this build]),, 
-                                 [enable_introspection=auto])
-    ])dnl
-
-    AC_MSG_CHECKING([for gobject-introspection])
-
-    dnl presence/version checking
-    AS_CASE([$enable_introspection],
-    [no], [dnl
-        found_introspection="no (disabled, use --enable-introspection to enable)"
-    ],dnl
-    [yes],[dnl
-        PKG_CHECK_EXISTS([gobject-introspection-1.0],,
-                         AC_MSG_ERROR([gobject-introspection-1.0 is not installed]))
-        PKG_CHECK_EXISTS([gobject-introspection-1.0 >= $1],
-                         found_introspection=yes,
-                         AC_MSG_ERROR([You need to have gobject-introspection >= $1 installed to build AC_PACKAGE_NAME]))
-    ],dnl
-    [auto],[dnl
-        PKG_CHECK_EXISTS([gobject-introspection-1.0 >= $1], found_introspection=yes, found_introspection=no)
-    ],dnl
-    [dnl	
-        AC_MSG_ERROR([invalid argument passed to --enable-introspection, should be one of @<:@no/auto/yes@:>@])
-    ])dnl
-
-    AC_MSG_RESULT([$found_introspection])
-
-    INTROSPECTION_SCANNER=
-    INTROSPECTION_COMPILER=
-    INTROSPECTION_GENERATE=
-    INTROSPECTION_GIRDIR=
-    INTROSPECTION_TYPELIBDIR=
-    if test "x$found_introspection" = "xyes"; then
-       INTROSPECTION_SCANNER=`$PKG_CONFIG --variable=g_ir_scanner gobject-introspection-1.0`
-       INTROSPECTION_COMPILER=`$PKG_CONFIG --variable=g_ir_compiler gobject-introspection-1.0`
-       INTROSPECTION_GENERATE=`$PKG_CONFIG --variable=g_ir_generate gobject-introspection-1.0`
-       INTROSPECTION_GIRDIR=`$PKG_CONFIG --variable=girdir gobject-introspection-1.0`
-       INTROSPECTION_TYPELIBDIR="$($PKG_CONFIG --variable=typelibdir gobject-introspection-1.0)"
-       INTROSPECTION_CFLAGS=`$PKG_CONFIG --cflags gobject-introspection-1.0`
-       INTROSPECTION_LIBS=`$PKG_CONFIG --libs gobject-introspection-1.0`
-       INTROSPECTION_MAKEFILE=`$PKG_CONFIG --variable=datadir gobject-introspection-1.0`/gobject-introspection-1.0/Makefile.introspection
-    fi
-    AC_SUBST(INTROSPECTION_SCANNER)
-    AC_SUBST(INTROSPECTION_COMPILER)
-    AC_SUBST(INTROSPECTION_GENERATE)
-    AC_SUBST(INTROSPECTION_GIRDIR)
-    AC_SUBST(INTROSPECTION_TYPELIBDIR)
-    AC_SUBST(INTROSPECTION_CFLAGS)
-    AC_SUBST(INTROSPECTION_LIBS)
-    AC_SUBST(INTROSPECTION_MAKEFILE)
-
-    AM_CONDITIONAL(HAVE_INTROSPECTION, test "x$found_introspection" = "xyes")
-])
-
-
-dnl Usage:
-dnl   GOBJECT_INTROSPECTION_CHECK([minimum-g-i-version])
-
-AC_DEFUN([GOBJECT_INTROSPECTION_CHECK],
-[
-  _GOBJECT_INTROSPECTION_CHECK_INTERNAL([$1])
-])
-
-dnl Usage:
-dnl   GOBJECT_INTROSPECTION_REQUIRE([minimum-g-i-version])
-
-
-AC_DEFUN([GOBJECT_INTROSPECTION_REQUIRE],
-[
-  _GOBJECT_INTROSPECTION_CHECK_INTERNAL([$1], [require])
-])
 
 # nls.m4 serial 5 (gettext-0.18)
 dnl Copyright (C) 1995-2003, 2005-2006, 2008-2010 Free Software Foundation,
@@ -2249,9 +2154,9 @@ AC_SUBST([am__tar])
 AC_SUBST([am__untar])
 ]) # _AM_PROG_TAR
 
-m4_include([m4/as-version.m4])
 m4_include([m4/gtk-doc.m4])
 m4_include([m4/intltool.m4])
+m4_include([m4/introspection.m4])
 m4_include([m4/libtool.m4])
 m4_include([m4/ltoptions.m4])
 m4_include([m4/ltsugar.m4])

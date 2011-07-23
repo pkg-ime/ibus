@@ -26,10 +26,181 @@ IBusPanelService
 </para>
 
 
-<!-- ##### ARG IBusPanelService:connection ##### -->
+<!-- ##### SIGNAL IBusPanelService::cursor-down-lookup-table ##### -->
 <para>
 
 </para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::cursor-up-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::focus-in ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusPanelService::focus-out ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusPanelService::hide-auxiliary-text ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::hide-language-bar ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::hide-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::hide-preedit-text ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::page-down-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::page-up-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::register-properties ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusPanelService::reset ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::set-cursor-location ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+@arg4: 
+
+<!-- ##### SIGNAL IBusPanelService::show-auxiliary-text ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::show-language-bar ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::show-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::show-preedit-text ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::start-setup ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::state-changed ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::update-auxiliary-text ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### SIGNAL IBusPanelService::update-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### SIGNAL IBusPanelService::update-preedit-text ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+
+<!-- ##### SIGNAL IBusPanelService::update-property ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
 
 <!-- ##### STRUCT IBusPanelServiceClass ##### -->
 <para>
@@ -47,7 +218,6 @@ IBusPanelService
 @update_property: 
 @cursor_down_lookup_table: 
 @cursor_up_lookup_table: 
-@destroy: 
 @hide_auxiliary_text: 
 @hide_language_bar: 
 @hide_lookup_table: 
@@ -114,7 +284,7 @@ IBusPanelService
 @panel: 
 
 
-<!-- ##### FUNCTION ibus_panel_service_property_active ##### -->
+<!-- ##### FUNCTION ibus_panel_service_property_activate ##### -->
 <para>
 
 </para>

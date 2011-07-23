@@ -200,6 +200,15 @@ ibusshare
 @Returns: 
 
 
+<!-- ##### FUNCTION ibus_get_timeout ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_keyval_name ##### -->
 <para>
 
@@ -269,5 +278,13 @@ ibusshare
 </para>
 
 @void: 
+
+
+<!-- ##### FUNCTION ibus_set_log_handler ##### -->
+<para>
+
+</para>
+
+@verbose: 
 
 

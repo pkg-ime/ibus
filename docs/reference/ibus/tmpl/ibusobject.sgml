@@ -20,6 +20,14 @@ IBusObject
 <!-- ##### SECTION Image ##### -->
 
 
+<!-- ##### MACRO IBUS_OBJECT_IN_DESTRUCTION ##### -->
+<para>
+
+</para>
+
+@obj: 
+
+
 <!-- ##### MACRO IBUS_OBJECT_DESTROYED ##### -->
 <para>
 

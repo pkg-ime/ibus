@@ -19,15 +19,16 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
-#ifndef __OPTION_H_
-#define __OPTION_H_
+#ifndef __BUS_OPTION_H_
+#define __BUS_OPTION_H_
 
 G_BEGIN_DECLS
 
 extern gchar *g_cache;
 extern gboolean g_mempro;
 extern gboolean g_verbose;
-extern gint   g_dbus_timeout;
+extern gint   g_gdbus_timeout;
+extern gchar *g_address;
 
 G_END_DECLS
 #endif

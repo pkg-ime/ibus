@@ -27,7 +27,7 @@
                    | 
                   <a href="#IBusPanelService.object-hierarchy" class="shortcut">Object Hierarchy</a>
                    | 
-                  <a href="#IBusPanelService.properties" class="shortcut">Properties</a>
+                  <a href="#IBusPanelService.signals" class="shortcut">Signals</a>
 </td></tr>
 </table>
 <div class="refentry" title="IBusPanelService">
@@ -47,7 +47,7 @@ Stable, unless otherwise indicated
 <a name="IBusPanelService.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">                    <a class="link" href="IBusPanelService.html#IBusPanelService-struct" title="IBusPanelService">IBusPanelService</a>;
                     <a class="link" href="IBusPanelService.html#IBusPanelServiceClass" title="IBusPanelServiceClass">IBusPanelServiceClass</a>;
-<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="returnvalue">IBusPanelService</span></a> *  <a class="link" href="IBusPanelService.html#ibus-panel-service-new" title="ibus_panel_service_new ()">ibus_panel_service_new</a>              (<em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);
+<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="returnvalue">IBusPanelService</span></a> *  <a class="link" href="IBusPanelService.html#ibus-panel-service-new" title="ibus_panel_service_new ()">ibus_panel_service_new</a>              (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-candidate-clicked" title="ibus_panel_service_candidate_clicked ()">ibus_panel_service_candidate_clicked</a>
                                                         (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>,
@@ -57,9 +57,10 @@ Stable, unless otherwise indicated
 <span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-cursor-up" title="ibus_panel_service_cursor_up ()">ibus_panel_service_cursor_up</a>        (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-page-down" title="ibus_panel_service_page_down ()">ibus_panel_service_page_down</a>        (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-page-up" title="ibus_panel_service_page_up ()">ibus_panel_service_page_up</a>          (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-property-active" title="ibus_panel_service_property_active ()">ibus_panel_service_property_active</a>  (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
+<span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-property-activate" title="ibus_panel_service_property_activate ()">ibus_panel_service_property_activate</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *prop_name</code></em>,
-                                                         <em class="parameter"><code><span class="type">int</span> prop_state</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> prop_state</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-property-show" title="ibus_panel_service_property_show ()">ibus_panel_service_property_show</a>    (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *prop_name</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusPanelService.html#ibus-panel-service-property-hide" title="ibus_panel_service_property_hide ()">ibus_panel_service_property_hide</a>    (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
@@ -76,10 +77,32 @@ Stable, unless otherwise indicated
                      +----IBusPanelService
 </pre>
 </div>
-<div class="refsect1" title="Properties">
-<a name="IBusPanelService.properties"></a><h2>Properties</h2>
+<div class="refsect1" title="Signals">
+<a name="IBusPanelService.signals"></a><h2>Signals</h2>
 <pre class="synopsis">
-  "<a class="link" href="IBusPanelService.html#IBusPanelService--connection" title='The "connection" property'>connection</a>"               <a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a>*       : Read / Write / Construct Only
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-cursor-down-lookup-table" title='The "cursor-down-lookup-table" signal'>cursor-down-lookup-table</a>"                       : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-cursor-up-lookup-table" title='The "cursor-up-lookup-table" signal'>cursor-up-lookup-table</a>"                         : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-focus-in" title='The "focus-in" signal'>focus-in</a>"                                       : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-focus-out" title='The "focus-out" signal'>focus-out</a>"                                      : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-hide-auxiliary-text" title='The "hide-auxiliary-text" signal'>hide-auxiliary-text</a>"                            : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-hide-language-bar" title='The "hide-language-bar" signal'>hide-language-bar</a>"                              : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-hide-lookup-table" title='The "hide-lookup-table" signal'>hide-lookup-table</a>"                              : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-hide-preedit-text" title='The "hide-preedit-text" signal'>hide-preedit-text</a>"                              : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-page-down-lookup-table" title='The "page-down-lookup-table" signal'>page-down-lookup-table</a>"                         : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-page-up-lookup-table" title='The "page-up-lookup-table" signal'>page-up-lookup-table</a>"                           : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-register-properties" title='The "register-properties" signal'>register-properties</a>"                            : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-reset" title='The "reset" signal'>reset</a>"                                          : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-set-cursor-location" title='The "set-cursor-location" signal'>set-cursor-location</a>"                            : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-show-auxiliary-text" title='The "show-auxiliary-text" signal'>show-auxiliary-text</a>"                            : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-show-language-bar" title='The "show-language-bar" signal'>show-language-bar</a>"                              : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-show-lookup-table" title='The "show-lookup-table" signal'>show-lookup-table</a>"                              : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-show-preedit-text" title='The "show-preedit-text" signal'>show-preedit-text</a>"                              : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-start-setup" title='The "start-setup" signal'>start-setup</a>"                                    : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-state-changed" title='The "state-changed" signal'>state-changed</a>"                                  : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-update-auxiliary-text" title='The "update-auxiliary-text" signal'>update-auxiliary-text</a>"                          : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-update-lookup-table" title='The "update-lookup-table" signal'>update-lookup-table</a>"                            : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-update-preedit-text" title='The "update-preedit-text" signal'>update-preedit-text</a>"                            : Run Last
+  "<a class="link" href="IBusPanelService.html#IBusPanelService-update-property" title='The "update-property" signal'>update-property</a>"                                : Run Last
 </pre>
 </div>
 <div class="refsect1" title="Description">
@@ -105,69 +128,44 @@ An opaque data type representing an IBusPanelService.
     IBusServiceClass parent;
 
     /* class members */
-    gboolean (* focus_in)                  (IBusPanelService       *panel,
-                                            const gchar            *input_context_path,
-                                            IBusError             **error);
-    gboolean (* focus_out)                 (IBusPanelService       *panel,
-                                            const gchar            *input_context_path,
-                                            IBusError             **error);
-    gboolean (* register_properties)       (IBusPanelService       *panel,
-                                            IBusPropList           *prop_list,
-                                            IBusError             **error);
-    gboolean (* set_cursor_location)       (IBusPanelService       *panel,
+    void     (* focus_in)                  (IBusPanelService       *panel,
+                                            const gchar            *input_context_path);
+    void     (* focus_out)                 (IBusPanelService       *panel,
+                                            const gchar            *input_context_path);
+    void     (* register_properties)       (IBusPanelService       *panel,
+                                            IBusPropList           *prop_list);
+    void     (* set_cursor_location)       (IBusPanelService       *panel,
                                             gint                    x,
                                             gint                    y,
                                             gint                    w,
-                                            gint                    h,
-                                            IBusError             **error);
-    gboolean (* update_auxiliary_text)     (IBusPanelService       *panel,
+                                            gint                    h);
+    void     (* update_auxiliary_text)     (IBusPanelService       *panel,
                                             IBusText               *text,
-                                            gboolean                visible,
-                                            IBusError             **error);
-    gboolean (* update_lookup_table)       (IBusPanelService       *panel,
+                                            gboolean                visible);
+    void     (* update_lookup_table)       (IBusPanelService       *panel,
                                             IBusLookupTable        *lookup_table,
-                                            gboolean                visible,
-                                            IBusError             **error);
-    gboolean (* update_preedit_text)       (IBusPanelService       *panel,
+                                            gboolean                visible);
+    void     (* update_preedit_text)       (IBusPanelService       *panel,
                                             IBusText              *text,
                                             guint                  cursor_pos,
-                                            gboolean               visible,
-                                            IBusError             **error);
-    gboolean (* update_property)           (IBusPanelService       *panel,
-                                            IBusProperty           *prop,
-                                            IBusError             **error);
-    gboolean (* cursor_down_lookup_table)  (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* cursor_up_lookup_table)    (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* destroy)                   (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* hide_auxiliary_text)       (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* hide_language_bar)         (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* hide_lookup_table)         (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* hide_preedit_text)         (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* page_down_lookup_table)    (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* page_up_lookup_table)      (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* reset)                     (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* show_auxiliary_text)       (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* show_language_bar)         (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* show_lookup_table)         (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* show_preedit_text)         (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* start_setup)               (IBusPanelService       *panel,
-                                            IBusError             **error);
-    gboolean (* state_changed)             (IBusPanelService       *panel,
-                                            IBusError             **error);
+                                            gboolean               visible);
+    void     (* update_property)           (IBusPanelService       *panel,
+                                            IBusProperty           *prop);
+    void     (* cursor_down_lookup_table)  (IBusPanelService       *panel);
+    void     (* cursor_up_lookup_table)    (IBusPanelService       *panel);
+    void     (* hide_auxiliary_text)       (IBusPanelService       *panel);
+    void     (* hide_language_bar)         (IBusPanelService       *panel);
+    void     (* hide_lookup_table)         (IBusPanelService       *panel);
+    void     (* hide_preedit_text)         (IBusPanelService       *panel);
+    void     (* page_down_lookup_table)    (IBusPanelService       *panel);
+    void     (* page_up_lookup_table)      (IBusPanelService       *panel);
+    void     (* reset)                     (IBusPanelService       *panel);
+    void     (* show_auxiliary_text)       (IBusPanelService       *panel);
+    void     (* show_language_bar)         (IBusPanelService       *panel);
+    void     (* show_lookup_table)         (IBusPanelService       *panel);
+    void     (* show_preedit_text)         (IBusPanelService       *panel);
+    void     (* start_setup)               (IBusPanelService       *panel);
+    void     (* state_changed)             (IBusPanelService       *panel);
 } IBusPanelServiceClass;
 </pre>
 <p>
@@ -176,16 +174,16 @@ An opaque data type representing an IBusPanelService.
 <hr>
 <div class="refsect2" title="ibus_panel_service_new ()">
 <a name="ibus-panel-service-new"></a><h3>ibus_panel_service_new ()</h3>
-<pre class="programlisting"><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="returnvalue">IBusPanelService</span></a> *  ibus_panel_service_new              (<em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="returnvalue">IBusPanelService</span></a> *  ibus_panel_service_new              (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>);</pre>
 <p>
-New an IBusPanelService from an IBusConnection.
+New an IBusPanelService from an GDBusConnection.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>An IBusConnection.
+<td>An GDBusConnection.
 </td>
 </tr>
 <tr>
@@ -303,11 +301,12 @@ by sending a "PageUp" to IBus service.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_panel_service_property_active ()">
-<a name="ibus-panel-service-property-active"></a><h3>ibus_panel_service_property_active ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_panel_service_property_active  (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
+<div class="refsect2" title="ibus_panel_service_property_activate ()">
+<a name="ibus-panel-service-property-activate"></a><h3>ibus_panel_service_property_activate ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_panel_service_property_activate
+                                                        (<em class="parameter"><code><a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *panel</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *prop_name</code></em>,
-                                                         <em class="parameter"><code><span class="type">int</span> prop_state</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> prop_state</code></em>);</pre>
 <p>
 Notify that a property is active
 by sending a "PropertyActivate" message to IBus service.
@@ -384,14 +383,572 @@ by sending a "ValueChanged" message to IBus service.
 </table></div>
 </div>
 </div>
-<div class="refsect1" title="Property Details">
-<a name="IBusPanelService.property-details"></a><h2>Property Details</h2>
-<div class="refsect2" title='The "connection" property'>
-<a name="IBusPanelService--connection"></a><h3>The <code class="literal">"connection"</code> property</h3>
-<pre class="programlisting">  "connection"               <a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a>*       : Read / Write / Construct Only</pre>
+<div class="refsect1" title="Signal Details">
+<a name="IBusPanelService.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "cursor-down-lookup-table" signal'>
+<a name="IBusPanelService-cursor-down-lookup-table"></a><h3>The <code class="literal">"cursor-down-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
 <p>
-Connection of this IBusPanelService.
+Emitted when the client application get the cursor-down-lookup-table.
+Implement the member function <code class="function">cursor_down_lookup_table()</code> in extended class to receive this signal.
 </p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "cursor-up-lookup-table" signal'>
+<a name="IBusPanelService-cursor-up-lookup-table"></a><h3>The <code class="literal">"cursor-up-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the cursor-up-lookup-table.
+Implement the member function <code class="function">cursor_up_lookup_table()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "focus-in" signal'>
+<a name="IBusPanelService-focus-in"></a><h3>The <code class="literal">"focus-in"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *input_context_path,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>            *arg1,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)               : Run Last</pre>
+<p>
+Emitted when the client application get the focus-in.
+Implement the member function <code class="function">focus_in()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>input_context_path</code></em> :</span></p></td>
+<td>Object path of InputContext.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "focus-out" signal'>
+<a name="IBusPanelService-focus-out"></a><h3>The <code class="literal">"focus-out"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *input_context_path,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>            *arg1,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)               : Run Last</pre>
+<p>
+Emitted when the client application get the focus-out.
+Implement the member function <code class="function">focus_out()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>input_context_path</code></em> :</span></p></td>
+<td>Object path of InputContext.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "hide-auxiliary-text" signal'>
+<a name="IBusPanelService-hide-auxiliary-text"></a><h3>The <code class="literal">"hide-auxiliary-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the hide-auxiliary-text.
+Implement the member function <code class="function">hide_auxiliary_text()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "hide-language-bar" signal'>
+<a name="IBusPanelService-hide-language-bar"></a><h3>The <code class="literal">"hide-language-bar"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the hide-language-bar.
+Implement the member function <code class="function">hide_language_bar()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "hide-lookup-table" signal'>
+<a name="IBusPanelService-hide-lookup-table"></a><h3>The <code class="literal">"hide-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the hide-lookup-table.
+Implement the member function <code class="function">hide_lookup_table()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "hide-preedit-text" signal'>
+<a name="IBusPanelService-hide-preedit-text"></a><h3>The <code class="literal">"hide-preedit-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the hide-preedit-text.
+Implement the member function <code class="function">hide_preedit_text()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "page-down-lookup-table" signal'>
+<a name="IBusPanelService-page-down-lookup-table"></a><h3>The <code class="literal">"page-down-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the page-down-lookup-table.
+Implement the member function <code class="function">page_down_lookup_table()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "page-up-lookup-table" signal'>
+<a name="IBusPanelService-page-up-lookup-table"></a><h3>The <code class="literal">"page-up-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the page-up-lookup-table.
+Implement the member function <code class="function">page_up_lookup_table()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "register-properties" signal'>
+<a name="IBusPanelService-register-properties"></a><h3>The <code class="literal">"register-properties"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *prop_list,
+                                                        <a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a>     *arg1,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the register-properties.
+Implement the member function <code class="function">register_properties()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_list</code></em> :</span></p></td>
+<td>An IBusPropList that contains properties.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "reset" signal'>
+<a name="IBusPanelService-reset"></a><h3>The <code class="literal">"reset"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the reset.
+Implement the member function <code class="function">reset()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "set-cursor-location" signal'>
+<a name="IBusPanelService-set-cursor-location"></a><h3>The <code class="literal">"set-cursor-location"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *x,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a>              y,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a>              w,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a>              h,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a>              arg4,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the set-cursor-location.
+Implement the member function <code class="function">set_cursor_location()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>x</code></em> :</span></p></td>
+<td>X coordinate of the cursor.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>y</code></em> :</span></p></td>
+<td>Y coordinate of the cursor.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>w</code></em> :</span></p></td>
+<td>Width of the cursor.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>h</code></em> :</span></p></td>
+<td>Height of the cursor.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "show-auxiliary-text" signal'>
+<a name="IBusPanelService-show-auxiliary-text"></a><h3>The <code class="literal">"show-auxiliary-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the show-auxiliary-text.
+Implement the member function <code class="function">show_auxiliary_text()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "show-language-bar" signal'>
+<a name="IBusPanelService-show-language-bar"></a><h3>The <code class="literal">"show-language-bar"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the show-language-bar.
+Implement the member function <code class="function">show_language_bar()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "show-lookup-table" signal'>
+<a name="IBusPanelService-show-lookup-table"></a><h3>The <code class="literal">"show-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the show-lookup-table.
+Implement the member function <code class="function">show_lookup_table()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "show-preedit-text" signal'>
+<a name="IBusPanelService-show-preedit-text"></a><h3>The <code class="literal">"show-preedit-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the show-preedit-text.
+Implement the member function <code class="function">show_preedit_text()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "start-setup" signal'>
+<a name="IBusPanelService-start-setup"></a><h3>The <code class="literal">"start-setup"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the start-setup.
+Implement the member function <code class="function">start_setup()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "state-changed" signal'>
+<a name="IBusPanelService-state-changed"></a><h3>The <code class="literal">"state-changed"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *arg0,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the state-changed.
+Implement the member function <code class="function">state_changed()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "update-auxiliary-text" signal'>
+<a name="IBusPanelService-update-auxiliary-text"></a><h3>The <code class="literal">"update-auxiliary-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *text,
+                                                        <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>         *visible,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>          arg2,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the update-auxiliary-text.
+Implement the member function <code class="function">update_auxiliary_text()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>A preedit text to be updated.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
+<td>Whether the update is visible.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "update-lookup-table" signal'>
+<a name="IBusPanelService-update-lookup-table"></a><h3>The <code class="literal">"update-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *lookup_table,
+                                                        <a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a>  *visible,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>          arg2,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)         : Run Last</pre>
+<p>
+Emitted when the client application get the update-lookup-table.
+Implement the member function <code class="function">update_lookup_table()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>lookup_table</code></em> :</span></p></td>
+<td>A lookup table to be updated.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
+<td>Whether the update is visible.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "update-preedit-text" signal'>
+<a name="IBusPanelService-update-preedit-text"></a><h3>The <code class="literal">"update-preedit-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *text,
+                                                        <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>         *cursor_pos,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>             visible,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>          arg3,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)       : Run Last</pre>
+<p>
+Emitted when the client application get the update-preedit-text.
+Implement the member function <code class="function">update_preedit_text()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>A preedit text to be updated.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cursor_pos</code></em> :</span></p></td>
+<td>The cursor position of the text.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
+<td>Whether the update is visible.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "update-property" signal'>
+<a name="IBusPanelService-update-property"></a><h3>The <code class="literal">"update-property"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusPanelService.html" title="IBusPanelService"><span class="type">IBusPanelService</span></a> *prop,
+                                                        <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>     *arg1,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the client application get the update-property.
+Implement the member function <code class="function">update_property()</code> in extended class to receive this signal.
+</p>
+<p>
+&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>The IBusProperty to be updated.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </div>
 </div>

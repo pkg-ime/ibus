@@ -19,13 +19,15 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
+#include "registry.h"
 #include <glib/gstdio.h>
 #include <gio/gio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ibusinternal.h>
-#include "registry.h"
+#include "types.h"
 #include "option.h"
+#include "marshalers.h"
+#include "dbusimpl.h"
 
 enum {
     CHANGED,
@@ -33,6 +35,33 @@ enum {
 };
 
 static guint             _signals[LAST_SIGNAL] = { 0 };
+
+struct _BusRegistry {
+    IBusObject parent;
+
+    /* instance members */
+
+    /* a list of IBusObservedPath objects. */
+    GList *observed_paths;
+    /* a list of BusComponent objects that are created from component XML files (or from the cache of them). */
+    GList *components;
+    /* a mapping from an engine name (e.g. 'pinyin') to the corresponding IBusEngineDesc object. */
+    GHashTable *engine_table;
+
+#ifdef G_THREADS_ENABLED
+    GThread *thread;
+    gboolean thread_running;
+    GMutex  *mutex;
+    GCond   *cond;
+    gboolean changed;
+#endif
+};
+
+struct _BusRegistryClass {
+    IBusObjectClass parent;
+
+    /* class members */
+};
 
 /* functions prototype */
 static void              bus_registry_destroy           (BusRegistry        *registry);
@@ -47,18 +76,18 @@ static void              bus_registry_remove_all        (BusRegistry        *reg
 G_DEFINE_TYPE (BusRegistry, bus_registry, IBUS_TYPE_OBJECT)
 
 static void
-bus_registry_class_init (BusRegistryClass *klass)
+bus_registry_class_init (BusRegistryClass *class)
 {
-    GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-    IBusObjectClass *ibus_object_class = IBUS_OBJECT_CLASS (klass);
+    GObjectClass *gobject_class = G_OBJECT_CLASS (class);
+    IBusObjectClass *ibus_object_class = IBUS_OBJECT_CLASS (class);
 
     _signals[CHANGED] =
         g_signal_new (I_("changed"),
             G_TYPE_FROM_CLASS (gobject_class),
             G_SIGNAL_RUN_LAST,
-            0,
+            0, /* does not associate a method in this class. the "changed" signal would be handled in other classes. */
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
@@ -111,14 +140,16 @@ bus_registry_init (BusRegistry *registry)
     }
 
     for (p = registry->components; p != NULL; p = p->next) {
-        IBusComponent *comp = (IBusComponent *)p->data;
+        BusComponent *comp = (BusComponent *) p->data;
+        GList *engines = bus_component_get_engines (comp);
         GList *p1;
-
-        for (p1 = comp->engines; p1 != NULL; p1 = p1->next) {
-            IBusEngineDesc *desc = (IBusEngineDesc *)p1->data;
-            g_hash_table_insert (registry->engine_table, desc->name, desc);
-            g_object_set_data ((GObject *)desc, "component", comp);
+        for (p1 = engines; p1 != NULL; p1 = p1->next) {
+            IBusEngineDesc *desc = (IBusEngineDesc *) p1->data;
+            g_hash_table_insert (registry->engine_table,
+                                 (gpointer) ibus_engine_desc_get_name (desc),
+                                 desc);
         }
+        g_list_free (engines);
     }
 }
 
@@ -148,7 +179,7 @@ bus_registry_destroy (BusRegistry *registry)
         /* Raise a signal to cause the loop in _checks_changes() exits
          * immediately, and then wait until the thread finishes, and release all
          * resources of the thread.
-         * */
+         */
         g_cond_signal (registry->cond);
         g_thread_join (registry->thread);
 
@@ -172,7 +203,11 @@ bus_registry_destroy (BusRegistry *registry)
     IBUS_OBJECT_CLASS (bus_registry_parent_class)->destroy (IBUS_OBJECT (registry));
 }
 
-
+/**
+ * bus_registry_load:
+ *
+ * Read all XML files in the PKGDATADIR (typically /usr/share/ibus/components/ *.xml) and update the registry object.
+ */
 static void
 bus_registry_load (BusRegistry *registry)
 {
@@ -190,18 +225,20 @@ bus_registry_load (BusRegistry *registry)
 
     g_free (dirname);
 
+#if 0
+    /* FIXME Should we support install some IME in user dir? */
     dirname = g_build_filename (g_get_user_data_dir (), "ibus", "component", NULL);
 
     path = ibus_observed_path_new (dirname, TRUE);
     registry->observed_paths = g_list_append (registry->observed_paths, path);
 
-    if (g_file_test(dirname, G_FILE_TEST_EXISTS)) {
+    if (g_file_test (dirname, G_FILE_TEST_EXISTS)) {
         bus_registry_load_in_dir (registry, dirname);
     }
 
     g_free (dirname);
+#endif
 }
-
 
 #define g_string_append_indent(string, indent)  \
     {                                           \
@@ -254,8 +291,11 @@ bus_registry_load_cache (BusRegistry *registry)
                 IBusComponent *component;
                 component = ibus_component_new_from_xml_node (pp->data);
                 if (component) {
-                    g_object_ref_sink (component);
-                    registry->components = g_list_append (registry->components, component);
+                    BusComponent *buscomp = bus_component_new (component,
+                                                               NULL /* factory */);
+                    g_object_ref_sink (buscomp);
+                    registry->components =
+                        g_list_append (registry->components, buscomp);
                 }
             }
 
@@ -274,12 +314,12 @@ bus_registry_check_modification (BusRegistry *registry)
     GList *p;
 
     for (p = registry->observed_paths; p != NULL; p = p->next) {
-        if (ibus_observed_path_check_modification ((IBusObservedPath *)p->data))
+        if (ibus_observed_path_check_modification ((IBusObservedPath *) p->data))
             return TRUE;
     }
 
     for (p = registry->components; p != NULL; p = p->next) {
-        if (ibus_component_check_modification ((IBusComponent *)p->data))
+        if (ibus_component_check_modification (bus_component_get_component ((BusComponent *) p->data)))
             return TRUE;
     }
 
@@ -296,6 +336,7 @@ bus_registry_save_cache (BusRegistry *registry)
     GString *output;
     GList *p;
     FILE *pf;
+    size_t items = 0;
 
     cachedir = g_build_filename (g_get_user_cache_dir (), "ibus", "bus", NULL);
     filename = g_build_filename (cachedir, "registry.xml", NULL);
@@ -320,7 +361,7 @@ bus_registry_save_cache (BusRegistry *registry)
         g_string_append_indent (output, 1);
         g_string_append (output, "<observed-paths>\n");
         for (p = registry->observed_paths; p != NULL; p = p->next) {
-            ibus_observed_path_output ((IBusObservedPath *)p->data,
+            ibus_observed_path_output ((IBusObservedPath *) p->data,
                                       output, 2);
         }
         g_string_append_indent (output, 1);
@@ -331,20 +372,25 @@ bus_registry_save_cache (BusRegistry *registry)
         g_string_append_indent (output, 1);
         g_string_append (output, "<components>\n");
         for (p = registry->components; p != NULL; p = p->next) {
-            ibus_component_output ((IBusComponent *)p->data,
-                                      output, 2);
+            ibus_component_output (bus_component_get_component ((BusComponent *) p->data),
+                                   output, 2);
         }
         g_string_append_indent (output, 1);
         g_string_append (output, "</components>\n");
     }
 
     g_string_append (output, "</ibus-registry>\n");
-    fwrite (output->str, output->len, 1, pf);
+    items = fwrite (output->str, output->len, 1, pf);
     g_string_free (output, TRUE);
     fclose (pf);
-    return TRUE;
+    return (items == 1 ? TRUE : FALSE);
 }
 
+/**
+ * bus_registry_load_in_dir:
+ *
+ * Read all XML files in dirname, create a BusComponent object for each file, and add the component objects to the registry.
+ */
 static void
 bus_registry_load_in_dir (BusRegistry *registry,
                           const gchar *dirname)
@@ -370,14 +416,15 @@ bus_registry_load_in_dir (BusRegistry *registry,
         IBusComponent *component;
 
         size = g_utf8_strlen (filename, -1);
-        if (g_strcmp0 (MAX (filename, filename + size -4), ".xml" ) != 0)
+        if (g_strcmp0 (MAX (filename, filename + size - 4), ".xml") != 0)
             continue;
 
         path = g_build_filename (dirname, filename, NULL);
         component = ibus_component_new_from_file (path);
         if (component != NULL) {
-            g_object_ref_sink (component);
-            registry->components = g_list_append (registry->components, component);
+            BusComponent *buscomp = bus_component_new (component,
+                                                       NULL /* factory */);
+            registry->components = g_list_append (registry->components, buscomp);
         }
 
         g_free (path);
@@ -391,21 +438,21 @@ BusRegistry *
 bus_registry_new (void)
 {
     BusRegistry *registry;
-    registry = (BusRegistry *)g_object_new (BUS_TYPE_REGISTRY, NULL);
+    registry = (BusRegistry *) g_object_new (BUS_TYPE_REGISTRY, NULL);
     return registry;
 }
 
 static gint
-_component_is_name (IBusComponent *component,
-                    const gchar   *name)
+bus_register_component_is_name_cb (BusComponent *component,
+                                   const gchar  *name)
 {
-    g_assert (IBUS_IS_COMPONENT (component));
+    g_assert (BUS_IS_COMPONENT (component));
     g_assert (name);
 
-    return g_strcmp0 (component->name, name);
+    return g_strcmp0 (bus_component_get_name (component), name);
 }
 
-IBusComponent *
+BusComponent *
 bus_registry_lookup_component_by_name (BusRegistry *registry,
                                        const gchar *name)
 {
@@ -415,9 +462,9 @@ bus_registry_lookup_component_by_name (BusRegistry *registry,
     GList *p;
     p = g_list_find_custom (registry->components,
                             name,
-                            (GCompareFunc)_component_is_name);
+                            (GCompareFunc) bus_register_component_is_name_cb);
     if (p) {
-        return (IBusComponent *)p->data;
+        return (BusComponent *) p->data;
     }
     else {
         return NULL;
@@ -440,7 +487,6 @@ bus_registry_get_engines (BusRegistry *registry)
     return g_hash_table_get_values (registry->engine_table);
 }
 
-
 GList *
 bus_registry_get_engines_by_language (BusRegistry *registry,
                                       const gchar *language)
@@ -459,7 +505,7 @@ bus_registry_get_engines_by_language (BusRegistry *registry,
 
     for (p2 = p1; p2 != NULL; p2 = p2->next) {
         IBusEngineDesc *desc = (IBusEngineDesc *) p2->data;
-        if (strncmp (desc->language, language, n) == 0) {
+        if (strncmp (ibus_engine_desc_get_language (desc), language, n) == 0) {
             engines = g_list_append (engines, desc);
         }
     }
@@ -483,7 +529,7 @@ bus_registry_stop_all_components (BusRegistry *registry)
 {
     g_assert (BUS_IS_REGISTRY (registry));
 
-    g_list_foreach (registry->components, (GFunc) ibus_component_stop, NULL);
+    g_list_foreach (registry->components, (GFunc) bus_component_stop, NULL);
 
 }
 
@@ -539,6 +585,11 @@ _check_changes (BusRegistry *registry)
     return NULL;
 }
 
+/**
+ * bus_registry_start_monitor_changes:
+ *
+ * Start the monitor thread.
+ */
 void
 bus_registry_start_monitor_changes (BusRegistry *registry)
 {
@@ -548,7 +599,7 @@ bus_registry_start_monitor_changes (BusRegistry *registry)
     g_return_if_fail (registry->changed == FALSE);
 
     registry->thread_running = TRUE;
-    registry->thread = g_thread_create ((GThreadFunc)_check_changes,
+    registry->thread = g_thread_create ((GThreadFunc) _check_changes,
                                         registry,
                                         TRUE,
                                         NULL);
@@ -562,7 +613,7 @@ bus_registry_is_changed (BusRegistry *registry)
 }
 #endif
 
-BusFactoryProxy *
+void
 bus_registry_name_owner_changed (BusRegistry *registry,
                                  const gchar *name,
                                  const gchar *old_name,
@@ -573,27 +624,38 @@ bus_registry_name_owner_changed (BusRegistry *registry,
     g_assert (old_name);
     g_assert (new_name);
 
-    IBusComponent *component;
+    BusComponent *component;
     BusFactoryProxy *factory;
 
     component = bus_registry_lookup_component_by_name (registry, name);
 
     if (component == NULL) {
-        return NULL;
+        /* name is a unique name, or a well-known name we don't know. */
+        return;
     }
 
     if (g_strcmp0 (old_name, "") != 0) {
-        factory = bus_factory_proxy_get_from_component (component);
+        /* the component is stopped. */
+        factory = bus_component_get_factory (component);
 
         if (factory != NULL) {
-            ibus_object_destroy ((IBusObject *)factory);
+            ibus_proxy_destroy ((IBusProxy *) factory);
         }
     }
 
     if (g_strcmp0 (new_name, "") != 0) {
-        factory = bus_factory_proxy_new (component, NULL);
-        return factory;
-    }
+        /* the component is started. */
+        BusConnection *connection =
+                bus_dbus_impl_get_connection_by_name (BUS_DEFAULT_DBUS,
+                                                      new_name);
+        if (connection == NULL)
+            return;
 
-    return NULL;
+        factory = bus_factory_proxy_new (connection);
+        if (factory == NULL)
+            return;
+        g_object_ref_sink (factory);
+        bus_component_set_factory (component, factory);
+        g_object_unref (factory);
+    }
 }

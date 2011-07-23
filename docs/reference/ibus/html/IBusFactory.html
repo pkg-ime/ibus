@@ -26,8 +26,6 @@
                   <a href="#IBusFactory.description" class="shortcut">Description</a>
                    | 
                   <a href="#IBusFactory.object-hierarchy" class="shortcut">Object Hierarchy</a>
-                   | 
-                  <a href="#IBusFactory.properties" class="shortcut">Properties</a>
 </td></tr>
 </table>
 <div class="refentry" title="IBusFactory">
@@ -47,7 +45,7 @@ Stable, unless otherwise indicated
 <a name="IBusFactory.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">                    <a class="link" href="IBusFactory.html#IBusFactory-struct" title="IBusFactory">IBusFactory</a>;
                     <a class="link" href="IBusFactory.html#IBusFactoryClass" title="IBusFactoryClass">IBusFactoryClass</a>;
-<a class="link" href="IBusFactory.html" title="IBusFactory"><span class="returnvalue">IBusFactory</span></a> *       <a class="link" href="IBusFactory.html#ibus-factory-new" title="ibus_factory_new ()">ibus_factory_new</a>                    (<em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);
+<a class="link" href="IBusFactory.html" title="IBusFactory"><span class="returnvalue">IBusFactory</span></a> *       <a class="link" href="IBusFactory.html#ibus-factory-new" title="ibus_factory_new ()">ibus_factory_new</a>                    (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusFactory.html#ibus-factory-add-engine" title="ibus_factory_add_engine ()">ibus_factory_add_engine</a>             (<em class="parameter"><code><a class="link" href="IBusFactory.html" title="IBusFactory"><span class="type">IBusFactory</span></a> *factory</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *engine_name</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> engine_type</code></em>);
@@ -61,12 +59,6 @@ Stable, unless otherwise indicated
          +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
                +----<a class="link" href="IBusService.html" title="IBusService">IBusService</a>
                      +----IBusFactory
-</pre>
-</div>
-<div class="refsect1" title="Properties">
-<a name="IBusFactory.properties"></a><h2>Properties</h2>
-<pre class="synopsis">
-  "<a class="link" href="IBusFactory.html#IBusFactory--connection" title='The "connection" property'>connection</a>"               <a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a>*       : Read / Write / Construct Only
 </pre>
 </div>
 <div class="refsect1" title="Description">
@@ -93,9 +85,6 @@ An opaque data type representing an IBusFactory.
 <div class="refsect2" title="IBusFactoryClass">
 <a name="IBusFactoryClass"></a><h3>IBusFactoryClass</h3>
 <pre class="programlisting">typedef struct {
-    IBusServiceClass parent;
-
-    /* signals */
 } IBusFactoryClass;
 </pre>
 <p>
@@ -104,7 +93,7 @@ An opaque data type representing an IBusFactory.
 <hr>
 <div class="refsect2" title="ibus_factory_new ()">
 <a name="ibus-factory-new"></a><h3>ibus_factory_new ()</h3>
-<pre class="programlisting"><a class="link" href="IBusFactory.html" title="IBusFactory"><span class="returnvalue">IBusFactory</span></a> *       ibus_factory_new                    (<em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="IBusFactory.html" title="IBusFactory"><span class="returnvalue">IBusFactory</span></a> *       ibus_factory_new                    (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>);</pre>
 <p>
 New an IBusFactory.
 </p>
@@ -113,7 +102,7 @@ New an IBusFactory.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>An IBusConnection.
+<td>An GDBusConnection.
 </td>
 </tr>
 <tr>
@@ -153,16 +142,6 @@ Add an engine to the factory.
 </tr>
 </tbody>
 </table></div>
-</div>
-</div>
-<div class="refsect1" title="Property Details">
-<a name="IBusFactory.property-details"></a><h2>Property Details</h2>
-<div class="refsect2" title='The "connection" property'>
-<a name="IBusFactory--connection"></a><h3>The <code class="literal">"connection"</code> property</h3>
-<pre class="programlisting">  "connection"               <a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a>*       : Read / Write / Construct Only</pre>
-<p>
-Connection of this IBusFactory.
-</p>
 </div>
 </div>
 </div>

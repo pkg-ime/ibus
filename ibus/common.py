@@ -33,20 +33,26 @@ __all__ = (
         "ORIENTATION_HORIZONTAL",
         "ORIENTATION_VERTICAL",
         "ORIENTATION_SYSTEM",
+        "BUS_NAME_FLAG_ALLOW_REPLACEMENT",
+        "BUS_NAME_FLAG_REPLACE_EXISTING",
+        "BUS_NAME_FLAG_DO_NOT_QUEUE",
+        "BUS_REQUEST_NAME_REPLY_PRIMARY_OWNER",
+        "BUS_REQUEST_NAME_REPLY_IN_QUEUE",
+        "BUS_REQUEST_NAME_REPLY_EXISTS",
+        "BUS_REQUEST_NAME_REPLY_ALREADY_OWNER",
         "default_reply_handler",
         "default_error_handler",
         "DEFAULT_ASYNC_HANDLERS",
-        "CONFIG_GENERAL_SHORTCUT_TRIGGER",
-        "CONFIG_GENERAL_SHORTCUT_NEXT_ENGINE",
-        "CONFIG_GENERAL_SHORTCUT_PREV_ENGINE",
         "CONFIG_GENERAL_SHORTCUT_TRIGGER_DEFAULT",
+        "CONFIG_GENERAL_SHORTCUT_ENABLE_DEFAULT",
+        "CONFIG_GENERAL_SHORTCUT_DISABLE_DEFAULT",
         "CONFIG_GENERAL_SHORTCUT_NEXT_ENGINE_DEFAULT",
         "CONFIG_GENERAL_SHORTCUT_PREV_ENGINE_DEFAULT",
         "main",
         "main_quit",
         "main_iteration",
         "get_address",
-        "get_socket_path"
+        "get_socket_path",
     )
 
 import os
@@ -98,7 +104,7 @@ import ctypes
 #         return None
 #     return address
 
-libibus = ctypes.CDLL("libibus.so.2")
+libibus = ctypes.CDLL("libibus-1.0.so.0")
 get_address = libibus.ibus_get_address
 get_address.restype=ctypes.c_char_p
 
@@ -120,7 +126,7 @@ IBUS_SERVICE_IBUS   = "org.freedesktop.IBus"
 IBUS_IFACE_PANEL            = "org.freedesktop.IBus.Panel"
 IBUS_IFACE_CONFIG           = "org.freedesktop.IBus.Config"
 IBUS_IFACE_ENGINE           = "org.freedesktop.IBus.Engine"
-IBUS_IFACE_ENGINE_FACTORY   = "org.freedesktop.IBus.EngineFactory"
+IBUS_IFACE_ENGINE_FACTORY   = "org.freedesktop.IBus.Factory"
 IBUS_IFACE_INPUT_CONTEXT    = "org.freedesktop.IBus.InputContext"
 IBUS_IFACE_NOTIFICATIONS    = "org.freedesktop.IBus.Notifications"
 
@@ -133,6 +139,17 @@ ORIENTATION_HORIZONTAL  = 0
 ORIENTATION_VERTICAL    = 1
 ORIENTATION_SYSTEM      = 2
 
+# define bus name flag
+BUS_NAME_FLAG_ALLOW_REPLACEMENT   = (1 << 0)
+BUS_NAME_FLAG_REPLACE_EXISTING    = (1 << 1)
+BUS_NAME_FLAG_DO_NOT_QUEUE        = (1 << 2)
+
+# define bus request name reply
+BUS_REQUEST_NAME_REPLY_PRIMARY_OWNER = 1
+BUS_REQUEST_NAME_REPLY_IN_QUEUE      = 2
+BUS_REQUEST_NAME_REPLY_EXISTS        = 3
+BUS_REQUEST_NAME_REPLY_ALREADY_OWNER = 4
+
 def default_reply_handler( *args):
     pass
 
@@ -144,14 +161,13 @@ DEFAULT_ASYNC_HANDLERS = {
     "error_handler" : default_error_handler
 }
 
-CONFIG_GENERAL_SHORTCUT_TRIGGER     = "/general/keyboard_shortcut_trigger"
 CONFIG_GENERAL_SHORTCUT_TRIGGER_DEFAULT = [
-    "Ctrl+space",
+    "Control+space",
     "Zenkaku_Hankaku",
     "Hangul"]
-CONFIG_GENERAL_SHORTCUT_NEXT_ENGINE = "/general/keyboard_shortcut_next_engine"
+CONFIG_GENERAL_SHORTCUT_ENABLE_DEFAULT = []
+CONFIG_GENERAL_SHORTCUT_DISABLE_DEFAULT = []
 CONFIG_GENERAL_SHORTCUT_NEXT_ENGINE_DEFAULT = []
-CONFIG_GENERAL_SHORTCUT_PREV_ENGINE = "/general/keyboard_shortcut_prev_engine"
 CONFIG_GENERAL_SHORTCUT_PREV_ENGINE_DEFAULT = []
 
 __mainloop = None
