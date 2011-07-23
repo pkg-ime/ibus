@@ -19,6 +19,11 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
+
+#if !defined (__IBUS_H_INSIDE__) && !defined (IBUS_COMPILATION)
+#error "Only <ibus.h> can be included directly"
+#endif
+
 /**
  * SECTION: ibusshare
  * @short_description: Shared utility functions and definition.
@@ -233,6 +238,15 @@ glong            ibus_get_daemon_uid    (void) G_GNUC_DEPRECATED;
  * Get the path of socket file.
  */
 const gchar     *ibus_get_socket_path   (void);
+
+/**
+ * ibus_get_timeout:
+ * @returns: A GDBus timeout in milliseconds. -1 when default timeout for GDBus should be used.
+ *
+ * Get the GDBus timeout in milliseconds. The timeout is for clients (e.g. im-ibus.so), not for ibus-daemon.
+ * Note that the timeout for ibus-daemon could be set by --timeout command line option of the daemon.
+ */
+gint             ibus_get_timeout       (void);
 
 /**
  * ibus_keyval_name:

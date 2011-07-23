@@ -26,20 +26,14 @@ IBusConfigService
 </para>
 
 
-<!-- ##### ARG IBusConfigService:connection ##### -->
-<para>
-
-</para>
-
 <!-- ##### STRUCT IBusConfigServiceClass ##### -->
 <para>
 
 </para>
 
-@parent: 
 @set_value: 
 @get_value: 
-@unset: 
+@unset_value: 
 
 <!-- ##### FUNCTION ibus_config_service_new ##### -->
 <para>

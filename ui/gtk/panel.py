@@ -35,11 +35,9 @@ from languagebar import LanguageBar
 from candidatepanel import CandidatePanel
 from engineabout import EngineAbout
 
-from gettext import dgettext
-_  = lambda a : dgettext("ibus", a)
-N_ = lambda a : a
+from i18n import _, N_
 
-ICON_KEYBOARD = "ibus-keyboard"
+ICON_KEYBOARD = ibus.get_ICON_KEYBOARD()
 ICON_ENGINE = "ibus-engine"
 
 def show_uri(screen, link):
@@ -105,17 +103,32 @@ class Panel(ibus.PanelBase):
 
 
         self.__status_icon = gtk.StatusIcon()
+        # gnome-shell checks XClassHint.res_class with ShellTrayIcon.
+        # gtk_status_icon_set_name() can set XClassHint.res_class .
+        # However gtk_status_icon_new() also calls gtk_window_realize() so
+        # gtk_status_icon_set_visible() needs to be called to set WM_CLASS
+        # so that gtk_window_realize() is called later again.
+        # set_title is for gnome-shell notificationDaemon in bottom right.
+        self.__status_icon.set_visible(False)
+        # gtk_status_icon_set_name() is not available in pygtk2 2.17
+        if hasattr(self.__status_icon, 'set_name'):
+            self.__status_icon.set_name('ibus-ui-gtk')
+        self.__status_icon.set_title(_("IBus Panel"))
+        # Hide icon until bus get the name owner.
+        #self.__status_icon.set_visible(True)
         self.__status_icon.connect("popup-menu", self.__status_icon_popup_menu_cb)
         self.__status_icon.connect("activate", self.__status_icon_activate_cb)
         self.__status_icon.set_from_icon_name(ICON_KEYBOARD)
         self.__status_icon.set_tooltip(_("IBus input method framework"))
-        self.__status_icon.set_visible(True)
+        # Hide icon until bus get the name owner.
+        #self.__status_icon.set_visible(True)
 
         self.__config_load_lookup_table_orientation()
         self.__config_load_show()
         self.__config_load_position()
         self.__config_load_custom_font()
-        self.__config_load_show_icon_on_systray()
+        # Hide icon until bus get the name owner.
+        #self.__config_load_show_icon_on_systray()
         self.__config_load_show_im_name()
         # self.__bus.request_name(ibus.panel.IBUS_SERVICE_PANEL, 0)
 
@@ -181,6 +194,16 @@ class Panel(ibus.PanelBase):
 
     def get_status_icon(self):
         return self.__status_icon
+
+    def hide(self):
+        if self.__status_icon == None:
+            return
+        self.__status_icon.set_visible(False)
+
+    def show(self):
+        if self.__status_icon == None:
+            return
+        self.__config_load_show_icon_on_systray()
 
     def __set_im_icon(self, icon_name):
         if not icon_name:

@@ -6,7 +6,7 @@
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
 <link rel="home" href="index.html" title="IBus Reference Manual">
 <link rel="up" href="ch06.html" title="Internal">
-<link rel="prev" href="IBusServer.html" title="IBusServer">
+<link rel="prev" href="IBusObject.html" title="IBusObject">
 <link rel="next" href="ibus-ibustypes.html" title="ibustypes">
 <meta name="generator" content="GTK-Doc V1.15 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
@@ -14,7 +14,7 @@
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
 <tr valign="middle">
-<td><a accesskey="p" href="IBusServer.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="p" href="IBusObject.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
 <td><a accesskey="u" href="ch06.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
 <td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
 <th width="100%" align="center">IBus Reference Manual</th>
@@ -65,6 +65,7 @@ const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.htm
 const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-ibusshare.html#ibus-get-user-name" title="ibus_get_user_name ()">ibus_get_user_name</a>                  (<em class="parameter"><code><span class="type">void</span></code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#glong"><span class="returnvalue">glong</span></a>               <a class="link" href="ibus-ibusshare.html#ibus-get-daemon-uid" title="ibus_get_daemon_uid ()">ibus_get_daemon_uid</a>                 (<em class="parameter"><code><span class="type">void</span></code></em>);
 const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-ibusshare.html#ibus-get-socket-path" title="ibus_get_socket_path ()">ibus_get_socket_path</a>                (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                <a class="link" href="ibus-ibusshare.html#ibus-get-timeout" title="ibus_get_timeout ()">ibus_get_timeout</a>                    (<em class="parameter"><code><span class="type">void</span></code></em>);
 const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="ibus-ibusshare.html#ibus-keyval-name" title="ibus_keyval_name ()">ibus_keyval_name</a>                    (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="ibus-ibusshare.html#ibus-keyval-from-name" title="ibus_keyval_from_name ()">ibus_keyval_from_name</a>               (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *keyval_name</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="ibus-ibusshare.html#ibus-free-strv" title="ibus_free_strv ()">ibus_free_strv</a>                      (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> **strv</code></em>);
@@ -76,6 +77,7 @@ const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.htm
 <span class="returnvalue">void</span>                <a class="link" href="ibus-ibusshare.html#ibus-init" title="ibus_init ()">ibus_init</a>                           (<em class="parameter"><code><span class="type">void</span></code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="ibus-ibusshare.html#ibus-main" title="ibus_main ()">ibus_main</a>                           (<em class="parameter"><code><span class="type">void</span></code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="ibus-ibusshare.html#ibus-quit" title="ibus_quit ()">ibus_quit</a>                           (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="ibus-ibusshare.html#ibus-set-log-handler" title="ibus_set_log_handler ()">ibus_set_log_handler</a>                (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> verbose</code></em>);
 </pre>
 </div>
 <div class="refsect1" title="Description">
@@ -277,12 +279,10 @@ Set the display address.
 <p>
 Return the D-Bus address of IBus.
 It will find the address from following source:
-</p>
-<div class="orderedlist"><ol class="orderedlist" type="1">
-<li class="listitem"><p>Environment variable IBUS_ADDRESS</p></li>
-<li class="listitem"><p>Socket file under ~/.config/ibus/bus/</p></li>
-</ol></div>
-<p>
+&lt;orderedlist&gt;
+   &lt;listitem&gt;&lt;para&gt;Environment variable IBUS_ADDRESS&lt;/para&gt;&lt;/listitem&gt;
+   &lt;listitem&gt;&lt;para&gt;Socket file under ~/.config/ibus/bus/&lt;/para&gt;&lt;/listitem&gt;
+&lt;/orderedlist&gt;
 </p>
 <p>
 <em class="parameter"><code>see_also</code></em>: <a class="link" href="ibus-ibusshare.html#ibus-write-address" title="ibus_write_address ()"><code class="function">ibus_write_address()</code></a>.
@@ -322,17 +322,15 @@ Write D-Bus address to socket file.
 <p>
 Get the current user name.
 It is determined by:
-</p>
-<div class="orderedlist"><ol class="orderedlist" type="1">
-<li class="listitem"><p><code class="function">getlogin()</code></p></li>
-<li class="listitem"><p>Environment variable SUDO_USER</p></li>
-<li class="listitem"><p>Environment variable USERHELPER_UID</p></li>
-<li class="listitem"><p>Environment variable USERNAME</p></li>
-<li class="listitem"><p>Environment variable LOGNAME</p></li>
-<li class="listitem"><p>Environment variable USER</p></li>
-<li class="listitem"><p>Environment variable LNAME</p></li>
-</ol></div>
-<p>
+&lt;orderedlist&gt;
+   &lt;listitem&gt;&lt;para&gt;<code class="function">getlogin()</code>&lt;/para&gt;&lt;/listitem&gt;
+   &lt;listitem&gt;&lt;para&gt;Environment variable SUDO_USER&lt;/para&gt;&lt;/listitem&gt;
+   &lt;listitem&gt;&lt;para&gt;Environment variable USERHELPER_UID&lt;/para&gt;&lt;/listitem&gt;
+   &lt;listitem&gt;&lt;para&gt;Environment variable USERNAME&lt;/para&gt;&lt;/listitem&gt;
+   &lt;listitem&gt;&lt;para&gt;Environment variable LOGNAME&lt;/para&gt;&lt;/listitem&gt;
+   &lt;listitem&gt;&lt;para&gt;Environment variable USER&lt;/para&gt;&lt;/listitem&gt;
+   &lt;listitem&gt;&lt;para&gt;Environment variable LNAME&lt;/para&gt;&lt;/listitem&gt;
+&lt;/orderedlist&gt;
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -376,6 +374,23 @@ Get the path of socket file.
 <tbody><tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>A newly allocated string that stores the path of socket file.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_get_timeout ()">
+<a name="ibus-get-timeout"></a><h3>ibus_get_timeout ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                ibus_get_timeout                    (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Get the GDBus timeout in milliseconds. The timeout is for clients (e.g. im-ibus.so), not for ibus-daemon.
+Note that the timeout for ibus-daemon could be set by --timeout command line option of the daemon.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A GDBus timeout in milliseconds. -1 when default timeout for GDBus should be used.
 </td>
 </tr></tbody>
 </table></div>
@@ -551,6 +566,34 @@ Stops an IBus from running.
 Any calls to <a class="link" href="ibus-ibusshare.html#ibus-quit" title="ibus_quit ()"><code class="function">ibus_quit()</code></a> for the loop will return.
 <em class="parameter"><code>see_also</code></em>: <a class="link" href="ibus-ibusshare.html#ibus-main" title="ibus_main ()"><code class="function">ibus_main()</code></a>.
 </p>
+</div>
+<hr>
+<div class="refsect2" title="ibus_set_log_handler ()">
+<a name="ibus-set-log-handler"></a><h3>ibus_set_log_handler ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_set_log_handler                (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> verbose</code></em>);</pre>
+<p>
+Sets GLIB's log handler to ours. Our log handler adds time info
+including hour, minute, second, and microsecond, like:
+</p>
+<p>
+(ibus-daemon:7088): IBUS-DEBUG: 18:06:45.822819: ibus-daemon started
+</p>
+<p>
+If <em class="parameter"><code>verbose</code></em> is TRUE, all levels of messages will be logged. Otherwise,
+DEBUG and WARNING messages will be ignored.  The function is used in
+ibus-daemon, but can be useful for IBus client programs as well for
+debugging. It's totally fine for not calling this function. If you
+don't set a custom GLIB log handler, the default GLIB log handler will
+be used.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>verbose</code></em> :</span></p></td>
+<td>TRUE for verbose logging.
+</td>
+</tr></tbody>
+</table></div>
 </div>
 </div>
 </div>

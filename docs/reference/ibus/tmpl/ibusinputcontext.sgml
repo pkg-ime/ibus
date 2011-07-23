@@ -188,6 +188,99 @@ IBusInputContext
 
 @parent: 
 
+<!-- ##### FUNCTION ibus_input_context_new ##### -->
+<para>
+
+</para>
+
+@path: 
+@connection: 
+@cancellable: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_input_context_new_async ##### -->
+<para>
+
+</para>
+
+@path: 
+@connection: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_input_context_new_async_finish ##### -->
+<para>
+
+</para>
+
+@res: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_input_context_get_input_context ##### -->
+<para>
+
+</para>
+
+@path: 
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_input_context_get_input_context_async ##### -->
+<para>
+
+</para>
+
+@path: 
+@connection: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_input_context_get_input_context_async_finish ##### -->
+<para>
+
+</para>
+
+@res: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_input_context_process_key_event_async ##### -->
+<para>
+
+</para>
+
+@context: 
+@keyval: 
+@keycode: 
+@state: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_input_context_process_key_event_async_finish ##### -->
+<para>
+
+</para>
+
+@context: 
+@res: 
+@processed: 
+@error: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_input_context_process_key_event ##### -->
 <para>
 
@@ -271,7 +364,63 @@ IBusInputContext
 @context: 
 
 
+<!-- ##### FUNCTION ibus_input_context_is_enabled_async ##### -->
+<para>
+
+</para>
+
+@context: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_input_context_is_enabled_async_finish ##### -->
+<para>
+
+</para>
+
+@context: 
+@res: 
+@retval: 
+@error: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_input_context_is_enabled ##### -->
+<para>
+
+</para>
+
+@context: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_input_context_get_engine_async ##### -->
+<para>
+
+</para>
+
+@context: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_input_context_get_engine_async_finish ##### -->
+<para>
+
+</para>
+
+@context: 
+@res: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_input_context_get_engine ##### -->
 <para>
 
 </para>
@@ -287,5 +436,24 @@ IBusInputContext
 
 @context: 
 @name: 
+
+
+<!-- ##### FUNCTION ibus_input_context_set_surrounding_text ##### -->
+<para>
+
+</para>
+
+@context: 
+@text: 
+@cursor_pos: 
+
+
+<!-- ##### FUNCTION ibus_input_context_needs_surrounding_text ##### -->
+<para>
+
+</para>
+
+@context: 
+@Returns: 
 
 

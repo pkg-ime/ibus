@@ -53,6 +53,9 @@
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> end_index</code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusText.html#ibus-text-get-length" title="ibus_text_get_length ()">ibus_text_get_length</a>                (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusText.html#ibus-text-get-is-static" title="ibus_text_get_is_static ()">ibus_text_get_is_static</a>             (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusText.html#ibus-text-get-text" title="ibus_text_get_text ()">ibus_text_get_text</a>                  (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
+const <a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="returnvalue">IBusAttrList</span></a> * <a class="link" href="IBusText.html#ibus-text-get-attributes" title="ibus_text_get_attributes ()">ibus_text_get_attributes</a>           (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
 </pre>
 </div>
 <div class="refsect1" title="Object Hierarchy">
@@ -314,6 +317,75 @@ it does not count by bytes but characters instead.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>Number of character in <em class="parameter"><code>text</code></em>, not counted by bytes.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_text_get_is_static ()">
+<a name="ibus-text-get-is-static"></a><h3>ibus_text_get_is_static ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_text_get_is_static             (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);</pre>
+<p>
+Return the is_static in an IBusText.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>An IBusText.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the is_static in <em class="parameter"><code>text</code></em>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_text_get_text ()">
+<a name="ibus-text-get-text"></a><h3>ibus_text_get_text ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_text_get_text                  (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);</pre>
+<p>
+Return the text in an IBusText. Should not be freed.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>An IBusText.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the text in <em class="parameter"><code>text</code></em>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_text_get_attributes ()">
+<a name="ibus-text-get-attributes"></a><h3>ibus_text_get_attributes ()</h3>
+<pre class="programlisting">const <a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="returnvalue">IBusAttrList</span></a> * ibus_text_get_attributes           (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);</pre>
+<p>
+Return the attributes in an IBusText. Should not be freed.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>An IBusText.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the attrs in <em class="parameter"><code>text</code></em>.
 </td>
 </tr>
 </tbody>

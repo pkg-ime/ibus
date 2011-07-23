@@ -115,7 +115,7 @@ _end_element_cb (GMarkupParseContext *context,
     XMLNode *p = (XMLNode *) g_markup_parse_context_pop (context);
 
     if (p->text && p->sub_nodes) {
-        g_debug ("Error");
+        g_warning ("Error");
     }
 
     if (p->text == NULL && p->sub_nodes == NULL) {
@@ -176,7 +176,7 @@ static GMarkupParser parser = {
 XMLNode *
 ibus_xml_parse_file (const gchar *filename)
 {
-    gboolean retval;
+    gboolean retval = FALSE;
     GError *error = NULL;
     FILE *pf = fopen (filename, "r");
 

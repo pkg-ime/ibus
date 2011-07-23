@@ -50,6 +50,9 @@ class IEngine(dbus.service.Object):
     @method(in_signature="iiii")
     def SetCursorLocation(self, x, y, w, h): pass
 
+    @method(in_signature="vu")
+    def SetSurroundingText(self, text, cursor_index): pass
+
     @method(in_signature="u")
     def SetCapabilities(self, cap): pass
 
@@ -85,7 +88,7 @@ class IEngine(dbus.service.Object):
     @method()
     def Disable(self): pass
 
-    @method(in_signature="si")
+    @method(in_signature="su")
     def PropertyActivate(self, prop_name, prop_state): pass
 
     @method(in_signature="s")
@@ -149,3 +152,8 @@ class IEngine(dbus.service.Object):
     @signal(signature="v")
     def UpdateProperty(self, prop): pass
 
+    @signal(signature="iu")
+    def DeleteSurroundingText(self, offset_from_cursor, nchars): pass
+
+    @signal()
+    def RequireSurroundingText(self): pass

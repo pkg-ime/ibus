@@ -22,8 +22,18 @@
 
 vapidir = $(datadir)/vala/vapi
 dist_vapi_DATA = \
-	ibus-1.0.vapi \
+	ibus-@IBUS_API_VERSION@.vapi \
+	ibus-@IBUS_API_VERSION@.deps \
 	$(NULL)
 
-ibus-1.0.vapi:
-	vapigen --library ibus-1.0 ibus-1.0/ibus-1.0.gi ibus-1.0/ibus-1.0-custom.vala
+ibus-@IBUS_API_VERSION@.vapi:
+	vapigen --library ibus-@IBUS_API_VERSION@ \
+			--pkg gio-2.0 \
+			--metadata=ibus-@IBUS_API_VERSION@/ibus-@IBUS_API_VERSION@.metadata \
+			ibus-@IBUS_API_VERSION@/ibus-@IBUS_API_VERSION@.gi \
+			ibus-@IBUS_API_VERSION@/ibus-@IBUS_API_VERSION@-custom.vala
+
+generate-vala:
+	vala-gen-introspect ibus-@IBUS_API_VERSION@ ibus-@IBUS_API_VERSION@
+
+-include $(top_srcdir)/git.mk

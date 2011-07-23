@@ -19,13 +19,84 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
-#include <dbus/dbus.h>
-#include <ibusinternal.h>
-#include <ibusmarshalers.h>
-#include "ibusimpl.h"
 #include "inputcontext.h"
+
+#include <string.h>
+
 #include "engineproxy.h"
 #include "factoryproxy.h"
+#include "ibusimpl.h"
+#include "marshalers.h"
+#include "option.h"
+#include "types.h"
+
+struct _SetEngineByDescData {
+    /* context related to the data */
+    BusInputContext *context;
+    /* set engine by desc result, cancellable */
+    GSimpleAsyncResult *simple;
+    /* a object to cancel bus_engine_proxy_new call */
+    GCancellable *cancellable;
+    /* a object being passed to the bus_input_context_set_engine_by_desc function. if origin_cancellable is cancelled by someone,
+     * we cancel the cancellable above as well. */
+    GCancellable *origin_cancellable;
+    gulong cancelled_handler_id;
+};
+typedef struct _SetEngineByDescData SetEngineByDescData;
+
+struct _BusInputContext {
+    IBusService parent;
+
+    /* instance members */
+    BusConnection *connection;
+    BusEngineProxy *engine;
+    gchar *client;
+
+    gboolean has_focus;
+    gboolean enabled;
+
+    /* client capabilities */
+    guint capabilities;
+
+    /* cursor location */
+    gint x;
+    gint y;
+    gint w;
+    gint h;
+
+    /* prev key event that are used for handling hot-keys */
+    guint prev_keyval;
+    guint prev_modifiers;
+
+    /* preedit text */
+    IBusText *preedit_text;
+    guint     preedit_cursor_pos;
+    gboolean  preedit_visible;
+    guint     preedit_mode;
+
+    /* auxiliary text */
+    IBusText *auxiliary_text;
+    gboolean  auxiliary_visible;
+
+    /* lookup table */
+    IBusLookupTable *lookup_table;
+    gboolean lookup_table_visible;
+
+    /* filter release */
+    gboolean filter_release;
+
+    /* is fake context */
+    gboolean fake;
+
+    /* incompleted set engine by desc request */
+    SetEngineByDescData *data;
+};
+
+struct _BusInputContextClass {
+    IBusServiceClass parent;
+
+    /* class members */
+};
 
 enum {
     PROCESS_KEY_EVENT,
@@ -64,18 +135,39 @@ static guint    context_signals[LAST_SIGNAL] = { 0 };
 
 /* functions prototype */
 static void     bus_input_context_destroy       (BusInputContext        *context);
-static gboolean bus_input_context_ibus_message  (BusInputContext        *context,
-                                                 BusConnection          *connection,
-                                                 IBusMessage            *message);
+static void     bus_input_context_service_method_call
+                                                (IBusService            *service,
+                                                 GDBusConnection        *connection,
+                                                 const gchar            *sender,
+                                                 const gchar            *object_path,
+                                                 const gchar            *interface_name,
+                                                 const gchar            *method_name,
+                                                 GVariant               *parameters,
+                                                 GDBusMethodInvocation  *invocation);
+/*
+static GVariant *bus_input_context_service_get_property
+                                                (IBusService            *service,
+                                                 GDBusConnection        *connection,
+                                                 const gchar            *sender,
+                                                 const gchar            *object_path,
+                                                 const gchar            *interface_name,
+                                                 const gchar            *property_name,
+                                                 GError                **error);
+static gboolean bus_input_context_service_set_property
+                                                (IBusService            *service,
+                                                 GDBusConnection        *connection,
+                                                 const gchar            *sender,
+                                                 const gchar            *object_path,
+                                                 const gchar            *interface_name,
+                                                 const gchar            *property_name,
+                                                 GVariant               *value,
+                                                 GError                **error);
+*/
 static gboolean bus_input_context_filter_keyboard_shortcuts
                                                 (BusInputContext        *context,
                                                  guint                   keyval,
                                                  guint                   keycode,
                                                  guint                   modifiers);
-static gboolean bus_input_context_send_signal   (BusInputContext        *context,
-                                                 const gchar            *signal_name,
-                                                 GType                   first_arg_type,
-                                                 ...);
 
 static void     bus_input_context_unset_engine  (BusInputContext        *context);
 static void     bus_input_context_commit_text   (BusInputContext        *context,
@@ -123,96 +215,149 @@ static void     bus_input_context_update_property
 static void     _engine_destroy_cb              (BusEngineProxy         *factory,
                                                  BusInputContext        *context);
 
-static guint id = 0;
 static IBusText *text_empty = NULL;
 static IBusLookupTable *lookup_table_empty = NULL;
 static IBusPropList    *props_empty = NULL;
 
+/* The interfaces available in this class, which consists of a list of methods this class implements and
+ * a list of signals this class may emit. Method calls to the interface that are not defined in this XML
+ * will be automatically rejected by the GDBus library (see src/ibusservice.c for details.) */
+static const gchar introspection_xml[] =
+    "<node>"
+    "  <interface name='org.freedesktop.IBus.InputContext'>"
+    /* methods */
+    "    <method name='ProcessKeyEvent'>"
+    "      <arg direction='in'  type='u' name='keyval' />"
+    "      <arg direction='in'  type='u' name='keycode' />"
+    "      <arg direction='in'  type='u' name='state' />"
+    "      <arg direction='out' type='b' name='handled' />"
+    "    </method>"
+    "    <method name='SetCursorLocation'>"
+    "      <arg direction='in' type='i' name='x' />"
+    "      <arg direction='in' type='i' name='y' />"
+    "      <arg direction='in' type='i' name='w' />"
+    "      <arg direction='in' type='i' name='h' />"
+    "    </method>"
+    "    <method name='FocusIn' />"
+    "    <method name='FocusOut' />"
+    "    <method name='Reset' />"
+    "    <method name='Enable' />"
+    "    <method name='Disable' />"
+    "    <method name='IsEnabled'>"
+    "      <arg direction='out' type='b' name='enable' />"
+    "    </method>"
+    "    <method name='SetCapabilities'>"
+    "      <arg direction='in' type='u' name='caps' />"
+    "    </method>"
+    "    <method name='PropertyActivate'>"
+    "      <arg direction='in' type='s' name='name' />"
+    "      <arg direction='in' type='u' name='state' />"
+    "    </method>"
+    "    <method name='SetEngine'>"
+    "      <arg direction='in' type='s' name='name' />"
+    "    </method>"
+    "    <method name='GetEngine'>"
+    "      <arg direction='out' type='v' name='desc' />"
+    "    </method>"
+    "    <method name='SetSurroundingText'>"
+    "      <arg direction='in' type='v' name='text' />"
+    "      <arg direction='in' type='u' name='cursor_pos' />"
+    "    </method>"
+
+    /* signals */
+    "    <signal name='CommitText'>"
+    "      <arg type='v' name='text' />"
+    "    </signal>"
+    "    <signal name='Enabled'/>"
+    "    <signal name='Disabled'/>"
+    "    <signal name='ForwardKeyEvent'>"
+    "      <arg type='u' name='keyval' />"
+    "      <arg type='u' name='keycode' />"
+    "      <arg type='u' name='state' />"
+    "    </signal>"
+    "    <signal name='UpdatePreeditText'>"
+    "      <arg type='v' name='text' />"
+    "      <arg type='u' name='cursor_pos' />"
+    "      <arg type='b' name='visible' />"
+    "    </signal>"
+    "    <signal name='ShowPreeditText'/>"
+    "    <signal name='HidePreeditText'/>"
+    "    <signal name='UpdateAuxiliaryText'>"
+    "      <arg type='v' name='text' />"
+    "      <arg type='b' name='visible' />"
+    "    </signal>"
+    "    <signal name='ShowAuxiliaryText'/>"
+    "    <signal name='HideAuxiliaryText'/>"
+    "    <signal name='UpdateLookupTable'>"
+    "      <arg type='v' name='table' />"
+    "      <arg type='b' name='visible' />"
+    "    </signal>"
+    "    <signal name='ShowLookupTable'/>"
+    "    <signal name='HideLookupTable'/>"
+    "    <signal name='PageUpLookupTable'/>"
+    "    <signal name='PageDownLookupTable'/>"
+    "    <signal name='CursorUpLookupTable'/>"
+    "    <signal name='CursorDownLookupTable'/>"
+    "    <signal name='RegisterProperties'>"
+    "      <arg type='v' name='props' />"
+    "    </signal>"
+    "    <signal name='UpdateProperty'>"
+    "      <arg type='v' name='prop' />"
+    "    </signal>"
+    "  </interface>"
+    "</node>";
+
 G_DEFINE_TYPE (BusInputContext, bus_input_context, IBUS_TYPE_SERVICE)
 
-/* when send preedit to client */
+/* TRUE if we can send preedit text to client. FALSE if the panel has to handle it. Note that we check IBUS_CAP_FOCUS here since
+ * when the capability is not set, the client has to handle a preedit text regardless of the embed_preedit_text config. */
 #define PREEDIT_CONDITION  \
     ((context->capabilities & IBUS_CAP_PREEDIT_TEXT) && \
-    (BUS_DEFAULT_IBUS->embed_preedit_text || (context->capabilities & IBUS_CAP_FOCUS) == 0))
+     (bus_ibus_impl_is_embed_preedit_text (BUS_DEFAULT_IBUS) || (context->capabilities & IBUS_CAP_FOCUS) == 0))
 
 static void
 _connection_destroy_cb (BusConnection   *connection,
                         BusInputContext *context)
 {
-    BUS_IS_CONNECTION (connection);
-    BUS_IS_INPUT_CONTEXT (context);
+    g_assert (BUS_IS_CONNECTION (connection));
+    g_assert (BUS_IS_INPUT_CONTEXT (context));
 
     ibus_object_destroy (IBUS_OBJECT (context));
 }
 
-
-BusInputContext *
-bus_input_context_new (BusConnection    *connection,
-                       const gchar      *client)
-{
-    g_assert (BUS_IS_CONNECTION (connection));
-    g_assert (client != NULL);
-
-    BusInputContext *context;
-    gchar *path;
-
-    path = g_strdup_printf (IBUS_PATH_INPUT_CONTEXT, ++id);
-
-    context = (BusInputContext *) g_object_new (BUS_TYPE_INPUT_CONTEXT,
-                                                "path", path,
-                                                NULL);
-    g_free (path);
-
-#if 0
-    ibus_service_add_to_connection (IBUS_SERVICE (context),
-                                 IBUS_CONNECTION (connection));
-#endif
-
-    g_object_ref_sink (connection);
-    context->connection = connection;
-    context->client = g_strdup (client);
-
-    /* it is a fake input context, just need process hotkey */
-    context->fake = (g_strcmp0 (client, "fake") == 0);
-
-    g_signal_connect (context->connection,
-                      "destroy",
-                      (GCallback) _connection_destroy_cb,
-                      context);
-
-    return context;
-}
-
 static void
-bus_input_context_class_init (BusInputContextClass *klass)
+bus_input_context_class_init (BusInputContextClass *class)
 {
-    IBusObjectClass *ibus_object_class = IBUS_OBJECT_CLASS (klass);
+    IBusObjectClass *ibus_object_class = IBUS_OBJECT_CLASS (class);
 
     ibus_object_class->destroy = (IBusObjectDestroyFunc) bus_input_context_destroy;
 
-    IBUS_SERVICE_CLASS (klass)->ibus_message =
-            (ServiceIBusMessageFunc) bus_input_context_ibus_message;
+    /* override the parent class's implementation. */
+    IBUS_SERVICE_CLASS (class)->service_method_call = bus_input_context_service_method_call;
+    /* register the xml so that bus_ibus_impl_service_method_call will be called on a method call defined in the xml (e.g. 'FocusIn'.) */
+    ibus_service_class_add_interfaces (IBUS_SERVICE_CLASS (class), introspection_xml);
 
-    /* install signals */
+    /* install glib signals that would be handled by other classes like ibusimpl.c and panelproxy.c. */
     context_signals[PROCESS_KEY_EVENT] =
         g_signal_new (I_("process-key-event"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_BOOL__UINT_UINT,
+            bus_marshal_BOOL__UINT_UINT_UINT,
             G_TYPE_BOOLEAN,
-            2,
+            3,
+            G_TYPE_UINT,
             G_TYPE_UINT,
             G_TYPE_UINT);
 
     context_signals[SET_CURSOR_LOCATION] =
         g_signal_new (I_("set-cursor-location"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__INT_INT_INT_INT,
+            bus_marshal_VOID__INT_INT_INT_INT,
             G_TYPE_NONE,
             4,
             G_TYPE_INT,
@@ -222,29 +367,29 @@ bus_input_context_class_init (BusInputContextClass *klass)
 
     context_signals[FOCUS_IN] =
         g_signal_new (I_("focus-in"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     context_signals[FOCUS_OUT] =
         g_signal_new (I_("focus-out"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     context_signals[UPDATE_PREEDIT_TEXT] =
         g_signal_new (I_("update-preedit-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__OBJECT_UINT_BOOLEAN,
+            bus_marshal_VOID__OBJECT_UINT_BOOLEAN,
             G_TYPE_NONE,
             3,
             IBUS_TYPE_TEXT,
@@ -253,31 +398,31 @@ bus_input_context_class_init (BusInputContextClass *klass)
 
     context_signals[SHOW_PREEDIT_TEXT] =
         g_signal_new (I_("show-preedit-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     context_signals[HIDE_PREEDIT_TEXT] =
         g_signal_new (I_("hide-preedit-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     context_signals[UPDATE_AUXILIARY_TEXT] =
         g_signal_new (I_("update-auxiliary-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__OBJECT_BOOLEAN,
+            bus_marshal_VOID__OBJECT_BOOLEAN,
             G_TYPE_NONE,
             2,
             IBUS_TYPE_TEXT,
@@ -285,31 +430,31 @@ bus_input_context_class_init (BusInputContextClass *klass)
 
     context_signals[SHOW_AUXILIARY_TEXT] =
         g_signal_new (I_("show-auxiliary-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     context_signals[HIDE_AUXILIARY_TEXT] =
         g_signal_new (I_("hide-auxiliary-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     context_signals[UPDATE_LOOKUP_TABLE] =
         g_signal_new (I_("update-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__OBJECT_BOOLEAN,
+            bus_marshal_VOID__OBJECT_BOOLEAN,
             G_TYPE_NONE,
             2,
             IBUS_TYPE_LOOKUP_TABLE,
@@ -317,124 +462,126 @@ bus_input_context_class_init (BusInputContextClass *klass)
 
     context_signals[SHOW_LOOKUP_TABLE] =
         g_signal_new (I_("show-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     context_signals[HIDE_LOOKUP_TABLE] =
         g_signal_new (I_("hide-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     context_signals[PAGE_UP_LOOKUP_TABLE] =
         g_signal_new (I_("page-up-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     context_signals[PAGE_DOWN_LOOKUP_TABLE] =
         g_signal_new (I_("page-down-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     context_signals[CURSOR_UP_LOOKUP_TABLE] =
         g_signal_new (I_("cursor-up-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     context_signals[CURSOR_DOWN_LOOKUP_TABLE] =
         g_signal_new (I_("cursor-down-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     context_signals[REGISTER_PROPERTIES] =
         g_signal_new (I_("register-properties"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__OBJECT,
+            bus_marshal_VOID__OBJECT,
             G_TYPE_NONE,
             1,
             IBUS_TYPE_PROP_LIST);
 
     context_signals[UPDATE_PROPERTY] =
         g_signal_new (I_("update-property"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__OBJECT,
+            bus_marshal_VOID__OBJECT,
             G_TYPE_NONE,
             1,
             IBUS_TYPE_PROPERTY);
 
     context_signals[ENABLED] =
         g_signal_new (I_("enabled"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     context_signals[DISABLED] =
         g_signal_new (I_("disabled"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     context_signals[ENGINE_CHANGED] =
         g_signal_new (I_("engine-changed"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
+    /* This signal is not for notifying an event on this object, but is for requesting an engine as the name shows.
+     * On the signal emission, ibusimpl.c will immediately update the context->engine variable. */
     context_signals[REQUEST_ENGINE] =
         g_signal_new (I_("request-engine"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__STRING,
-            G_TYPE_NONE,
+            bus_marshal_OBJECT__STRING,
+            IBUS_TYPE_ENGINE_DESC,
             1,
             G_TYPE_STRING);
 
     text_empty = ibus_text_new_from_string ("");
     g_object_ref_sink (text_empty);
-    lookup_table_empty = ibus_lookup_table_new (9, 0, FALSE, FALSE);
+    lookup_table_empty = ibus_lookup_table_new (9 /* page size */, 0, FALSE, FALSE);
     g_object_ref_sink (lookup_table_empty);
     props_empty = ibus_prop_list_new ();
     g_object_ref_sink (props_empty);
@@ -443,36 +590,15 @@ bus_input_context_class_init (BusInputContextClass *klass)
 static void
 bus_input_context_init (BusInputContext *context)
 {
-    context->connection = NULL;
-    context->client = NULL;
-    context->engine = NULL;
-    context->has_focus = FALSE;
-    context->enabled = FALSE;
-
     context->prev_keyval = IBUS_VoidSymbol;
-    context->prev_modifiers = 0;
-
-    context->capabilities = 0;
-
-    context->x = 0;
-    context->y = 0;
-    context->w = 0;
-    context->h = 0;
-
     g_object_ref_sink (text_empty);
     context->preedit_text = text_empty;
-    context->preedit_cursor_pos = 0;
-    context->preedit_visible = FALSE;
     context->preedit_mode = IBUS_ENGINE_PREEDIT_CLEAR;
-
     g_object_ref_sink (text_empty);
     context->auxiliary_text = text_empty;
-    context->auxiliary_visible = FALSE;
-
     g_object_ref_sink (lookup_table_empty);
     context->lookup_table = lookup_table_empty;
-    context->lookup_table_visible = FALSE;
-
+    /* other member variables will automatically be zero-cleared. */
 }
 
 static void
@@ -515,183 +641,84 @@ bus_input_context_destroy (BusInputContext *context)
         context->client = NULL;
     }
 
-    IBUS_OBJECT_CLASS(bus_input_context_parent_class)->destroy (IBUS_OBJECT (context));
+    IBUS_OBJECT_CLASS (bus_input_context_parent_class)->destroy (IBUS_OBJECT (context));
 }
 
-/* introspectable interface */
-static IBusMessage *
-_ibus_introspect (BusInputContext   *context,
-                  IBusMessage       *message,
-                  BusConnection     *connection)
+/**
+ * bus_input_context_emit_signal:
+ * @signal_name: The D-Bus signal name to emit which is in the introspection_xml.
+ *
+ * Emit the D-Bus signal.
+ */
+static gboolean
+bus_input_context_emit_signal (BusInputContext *context,
+                               const gchar     *signal_name,
+                               GVariant        *parameters,
+                               GError         **error)
 {
-    static const gchar *introspect =
-        DBUS_INTROSPECT_1_0_XML_DOCTYPE_DECL_NODE
-        "<node>\n"
-        "  <interface name=\"org.freedesktop.DBus.Introspectable\">\n"
-        "    <method name=\"Introspect\">\n"
-        "      <arg name=\"data\" direction=\"out\" type=\"s\"/>\n"
-        "    </method>\n"
-        "  </interface>\n"
-        "  <interface name=\"org.freedesktop.IBus.InputContext\">\n"
+    if (context->connection == NULL)
+        return TRUE;
 
-        /* methods */
-        "    <method name=\"ProcessKeyEvent\">\n"
-        "      <arg name=\"keyval\" direction=\"in\" type=\"u\"/>\n"
-        "      <arg name=\"keycode\" direction=\"in\" type=\"u\"/>\n"
-        "      <arg name=\"state\" direction=\"in\" type=\"u\"/>\n"
-        "      <arg name=\"handled\" direction=\"out\" type=\"b\"/>\n"
-        "    </method>\n"
-        "    <method name=\"SetCursorLocation\">\n"
-        "      <arg name=\"x\" direction=\"in\" type=\"i\"/>\n"
-        "      <arg name=\"y\" direction=\"in\" type=\"i\"/>\n"
-        "      <arg name=\"w\" direction=\"in\" type=\"i\"/>\n"
-        "      <arg name=\"h\" direction=\"in\" type=\"i\"/>\n"
-        "    </method>\n"
-        "    <method name=\"FocusIn\"/>\n"
-        "    <method name=\"FocusOut\"/>\n"
-        "    <method name=\"Reset\"/>\n"
-        "    <method name=\"Enable\"/>\n"
-        "    <method name=\"Disable\"/>\n"
-        "    <method name=\"IsEnabled\">\n"
-        "      <arg name=\"enable\" direction=\"out\" type=\"b\"/>\n"
-        "    </method>\n"
-        "    <method name=\"SetCapabilities\">\n"
-        "      <arg name=\"caps\" direction=\"in\" type=\"u\"/>\n"
-        "    </method>\n"
-        "    <method name=\"PropertyActivate\">\n"
-        "      <arg name=\"name\" direction=\"in\" type=\"s\"/>\n"
-        "      <arg name=\"state\" direction=\"in\" type=\"i\"/>\n"
-        "    </method>\n"
-        "    <method name=\"SetEngine\">\n"
-        "      <arg name=\"name\" direction=\"in\" type=\"s\"/>\n"
-        "    </method>\n"
-        "    <method name=\"GetEngine\">\n"
-        "      <arg name=\"desc\" direction=\"out\" type=\"v\"/>\n"
-        "    </method>\n"
-        "    <method name=\"Destroy\"/>\n"
+    GDBusMessage *message = g_dbus_message_new_signal (ibus_service_get_object_path ((IBusService *)context),
+                                                       "org.freedesktop.IBus.InputContext",
+                                                       signal_name);
+    g_dbus_message_set_sender (message, "org.freedesktop.IBus");
+    g_dbus_message_set_destination (message, bus_connection_get_unique_name (context->connection));
+    if (parameters != NULL)
+        g_dbus_message_set_body (message, parameters);
 
-        /* signals */
-        "    <signal name=\"CommitText\">\n"
-        "      <arg name=\"text\" type=\"v\"/>\n"
-        "    </signal>\n"
-        "    <signal name=\"Enabled\"/>\n"
-        "    <signal name=\"Disabled\"/>\n"
-        "    <signal name=\"ForwardKeyEvent\">\n"
-        "      <arg name=\"keyval\" type=\"u\"/>\n"
-        "      <arg name=\"keycode\" type=\"u\"/>\n"
-        "      <arg name=\"state\" type=\"u\"/>\n"
-        "    </signal>\n"
-
-        "    <signal name=\"UpdatePreeditText\">\n"
-        "      <arg name=\"text\" type=\"v\"/>\n"
-        "      <arg name=\"cursor_pos\" type=\"u\"/>\n"
-        "      <arg name=\"visible\" type=\"b\"/>\n"
-        "    </signal>\n"
-        "    <signal name=\"ShowPreeditText\"/>\n"
-        "    <signal name=\"HidePreeditText\"/>\n"
-
-        "    <signal name=\"UpdateAuxiliaryText\">\n"
-        "      <arg name=\"text\" type=\"v\"/>\n"
-        "      <arg name=\"visible\" type=\"b\"/>\n"
-        "    </signal>\n"
-        "    <signal name=\"ShowAuxiliaryText\"/>\n"
-        "    <signal name=\"HideAuxiliaryText\"/>\n"
-
-        "    <signal name=\"UpdateLookupTable\">\n"
-        "      <arg name=\"table\" type=\"v\"/>\n"
-        "      <arg name=\"visible\" type=\"b\"/>\n"
-        "    </signal>\n"
-        "    <signal name=\"ShowLookupTable\"/>\n"
-        "    <signal name=\"HideLookupTable\"/>\n"
-        "    <signal name=\"PageUpLookupTable\"/>\n"
-        "    <signal name=\"PageDownLookupTable\"/>\n"
-        "    <signal name=\"CursorUpLookupTable\"/>\n"
-        "    <signal name=\"CursorDownLookupTable\"/>\n"
-
-        "    <signal name=\"RegisterProperties\">\n"
-        "      <arg name=\"props\" type=\"v\"/>\n"
-        "    </signal>\n"
-        "    <signal name=\"UpdateProperty\">\n"
-        "      <arg name=\"prop\" type=\"v\"/>\n"
-        "    </signal>\n"
-
-        "  </interface>\n"
-        "</node>\n";
-
-    IBusMessage *reply_message;
-    reply_message = ibus_message_new_method_return (message);
-    ibus_message_append_args (reply_message,
-                              G_TYPE_STRING, &introspect,
-                              G_TYPE_INVALID);
-
-    return reply_message;
+    gboolean retval =  g_dbus_connection_send_message (bus_connection_get_dbus_connection (context->connection),
+                                                       message,
+                                                       G_DBUS_SEND_MESSAGE_FLAGS_NONE,
+                                                       NULL, error);
+    g_object_unref (message);
+    return retval;
 }
 
-typedef struct {
-    BusInputContext *context;
-    IBusMessage     *message;
-} CallData;
-
+/**
+ * _ic_process_key_event_reply_cb:
+ *
+ * A GAsyncReadyCallback function to be called when bus_engine_proxy_process_key_event() is finished.
+ */
 static void
-_ic_process_key_event_reply_cb (gpointer data,
-                                gpointer user_data)
+_ic_process_key_event_reply_cb (GObject               *source,
+                                GAsyncResult          *res,
+                                GDBusMethodInvocation *invocation)
 {
-    gboolean retval;
-    CallData *call_data;
-
-    retval = (gboolean) GPOINTER_TO_INT (data);
-    call_data = (CallData *) user_data;
-
-    /* make sure the connection is alive */
-    if (G_LIKELY (call_data->context->connection != NULL)) {
-        IBusMessage *reply;
-        reply = ibus_message_new_method_return (call_data->message);
-        ibus_message_append_args (reply,
-                                  G_TYPE_BOOLEAN, &retval,
-                                  G_TYPE_INVALID);
-
-        ibus_connection_send ((IBusConnection *)call_data->context->connection, reply);
-        ibus_message_unref (reply);
+    GError *error = NULL;
+    GVariant *value = g_dbus_proxy_call_finish ((GDBusProxy *)source,
+                                                 res,
+                                                 &error);
+    if (value != NULL) {
+        g_dbus_method_invocation_return_value (invocation, value);
+        g_variant_unref (value);
     }
-
-    g_object_unref (call_data->context);
-    ibus_message_unref (call_data->message);
-    g_slice_free (CallData, call_data);
+    else {
+        g_dbus_method_invocation_return_gerror (invocation, error);
+        g_error_free (error);
+    }
 }
 
-static IBusMessage *
-_ic_process_key_event  (BusInputContext *context,
-                        IBusMessage     *message,
-                        BusConnection   *connection)
+/**
+ * _ic_process_key_event:
+ *
+ * Implement the "ProcessKeyEvent" method call of the org.freedesktop.IBus.InputContext interface.
+ */
+static void
+_ic_process_key_event  (BusInputContext       *context,
+                        GVariant              *parameters,
+                        GDBusMethodInvocation *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
+    guint keyval = IBUS_VoidSymbol;
+    guint keycode = 0;
+    guint modifiers = 0;
 
-    IBusMessage *reply;
-    guint keyval, keycode, modifiers;
-    gboolean retval;
-    IBusError *error;
-
-    retval = ibus_message_get_args (message,
-                &error,
-                G_TYPE_UINT, &keyval,
-                G_TYPE_UINT, &keycode,
-                G_TYPE_UINT, &modifiers,
-                G_TYPE_INVALID);
-
-    if (!retval) {
-        reply = ibus_message_new_error (message,
-                                        error->name,
-                                        error->message);
-        ibus_error_free (error);
-        return reply;
-    }
-
+    g_variant_get (parameters, "(uuu)", &keyval, &keycode, &modifiers);
     if (G_UNLIKELY (!context->has_focus)) {
         /* workaround: set focus if context does not have focus */
-        if (BUS_DEFAULT_IBUS->focused_context == NULL ||
-            BUS_DEFAULT_IBUS->focused_context->fake == TRUE ||
+        BusInputContext *focused_context = bus_ibus_impl_get_focused_input_context (BUS_DEFAULT_IBUS);
+        if (focused_context == NULL ||
+            focused_context->fake == TRUE ||
             context->fake == FALSE) {
             /* grab focus, if context is a real IC or current focused IC is fake */
             bus_input_context_focus_in (context);
@@ -699,473 +726,373 @@ _ic_process_key_event  (BusInputContext *context,
     }
 
     if (G_LIKELY (context->has_focus)) {
-        retval = bus_input_context_filter_keyboard_shortcuts (context, keyval, keycode, modifiers);
+        gboolean retval = bus_input_context_filter_keyboard_shortcuts (context, keyval, keycode, modifiers);
         /* If it is keyboard shortcut, reply TRUE to client */
         if (G_UNLIKELY (retval)) {
-            reply = ibus_message_new_method_return (message);
-            ibus_message_append_args (reply,
-                                      G_TYPE_BOOLEAN, &retval,
-                                      G_TYPE_INVALID);
-            return reply;
+            g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)", TRUE));
+            return;
         }
     }
 
     /* ignore key events, if it is a fake input context */
     if (context->has_focus && context->enabled && context->engine && context->fake == FALSE) {
-        CallData *call_data;
-
-        call_data = g_slice_new (CallData);
-
-        g_object_ref (context);
-        ibus_message_ref (message);
-
-        call_data->context = context;
-        call_data->message = message;
-
         bus_engine_proxy_process_key_event (context->engine,
                                             keyval,
                                             keycode,
                                             modifiers,
-                                            (GFunc) _ic_process_key_event_reply_cb,
-                                            call_data);
-        return NULL;
+                                            (GAsyncReadyCallback) _ic_process_key_event_reply_cb,
+                                            invocation);
     }
     else {
-        retval = FALSE;
-        reply = ibus_message_new_method_return (message);
-        ibus_message_append_args (reply,
-                                  G_TYPE_BOOLEAN, &retval,
-                                  G_TYPE_INVALID);
-        return reply;
+        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)", FALSE));
     }
 }
 
-static IBusMessage *
-_ic_set_cursor_location (BusInputContext  *context,
-                         IBusMessage      *message,
-                         BusConnection    *connection)
+/**
+ * _ic_set_cursor_location:
+ *
+ * Implement the "SetCursorLocation" method call of the org.freedesktop.IBus.InputContext interface.
+ */
+static void
+_ic_set_cursor_location (BusInputContext       *context,
+                         GVariant              *parameters,
+                         GDBusMethodInvocation *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
+    g_dbus_method_invocation_return_value (invocation, NULL);
 
-    IBusMessage *reply;
-    guint x, y, w, h;
-    gboolean retval;
-    IBusError *error;
-
-    retval = ibus_message_get_args (message, &error,
-                G_TYPE_INT, &x,
-                G_TYPE_INT, &y,
-                G_TYPE_INT, &w,
-                G_TYPE_INT, &h,
-                G_TYPE_INVALID);
-
-    if (!retval) {
-        reply = ibus_message_new_error (message,
-                                        error->name,
-                                        error->message);
-        ibus_error_free (error);
-        return reply;
-    }
-
-    context->x = x;
-    context->y = y;
-    context->h = h;
-    context->w = w;
+    g_variant_get (parameters, "(iiii)",
+                   &context->x, &context->y, &context->w, &context->h);
 
     if (context->has_focus && context->enabled && context->engine) {
-        bus_engine_proxy_set_cursor_location (context->engine, x, y, w, h);
+        bus_engine_proxy_set_cursor_location (context->engine,
+                        context->x, context->y, context->w, context->h);
     }
 
     if (context->capabilities & IBUS_CAP_FOCUS) {
         g_signal_emit (context,
                        context_signals[SET_CURSOR_LOCATION],
                        0,
-                       x,
-                       y,
-                       w,
-                       h);
+                       context->x,
+                       context->y,
+                       context->w,
+                       context->h);
     }
-
-    reply = ibus_message_new_method_return (message);
-    return reply;
 }
 
-static IBusMessage *
-_ic_focus_in (BusInputContext  *context,
-              IBusMessage      *message,
-              BusConnection    *connection)
+/**
+ * _ic_focus_in:
+ *
+ * Implement the "FocusIn" method call of the org.freedesktop.IBus.InputContext interface.
+ */
+static void
+_ic_focus_in (BusInputContext       *context,
+              GVariant              *parameters,
+              GDBusMethodInvocation *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
-
-    IBusMessage *reply;
-
     if (context->capabilities & IBUS_CAP_FOCUS) {
         bus_input_context_focus_in (context);
-        reply = ibus_message_new_method_return (message);
+        g_dbus_method_invocation_return_value (invocation, NULL);
     }
     else {
-        reply = ibus_message_new_error (message,
-                                        DBUS_ERROR_FAILED,
-                                        "The input context does not support focus.");
+        g_dbus_method_invocation_return_error (invocation, G_DBUS_ERROR, G_DBUS_ERROR_FAILED,
+                        "The input context does not support focus.");
     }
-
-    return reply;
 }
 
-static IBusMessage *
-_ic_focus_out (BusInputContext  *context,
-              IBusMessage      *message,
-              BusConnection    *connection)
+/**
+ * _ic_focus_out:
+ *
+ * Implement the "FocusOut" method call of the org.freedesktop.IBus.InputContext interface.
+ */
+static void
+_ic_focus_out (BusInputContext       *context,
+               GVariant              *parameters,
+               GDBusMethodInvocation *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
-
-    IBusMessage *reply;
-
     if (context->capabilities & IBUS_CAP_FOCUS) {
         bus_input_context_focus_out (context);
-        reply = ibus_message_new_method_return (message);
+        g_dbus_method_invocation_return_value (invocation, NULL);
     }
     else {
-        reply = ibus_message_new_error (message,
-                                        DBUS_ERROR_FAILED,
-                                        "The input context does not support focus.");
+        g_dbus_method_invocation_return_error (invocation, G_DBUS_ERROR, G_DBUS_ERROR_FAILED,
+                        "The input context does not support focus.");
     }
-
-    return reply;
 }
 
-static IBusMessage *
-_ic_reset (BusInputContext  *context,
-           IBusMessage      *message,
-           BusConnection    *connection)
+/**
+ * _ic_reset:
+ *
+ * Implement the "Reset" method call of the org.freedesktop.IBus.InputContext interface.
+ */
+static void
+_ic_reset (BusInputContext       *context,
+           GVariant              *parameters,
+           GDBusMethodInvocation *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
-
-    IBusMessage *reply;
-
     if (context->enabled && context->engine) {
         bus_engine_proxy_reset (context->engine);
     }
-
-    reply = ibus_message_new_method_return (message);
-    return reply;
+    g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
-static IBusMessage *
-_ic_set_capabilities (BusInputContext  *context,
-                      IBusMessage      *message,
-                      BusConnection    *connection)
+/**
+ * _ic_set_capabilities:
+ *
+ * Implement the "SetCapabilities" method call of the org.freedesktop.IBus.InputContext interface.
+ */
+static void
+_ic_set_capabilities (BusInputContext       *context,
+                      GVariant              *parameters,
+                      GDBusMethodInvocation *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
+    guint caps = 0;
+    g_variant_get (parameters, "(u)", &caps);
 
-    IBusMessage *reply;
-    guint caps;
-    gboolean retval;
-    IBusError *error;
+    bus_input_context_set_capabilities (context, caps);
 
-    retval = ibus_message_get_args (message,
-                &error,
-                G_TYPE_UINT, &caps,
-                G_TYPE_INVALID);
-
-    if (!retval) {
-        reply = ibus_message_new_error (message,
-                                        error->name,
-                                        error->message);
-        ibus_error_free (error);
-        return reply;
-    }
-
-    if (context->capabilities != caps) {
-        context->capabilities = caps;
-
-        /* If the context does not support IBUS_CAP_FOCUS, then we always assume
-         * it has focus. */
-        if ((caps & IBUS_CAP_FOCUS) == 0) {
-            bus_input_context_focus_in (context);
-        }
-
-        if (context->engine) {
-            bus_engine_proxy_set_capabilities (context->engine, caps);
-        }
-    }
-
-    reply = ibus_message_new_method_return (message);
-    return reply;
+    g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
-static IBusMessage *
-_ic_property_activate (BusInputContext  *context,
-                       IBusMessage      *message,
-                       BusConnection    *connection)
+/**
+ * _ic_property_activate:
+ *
+ * Implement the "PropertyActivate" method call of the org.freedesktop.IBus.InputContext interface.
+ */
+static void
+_ic_property_activate (BusInputContext       *context,
+                       GVariant              *parameters,
+                       GDBusMethodInvocation *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
-
-    IBusMessage *reply;
-    gchar *prop_name;
-    gint prop_state;
-    gboolean retval;
-    IBusError *error;
-
-    retval = ibus_message_get_args (message,
-                                    &error,
-                                    G_TYPE_STRING, &prop_name,
-                                    G_TYPE_INT, &prop_state,
-                                    G_TYPE_INVALID);
-
-    if (!retval) {
-        reply = ibus_message_new_error (message,
-                                        error->name,
-                                        error->message);
-        ibus_error_free (error);
-        return reply;
-    }
+    gchar *prop_name = NULL;
+    guint prop_state = 0;
+    g_variant_get (parameters, "(&su)", &prop_name, &prop_state);
 
     if (context->enabled && context->engine) {
         bus_engine_proxy_property_activate (context->engine, prop_name, prop_state);
     }
+
 #ifdef OS_CHROMEOS
     /* Global engine is always enabled in chromeos,
      * so pass PropertyActivate signal to the focused context.
      */
-    else {
-        if (context->fake &&
-            BUS_DEFAULT_IBUS->focused_context &&
-            BUS_DEFAULT_IBUS->focused_context->engine) {
-            bus_engine_proxy_property_activate (BUS_DEFAULT_IBUS->focused_context->engine, prop_name, prop_state);
-        }
+    else if (context->fake) {
+        BusInputContext *focused_context = bus_ibus_impl_get_focused_input_context (BUS_DEFAULT_IBUS);
+        if (focused_context && focused_context->engine)
+            bus_engine_proxy_property_activate (focused_context->engine, prop_name, prop_state);
     }
 #endif
 
-    reply = ibus_message_new_method_return (message);
-    return reply;
+    g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
-static IBusMessage *
-_ic_enable (BusInputContext *context,
-            IBusMessage     *message,
-            BusConnection   *connection)
+/**
+ * _ic_enable:
+ *
+ * Implement the "Enable" method call of the org.freedesktop.IBus.InputContext interface.
+ */
+static void
+_ic_enable (BusInputContext       *context,
+            GVariant              *parameters,
+            GDBusMethodInvocation *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
-
-    IBusMessage *reply;
-
     bus_input_context_enable (context);
-
-    reply = ibus_message_new_method_return (message);
-    return reply;
+    g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
-static IBusMessage *
-_ic_disable (BusInputContext *context,
-            IBusMessage     *message,
-            BusConnection   *connection)
+/**
+ * _ic_disable:
+ *
+ * Implement the "Disable" method call of the org.freedesktop.IBus.InputContext interface.
+ */
+static void
+_ic_disable (BusInputContext       *context,
+             GVariant              *parameters,
+             GDBusMethodInvocation *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
-
-    IBusMessage *reply;
-
     bus_input_context_disable (context);
-
-    reply = ibus_message_new_method_return (message);
-    return reply;
+    g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
-static IBusMessage *
-_ic_is_enabled (BusInputContext *context,
-                IBusMessage     *message,
-                BusConnection   *connection)
+/**
+ * _ic_is_enabled:
+ *
+ * Implement the "IsEnabled" method call of the org.freedesktop.IBus.InputContext interface.
+ */
+static void
+_ic_is_enabled (BusInputContext       *context,
+                GVariant              *parameters,
+                GDBusMethodInvocation *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
-
-    IBusMessage *reply;
-
-    reply = ibus_message_new_method_return (message);
-    ibus_message_append_args (reply,
-            G_TYPE_BOOLEAN, &context->enabled,
-            G_TYPE_INVALID);
-
-    return reply;
+    g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)", context->enabled));
 }
 
-static IBusMessage *
-_ic_set_engine (BusInputContext  *context,
-                 IBusMessage      *message,
-                 BusConnection    *connection)
+static void
+_ic_set_engine_done (BusInputContext       *context,
+                     GAsyncResult          *res,
+                     GDBusMethodInvocation *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
+    gboolean retval = FALSE;
+    GError *error = NULL;
 
-    gboolean retval;
-    IBusMessage *reply;
-    IBusError *error;
-    gchar *engine_name;
+    retval = bus_input_context_set_engine_by_desc_finish (context,
+                    res, &error);
 
-    retval = ibus_message_get_args (message,
-                                    &error,
-                                    G_TYPE_STRING, &engine_name,
-                                    G_TYPE_INVALID);
-     if (!retval) {
-        reply = ibus_message_new_error (message,
-                                        error->name,
-                                        error->message);
-        ibus_error_free (error);
-        return reply;
+    if (!retval) {
+        g_dbus_method_invocation_return_gerror (invocation, error);
+        g_error_free (error);
+    }
+    else {
+        g_dbus_method_invocation_return_value (invocation, NULL);
+    }
+}
+
+/**
+ * _ic_set_engine:
+ *
+ * Implement the "SetEngine" method call of the org.freedesktop.IBus.InputContext interface.
+ */
+static void
+_ic_set_engine (BusInputContext       *context,
+                GVariant              *parameters,
+                GDBusMethodInvocation *invocation)
+{
+    gchar *engine_name = NULL;
+    g_variant_get (parameters, "(&s)", &engine_name);
+
+    if (!bus_input_context_has_focus (context)) {
+        g_dbus_method_invocation_return_error (invocation,
+                G_DBUS_ERROR, G_DBUS_ERROR_FAILED,
+                "Context which does not has focus can not change engine to %s.",
+                engine_name);
+        return;
     }
 
-    g_signal_emit (context, context_signals[REQUEST_ENGINE], 0, engine_name);
-
-    if (context->engine == NULL) {
-        reply = ibus_message_new_error_printf (message,
-                                               "org.freedesktop.IBus.NoEngine",
-                                               "can not find engine with name %s",
-                                               engine_name);
-        return reply;
+    IBusEngineDesc *desc = NULL;
+    g_signal_emit (context,
+                   context_signals[REQUEST_ENGINE], 0,
+                   engine_name,
+                   &desc);
+    if (desc == NULL) {
+        g_dbus_method_invocation_return_error (invocation,
+                        G_DBUS_ERROR, G_DBUS_ERROR_FAILED,
+                        "Can not find engine %s.", engine_name);
+        return;
     }
 
-    bus_input_context_enable (context);
+    bus_input_context_set_engine_by_desc (context,
+                            desc,
+                            g_gdbus_timeout,
+                            NULL,
+                            (GAsyncReadyCallback)_ic_set_engine_done,
+                            invocation);
 
-    reply = ibus_message_new_method_return (message);
-    return reply;
+    g_object_unref (desc);
 }
 
-static IBusMessage *
-_ic_get_engine (BusInputContext  *context,
-                IBusMessage      *message,
-                BusConnection    *connection)
+/**
+ * _ic_get_engine:
+ *
+ * Implement the "GetEngine" method call of the org.freedesktop.IBus.InputContext interface.
+ */
+static void
+_ic_get_engine (BusInputContext       *context,
+                GVariant              *parameters,
+                GDBusMethodInvocation *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
-
-    IBusMessage *reply;
-    IBusEngineDesc *desc;
-
     if (context->engine) {
-        desc = bus_engine_proxy_get_desc (context->engine);
-        if (desc != NULL) {
-            reply = ibus_message_new_method_return (message);
-            ibus_message_append_args (reply,
-                                      IBUS_TYPE_ENGINE_DESC, &desc,
-                                      G_TYPE_INVALID);
-            return reply;
-        }
+        IBusEngineDesc *desc = bus_engine_proxy_get_desc (context->engine);
+        g_dbus_method_invocation_return_value (invocation,
+                        g_variant_new ("(v)", ibus_serializable_serialize ((IBusSerializable *)desc)));
+    }
+    else {
+        g_dbus_method_invocation_return_error (invocation, G_DBUS_ERROR, G_DBUS_ERROR_FAILED,
+                        "Input context does not have engine.");
+    }
+}
+
+/**
+ * bus_input_context_service_method_call:
+ *
+ * Handle a D-Bus method call whose destination and interface name are both "org.freedesktop.IBus.InputContext"
+ */
+static void
+_ic_set_surrounding_text (BusInputContext       *context,
+                          GVariant              *parameters,
+                          GDBusMethodInvocation *invocation)
+{
+    GVariant *variant = NULL;
+    IBusText *text;
+    guint cursor_pos = 0;
+
+    g_variant_get (parameters, "(vu)", &variant, &cursor_pos);
+    text = IBUS_TEXT (ibus_serializable_deserialize (variant));
+    g_variant_unref (variant);
+
+    if ((context->capabilities & IBUS_CAP_SURROUNDING_TEXT) &&
+         context->has_focus && context->enabled && context->engine) {
+        bus_engine_proxy_set_surrounding_text (context->engine,
+                                               text,
+                                               cursor_pos);
     }
 
-    reply = ibus_message_new_error (message,
-                                    DBUS_ERROR_FAILED,
-                                    "InputContext does not have factory.");
-    return reply;
+    if (g_object_is_floating (text))
+        g_object_unref (text);
+
+    g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
-static IBusMessage *
-_ic_destroy (BusInputContext  *context,
-             IBusMessage      *message,
-             BusConnection    *connection)
+static void
+bus_input_context_service_method_call (IBusService            *service,
+                                       GDBusConnection        *connection,
+                                       const gchar            *sender,
+                                       const gchar            *object_path,
+                                       const gchar            *interface_name,
+                                       const gchar            *method_name,
+                                       GVariant               *parameters,
+                                       GDBusMethodInvocation  *invocation)
 {
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (message != NULL);
-    g_assert (BUS_IS_CONNECTION (connection));
-
-    IBusMessage *reply;
-    reply = ibus_message_new_method_return (message);
-
-    ibus_connection_send ((IBusConnection *) connection, reply);
-    ibus_connection_flush ((IBusConnection *) connection);
-    ibus_message_unref (reply);
-
-    ibus_object_destroy ((IBusObject *) context);
-
-    return NULL;
-}
-
-static gboolean
-bus_input_context_ibus_message (BusInputContext *context,
-                                BusConnection   *connection,
-                                IBusMessage     *message)
-{
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (BUS_IS_CONNECTION (connection));
-    g_assert (message != NULL);
-
-    gint i;
-    IBusMessage *reply_message = NULL;
+    if (g_strcmp0 (interface_name, "org.freedesktop.IBus.InputContext") != 0) {
+        IBUS_SERVICE_CLASS (bus_input_context_parent_class)->service_method_call (
+                        service,
+                        connection,
+                        sender,
+                        object_path,
+                        interface_name,
+                        method_name,
+                        parameters,
+                        invocation);
+        return;
+    }
 
     static const struct {
-        const gchar *interface;
-        const gchar *name;
-        IBusMessage *(* handler) (BusInputContext *, IBusMessage *, BusConnection *);
-    } handlers[] =  {
-        /* Introspectable interface */
-        { DBUS_INTERFACE_INTROSPECTABLE,
-                               "Introspect", _ibus_introspect },
-        /* IBus interface */
-        { IBUS_INTERFACE_INPUT_CONTEXT, "ProcessKeyEvent",   _ic_process_key_event },
-        { IBUS_INTERFACE_INPUT_CONTEXT, "SetCursorLocation", _ic_set_cursor_location },
-        { IBUS_INTERFACE_INPUT_CONTEXT, "FocusIn",           _ic_focus_in },
-        { IBUS_INTERFACE_INPUT_CONTEXT, "FocusOut",          _ic_focus_out },
-        { IBUS_INTERFACE_INPUT_CONTEXT, "Reset",             _ic_reset },
-        { IBUS_INTERFACE_INPUT_CONTEXT, "SetCapabilities",   _ic_set_capabilities },
-        { IBUS_INTERFACE_INPUT_CONTEXT, "PropertyActivate",  _ic_property_activate },
-        { IBUS_INTERFACE_INPUT_CONTEXT, "Enable",            _ic_enable },
-        { IBUS_INTERFACE_INPUT_CONTEXT, "Disable",           _ic_disable },
-        { IBUS_INTERFACE_INPUT_CONTEXT, "IsEnabled",         _ic_is_enabled },
-        { IBUS_INTERFACE_INPUT_CONTEXT, "SetEngine",         _ic_set_engine },
-        { IBUS_INTERFACE_INPUT_CONTEXT, "GetEngine",         _ic_get_engine },
-        { IBUS_INTERFACE_INPUT_CONTEXT, "Destroy",           _ic_destroy },
+        const gchar *method_name;
+        void (* method_callback) (BusInputContext *, GVariant *, GDBusMethodInvocation *);
+    } methods [] =  {
+        { "ProcessKeyEvent",   _ic_process_key_event },
+        { "SetCursorLocation", _ic_set_cursor_location },
+        { "FocusIn",           _ic_focus_in },
+        { "FocusOut",          _ic_focus_out },
+        { "Reset",             _ic_reset },
+        { "SetCapabilities",   _ic_set_capabilities },
+        { "PropertyActivate",  _ic_property_activate },
+        { "Enable",            _ic_enable },
+        { "Disable",           _ic_disable },
+        { "IsEnabled",         _ic_is_enabled },
+        { "SetEngine",         _ic_set_engine },
+        { "GetEngine",         _ic_get_engine },
+        { "SetSurroundingText", _ic_set_surrounding_text},
     };
 
-    ibus_message_set_sender (message, bus_connection_get_unique_name (connection));
-    ibus_message_set_destination (message, DBUS_SERVICE_DBUS);
-
-    for (i = 0; i < G_N_ELEMENTS (handlers); i++) {
-        if (ibus_message_is_method_call (message,
-                                         handlers[i].interface,
-                                         handlers[i].name)) {
-
-            reply_message = handlers[i].handler (context, message, connection);
-            if (reply_message) {
-
-                ibus_message_set_sender (reply_message,
-                                         DBUS_SERVICE_DBUS);
-                ibus_message_set_destination (reply_message,
-                                              bus_connection_get_unique_name (connection));
-                ibus_message_set_no_reply (reply_message, TRUE);
-
-                ibus_connection_send (IBUS_CONNECTION (connection), reply_message);
-                ibus_message_unref (reply_message);
-            }
-
-            g_signal_stop_emission_by_name (context, "ibus-message");
-            return TRUE;
+    gint i;
+    for (i = 0; i < G_N_ELEMENTS (methods); i++) {
+        if (g_strcmp0 (method_name, methods[i].method_name) == 0) {
+            methods[i].method_callback ((BusInputContext *)service, parameters, invocation);
+            return;
         }
     }
 
-    return IBUS_SERVICE_CLASS (bus_input_context_parent_class)->ibus_message (
-                                (IBusService *)context,
-                                (IBusConnection *)connection,
-                                message);
+    g_return_if_reached ();
 }
-
 
 gboolean
 bus_input_context_has_focus (BusInputContext *context)
@@ -1185,13 +1112,28 @@ bus_input_context_focus_in (BusInputContext *context)
 
     context->has_focus = TRUE;
 
-    // To make sure that we won't use an old value left before we losing focus
-    // last time.
+    /* To make sure that we won't use an old value left before we losing focus
+     * last time. */
     context->prev_keyval = IBUS_VoidSymbol;
     context->prev_modifiers = 0;
 
     if (context->engine == NULL && context->enabled) {
-        g_signal_emit (context, context_signals[REQUEST_ENGINE], 0, NULL);
+        /* request an engine, e.g. a global engine if the feature is enabled. */
+        IBusEngineDesc *desc = NULL;
+        g_signal_emit (context,
+                       context_signals[REQUEST_ENGINE], 0,
+                       NULL,
+                       &desc);
+
+        if (desc != NULL) {
+            bus_input_context_set_engine_by_desc (context,
+                            desc,
+                            g_gdbus_timeout, /* timeout in msec. */
+                            NULL, /* we do not cancel the call. */
+                            NULL, /* use the default callback function. */
+                            NULL);
+            g_object_unref (desc);
+        }
     }
 
     if (context->engine && context->enabled) {
@@ -1204,7 +1146,9 @@ bus_input_context_focus_in (BusInputContext *context)
     if (context->capabilities & IBUS_CAP_FOCUS) {
         g_signal_emit (context, context_signals[FOCUS_IN], 0);
         if (context->engine && context->enabled) {
-          if (context->preedit_visible && !PREEDIT_CONDITION) {
+            /* if necessary, emit glib signals to the context object to update panel status. see the comment for PREEDIT_CONDITION
+             * for details. */
+            if (context->preedit_visible && !PREEDIT_CONDITION) {
                 g_signal_emit (context,
                                context_signals[UPDATE_PREEDIT_TEXT],
                                0,
@@ -1230,6 +1174,11 @@ bus_input_context_focus_in (BusInputContext *context)
     }
 }
 
+/**
+ * bus_input_context_clear_preedit_text:
+ *
+ * Clear context->preedit_text. If the preedit mode is IBUS_ENGINE_PREEDIT_COMMIT, commit it before clearing.
+ */
 static void
 bus_input_context_clear_preedit_text (BusInputContext *context)
 {
@@ -1280,10 +1229,10 @@ bus_input_context_focus_out (BusInputContext *context)
         }                                                                   \
     }
 
-DEFINE_FUNC(page_up)
-DEFINE_FUNC(page_down)
-DEFINE_FUNC(cursor_up)
-DEFINE_FUNC(cursor_down)
+DEFINE_FUNC (page_up)
+DEFINE_FUNC (page_down)
+DEFINE_FUNC (cursor_up)
+DEFINE_FUNC (cursor_down)
 
 #undef DEFINE_FUNC
 
@@ -1327,12 +1276,18 @@ bus_input_context_commit_text (BusInputContext *context,
     if (text == text_empty || text == NULL)
         return;
 
-    bus_input_context_send_signal (context,
+    GVariant *variant = ibus_serializable_serialize ((IBusSerializable *)text);
+    bus_input_context_emit_signal (context,
                                    "CommitText",
-                                   IBUS_TYPE_TEXT, &text,
-                                   G_TYPE_INVALID);
+                                   g_variant_new ("(v)", variant),
+                                   NULL);
 }
 
+/**
+ * bus_input_context_update_preedit_text:
+ *
+ * Update a preedit text. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_update_preedit_text (BusInputContext *context,
                                        IBusText        *text,
@@ -1352,12 +1307,11 @@ bus_input_context_update_preedit_text (BusInputContext *context,
     context->preedit_mode = mode;
 
     if (PREEDIT_CONDITION) {
-        bus_input_context_send_signal (context,
+        GVariant *variant = ibus_serializable_serialize ((IBusSerializable *)context->preedit_text);
+        bus_input_context_emit_signal (context,
                                        "UpdatePreeditText",
-                                       IBUS_TYPE_TEXT, &(context->preedit_text),
-                                       G_TYPE_UINT, &(context->preedit_cursor_pos),
-                                       G_TYPE_BOOLEAN, &(context->preedit_visible),
-                                       G_TYPE_INVALID);
+                                       g_variant_new ("(vub)", variant, context->preedit_cursor_pos, context->preedit_visible),
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1369,6 +1323,11 @@ bus_input_context_update_preedit_text (BusInputContext *context,
     }
 }
 
+/**
+ * bus_input_context_show_preedit_text:
+ *
+ * Show a preedit text. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_show_preedit_text (BusInputContext *context)
 {
@@ -1381,9 +1340,10 @@ bus_input_context_show_preedit_text (BusInputContext *context)
     context->preedit_visible = TRUE;
 
     if (PREEDIT_CONDITION) {
-        bus_input_context_send_signal (context,
+        bus_input_context_emit_signal (context,
                                        "ShowPreeditText",
-                                       G_TYPE_INVALID);
+                                       NULL,
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1392,6 +1352,11 @@ bus_input_context_show_preedit_text (BusInputContext *context)
     }
 }
 
+/**
+ * bus_input_context_hide_preedit_text:
+ *
+ * Hide a preedit text. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_hide_preedit_text (BusInputContext *context)
 {
@@ -1404,9 +1369,10 @@ bus_input_context_hide_preedit_text (BusInputContext *context)
     context->preedit_visible = FALSE;
 
     if (PREEDIT_CONDITION) {
-        bus_input_context_send_signal (context,
+        bus_input_context_emit_signal (context,
                                        "HidePreeditText",
-                                       G_TYPE_INVALID);
+                                       NULL,
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1415,6 +1381,11 @@ bus_input_context_hide_preedit_text (BusInputContext *context)
     }
 }
 
+/**
+ * bus_input_context_update_auxiliary_text:
+ *
+ * Update an aux text. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_update_auxiliary_text (BusInputContext *context,
                                          IBusText        *text,
@@ -1430,11 +1401,11 @@ bus_input_context_update_auxiliary_text (BusInputContext *context,
     context->auxiliary_visible = visible;
 
     if (context->capabilities & IBUS_CAP_AUXILIARY_TEXT) {
-        bus_input_context_send_signal (context,
+        GVariant *variant = ibus_serializable_serialize ((IBusSerializable *)text);
+        bus_input_context_emit_signal (context,
                                        "UpdateAuxiliaryText",
-                                       IBUS_TYPE_TEXT, &(context->auxiliary_text),
-                                       G_TYPE_BOOLEAN, &(context->auxiliary_visible),
-                                       G_TYPE_INVALID);
+                                       g_variant_new ("(vb)", variant, visible),
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1445,6 +1416,11 @@ bus_input_context_update_auxiliary_text (BusInputContext *context,
     }
 }
 
+/**
+ * bus_input_context_show_auxiliary_text:
+ *
+ * Show an aux text. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_show_auxiliary_text (BusInputContext *context)
 {
@@ -1457,9 +1433,10 @@ bus_input_context_show_auxiliary_text (BusInputContext *context)
     context->auxiliary_visible = TRUE;
 
     if ((context->capabilities & IBUS_CAP_AUXILIARY_TEXT) == IBUS_CAP_AUXILIARY_TEXT) {
-        bus_input_context_send_signal (context,
+        bus_input_context_emit_signal (context,
                                        "ShowAuxiliaryText",
-                                       G_TYPE_INVALID);
+                                       NULL,
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1468,6 +1445,11 @@ bus_input_context_show_auxiliary_text (BusInputContext *context)
     }
 }
 
+/**
+ * bus_input_context_hide_auxiliary_text:
+ *
+ * Hide an aux text. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_hide_auxiliary_text (BusInputContext *context)
 {
@@ -1480,9 +1462,10 @@ bus_input_context_hide_auxiliary_text (BusInputContext *context)
     context->auxiliary_visible = FALSE;
 
     if ((context->capabilities & IBUS_CAP_AUXILIARY_TEXT) == IBUS_CAP_AUXILIARY_TEXT) {
-        bus_input_context_send_signal (context,
+        bus_input_context_emit_signal (context,
                                        "HideAuxiliaryText",
-                                       G_TYPE_INVALID);
+                                       NULL,
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1491,6 +1474,12 @@ bus_input_context_hide_auxiliary_text (BusInputContext *context)
     }
 }
 
+/**
+ * bus_input_context_update_lookup_table:
+ *
+ * Update contents in the lookup table.
+ * Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_update_lookup_table (BusInputContext *context,
                                        IBusLookupTable *table,
@@ -1506,11 +1495,11 @@ bus_input_context_update_lookup_table (BusInputContext *context,
     context->lookup_table_visible = visible;
 
     if (context->capabilities & IBUS_CAP_LOOKUP_TABLE) {
-        bus_input_context_send_signal (context,
+        GVariant *variant = ibus_serializable_serialize ((IBusSerializable *)table);
+        bus_input_context_emit_signal (context,
                                        "UpdateLookupTable",
-                                       IBUS_TYPE_LOOKUP_TABLE, &(context->lookup_table),
-                                       G_TYPE_BOOLEAN, &(context->lookup_table_visible),
-                                       G_TYPE_INVALID);
+                                       g_variant_new ("(vb)", variant, visible),
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1521,6 +1510,11 @@ bus_input_context_update_lookup_table (BusInputContext *context,
     }
 }
 
+/**
+ * bus_input_context_show_lookup_table:
+ *
+ * Show the lookup table. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_show_lookup_table (BusInputContext *context)
 {
@@ -1533,9 +1527,10 @@ bus_input_context_show_lookup_table (BusInputContext *context)
     context->lookup_table_visible = TRUE;
 
     if ((context->capabilities & IBUS_CAP_LOOKUP_TABLE) == IBUS_CAP_LOOKUP_TABLE) {
-        bus_input_context_send_signal (context,
+        bus_input_context_emit_signal (context,
                                        "ShowLookupTable",
-                                       G_TYPE_INVALID);
+                                       NULL,
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1544,6 +1539,11 @@ bus_input_context_show_lookup_table (BusInputContext *context)
     }
 }
 
+/**
+ * bus_input_context_hide_lookup_table:
+ *
+ * Hide the lookup table. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_hide_lookup_table (BusInputContext *context)
 {
@@ -1556,9 +1556,10 @@ bus_input_context_hide_lookup_table (BusInputContext *context)
     context->lookup_table_visible = FALSE;
 
     if ((context->capabilities & IBUS_CAP_LOOKUP_TABLE) == IBUS_CAP_LOOKUP_TABLE) {
-        bus_input_context_send_signal (context,
+        bus_input_context_emit_signal (context,
                                        "HideLookupTable",
-                                       G_TYPE_INVALID);
+                                       NULL,
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1567,6 +1568,11 @@ bus_input_context_hide_lookup_table (BusInputContext *context)
     }
 }
 
+/**
+ * bus_input_context_page_up_lookup_table:
+ *
+ * Change cursor position. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_page_up_lookup_table (BusInputContext *context)
 {
@@ -1577,9 +1583,10 @@ bus_input_context_page_up_lookup_table (BusInputContext *context)
     }
 
     if ((context->capabilities & IBUS_CAP_LOOKUP_TABLE) == IBUS_CAP_LOOKUP_TABLE) {
-        bus_input_context_send_signal (context,
+        bus_input_context_emit_signal (context,
                                        "PageUpLookupTable",
-                                       G_TYPE_INVALID);
+                                       NULL,
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1588,6 +1595,11 @@ bus_input_context_page_up_lookup_table (BusInputContext *context)
     }
 }
 
+/**
+ * bus_input_context_page_down_lookup_table:
+ *
+ * Change cursor position. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_page_down_lookup_table (BusInputContext *context)
 {
@@ -1598,9 +1610,10 @@ bus_input_context_page_down_lookup_table (BusInputContext *context)
     }
 
     if ((context->capabilities & IBUS_CAP_LOOKUP_TABLE) == IBUS_CAP_LOOKUP_TABLE) {
-        bus_input_context_send_signal (context,
+        bus_input_context_emit_signal (context,
                                        "PageDownLookupTable",
-                                       G_TYPE_INVALID);
+                                       NULL,
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1609,6 +1622,11 @@ bus_input_context_page_down_lookup_table (BusInputContext *context)
     }
 }
 
+/**
+ * bus_input_context_cursor_up_lookup_table:
+ *
+ * Change cursor position. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_cursor_up_lookup_table (BusInputContext *context)
 {
@@ -1619,9 +1637,10 @@ bus_input_context_cursor_up_lookup_table (BusInputContext *context)
     }
 
     if ((context->capabilities & IBUS_CAP_LOOKUP_TABLE) == IBUS_CAP_LOOKUP_TABLE) {
-        bus_input_context_send_signal (context,
+        bus_input_context_emit_signal (context,
                                        "CursorUpLookupTable",
-                                       G_TYPE_INVALID);
+                                       NULL,
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1630,6 +1649,11 @@ bus_input_context_cursor_up_lookup_table (BusInputContext *context)
     }
 }
 
+/**
+ * bus_input_context_cursor_down_lookup_table:
+ *
+ * Change cursor position. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_cursor_down_lookup_table (BusInputContext *context)
 {
@@ -1640,9 +1664,10 @@ bus_input_context_cursor_down_lookup_table (BusInputContext *context)
     }
 
     if ((context->capabilities & IBUS_CAP_LOOKUP_TABLE) == IBUS_CAP_LOOKUP_TABLE) {
-        bus_input_context_send_signal (context,
+        bus_input_context_emit_signal (context,
                                        "CursorDownLookupTable",
-                                       G_TYPE_INVALID);
+                                       NULL,
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1651,6 +1676,11 @@ bus_input_context_cursor_down_lookup_table (BusInputContext *context)
     }
 }
 
+/**
+ * bus_input_context_register_properties:
+ *
+ * Register properties. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_register_properties (BusInputContext *context,
                                        IBusPropList    *props)
@@ -1659,10 +1689,11 @@ bus_input_context_register_properties (BusInputContext *context,
     g_assert (IBUS_IS_PROP_LIST (props));
 
     if (context->capabilities & IBUS_CAP_PROPERTY) {
-        bus_input_context_send_signal (context,
+        GVariant *variant = ibus_serializable_serialize ((IBusSerializable *)props);
+        bus_input_context_emit_signal (context,
                                        "RegisterProperties",
-                                       IBUS_TYPE_PROP_LIST, &props,
-                                       G_TYPE_INVALID);
+                                       g_variant_new ("(v)", variant),
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1672,6 +1703,11 @@ bus_input_context_register_properties (BusInputContext *context,
     }
 }
 
+/**
+ * bus_input_context_update_property:
+ *
+ * Update property. Send D-Bus signal to update status of client or send glib signal to the panel, depending on capabilities of the client.
+ */
 static void
 bus_input_context_update_property (BusInputContext *context,
                                    IBusProperty    *prop)
@@ -1680,10 +1716,11 @@ bus_input_context_update_property (BusInputContext *context,
     g_assert (IBUS_IS_PROPERTY (prop));
 
     if (context->capabilities & IBUS_CAP_PROPERTY) {
-        bus_input_context_send_signal (context,
+        GVariant *variant = ibus_serializable_serialize ((IBusSerializable *)prop);
+        bus_input_context_emit_signal (context,
                                        "UpdateProperty",
-                                       IBUS_TYPE_PROPERTY, &prop,
-                                       G_TYPE_INVALID);
+                                       g_variant_new ("(v)", variant),
+                                       NULL);
     }
     else {
         g_signal_emit (context,
@@ -1693,6 +1730,12 @@ bus_input_context_update_property (BusInputContext *context,
     }
 }
 
+/**
+ * _engine_destroy_cb:
+ *
+ * A function to be called when "destroy" glib signal is sent to the engine object.
+ * Remove the engine from the context.
+ */
 static void
 _engine_destroy_cb (BusEngineProxy  *engine,
                     BusInputContext *context)
@@ -1705,6 +1748,11 @@ _engine_destroy_cb (BusEngineProxy  *engine,
     bus_input_context_set_engine (context, NULL);
 }
 
+/**
+ * _engine_commit_text_cb:
+ *
+ * A function to be called when "commit-text" glib signal is sent to the engine object.
+ */
 static void
 _engine_commit_text_cb (BusEngineProxy  *engine,
                         IBusText        *text,
@@ -1719,6 +1767,11 @@ _engine_commit_text_cb (BusEngineProxy  *engine,
     bus_input_context_commit_text (context, text);
 }
 
+/**
+ * _engine_forward_key_event_cb:
+ *
+ * A function to be called when "forward-key-event" glib signal is sent to the engine object.
+ */
 static void
 _engine_forward_key_event_cb (BusEngineProxy    *engine,
                               guint              keyval,
@@ -1734,14 +1787,17 @@ _engine_forward_key_event_cb (BusEngineProxy    *engine,
     if (!context->enabled)
         return;
 
-    bus_input_context_send_signal (context,
+    bus_input_context_emit_signal (context,
                                    "ForwardKeyEvent",
-                                   G_TYPE_UINT,  &keyval,
-                                   G_TYPE_UINT,  &keycode,
-                                   G_TYPE_UINT,  &state,
-                                   G_TYPE_INVALID);
+                                   g_variant_new ("(uuu)", keyval, keycode, state),
+                                   NULL);
 }
 
+/**
+ * _engine_delete_surrounding_text_cb:
+ *
+ * A function to be called when "delete-surrounding-text" glib signal is sent to the engine object.
+ */
 static void
 _engine_delete_surrounding_text_cb (BusEngineProxy    *engine,
                                     gint               offset_from_cursor,
@@ -1756,13 +1812,40 @@ _engine_delete_surrounding_text_cb (BusEngineProxy    *engine,
     if (!context->enabled)
         return;
 
-    bus_input_context_send_signal (context,
+    bus_input_context_emit_signal (context,
                                    "DeleteSurroundingText",
-                                   G_TYPE_INT,   &offset_from_cursor,
-                                   G_TYPE_UINT,  &nchars,
-                                   G_TYPE_INVALID);
+                                   g_variant_new ("(iu)", offset_from_cursor, nchars),
+                                   NULL);
 }
 
+/**
+ * _engine_require_surrounding_text_cb:
+ *
+ * A function to be called when "require-surrounding-text" glib signal is sent to the engine object.
+ */
+static void
+_engine_require_surrounding_text_cb (BusEngineProxy    *engine,
+                                     BusInputContext   *context)
+{
+    g_assert (BUS_IS_ENGINE_PROXY (engine));
+    g_assert (BUS_IS_INPUT_CONTEXT (context));
+
+    g_assert (context->engine == engine);
+
+    if (!context->enabled)
+        return;
+
+    bus_input_context_emit_signal (context,
+                                   "RequireSurroundingText",
+                                   NULL,
+                                   NULL);
+}
+
+/**
+ * _engine_update_preedit_text_cb:
+ *
+ * A function to be called when "update-preedit-text" glib signal is sent to the engine object.
+ */
 static void
 _engine_update_preedit_text_cb (BusEngineProxy  *engine,
                                 IBusText        *text,
@@ -1783,6 +1866,11 @@ _engine_update_preedit_text_cb (BusEngineProxy  *engine,
     bus_input_context_update_preedit_text (context, text, cursor_pos, visible, mode);
 }
 
+/**
+ * _engine_update_auxiliary_text_cb:
+ *
+ * A function to be called when "update-auxiliary-text" glib signal is sent to the engine object.
+ */
 static void
 _engine_update_auxiliary_text_cb (BusEngineProxy   *engine,
                                   IBusText         *text,
@@ -1801,6 +1889,11 @@ _engine_update_auxiliary_text_cb (BusEngineProxy   *engine,
     bus_input_context_update_auxiliary_text (context, text, visible);
 }
 
+/**
+ * _engine_update_lookup_table_cb:
+ *
+ * A function to be called when "update-lookup-table" glib signal is sent to the engine object.
+ */
 static void
 _engine_update_lookup_table_cb (BusEngineProxy   *engine,
                                 IBusLookupTable  *table,
@@ -1819,6 +1912,11 @@ _engine_update_lookup_table_cb (BusEngineProxy   *engine,
     bus_input_context_update_lookup_table (context, table, visible);
 }
 
+/**
+ * _engine_register_properties_cb:
+ *
+ * A function to be called when "register-properties" glib signal is sent to the engine object.
+ */
 static void
 _engine_register_properties_cb (BusEngineProxy  *engine,
                                 IBusPropList    *props,
@@ -1836,6 +1934,11 @@ _engine_register_properties_cb (BusEngineProxy  *engine,
     bus_input_context_register_properties (context, props);
 }
 
+/**
+ * _engine_update_property_cb:
+ *
+ * A function to be called when "update-property" glib signal is sent to the engine object.
+ */
 static void
 _engine_update_property_cb (BusEngineProxy  *engine,
                             IBusProperty    *prop,
@@ -1881,6 +1984,48 @@ DEFINE_FUNCTION (cursor_up_lookup_table)
 DEFINE_FUNCTION (cursor_down_lookup_table)
 #undef DEFINE_FUNCTION
 
+BusInputContext *
+bus_input_context_new (BusConnection    *connection,
+                       const gchar      *client)
+{
+    static guint id = 0;
+
+    g_assert (connection == NULL || BUS_IS_CONNECTION (connection));
+    g_assert (client != NULL);
+
+    gchar *path = g_strdup_printf (IBUS_PATH_INPUT_CONTEXT, ++id);
+
+    BusInputContext *context = NULL;
+    if (connection) {
+        context = (BusInputContext *) g_object_new (BUS_TYPE_INPUT_CONTEXT,
+                                                    "object-path", path,
+                                                    "connection", bus_connection_get_dbus_connection (connection),
+                                                    NULL);
+    }
+    else {
+        context = (BusInputContext *) g_object_new (BUS_TYPE_INPUT_CONTEXT,
+                                                    "object-path", path,
+                                                    NULL);
+    }
+    g_free (path);
+
+    context->client = g_strdup (client);
+
+    /* it is a fake input context, just need process hotkey */
+    context->fake = (strncmp (client, "fake", 4) == 0);
+
+    if (connection) {
+        g_object_ref_sink (connection);
+        context->connection = connection;
+        g_signal_connect (context->connection,
+                          "destroy",
+                          (GCallback) _connection_destroy_cb,
+                          context);
+    }
+
+    return context;
+}
+
 void
 bus_input_context_enable (BusInputContext *context)
 {
@@ -1888,12 +2033,25 @@ bus_input_context_enable (BusInputContext *context)
 
     if (!context->has_focus) {
         context->enabled = TRUE;
-        /* TODO: Do we need to emit "enabled" signal? */
+        /* FIXME Do we need to emit "enabled" signal? */
         return;
     }
 
     if (context->engine == NULL) {
-        g_signal_emit (context, context_signals[REQUEST_ENGINE], 0, NULL);
+        IBusEngineDesc *desc = NULL;
+        g_signal_emit (context,
+                       context_signals[REQUEST_ENGINE], 0,
+                       NULL,
+                       &desc);
+        if (desc != NULL) {
+            bus_input_context_set_engine_by_desc (context,
+                            desc,
+                            g_gdbus_timeout, /* timeout in msec. */
+                            NULL, /* we do not cancel the call. */
+                            NULL, /* use the default callback function. */
+                            NULL);
+            g_object_unref (desc);
+        }
     }
 
     if (context->engine == NULL)
@@ -1901,14 +2059,15 @@ bus_input_context_enable (BusInputContext *context)
 
     context->enabled = TRUE;
 
-    bus_engine_proxy_enable (context->engine);
     bus_engine_proxy_focus_in (context->engine);
+    bus_engine_proxy_enable (context->engine);
     bus_engine_proxy_set_capabilities (context->engine, context->capabilities);
     bus_engine_proxy_set_cursor_location (context->engine, context->x, context->y, context->w, context->h);
 
-    bus_input_context_send_signal (context,
+    bus_input_context_emit_signal (context,
                                    "Enabled",
-                                   G_TYPE_INVALID);
+                                   NULL,
+                                   NULL);
     g_signal_emit (context,
                    context_signals[ENABLED],
                    0);
@@ -1929,9 +2088,10 @@ bus_input_context_disable (BusInputContext *context)
         bus_engine_proxy_disable (context->engine);
     }
 
-    bus_input_context_send_signal (context,
+    bus_input_context_emit_signal (context,
                                    "Disabled",
-                                   G_TYPE_INVALID);
+                                   NULL,
+                                   NULL);
     g_signal_emit (context,
                    context_signals[DISABLED],
                    0);
@@ -1947,29 +2107,31 @@ bus_input_context_is_enabled (BusInputContext *context)
     return context->enabled;
 }
 
+/* A list of signals (and their handler functions) that could be emit by the engine proxy object. */
 const static struct {
     const gchar *name;
     GCallback    callback;
-} signals [] = {
-    { "commit-text",            G_CALLBACK (_engine_commit_text_cb) },
-    { "forward-key-event",      G_CALLBACK (_engine_forward_key_event_cb) },
-    { "delete-surrounding-text", G_CALLBACK (_engine_delete_surrounding_text_cb) },
-    { "update-preedit-text",    G_CALLBACK (_engine_update_preedit_text_cb) },
-    { "show-preedit-text",      G_CALLBACK (_engine_show_preedit_text_cb) },
-    { "hide-preedit-text",      G_CALLBACK (_engine_hide_preedit_text_cb) },
-    { "update-auxiliary-text",  G_CALLBACK (_engine_update_auxiliary_text_cb) },
-    { "show-auxiliary-text",    G_CALLBACK (_engine_show_auxiliary_text_cb) },
-    { "hide-auxiliary-text",    G_CALLBACK (_engine_hide_auxiliary_text_cb) },
-    { "update-lookup-table",    G_CALLBACK (_engine_update_lookup_table_cb) },
-    { "show-lookup-table",      G_CALLBACK (_engine_show_lookup_table_cb) },
-    { "hide-lookup-table",      G_CALLBACK (_engine_hide_lookup_table_cb) },
-    { "page-up-lookup-table",   G_CALLBACK (_engine_page_up_lookup_table_cb) },
-    { "page-down-lookup-table", G_CALLBACK (_engine_page_down_lookup_table_cb) },
-    { "cursor-up-lookup-table", G_CALLBACK (_engine_cursor_up_lookup_table_cb) },
+} engine_signals [] = {
+    { "commit-text",              G_CALLBACK (_engine_commit_text_cb) },
+    { "forward-key-event",        G_CALLBACK (_engine_forward_key_event_cb) },
+    { "delete-surrounding-text",  G_CALLBACK (_engine_delete_surrounding_text_cb) },
+    { "require-surrounding-text", G_CALLBACK (_engine_require_surrounding_text_cb) },
+    { "update-preedit-text",      G_CALLBACK (_engine_update_preedit_text_cb) },
+    { "show-preedit-text",        G_CALLBACK (_engine_show_preedit_text_cb) },
+    { "hide-preedit-text",        G_CALLBACK (_engine_hide_preedit_text_cb) },
+    { "update-auxiliary-text",    G_CALLBACK (_engine_update_auxiliary_text_cb) },
+    { "show-auxiliary-text",      G_CALLBACK (_engine_show_auxiliary_text_cb) },
+    { "hide-auxiliary-text",      G_CALLBACK (_engine_hide_auxiliary_text_cb) },
+    { "update-lookup-table",      G_CALLBACK (_engine_update_lookup_table_cb) },
+    { "show-lookup-table",        G_CALLBACK (_engine_show_lookup_table_cb) },
+    { "hide-lookup-table",        G_CALLBACK (_engine_hide_lookup_table_cb) },
+    { "page-up-lookup-table",     G_CALLBACK (_engine_page_up_lookup_table_cb) },
+    { "page-down-lookup-table",   G_CALLBACK (_engine_page_down_lookup_table_cb) },
+    { "cursor-up-lookup-table",   G_CALLBACK (_engine_cursor_up_lookup_table_cb) },
     { "cursor-down-lookup-table", G_CALLBACK (_engine_cursor_down_lookup_table_cb) },
-    { "register-properties",    G_CALLBACK (_engine_register_properties_cb) },
-    { "update-property",        G_CALLBACK (_engine_update_property_cb) },
-    { "destroy",                G_CALLBACK (_engine_destroy_cb) },
+    { "register-properties",      G_CALLBACK (_engine_register_properties_cb) },
+    { "update-property",          G_CALLBACK (_engine_update_property_cb) },
+    { "destroy",                  G_CALLBACK (_engine_destroy_cb) },
     { NULL, 0 }
 };
 
@@ -1985,8 +2147,9 @@ bus_input_context_unset_engine (BusInputContext *context)
 
     if (context->engine) {
         gint i;
-        for (i = 0; signals[i].name != NULL; i++) {
-            g_signal_handlers_disconnect_by_func (context->engine, signals[i].callback, context);
+        /* uninstall signal handlers for the engine. */
+        for (i = 0; engine_signals[i].name != NULL; i++) {
+            g_signal_handlers_disconnect_by_func (context->engine, engine_signals[i].callback, context);
         }
         /* Do not destroy the engine anymore, because of global engine feature */
         g_object_unref (context->engine);
@@ -2013,12 +2176,13 @@ bus_input_context_set_engine (BusInputContext *context,
     else {
         gint i;
         context->engine = engine;
-        g_object_ref_sink (context->engine);
+        g_object_ref (context->engine);
 
-        for (i = 0; signals[i].name != NULL; i++) {
+        /* handle signals from the engine. */
+        for (i = 0; engine_signals[i].name != NULL; i++) {
             g_signal_connect (context->engine,
-                              signals[i].name,
-                              signals[i].callback,
+                              engine_signals[i].name,
+                              engine_signals[i].callback,
                               context);
         }
         if (context->has_focus && context->enabled) {
@@ -2033,12 +2197,222 @@ bus_input_context_set_engine (BusInputContext *context,
                    0);
 }
 
+static void set_engine_by_desc_data_free (SetEngineByDescData *data)
+{
+    if (data->context != NULL) {
+        if (data->context->data == data)
+            data->context->data = NULL;
+        g_object_unref (data->context);
+    }
+
+    if (data->simple != NULL) {
+        g_object_unref (data->simple);
+    }
+
+    if (data->cancellable != NULL)
+        g_object_unref (data->cancellable);
+
+    if (data->origin_cancellable != NULL) {
+        if (data->cancelled_handler_id != 0)
+            g_cancellable_disconnect (data->origin_cancellable,
+                data->cancelled_handler_id);
+        g_object_unref (data->origin_cancellable);
+    }
+
+    g_slice_free (SetEngineByDescData, data);
+}
+
+/**
+ * new_engine_cb:
+ *
+ * A callback function to be called when bus_engine_proxy_new() is finished.
+ */
+static void
+new_engine_cb (GObject             *obj,
+               GAsyncResult        *res,
+               SetEngineByDescData *data)
+{
+    GError *error = NULL;
+    BusEngineProxy *engine = bus_engine_proxy_new_finish (res, &error);
+
+    if (engine == NULL) {
+        g_simple_async_result_set_from_error (data->simple, error);
+        g_error_free (error);
+    }
+    else {
+        if (data->context->data != data) {
+            /* Request has been overriden or cancelled */
+            g_object_unref (engine);
+            g_simple_async_result_set_error (data->simple,
+                                             G_IO_ERROR,
+                                             G_IO_ERROR_CANCELLED,
+                                             "Opertation was cancelled");
+        }
+        else {
+            bus_input_context_set_engine (data->context, engine);
+            bus_input_context_enable (data->context);
+            g_simple_async_result_set_op_res_gboolean (data->simple, TRUE);
+        }
+    }
+
+    /* Call the callback function for bus_input_context_set_engine_by_desc(). */
+    g_simple_async_result_complete_in_idle (data->simple);
+
+    set_engine_by_desc_data_free (data);
+}
+
+static void
+cancel_set_engine_by_desc (SetEngineByDescData *data)
+{
+    if (data->context->data == data)
+        data->context->data = NULL;
+
+    if (data->origin_cancellable != NULL) {
+        if (data->cancelled_handler_id != 0) {
+            g_cancellable_disconnect (data->origin_cancellable,
+                                      data->cancelled_handler_id);
+            data->cancelled_handler_id = 0;
+        }
+
+        g_object_unref (data->origin_cancellable);
+        data->origin_cancellable = NULL;
+    }
+
+    if (data->cancellable != NULL) {
+        g_cancellable_cancel (data->cancellable);
+        g_object_unref (data->cancellable);
+        data->cancellable = NULL;
+    }
+}
+
+static gboolean
+set_engine_by_desc_cancelled_idle_cb (SetEngineByDescData *data)
+{
+    cancel_set_engine_by_desc (data);
+    return FALSE;
+}
+
+static void
+set_engine_by_desc_cancelled_cb (GCancellable        *cancellable,
+                                 SetEngineByDescData *data)
+{
+    /* Cancel in idle to avoid deadlock */
+    g_idle_add ((GSourceFunc) set_engine_by_desc_cancelled_idle_cb, data);
+}
+
+/**
+ * set_engine_by_desc_ready_cb:
+ *
+ * A default callback function for bus_input_context_set_engine_by_desc().
+ */
+static void
+set_engine_by_desc_ready_cb (BusInputContext *context,
+                             GAsyncResult    *res,
+                             gpointer         user_data)
+{
+    GError *error = NULL;
+    if (!bus_input_context_set_engine_by_desc_finish (context, res, &error)) {
+        g_warning ("Set context engine failed: %s", error->message);
+        g_error_free (error);
+    }
+}
+
+void
+bus_input_context_set_engine_by_desc (BusInputContext    *context,
+                                      IBusEngineDesc     *desc,
+                                      gint                timeout,
+                                      GCancellable       *cancellable,
+                                      GAsyncReadyCallback callback,
+                                      gpointer            user_data)
+{
+    g_assert (BUS_IS_INPUT_CONTEXT (context));
+    g_assert (IBUS_IS_ENGINE_DESC (desc));
+    g_assert (cancellable == NULL || G_IS_CANCELLABLE (cancellable));
+
+    if (context->data != NULL) {
+        /* Cancel previous set_engine_by_desc() request */
+        cancel_set_engine_by_desc (context->data);
+    }
+
+    /* Previous request must be completed or cancelled */
+    g_assert (context->data == NULL);
+
+    if (callback == NULL)
+        callback = (GAsyncReadyCallback) set_engine_by_desc_ready_cb;
+
+    GSimpleAsyncResult *simple =
+            g_simple_async_result_new ((GObject *) context,
+                                       callback,
+                                       user_data,
+                                       bus_input_context_set_engine_by_desc);
+
+    if (g_cancellable_is_cancelled (cancellable)) {
+        g_simple_async_result_set_error (simple,
+                                         G_IO_ERROR,
+                                         G_IO_ERROR_CANCELLED,
+                                         "Operation was cancelled");
+        g_simple_async_result_complete_in_idle (simple);
+        g_object_unref (simple);
+        return;
+    }
+
+    SetEngineByDescData *data = g_slice_new0 (SetEngineByDescData);
+    context->data = data;
+    data->context = context;
+    g_object_ref (context);
+    data->simple = simple;
+
+    if (cancellable != NULL) {
+        data->origin_cancellable = cancellable;
+        g_object_ref (cancellable);
+        data->cancelled_handler_id =
+                g_cancellable_connect (data->origin_cancellable,
+                                       (GCallback) set_engine_by_desc_cancelled_cb,
+                                       data,
+                                       NULL);
+    }
+
+    data->cancellable = g_cancellable_new ();
+    /* We can cancel the bus_engine_proxy_new() call by data->cancellable;
+     * See cancel_set_engine_by_desc() and set_engine_by_desc_cancelled_cb(). */
+    bus_engine_proxy_new (desc,
+                          timeout,
+                          data->cancellable,
+                          (GAsyncReadyCallback) new_engine_cb,
+                          data);
+}
+
+gboolean
+bus_input_context_set_engine_by_desc_finish (BusInputContext  *context,
+                                             GAsyncResult     *res,
+                                             GError          **error)
+{
+    GSimpleAsyncResult *simple = G_SIMPLE_ASYNC_RESULT (res);
+
+    g_assert (BUS_IS_INPUT_CONTEXT (context));
+    g_assert (g_simple_async_result_get_source_tag (simple) ==
+                bus_input_context_set_engine_by_desc);
+
+    if (g_simple_async_result_propagate_error (simple, error))
+        return FALSE;
+    return TRUE;
+}
+
 BusEngineProxy *
 bus_input_context_get_engine (BusInputContext *context)
 {
     g_assert (BUS_IS_INPUT_CONTEXT (context));
 
     return context->engine;
+}
+
+IBusEngineDesc *
+bus_input_context_get_engine_desc (BusInputContext *context)
+{
+    g_assert (BUS_IS_INPUT_CONTEXT (context));
+    if (context->engine)
+        return bus_engine_proxy_get_desc (context->engine);
+    return NULL;
 }
 
 static gboolean
@@ -2052,24 +2426,13 @@ bus_input_context_filter_keyboard_shortcuts (BusInputContext    *context,
     gboolean retval = FALSE;
 
     if (context->filter_release){
-        if(modifiers & IBUS_RELEASE_MASK) {
+        if (modifiers & IBUS_RELEASE_MASK) {
             /* filter release key event */
             return TRUE;
         }
         else {
             /* stop filter release key event */
             context->filter_release = FALSE;
-        }
-    }
-
-    if (keycode != 0 && !BUS_DEFAULT_IBUS->use_sys_layout) {
-        IBusKeymap *keymap = BUS_DEFAULT_KEYMAP;
-        if (keymap != NULL) {
-            guint tmp = ibus_keymap_lookup_keysym (keymap,
-                                                 keycode,
-                                                 modifiers);
-            if (tmp != IBUS_VoidSymbol)
-                keyval = tmp;
         }
     }
 
@@ -2090,40 +2453,46 @@ bus_input_context_filter_keyboard_shortcuts (BusInputContext    *context,
     return retval;
 }
 
-
-static gboolean
-bus_input_context_send_signal (BusInputContext *context,
-                               const gchar     *signal_name,
-                               GType            first_arg_type,
-                               ...)
-{
-    g_assert (BUS_IS_INPUT_CONTEXT (context));
-    g_assert (signal_name != NULL);
-    g_assert (context->connection != NULL);
-
-    va_list args;
-    gboolean retval;
-    IBusMessage *message;
-
-    message = ibus_message_new_signal (ibus_service_get_path ((IBusService *)context),
-                                       IBUS_INTERFACE_INPUT_CONTEXT,
-                                       signal_name);
-
-    ibus_message_set_sender (message, IBUS_SERVICE_IBUS);
-
-    va_start (args, first_arg_type);
-    ibus_message_append_args_valist (message, first_arg_type, args);
-    va_end (args);
-
-    retval = ibus_connection_send ((IBusConnection *)context->connection, message);
-    ibus_message_unref (message);
-
-    return retval;
-}
-
 guint
 bus_input_context_get_capabilities (BusInputContext *context)
 {
     g_assert (BUS_IS_INPUT_CONTEXT (context));
     return context->capabilities;
+}
+
+void
+bus_input_context_set_capabilities (BusInputContext    *context,
+                                    guint               capabilities)
+{
+    g_assert (BUS_IS_INPUT_CONTEXT (context));
+
+    /* If the context does not support IBUS_CAP_FOCUS, then the client application have to handle all information such as
+     * preedit and auxiliary text. */
+    if ((capabilities & IBUS_CAP_FOCUS) == 0) {
+        capabilities |= (IBUS_CAP_PREEDIT_TEXT | IBUS_CAP_AUXILIARY_TEXT | IBUS_CAP_LOOKUP_TABLE | IBUS_CAP_PROPERTY);
+    }
+
+    if (context->capabilities != capabilities) {
+        context->capabilities = capabilities;
+
+        /* If the context does not support IBUS_CAP_FOCUS, then we always assume
+         * it has focus. */
+        if ((capabilities & IBUS_CAP_FOCUS) == 0) {
+            bus_input_context_focus_in (context);
+        }
+
+        if (context->engine) {
+            bus_engine_proxy_set_capabilities (context->engine, capabilities);
+        }
+    }
+
+    context->capabilities = capabilities;
+}
+
+
+const gchar *
+bus_input_context_get_client (BusInputContext *context)
+{
+    g_assert (BUS_IS_INPUT_CONTEXT (context));
+    return context->client;
 }

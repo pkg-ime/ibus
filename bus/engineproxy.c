@@ -19,17 +19,51 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
-#include <dbus/dbus.h>
-#include <ibusinternal.h>
-#include <ibusmarshalers.h>
-#include "ibusimpl.h"
 #include "engineproxy.h"
+#include "types.h"
+#include "marshalers.h"
+#include "ibusimpl.h"
 #include "option.h"
+
+struct _BusEngineProxy {
+    IBusProxy parent;
+
+    /* instance members */
+    /* TRUE if the engine has a focus (local copy of the engine's status.) */
+    gboolean has_focus;
+    /* TRUE if the engine is enabled (local copy of the engine's status.) */
+    gboolean enabled;
+    /* A set of capabilities the current client supports (local copy of the engine's flag.) */
+    guint capabilities;
+    /* The current cursor location that are sent to the engine. */
+    gint x;
+    gint y;
+    gint w;
+    gint h;
+
+    /* an engine desc used to create the proxy. */
+    IBusEngineDesc *desc;
+
+    /* a key mapping for the engine that converts keycode into keysym. the mapping is used only when use_sys_layout is FALSE. */
+    IBusKeymap     *keymap;
+    /* private member */
+
+    /* cached surrounding text (see also IBusEnginePrivate and
+       IBusInputContextPrivate) */
+    IBusText *surrounding_text;
+    guint     surrounding_cursor_pos;
+};
+
+struct _BusEngineProxyClass {
+    IBusProxyClass parent;
+    /* class members */
+};
 
 enum {
     COMMIT_TEXT,
     FORWARD_KEY_EVENT,
     DELETE_SURROUNDING_TEXT,
+    REQUIRE_SURROUNDING_TEXT,
     UPDATE_PREEDIT_TEXT,
     SHOW_PREEDIT_TEXT,
     HIDE_PREEDIT_TEXT,
@@ -48,80 +82,85 @@ enum {
     LAST_SIGNAL,
 };
 
+enum {
+    PROP_0 = 0,
+    PROP_ENGINE_DESC,
+};
 
 static guint    engine_signals[LAST_SIGNAL] = { 0 };
-// static guint            engine_signals[LAST_SIGNAL] = { 0 };
+
+static IBusText *text_empty = NULL;
 
 /* functions prototype */
-static void     bus_engine_proxy_real_destroy   (BusEngineProxy         *engine);
+static void     bus_engine_proxy_set_property   (BusEngineProxy      *engine,
+                                                 guint                prop_id,
+                                                 const GValue        *value,
+                                                 GParamSpec          *pspec);
+static void     bus_engine_proxy_get_property   (BusEngineProxy      *engine,
+                                                 guint                prop_id,
+                                                 GValue              *value,
+                                                 GParamSpec          *pspec);
+static void     bus_engine_proxy_real_destroy   (IBusProxy           *proxy);
+static void     bus_engine_proxy_g_signal       (GDBusProxy          *proxy,
+                                                 const gchar         *sender_name,
+                                                 const gchar         *signal_name,
+                                                 GVariant            *parameters);
+static void     bus_engine_proxy_initable_iface_init
+                                                (GInitableIface      *initable_iface);
 
-static gboolean bus_engine_proxy_ibus_signal    (IBusProxy              *proxy,
-                                                 IBusMessage            *message);
+G_DEFINE_TYPE_WITH_CODE (BusEngineProxy, bus_engine_proxy, IBUS_TYPE_PROXY,
+                         G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE, bus_engine_proxy_initable_iface_init)
+                        );
 
-G_DEFINE_TYPE (BusEngineProxy, bus_engine_proxy, IBUS_TYPE_PROXY)
-
-BusEngineProxy *
-bus_engine_proxy_new (const gchar    *path,
-                      IBusEngineDesc *desc,
-                      BusConnection  *connection)
-{
-    g_assert (path);
-    g_assert (IBUS_IS_ENGINE_DESC (desc));
-    g_assert (BUS_IS_CONNECTION (connection));
-
-    BusEngineProxy *engine;
-
-    engine = (BusEngineProxy *) g_object_new (BUS_TYPE_ENGINE_PROXY,
-                                              "name", NULL,
-                                              "path", path,
-                                              "connection", connection,
-                                              NULL);
-
-    engine->desc = desc;
-    g_object_ref_sink (desc);
-    if (desc->layout != NULL && desc->layout[0] != '\0') {
-        engine->keymap = ibus_keymap_get (desc->layout);
-    }
-
-    if (engine->keymap == NULL) {
-        engine->keymap = ibus_keymap_get ("us");
-    }
-
-    return engine;
-}
+static GInitableIface *parent_initable_iface = NULL;
 
 static void
-bus_engine_proxy_class_init (BusEngineProxyClass *klass)
+bus_engine_proxy_class_init (BusEngineProxyClass *class)
 {
-    IBusObjectClass *ibus_object_class = IBUS_OBJECT_CLASS (klass);
-    IBusProxyClass *proxy_class = IBUS_PROXY_CLASS (klass);
+    GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
+    gobject_class->set_property = (GObjectSetPropertyFunc)bus_engine_proxy_set_property;
+    gobject_class->get_property = (GObjectGetPropertyFunc)bus_engine_proxy_get_property;
 
-    bus_engine_proxy_parent_class = (IBusProxyClass *) g_type_class_peek_parent (klass);
+    IBUS_PROXY_CLASS (class)->destroy = bus_engine_proxy_real_destroy;
+    G_DBUS_PROXY_CLASS (class)->g_signal = bus_engine_proxy_g_signal;
 
-    ibus_object_class->destroy = (IBusObjectDestroyFunc) bus_engine_proxy_real_destroy;
+    parent_initable_iface =
+            (GInitableIface *)g_type_interface_peek (bus_engine_proxy_parent_class, G_TYPE_INITABLE);
 
-    proxy_class->ibus_signal = bus_engine_proxy_ibus_signal;
+    /* install properties */
+    g_object_class_install_property (gobject_class,
+                    PROP_ENGINE_DESC,
+                    g_param_spec_object ("desc",
+                        "desc",
+                        "desc",
+                        IBUS_TYPE_ENGINE_DESC,
+                        G_PARAM_READWRITE |
+                        G_PARAM_CONSTRUCT_ONLY |
+                        G_PARAM_STATIC_NAME |
+                        G_PARAM_STATIC_BLURB |
+                        G_PARAM_STATIC_NICK
+                        ));
 
-    /* install signals */
+    /* install glib signals that will be sent when corresponding D-Bus signals are sent from an engine process. */
     engine_signals[COMMIT_TEXT] =
         g_signal_new (I_("commit-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__OBJECT,
+            bus_marshal_VOID__OBJECT,
             G_TYPE_NONE,
             1,
             IBUS_TYPE_TEXT);
 
     engine_signals[FORWARD_KEY_EVENT] =
         g_signal_new (I_("forward-key-event"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__UINT_UINT_UINT,
+            bus_marshal_VOID__UINT_UINT_UINT,
             G_TYPE_NONE,
             3,
             G_TYPE_UINT,
@@ -130,23 +169,33 @@ bus_engine_proxy_class_init (BusEngineProxyClass *klass)
 
     engine_signals[DELETE_SURROUNDING_TEXT] =
         g_signal_new (I_("delete-surrounding-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__INT_UINT,
+            bus_marshal_VOID__INT_UINT,
             G_TYPE_NONE,
             2,
             G_TYPE_INT,
             G_TYPE_UINT);
 
-    engine_signals[UPDATE_PREEDIT_TEXT] =
-        g_signal_new (I_("update-preedit-text"),
-            G_TYPE_FROM_CLASS (klass),
+    engine_signals[REQUIRE_SURROUNDING_TEXT] =
+        g_signal_new (I_("require-surrounding-text"),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__OBJECT_UINT_BOOLEAN_UINT,
+            bus_marshal_VOID__VOID,
+            G_TYPE_NONE,
+            0);
+
+    engine_signals[UPDATE_PREEDIT_TEXT] =
+        g_signal_new (I_("update-preedit-text"),
+            G_TYPE_FROM_CLASS (class),
+            G_SIGNAL_RUN_LAST,
+            0,
+            NULL, NULL,
+            bus_marshal_VOID__OBJECT_UINT_BOOLEAN_UINT,
             G_TYPE_NONE,
             4,
             IBUS_TYPE_TEXT,
@@ -156,31 +205,31 @@ bus_engine_proxy_class_init (BusEngineProxyClass *klass)
 
     engine_signals[SHOW_PREEDIT_TEXT] =
         g_signal_new (I_("show-preedit-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     engine_signals[HIDE_PREEDIT_TEXT] =
         g_signal_new (I_("hide-preedit-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     engine_signals[UPDATE_AUXILIARY_TEXT] =
         g_signal_new (I_("update-auxiliary-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__OBJECT_BOOLEAN,
+            bus_marshal_VOID__OBJECT_BOOLEAN,
             G_TYPE_NONE,
             2,
             IBUS_TYPE_TEXT,
@@ -188,31 +237,31 @@ bus_engine_proxy_class_init (BusEngineProxyClass *klass)
 
     engine_signals[SHOW_AUXILIARY_TEXT] =
         g_signal_new (I_("show-auxiliary-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     engine_signals[HIDE_AUXILIARY_TEXT] =
         g_signal_new (I_("hide-auxiliary-text"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     engine_signals[UPDATE_LOOKUP_TABLE] =
         g_signal_new (I_("update-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__BOXED_BOOLEAN,
+            bus_marshal_VOID__OBJECT_BOOLEAN,
             G_TYPE_NONE,
             2,
             IBUS_TYPE_LOOKUP_TABLE,
@@ -220,110 +269,142 @@ bus_engine_proxy_class_init (BusEngineProxyClass *klass)
 
     engine_signals[SHOW_LOOKUP_TABLE] =
         g_signal_new (I_("show-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     engine_signals[HIDE_LOOKUP_TABLE] =
         g_signal_new (I_("hide-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     engine_signals[PAGE_UP_LOOKUP_TABLE] =
         g_signal_new (I_("page-up-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     engine_signals[PAGE_DOWN_LOOKUP_TABLE] =
         g_signal_new (I_("page-down-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     engine_signals[CURSOR_UP_LOOKUP_TABLE] =
         g_signal_new (I_("cursor-up-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     engine_signals[CURSOR_DOWN_LOOKUP_TABLE] =
         g_signal_new (I_("cursor-down-lookup-table"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE,
             0);
 
     engine_signals[REGISTER_PROPERTIES] =
         g_signal_new (I_("register-properties"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__OBJECT,
+            bus_marshal_VOID__OBJECT,
             G_TYPE_NONE,
             1,
             IBUS_TYPE_PROP_LIST);
 
     engine_signals[UPDATE_PROPERTY] =
         g_signal_new (I_("update-property"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__OBJECT,
+            bus_marshal_VOID__OBJECT,
             G_TYPE_NONE,
             1,
             IBUS_TYPE_PROPERTY);
 
+    text_empty = ibus_text_new_from_static_string ("");
+    g_object_ref_sink (text_empty);
 }
 
 static void
 bus_engine_proxy_init (BusEngineProxy *engine)
 {
-    engine->has_focus = FALSE;
-    engine->enabled = FALSE;
-    engine->x = 0;
-    engine->y = 0;
-    engine->w = 0;
-    engine->h = 0;
-    engine->enabled = FALSE;
-    engine->desc = NULL;
-    engine->keymap = NULL;
+    engine->surrounding_text = g_object_ref_sink (text_empty);
+    engine->surrounding_cursor_pos = 0;
 }
 
 static void
-bus_engine_proxy_real_destroy (BusEngineProxy *engine)
+bus_engine_proxy_set_property (BusEngineProxy *engine,
+                               guint           prop_id,
+                               const GValue   *value,
+                               GParamSpec     *pspec)
 {
-    if (ibus_proxy_get_connection ((IBusProxy *) engine)) {
-        ibus_proxy_call ((IBusProxy *) engine,
-                         "Destroy",
-                         G_TYPE_INVALID);
+    switch (prop_id) {
+    case PROP_ENGINE_DESC:
+        g_assert (engine->desc == NULL);
+        engine->desc = g_value_dup_object (value);
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (engine, prop_id, pspec);
     }
+}
+
+static void
+bus_engine_proxy_get_property (BusEngineProxy *engine,
+                               guint           prop_id,
+                               GValue         *value,
+                               GParamSpec     *pspec)
+{
+    switch (prop_id) {
+    case PROP_ENGINE_DESC:
+        g_value_set_object (value, bus_engine_proxy_get_desc (engine));
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (engine, prop_id, pspec);
+    }
+
+}
+
+static void
+bus_engine_proxy_real_destroy (IBusProxy *proxy)
+{
+    BusEngineProxy *engine = (BusEngineProxy *)proxy;
+
+    g_dbus_proxy_call ((GDBusProxy *)proxy,
+                       "org.freedesktop.IBus.Service.Destroy",
+                       NULL,
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1,
+                       NULL,
+                       NULL,
+                       NULL);
 
     if (engine->desc) {
         g_object_unref (engine->desc);
@@ -335,26 +416,38 @@ bus_engine_proxy_real_destroy (BusEngineProxy *engine)
         engine->keymap = NULL;
     }
 
-    IBUS_OBJECT_CLASS(bus_engine_proxy_parent_class)->destroy (IBUS_OBJECT (engine));
+    if (engine->surrounding_text) {
+        g_object_unref (engine->surrounding_text);
+        engine->surrounding_text = NULL;
+    }
+
+    IBUS_PROXY_CLASS (bus_engine_proxy_parent_class)->destroy ((IBusProxy *)engine);
 }
 
-static gboolean
-bus_engine_proxy_ibus_signal (IBusProxy     *proxy,
-                              IBusMessage   *message)
+static void
+_g_object_unref_if_floating (gpointer instance)
 {
-    g_assert (BUS_IS_ENGINE_PROXY (proxy));
-    g_assert (message != NULL);
-    g_assert (ibus_message_get_type (message) == DBUS_MESSAGE_TYPE_SIGNAL);
+    if (g_object_is_floating (instance))
+        g_object_unref (instance);
+}
 
-    const gchar *interface;
-    const gchar *name;
-    BusEngineProxy *engine;
-    IBusError *error;
-    gint i;
+/**
+ * bus_engine_proxy_g_signal:
+ *
+ * Handle all D-Bus signals from the engine process. This function emits corresponding glib signal for the D-Bus signal.
+ */
+static void
+bus_engine_proxy_g_signal (GDBusProxy  *proxy,
+                           const gchar *sender_name,
+                           const gchar *signal_name,
+                           GVariant    *parameters)
+{
+    BusEngineProxy *engine = (BusEngineProxy *)proxy;
 
+    /* The list of nullary D-Bus signals. */
     static const struct {
-        const gchar *member;
-        const guint signal_id;
+        const gchar *signal_name;
+        const guint  signal_id;
     } signals [] = {
         { "ShowPreeditText",        SHOW_PREEDIT_TEXT },
         { "HidePreeditText",        HIDE_PREEDIT_TEXT },
@@ -366,290 +459,464 @@ bus_engine_proxy_ibus_signal (IBusProxy     *proxy,
         { "PageDownLookupTable",    PAGE_DOWN_LOOKUP_TABLE },
         { "CursorUpLookupTable",    CURSOR_UP_LOOKUP_TABLE },
         { "CursorDownLookupTable",  CURSOR_DOWN_LOOKUP_TABLE },
+        { "RequireSurroundingText", REQUIRE_SURROUNDING_TEXT },
     };
 
-    engine = BUS_ENGINE_PROXY (proxy);
-    interface = ibus_message_get_interface (message);
-    name = ibus_message_get_member (message);
-
-    if (interface != NULL && g_strcmp0 (interface, IBUS_INTERFACE_ENGINE) != 0)
-        return FALSE;
-
+    gint i;
     for (i = 0; i < G_N_ELEMENTS (signals); i++) {
-        if (g_strcmp0 (name, signals[i].member) == 0) {
+        if (g_strcmp0 (signal_name, signals[i].signal_name) == 0) {
             g_signal_emit (engine, engine_signals[signals[i].signal_id], 0);
-            goto handled;
+            return;
         }
     }
 
-    if (g_strcmp0 (name, "CommitText") == 0) {
-        IBusText *text;
-        gboolean retval;
+    /* Handle D-Bus signals with parameters. Deserialize them and emit a glib signal. */
+    if (g_strcmp0 (signal_name, "CommitText") == 0) {
+        GVariant *arg0 = NULL;
+        g_variant_get (parameters, "(v)", &arg0);
+        g_return_if_fail (arg0 != NULL);
 
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        IBUS_TYPE_TEXT, &text,
-                                        G_TYPE_INVALID);
-        if (!retval)
-            goto failed;
+        IBusText *text = IBUS_TEXT (ibus_serializable_deserialize (arg0));
+        g_variant_unref (arg0);
+        g_return_if_fail (text != NULL);
         g_signal_emit (engine, engine_signals[COMMIT_TEXT], 0, text);
-        g_object_unref (text);
+        _g_object_unref_if_floating (text);
+        return;
     }
-    else if (g_strcmp0 (name, "ForwardKeyEvent") == 0) {
-        guint32 keyval;
-        guint32 keycode;
-        guint32 states;
-        gboolean retval;
 
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        G_TYPE_UINT, &keyval,
-                                        G_TYPE_UINT, &keycode,
-                                        G_TYPE_UINT, &states,
-                                        G_TYPE_INVALID);
+    if (g_strcmp0 (signal_name, "ForwardKeyEvent") == 0) {
+        guint32 keyval = 0;
+        guint32 keycode = 0;
+        guint32 states = 0;
+        g_variant_get (parameters, "(uuu)", &keyval, &keycode, &states);
 
-        if (!retval)
-            goto failed;
         g_signal_emit (engine,
                        engine_signals[FORWARD_KEY_EVENT],
                        0,
                        keyval,
                        keycode,
                        states);
+        return;
     }
-    else if (g_strcmp0 (name, "DeleteSurroundingText") == 0) {
-        gint  offset_from_cursor;
-        guint nchars;
-        gboolean retval;
 
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        G_TYPE_INT,  &offset_from_cursor,
-                                        G_TYPE_UINT, &nchars,
-                                        G_TYPE_INVALID);
+    if (g_strcmp0 (signal_name, "DeleteSurroundingText") == 0) {
+        gint  offset_from_cursor = 0;
+        guint nchars = 0;
+        g_variant_get (parameters, "(iu)", &offset_from_cursor, &nchars);
 
-        if (!retval)
-            goto failed;
-        g_signal_emit (engine, engine_signals[DELETE_SURROUNDING_TEXT], 0, offset_from_cursor, nchars);
+        g_signal_emit (engine,
+                       engine_signals[DELETE_SURROUNDING_TEXT],
+                       0, offset_from_cursor, nchars);
+        return;
     }
-    else if (g_strcmp0 (name, "UpdatePreeditText") == 0) {
-        IBusText *text;
-        gint cursor_pos;
-        gboolean visible;
-        gboolean retval;
-        guint mode;
 
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        IBUS_TYPE_TEXT, &text,
-                                        G_TYPE_UINT, &cursor_pos,
-                                        G_TYPE_BOOLEAN, &visible,
-                                        G_TYPE_UINT, &mode,
-                                        G_TYPE_INVALID);
+    if (g_strcmp0 (signal_name, "UpdatePreeditText") == 0) {
+        GVariant *arg0 = NULL;
+        guint cursor_pos = 0;
+        gboolean visible = FALSE;
+        guint mode = 0;
 
-        if (!retval)
-            goto failed;
+        g_variant_get (parameters, "(vubu)", &arg0, &cursor_pos, &visible, &mode);
+        g_return_if_fail (arg0 != NULL);
 
-        g_signal_emit (engine, engine_signals[UPDATE_PREEDIT_TEXT], 0,
-                        text, cursor_pos, visible, mode);
-        if (g_object_is_floating (text))
-            g_object_unref (text);
+        IBusText *text = IBUS_TEXT (ibus_serializable_deserialize (arg0));
+        g_variant_unref (arg0);
+        g_return_if_fail (text != NULL);
+
+        g_signal_emit (engine,
+                       engine_signals[UPDATE_PREEDIT_TEXT],
+                       0, text, cursor_pos, visible, mode);
+
+        _g_object_unref_if_floating (text);
+        return;
     }
-    else if (g_strcmp0 (name, "UpdateAuxiliaryText") == 0) {
-        IBusText *text;
-        gboolean visible;
-        gboolean retval;
 
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        IBUS_TYPE_TEXT, &text,
-                                        G_TYPE_BOOLEAN, &visible,
-                                        G_TYPE_INVALID);
+    if (g_strcmp0 (signal_name, "UpdateAuxiliaryText") == 0) {
+        GVariant *arg0 = NULL;
+        gboolean visible = FALSE;
 
-        if (!retval)
-            goto failed;
+        g_variant_get (parameters, "(vb)", &arg0, &visible);
+        g_return_if_fail (arg0 != NULL);
+
+        IBusText *text = IBUS_TEXT (ibus_serializable_deserialize (arg0));
+        g_variant_unref (arg0);
+        g_return_if_fail (text != NULL);
 
         g_signal_emit (engine, engine_signals[UPDATE_AUXILIARY_TEXT], 0, text, visible);
-        if (g_object_is_floating (text))
-            g_object_unref (text);
+        _g_object_unref_if_floating (text);
+        return;
     }
-    else if (g_strcmp0 (name, "UpdateLookupTable") == 0) {
-        IBusLookupTable *table;
-        gboolean visible;
-        gboolean retval;
 
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        IBUS_TYPE_LOOKUP_TABLE, &table,
-                                        G_TYPE_BOOLEAN, &visible,
-                                        G_TYPE_INVALID);
+    if (g_strcmp0 (signal_name, "UpdateLookupTable") == 0) {
+        GVariant *arg0 = NULL;
+        gboolean visible = FALSE;
 
-        if (!retval)
-            goto failed;
+        g_variant_get (parameters, "(vb)", &arg0, &visible);
+        g_return_if_fail (arg0 != NULL);
+
+        IBusLookupTable *table = IBUS_LOOKUP_TABLE (ibus_serializable_deserialize (arg0));
+        g_variant_unref (arg0);
+        g_return_if_fail (table != NULL);
 
         g_signal_emit (engine, engine_signals[UPDATE_LOOKUP_TABLE], 0, table, visible);
-        if (g_object_is_floating (table))
-            g_object_unref (table);
+        _g_object_unref_if_floating (table);
+        return;
     }
-    else if (g_strcmp0 (name, "RegisterProperties") == 0) {
-        gboolean retval;
-        IBusPropList *prop_list;
 
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        IBUS_TYPE_PROP_LIST, &prop_list,
-                                        G_TYPE_INVALID);
-        if (!retval) {
-            goto failed;
-        }
+    if (g_strcmp0 (signal_name, "RegisterProperties") == 0) {
+        GVariant *arg0 = NULL;
+        g_variant_get (parameters, "(v)", &arg0);
+        g_return_if_fail (arg0 != NULL);
+
+        IBusPropList *prop_list = IBUS_PROP_LIST (ibus_serializable_deserialize (arg0));
+        g_variant_unref (arg0);
+        g_return_if_fail (prop_list != NULL);
+
         g_signal_emit (engine, engine_signals[REGISTER_PROPERTIES], 0, prop_list);
-
-        if (g_object_is_floating (prop_list))
-            g_object_unref (prop_list);
-
+        _g_object_unref_if_floating (prop_list);
+        return;
     }
-    else if (g_strcmp0 (name, "UpdateProperty") == 0) {
-        IBusProperty *prop;
-        gboolean retval;
 
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        IBUS_TYPE_PROPERTY, &prop,
-                                        G_TYPE_INVALID);
+    if (g_strcmp0 (signal_name, "UpdateProperty") == 0) {
+        GVariant *arg0 = NULL;
+        g_variant_get (parameters, "(v)", &arg0);
+        g_return_if_fail (arg0 != NULL);
 
-        if (!retval)
-            goto failed;
+        IBusProperty *prop = IBUS_PROPERTY (ibus_serializable_deserialize (arg0));
+        g_variant_unref (arg0);
+        g_return_if_fail (prop != NULL);
 
         g_signal_emit (engine, engine_signals[UPDATE_PROPERTY], 0, prop);
-        if (g_object_is_floating (prop))
-            g_object_unref (prop);
+        _g_object_unref_if_floating (prop);
+        return;
     }
-    else
-        return FALSE;
 
-handled:
-    g_signal_stop_emission_by_name (engine, "ibus-signal");
-    return TRUE;
+    g_return_if_reached ();
+}
 
-failed:
-    g_warning ("%s: %s", error->name, error->message);
-    ibus_error_free (error);
-    return FALSE;
+static BusEngineProxy *
+bus_engine_proxy_new_internal (const gchar     *path,
+                               IBusEngineDesc  *desc,
+                               GDBusConnection *connection)
+{
+    g_assert (path);
+    g_assert (IBUS_IS_ENGINE_DESC (desc));
+    g_assert (G_IS_DBUS_CONNECTION (connection));
+
+
+    BusEngineProxy *engine =
+        (BusEngineProxy *) g_initable_new (BUS_TYPE_ENGINE_PROXY,
+                                           NULL,
+                                           NULL,
+                                           "desc",              desc,
+                                           "g-connection",      connection,
+                                           "g-interface-name",  IBUS_INTERFACE_ENGINE,
+                                           "g-object-path",     path,
+                                           "g-default-timeout", g_gdbus_timeout,
+                                           "g-flags",           G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START | G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+                                           NULL);
+    const gchar *layout = ibus_engine_desc_get_layout (desc);
+    if (layout != NULL && layout[0] != '\0') {
+        engine->keymap = ibus_keymap_get (layout);
+    }
+    return engine;
 }
 
 typedef struct {
-    GFunc    func;
-    gpointer user_data;
-    BusEngineProxy *engine;
-} CallData;
+    GSimpleAsyncResult *simple;
+    IBusEngineDesc  *desc;
+    BusComponent    *component;
+    BusFactoryProxy *factory;
+    GCancellable *cancellable;
+    gulong cancelled_handler_id;
+    guint handler_id;
+    guint timeout_id;
+    gint timeout;
+} EngineProxyNewData;
 
 static void
-bus_engine_proxy_process_key_event_reply_cb (IBusPendingCall *pending,
-                                             CallData        *call_data)
+engine_proxy_new_data_free (EngineProxyNewData *data)
 {
-    IBusMessage *reply_message;
-    IBusError *error;
-    gboolean retval = FALSE;
-
-    reply_message = dbus_pending_call_steal_reply (pending);
-
-    if (reply_message == NULL) {
-        /* reply timeout */
-        IBusObject *connection;
-        connection = (IBusObject *) ibus_proxy_get_connection ((IBusProxy *)call_data->engine);
-        ibus_object_destroy (connection);
-        goto _out;
+    if (data->simple != NULL) {
+        if (data->handler_id != 0)
+            g_signal_handler_disconnect (data->component, data->handler_id);
+        g_object_unref (data->simple);
     }
-    else if ((error = ibus_error_new_from_message (reply_message)) != NULL) {
-        if (g_strcmp0 (error->name, DBUS_ERROR_NO_REPLY) == 0) {
-            /* reply timeout */
-            IBusObject *connection;
-            connection = (IBusObject *) ibus_proxy_get_connection ((IBusProxy *)call_data->engine);
-            if (connection) {
-                ibus_object_destroy (connection);
-            }
+
+    if (data->component != NULL)
+        g_object_unref (data->component);
+
+    if (data->factory != NULL)
+        g_object_unref (data->factory);
+
+    if (data->timeout_id != 0)
+        g_source_remove (data->timeout_id);
+
+    if (data->cancellable != NULL) {
+        if (data->cancelled_handler_id != 0)
+            g_cancellable_disconnect (data->cancellable,
+                data->cancelled_handler_id);
+        g_object_unref (data->cancellable);
+    }
+
+    g_slice_free (EngineProxyNewData, data);
+}
+
+/**
+ * create_engine_ready_cb:
+ *
+ * A callback function to be called when bus_factory_proxy_create_engine finishes.
+ * Create an BusEngineProxy object and call the GAsyncReadyCallback.
+ */
+static void
+create_engine_ready_cb (BusFactoryProxy    *factory,
+                        GAsyncResult       *res,
+                        EngineProxyNewData *data)
+{
+    g_return_if_fail (data->simple != NULL);
+
+    GError *error = NULL;
+    gchar *path = bus_factory_proxy_create_engine_finish (factory,
+                                                          res,
+                                                          &error);
+    if (path == NULL) {
+        g_simple_async_result_set_from_error (data->simple, error);
+        g_simple_async_result_complete_in_idle (data->simple);
+        engine_proxy_new_data_free (data);
+        return;
+    }
+
+    BusEngineProxy *engine =
+            bus_engine_proxy_new_internal (path,
+                                           data->desc,
+                                           g_dbus_proxy_get_connection ((GDBusProxy *)data->factory));
+    g_free (path);
+
+    /* FIXME: set destroy callback ? */
+    g_simple_async_result_set_op_res_gpointer (data->simple, engine, NULL);
+    g_simple_async_result_complete_in_idle (data->simple);
+
+    engine_proxy_new_data_free (data);
+}
+
+/**
+ * notify_factory_cb:
+ *
+ * A callback function to be called when bus_component_start() emits "notify::factory" signal within 5 seconds.
+ * Call bus_factory_proxy_create_engine to create the engine proxy asynchronously.
+ */
+static void
+notify_factory_cb (BusComponent       *component,
+                   GParamSpec         *spec,
+                   EngineProxyNewData *data)
+{
+    data->factory = bus_component_get_factory (data->component);
+
+    if (data->factory != NULL) {
+        g_object_ref (data->factory);
+        /* Timeout should be removed */
+        if (data->timeout_id != 0) {
+            g_source_remove (data->timeout_id);
+            data->timeout_id = 0;
         }
-        g_warning ("%s: %s", error->name, error->message);
-        ibus_error_free (error);
-        goto _out;
-    }
+        /* Handler of notify::factory should be removed. */
+        if (data->handler_id != 0) {
+            g_signal_handler_disconnect (data->component, data->handler_id);
+            data->handler_id = 0;
+        }
 
-    if (!ibus_message_get_args (reply_message,
-                                &error,
-                                G_TYPE_BOOLEAN, &retval,
-                                G_TYPE_INVALID)) {
-        g_warning ("%s: %s", error->name, error->message);
-        ibus_error_free (error);
-        goto _out;
-    }
+        /* We *have to* disconnect the cancelled_cb here, since g_dbus_proxy_call
+         * calls create_engine_ready_cb even if the proxy call is cancelled, and
+         * in this case, create_engine_ready_cb itself will return error using
+         * g_simple_async_result_set_from_error and g_simple_async_result_complete.
+         * Otherwise, g_simple_async_result_complete might be called twice for a
+         * single data->simple twice (first in cancelled_cb and later in
+         * create_engine_ready_cb). */
+        if (data->cancellable && data->cancelled_handler_id != 0) {
+            g_cancellable_disconnect (data->cancellable, data->cancelled_handler_id);
+            data->cancelled_handler_id = 0;
+        }
 
-_out:
-    if (reply_message) {
-        ibus_message_unref (reply_message);
+        /* Create engine from factory. */
+        bus_factory_proxy_create_engine (data->factory,
+                                         data->desc,
+                                         data->timeout,
+                                         data->cancellable,
+                                         (GAsyncReadyCallback) create_engine_ready_cb,
+                                         data);
     }
-    g_object_unref (call_data->engine);
-    call_data->func (GINT_TO_POINTER (retval), call_data->user_data);
-    g_slice_free (CallData, call_data);
+    /* If factory is NULL, we will continue wait for
+     * factory notify signal or timeout */
+}
+
+/**
+ * timeout_cb:
+ *
+ * A callback function to be called when bus_component_start() does not emit "notify::factory" signal within 5 seconds.
+ * Call the GAsyncReadyCallback and stop the 5 sec timer.
+ */
+static gboolean
+timeout_cb (EngineProxyNewData *data)
+{
+    g_simple_async_result_set_error (data->simple,
+                                     G_DBUS_ERROR,
+                                     G_DBUS_ERROR_FAILED,
+                                     "Timeout was reached");
+    g_simple_async_result_complete_in_idle (data->simple);
+
+    engine_proxy_new_data_free (data);
+
+    return FALSE;
+}
+
+/**
+ * cancelled_cb:
+ *
+ * A callback function to be called when someone calls g_cancellable_cancel() for the cancellable object for bus_engine_proxy_new.
+ * Call the GAsyncReadyCallback.
+ */
+static gboolean
+cancelled_idle_cb (EngineProxyNewData *data)
+{
+    g_simple_async_result_set_error (data->simple,
+                                     G_DBUS_ERROR,
+                                     G_DBUS_ERROR_FAILED,
+                                     "Operation was cancelled");
+    g_simple_async_result_complete_in_idle (data->simple);
+
+    engine_proxy_new_data_free (data);
+
+    return FALSE;
+}
+
+static void
+cancelled_cb (GCancellable       *cancellable,
+              EngineProxyNewData *data)
+{
+    /* Cancel the bus_engine_proxy_new() in idle to avoid deadlock */
+    g_idle_add ((GSourceFunc) cancelled_idle_cb, data);
 }
 
 void
-bus_engine_proxy_process_key_event (BusEngineProxy *engine,
-                                    guint           keyval,
-                                    guint           keycode,
-                                    guint           state,
-                                    GFunc           return_cb,
-                                    gpointer        user_data)
+bus_engine_proxy_new (IBusEngineDesc      *desc,
+                      gint                 timeout,
+                      GCancellable        *cancellable,
+                      GAsyncReadyCallback  callback,
+                      gpointer             user_data)
+{
+    g_assert (IBUS_IS_ENGINE_DESC (desc));
+    g_assert (cancellable == NULL || G_IS_CANCELLABLE (cancellable));
+    g_assert (callback);
+
+    GSimpleAsyncResult *simple =
+        g_simple_async_result_new (NULL,
+                                   callback,
+                                   user_data,
+                                   bus_engine_proxy_new);
+
+    if (g_cancellable_is_cancelled (cancellable)) {
+        g_simple_async_result_set_error (simple,
+                                         G_DBUS_ERROR,
+                                         G_DBUS_ERROR_FAILED,
+                                         "Operation was cancelled");
+        g_simple_async_result_complete_in_idle (simple);
+        g_object_unref (simple);
+        return;
+    }
+
+    EngineProxyNewData *data = g_slice_new0 (EngineProxyNewData);
+    data->desc = g_object_ref (desc);
+    data->component = bus_component_from_engine_desc (desc);
+    g_object_ref (data->component);
+    data->simple = simple;
+    data->timeout = timeout;
+
+    g_object_set_data ((GObject *)data->simple, "EngineProxyNewData", data);
+
+    data->factory = bus_component_get_factory (data->component);
+
+    if (data->factory == NULL) {
+        /* The factory is not ready yet. Create the factory first, and wait for the "notify::factory" signal.
+         * In the handler of "notify::factory", we'll create the engine proxy. */
+        data->handler_id = g_signal_connect (data->component,
+                                             "notify::factory",
+                                             G_CALLBACK (notify_factory_cb),
+                                             data);
+        data->timeout_id = g_timeout_add (timeout,
+                                          (GSourceFunc) timeout_cb,
+                                          data);
+        if (cancellable) {
+            data->cancellable = (GCancellable *) g_object_ref (cancellable);
+            data->cancelled_handler_id = g_cancellable_connect (cancellable,
+                                                                (GCallback) cancelled_cb,
+                                                                data,
+                                                                NULL);
+        }
+        bus_component_start (data->component, g_verbose);
+    }
+    else {
+        /* The factory is ready. We'll create the engine proxy directly. */
+        g_object_ref (data->factory);
+
+        /* We don't have to connect to cancelled_cb here, since g_dbus_proxy_call
+         * calls create_engine_ready_cb even if the proxy call is cancelled, and
+         * in this case, create_engine_ready_cb itself can return error using
+         * g_simple_async_result_set_from_error and g_simple_async_result_complete. */
+        bus_factory_proxy_create_engine (data->factory,
+                                         data->desc,
+                                         timeout,
+                                         cancellable,
+                                         (GAsyncReadyCallback) create_engine_ready_cb,
+                                         data);
+    }
+}
+
+BusEngineProxy *
+bus_engine_proxy_new_finish (GAsyncResult   *res,
+                             GError       **error)
+{
+    GSimpleAsyncResult *simple = G_SIMPLE_ASYNC_RESULT (res);
+
+    g_assert (error == NULL || *error == NULL);
+    g_assert (g_simple_async_result_get_source_tag (simple) == bus_engine_proxy_new);
+
+    if (g_simple_async_result_propagate_error (simple, error))
+        return NULL;
+
+    return (BusEngineProxy *) g_simple_async_result_get_op_res_gpointer(simple);
+}
+
+void
+bus_engine_proxy_process_key_event (BusEngineProxy      *engine,
+                                    guint                keyval,
+                                    guint                keycode,
+                                    guint                state,
+                                    GAsyncReadyCallback  callback,
+                                    gpointer             user_data)
 {
     g_assert (BUS_IS_ENGINE_PROXY (engine));
-    g_assert (return_cb);
 
-    IBusPendingCall *pending = NULL;
-    CallData *call_data;
-    IBusError *error;
-    gboolean retval;
-
-    if (keycode != 0 && !BUS_DEFAULT_IBUS->use_sys_layout && engine->keymap != NULL) {
-        guint t = ibus_keymap_lookup_keysym (engine->keymap, keycode, state);
-        if (t != IBUS_VoidSymbol) {
-            keyval = t;
+    if (keycode != 0 && bus_ibus_impl_is_use_sys_layout (BUS_DEFAULT_IBUS) == FALSE) {
+        /* Since use_sys_layout is false, we don't rely on XKB. Try to convert keyval from keycode by using our own mapping. */
+        IBusKeymap *keymap = engine->keymap;
+        if (keymap == NULL)
+            keymap = BUS_DEFAULT_KEYMAP;
+        if (keymap != NULL) {
+            guint t = ibus_keymap_lookup_keysym (engine->keymap, keycode, state);
+            if (t != IBUS_VoidSymbol) {
+                keyval = t;
+            }
         }
     }
 
-    retval = ibus_proxy_call_with_reply ((IBusProxy *) engine,
-                                         "ProcessKeyEvent",
-                                         &pending,
-                                         g_dbus_timeout,
-                                         &error,
-                                         G_TYPE_UINT, &keyval,
-                                         G_TYPE_UINT, &keycode,
-                                         G_TYPE_UINT, &state,
-                                         G_TYPE_INVALID);
-    if (!retval) {
-        g_warning ("%s: %s", error->name, error->message);
-        ibus_error_free (error);
-        return_cb (GINT_TO_POINTER (FALSE), user_data);
-        return;
-    }
-
-    call_data = g_slice_new0 (CallData);
-    call_data->func = return_cb;
-    call_data->user_data = user_data;
-    g_object_ref (engine);
-    call_data->engine = engine;
-
-    retval = ibus_pending_call_set_notify (pending,
-                                           (IBusPendingCallNotifyFunction) bus_engine_proxy_process_key_event_reply_cb,
-                                           call_data,
-                                           NULL);
-    ibus_pending_call_unref (pending);
-
-    if (!retval) {
-        g_object_unref (call_data->engine);
-        g_slice_free (CallData, call_data);
-        g_warning ("%s : ProcessKeyEvent", DBUS_ERROR_NO_MEMORY);
-        return_cb (GINT_TO_POINTER (FALSE), user_data);
-        return;
-    }
+    g_dbus_proxy_call ((GDBusProxy *)engine,
+                       "ProcessKeyEvent",
+                       g_variant_new ("(uuu)", keyval, keycode, state),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1,
+                       NULL,
+                       callback,
+                       user_data);
 }
 
 void
@@ -666,13 +933,14 @@ bus_engine_proxy_set_cursor_location (BusEngineProxy *engine,
         engine->y = y;
         engine->w = w;
         engine->h = h;
-        ibus_proxy_call ((IBusProxy *) engine,
-                         "SetCursorLocation",
-                         G_TYPE_INT, &x,
-                         G_TYPE_INT, &y,
-                         G_TYPE_INT, &w,
-                         G_TYPE_INT, &h,
-                         G_TYPE_INVALID);
+        g_dbus_proxy_call ((GDBusProxy *)engine,
+                           "SetCursorLocation",
+                           g_variant_new ("(iiii)", x, y, w, h),
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           NULL,
+                           NULL);
     }
 }
 
@@ -684,10 +952,14 @@ bus_engine_proxy_set_capabilities (BusEngineProxy *engine,
 
     if (engine->capabilities != caps) {
         engine->capabilities = caps;
-        ibus_proxy_call ((IBusProxy *) engine,
-                         "SetCapabilities",
-                         G_TYPE_UINT, &caps,
-                         G_TYPE_INVALID);
+        g_dbus_proxy_call ((GDBusProxy *)engine,
+                           "SetCapabilities",
+                           g_variant_new ("(u)", caps),
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           NULL,
+                           NULL);
     }
 }
 
@@ -699,11 +971,14 @@ bus_engine_proxy_property_activate (BusEngineProxy *engine,
     g_assert (BUS_IS_ENGINE_PROXY (engine));
     g_assert (prop_name != NULL);
 
-    ibus_proxy_call ((IBusProxy *) engine,
-                     "PropertyActivate",
-                     G_TYPE_STRING, &prop_name,
-                     G_TYPE_UINT, &prop_state,
-                     G_TYPE_INVALID);
+    g_dbus_proxy_call ((GDBusProxy *)engine,
+                       "PropertyActivate",
+                       g_variant_new ("(su)", prop_name, prop_state),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1,
+                       NULL,
+                       NULL,
+                       NULL);
 }
 
 void
@@ -713,10 +988,14 @@ bus_engine_proxy_property_show (BusEngineProxy *engine,
     g_assert (BUS_IS_ENGINE_PROXY (engine));
     g_assert (prop_name != NULL);
 
-    ibus_proxy_call ((IBusProxy *) engine,
-                     "PropertyShow",
-                     G_TYPE_STRING, &prop_name,
-                     G_TYPE_INVALID);
+    g_dbus_proxy_call ((GDBusProxy *)engine,
+                       "PropertyShow",
+                       g_variant_new ("(s)", prop_name),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1,
+                       NULL,
+                       NULL,
+                       NULL);
 }
 
 void bus_engine_proxy_property_hide (BusEngineProxy *engine,
@@ -725,20 +1004,54 @@ void bus_engine_proxy_property_hide (BusEngineProxy *engine,
     g_assert (BUS_IS_ENGINE_PROXY (engine));
     g_assert (prop_name != NULL);
 
-    ibus_proxy_call ((IBusProxy *) engine,
-                     "PropertyHide",
-                     G_TYPE_STRING, &prop_name,
-                     G_TYPE_INVALID);
+    g_dbus_proxy_call ((GDBusProxy *)engine,
+                       "PropertyHide",
+                       g_variant_new ("(s)", prop_name),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1,
+                       NULL,
+                       NULL,
+                       NULL);
 }
 
+void bus_engine_proxy_set_surrounding_text (BusEngineProxy *engine,
+                                            IBusText       *text,
+                                            guint           cursor_pos)
+{
+    g_assert (BUS_IS_ENGINE_PROXY (engine));
+    g_assert (text != NULL);
+
+    if (!engine->surrounding_text ||
+        g_strcmp0 (text->text, engine->surrounding_text->text) != 0 ||
+        cursor_pos != engine->surrounding_cursor_pos) {
+        GVariant *variant = ibus_serializable_serialize ((IBusSerializable *)text);
+        if (engine->surrounding_text)
+            g_object_unref (engine->surrounding_text);
+        engine->surrounding_text = (IBusText *) g_object_ref_sink (text);
+        engine->surrounding_cursor_pos = cursor_pos;
+
+        g_dbus_proxy_call ((GDBusProxy *)engine,
+                           "SetSurroundingText",
+                           g_variant_new ("(vu)", variant, cursor_pos),
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           NULL,
+                           NULL);
+    }
+}
+
+/* a macro to generate a function to call a nullary D-Bus method. */
 #define DEFINE_FUNCTION(Name, name)                         \
     void                                                    \
     bus_engine_proxy_##name (BusEngineProxy *engine)        \
     {                                                       \
         g_assert (BUS_IS_ENGINE_PROXY (engine));            \
-        ibus_proxy_call ((IBusProxy *) engine,              \
-                     #Name,                                 \
-                     G_TYPE_INVALID);                       \
+        g_dbus_proxy_call ((GDBusProxy *)engine,            \
+                           #Name,                           \
+                           NULL,                            \
+                           G_DBUS_CALL_FLAGS_NONE,          \
+                           -1, NULL, NULL, NULL);           \
     }
 
 DEFINE_FUNCTION (Reset, reset)
@@ -755,9 +1068,14 @@ bus_engine_proxy_focus_in (BusEngineProxy *engine)
     g_assert (BUS_IS_ENGINE_PROXY (engine));
     if (!engine->has_focus) {
         engine->has_focus = TRUE;
-        ibus_proxy_call ((IBusProxy *) engine,
-                         "FocusIn",
-                         G_TYPE_INVALID);
+        g_dbus_proxy_call ((GDBusProxy *)engine,
+                           "FocusIn",
+                           NULL,
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           NULL,
+                           NULL);
     }
 }
 
@@ -767,9 +1085,14 @@ bus_engine_proxy_focus_out (BusEngineProxy *engine)
     g_assert (BUS_IS_ENGINE_PROXY (engine));
     if (engine->has_focus) {
         engine->has_focus = FALSE;
-        ibus_proxy_call ((IBusProxy *) engine,
-                         "FocusOut",
-                         G_TYPE_INVALID);
+        g_dbus_proxy_call ((GDBusProxy *)engine,
+                           "FocusOut",
+                           NULL,
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           NULL,
+                           NULL);
     }
 }
 
@@ -779,9 +1102,14 @@ bus_engine_proxy_enable (BusEngineProxy *engine)
     g_assert (BUS_IS_ENGINE_PROXY (engine));
     if (!engine->enabled) {
         engine->enabled = TRUE;
-        ibus_proxy_call ((IBusProxy *) engine,
-                         "Enable",
-                         G_TYPE_INVALID);
+        g_dbus_proxy_call ((GDBusProxy *)engine,
+                           "Enable",
+                           NULL,
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           NULL,
+                           NULL);
     }
 }
 
@@ -791,9 +1119,14 @@ bus_engine_proxy_disable (BusEngineProxy *engine)
     g_assert (BUS_IS_ENGINE_PROXY (engine));
     if (engine->enabled) {
         engine->enabled = FALSE;
-        ibus_proxy_call ((IBusProxy *) engine,
-                         "Disable",
-                         G_TYPE_INVALID);
+        g_dbus_proxy_call ((GDBusProxy *)engine,
+                           "Disable",
+                           NULL,
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           NULL,
+                           NULL);
     }
 }
 
@@ -805,12 +1138,14 @@ bus_engine_proxy_candidate_clicked (BusEngineProxy *engine,
 {
     g_assert (BUS_IS_ENGINE_PROXY (engine));
 
-    ibus_proxy_call ((IBusProxy *) engine,
-                     "CandidateClicked",
-                     G_TYPE_UINT, &index,
-                     G_TYPE_UINT, &button,
-                     G_TYPE_UINT, &state,
-                     G_TYPE_INVALID);
+    g_dbus_proxy_call ((GDBusProxy *)engine,
+                       "CandidateClicked",
+                       g_variant_new ("(uuu)", index, button, state),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1,
+                       NULL,
+                       NULL,
+                       NULL);
 }
 
 IBusEngineDesc *
@@ -827,4 +1162,28 @@ bus_engine_proxy_is_enabled (BusEngineProxy *engine)
     g_assert (BUS_IS_ENGINE_PROXY (engine));
 
     return engine->enabled;
+}
+
+static gboolean
+initable_init (GInitable     *initable,
+               GCancellable  *cancellable,
+               GError       **error)
+{
+    BusEngineProxy *engine = BUS_ENGINE_PROXY (initable);
+    if (engine->desc == NULL) {
+        *error = g_error_new (G_DBUS_ERROR,
+                              G_DBUS_ERROR_FAILED,
+                              "Desc is NULL");
+        return FALSE;
+    }
+
+    return parent_initable_iface->init (initable,
+                                        cancellable,
+                                        error);
+}
+
+static void
+bus_engine_proxy_initable_iface_init (GInitableIface *initable_iface)
+{
+    initable_iface->init = initable_init;
 }

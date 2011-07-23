@@ -93,6 +93,33 @@ IBusProperty
 @Returns: 
 
 
+<!-- ##### FUNCTION ibus_property_get_key ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_get_prop_type ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_get_label ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_property_set_label ##### -->
 <para>
 
@@ -100,6 +127,15 @@ IBusProperty
 
 @prop: 
 @label: 
+
+
+<!-- ##### FUNCTION ibus_property_get_icon ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
 
 
 <!-- ##### FUNCTION ibus_property_set_icon ##### -->
@@ -111,6 +147,15 @@ IBusProperty
 @icon: 
 
 
+<!-- ##### FUNCTION ibus_property_get_tooltip ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_property_set_tooltip ##### -->
 <para>
 
@@ -118,6 +163,15 @@ IBusProperty
 
 @prop: 
 @tooltip: 
+
+
+<!-- ##### FUNCTION ibus_property_get_sensitive ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
 
 
 <!-- ##### FUNCTION ibus_property_set_sensitive ##### -->
@@ -129,6 +183,15 @@ IBusProperty
 @sensitive: 
 
 
+<!-- ##### FUNCTION ibus_property_get_visible ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_property_set_visible ##### -->
 <para>
 
@@ -138,6 +201,15 @@ IBusProperty
 @visible: 
 
 
+<!-- ##### FUNCTION ibus_property_get_state ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_property_set_state ##### -->
 <para>
 
@@ -145,6 +217,15 @@ IBusProperty
 
 @prop: 
 @state: 
+
+
+<!-- ##### FUNCTION ibus_property_get_sub_props ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
 
 
 <!-- ##### FUNCTION ibus_property_set_sub_props ##### -->

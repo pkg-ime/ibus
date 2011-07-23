@@ -33,14 +33,14 @@ typedef guint KEYMAP[256][7];
 static void         ibus_keymap_destroy         (IBusKeymap             *keymap);
 static gboolean     ibus_keymap_load            (const gchar            *name,
                                                  KEYMAP                  keymap);
-static GHashTable      *keymaps = NULL;
+static GHashTable   *keymaps = NULL;
 
 G_DEFINE_TYPE (IBusKeymap, ibus_keymap, IBUS_TYPE_OBJECT)
 
 static void
-ibus_keymap_class_init (IBusKeymapClass *klass)
+ibus_keymap_class_init (IBusKeymapClass *class)
 {
-    IBusObjectClass *object_class = IBUS_OBJECT_CLASS (klass);
+    IBusObjectClass *object_class = IBUS_OBJECT_CLASS (class);
 
     object_class->destroy = (IBusObjectDestroyFunc) ibus_keymap_destroy;
 }
@@ -119,7 +119,7 @@ ibus_keymap_parse_line (gchar  *str,
     if (keycode == 0 && p1 == p2)
         return FALSE;
 
-    if (keycode < 0 || keycode > 255)
+    if ((int) keycode < 0 || keycode > 255)
         return FALSE;
 
     p1 = p2;

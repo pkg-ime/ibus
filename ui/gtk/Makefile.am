@@ -23,6 +23,7 @@
 ui_gtk_PYTHON = \
 	candidatepanel.py \
 	handle.py \
+	i18n.py \
 	icon.py \
 	languagebar.py \
 	main.py \
@@ -68,4 +69,6 @@ test:
 		IBUS_DATAROOTDIR=@datarootdir@ \
 		IBUS_LOCALEDIR=@localedir@ \
 		PYTHONPATH=$(top_srcdir) \
-		$(PYTHON) $(srcdir)/main.py
+		$(PYTHON) $(srcdir)/main.py --replace
+
+-include $(top_srcdir)/git.mk

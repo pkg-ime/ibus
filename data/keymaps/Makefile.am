@@ -37,6 +37,7 @@
 # 	fr-ch \
 # 	hr \
 # 	hu \
+# 	in \
 # 	is \
 # 	it \
 # 	jp \
@@ -64,6 +65,7 @@ keymaps = \
 	us \
 	jp \
 	kr \
+	in \
 	$(NULL)
 
 keymaps_DATA = $(keymaps)
@@ -72,3 +74,5 @@ keymapsdir = $(pkgdatadir)/keymaps
 EXTRA_DIST = \
 	$(keymaps) \
 	$(NULL)
+
+-include $(top_srcdir)/git.mk

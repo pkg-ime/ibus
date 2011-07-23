@@ -22,7 +22,7 @@
 
 
 libIMdkit = $(top_builddir)/util/IMdkit/libIMdkit.la
-libibus = $(top_builddir)/src/libibus.la
+libibus = $(top_builddir)/src/libibus-@IBUS_API_VERSION@.la
 
 libexec_PROGRAMS = ibus-x11
 
@@ -70,3 +70,5 @@ locales.h:
 		uniq | sort | \
 		xargs python -c 'import sys;print "#define LOCALES_STRING \"%s\"" % ",".join(sys.argv[1:])' \
 	 ) > $@
+
+-include $(top_srcdir)/git.mk

@@ -20,6 +20,7 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include "ibusshare.h"
 #include <glib.h>
 #include <glib/gstdio.h>
 #include <glib-object.h>
@@ -29,8 +30,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <dbus/dbus.h>
-#include "ibusshare.h"
+#include <ibus.h>
 
 static gchar *_display = NULL;
 
@@ -40,9 +40,18 @@ ibus_get_local_machine_id (void)
     static gchar *machine_id = NULL;
 
     if (machine_id == NULL) {
-        gchar *id = dbus_get_local_machine_id ();
-        machine_id = g_strdup (id);
-        dbus_free (id);
+        GError *error = NULL;
+        if (!g_file_get_contents ("/var/lib/dbus/machine-id",
+                                  &machine_id,
+                                  NULL,
+                                  &error)) {
+            g_warning ("Unable to load /var/lib/dbus/machine-id: %s", error->message);
+            g_error_free (error);
+            machine_id = "machine-id";
+        }
+        else {
+            g_strstrip (machine_id);
+        }
     }
 
     return machine_id;
@@ -185,6 +194,27 @@ ibus_get_socket_path (void)
     return path;
 }
 
+gint
+ibus_get_timeout (void)
+{
+    /* 6000 ms is the default timeout on the ibus-daemon side (5 sec) plus 1. */
+    static const gint default_timeout = 6000;
+
+    static gint64 timeout = -2;
+    if (timeout == -2) {
+        const gchar *timeout_str = g_getenv ("IBUS_TIMEOUT");
+        if (timeout_str == NULL) {
+            timeout = default_timeout;
+        } else {
+            timeout = g_ascii_strtoll(timeout_str, NULL, 10);
+            if (timeout < -1 || timeout == 0 || timeout > G_MAXINT) {
+                timeout = default_timeout;
+            }
+        }
+    }
+    return timeout;
+}
+
 const gchar *
 ibus_get_address (void)
 {
@@ -199,7 +229,7 @@ ibus_get_address (void)
         address = NULL;
     }
 
-    /* get address from evn variable */
+    /* get address from env variable */
     address = g_strdup (g_getenv ("IBUS_ADDRESS"));
     if (address) {
         return address;
@@ -287,6 +317,12 @@ void
 ibus_init (void)
 {
     g_type_init ();
+    IBUS_TYPE_TEXT;
+    IBUS_TYPE_ATTRIBUTE;
+    IBUS_TYPE_ATTR_LIST;
+    IBUS_TYPE_LOOKUP_TABLE;
+    IBUS_TYPE_COMPONENT;
+    IBUS_TYPE_ENGINE_DESC;
 }
 
 static GMainLoop *main_loop = NULL;

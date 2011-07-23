@@ -43,8 +43,8 @@ DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(srcdir)/ibus-docs.sgml.in $(top_srcdir)/gtk-doc.make
 subdir = docs/reference/ibus
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/as-version.m4 \
-	$(top_srcdir)/m4/gtk-doc.m4 $(top_srcdir)/m4/intltool.m4 \
+am__aclocal_m4_deps = $(top_srcdir)/m4/gtk-doc.m4 \
+	$(top_srcdir)/m4/intltool.m4 $(top_srcdir)/m4/introspection.m4 \
 	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
 	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
 	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/configure.ac
@@ -76,13 +76,7 @@ CATALOGS = @CATALOGS@
 CATOBJEXT = @CATOBJEXT@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
-CFLAGS = \
-	@GLIB2_CFLAGS@ \
-	@GOBJECT2_CFLAGS@ \
-	@GIO2_CFLAGS@ \
-	@DBUS_CFLAGS@ \
-	$(NULL)
-
+CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
@@ -91,7 +85,6 @@ CXXDEPMODE = @CXXDEPMODE@
 CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DATADIRNAME = @DATADIRNAME@
-DATE_DISPLAY = @DATE_DISPLAY@
 DBUS_CFLAGS = @DBUS_CFLAGS@
 DBUS_LIBS = @DBUS_LIBS@
 DBUS_PYTHON_CFLAGS = @DBUS_PYTHON_CFLAGS@
@@ -143,7 +136,12 @@ GTKDOC_CHECK = @GTKDOC_CHECK@
 GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
 HTML_DIR = @HTML_DIR@
+IBUS_API_VERSION = @IBUS_API_VERSION@
 IBUS_GIR_SCANNERFLAGS = @IBUS_GIR_SCANNERFLAGS@
+IBUS_ICON_KEYBOARD = @IBUS_ICON_KEYBOARD@
+IBUS_MAJOR_VERSION = @IBUS_MAJOR_VERSION@
+IBUS_MICRO_VERSION = @IBUS_MICRO_VERSION@
+IBUS_MINOR_VERSION = @IBUS_MINOR_VERSION@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -167,13 +165,7 @@ ISOCODES_CFLAGS = @ISOCODES_CFLAGS@
 ISOCODES_LIBS = @ISOCODES_LIBS@
 ISOCODES_PREFIX = @ISOCODES_PREFIX@
 LD = @LD@
-LDFLAGS = \
-	@GLIB2_LIBS@ \
-	@GOBJECT2_LIBS@ \
-	@GIO2_LIBS@ \
-	@DBUS_LIBS@ \
-	$(NULL)
-
+LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
@@ -201,11 +193,6 @@ PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
-PACKAGE_VERSION_MAJOR = @PACKAGE_VERSION_MAJOR@
-PACKAGE_VERSION_MICRO = @PACKAGE_VERSION_MICRO@
-PACKAGE_VERSION_MINOR = @PACKAGE_VERSION_MINOR@
-PACKAGE_VERSION_NANO = @PACKAGE_VERSION_NANO@
-PACKAGE_VERSION_RELEASE = @PACKAGE_VERSION_RELEASE@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
 PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
@@ -316,11 +303,11 @@ SCANGOBJ_OPTIONS =
 
 # Extra options to supply to gtkdoc-scan.
 # e.g. SCAN_OPTIONS=--deprecated-guards="GTK_DISABLE_DEPRECATED"
-# SCAN_OPTIONS= --rebuild-sections
+SCAN_OPTIONS = --rebuild-sections
 
 # Extra options to supply to gtkdoc-mkdb.
-# e.g. MKDB_OPTIONS=--sgml-mode --output-format=xml
-MKDB_OPTIONS = --sgml-mode --output-format=xml
+# e.g. MKDB_OPTIONS=--xml-mode --output-format=xml
+MKDB_OPTIONS = --xml-mode --output-format=xml
 
 # Extra options to supply to gtkdoc-mktmpl
 # e.g. MKTMPL_OPTIONS=--only-section-tmpl
@@ -336,7 +323,7 @@ FIXXREF_OPTIONS =
 HFILE_GLOB = $(top_srcdir)/src/*.h
 CFILE_GLOB = $(top_srcdir)/src/*.c
 
-# Header files to ignore when scanning.
+# Header files to ignore when scanning. Use base file/dir names
 # e.g. IGNORE_HFILES=gtkdebug.h gtkintl.h
 IGNORE_HFILES = \
 	ibusconfigprivate.h \
@@ -366,15 +353,23 @@ expand_content_files =
 # CFLAGS and LDFLAGS for compiling gtkdoc-scangobj with your library.
 # Only needed if you are using gtkdoc-scangobj to dynamically query widget
 # signals and properties.
-# e.g. INCLUDES=-I$(top_srcdir) -I$(top_builddir) $(GTK_DEBUG_FLAGS)
+# e.g. GTKDOC_CFLAGS=-I$(top_srcdir) -I$(top_builddir) $(GTK_DEBUG_FLAGS)
 # e.g. GTKDOC_LIBS=$(top_builddir)/gtk/$(gtktargetlib)
-INCLUDES = \
+GTKDOC_CFLAGS = \
+	@GLIB2_CFLAGS@ \
+	@GOBJECT2_CFLAGS@ \
+	@GIO2_CFLAGS@ \
+	@DBUS_CFLAGS@ \
 	-I$(top_srcdir)/src \
 	-I$(top_builddir)/src \
 	$(NULL)
 
 GTKDOC_LIBS = \
-	$(top_builddir)/src/libibus.la \
+	@GLIB2_LIBS@ \
+	@GOBJECT2_LIBS@ \
+	@GIO2_LIBS@ \
+	@DBUS_LIBS@ \
+	$(top_builddir)/src/libibus-@IBUS_API_VERSION@.la \
 	$(NULL)
 
 @GTK_DOC_USE_LIBTOOL_FALSE@GTKDOC_CC = $(CC) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -428,6 +423,13 @@ CLEANFILES = $(SCANOBJ_FILES) $(REPORT_FILES) $(DOC_STAMPS) *.stamp
 # for --rebuild-types in $(SCAN_OPTIONS), e.g. $(DOC_MODULE).types
 # for --rebuild-sections in $(SCAN_OPTIONS) e.g. $(DOC_MODULE)-sections.txt
 DISTCLEANFILES = $(DOC_MODULE)-sections.txt
+
+# Comment this out if you want 'make check' to test you doc status
+# and run some sanity checks
+@ENABLE_GTK_DOC_TRUE@TESTS_ENVIRONMENT = cd $(srcdir) && \
+@ENABLE_GTK_DOC_TRUE@  DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
+@ENABLE_GTK_DOC_TRUE@  SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)
+
 all: all-am
 
 .SUFFIXES:
@@ -786,22 +788,17 @@ dist-hook: dist-check-gtkdoc dist-hook-local
 	$(GTKDOC_REBASE) --online --relative --html-dir=$(distdir)/html
 
 .PHONY : dist-hook-local docs
-
-# Comment this out if you want your docs-status tested during 'make check'
 #TESTS = $(GTKDOC_CHECK)
 
 trim-build.stamp: scan-build.stamp
 	$(AM_V_GEN) \
-	sed " \
-	     /IBusObjectFlags/d;\
-	     /IBUS_OBJECT_FLAGS/d;\
-	     /IBUS_OBJECT_SET_FLAGS/d;\
-     	     /IBUS_OBJECT_UNSET_FLAGS/d" \
-		 -i.bak $(srcdir)/$(DOC_MODULE)-sections.txt
-	$(RM) $(srcdir)/$(DOC_MODULE)-sections.txt.bak
-	touch trim-build.stamp
+	    $(SED) -f $(srcdir)/trim.sed -i.bak $(srcdir)/$(DOC_MODULE)-sections.txt && \
+	    $(RM) $(srcdir)/$(DOC_MODULE)-sections.txt.bak && \
+	    touch trim-build.stamp
 
 tmpl-build.stamp: trim-build.stamp  $(DOC_MODULE)-decl.txt $(SCANOBJ_FILES) $(DOC_MODULE)-overrides.txt
+
+-include $(top_srcdir)/git.mk
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -101,3 +101,14 @@ IBusHotkeyProfile
 @Returns: 
 
 
+<!-- ##### FUNCTION ibus_hotkey_profile_lookup_hotkey ##### -->
+<para>
+
+</para>
+
+@profile: 
+@keyval: 
+@modifiers: 
+@Returns: 
+
+

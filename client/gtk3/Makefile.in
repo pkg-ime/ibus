@@ -59,8 +59,8 @@ host_triplet = @host@
 subdir = client/gtk3
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/as-version.m4 \
-	$(top_srcdir)/m4/gtk-doc.m4 $(top_srcdir)/m4/intltool.m4 \
+am__aclocal_m4_deps = $(top_srcdir)/m4/gtk-doc.m4 \
+	$(top_srcdir)/m4/intltool.m4 $(top_srcdir)/m4/introspection.m4 \
 	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
 	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
 	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/configure.ac
@@ -155,7 +155,6 @@ CXXDEPMODE = @CXXDEPMODE@
 CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DATADIRNAME = @DATADIRNAME@
-DATE_DISPLAY = @DATE_DISPLAY@
 DBUS_CFLAGS = @DBUS_CFLAGS@
 DBUS_LIBS = @DBUS_LIBS@
 DBUS_PYTHON_CFLAGS = @DBUS_PYTHON_CFLAGS@
@@ -207,7 +206,12 @@ GTKDOC_CHECK = @GTKDOC_CHECK@
 GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
 HTML_DIR = @HTML_DIR@
+IBUS_API_VERSION = @IBUS_API_VERSION@
 IBUS_GIR_SCANNERFLAGS = @IBUS_GIR_SCANNERFLAGS@
+IBUS_ICON_KEYBOARD = @IBUS_ICON_KEYBOARD@
+IBUS_MAJOR_VERSION = @IBUS_MAJOR_VERSION@
+IBUS_MICRO_VERSION = @IBUS_MICRO_VERSION@
+IBUS_MINOR_VERSION = @IBUS_MINOR_VERSION@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -259,11 +263,6 @@ PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
-PACKAGE_VERSION_MAJOR = @PACKAGE_VERSION_MAJOR@
-PACKAGE_VERSION_MICRO = @PACKAGE_VERSION_MICRO@
-PACKAGE_VERSION_MINOR = @PACKAGE_VERSION_MINOR@
-PACKAGE_VERSION_NANO = @PACKAGE_VERSION_NANO@
-PACKAGE_VERSION_RELEASE = @PACKAGE_VERSION_RELEASE@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
 PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
@@ -348,7 +347,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-libibus = $(top_builddir)/src/libibus.la
+libibus = $(top_builddir)/src/libibus-@IBUS_API_VERSION@.la
 INCLUDES = \
 	-I$(top_srcdir)/src \
 	-I$(top_builddir)/src \
@@ -713,6 +712,8 @@ $(libibus):
 
 test: all
 	GTK_IM_MODULE=ibus gedit
+
+-include $(top_srcdir)/git.mk
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

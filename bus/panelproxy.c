@@ -19,10 +19,25 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
-#include <dbus/dbus.h>
-#include <ibusinternal.h>
-#include <ibusmarshalers.h>
 #include "panelproxy.h"
+#include "types.h"
+#include "marshalers.h"
+#include "option.h"
+
+/* panelproxy.c is a very simple proxy class for the panel component that does only the following:
+ *
+ * 1. Handle D-Bus signals from the panel process. For the list of the D-Bus signals, you can check the bus_panel_proxy_g_signal function, or
+ *    introspection_xml in src/ibuspanelservice.c. The bus_panel_proxy_g_signal function simply emits a corresponding glib signal for each
+ *    D-Bus signal.
+ * 2. Handle glib signals for a BusPanelProxy object (which is usually emitted by bus_panel_proxy_g_signal.) The list of such glib signals is
+ *    in the bus_panel_proxy_class_init function. The signal handler function, e.g. bus_panel_proxy_candidate_clicked, simply calls the
+ *    corresponding function in inputcontext.c, e.g. bus_input_context_candidate_clicked, using the current focused context.
+ * 3. Provide a way to call D-Bus methods in the panel process. For the list of the D-Bus methods, you can check the header file (panelproxy.h)
+ *    or introspection_xml in src/ibuspanelservice.c. Functions that calls g_dbus_proxy_call, e.g. bus_panel_proxy_set_cursor_location, would
+ *    fall into this category.
+ * 4. Handle glib signals for a BusInputContext object. The list of such glib signals is in the input_context_signals[] array. The signal handler
+ *    function, e.g. _context_set_cursor_location_cb, simply invokes a D-Bus method by calling a function like bus_panel_proxy_set_cursor_location.
+ */
 
 enum {
     PAGE_UP,
@@ -36,15 +51,40 @@ enum {
     LAST_SIGNAL,
 };
 
+struct _BusPanelProxy {
+    IBusProxy parent;
+
+    /* instance members */
+    BusInputContext *focused_context;
+};
+
+struct _BusPanelProxyClass {
+    IBusProxyClass parent;
+    /* class members */
+
+    void (* page_up)            (BusPanelProxy   *panel);
+    void (* page_down)          (BusPanelProxy   *panel);
+    void (* cursor_up)          (BusPanelProxy   *panel);
+    void (* cursor_down)        (BusPanelProxy   *panel);
+    void (* candidate_clicked)  (BusPanelProxy   *panel,
+                                 guint            index,
+                                 guint            button,
+                                 guint            state);
+
+    void (* property_activate)  (BusPanelProxy   *panel,
+                                 const gchar     *prop_name,
+                                 gint             prop_state);
+};
+
 static guint    panel_signals[LAST_SIGNAL] = { 0 };
-// static guint            engine_signals[LAST_SIGNAL] = { 0 };
 
 /* functions prototype */
 static void     bus_panel_proxy_init            (BusPanelProxy          *panel);
-static void     bus_panel_proxy_real_destroy    (BusPanelProxy          *panel);
-
-static gboolean bus_panel_proxy_ibus_signal     (IBusProxy              *proxy,
-                                                 IBusMessage            *message);
+static void     bus_panel_proxy_real_destroy    (IBusProxy              *proxy);
+static void     bus_panel_proxy_g_signal        (GDBusProxy             *proxy,
+                                                 const gchar            *sender_name,
+                                                 const gchar            *signal_name,
+                                                 GVariant               *parameters);
 static void     bus_panel_proxy_page_up         (BusPanelProxy          *panel);
 static void     bus_panel_proxy_page_down       (BusPanelProxy          *panel);
 static void     bus_panel_proxy_cursor_up       (BusPanelProxy          *panel);
@@ -59,7 +99,6 @@ static void     bus_panel_proxy_property_activate
                                                  const gchar            *prop_name,
                                                  gint                    prop_state);
 
-
 G_DEFINE_TYPE(BusPanelProxy, bus_panel_proxy, IBUS_TYPE_PROXY)
 
 BusPanelProxy *
@@ -68,77 +107,76 @@ bus_panel_proxy_new (BusConnection *connection)
     g_assert (BUS_IS_CONNECTION (connection));
 
     GObject *obj;
-    obj = g_object_new (BUS_TYPE_PANEL_PROXY,
-                        "name", NULL,
-                        "path", IBUS_PATH_PANEL,
-                        "connection", connection,
-                        NULL);
+    obj = g_initable_new (BUS_TYPE_PANEL_PROXY,
+                          NULL,
+                          NULL,
+                          "g-object-path",     IBUS_PATH_PANEL,
+                          "g-interface-name",  IBUS_INTERFACE_PANEL,
+                          "g-connection",      bus_connection_get_dbus_connection (connection),
+                          "g-default-timeout", g_gdbus_timeout,
+                          "g-flags",           G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START | G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+                          NULL);
 
     return BUS_PANEL_PROXY (obj);
 }
 
 static void
-bus_panel_proxy_class_init (BusPanelProxyClass *klass)
+bus_panel_proxy_class_init (BusPanelProxyClass *class)
 {
-    IBusObjectClass *ibus_object_class = IBUS_OBJECT_CLASS (klass);
-    IBusProxyClass *proxy_class = IBUS_PROXY_CLASS (klass);
+    IBUS_PROXY_CLASS (class)->destroy = bus_panel_proxy_real_destroy;
+    G_DBUS_PROXY_CLASS (class)->g_signal = bus_panel_proxy_g_signal;
 
-    klass->page_up     = bus_panel_proxy_page_up;
-    klass->page_down   = bus_panel_proxy_page_down;
-    klass->cursor_up   = bus_panel_proxy_cursor_up;
-    klass->cursor_down = bus_panel_proxy_cursor_down;
-
-    klass->candidate_clicked = bus_panel_proxy_candidate_clicked;
-    klass->property_activate = bus_panel_proxy_property_activate;
-
-    ibus_object_class->destroy = (IBusObjectDestroyFunc) bus_panel_proxy_real_destroy;
-
-    proxy_class->ibus_signal = bus_panel_proxy_ibus_signal;
+    class->page_up     = bus_panel_proxy_page_up;
+    class->page_down   = bus_panel_proxy_page_down;
+    class->cursor_up   = bus_panel_proxy_cursor_up;
+    class->cursor_down = bus_panel_proxy_cursor_down;
+    class->candidate_clicked = bus_panel_proxy_candidate_clicked;
+    class->property_activate = bus_panel_proxy_property_activate;
 
     /* install signals */
     panel_signals[PAGE_UP] =
         g_signal_new (I_("page-up"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             G_STRUCT_OFFSET(BusPanelProxyClass, page_up),
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     panel_signals[PAGE_DOWN] =
         g_signal_new (I_("page-down"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             G_STRUCT_OFFSET(BusPanelProxyClass, page_down),
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     panel_signals[CURSOR_UP] =
         g_signal_new (I_("cursor-up"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             G_STRUCT_OFFSET(BusPanelProxyClass, cursor_up),
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     panel_signals[CURSOR_DOWN] =
         g_signal_new (I_("cursor-down"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             G_STRUCT_OFFSET(BusPanelProxyClass, cursor_down),
             NULL, NULL,
-            ibus_marshal_VOID__VOID,
+            bus_marshal_VOID__VOID,
             G_TYPE_NONE, 0);
 
     panel_signals[CANDIDATE_CLICKED] =
         g_signal_new (I_("candidate-clicked"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             G_STRUCT_OFFSET(BusPanelProxyClass, candidate_clicked),
             NULL, NULL,
-            ibus_marshal_VOID__UINT_UINT_UINT,
+            bus_marshal_VOID__UINT_UINT_UINT,
             G_TYPE_NONE, 3,
             G_TYPE_UINT,
             G_TYPE_UINT,
@@ -146,32 +184,32 @@ bus_panel_proxy_class_init (BusPanelProxyClass *klass)
 
     panel_signals[PROPERTY_ACTIVATE] =
         g_signal_new (I_("property-activate"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             G_STRUCT_OFFSET(BusPanelProxyClass, property_activate),
             NULL, NULL,
-            ibus_marshal_VOID__STRING_INT,
+            bus_marshal_VOID__STRING_INT,
             G_TYPE_NONE, 2,
             G_TYPE_STRING,
             G_TYPE_INT);
 
     panel_signals[PROPERTY_SHOW] =
         g_signal_new (I_("property-show"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__STRING,
+            bus_marshal_VOID__STRING,
             G_TYPE_NONE, 1,
             G_TYPE_STRING);
 
     panel_signals[PROPERTY_HIDE] =
         g_signal_new (I_("property-hide"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__STRING,
+            bus_marshal_VOID__STRING,
             G_TYPE_NONE, 1,
             G_TYPE_STRING);
 
@@ -180,40 +218,39 @@ bus_panel_proxy_class_init (BusPanelProxyClass *klass)
 static void
 bus_panel_proxy_init (BusPanelProxy *panel)
 {
-    panel->focused_context = NULL;
+    /* member variables will automatically be zero-cleared. */
 }
 
 static void
-bus_panel_proxy_real_destroy (BusPanelProxy *panel)
+bus_panel_proxy_real_destroy (IBusProxy *proxy)
 {
-    if (ibus_proxy_get_connection ((IBusProxy *)panel) != NULL) {
-        ibus_proxy_call ((IBusProxy *) panel,
-                         "Destroy",
-                         G_TYPE_INVALID);
-    }
+    BusPanelProxy *panel = (BusPanelProxy *)proxy;
 
     if (panel->focused_context) {
         bus_panel_proxy_focus_out (panel, panel->focused_context);
         panel->focused_context = NULL;
     }
 
-    IBUS_OBJECT_CLASS(bus_panel_proxy_parent_class)->destroy (IBUS_OBJECT (panel));
+    IBUS_PROXY_CLASS(bus_panel_proxy_parent_class)->destroy ((IBusProxy *)panel);
 }
 
-static gboolean
-bus_panel_proxy_ibus_signal (IBusProxy      *proxy,
-                             IBusMessage    *message)
+/**
+ * bus_panel_proxy_g_signal:
+ *
+ * Handle all D-Bus signals from the panel process. This function emits a corresponding glib signal for each D-Bus signal.
+ */
+static void
+bus_panel_proxy_g_signal (GDBusProxy  *proxy,
+                          const gchar *sender_name,
+                          const gchar *signal_name,
+                          GVariant    *parameters)
 {
-    g_assert (BUS_IS_PANEL_PROXY (proxy));
-    g_assert (message != NULL);
+    BusPanelProxy *panel = (BusPanelProxy *)proxy;
 
-    BusPanelProxy *panel;
-    IBusError *error;
-    gint i;
-
+    /* The list of nullary D-Bus signals. */
     static const struct {
-        const gchar *member;
-        const guint signal_id;
+        const gchar *signal_name;
+        const guint  signal_id;
     } signals [] = {
         { "PageUp",         PAGE_UP },
         { "PageDown",       PAGE_DOWN },
@@ -221,80 +258,49 @@ bus_panel_proxy_ibus_signal (IBusProxy      *proxy,
         { "CursorDown",     CURSOR_DOWN },
     };
 
-    panel = BUS_PANEL_PROXY (proxy);
-
+    gint i;
     for (i = 0; i < G_N_ELEMENTS (signals); i++) {
-        if (ibus_message_is_signal (message, IBUS_INTERFACE_PANEL, signals[i].member)) {
+        if (g_strcmp0 (signal_name, signals[i].signal_name) == 0) {
             g_signal_emit (panel, panel_signals[signals[i].signal_id], 0);
-            goto handled;
+            return;
         }
     }
 
-    if (ibus_message_is_signal (message, IBUS_INTERFACE_PANEL, "CandidateClicked")) {
-        guint index, button, state;
-        gboolean retval;
-
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        G_TYPE_UINT, &index,
-                                        G_TYPE_UINT, &button,
-                                        G_TYPE_UINT, &state,
-                                        G_TYPE_INVALID);
-        if (!retval)
-            goto failed;
-
+    /* Handle D-Bus signals with parameters. Deserialize them and emit a glib signal. */
+    if (g_strcmp0 ("CandidateClicked", signal_name) == 0) {
+        guint index = 0;
+        guint button = 0;
+        guint state = 0;
+        g_variant_get (parameters, "(uuu)", &index, &button, &state);
         g_signal_emit (panel, panel_signals[CANDIDATE_CLICKED], 0, index, button, state);
+        return;
     }
-    else if (ibus_message_is_signal (message, IBUS_INTERFACE_PANEL, "PropertyActivate")) {
-        gchar *prop_name;
-        gint prop_state;
-        gboolean retval;
 
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        G_TYPE_STRING, &prop_name,
-                                        G_TYPE_INT, &prop_state,
-                                        G_TYPE_INVALID);
-        if (!retval)
-            goto failed;
-
+    if (g_strcmp0 ("PropertyActivate", signal_name) == 0) {
+        gchar *prop_name = NULL;
+        gint prop_state = 0;
+        g_variant_get (parameters, "(&su)", &prop_name, &prop_state);
         g_signal_emit (panel, panel_signals[PROPERTY_ACTIVATE], 0, prop_name, prop_state);
+        return;
     }
-    else if (ibus_message_is_signal (message, IBUS_INTERFACE_PANEL, "PropertyShow")) {
-        gchar *prop_name;
-        gboolean retval;
 
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        G_TYPE_STRING, &prop_name,
-                                        G_TYPE_INVALID);
-        if (!retval)
-            goto failed;
+    if (g_strcmp0 ("PropertyShow", signal_name) == 0) {
+        gchar *prop_name = NULL;
+        g_variant_get (parameters, "(&s)", &prop_name);
         g_signal_emit (panel, panel_signals[PROPERTY_SHOW], 0, prop_name);
+        return;
     }
-    else if (ibus_message_is_signal (message, IBUS_INTERFACE_PANEL, "PropertyHide")) {
-        gchar *prop_name;
-        gboolean retval;
 
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        G_TYPE_STRING, &prop_name,
-                                        G_TYPE_INVALID);
-        if (!retval)
-            goto failed;
+    if (g_strcmp0 ("PropertyHide", signal_name) == 0) {
+        gchar *prop_name = NULL;
+        g_variant_get (parameters, "(&s)", &prop_name);
         g_signal_emit (panel, panel_signals[PROPERTY_HIDE], 0, prop_name);
+        return;
     }
 
-handled:
-    g_signal_stop_emission_by_name (panel, "ibus-signal");
-    return TRUE;
-
-failed:
-    g_warning ("%s: %s", error->name, error->message);
-    ibus_error_free (error);
-    return FALSE;
+    /* shound not be reached */
+    g_return_if_reached ();
 }
-
 
 
 void
@@ -305,14 +311,11 @@ bus_panel_proxy_set_cursor_location (BusPanelProxy *panel,
                                      gint           h)
 {
     g_assert (BUS_IS_PANEL_PROXY (panel));
-
-    ibus_proxy_call ((IBusProxy *) panel,
-                     "SetCursorLocation",
-                     G_TYPE_INT, &x,
-                     G_TYPE_INT, &y,
-                     G_TYPE_INT, &w,
-                     G_TYPE_INT, &h,
-                     G_TYPE_INVALID);
+    g_dbus_proxy_call ((GDBusProxy *)panel,
+                       "SetCursorLocation",
+                       g_variant_new ("(iiii)", x, y, w, h),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1, NULL, NULL, NULL);
 }
 
 void
@@ -322,14 +325,14 @@ bus_panel_proxy_update_preedit_text (BusPanelProxy  *panel,
                                      gboolean        visible)
 {
     g_assert (BUS_IS_PANEL_PROXY (panel));
-    g_assert (text != NULL);
+    g_assert (IBUS_IS_TEXT (text));
 
-    ibus_proxy_call ((IBusProxy *) panel,
-                     "UpdatePreeditText",
-                     IBUS_TYPE_TEXT, &text,
-                     G_TYPE_UINT, &cursor_pos,
-                     G_TYPE_BOOLEAN, &visible,
-                     G_TYPE_INVALID);
+    GVariant *variant = ibus_serializable_serialize ((IBusSerializable* )text);
+    g_dbus_proxy_call ((GDBusProxy *)panel,
+                       "UpdatePreeditText",
+                       g_variant_new ("(vub)", variant, cursor_pos, visible),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1, NULL, NULL, NULL);
 }
 
 void
@@ -338,13 +341,14 @@ bus_panel_proxy_update_auxiliary_text (BusPanelProxy *panel,
                                        gboolean       visible)
 {
     g_assert (BUS_IS_PANEL_PROXY (panel));
-    g_assert (text != NULL);
+    g_assert (IBUS_IS_TEXT (text));
 
-    ibus_proxy_call ((IBusProxy *) panel,
-                     "UpdateAuxiliaryText",
-                     IBUS_TYPE_TEXT, &text,
-                     G_TYPE_BOOLEAN, &visible,
-                     G_TYPE_INVALID);
+    GVariant *variant = ibus_serializable_serialize ((IBusSerializable* )text);
+    g_dbus_proxy_call ((GDBusProxy *)panel,
+                       "UpdateAuxiliaryText",
+                       g_variant_new ("(vb)", variant, visible),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1, NULL, NULL, NULL);
 }
 
 void
@@ -353,13 +357,14 @@ bus_panel_proxy_update_lookup_table (BusPanelProxy   *panel,
                                      gboolean         visible)
 {
     g_assert (BUS_IS_PANEL_PROXY (panel));
-    g_assert (table != NULL);
+    g_assert (IBUS_IS_LOOKUP_TABLE (table));
 
-    ibus_proxy_call ((IBusProxy *) panel,
-                     "UpdateLookupTable",
-                     IBUS_TYPE_LOOKUP_TABLE, &table,
-                     G_TYPE_BOOLEAN, &visible,
-                     G_TYPE_INVALID);
+    GVariant *variant = ibus_serializable_serialize ((IBusSerializable* )table);
+    g_dbus_proxy_call ((GDBusProxy *)panel,
+                       "UpdateLookupTable",
+                       g_variant_new ("(vb)", variant, visible),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1, NULL, NULL, NULL);
 }
 
 void
@@ -367,13 +372,14 @@ bus_panel_proxy_register_properties (BusPanelProxy  *panel,
                                      IBusPropList   *prop_list)
 {
     g_assert (BUS_IS_PANEL_PROXY (panel));
-    g_assert (prop_list != NULL);
+    g_assert (IBUS_IS_PROP_LIST (prop_list));
 
-    ibus_proxy_call ((IBusProxy *) panel,
-                     "RegisterProperties",
-                     IBUS_TYPE_PROP_LIST, &prop_list,
-                     G_TYPE_INVALID);
-    ibus_connection_flush (ibus_proxy_get_connection((IBusProxy *)panel));
+    GVariant *variant = ibus_serializable_serialize ((IBusSerializable *)prop_list);
+    g_dbus_proxy_call ((GDBusProxy *)panel,
+                       "RegisterProperties",
+                       g_variant_new ("(v)", variant),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1, NULL, NULL, NULL);
 }
 
 void
@@ -381,12 +387,14 @@ bus_panel_proxy_update_property (BusPanelProxy  *panel,
                                  IBusProperty   *prop)
 {
     g_assert (BUS_IS_PANEL_PROXY (panel));
-    g_assert (prop != NULL);
+    g_assert (IBUS_IS_PROPERTY (prop));
 
-    ibus_proxy_call ((IBusProxy *) panel,
-                     "UpdateProperty",
-                     IBUS_TYPE_PROPERTY, &prop,
-                     G_TYPE_INVALID);
+    GVariant *variant = ibus_serializable_serialize ((IBusSerializable *)prop);
+    g_dbus_proxy_call ((GDBusProxy *)panel,
+                       "UpdateProperty",
+                       g_variant_new ("(v)", variant),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1, NULL, NULL, NULL);
 }
 
 #define DEFINE_FUNC(name)                                       \
@@ -438,9 +446,11 @@ bus_panel_proxy_property_activate (BusPanelProxy *panel,
     void bus_panel_proxy_##name (BusPanelProxy *panel)  \
     {                                                   \
         g_assert (BUS_IS_PANEL_PROXY (panel));          \
-        ibus_proxy_call ((IBusProxy *) panel,           \
-                     #Name,                             \
-                     G_TYPE_INVALID);                   \
+        g_dbus_proxy_call ((GDBusProxy *) panel,        \
+                           #Name,                       \
+                           NULL,                        \
+                           G_DBUS_CALL_FLAGS_NONE,      \
+                           -1, NULL, NULL, NULL);       \
     }
 
 DEFINE_FUNCTION (ShowPreeditText, show_preedit_text)
@@ -552,7 +562,6 @@ _context_update_property_cb (BusInputContext *context,
                                      prop);
 }
 
-#if 0
 static void
 _context_destroy_cb (BusInputContext *context,
                      BusPanelProxy   *panel)
@@ -564,7 +573,6 @@ _context_destroy_cb (BusInputContext *context,
 
     bus_panel_proxy_focus_out (panel, context);
 }
-#endif
 
 #define DEFINE_FUNCTION(name)                                   \
     static void _context_##name##_cb (BusInputContext *context, \
@@ -592,10 +600,10 @@ DEFINE_FUNCTION (state_changed)
 
 #undef DEFINE_FUNCTION
 
-static const struct _SignalCallbackTable {
+static const struct {
     gchar *name;
     GCallback callback;
-} __signals[] = {
+} input_context_signals[] = {
     { "set-cursor-location",        G_CALLBACK (_context_set_cursor_location_cb) },
 
     { "update-preedit-text",        G_CALLBACK (_context_update_preedit_text_cb) },
@@ -621,7 +629,7 @@ static const struct _SignalCallbackTable {
     { "disabled",                   G_CALLBACK (_context_state_changed_cb) },
     { "engine-changed",             G_CALLBACK (_context_state_changed_cb) },
 
-    //    { "destroy",                    G_CALLBACK (_context_destroy_cb) },
+    { "destroy",                    G_CALLBACK (_context_destroy_cb) },
 };
 
 void
@@ -640,19 +648,20 @@ bus_panel_proxy_focus_in (BusPanelProxy     *panel,
     g_object_ref_sink (context);
     panel->focused_context = context;
 
-    const gchar *path = ibus_service_get_path ((IBusService *)context);
+    const gchar *path = ibus_service_get_object_path ((IBusService *)context);
 
-    ibus_proxy_call ((IBusProxy *) panel,
-                     "FocusIn",
-                     IBUS_TYPE_OBJECT_PATH, &path,
-                     G_TYPE_INVALID);
+    g_dbus_proxy_call ((GDBusProxy *)panel,
+                       "FocusIn",
+                       g_variant_new ("(o)", path),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1, NULL, NULL, NULL);
 
     /* install signal handlers */
     gint i;
-    for (i = 0; i < G_N_ELEMENTS (__signals); i++) {
+    for (i = 0; i < G_N_ELEMENTS (input_context_signals); i++) {
         g_signal_connect (context,
-                          __signals[i].name,
-                          __signals[i].callback,
+                          input_context_signals[i].name,
+                          input_context_signals[i].callback,
                           panel);
     }
 }
@@ -668,18 +677,19 @@ bus_panel_proxy_focus_out (BusPanelProxy    *panel,
 
     /* uninstall signal handlers */
     gint i;
-    for (i = 0; i < G_N_ELEMENTS (__signals); i++) {
+    for (i = 0; i < G_N_ELEMENTS (input_context_signals); i++) {
         g_signal_handlers_disconnect_by_func (context,
-                                              __signals[i].callback,
+                                              input_context_signals[i].callback,
                                               panel);
     }
 
-    const gchar *path = ibus_service_get_path ((IBusService *)context);
+    const gchar *path = ibus_service_get_object_path ((IBusService *)context);
 
-    ibus_proxy_call ((IBusProxy *) panel,
-                     "FocusOut",
-                     IBUS_TYPE_OBJECT_PATH, &path,
-                     G_TYPE_INVALID);
+    g_dbus_proxy_call ((GDBusProxy *)panel,
+                       "FocusOut",
+                       g_variant_new ("(o)", path),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       -1, NULL, NULL, NULL);
 
     g_object_unref (panel->focused_context);
     panel->focused_context = NULL;

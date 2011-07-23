@@ -158,12 +158,16 @@ IBusEngine
 @arg3: 
 @arg4: 
 
-<!-- ##### ARG IBusEngine:connection ##### -->
+<!-- ##### SIGNAL IBusEngine::set-surrounding-text ##### -->
 <para>
 
 </para>
 
-<!-- ##### ARG IBusEngine:name ##### -->
+@ibusengine: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### ARG IBusEngine:engine-name ##### -->
 <para>
 
 </para>
@@ -173,7 +177,6 @@ IBusEngine
 
 </para>
 
-@parent: 
 @process_key_event: 
 @focus_in: 
 @focus_out: 
@@ -190,14 +193,27 @@ IBusEngine
 @property_show: 
 @property_hide: 
 @candidate_clicked: 
+@set_surrounding_text: 
 
 <!-- ##### FUNCTION ibus_engine_new ##### -->
 <para>
 
 </para>
 
-@name: 
-@path: 
+@engine_name: 
+@object_path: 
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_new_type ##### -->
+<para>
+
+</para>
+
+@engine_type: 
+@engine_name: 
+@object_path: 
 @connection: 
 @Returns: 
 
@@ -349,6 +365,16 @@ IBusEngine
 @engine: 
 @offset: 
 @nchars: 
+
+
+<!-- ##### FUNCTION ibus_engine_get_surrounding_text ##### -->
+<para>
+
+</para>
+
+@engine: 
+@text: 
+@cursor_pos: 
 
 
 <!-- ##### FUNCTION ibus_engine_get_name ##### -->

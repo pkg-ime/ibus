@@ -19,7 +19,6 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
-#include <dbus/dbus.h>
 #include "ibusinternal.h"
 #include "ibusmarshalers.h"
 #include "ibusshare.h"
@@ -40,90 +39,30 @@ struct _IBusConfigPrivate {
 };
 typedef struct _IBusConfigPrivate IBusConfigPrivate;
 
-#if 0
-struct _BusPair {
-    GValue car;
-    GValue cdr;
-};
-typedef struct _BusPair BusPair;
-#endif
-
 static guint    config_signals[LAST_SIGNAL] = { 0 };
 
-#if 0
-/* functions prototype */
-static BusPair  *bus_pair_new                   (GType                  car_type,
-                                                 GType                  cdr_type,
-                                                 gpointer               car,
-                                                 gpointer               cdr);
-static BusPair  *bus_pair_copy                  (BusPair                *pair);
-static void      bus_pair_free                  (BusPair                *pair);
-#endif
-static void      ibus_config_class_init    (IBusConfigClass    *klass);
-static void      ibus_config_init          (IBusConfig         *config);
-static void      ibus_config_real_destroy  (IBusConfig         *config);
+static void      ibus_config_class_init     (IBusConfigClass    *class);
+static void      ibus_config_init           (IBusConfig         *config);
+static void      ibus_config_real_destroy   (IBusProxy          *proxy);
 
-static gboolean ibus_config_ibus_signal    (IBusProxy           *proxy,
-                                            IBusMessage         *message);
+static void      ibus_config_g_signal       (GDBusProxy         *proxy,
+                                             const gchar        *sender_name,
+                                             const gchar        *signal_name,
+                                             GVariant           *parameters);
 
-static IBusProxyClass  *parent_class = NULL;
-
-GType
-ibus_config_get_type (void)
-{
-    static GType type = 0;
-
-    static const GTypeInfo type_info = {
-        sizeof (IBusConfigClass),
-        (GBaseInitFunc)     NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc)    ibus_config_class_init,
-        NULL,               /* class finalize */
-        NULL,               /* class data */
-        sizeof (IBusConfig),
-        0,
-        (GInstanceInitFunc) ibus_config_init,
-    };
-
-    if (type == 0) {
-        type = g_type_register_static (IBUS_TYPE_PROXY,
-                    "IBusConfig",
-                    &type_info,
-                    (GTypeFlags)0);
-    }
-    return type;
-}
-
-IBusConfig *
-ibus_config_new (IBusConnection *connection)
-{
-    g_assert (IBUS_IS_CONNECTION (connection));
-
-    GObject *obj;
-    obj = g_object_new (IBUS_TYPE_CONFIG,
-                        "name", IBUS_SERVICE_CONFIG,
-                        "interface", IBUS_INTERFACE_CONFIG,
-                        "path", IBUS_PATH_CONFIG,
-                        "connection", connection,
-                        NULL);
-
-    return IBUS_CONFIG (obj);
-}
+G_DEFINE_TYPE (IBusConfig, ibus_config, IBUS_TYPE_PROXY)
 
 static void
-ibus_config_class_init (IBusConfigClass *klass)
+ibus_config_class_init (IBusConfigClass *class)
 {
-    IBusObjectClass *ibus_object_class = IBUS_OBJECT_CLASS (klass);
-    IBusProxyClass *proxy_class = IBUS_PROXY_CLASS (klass);
+    GDBusProxyClass *dbus_proxy_class = G_DBUS_PROXY_CLASS (class);
+    IBusProxyClass *proxy_class = IBUS_PROXY_CLASS (class);
 
+    g_type_class_add_private (class, sizeof (IBusConfigPrivate));
 
-    parent_class = (IBusProxyClass *) g_type_class_peek_parent (klass);
+    dbus_proxy_class->g_signal = ibus_config_g_signal;
+    proxy_class->destroy = ibus_config_real_destroy;
 
-    g_type_class_add_private (klass, sizeof (IBusConfigPrivate));
-
-    ibus_object_class->destroy = (IBusObjectDestroyFunc) ibus_config_real_destroy;
-
-    proxy_class->ibus_signal = ibus_config_ibus_signal;
 
     /* install signals */
     /**
@@ -138,16 +77,16 @@ ibus_config_class_init (IBusConfigClass *klass)
      */
     config_signals[VALUE_CHANGED] =
         g_signal_new (I_("value-changed"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST,
             0,
             NULL, NULL,
-            ibus_marshal_VOID__STRING_STRING_BOXED,
+            _ibus_marshal_VOID__STRING_STRING_VARIANT,
             G_TYPE_NONE,
             3,
             G_TYPE_STRING,
             G_TYPE_STRING,
-            G_TYPE_VALUE | G_SIGNAL_TYPE_STATIC_SCOPE);
+            G_TYPE_VARIANT | G_SIGNAL_TYPE_STATIC_SCOPE);
 }
 
 static void
@@ -158,56 +97,222 @@ ibus_config_init (IBusConfig *config)
 }
 
 static void
-ibus_config_real_destroy (IBusConfig *config)
+ibus_config_real_destroy (IBusProxy *proxy)
 {
-    if (ibus_proxy_get_connection ((IBusProxy *) config) != NULL) {
-        ibus_proxy_call ((IBusProxy *) config,
-                         "Destroy",
-                         G_TYPE_INVALID);
-    }
-
-    IBUS_OBJECT_CLASS(parent_class)->destroy (IBUS_OBJECT (config));
+    IBUS_PROXY_CLASS(ibus_config_parent_class)->destroy (proxy);
 }
 
 
-static gboolean
-ibus_config_ibus_signal (IBusProxy     *proxy,
-                         IBusMessage   *message)
+static void
+ibus_config_g_signal (GDBusProxy  *proxy,
+                      const gchar *sender_name,
+                      const gchar *signal_name,
+                      GVariant    *parameters)
 {
-    g_assert (IBUS_IS_CONFIG (proxy));
-    g_assert (message != NULL);
+    if (g_strcmp0 (signal_name, "ValueChanged") == 0) {
+        const gchar *section = NULL;
+        const gchar *name = NULL;
+        GVariant *value = NULL;
 
-    IBusConfig *config;
-    config = IBUS_CONFIG (proxy);
+        g_variant_get (parameters, "(&s&sv)", &section, &name, &value);
 
-    if (ibus_message_is_signal (message, IBUS_INTERFACE_CONFIG, "ValueChanged")) {
-        gchar *section;
-        gchar *name;
-        GValue value = { 0 };
-        IBusError *error = NULL;
-        gboolean retval;
-
-        retval = ibus_message_get_args (message,
-                                        &error,
-                                        G_TYPE_STRING, &section,
-                                        G_TYPE_STRING, &name,
-                                        G_TYPE_VALUE, &value,
-                                        G_TYPE_INVALID);
-        if (!retval) {
-            g_warning ("%s: Can not parse arguments of ValueChanges.", DBUS_ERROR_INVALID_ARGS);
-            return FALSE;
-        }
-
-        g_signal_emit (config,
+        g_signal_emit (proxy,
                        config_signals[VALUE_CHANGED],
                        0,
                        section,
                        name,
-                       &value);
-        g_value_unset (&value);
+                       value);
+        g_variant_unref (value);
+        return;
+    }
 
-        g_signal_stop_emission_by_name (config, "ibus-signal");
+    g_return_if_reached ();
+}
 
+IBusConfig *
+ibus_config_new (GDBusConnection  *connection,
+                 GCancellable     *cancellable,
+                 GError          **error)
+{
+    g_return_val_if_fail (G_IS_DBUS_CONNECTION (connection), NULL);
+
+    GInitable *initable;
+
+    initable = g_initable_new (IBUS_TYPE_CONFIG,
+                               cancellable,
+                               error,
+                               "g-connection",      connection,
+                               "g-flags",           G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START | G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+                               "g-name",            IBUS_SERVICE_CONFIG,
+                               "g-interface-name",  IBUS_INTERFACE_CONFIG,
+                               "g-object-path",     IBUS_PATH_CONFIG,
+                               "g-default-timeout", ibus_get_timeout (),
+                               NULL);
+    if (initable == NULL)
+        return NULL;
+
+    if (g_dbus_proxy_get_name_owner (G_DBUS_PROXY (initable)) == NULL) {
+        /* The configuration daemon, which is usually ibus-gconf, is not started yet. */
+        g_object_unref (initable);
+        return NULL;
+    }
+
+    /* clients should not destroy the config service. */
+    IBUS_PROXY (initable)->own = FALSE;
+
+    return IBUS_CONFIG (initable);
+}
+
+GVariant *
+ibus_config_get_value (IBusConfig  *config,
+                       const gchar *section,
+                       const gchar *name)
+{
+    g_return_val_if_fail (IBUS_IS_CONFIG (config), NULL);
+    g_return_val_if_fail (section != NULL, NULL);
+    g_return_val_if_fail (name != NULL, NULL);
+
+    GError *error = NULL;
+    GVariant *result;
+    result = g_dbus_proxy_call_sync ((GDBusProxy *) config,
+                                     "GetValue",                /* method_name */
+                                     g_variant_new ("(ss)",
+                                        section, name),         /* parameters */
+                                     G_DBUS_CALL_FLAGS_NONE,    /* flags */
+                                     -1,                        /* timeout */
+                                     NULL,                      /* cancellable */
+                                     &error                     /* error */
+                                     );
+    if (result == NULL) {
+        g_warning ("%s.GetValue: %s", IBUS_INTERFACE_CONFIG, error->message);
+        g_error_free (error);
+        return NULL;
+    }
+
+    GVariant *value = NULL;
+    g_variant_get (result, "(v)", &value);
+    g_variant_ref (value);
+    g_variant_unref (result);
+
+    return value;
+}
+
+void
+ibus_config_get_value_async (IBusConfig         *config,
+                             const gchar        *section,
+                             const gchar        *name,
+                             gint                timeout_ms,
+                             GCancellable       *cancellable,
+                             GAsyncReadyCallback callback,
+                             gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_CONFIG (config));
+    g_return_if_fail (section != NULL);
+    g_return_if_fail (name != NULL);
+
+    g_dbus_proxy_call ((GDBusProxy *)config,
+                       "GetValue",
+                       g_variant_new ("(ss)", section, name),
+                       G_DBUS_CALL_FLAGS_NONE,
+                       timeout_ms,
+                       cancellable,
+                       callback,
+                       user_data);
+}
+
+GVariant *
+ibus_config_get_value_async_finish (IBusConfig    *config,
+                                    GAsyncResult  *result,
+                                    GError       **error)
+{
+    g_return_val_if_fail (IBUS_IS_CONFIG (config), NULL);
+    g_return_val_if_fail (G_IS_ASYNC_RESULT (result), NULL);
+    g_return_val_if_fail (error == NULL || *error == NULL, NULL);
+
+    GVariant *value = NULL;
+    GVariant *retval = g_dbus_proxy_call_finish ((GDBusProxy *)config,
+                                                 result,
+                                                 error);
+    if (retval != NULL) {
+        g_variant_get (retval, "(v)", &value);
+        g_variant_ref (value);
+        g_variant_unref (retval);
+    }
+
+    return value;
+}
+
+gboolean
+ibus_config_set_value (IBusConfig   *config,
+                       const gchar  *section,
+                       const gchar  *name,
+                       GVariant     *value)
+{
+    g_return_val_if_fail (IBUS_IS_CONFIG (config), FALSE);
+    g_return_val_if_fail (section != NULL, FALSE);
+    g_return_val_if_fail (name != NULL, FALSE);
+    g_return_val_if_fail (value != NULL, FALSE);
+
+    GError *error = NULL;
+    GVariant *result;
+    result = g_dbus_proxy_call_sync ((GDBusProxy *) config,
+                                     "SetValue",                /* method_name */
+                                     g_variant_new ("(ssv)",
+                                        section, name, value),  /* parameters */
+                                     G_DBUS_CALL_FLAGS_NONE,    /* flags */
+                                     -1,                        /* timeout */
+                                     NULL,                      /* cancellable */
+                                     &error                     /* error */
+                                     );
+    if (result == NULL) {
+        g_warning ("%s.SetValue: %s", IBUS_INTERFACE_CONFIG, error->message);
+        g_error_free (error);
+        return FALSE;
+    }
+    g_variant_unref (result);
+    return TRUE;
+}
+
+void
+ibus_config_set_value_async (IBusConfig         *config,
+                             const gchar        *section,
+                             const gchar        *name,
+                             GVariant           *value,
+                             gint                timeout_ms,
+                             GCancellable       *cancellable,
+                             GAsyncReadyCallback callback,
+                             gpointer            user_data)
+{
+    g_return_if_fail (IBUS_IS_CONFIG (config));
+    g_return_if_fail (section != NULL);
+    g_return_if_fail (name != NULL);
+    g_return_if_fail (value != NULL);
+
+    g_dbus_proxy_call ((GDBusProxy *) config,
+                       "SetValue",                /* method_name */
+                       g_variant_new ("(ssv)",
+                                      section, name, value),  /* parameters */
+                       G_DBUS_CALL_FLAGS_NONE,    /* flags */
+                       timeout_ms,
+                       cancellable,
+                       callback,
+                       user_data);
+}
+
+gboolean
+ibus_config_set_value_async_finish (IBusConfig         *config,
+                                    GAsyncResult       *result,
+                                    GError            **error)
+{
+    g_return_val_if_fail (IBUS_IS_CONFIG (config), FALSE);
+    g_return_val_if_fail (G_IS_ASYNC_RESULT (result), FALSE);
+    g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+    GVariant *retval = g_dbus_proxy_call_finish ((GDBusProxy *)config,
+                                                 result,
+                                                 error);
+    if (retval != NULL) {
+        g_variant_unref (retval);
         return TRUE;
     }
 
@@ -215,92 +320,30 @@ ibus_config_ibus_signal (IBusProxy     *proxy,
 }
 
 gboolean
-ibus_config_get_value (IBusConfig  *config,
-                       const gchar *section,
-                       const gchar *name,
-                       GValue      *value)
-{
-    g_assert (IBUS_IS_CONFIG (config));
-    g_assert (section != NULL);
-    g_assert (name != NULL);
-    g_assert (value != NULL);
-
-    IBusMessage *reply;
-    IBusError *error;
-    gboolean retval;
-
-    reply = ibus_proxy_call_with_reply_and_block ((IBusProxy *) config,
-                                                  "GetValue",
-                                                  -1,
-                                                  &error,
-                                                  G_TYPE_STRING, &section,
-                                                  G_TYPE_STRING, &name,
-                                                  G_TYPE_INVALID);
-    if (reply == NULL) {
-        g_warning ("%s: %s", error->name, error->message);
-        ibus_error_free (error);
-        return FALSE;
-    }
-
-    if ((error = ibus_error_new_from_message (reply)) != NULL) {
-        g_warning ("%s: %s", error->name, error->message);
-        ibus_error_free (error);
-        ibus_message_unref (reply);
-        return FALSE;
-    }
-
-    retval = ibus_message_get_args (reply,
-                                    &error,
-                                    G_TYPE_VALUE, value,
-                                    G_TYPE_INVALID);
-    ibus_message_unref (reply);
-    if (!retval) {
-        g_warning ("%s: %s", error->name, error->message);
-        return FALSE;
-    }
-
-    return TRUE;
-}
-
-gboolean
-ibus_config_set_value (IBusConfig   *config,
-                       const gchar  *section,
-                       const gchar  *name,
-                       const GValue *value)
-{
-    g_assert (IBUS_IS_CONFIG (config));
-    g_assert (section != NULL);
-    g_assert (name != NULL);
-    g_assert (value != NULL);
-
-    gboolean retval;
-
-    retval = ibus_proxy_call ((IBusProxy *) config,
-                              "SetValue",
-                              G_TYPE_STRING, &section,
-                              G_TYPE_STRING, &name,
-                              G_TYPE_VALUE, value,
-                              G_TYPE_INVALID);
-    g_assert (retval);
-    return TRUE;
-}
-
-gboolean
 ibus_config_unset (IBusConfig   *config,
                    const gchar  *section,
                    const gchar  *name)
 {
-    g_assert (IBUS_IS_CONFIG (config));
-    g_assert (section != NULL);
-    g_assert (name != NULL);
+    g_return_val_if_fail (IBUS_IS_CONFIG (config), FALSE);
+    g_return_val_if_fail (section != NULL, FALSE);
+    g_return_val_if_fail (name != NULL, FALSE);
 
-    gboolean retval;
-
-    retval = ibus_proxy_call ((IBusProxy *) config,
-                              "Unset",
-                              G_TYPE_STRING, &section,
-                              G_TYPE_STRING, &name,
-                              G_TYPE_INVALID);
-    g_assert (retval);
+    GError *error = NULL;
+    GVariant *result;
+    result = g_dbus_proxy_call_sync ((GDBusProxy *) config,
+                                     "UnsetValue",              /* method_name */
+                                     g_variant_new ("(ss)",
+                                        section, name),         /* parameters */
+                                     G_DBUS_CALL_FLAGS_NONE,    /* flags */
+                                     -1,                        /* timeout */
+                                     NULL,                      /* cancellable */
+                                     &error                     /* error */
+                                     );
+    if (result == NULL) {
+        g_warning ("%s.UnsetValue: %s", IBUS_INTERFACE_CONFIG, error->message);
+        g_error_free (error);
+        return FALSE;
+    }
+    g_variant_unref (result);
     return TRUE;
 }

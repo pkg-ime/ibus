@@ -26,17 +26,11 @@ IBusFactory
 </para>
 
 
-<!-- ##### ARG IBusFactory:connection ##### -->
-<para>
-
-</para>
-
 <!-- ##### STRUCT IBusFactoryClass ##### -->
 <para>
 
 </para>
 
-@parent: 
 
 <!-- ##### FUNCTION ibus_factory_new ##### -->
 <para>

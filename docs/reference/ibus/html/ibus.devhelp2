@@ -31,19 +31,13 @@
     </sub>
     <sub name="Communication" link="ch05.html">
       <sub name="IBusBus" link="IBusBus.html"/>
-      <sub name="IBusConnection" link="IBusConnection.html"/>
-      <sub name="IBusMessage" link="ibus-IBusMessage.html"/>
-      <sub name="IBusPendingCall" link="ibus-IBusPendingCall.html"/>
       <sub name="IBusProxy" link="IBusProxy.html"/>
       <sub name="IBusSerializable" link="IBusSerializable.html"/>
       <sub name="IBusService" link="IBusService.html"/>
     </sub>
     <sub name="Internal" link="ch06.html">
       <sub name="ibusdebug" link="ibus-ibusdebug.html"/>
-      <sub name="ibuserror" link="ibus-ibuserror.html"/>
-      <sub name="ibusmainloop" link="ibus-ibusmainloop.html"/>
       <sub name="IBusObject" link="IBusObject.html"/>
-      <sub name="IBusServer" link="IBusServer.html"/>
       <sub name="ibusshare" link="ibus-ibusshare.html"/>
       <sub name="ibustypes" link="ibus-ibustypes.html"/>
     </sub>
@@ -69,6 +63,7 @@
     <keyword type="function" name="ibus_hotkey_profile_remove_hotkey ()" link="IBusHotkeyProfile.html#ibus-hotkey-profile-remove-hotkey"/>
     <keyword type="function" name="ibus_hotkey_profile_remove_hotkey_by_event ()" link="IBusHotkeyProfile.html#ibus-hotkey-profile-remove-hotkey-by-event"/>
     <keyword type="function" name="ibus_hotkey_profile_filter_key_event ()" link="IBusHotkeyProfile.html#ibus-hotkey-profile-filter-key-event"/>
+    <keyword type="function" name="ibus_hotkey_profile_lookup_hotkey ()" link="IBusHotkeyProfile.html#ibus-hotkey-profile-lookup-hotkey"/>
     <keyword type="signal" name="The &quot;trigger&quot; signal" link="IBusHotkeyProfile.html#IBusHotkeyProfile-trigger"/>
     <keyword type="struct" name="IBusLookupTable" link="IBusLookupTable.html#IBusLookupTable-struct"/>
     <keyword type="struct" name="IBusLookupTableClass" link="IBusLookupTable.html#IBusLookupTableClass"/>
@@ -103,10 +98,32 @@
     <keyword type="function" name="ibus_panel_service_cursor_up ()" link="IBusPanelService.html#ibus-panel-service-cursor-up"/>
     <keyword type="function" name="ibus_panel_service_page_down ()" link="IBusPanelService.html#ibus-panel-service-page-down"/>
     <keyword type="function" name="ibus_panel_service_page_up ()" link="IBusPanelService.html#ibus-panel-service-page-up"/>
-    <keyword type="function" name="ibus_panel_service_property_active ()" link="IBusPanelService.html#ibus-panel-service-property-active"/>
+    <keyword type="function" name="ibus_panel_service_property_activate ()" link="IBusPanelService.html#ibus-panel-service-property-activate"/>
     <keyword type="function" name="ibus_panel_service_property_show ()" link="IBusPanelService.html#ibus-panel-service-property-show"/>
     <keyword type="function" name="ibus_panel_service_property_hide ()" link="IBusPanelService.html#ibus-panel-service-property-hide"/>
-    <keyword type="property" name="The &quot;connection&quot; property" link="IBusPanelService.html#IBusPanelService--connection"/>
+    <keyword type="signal" name="The &quot;cursor-down-lookup-table&quot; signal" link="IBusPanelService.html#IBusPanelService-cursor-down-lookup-table"/>
+    <keyword type="signal" name="The &quot;cursor-up-lookup-table&quot; signal" link="IBusPanelService.html#IBusPanelService-cursor-up-lookup-table"/>
+    <keyword type="signal" name="The &quot;focus-in&quot; signal" link="IBusPanelService.html#IBusPanelService-focus-in"/>
+    <keyword type="signal" name="The &quot;focus-out&quot; signal" link="IBusPanelService.html#IBusPanelService-focus-out"/>
+    <keyword type="signal" name="The &quot;hide-auxiliary-text&quot; signal" link="IBusPanelService.html#IBusPanelService-hide-auxiliary-text"/>
+    <keyword type="signal" name="The &quot;hide-language-bar&quot; signal" link="IBusPanelService.html#IBusPanelService-hide-language-bar"/>
+    <keyword type="signal" name="The &quot;hide-lookup-table&quot; signal" link="IBusPanelService.html#IBusPanelService-hide-lookup-table"/>
+    <keyword type="signal" name="The &quot;hide-preedit-text&quot; signal" link="IBusPanelService.html#IBusPanelService-hide-preedit-text"/>
+    <keyword type="signal" name="The &quot;page-down-lookup-table&quot; signal" link="IBusPanelService.html#IBusPanelService-page-down-lookup-table"/>
+    <keyword type="signal" name="The &quot;page-up-lookup-table&quot; signal" link="IBusPanelService.html#IBusPanelService-page-up-lookup-table"/>
+    <keyword type="signal" name="The &quot;register-properties&quot; signal" link="IBusPanelService.html#IBusPanelService-register-properties"/>
+    <keyword type="signal" name="The &quot;reset&quot; signal" link="IBusPanelService.html#IBusPanelService-reset"/>
+    <keyword type="signal" name="The &quot;set-cursor-location&quot; signal" link="IBusPanelService.html#IBusPanelService-set-cursor-location"/>
+    <keyword type="signal" name="The &quot;show-auxiliary-text&quot; signal" link="IBusPanelService.html#IBusPanelService-show-auxiliary-text"/>
+    <keyword type="signal" name="The &quot;show-language-bar&quot; signal" link="IBusPanelService.html#IBusPanelService-show-language-bar"/>
+    <keyword type="signal" name="The &quot;show-lookup-table&quot; signal" link="IBusPanelService.html#IBusPanelService-show-lookup-table"/>
+    <keyword type="signal" name="The &quot;show-preedit-text&quot; signal" link="IBusPanelService.html#IBusPanelService-show-preedit-text"/>
+    <keyword type="signal" name="The &quot;start-setup&quot; signal" link="IBusPanelService.html#IBusPanelService-start-setup"/>
+    <keyword type="signal" name="The &quot;state-changed&quot; signal" link="IBusPanelService.html#IBusPanelService-state-changed"/>
+    <keyword type="signal" name="The &quot;update-auxiliary-text&quot; signal" link="IBusPanelService.html#IBusPanelService-update-auxiliary-text"/>
+    <keyword type="signal" name="The &quot;update-lookup-table&quot; signal" link="IBusPanelService.html#IBusPanelService-update-lookup-table"/>
+    <keyword type="signal" name="The &quot;update-preedit-text&quot; signal" link="IBusPanelService.html#IBusPanelService-update-preedit-text"/>
+    <keyword type="signal" name="The &quot;update-property&quot; signal" link="IBusPanelService.html#IBusPanelService-update-property"/>
     <keyword type="enum" name="enum IBusPropType" link="IBusProperty.html#IBusPropType"/>
     <keyword type="enum" name="enum IBusPropState" link="IBusProperty.html#IBusPropState"/>
     <keyword type="struct" name="IBusProperty" link="IBusProperty.html#IBusProperty-struct"/>
@@ -114,12 +131,21 @@
     <keyword type="struct" name="IBusPropList" link="IBusProperty.html#IBusPropList-struct"/>
     <keyword type="struct" name="IBusPropListClass" link="IBusProperty.html#IBusPropListClass"/>
     <keyword type="function" name="ibus_property_new ()" link="IBusProperty.html#ibus-property-new"/>
+    <keyword type="function" name="ibus_property_get_key ()" link="IBusProperty.html#ibus-property-get-key"/>
+    <keyword type="function" name="ibus_property_get_prop_type ()" link="IBusProperty.html#ibus-property-get-prop-type"/>
+    <keyword type="function" name="ibus_property_get_label ()" link="IBusProperty.html#ibus-property-get-label"/>
     <keyword type="function" name="ibus_property_set_label ()" link="IBusProperty.html#ibus-property-set-label"/>
+    <keyword type="function" name="ibus_property_get_icon ()" link="IBusProperty.html#ibus-property-get-icon"/>
     <keyword type="function" name="ibus_property_set_icon ()" link="IBusProperty.html#ibus-property-set-icon"/>
+    <keyword type="function" name="ibus_property_get_tooltip ()" link="IBusProperty.html#ibus-property-get-tooltip"/>
     <keyword type="function" name="ibus_property_set_tooltip ()" link="IBusProperty.html#ibus-property-set-tooltip"/>
+    <keyword type="function" name="ibus_property_get_sensitive ()" link="IBusProperty.html#ibus-property-get-sensitive"/>
     <keyword type="function" name="ibus_property_set_sensitive ()" link="IBusProperty.html#ibus-property-set-sensitive"/>
+    <keyword type="function" name="ibus_property_get_visible ()" link="IBusProperty.html#ibus-property-get-visible"/>
     <keyword type="function" name="ibus_property_set_visible ()" link="IBusProperty.html#ibus-property-set-visible"/>
+    <keyword type="function" name="ibus_property_get_state ()" link="IBusProperty.html#ibus-property-get-state"/>
     <keyword type="function" name="ibus_property_set_state ()" link="IBusProperty.html#ibus-property-set-state"/>
+    <keyword type="function" name="ibus_property_get_sub_props ()" link="IBusProperty.html#ibus-property-get-sub-props"/>
     <keyword type="function" name="ibus_property_set_sub_props ()" link="IBusProperty.html#ibus-property-set-sub-props"/>
     <keyword type="function" name="ibus_property_update ()" link="IBusProperty.html#ibus-property-update"/>
     <keyword type="struct" name="IBusPropList" link="IBusPropList.html#IBusPropList-struct"/>
@@ -137,25 +163,41 @@
     <keyword type="function" name="ibus_text_new_from_unichar ()" link="IBusText.html#ibus-text-new-from-unichar"/>
     <keyword type="function" name="ibus_text_append_attribute ()" link="IBusText.html#ibus-text-append-attribute"/>
     <keyword type="function" name="ibus_text_get_length ()" link="IBusText.html#ibus-text-get-length"/>
+    <keyword type="function" name="ibus_text_get_is_static ()" link="IBusText.html#ibus-text-get-is-static"/>
+    <keyword type="function" name="ibus_text_get_text ()" link="IBusText.html#ibus-text-get-text"/>
+    <keyword type="function" name="ibus_text_get_attributes ()" link="IBusText.html#ibus-text-get-attributes"/>
     <keyword type="struct" name="IBusComponent" link="IBusComponent.html#IBusComponent-struct"/>
     <keyword type="struct" name="IBusComponentClass" link="IBusComponent.html#IBusComponentClass"/>
     <keyword type="function" name="ibus_component_new ()" link="IBusComponent.html#ibus-component-new"/>
+    <keyword type="function" name="ibus_component_new_varargs ()" link="IBusComponent.html#ibus-component-new-varargs"/>
     <keyword type="function" name="ibus_component_new_from_xml_node ()" link="IBusComponent.html#ibus-component-new-from-xml-node"/>
     <keyword type="function" name="ibus_component_new_from_file ()" link="IBusComponent.html#ibus-component-new-from-file"/>
+    <keyword type="function" name="ibus_component_get_name ()" link="IBusComponent.html#ibus-component-get-name"/>
+    <keyword type="function" name="ibus_component_get_description ()" link="IBusComponent.html#ibus-component-get-description"/>
+    <keyword type="function" name="ibus_component_get_version ()" link="IBusComponent.html#ibus-component-get-version"/>
+    <keyword type="function" name="ibus_component_get_license ()" link="IBusComponent.html#ibus-component-get-license"/>
+    <keyword type="function" name="ibus_component_get_author ()" link="IBusComponent.html#ibus-component-get-author"/>
+    <keyword type="function" name="ibus_component_get_homepage ()" link="IBusComponent.html#ibus-component-get-homepage"/>
+    <keyword type="function" name="ibus_component_get_exec ()" link="IBusComponent.html#ibus-component-get-exec"/>
+    <keyword type="function" name="ibus_component_get_textdomain ()" link="IBusComponent.html#ibus-component-get-textdomain"/>
     <keyword type="function" name="ibus_component_add_observed_path ()" link="IBusComponent.html#ibus-component-add-observed-path"/>
     <keyword type="function" name="ibus_component_add_engine ()" link="IBusComponent.html#ibus-component-add-engine"/>
     <keyword type="function" name="ibus_component_get_engines ()" link="IBusComponent.html#ibus-component-get-engines"/>
     <keyword type="function" name="ibus_component_output ()" link="IBusComponent.html#ibus-component-output"/>
     <keyword type="function" name="ibus_component_output_engines ()" link="IBusComponent.html#ibus-component-output-engines"/>
     <keyword type="function" name="ibus_component_check_modification ()" link="IBusComponent.html#ibus-component-check-modification"/>
-    <keyword type="function" name="ibus_component_start ()" link="IBusComponent.html#ibus-component-start"/>
-    <keyword type="function" name="ibus_component_stop ()" link="IBusComponent.html#ibus-component-stop"/>
-    <keyword type="function" name="ibus_component_is_running ()" link="IBusComponent.html#ibus-component-is-running"/>
-    <keyword type="function" name="ibus_component_get_from_engine ()" link="IBusComponent.html#ibus-component-get-from-engine"/>
-    <keyword type="function" name="ibus_component_set_restart ()" link="IBusComponent.html#ibus-component-set-restart"/>
+    <keyword type="property" name="The &quot;author&quot; property" link="IBusComponent.html#IBusComponent--author"/>
+    <keyword type="property" name="The &quot;description&quot; property" link="IBusComponent.html#IBusComponent--description"/>
+    <keyword type="property" name="The &quot;exec&quot; property" link="IBusComponent.html#IBusComponent--exec"/>
+    <keyword type="property" name="The &quot;homepage&quot; property" link="IBusComponent.html#IBusComponent--homepage"/>
+    <keyword type="property" name="The &quot;license&quot; property" link="IBusComponent.html#IBusComponent--license"/>
+    <keyword type="property" name="The &quot;name&quot; property" link="IBusComponent.html#IBusComponent--name"/>
+    <keyword type="property" name="The &quot;textdomain&quot; property" link="IBusComponent.html#IBusComponent--textdomain"/>
+    <keyword type="property" name="The &quot;version&quot; property" link="IBusComponent.html#IBusComponent--version"/>
     <keyword type="struct" name="IBusEngine" link="IBusEngine.html#IBusEngine-struct"/>
     <keyword type="struct" name="IBusEngineClass" link="IBusEngine.html#IBusEngineClass"/>
     <keyword type="function" name="ibus_engine_new ()" link="IBusEngine.html#ibus-engine-new"/>
+    <keyword type="function" name="ibus_engine_new_type ()" link="IBusEngine.html#ibus-engine-new-type"/>
     <keyword type="function" name="ibus_engine_commit_text ()" link="IBusEngine.html#ibus-engine-commit-text"/>
     <keyword type="function" name="ibus_engine_update_preedit_text ()" link="IBusEngine.html#ibus-engine-update-preedit-text"/>
     <keyword type="function" name="ibus_engine_update_preedit_text_with_mode ()" link="IBusEngine.html#ibus-engine-update-preedit-text-with-mode"/>
@@ -172,9 +214,9 @@
     <keyword type="function" name="ibus_engine_register_properties ()" link="IBusEngine.html#ibus-engine-register-properties"/>
     <keyword type="function" name="ibus_engine_update_property ()" link="IBusEngine.html#ibus-engine-update-property"/>
     <keyword type="function" name="ibus_engine_delete_surrounding_text ()" link="IBusEngine.html#ibus-engine-delete-surrounding-text"/>
+    <keyword type="function" name="ibus_engine_get_surrounding_text ()" link="IBusEngine.html#ibus-engine-get-surrounding-text"/>
     <keyword type="function" name="ibus_engine_get_name ()" link="IBusEngine.html#ibus-engine-get-name"/>
-    <keyword type="property" name="The &quot;connection&quot; property" link="IBusEngine.html#IBusEngine--connection"/>
-    <keyword type="property" name="The &quot;name&quot; property" link="IBusEngine.html#IBusEngine--name"/>
+    <keyword type="property" name="The &quot;engine-name&quot; property" link="IBusEngine.html#IBusEngine--engine-name"/>
     <keyword type="signal" name="The &quot;candidate-clicked&quot; signal" link="IBusEngine.html#IBusEngine-candidate-clicked"/>
     <keyword type="signal" name="The &quot;cursor-down&quot; signal" link="IBusEngine.html#IBusEngine-cursor-down"/>
     <keyword type="signal" name="The &quot;cursor-up&quot; signal" link="IBusEngine.html#IBusEngine-cursor-up"/>
@@ -191,19 +233,47 @@
     <keyword type="signal" name="The &quot;reset&quot; signal" link="IBusEngine.html#IBusEngine-reset"/>
     <keyword type="signal" name="The &quot;set-capabilities&quot; signal" link="IBusEngine.html#IBusEngine-set-capabilities"/>
     <keyword type="signal" name="The &quot;set-cursor-location&quot; signal" link="IBusEngine.html#IBusEngine-set-cursor-location"/>
+    <keyword type="signal" name="The &quot;set-surrounding-text&quot; signal" link="IBusEngine.html#IBusEngine-set-surrounding-text"/>
     <keyword type="struct" name="IBusEngineDesc" link="IBusEngineDesc.html#IBusEngineDesc-struct"/>
     <keyword type="struct" name="IBusEngineDescClass" link="IBusEngineDesc.html#IBusEngineDescClass"/>
-    <keyword type="struct" name="BusComponent" link="IBusEngineDesc.html#BusComponent"/>
     <keyword type="function" name="ibus_engine_desc_new ()" link="IBusEngineDesc.html#ibus-engine-desc-new"/>
+    <keyword type="function" name="ibus_engine_desc_new_varargs ()" link="IBusEngineDesc.html#ibus-engine-desc-new-varargs"/>
     <keyword type="function" name="ibus_engine_desc_new_from_xml_node ()" link="IBusEngineDesc.html#ibus-engine-desc-new-from-xml-node"/>
+    <keyword type="function" name="ibus_engine_desc_get_name ()" link="IBusEngineDesc.html#ibus-engine-desc-get-name"/>
+    <keyword type="function" name="ibus_engine_desc_get_longname ()" link="IBusEngineDesc.html#ibus-engine-desc-get-longname"/>
+    <keyword type="function" name="ibus_engine_desc_get_description ()" link="IBusEngineDesc.html#ibus-engine-desc-get-description"/>
+    <keyword type="function" name="ibus_engine_desc_get_language ()" link="IBusEngineDesc.html#ibus-engine-desc-get-language"/>
+    <keyword type="function" name="ibus_engine_desc_get_license ()" link="IBusEngineDesc.html#ibus-engine-desc-get-license"/>
+    <keyword type="function" name="ibus_engine_desc_get_author ()" link="IBusEngineDesc.html#ibus-engine-desc-get-author"/>
+    <keyword type="function" name="ibus_engine_desc_get_icon ()" link="IBusEngineDesc.html#ibus-engine-desc-get-icon"/>
+    <keyword type="function" name="ibus_engine_desc_get_layout ()" link="IBusEngineDesc.html#ibus-engine-desc-get-layout"/>
+    <keyword type="function" name="ibus_engine_desc_get_rank ()" link="IBusEngineDesc.html#ibus-engine-desc-get-rank"/>
+    <keyword type="function" name="ibus_engine_desc_get_hotkeys ()" link="IBusEngineDesc.html#ibus-engine-desc-get-hotkeys"/>
     <keyword type="function" name="ibus_engine_desc_output ()" link="IBusEngineDesc.html#ibus-engine-desc-output"/>
+    <keyword type="property" name="The &quot;author&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--author"/>
+    <keyword type="property" name="The &quot;description&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--description"/>
+    <keyword type="property" name="The &quot;hotkeys&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--hotkeys"/>
+    <keyword type="property" name="The &quot;icon&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--icon"/>
+    <keyword type="property" name="The &quot;language&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--language"/>
+    <keyword type="property" name="The &quot;layout&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--layout"/>
+    <keyword type="property" name="The &quot;license&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--license"/>
+    <keyword type="property" name="The &quot;longname&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--longname"/>
+    <keyword type="property" name="The &quot;name&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--name"/>
+    <keyword type="property" name="The &quot;rank&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--rank"/>
     <keyword type="struct" name="IBusFactory" link="IBusFactory.html#IBusFactory-struct"/>
     <keyword type="struct" name="IBusFactoryClass" link="IBusFactory.html#IBusFactoryClass"/>
     <keyword type="function" name="ibus_factory_new ()" link="IBusFactory.html#ibus-factory-new"/>
     <keyword type="function" name="ibus_factory_add_engine ()" link="IBusFactory.html#ibus-factory-add-engine"/>
-    <keyword type="property" name="The &quot;connection&quot; property" link="IBusFactory.html#IBusFactory--connection"/>
     <keyword type="struct" name="IBusInputContext" link="IBusInputContext.html#IBusInputContext-struct"/>
     <keyword type="struct" name="IBusInputContextClass" link="IBusInputContext.html#IBusInputContextClass"/>
+    <keyword type="function" name="ibus_input_context_new ()" link="IBusInputContext.html#ibus-input-context-new"/>
+    <keyword type="function" name="ibus_input_context_new_async ()" link="IBusInputContext.html#ibus-input-context-new-async"/>
+    <keyword type="function" name="ibus_input_context_new_async_finish ()" link="IBusInputContext.html#ibus-input-context-new-async-finish"/>
+    <keyword type="function" name="ibus_input_context_get_input_context ()" link="IBusInputContext.html#ibus-input-context-get-input-context"/>
+    <keyword type="function" name="ibus_input_context_get_input_context_async ()" link="IBusInputContext.html#ibus-input-context-get-input-context-async"/>
+    <keyword type="function" name="ibus_input_context_get_input_context_async_finish ()" link="IBusInputContext.html#ibus-input-context-get-input-context-async-finish"/>
+    <keyword type="function" name="ibus_input_context_process_key_event_async ()" link="IBusInputContext.html#ibus-input-context-process-key-event-async"/>
+    <keyword type="function" name="ibus_input_context_process_key_event_async_finish ()" link="IBusInputContext.html#ibus-input-context-process-key-event-async-finish"/>
     <keyword type="function" name="ibus_input_context_process_key_event ()" link="IBusInputContext.html#ibus-input-context-process-key-event"/>
     <keyword type="function" name="ibus_input_context_set_cursor_location ()" link="IBusInputContext.html#ibus-input-context-set-cursor-location"/>
     <keyword type="function" name="ibus_input_context_set_capabilities ()" link="IBusInputContext.html#ibus-input-context-set-capabilities"/>
@@ -213,8 +283,15 @@
     <keyword type="function" name="ibus_input_context_reset ()" link="IBusInputContext.html#ibus-input-context-reset"/>
     <keyword type="function" name="ibus_input_context_enable ()" link="IBusInputContext.html#ibus-input-context-enable"/>
     <keyword type="function" name="ibus_input_context_disable ()" link="IBusInputContext.html#ibus-input-context-disable"/>
+    <keyword type="function" name="ibus_input_context_is_enabled_async ()" link="IBusInputContext.html#ibus-input-context-is-enabled-async"/>
+    <keyword type="function" name="ibus_input_context_is_enabled_async_finish ()" link="IBusInputContext.html#ibus-input-context-is-enabled-async-finish"/>
     <keyword type="function" name="ibus_input_context_is_enabled ()" link="IBusInputContext.html#ibus-input-context-is-enabled"/>
+    <keyword type="function" name="ibus_input_context_get_engine_async ()" link="IBusInputContext.html#ibus-input-context-get-engine-async"/>
+    <keyword type="function" name="ibus_input_context_get_engine_async_finish ()" link="IBusInputContext.html#ibus-input-context-get-engine-async-finish"/>
+    <keyword type="function" name="ibus_input_context_get_engine ()" link="IBusInputContext.html#ibus-input-context-get-engine"/>
     <keyword type="function" name="ibus_input_context_set_engine ()" link="IBusInputContext.html#ibus-input-context-set-engine"/>
+    <keyword type="function" name="ibus_input_context_set_surrounding_text ()" link="IBusInputContext.html#ibus-input-context-set-surrounding-text"/>
+    <keyword type="function" name="ibus_input_context_needs_surrounding_text ()" link="IBusInputContext.html#ibus-input-context-needs-surrounding-text"/>
     <keyword type="signal" name="The &quot;commit-text&quot; signal" link="IBusInputContext.html#IBusInputContext-commit-text"/>
     <keyword type="signal" name="The &quot;cursor-down-lookup-table&quot; signal" link="IBusInputContext.html#IBusInputContext-cursor-down-lookup-table"/>
     <keyword type="signal" name="The &quot;cursor-up-lookup-table&quot; signal" link="IBusInputContext.html#IBusInputContext-cursor-up-lookup-table"/>
@@ -2233,14 +2310,17 @@
     <keyword type="struct" name="IBusConfigClass" link="IBusConfig.html#IBusConfigClass"/>
     <keyword type="function" name="ibus_config_new ()" link="IBusConfig.html#ibus-config-new"/>
     <keyword type="function" name="ibus_config_get_value ()" link="IBusConfig.html#ibus-config-get-value"/>
+    <keyword type="function" name="ibus_config_get_value_async ()" link="IBusConfig.html#ibus-config-get-value-async"/>
+    <keyword type="function" name="ibus_config_get_value_async_finish ()" link="IBusConfig.html#ibus-config-get-value-async-finish"/>
     <keyword type="function" name="ibus_config_set_value ()" link="IBusConfig.html#ibus-config-set-value"/>
+    <keyword type="function" name="ibus_config_set_value_async ()" link="IBusConfig.html#ibus-config-set-value-async"/>
+    <keyword type="function" name="ibus_config_set_value_async_finish ()" link="IBusConfig.html#ibus-config-set-value-async-finish"/>
     <keyword type="function" name="ibus_config_unset ()" link="IBusConfig.html#ibus-config-unset"/>
     <keyword type="signal" name="The &quot;value-changed&quot; signal" link="IBusConfig.html#IBusConfig-value-changed"/>
     <keyword type="struct" name="IBusConfigService" link="IBusConfigService.html#IBusConfigService-struct"/>
     <keyword type="struct" name="IBusConfigServiceClass" link="IBusConfigService.html#IBusConfigServiceClass"/>
     <keyword type="function" name="ibus_config_service_new ()" link="IBusConfigService.html#ibus-config-service-new"/>
     <keyword type="function" name="ibus_config_service_value_changed ()" link="IBusConfigService.html#ibus-config-service-value-changed"/>
-    <keyword type="property" name="The &quot;connection&quot; property" link="IBusConfigService.html#IBusConfigService--connection"/>
     <keyword type="struct" name="IBusObservedPath" link="IBusObservedPath.html#IBusObservedPath-struct"/>
     <keyword type="struct" name="IBusObservedPathClass" link="IBusObservedPath.html#IBusObservedPathClass"/>
     <keyword type="function" name="ibus_observed_path_new_from_xml_node ()" link="IBusObservedPath.html#ibus-observed-path-new-from-xml-node"/>
@@ -2261,152 +2341,76 @@
     <keyword type="struct" name="IBusBusClass" link="IBusBus.html#IBusBusClass"/>
     <keyword type="function" name="ibus_bus_new ()" link="IBusBus.html#ibus-bus-new"/>
     <keyword type="function" name="ibus_bus_is_connected ()" link="IBusBus.html#ibus-bus-is-connected"/>
+    <keyword type="function" name="ibus_bus_get_connection ()" link="IBusBus.html#ibus-bus-get-connection"/>
     <keyword type="function" name="ibus_bus_hello ()" link="IBusBus.html#ibus-bus-hello"/>
     <keyword type="function" name="ibus_bus_request_name ()" link="IBusBus.html#ibus-bus-request-name"/>
+    <keyword type="function" name="ibus_bus_request_name_async ()" link="IBusBus.html#ibus-bus-request-name-async"/>
+    <keyword type="function" name="ibus_bus_request_name_async_finish ()" link="IBusBus.html#ibus-bus-request-name-async-finish"/>
     <keyword type="function" name="ibus_bus_release_name ()" link="IBusBus.html#ibus-bus-release-name"/>
+    <keyword type="function" name="ibus_bus_release_name_async ()" link="IBusBus.html#ibus-bus-release-name-async"/>
+    <keyword type="function" name="ibus_bus_release_name_async_finish ()" link="IBusBus.html#ibus-bus-release-name-async-finish"/>
+    <keyword type="function" name="ibus_bus_list_queued_owners ()" link="IBusBus.html#ibus-bus-list-queued-owners"/>
     <keyword type="function" name="ibus_bus_name_has_owner ()" link="IBusBus.html#ibus-bus-name-has-owner"/>
+    <keyword type="function" name="ibus_bus_name_has_owner_async ()" link="IBusBus.html#ibus-bus-name-has-owner-async"/>
+    <keyword type="function" name="ibus_bus_name_has_owner_async_finish ()" link="IBusBus.html#ibus-bus-name-has-owner-async-finish"/>
     <keyword type="function" name="ibus_bus_list_names ()" link="IBusBus.html#ibus-bus-list-names"/>
     <keyword type="function" name="ibus_bus_add_match ()" link="IBusBus.html#ibus-bus-add-match"/>
+    <keyword type="function" name="ibus_bus_add_match_async ()" link="IBusBus.html#ibus-bus-add-match-async"/>
+    <keyword type="function" name="ibus_bus_add_match_async_finish ()" link="IBusBus.html#ibus-bus-add-match-async-finish"/>
     <keyword type="function" name="ibus_bus_remove_match ()" link="IBusBus.html#ibus-bus-remove-match"/>
+    <keyword type="function" name="ibus_bus_remove_match_async ()" link="IBusBus.html#ibus-bus-remove-match-async"/>
+    <keyword type="function" name="ibus_bus_remove_match_async_finish ()" link="IBusBus.html#ibus-bus-remove-match-async-finish"/>
     <keyword type="function" name="ibus_bus_get_name_owner ()" link="IBusBus.html#ibus-bus-get-name-owner"/>
+    <keyword type="function" name="ibus_bus_get_name_owner_async ()" link="IBusBus.html#ibus-bus-get-name-owner-async"/>
+    <keyword type="function" name="ibus_bus_get_name_owner_async_finish ()" link="IBusBus.html#ibus-bus-get-name-owner-async-finish"/>
     <keyword type="function" name="ibus_bus_exit ()" link="IBusBus.html#ibus-bus-exit"/>
+    <keyword type="function" name="ibus_bus_exit_async ()" link="IBusBus.html#ibus-bus-exit-async"/>
+    <keyword type="function" name="ibus_bus_exit_async_finish ()" link="IBusBus.html#ibus-bus-exit-async-finish"/>
+    <keyword type="function" name="ibus_bus_create_input_context ()" link="IBusBus.html#ibus-bus-create-input-context"/>
+    <keyword type="function" name="ibus_bus_create_input_context_async ()" link="IBusBus.html#ibus-bus-create-input-context-async"/>
+    <keyword type="function" name="ibus_bus_create_input_context_async_finish ()" link="IBusBus.html#ibus-bus-create-input-context-async-finish"/>
     <keyword type="function" name="ibus_bus_current_input_context ()" link="IBusBus.html#ibus-bus-current-input-context"/>
+    <keyword type="function" name="ibus_bus_current_input_context_async ()" link="IBusBus.html#ibus-bus-current-input-context-async"/>
+    <keyword type="function" name="ibus_bus_current_input_context_async_finish ()" link="IBusBus.html#ibus-bus-current-input-context-async-finish"/>
     <keyword type="function" name="ibus_bus_register_component ()" link="IBusBus.html#ibus-bus-register-component"/>
+    <keyword type="function" name="ibus_bus_register_component_async ()" link="IBusBus.html#ibus-bus-register-component-async"/>
+    <keyword type="function" name="ibus_bus_register_component_async_finish ()" link="IBusBus.html#ibus-bus-register-component-async-finish"/>
     <keyword type="function" name="ibus_bus_list_engines ()" link="IBusBus.html#ibus-bus-list-engines"/>
+    <keyword type="function" name="ibus_bus_list_engines_async ()" link="IBusBus.html#ibus-bus-list-engines-async"/>
+    <keyword type="function" name="ibus_bus_list_engines_async_finish ()" link="IBusBus.html#ibus-bus-list-engines-async-finish"/>
     <keyword type="function" name="ibus_bus_list_active_engines ()" link="IBusBus.html#ibus-bus-list-active-engines"/>
+    <keyword type="function" name="ibus_bus_list_active_engines_async ()" link="IBusBus.html#ibus-bus-list-active-engines-async"/>
+    <keyword type="function" name="ibus_bus_list_active_engines_async_finish ()" link="IBusBus.html#ibus-bus-list-active-engines-async-finish"/>
     <keyword type="function" name="ibus_bus_get_use_sys_layout ()" link="IBusBus.html#ibus-bus-get-use-sys-layout"/>
+    <keyword type="function" name="ibus_bus_get_use_sys_layout_async ()" link="IBusBus.html#ibus-bus-get-use-sys-layout-async"/>
+    <keyword type="function" name="ibus_bus_get_use_sys_layout_async_finish ()" link="IBusBus.html#ibus-bus-get-use-sys-layout-async-finish"/>
     <keyword type="function" name="ibus_bus_get_use_global_engine ()" link="IBusBus.html#ibus-bus-get-use-global-engine"/>
+    <keyword type="function" name="ibus_bus_get_use_global_engine_async ()" link="IBusBus.html#ibus-bus-get-use-global-engine-async"/>
+    <keyword type="function" name="ibus_bus_get_use_global_engine_async_finish ()" link="IBusBus.html#ibus-bus-get-use-global-engine-async-finish"/>
     <keyword type="function" name="ibus_bus_is_global_engine_enabled ()" link="IBusBus.html#ibus-bus-is-global-engine-enabled"/>
+    <keyword type="function" name="ibus_bus_is_global_engine_enabled_async ()" link="IBusBus.html#ibus-bus-is-global-engine-enabled-async"/>
+    <keyword type="function" name="ibus_bus_is_global_engine_enabled_async_finish ()" link="IBusBus.html#ibus-bus-is-global-engine-enabled-async-finish"/>
+    <keyword type="function" name="ibus_bus_get_global_engine ()" link="IBusBus.html#ibus-bus-get-global-engine"/>
+    <keyword type="function" name="ibus_bus_get_global_engine_async ()" link="IBusBus.html#ibus-bus-get-global-engine-async"/>
+    <keyword type="function" name="ibus_bus_get_global_engine_async_finish ()" link="IBusBus.html#ibus-bus-get-global-engine-async-finish"/>
     <keyword type="function" name="ibus_bus_set_global_engine ()" link="IBusBus.html#ibus-bus-set-global-engine"/>
+    <keyword type="function" name="ibus_bus_set_global_engine_async ()" link="IBusBus.html#ibus-bus-set-global-engine-async"/>
+    <keyword type="function" name="ibus_bus_set_global_engine_async_finish ()" link="IBusBus.html#ibus-bus-set-global-engine-async-finish"/>
+    <keyword type="function" name="ibus_bus_set_watch_dbus_signal ()" link="IBusBus.html#ibus-bus-set-watch-dbus-signal"/>
+    <keyword type="function" name="ibus_bus_set_watch_ibus_signal ()" link="IBusBus.html#ibus-bus-set-watch-ibus-signal"/>
     <keyword type="function" name="ibus_bus_get_config ()" link="IBusBus.html#ibus-bus-get-config"/>
     <keyword type="signal" name="The &quot;connected&quot; signal" link="IBusBus.html#IBusBus-connected"/>
     <keyword type="signal" name="The &quot;disconnected&quot; signal" link="IBusBus.html#IBusBus-disconnected"/>
     <keyword type="signal" name="The &quot;global-engine-changed&quot; signal" link="IBusBus.html#IBusBus-global-engine-changed"/>
-    <keyword type="struct" name="IBusConnection" link="IBusConnection.html#IBusConnection-struct"/>
-    <keyword type="struct" name="IBusConnectionClass" link="IBusConnection.html#IBusConnectionClass"/>
-    <keyword type="function" name="IBusIBusMessageFunc ()" link="IBusConnection.html#IBusIBusMessageFunc"/>
-    <keyword type="function" name="IBusIBusSignalFunc ()" link="IBusConnection.html#IBusIBusSignalFunc"/>
-    <keyword type="function" name="IBusMessageFunc ()" link="IBusConnection.html#IBusMessageFunc"/>
-    <keyword type="function" name="ibus_connection_new ()" link="IBusConnection.html#ibus-connection-new"/>
-    <keyword type="function" name="ibus_connection_set_connection ()" link="IBusConnection.html#ibus-connection-set-connection"/>
-    <keyword type="function" name="ibus_connection_open ()" link="IBusConnection.html#ibus-connection-open"/>
-    <keyword type="function" name="ibus_connection_open_private ()" link="IBusConnection.html#ibus-connection-open-private"/>
-    <keyword type="function" name="ibus_connection_close ()" link="IBusConnection.html#ibus-connection-close"/>
-    <keyword type="function" name="ibus_connection_is_connected ()" link="IBusConnection.html#ibus-connection-is-connected"/>
-    <keyword type="function" name="ibus_connection_is_authenticated ()" link="IBusConnection.html#ibus-connection-is-authenticated"/>
-    <keyword type="function" name="ibus_connection_get_connection ()" link="IBusConnection.html#ibus-connection-get-connection"/>
-    <keyword type="function" name="ibus_connection_get_unix_user ()" link="IBusConnection.html#ibus-connection-get-unix-user"/>
-    <keyword type="function" name="ibus_connection_read_write_dispatch ()" link="IBusConnection.html#ibus-connection-read-write-dispatch"/>
-    <keyword type="function" name="ibus_connection_send ()" link="IBusConnection.html#ibus-connection-send"/>
-    <keyword type="function" name="ibus_connection_send_signal ()" link="IBusConnection.html#ibus-connection-send-signal"/>
-    <keyword type="function" name="ibus_connection_send_signal_valist ()" link="IBusConnection.html#ibus-connection-send-signal-valist"/>
-    <keyword type="function" name="ibus_connection_send_valist ()" link="IBusConnection.html#ibus-connection-send-valist"/>
-    <keyword type="function" name="ibus_connection_send_with_reply ()" link="IBusConnection.html#ibus-connection-send-with-reply"/>
-    <keyword type="function" name="ibus_connection_send_with_reply_and_block ()" link="IBusConnection.html#ibus-connection-send-with-reply-and-block"/>
-    <keyword type="function" name="ibus_connection_call ()" link="IBusConnection.html#ibus-connection-call"/>
-    <keyword type="function" name="ibus_connection_call_with_reply ()" link="IBusConnection.html#ibus-connection-call-with-reply"/>
-    <keyword type="function" name="ibus_connection_flush ()" link="IBusConnection.html#ibus-connection-flush"/>
-    <keyword type="function" name="ibus_connection_register_object_path ()" link="IBusConnection.html#ibus-connection-register-object-path"/>
-    <keyword type="function" name="ibus_connection_unregister_object_path ()" link="IBusConnection.html#ibus-connection-unregister-object-path"/>
-    <keyword type="signal" name="The &quot;authenticate-unix-user&quot; signal" link="IBusConnection.html#IBusConnection-authenticate-unix-user"/>
-    <keyword type="signal" name="The &quot;disconnected&quot; signal" link="IBusConnection.html#IBusConnection-disconnected"/>
-    <keyword type="signal" name="The &quot;ibus-message&quot; signal" link="IBusConnection.html#IBusConnection-ibus-message"/>
-    <keyword type="signal" name="The &quot;ibus-message-sent&quot; signal" link="IBusConnection.html#IBusConnection-ibus-message-sent"/>
-    <keyword type="signal" name="The &quot;ibus-signal&quot; signal" link="IBusConnection.html#IBusConnection-ibus-signal"/>
-    <keyword type="macro" name="IBUS_TYPE_OBJECT_PATH" link="ibus-IBusMessage.html#IBUS-TYPE-OBJECT-PATH:CAPS"/>
-    <keyword type="macro" name="IBUS_TYPE_ARRAY" link="ibus-IBusMessage.html#IBUS-TYPE-ARRAY:CAPS"/>
-    <keyword type="macro" name="IBUS_TYPE_STRUCT" link="ibus-IBusMessage.html#IBUS-TYPE-STRUCT:CAPS"/>
-    <keyword type="macro" name="IBUS_TYPE_DICT_ENTRY" link="ibus-IBusMessage.html#IBUS-TYPE-DICT-ENTRY:CAPS"/>
-    <keyword type="macro" name="IBUS_TYPE_VARIANT" link="ibus-IBusMessage.html#IBUS-TYPE-VARIANT:CAPS"/>
-    <keyword type="typedef" name="IBusMessage" link="ibus-IBusMessage.html#IBusMessage"/>
-    <keyword type="typedef" name="IBusMessageIter" link="ibus-IBusMessage.html#IBusMessageIter"/>
-    <keyword type="function" name="ibus_type_get_object_path ()" link="ibus-IBusMessage.html#ibus-type-get-object-path"/>
-    <keyword type="function" name="ibus_type_get_array ()" link="ibus-IBusMessage.html#ibus-type-get-array"/>
-    <keyword type="function" name="ibus_type_get_struct ()" link="ibus-IBusMessage.html#ibus-type-get-struct"/>
-    <keyword type="function" name="ibus_type_get_dict_entry ()" link="ibus-IBusMessage.html#ibus-type-get-dict-entry"/>
-    <keyword type="function" name="ibus_type_get_variant ()" link="ibus-IBusMessage.html#ibus-type-get-variant"/>
-    <keyword type="function" name="ibus_message_new ()" link="ibus-IBusMessage.html#ibus-message-new"/>
-    <keyword type="function" name="ibus_message_ref ()" link="ibus-IBusMessage.html#ibus-message-ref"/>
-    <keyword type="function" name="ibus_message_unref ()" link="ibus-IBusMessage.html#ibus-message-unref"/>
-    <keyword type="function" name="ibus_message_new_method_call ()" link="ibus-IBusMessage.html#ibus-message-new-method-call"/>
-    <keyword type="function" name="ibus_message_new_method_return ()" link="ibus-IBusMessage.html#ibus-message-new-method-return"/>
-    <keyword type="function" name="ibus_message_new_error ()" link="ibus-IBusMessage.html#ibus-message-new-error"/>
-    <keyword type="function" name="ibus_message_new_error_printf ()" link="ibus-IBusMessage.html#ibus-message-new-error-printf"/>
-    <keyword type="function" name="ibus_message_new_signal ()" link="ibus-IBusMessage.html#ibus-message-new-signal"/>
-    <keyword type="function" name="ibus_message_is_method_call ()" link="ibus-IBusMessage.html#ibus-message-is-method-call"/>
-    <keyword type="function" name="ibus_message_is_error ()" link="ibus-IBusMessage.html#ibus-message-is-error"/>
-    <keyword type="function" name="ibus_message_is_signal ()" link="ibus-IBusMessage.html#ibus-message-is-signal"/>
-    <keyword type="function" name="ibus_message_set_destination ()" link="ibus-IBusMessage.html#ibus-message-set-destination"/>
-    <keyword type="function" name="ibus_message_set_sender ()" link="ibus-IBusMessage.html#ibus-message-set-sender"/>
-    <keyword type="function" name="ibus_message_set_error_name ()" link="ibus-IBusMessage.html#ibus-message-set-error-name"/>
-    <keyword type="function" name="ibus_message_set_interface ()" link="ibus-IBusMessage.html#ibus-message-set-interface"/>
-    <keyword type="function" name="ibus_message_set_member ()" link="ibus-IBusMessage.html#ibus-message-set-member"/>
-    <keyword type="function" name="ibus_message_set_path ()" link="ibus-IBusMessage.html#ibus-message-set-path"/>
-    <keyword type="function" name="ibus_message_set_no_reply ()" link="ibus-IBusMessage.html#ibus-message-set-no-reply"/>
-    <keyword type="function" name="ibus_message_set_reply_serial ()" link="ibus-IBusMessage.html#ibus-message-set-reply-serial"/>
-    <keyword type="function" name="ibus_message_get_type ()" link="ibus-IBusMessage.html#ibus-message-get-type"/>
-    <keyword type="function" name="ibus_message_get_destination ()" link="ibus-IBusMessage.html#ibus-message-get-destination"/>
-    <keyword type="function" name="ibus_message_get_sender ()" link="ibus-IBusMessage.html#ibus-message-get-sender"/>
-    <keyword type="function" name="ibus_message_get_error_name ()" link="ibus-IBusMessage.html#ibus-message-get-error-name"/>
-    <keyword type="function" name="ibus_message_get_error_message ()" link="ibus-IBusMessage.html#ibus-message-get-error-message"/>
-    <keyword type="function" name="ibus_message_get_interface ()" link="ibus-IBusMessage.html#ibus-message-get-interface"/>
-    <keyword type="function" name="ibus_message_get_member ()" link="ibus-IBusMessage.html#ibus-message-get-member"/>
-    <keyword type="function" name="ibus_message_get_path ()" link="ibus-IBusMessage.html#ibus-message-get-path"/>
-    <keyword type="function" name="ibus_message_get_no_reply ()" link="ibus-IBusMessage.html#ibus-message-get-no-reply"/>
-    <keyword type="function" name="ibus_message_get_reply_serial ()" link="ibus-IBusMessage.html#ibus-message-get-reply-serial"/>
-    <keyword type="function" name="ibus_message_get_serial ()" link="ibus-IBusMessage.html#ibus-message-get-serial"/>
-    <keyword type="function" name="ibus_message_append_args ()" link="ibus-IBusMessage.html#ibus-message-append-args"/>
-    <keyword type="function" name="ibus_message_append_args_valist ()" link="ibus-IBusMessage.html#ibus-message-append-args-valist"/>
-    <keyword type="function" name="ibus_message_get_args ()" link="ibus-IBusMessage.html#ibus-message-get-args"/>
-    <keyword type="function" name="ibus_message_get_args_valist ()" link="ibus-IBusMessage.html#ibus-message-get-args-valist"/>
-    <keyword type="function" name="ibus_message_iter_init_append ()" link="ibus-IBusMessage.html#ibus-message-iter-init-append"/>
-    <keyword type="function" name="ibus_message_iter_append ()" link="ibus-IBusMessage.html#ibus-message-iter-append"/>
-    <keyword type="function" name="ibus_message_iter_copy_data ()" link="ibus-IBusMessage.html#ibus-message-iter-copy-data" since="1.2.0.20090719"/>
-    <keyword type="function" name="ibus_message_iter_init ()" link="ibus-IBusMessage.html#ibus-message-iter-init"/>
-    <keyword type="function" name="ibus_message_iter_get_basic ()" link="ibus-IBusMessage.html#ibus-message-iter-get-basic"/>
-    <keyword type="function" name="ibus_message_iter_get ()" link="ibus-IBusMessage.html#ibus-message-iter-get"/>
-    <keyword type="function" name="ibus_message_iter_next ()" link="ibus-IBusMessage.html#ibus-message-iter-next"/>
-    <keyword type="function" name="ibus_message_iter_has_next ()" link="ibus-IBusMessage.html#ibus-message-iter-has-next"/>
-    <keyword type="function" name="ibus_message_iter_open_container ()" link="ibus-IBusMessage.html#ibus-message-iter-open-container"/>
-    <keyword type="function" name="ibus_message_iter_close_container ()" link="ibus-IBusMessage.html#ibus-message-iter-close-container"/>
-    <keyword type="function" name="ibus_message_iter_recurse ()" link="ibus-IBusMessage.html#ibus-message-iter-recurse"/>
-    <keyword type="function" name="ibus_message_iter_get_arg_type ()" link="ibus-IBusMessage.html#ibus-message-iter-get-arg-type"/>
-    <keyword type="function" name="ibus_message_iter_get_element_type ()" link="ibus-IBusMessage.html#ibus-message-iter-get-element-type"/>
-    <keyword type="function" name="ibus_message_to_string ()" link="ibus-IBusMessage.html#ibus-message-to-string"/>
-    <keyword type="typedef" name="IBusPendingCall" link="ibus-IBusPendingCall.html#IBusPendingCall"/>
-    <keyword type="function" name="IBusPendingCallNotifyFunction ()" link="ibus-IBusPendingCall.html#IBusPendingCallNotifyFunction"/>
-    <keyword type="function" name="ibus_pending_call_ref ()" link="ibus-IBusPendingCall.html#ibus-pending-call-ref"/>
-    <keyword type="function" name="ibus_pending_call_unref ()" link="ibus-IBusPendingCall.html#ibus-pending-call-unref"/>
-    <keyword type="function" name="ibus_pending_call_set_notify ()" link="ibus-IBusPendingCall.html#ibus-pending-call-set-notify"/>
-    <keyword type="function" name="ibus_pending_call_cancel ()" link="ibus-IBusPendingCall.html#ibus-pending-call-cancel"/>
-    <keyword type="function" name="ibus_pending_call_get_completed ()" link="ibus-IBusPendingCall.html#ibus-pending-call-get-completed"/>
-    <keyword type="function" name="ibus_pending_call_steal_reply ()" link="ibus-IBusPendingCall.html#ibus-pending-call-steal-reply"/>
-    <keyword type="function" name="ibus_pending_call_block ()" link="ibus-IBusPendingCall.html#ibus-pending-call-block"/>
-    <keyword type="function" name="ibus_pending_call_wait ()" link="ibus-IBusPendingCall.html#ibus-pending-call-wait"/>
-    <keyword type="function" name="ibus_pending_call_allocate_data_slot ()" link="ibus-IBusPendingCall.html#ibus-pending-call-allocate-data-slot"/>
-    <keyword type="function" name="ibus_pending_call_free_data_slot ()" link="ibus-IBusPendingCall.html#ibus-pending-call-free-data-slot"/>
-    <keyword type="function" name="ibus_pending_call_set_data ()" link="ibus-IBusPendingCall.html#ibus-pending-call-set-data"/>
-    <keyword type="function" name="ibus_pending_call_get_data ()" link="ibus-IBusPendingCall.html#ibus-pending-call-get-data"/>
+    <keyword type="signal" name="The &quot;name-owner-changed&quot; signal" link="IBusBus.html#IBusBus-name-owner-changed"/>
     <keyword type="struct" name="IBusProxy" link="IBusProxy.html#IBusProxy-struct"/>
     <keyword type="struct" name="IBusProxyClass" link="IBusProxy.html#IBusProxyClass"/>
-    <keyword type="function" name="ibus_proxy_new ()" link="IBusProxy.html#ibus-proxy-new"/>
-    <keyword type="function" name="ibus_proxy_send ()" link="IBusProxy.html#ibus-proxy-send"/>
-    <keyword type="function" name="ibus_proxy_call ()" link="IBusProxy.html#ibus-proxy-call"/>
-    <keyword type="function" name="ibus_proxy_call_with_reply ()" link="IBusProxy.html#ibus-proxy-call-with-reply"/>
-    <keyword type="function" name="ibus_proxy_call_with_reply_and_block ()" link="IBusProxy.html#ibus-proxy-call-with-reply-and-block"/>
-    <keyword type="function" name="ibus_proxy_send_with_reply ()" link="IBusProxy.html#ibus-proxy-send-with-reply"/>
-    <keyword type="function" name="ibus_proxy_send_with_reply_and_block ()" link="IBusProxy.html#ibus-proxy-send-with-reply-and-block"/>
-    <keyword type="function" name="ibus_proxy_handle_signal ()" link="IBusProxy.html#ibus-proxy-handle-signal"/>
-    <keyword type="function" name="ibus_proxy_get_name ()" link="IBusProxy.html#ibus-proxy-get-name"/>
-    <keyword type="function" name="ibus_proxy_get_unique_name ()" link="IBusProxy.html#ibus-proxy-get-unique-name"/>
-    <keyword type="function" name="ibus_proxy_get_path ()" link="IBusProxy.html#ibus-proxy-get-path"/>
-    <keyword type="function" name="ibus_proxy_get_interface ()" link="IBusProxy.html#ibus-proxy-get-interface"/>
-    <keyword type="function" name="ibus_proxy_get_connection ()" link="IBusProxy.html#ibus-proxy-get-connection"/>
-    <keyword type="property" name="The &quot;connection&quot; property" link="IBusProxy.html#IBusProxy--connection"/>
-    <keyword type="property" name="The &quot;interface&quot; property" link="IBusProxy.html#IBusProxy--interface"/>
-    <keyword type="property" name="The &quot;name&quot; property" link="IBusProxy.html#IBusProxy--name"/>
-    <keyword type="property" name="The &quot;path&quot; property" link="IBusProxy.html#IBusProxy--path"/>
-    <keyword type="signal" name="The &quot;ibus-signal&quot; signal" link="IBusProxy.html#IBusProxy-ibus-signal"/>
+    <keyword type="macro" name="IBUS_PROXY_FLAGS()" link="IBusProxy.html#IBUS-PROXY-FLAGS:CAPS"/>
+    <keyword type="macro" name="IBUS_PROXY_SET_FLAGS()" link="IBusProxy.html#IBUS-PROXY-SET-FLAGS:CAPS"/>
+    <keyword type="macro" name="IBUS_PROXY_UNSET_FLAGS()" link="IBusProxy.html#IBUS-PROXY-UNSET-FLAGS:CAPS"/>
+    <keyword type="macro" name="IBUS_PROXY_DESTROYED()" link="IBusProxy.html#IBUS-PROXY-DESTROYED:CAPS"/>
+    <keyword type="function" name="ibus_proxy_destroy ()" link="IBusProxy.html#ibus-proxy-destroy"/>
+    <keyword type="signal" name="The &quot;destroy&quot; signal" link="IBusProxy.html#IBusProxy-destroy"/>
     <keyword type="macro" name="ibus_serializable_set_attachment()" link="IBusSerializable.html#ibus-serializable-set-attachment"/>
     <keyword type="macro" name="ibus_serializable_get_attachment()" link="IBusSerializable.html#ibus-serializable-get-attachment"/>
     <keyword type="macro" name="ibus_serializable_remove_attachment()" link="IBusSerializable.html#ibus-serializable-remove-attachment"/>
@@ -2424,49 +2428,21 @@
     <keyword type="function" name="ibus_serializable_deserialize ()" link="IBusSerializable.html#ibus-serializable-deserialize"/>
     <keyword type="struct" name="IBusService" link="IBusService.html#IBusService-struct"/>
     <keyword type="struct" name="IBusServiceClass" link="IBusService.html#IBusServiceClass"/>
-    <keyword type="function" name="ServiceIBusMessageFunc ()" link="IBusService.html#ServiceIBusMessageFunc"/>
-    <keyword type="function" name="ServiceIBusSignalFunc ()" link="IBusService.html#ServiceIBusSignalFunc"/>
     <keyword type="function" name="ibus_service_new ()" link="IBusService.html#ibus-service-new"/>
-    <keyword type="function" name="ibus_service_get_path ()" link="IBusService.html#ibus-service-get-path"/>
-    <keyword type="function" name="ibus_service_handle_message ()" link="IBusService.html#ibus-service-handle-message"/>
-    <keyword type="function" name="ibus_service_add_to_connection ()" link="IBusService.html#ibus-service-add-to-connection"/>
-    <keyword type="function" name="ibus_service_get_connections ()" link="IBusService.html#ibus-service-get-connections"/>
-    <keyword type="function" name="ibus_service_remove_from_connection ()" link="IBusService.html#ibus-service-remove-from-connection"/>
-    <keyword type="function" name="ibus_service_remove_from_all_connections ()" link="IBusService.html#ibus-service-remove-from-all-connections"/>
-    <keyword type="function" name="ibus_service_send_signal ()" link="IBusService.html#ibus-service-send-signal"/>
-    <keyword type="property" name="The &quot;path&quot; property" link="IBusService.html#IBusService--path"/>
-    <keyword type="signal" name="The &quot;ibus-message&quot; signal" link="IBusService.html#IBusService-ibus-message"/>
-    <keyword type="signal" name="The &quot;ibus-signal&quot; signal" link="IBusService.html#IBusService-ibus-signal"/>
+    <keyword type="function" name="ibus_service_get_object_path ()" link="IBusService.html#ibus-service-get-object-path"/>
+    <keyword type="function" name="ibus_service_get_connection ()" link="IBusService.html#ibus-service-get-connection"/>
+    <keyword type="function" name="ibus_service_register ()" link="IBusService.html#ibus-service-register"/>
+    <keyword type="function" name="ibus_service_unregister ()" link="IBusService.html#ibus-service-unregister"/>
+    <keyword type="function" name="ibus_service_emit_signal ()" link="IBusService.html#ibus-service-emit-signal"/>
+    <keyword type="function" name="ibus_service_class_add_interfaces ()" link="IBusService.html#ibus-service-class-add-interfaces"/>
     <keyword type="macro" name="ibus_warning()" link="ibus-ibusdebug.html#ibus-warning"/>
-    <keyword type="typedef" name="IBusError" link="ibus-ibuserror.html#IBusError"/>
-    <keyword type="function" name="ibus_error_new ()" link="ibus-ibuserror.html#ibus-error-new"/>
-    <keyword type="function" name="ibus_error_new_from_text ()" link="ibus-ibuserror.html#ibus-error-new-from-text"/>
-    <keyword type="function" name="ibus_error_new_from_printf ()" link="ibus-ibuserror.html#ibus-error-new-from-printf"/>
-    <keyword type="function" name="ibus_error_new_from_message ()" link="ibus-ibuserror.html#ibus-error-new-from-message"/>
-    <keyword type="function" name="ibus_error_free ()" link="ibus-ibuserror.html#ibus-error-free"/>
-    <keyword type="function" name="DBusConnectionSetupFunc ()" link="ibus-ibusmainloop.html#DBusConnectionSetupFunc"/>
-    <keyword type="function" name="DBusServerSetupFunc ()" link="ibus-ibusmainloop.html#DBusServerSetupFunc"/>
-    <keyword type="function" name="ibus_mainloop_setup ()" link="ibus-ibusmainloop.html#ibus-mainloop-setup"/>
-    <keyword type="function" name="ibus_dbus_server_setup ()" link="ibus-ibusmainloop.html#ibus-dbus-server-setup"/>
-    <keyword type="function" name="ibus_dbus_connection_setup ()" link="ibus-ibusmainloop.html#ibus-dbus-connection-setup"/>
+    <keyword type="macro" name="IBUS_OBJECT_IN_DESTRUCTION()" link="IBusObject.html#IBUS-OBJECT-IN-DESTRUCTION:CAPS"/>
     <keyword type="macro" name="IBUS_OBJECT_DESTROYED()" link="IBusObject.html#IBUS-OBJECT-DESTROYED:CAPS"/>
     <keyword type="struct" name="IBusObject" link="IBusObject.html#IBusObject-struct"/>
     <keyword type="struct" name="IBusObjectClass" link="IBusObject.html#IBusObjectClass"/>
     <keyword type="function" name="ibus_object_new ()" link="IBusObject.html#ibus-object-new"/>
     <keyword type="function" name="ibus_object_destroy ()" link="IBusObject.html#ibus-object-destroy"/>
     <keyword type="signal" name="The &quot;destroy&quot; signal" link="IBusObject.html#IBusObject-destroy"/>
-    <keyword type="struct" name="IBusServer" link="IBusServer.html#IBusServer-struct"/>
-    <keyword type="struct" name="IBusServerClass" link="IBusServer.html#IBusServerClass"/>
-    <keyword type="function" name="IBusNewConnectionFunc ()" link="IBusServer.html#IBusNewConnectionFunc"/>
-    <keyword type="function" name="ibus_server_new ()" link="IBusServer.html#ibus-server-new"/>
-    <keyword type="function" name="ibus_server_listen ()" link="IBusServer.html#ibus-server-listen"/>
-    <keyword type="function" name="ibus_server_disconnect ()" link="IBusServer.html#ibus-server-disconnect"/>
-    <keyword type="function" name="ibus_server_get_address ()" link="IBusServer.html#ibus-server-get-address"/>
-    <keyword type="function" name="ibus_server_get_id ()" link="IBusServer.html#ibus-server-get-id"/>
-    <keyword type="function" name="ibus_server_is_connected ()" link="IBusServer.html#ibus-server-is-connected"/>
-    <keyword type="function" name="ibus_server_set_auth_mechanisms ()" link="IBusServer.html#ibus-server-set-auth-mechanisms"/>
-    <keyword type="property" name="The &quot;connection-type&quot; property" link="IBusServer.html#IBusServer--connection-type"/>
-    <keyword type="signal" name="The &quot;new-connection&quot; signal" link="IBusServer.html#IBusServer-new-connection"/>
     <keyword type="macro" name="IBUS_SERVICE_IBUS" link="ibus-ibusshare.html#IBUS-SERVICE-IBUS:CAPS"/>
     <keyword type="macro" name="IBUS_SERVICE_PANEL" link="ibus-ibusshare.html#IBUS-SERVICE-PANEL:CAPS"/>
     <keyword type="macro" name="IBUS_SERVICE_CONFIG" link="ibus-ibusshare.html#IBUS-SERVICE-CONFIG:CAPS"/>
@@ -2491,6 +2467,7 @@
     <keyword type="function" name="ibus_get_user_name ()" link="ibus-ibusshare.html#ibus-get-user-name"/>
     <keyword type="function" name="ibus_get_daemon_uid ()" link="ibus-ibusshare.html#ibus-get-daemon-uid" deprecated=""/>
     <keyword type="function" name="ibus_get_socket_path ()" link="ibus-ibusshare.html#ibus-get-socket-path"/>
+    <keyword type="function" name="ibus_get_timeout ()" link="ibus-ibusshare.html#ibus-get-timeout"/>
     <keyword type="function" name="ibus_keyval_name ()" link="ibus-ibusshare.html#ibus-keyval-name"/>
     <keyword type="function" name="ibus_keyval_from_name ()" link="ibus-ibusshare.html#ibus-keyval-from-name"/>
     <keyword type="function" name="ibus_free_strv ()" link="ibus-ibusshare.html#ibus-free-strv" deprecated=""/>
@@ -2499,10 +2476,13 @@
     <keyword type="function" name="ibus_init ()" link="ibus-ibusshare.html#ibus-init"/>
     <keyword type="function" name="ibus_main ()" link="ibus-ibusshare.html#ibus-main"/>
     <keyword type="function" name="ibus_quit ()" link="ibus-ibusshare.html#ibus-quit"/>
+    <keyword type="function" name="ibus_set_log_handler ()" link="ibus-ibusshare.html#ibus-set-log-handler"/>
     <keyword type="enum" name="enum IBusModifierType" link="ibus-ibustypes.html#IBusModifierType"/>
     <keyword type="enum" name="enum IBusCapabilite" link="ibus-ibustypes.html#IBusCapabilite"/>
     <keyword type="enum" name="enum IBusPreeditFocusMode" link="ibus-ibustypes.html#IBusPreeditFocusMode"/>
     <keyword type="enum" name="enum IBusOrientation" link="ibus-ibustypes.html#IBusOrientation"/>
+    <keyword type="enum" name="enum IBusBusNameFlag" link="ibus-ibustypes.html#IBusBusNameFlag"/>
+    <keyword type="enum" name="enum IBusBusRequestNameReply" link="ibus-ibustypes.html#IBusBusRequestNameReply"/>
     <keyword type="struct" name="IBusRectangle" link="ibus-ibustypes.html#IBusRectangle"/>
     <keyword type="function" name="IBusFreeFunc ()" link="ibus-ibustypes.html#IBusFreeFunc"/>
     <keyword type="constant" name="IBUS_ATTR_TYPE_UNDERLINE" link="IBusAttribute.html#IBUS-ATTR-TYPE-UNDERLINE:CAPS"/>
@@ -2553,5 +2533,12 @@
     <keyword type="constant" name="IBUS_ORIENTATION_HORIZONTAL" link="ibus-ibustypes.html#IBUS-ORIENTATION-HORIZONTAL:CAPS"/>
     <keyword type="constant" name="IBUS_ORIENTATION_VERTICAL" link="ibus-ibustypes.html#IBUS-ORIENTATION-VERTICAL:CAPS"/>
     <keyword type="constant" name="IBUS_ORIENTATION_SYSTEM" link="ibus-ibustypes.html#IBUS-ORIENTATION-SYSTEM:CAPS"/>
+    <keyword type="constant" name="IBUS_BUS_NAME_FLAG_ALLOW_REPLACEMENT" link="ibus-ibustypes.html#IBUS-BUS-NAME-FLAG-ALLOW-REPLACEMENT:CAPS"/>
+    <keyword type="constant" name="IBUS_BUS_NAME_FLAG_REPLACE_EXISTING" link="ibus-ibustypes.html#IBUS-BUS-NAME-FLAG-REPLACE-EXISTING:CAPS"/>
+    <keyword type="constant" name="IBUS_BUS_NAME_FLAG_DO_NOT_QUEUE" link="ibus-ibustypes.html#IBUS-BUS-NAME-FLAG-DO-NOT-QUEUE:CAPS"/>
+    <keyword type="constant" name="IBUS_BUS_REQUEST_NAME_REPLY_PRIMARY_OWNER" link="ibus-ibustypes.html#IBUS-BUS-REQUEST-NAME-REPLY-PRIMARY-OWNER:CAPS"/>
+    <keyword type="constant" name="IBUS_BUS_REQUEST_NAME_REPLY_IN_QUEUE" link="ibus-ibustypes.html#IBUS-BUS-REQUEST-NAME-REPLY-IN-QUEUE:CAPS"/>
+    <keyword type="constant" name="IBUS_BUS_REQUEST_NAME_REPLY_EXISTS" link="ibus-ibustypes.html#IBUS-BUS-REQUEST-NAME-REPLY-EXISTS:CAPS"/>
+    <keyword type="constant" name="IBUS_BUS_REQUEST_NAME_REPLY_ALREADY_OWNER" link="ibus-ibustypes.html#IBUS-BUS-REQUEST-NAME-REPLY-ALREADY-OWNER:CAPS"/>
   </functions>
 </book>

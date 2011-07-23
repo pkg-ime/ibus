@@ -46,6 +46,17 @@ IBusBus
 </para>
 
 @ibusbus: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusBus::name-owner-changed ##### -->
+<para>
+
+</para>
+
+@ibusbus: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
 
 <!-- ##### STRUCT IBusBusClass ##### -->
 <para>
@@ -64,6 +75,15 @@ IBusBus
 
 
 <!-- ##### FUNCTION ibus_bus_is_connected ##### -->
+<para>
+
+</para>
+
+@bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_connection ##### -->
 <para>
 
 </para>
@@ -92,7 +112,66 @@ IBusBus
 @Returns: 
 
 
+<!-- ##### FUNCTION ibus_bus_request_name_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@name: 
+@flags: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_request_name_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_bus_release_name ##### -->
+<para>
+
+</para>
+
+@bus: 
+@name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_release_name_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@name: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_release_name_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_list_queued_owners ##### -->
 <para>
 
 </para>
@@ -112,6 +191,30 @@ IBusBus
 @Returns: 
 
 
+<!-- ##### FUNCTION ibus_bus_name_has_owner_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@name: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_name_has_owner_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_bus_list_names ##### -->
 <para>
 
@@ -128,6 +231,31 @@ IBusBus
 
 @bus: 
 @rule: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_add_match_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@rule: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_add_match_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
+@Returns: 
 
 
 <!-- ##### FUNCTION ibus_bus_remove_match ##### -->
@@ -137,6 +265,31 @@ IBusBus
 
 @bus: 
 @rule: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_remove_match_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@rule: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_remove_match_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
+@Returns: 
 
 
 <!-- ##### FUNCTION ibus_bus_get_name_owner ##### -->
@@ -146,6 +299,30 @@ IBusBus
 
 @bus: 
 @name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_name_owner_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@name: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_name_owner_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
 @Returns: 
 
 
@@ -159,12 +336,93 @@ IBusBus
 @Returns: 
 
 
+<!-- ##### FUNCTION ibus_bus_exit_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@restart: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_exit_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_create_input_context ##### -->
+<para>
+
+</para>
+
+@bus: 
+@client_name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_create_input_context_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@client_name: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_create_input_context_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_bus_current_input_context ##### -->
 <para>
 
 </para>
 
 @bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_current_input_context_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_current_input_context_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
 @Returns: 
 
 
@@ -178,12 +436,59 @@ IBusBus
 @Returns: 
 
 
+<!-- ##### FUNCTION ibus_bus_register_component_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@component: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_register_component_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_bus_list_engines ##### -->
 <para>
 
 </para>
 
 @bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_list_engines_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_list_engines_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
 @Returns: 
 
 
@@ -196,12 +501,58 @@ IBusBus
 @Returns: 
 
 
+<!-- ##### FUNCTION ibus_bus_list_active_engines_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_list_active_engines_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_bus_get_use_sys_layout ##### -->
 <para>
 
 </para>
 
 @bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_use_sys_layout_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_use_sys_layout_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
 @Returns: 
 
 
@@ -214,12 +565,90 @@ IBusBus
 @Returns: 
 
 
+<!-- ##### FUNCTION ibus_bus_get_use_global_engine_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_use_global_engine_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
+@Returns: 
+
+
 <!-- ##### FUNCTION ibus_bus_is_global_engine_enabled ##### -->
 <para>
 
 </para>
 
 @bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_is_global_engine_enabled_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_is_global_engine_enabled_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_global_engine ##### -->
+<para>
+
+</para>
+
+@bus: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_global_engine_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_get_global_engine_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
 @Returns: 
 
 
@@ -231,6 +660,48 @@ IBusBus
 @bus: 
 @global_engine: 
 @Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_set_global_engine_async ##### -->
+<para>
+
+</para>
+
+@bus: 
+@global_engine: 
+@timeout_msec: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION ibus_bus_set_global_engine_async_finish ##### -->
+<para>
+
+</para>
+
+@bus: 
+@res: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_bus_set_watch_dbus_signal ##### -->
+<para>
+
+</para>
+
+@bus: 
+@watch: 
+
+
+<!-- ##### FUNCTION ibus_bus_set_watch_ibus_signal ##### -->
+<para>
+
+</para>
+
+@bus: 
+@watch: 
 
 
 <!-- ##### FUNCTION ibus_bus_get_config ##### -->

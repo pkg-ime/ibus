@@ -20,7 +20,7 @@
 # Free Software Foundation, Inc., 59 Temple Place, Suite 330,
 # Boston, MA  02111-1307  USA
 
-libibus = $(top_builddir)/src/libibus.la
+libibus = $(top_builddir)/src/libibus-@IBUS_API_VERSION@.la
 
 INCLUDES = \
 	-I$(top_srcdir)/src \
@@ -62,3 +62,5 @@ EXTRA_DIST = \
 
 test: all
 	GTK_IM_MODULE=ibus gedit
+
+-include $(top_srcdir)/git.mk

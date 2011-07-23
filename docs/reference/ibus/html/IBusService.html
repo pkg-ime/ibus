@@ -26,10 +26,6 @@
                   <a href="#IBusService.description" class="shortcut">Description</a>
                    | 
                   <a href="#IBusService.object-hierarchy" class="shortcut">Object Hierarchy</a>
-                   | 
-                  <a href="#IBusService.properties" class="shortcut">Properties</a>
-                   | 
-                  <a href="#IBusService.signals" class="shortcut">Signals</a>
 </td></tr>
 </table>
 <div class="refentry" title="IBusService">
@@ -49,29 +45,23 @@ Stable, unless otherwise indicated
 <a name="IBusService.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">                    <a class="link" href="IBusService.html#IBusService-struct" title="IBusService">IBusService</a>;
                     <a class="link" href="IBusService.html#IBusServiceClass" title="IBusServiceClass">IBusServiceClass</a>;
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            (<a class="link" href="IBusService.html#ServiceIBusMessageFunc" title="ServiceIBusMessageFunc ()">*ServiceIBusMessageFunc</a>)           (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            (<a class="link" href="IBusService.html#ServiceIBusSignalFunc" title="ServiceIBusSignalFunc ()">*ServiceIBusSignalFunc</a>)            (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
-<a class="link" href="IBusService.html" title="IBusService"><span class="returnvalue">IBusService</span></a> *       <a class="link" href="IBusService.html#ibus-service-new" title="ibus_service_new ()">ibus_service_new</a>                    (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>);
-const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusService.html#ibus-service-get-path" title="ibus_service_get_path ()">ibus_service_get_path</a>               (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusService.html#ibus-service-handle-message" title="ibus_service_handle_message ()">ibus_service_handle_message</a>         (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusService.html#ibus-service-add-to-connection" title="ibus_service_add_to_connection ()">ibus_service_add_to_connection</a>      (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="IBusService.html#ibus-service-get-connections" title="ibus_service_get_connections ()">ibus_service_get_connections</a>        (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusService.html#ibus-service-remove-from-connection" title="ibus_service_remove_from_connection ()">ibus_service_remove_from_connection</a> (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusService.html#ibus-service-remove-from-all-connections" title="ibus_service_remove_from_all_connections ()">ibus_service_remove_from_all_connections</a>
-                                                        (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusService.html#ibus-service-send-signal" title="ibus_service_send_signal ()">ibus_service_send_signal</a>            (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
-                                                         <em class="parameter"><code>...</code></em>);
+<a class="link" href="IBusService.html" title="IBusService"><span class="returnvalue">IBusService</span></a> *       <a class="link" href="IBusService.html#ibus-service-new" title="ibus_service_new ()">ibus_service_new</a>                    (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusService.html#ibus-service-get-object-path" title="ibus_service_get_object_path ()">ibus_service_get_object_path</a>        (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>);
+<a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="returnvalue">GDBusConnection</span></a> *   <a class="link" href="IBusService.html#ibus-service-get-connection" title="ibus_service_get_connection ()">ibus_service_get_connection</a>         (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusService.html#ibus-service-register" title="ibus_service_register ()">ibus_service_register</a>               (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusService.html#ibus-service-unregister" title="ibus_service_unregister ()">ibus_service_unregister</a>             (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusService.html#ibus-service-emit-signal" title="ibus_service_emit_signal ()">ibus_service_emit_signal</a>            (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *dest_bus_name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface_name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *signal_name</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *parameters</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusService.html#ibus-service-class-add-interfaces" title="ibus_service_class_add_interfaces ()">ibus_service_class_add_interfaces</a>   (<em class="parameter"><code><a class="link" href="IBusService.html#IBusServiceClass" title="IBusServiceClass"><span class="type">IBusServiceClass</span></a> *klass</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *xml_data</code></em>);
 </pre>
 </div>
 <div class="refsect1" title="Object Hierarchy">
@@ -85,19 +75,6 @@ const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.htm
                      +----<a class="link" href="IBusConfigService.html" title="IBusConfigService">IBusConfigService</a>
                      +----<a class="link" href="IBusEngine.html" title="IBusEngine">IBusEngine</a>
                      +----<a class="link" href="IBusPanelService.html" title="IBusPanelService">IBusPanelService</a>
-</pre>
-</div>
-<div class="refsect1" title="Properties">
-<a name="IBusService.properties"></a><h2>Properties</h2>
-<pre class="synopsis">
-  "<a class="link" href="IBusService.html#IBusService--path" title='The "path" property'>path</a>"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only
-</pre>
-</div>
-<div class="refsect1" title="Signals">
-<a name="IBusService.signals"></a><h2>Signals</h2>
-<pre class="synopsis">
-  "<a class="link" href="IBusService.html#IBusService-ibus-message" title='The "ibus-message" signal'>ibus-message</a>"                                   : Run Last
-  "<a class="link" href="IBusService.html#IBusService-ibus-signal" title='The "ibus-signal" signal'>ibus-signal</a>"                                    : Run Last
 </pre>
 </div>
 <div class="refsect1" title="Description">
@@ -119,102 +96,55 @@ An opaque data type representing an IBusService.
 <div class="refsect2" title="IBusServiceClass">
 <a name="IBusServiceClass"></a><h3>IBusServiceClass</h3>
 <pre class="programlisting">typedef struct {
-    IBusObjectClass parent;
-
-    /* signals */
-    gboolean  (* ibus_message)      (IBusService    *service,
-                                     IBusConnection *connection,
-                                     IBusMessage    *message);
-    gboolean  (* ibus_signal)       (IBusService    *service,
-                                     IBusConnection *connection,
-                                     IBusMessage    *message);
+    /* virtual functions */
+    void        (* service_method_call)
+                                    (IBusService        *service,
+                                     GDBusConnection    *connection,
+                                     const gchar        *sender,
+                                     const gchar        *object_path,
+                                     const gchar        *interface_name,
+                                     const gchar        *method_name,
+                                     GVariant           *parameters,
+                                     GDBusMethodInvocation
+                                                        *invocation);
+    GVariant *  (* service_get_property)
+                                    (IBusService        *service,
+                                     GDBusConnection    *connection,
+                                     const gchar        *sender,
+                                     const gchar        *object_path,
+                                     const gchar        *interface_name,
+                                     const gchar        *property_name,
+                                     GError            **error);
+    gboolean    (* service_set_property)
+                                    (IBusService        *service,
+                                     GDBusConnection    *connection,
+                                     const gchar        *sender,
+                                     const gchar        *object_path,
+                                     const gchar        *interface_name,
+                                     const gchar        *property_name,
+                                     GVariant           *value,
+                                     GError            **error);
 } IBusServiceClass;
 </pre>
 <p>
 </p>
 </div>
 <hr>
-<div class="refsect2" title="ServiceIBusMessageFunc ()">
-<a name="ServiceIBusMessageFunc"></a><h3>ServiceIBusMessageFunc ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            (*ServiceIBusMessageFunc)           (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
-<p>
-Prototype of IBus service message sending callback function.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>service</code></em> :</span></p></td>
-<td>An IBsService.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>Connection to IBus daemon.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
-<td>IBusMessage to be sent.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if failed.
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2" title="ServiceIBusSignalFunc ()">
-<a name="ServiceIBusSignalFunc"></a><h3>ServiceIBusSignalFunc ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            (*ServiceIBusSignalFunc)            (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
-<p>
-Prototype of IBus service signal sending callback function.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>service</code></em> :</span></p></td>
-<td>An IBsService.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>Connection to IBus daemon.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
-<td>IBusMessage to be sent.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if failed.
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
 <div class="refsect2" title="ibus_service_new ()">
 <a name="ibus-service-new"></a><h3>ibus_service_new ()</h3>
-<pre class="programlisting"><a class="link" href="IBusService.html" title="IBusService"><span class="returnvalue">IBusService</span></a> *       ibus_service_new                    (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="IBusService.html" title="IBusService"><span class="returnvalue">IBusService</span></a> *       ibus_service_new                    (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>);</pre>
 <p>
 New an IBusService.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
 <td>Object path.
@@ -229,9 +159,9 @@ New an IBusService.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_service_get_path ()">
-<a name="ibus-service-get-path"></a><h3>ibus_service_get_path ()</h3>
-<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_service_get_path               (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>);</pre>
+<div class="refsect2" title="ibus_service_get_object_path ()">
+<a name="ibus-service-get-object-path"></a><h3>ibus_service_get_object_path ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_service_get_object_path        (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>);</pre>
 <p>
 Returns the object path of an IBusService.
 </p>
@@ -252,13 +182,35 @@ Returns the object path of an IBusService.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_service_handle_message ()">
-<a name="ibus-service-handle-message"></a><h3>ibus_service_handle_message ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_service_handle_message         (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="ibus-IBusMessage.html#IBusMessage" title="IBusMessage"><span class="type">IBusMessage</span></a> *message</code></em>);</pre>
+<div class="refsect2" title="ibus_service_get_connection ()">
+<a name="ibus-service-get-connection"></a><h3>ibus_service_get_connection ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="returnvalue">GDBusConnection</span></a> *   ibus_service_get_connection         (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>);</pre>
 <p>
-Emit an IBusMessage on an IBusConnection.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>service</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_service_register ()">
+<a name="ibus-service-register"></a><h3>ibus_service_register ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_service_register               (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Registers service to a connection.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -270,30 +222,29 @@ Emit an IBusMessage on an IBusConnection.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>Corresponding IBusCOnnection
+<td>A GDBusConnection the service will be registered to.
 </td>
 </tr>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
-<td>IBusMessage to be handled.
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or NULL.
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if succeed; FALSE otherwise.
+<td>TRUE if the service was registered, FALSE otherwise.
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_service_add_to_connection ()">
-<a name="ibus-service-add-to-connection"></a><h3>ibus_service_add_to_connection ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_service_add_to_connection      (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);</pre>
+<div class="refsect2" title="ibus_service_unregister ()">
+<a name="ibus-service-unregister"></a><h3>ibus_service_unregister ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_service_unregister             (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>);</pre>
 <p>
-Add an IBus Service to an IBusConnection.
-This function also connects the service to the signal IBusConnection::destroy of the connection.
+Unregisters service from a connection.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -305,241 +256,88 @@ This function also connects the service to the signal IBusConnection::destroy of
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>Corresponding IBusCOnnection
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if succeed; FALSE otherwise.
+<td>A GDBusConnection the service was registered with.
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_service_get_connections ()">
-<a name="ibus-service-get-connections"></a><h3>ibus_service_get_connections ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             ibus_service_get_connections        (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>);</pre>
+<div class="refsect2" title="ibus_service_emit_signal ()">
+<a name="ibus-service-emit-signal"></a><h3>ibus_service_emit_signal ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_service_emit_signal            (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *dest_bus_name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface_name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *signal_name</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *parameters</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>
-Returns a copy of list of connections, but the caller does not own the element.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>service</code></em> :</span></p></td>
-<td>An IBusService.
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>dest_bus_name</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>interface_name</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>signal_name</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>parameters</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A newly allocated list of connections. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusConnection]</span>
+<td>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_service_remove_from_connection ()">
-<a name="ibus-service-remove-from-connection"></a><h3>ibus_service_remove_from_connection ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_service_remove_from_connection (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusConnection.html" title="IBusConnection"><span class="type">IBusConnection</span></a> *connection</code></em>);</pre>
+<div class="refsect2" title="ibus_service_class_add_interfaces ()">
+<a name="ibus-service-class-add-interfaces"></a><h3>ibus_service_class_add_interfaces ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_service_class_add_interfaces   (<em class="parameter"><code><a class="link" href="IBusService.html#IBusServiceClass" title="IBusServiceClass"><span class="type">IBusServiceClass</span></a> *klass</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *xml_data</code></em>);</pre>
 <p>
-Remove an IBusService from an IBusConnection.
-This function also disconnects the signal IBusConnection::destroy.
+Set the interface introspection information with the service class.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>service</code></em> :</span></p></td>
-<td>An IBusService.
+<td><p><span class="term"><em class="parameter"><code>klass</code></em> :</span></p></td>
+<td>An IBusServiceClass.
 </td>
 </tr>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>Corresponding IBusCOnnection
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if succeed; FALSE otherwise.
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2" title="ibus_service_remove_from_all_connections ()">
-<a name="ibus-service-remove-from-all-connections"></a><h3>ibus_service_remove_from_all_connections ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_service_remove_from_all_connections
-                                                        (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>);</pre>
-<p>
-Remove an IBusService from all connections.
-This function also disconnects the signal IBusConnection::destroy.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>service</code></em> :</span></p></td>
-<td>An IBusService.
+<td><p><span class="term"><em class="parameter"><code>xml_data</code></em> :</span></p></td>
+<td>The introspection xml data.
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if succeed; FALSE otherwise.
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2" title="ibus_service_send_signal ()">
-<a name="ibus-service-send-signal"></a><h3>ibus_service_send_signal ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_service_send_signal            (<em class="parameter"><code><a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *interface</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> first_arg_type</code></em>,
-                                                         <em class="parameter"><code>...</code></em>);</pre>
-<p>
-Send signal to all the IBusConnections of an IBusService.
-</p>
-<p>
-<em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusConnection.html#ibus-connection-send-signal" title="ibus_connection_send_signal ()"><code class="function">ibus_connection_send_signal()</code></a>
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>service</code></em> :</span></p></td>
-<td>An IBusService.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>interface</code></em> :</span></p></td>
-<td>The interface the signal is emitted from.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>Name of the signal.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>first_arg_type</code></em> :</span></p></td>
-<td>Type of first argument.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
-<td>Rest of arguments, NULL to mark the end.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if succeed; FALSE otherwise.
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-</div>
-<div class="refsect1" title="Property Details">
-<a name="IBusService.property-details"></a><h2>Property Details</h2>
-<div class="refsect2" title='The "path" property'>
-<a name="IBusService--path"></a><h3>The <code class="literal">"path"</code> property</h3>
-<pre class="programlisting">  "path"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
-<p>
-The path of service object.
-</p>
-<p>Default value: NULL</p>
-</div>
-</div>
-<div class="refsect1" title="Signal Details">
-<a name="IBusService.signal-details"></a><h2>Signal Details</h2>
-<div class="refsect2" title='The "ibus-message" signal'>
-<a name="IBusService-ibus-message"></a><h3>The <code class="literal">"ibus-message"</code> signal</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            user_function                      (<a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>     connection,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>     message,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>     user_data)       : Run Last</pre>
-<p>
-Send a message as IBusMessage though the <em class="parameter"><code>connection</code></em>.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>service</code></em> :</span></p></td>
-<td>An IBusService.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>Corresponding IBusConnection.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
-<td>An IBusMessage to be sent.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>user data set when the signal handler was connected.</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> TRUE if succeed; FALSE otherwise.
-<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
-<h3 class="title">Note</h3>
-<p>Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.</p>
-</div>
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2" title='The "ibus-signal" signal'>
-<a name="IBusService-ibus-signal"></a><h3>The <code class="literal">"ibus-signal"</code> signal</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            user_function                      (<a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> *service,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>     connection,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>     message,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>     user_data)       : Run Last</pre>
-<p>
-Send a signal as IBusMessage though the <em class="parameter"><code>connection</code></em>.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>service</code></em> :</span></p></td>
-<td>An IBusService.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>Corresponding IBusConnection.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
-<td>An IBusMessage to be sent.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>user data set when the signal handler was connected.</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> TRUE if succeed; FALSE otherwise.
-<div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;">
-<h3 class="title">Note</h3>
-<p>Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.</p>
-</div>
+<td>
 </td>
 </tr>
 </tbody>

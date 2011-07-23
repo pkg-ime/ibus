@@ -19,8 +19,8 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
-#include <dbus/dbus.h>
 #include "ibushotkey.h"
+#include "ibusmarshalers.h"
 #include "ibuskeysyms.h"
 #include "ibusinternal.h"
 #include "ibusshare.h"
@@ -60,24 +60,23 @@ static IBusHotkey   *ibus_hotkey_new                (guint                   key
                                                      guint                   modifiers);
 static IBusHotkey   *ibus_hotkey_copy               (const IBusHotkey       *src);
 static void          ibus_hotkey_free               (IBusHotkey             *hotkey);
-/*
-static gboolean      ibus_hotkey_serialize          (IBusHotkey             *hotkey,
-                                                     IBusMessageIter        *iter);
-static gboolean      ibus_hotkey_deserialize        (IBusHotkey             *hotkey,
-                                                     IBusMessageIter        *iter);
-*/
-static void          ibus_hotkey_profile_class_init (IBusHotkeyProfileClass *klass);
+static void          ibus_hotkey_profile_class_init (IBusHotkeyProfileClass *class);
 static void          ibus_hotkey_profile_init       (IBusHotkeyProfile      *profile);
 static void          ibus_hotkey_profile_destroy    (IBusHotkeyProfile      *profile);
 static gboolean      ibus_hotkey_profile_serialize  (IBusHotkeyProfile      *profile,
-                                                     IBusMessageIter        *iter);
-static gboolean      ibus_hotkey_profile_deserialize(IBusHotkeyProfile      *profile,
-                                                     IBusMessageIter        *iter);
+                                                     GVariantBuilder        *builder);
+static gint          ibus_hotkey_profile_deserialize(IBusHotkeyProfile      *profile,
+                                                     GVariant               *variant);
 static gboolean      ibus_hotkey_profile_copy       (IBusHotkeyProfile      *dest,
                                                      const IBusHotkeyProfile*src);
 static void          ibus_hotkey_profile_trigger    (IBusHotkeyProfile      *profile,
                                                      GQuark                  event,
                                                      gpointer                user_data);
+
+// Normalize modifiers by setting necessary modifier bits according to keyval.
+static guint         normalize_modifiers            (guint                   keyval,
+                                                     guint                   modifiers);
+static gboolean      is_modifier                    (guint                   keyval);
 
 static IBusSerializableClass *parent_class = NULL;
 
@@ -96,40 +95,6 @@ ibus_hotkey_get_type (void)
 
     return type;
 }
-
-/*
-static gboolean
-ibus_hotkey_serialize (IBusHotkey      *hotkey,
-                       IBusMessageIter *iter)
-{
-    gboolean retval;
-
-    retval = ibus_message_iter_append (iter, G_TYPE_UINT, &hotkey->keyval);
-    g_return_val_if_fail (retval, FALSE);
-
-    retval = ibus_message_iter_append (iter, G_TYPE_UINT, &hotkey->modifiers);
-    g_return_val_if_fail (retval, FALSE);
-
-    return TRUE;
-}
-
-static gboolean
-ibus_hotkey_deserialize (IBusHotkey      *hotkey,
-                         IBusMessageIter *iter)
-{
-    gboolean retval;
-
-    retval = ibus_message_iter_get (iter, G_TYPE_UINT, &hotkey->keyval);
-    g_return_val_if_fail (retval, FALSE);
-    ibus_message_iter_next (iter);
-
-    retval = ibus_message_iter_get (iter, G_TYPE_UINT, &hotkey->modifiers);
-    g_return_val_if_fail (retval, FALSE);
-    ibus_message_iter_next (iter);
-
-    return TRUE;
-}
-*/
 
 static IBusHotkey *
 ibus_hotkey_new (guint keyval,
@@ -203,14 +168,14 @@ ibus_hotkey_profile_get_type (void)
 }
 
 static void
-ibus_hotkey_profile_class_init (IBusHotkeyProfileClass *klass)
+ibus_hotkey_profile_class_init (IBusHotkeyProfileClass *class)
 {
-    IBusObjectClass *object_class = IBUS_OBJECT_CLASS (klass);
-    IBusSerializableClass *serializable_class = IBUS_SERIALIZABLE_CLASS (klass);
+    IBusObjectClass *object_class = IBUS_OBJECT_CLASS (class);
+    IBusSerializableClass *serializable_class = IBUS_SERIALIZABLE_CLASS (class);
 
-    parent_class = (IBusSerializableClass *) g_type_class_peek_parent (klass);
+    parent_class = (IBusSerializableClass *) g_type_class_peek_parent (class);
 
-    g_type_class_add_private (klass, sizeof (IBusHotkeyProfilePrivate));
+    g_type_class_add_private (class, sizeof (IBusHotkeyProfilePrivate));
 
     object_class->destroy = (IBusObjectDestroyFunc) ibus_hotkey_profile_destroy;
 
@@ -218,9 +183,7 @@ ibus_hotkey_profile_class_init (IBusHotkeyProfileClass *klass)
     serializable_class->deserialize = (IBusSerializableDeserializeFunc) ibus_hotkey_profile_deserialize;
     serializable_class->copy        = (IBusSerializableCopyFunc) ibus_hotkey_profile_copy;
 
-    klass->trigger = ibus_hotkey_profile_trigger;
-
-    g_string_append (serializable_class->signature, "av");
+    class->trigger = ibus_hotkey_profile_trigger;
 
     /* install signals */
     /**
@@ -236,11 +199,11 @@ ibus_hotkey_profile_class_init (IBusHotkeyProfileClass *klass)
      */
     profile_signals[TRIGGER] =
         g_signal_new (I_("trigger"),
-            G_TYPE_FROM_CLASS (klass),
+            G_TYPE_FROM_CLASS (class),
             G_SIGNAL_RUN_LAST | G_SIGNAL_DETAILED,
             G_STRUCT_OFFSET (IBusHotkeyProfileClass, trigger),
             NULL, NULL,
-            ibus_marshal_VOID__UINT_POINTER,
+            _ibus_marshal_VOID__UINT_POINTER,
             G_TYPE_NONE,
             2,
             G_TYPE_UINT,
@@ -262,6 +225,8 @@ ibus_hotkey_profile_init (IBusHotkeyProfile *profile)
     priv->mask = IBUS_SHIFT_MASK |
                  IBUS_CONTROL_MASK |
                  IBUS_MOD1_MASK |
+                 IBUS_SUPER_MASK |
+                 IBUS_HYPER_MASK |
                  IBUS_RELEASE_MASK;
 }
 
@@ -294,26 +259,26 @@ ibus_hotkey_profile_destroy (IBusHotkeyProfile *profile)
 
 static gboolean
 ibus_hotkey_profile_serialize (IBusHotkeyProfile *profile,
-                               IBusMessageIter   *iter)
+                               GVariantBuilder   *builder)
 {
     gboolean retval;
 
-    retval = parent_class->serialize ((IBusSerializable *) profile, iter);
+    retval = parent_class->serialize ((IBusSerializable *) profile, builder);
     g_return_val_if_fail (retval, FALSE);
 
     return TRUE;
 }
 
-static gboolean
+static gint
 ibus_hotkey_profile_deserialize (IBusHotkeyProfile *profile,
-                                 IBusMessageIter   *iter)
+                                 GVariant          *variant)
 {
-    gboolean retval;
+    gint retval;
 
-    retval = parent_class->deserialize ((IBusSerializable *) profile, iter);
-    g_return_val_if_fail (retval, FALSE);
+    retval = parent_class->deserialize ((IBusSerializable *) profile, variant);
+    g_return_val_if_fail (retval, 0);
 
-    return TRUE;
+    return retval;
 }
 
 static gboolean
@@ -348,6 +313,56 @@ ibus_hotkey_profile_trigger (IBusHotkeyProfile *profile,
     // g_debug ("%s is triggerred", g_quark_to_string (event));
 }
 
+static guint
+normalize_modifiers (guint keyval,
+                     guint modifiers)
+{
+    switch(keyval) {
+    case IBUS_Control_L:
+    case IBUS_Control_R:
+        return modifiers | IBUS_CONTROL_MASK;
+    case IBUS_Shift_L:
+    case IBUS_Shift_R:
+        return modifiers | IBUS_SHIFT_MASK;
+    case IBUS_Alt_L:
+    case IBUS_Alt_R:
+    // Chrome OS does not have Meta key. Instead, shift+alt generates Meta keyval.
+    case IBUS_Meta_L:
+    case IBUS_Meta_R:
+        return modifiers | IBUS_MOD1_MASK;
+    case IBUS_Super_L:
+    case IBUS_Super_R:
+        return modifiers | IBUS_SUPER_MASK;
+    case IBUS_Hyper_L:
+    case IBUS_Hyper_R:
+        return modifiers | IBUS_HYPER_MASK;
+    default:
+        return modifiers;
+    }
+}
+
+static gboolean
+is_modifier (guint keyval)
+{
+    switch(keyval) {
+    case IBUS_Control_L:
+    case IBUS_Control_R:
+    case IBUS_Shift_L:
+    case IBUS_Shift_R:
+    case IBUS_Alt_L:
+    case IBUS_Alt_R:
+    case IBUS_Meta_L:
+    case IBUS_Meta_R:
+    case IBUS_Super_L:
+    case IBUS_Super_R:
+    case IBUS_Hyper_L:
+    case IBUS_Hyper_R:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
 gboolean
 ibus_hotkey_profile_add_hotkey (IBusHotkeyProfile *profile,
                                 guint              keyval,
@@ -357,7 +372,8 @@ ibus_hotkey_profile_add_hotkey (IBusHotkeyProfile *profile,
     IBusHotkeyProfilePrivate *priv;
     priv = IBUS_HOTKEY_PROFILE_GET_PRIVATE (profile);
 
-    IBusHotkey *hotkey = ibus_hotkey_new (keyval, modifiers);
+    IBusHotkey *hotkey = ibus_hotkey_new (keyval,
+                                          normalize_modifiers (keyval, modifiers & priv->mask));
 
     /* has the same hotkey in profile */
     if (g_tree_lookup (priv->hotkeys, hotkey) != NULL) {
@@ -409,6 +425,8 @@ ibus_hotkey_profile_remove_hotkey (IBusHotkeyProfile *profile,
 {
     IBusHotkeyProfilePrivate *priv;
     priv = IBUS_HOTKEY_PROFILE_GET_PRIVATE (profile);
+
+    modifiers = normalize_modifiers (keyval, modifiers & priv->mask);
 
     IBusHotkey hotkey = {
         .keyval = keyval,
@@ -487,13 +505,35 @@ ibus_hotkey_profile_filter_key_event (IBusHotkeyProfile *profile,
     IBusHotkeyProfilePrivate *priv;
     priv = IBUS_HOTKEY_PROFILE_GET_PRIVATE (profile);
 
+    modifiers = normalize_modifiers (keyval, modifiers & priv->mask);
+    prev_modifiers = normalize_modifiers (prev_keyval, prev_modifiers & priv->mask);
+
     IBusHotkey hotkey = {
         .keyval = keyval,
-        .modifiers = modifiers & priv->mask,
+        .modifiers = modifiers,
     };
 
-    if ((modifiers & IBUS_RELEASE_MASK) && keyval != prev_keyval) {
-        return 0;
+    if (modifiers & IBUS_RELEASE_MASK) {
+        /* previous key event must be a press key event */
+        if (prev_modifiers & IBUS_RELEASE_MASK)
+            return 0;
+
+        /* modifiers should be same except the release bit */
+        if (modifiers != (prev_modifiers | IBUS_RELEASE_MASK))
+            return 0;
+
+        /* If it is release key event,
+         * we need check if keyval is equal to the prev keyval.
+         * If keyval is not equal to the prev keyval,
+         * but both keyvals are modifier keys,
+         * we will still search it in hotkeys.
+         * It is for matching some key sequences like:
+         * Shift Down, Alt Down, Shift Up => Shift+Alt+Release - Shift hotkey
+         **/
+        if ((keyval != prev_keyval) &&
+            (is_modifier (keyval) == FALSE ||
+             is_modifier (prev_keyval) == FALSE))
+            return 0;
     }
 
     GQuark event = (GQuark) GPOINTER_TO_UINT (g_tree_lookup (priv->hotkeys, &hotkey));
@@ -513,9 +553,11 @@ ibus_hotkey_profile_lookup_hotkey (IBusHotkeyProfile *profile,
     IBusHotkeyProfilePrivate *priv;
     priv = IBUS_HOTKEY_PROFILE_GET_PRIVATE (profile);
 
+    modifiers = normalize_modifiers (keyval, modifiers & priv->mask);
+
     IBusHotkey hotkey = {
         .keyval = keyval,
-        .modifiers = modifiers & priv->mask,
+        .modifiers = modifiers,
     };
 
     return (GQuark) GPOINTER_TO_UINT (g_tree_lookup (priv->hotkeys, &hotkey));

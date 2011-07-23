@@ -19,8 +19,8 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
-#ifndef __FACTORY_PROXY_H_
-#define __FACTORY_PROXY_H_
+#ifndef __BUS_FACTORY_PROXY_H_
+#define __BUS_FACTORY_PROXY_H_
 
 #include <ibus.h>
 #include "connection.h"
@@ -49,37 +49,40 @@ G_BEGIN_DECLS
 typedef struct _BusFactoryProxy BusFactoryProxy;
 typedef struct _BusFactoryProxyClass BusFactoryProxyClass;
 
-struct _BusFactoryProxy {
-    IBusProxy parent;
-    /* instance members */
-
-    IBusComponent *component;
-    GList *engine_list;
-};
-
-struct _BusFactoryProxyClass {
-    IBusProxyClass parent;
-    /* class members */
-};
-
 GType            bus_factory_proxy_get_type     (void);
-BusFactoryProxy *bus_factory_proxy_new          (IBusComponent      *component,
-                                                 BusConnection      *connection);
-IBusComponent   *bus_factory_proxy_get_component(BusFactoryProxy    *factory);
-BusEngineProxy  *bus_factory_proxy_create_engine(BusFactoryProxy    *factory,
-                                                 IBusEngineDesc     *desc);
-BusFactoryProxy *bus_factory_proxy_get_from_component
-                                                (IBusComponent      *component);
-BusFactoryProxy *bus_factory_proxy_get_from_engine
-                                                (IBusEngineDesc     *desc);
 
-#if 0
-const gchar     *bus_factory_proxy_get_name     (BusFactoryProxy    *factory);
-const gchar     *bus_factory_proxy_get_lang     (BusFactoryProxy    *factory);
-const gchar     *bus_factory_proxy_get_icon     (BusFactoryProxy    *factory);
-const gchar     *bus_factory_proxy_get_authors  (BusFactoryProxy    *factory);
-const gchar     *bus_factory_proxy_get_credits  (BusFactoryProxy    *factory);
-#endif
+/**
+ * bus_factory_proxy_new:
+ * @connection: the connection between ibus-daemon and an engine process.
+ * @returns: a new proxy object.
+ */
+BusFactoryProxy *bus_factory_proxy_new          (BusConnection      *connection);
+
+/**
+ * bus_factory_proxy_create_engine:
+ * @desc: an engine description to create.
+ * @timeout: timeout in msec, or -1 to use the default timeout value.
+ *
+ * Invoke "CreateEngine" method of the "org.freedesktop.IBus.Factory" interface asynchronously.
+ */
+void             bus_factory_proxy_create_engine
+                                                (BusFactoryProxy    *factory,
+                                                 IBusEngineDesc     *desc,
+                                                 gint                timeout,
+                                                 GCancellable       *cancellable,
+                                                 GAsyncReadyCallback callback,
+                                                 gpointer            user_data);
+
+/**
+ * bus_factory_proxy_create_engine_finish:
+ * @returns: On success, return an D-Bus object path of the new engine. On error, returns NULL.
+ *
+ * Get the result of bus_factory_proxy_create_engine call. You have to call this function in the GAsyncReadyCallback function.
+ */
+gchar           *bus_factory_proxy_create_engine_finish
+                                                (BusFactoryProxy    *factory,
+                                                 GAsyncResult       *res,
+                                                 GError            **error);
 
 G_END_DECLS
 #endif

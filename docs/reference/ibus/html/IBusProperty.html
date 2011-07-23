@@ -58,18 +58,27 @@ enum                <a class="link" href="IBusProperty.html#IBusPropState" title
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropState" title="enum IBusPropState"><span class="type">IBusPropState</span></a> state</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusProperty.html#ibus-property-get-key" title="ibus_property_get_key ()">ibus_property_get_key</a>               (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+<a class="link" href="IBusProperty.html#IBusPropType" title="enum IBusPropType"><span class="returnvalue">IBusPropType</span></a>        <a class="link" href="IBusProperty.html#ibus-property-get-prop-type" title="ibus_property_get_prop_type ()">ibus_property_get_prop_type</a>         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+const <a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *    <a class="link" href="IBusProperty.html#ibus-property-get-label" title="ibus_property_get_label ()">ibus_property_get_label</a>             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-label" title="ibus_property_set_label ()">ibus_property_set_label</a>             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *label</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusProperty.html#ibus-property-get-icon" title="ibus_property_get_icon ()">ibus_property_get_icon</a>              (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-icon" title="ibus_property_set_icon ()">ibus_property_set_icon</a>              (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *icon</code></em>);
+const <a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *    <a class="link" href="IBusProperty.html#ibus-property-get-tooltip" title="ibus_property_get_tooltip ()">ibus_property_get_tooltip</a>           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-tooltip" title="ibus_property_set_tooltip ()">ibus_property_set_tooltip</a>           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *tooltip</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusProperty.html#ibus-property-get-sensitive" title="ibus_property_get_sensitive ()">ibus_property_get_sensitive</a>         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-sensitive" title="ibus_property_set_sensitive ()">ibus_property_set_sensitive</a>         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> sensitive</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusProperty.html#ibus-property-get-visible" title="ibus_property_get_visible ()">ibus_property_get_visible</a>           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-visible" title="ibus_property_set_visible ()">ibus_property_set_visible</a>           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);
+<a class="link" href="IBusProperty.html#IBusPropState" title="enum IBusPropState"><span class="returnvalue">IBusPropState</span></a>       <a class="link" href="IBusProperty.html#ibus-property-get-state" title="ibus_property_get_state ()">ibus_property_get_state</a>             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-state" title="ibus_property_set_state ()">ibus_property_set_state</a>             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropState" title="enum IBusPropState"><span class="type">IBusPropState</span></a> state</code></em>);
+const <a class="link" href="IBusProperty.html#IBusPropList"><span class="returnvalue">IBusPropList</span></a> * <a class="link" href="IBusProperty.html#ibus-property-get-sub-props" title="ibus_property_get_sub_props ()">ibus_property_get_sub_props</a>        (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-sub-props" title="ibus_property_set_sub_props ()">ibus_property_set_sub_props</a>         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusProperty.html#ibus-property-update" title="ibus_property_update ()">ibus_property_update</a>                (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
@@ -168,21 +177,16 @@ State of IBusProperty. The actual effect depends on <a class="link" href="IBusPr
 IBusProperty.
 </p>
 <p>
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term">PROP_TYPE_TOGGLE</span></p></td>
-<td><p>Emphasized if PROP_STATE_CHECKED, normal otherwise.</p></td>
-</tr>
-<tr>
-<td><p><span class="term">PROP_TYPE_RADIO</span></p></td>
-<td><p>Option checked if PROP_STATE_CHECKED, unchecked otherwise.</p></td>
-</tr>
-</tbody>
-</table></div>
-<p>
+&lt;variablelist&gt;
+    &lt;varlistentry&gt;
+        &lt;term&gt;PROP_TYPE_TOGGLE&lt;/term&gt;
+        &lt;listitem&gt;&lt;para&gt;Emphasized if PROP_STATE_CHECKED, normal otherwise.&lt;/para&gt;&lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+    &lt;varlistentry&gt;
+        &lt;term&gt;PROP_TYPE_RADIO&lt;/term&gt;
+        &lt;listitem&gt;&lt;para&gt;Option checked if PROP_STATE_CHECKED, unchecked otherwise.&lt;/para&gt;&lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+&lt;/variablelist&gt;
 No effect on other types.
 </p>
 <div class="variablelist"><table border="0">
@@ -345,7 +349,7 @@ New a IBusProperty.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>icon</code></em> :</span></p></td>
-<td>Icon file for the IBusProperty.
+<td> Icon file for the IBusProperty. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
 </td>
 </tr>
 <tr>
@@ -370,12 +374,81 @@ New a IBusProperty.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>prop_list</code></em> :</span></p></td>
-<td>IBusPropList that contains sub IBusProperties.
+<td> IBusPropList that contains sub IBusProperties. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>A newly allocated IBusProperty.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_property_get_key ()">
+<a name="ibus-property-get-key"></a><h3>ibus_property_get_key ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_property_get_key               (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the key of IBusProperty.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An IBusProperty.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the key of IBusProperty. Should not be freed.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_property_get_prop_type ()">
+<a name="ibus-property-get-prop-type"></a><h3>ibus_property_get_prop_type ()</h3>
+<pre class="programlisting"><a class="link" href="IBusProperty.html#IBusPropType" title="enum IBusPropType"><span class="returnvalue">IBusPropType</span></a>        ibus_property_get_prop_type         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the type of IBusProperty.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An IBusProperty.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the type of IBusProperty.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_property_get_label ()">
+<a name="ibus-property-get-label"></a><h3>ibus_property_get_label ()</h3>
+<pre class="programlisting">const <a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *    ibus_property_get_label             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the label of IBusProperty.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An IBusProperty.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the label of IBusProperty. Should not be freed.
 </td>
 </tr>
 </tbody>
@@ -406,6 +479,29 @@ Set the label of IBusProperty.
 </table></div>
 </div>
 <hr>
+<div class="refsect2" title="ibus_property_get_icon ()">
+<a name="ibus-property-get-icon"></a><h3>ibus_property_get_icon ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_property_get_icon              (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the icon of IBusProperty.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An IBusProperty.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the icon of IBusProperty. Should not be freed.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
 <div class="refsect2" title="ibus_property_set_icon ()">
 <a name="ibus-property-set-icon"></a><h3>ibus_property_set_icon ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_property_set_icon              (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
@@ -424,6 +520,29 @@ Set the icon of IBusProperty.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>icon</code></em> :</span></p></td>
 <td>Icon shown in UI. It could be a full path of an icon file or an icon name.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_property_get_tooltip ()">
+<a name="ibus-property-get-tooltip"></a><h3>ibus_property_get_tooltip ()</h3>
+<pre class="programlisting">const <a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *    ibus_property_get_tooltip           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the tooltip of IBusProperty.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An IBusProperty.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the tooltip of IBusProperty. Should not be freed.
 </td>
 </tr>
 </tbody>
@@ -454,6 +573,29 @@ Set the tooltip of IBusProperty.
 </table></div>
 </div>
 <hr>
+<div class="refsect2" title="ibus_property_get_sensitive ()">
+<a name="ibus-property-get-sensitive"></a><h3>ibus_property_get_sensitive ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_property_get_sensitive         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the sensitive of IBusProperty.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An IBusProperty.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the sensitive of IBusProperty.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
 <div class="refsect2" title="ibus_property_set_sensitive ()">
 <a name="ibus-property-set-sensitive"></a><h3>ibus_property_set_sensitive ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_property_set_sensitive         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
@@ -472,6 +614,29 @@ Set whether the IBusProperty is sensitive.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>sensitive</code></em> :</span></p></td>
 <td>Whether the IBusProperty is sensitive.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_property_get_visible ()">
+<a name="ibus-property-get-visible"></a><h3>ibus_property_get_visible ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_property_get_visible           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the visible of IBusProperty.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An IBusProperty.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the visible of IBusProperty.
 </td>
 </tr>
 </tbody>
@@ -502,6 +667,29 @@ Set whether the IBusProperty is visible.
 </table></div>
 </div>
 <hr>
+<div class="refsect2" title="ibus_property_get_state ()">
+<a name="ibus-property-get-state"></a><h3>ibus_property_get_state ()</h3>
+<pre class="programlisting"><a class="link" href="IBusProperty.html#IBusPropState" title="enum IBusPropState"><span class="returnvalue">IBusPropState</span></a>       ibus_property_get_state             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the state of IBusProperty.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An IBusProperty.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the state of IBusProperty.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
 <div class="refsect2" title="ibus_property_set_state ()">
 <a name="ibus-property-set-state"></a><h3>ibus_property_set_state ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_property_set_state             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
@@ -520,6 +708,29 @@ Set the state of the IBusProperty.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
 <td>The state of the IBusProperty.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="ibus_property_get_sub_props ()">
+<a name="ibus-property-get-sub-props"></a><h3>ibus_property_get_sub_props ()</h3>
+<pre class="programlisting">const <a class="link" href="IBusProperty.html#IBusPropList"><span class="returnvalue">IBusPropList</span></a> * ibus_property_get_sub_props        (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the IBusPropList of IBusProperty.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An IBusProperty.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the IBusPropList of IBusProperty. Should not be freed.
 </td>
 </tr>
 </tbody>

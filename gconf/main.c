@@ -25,7 +25,6 @@ static void
 ibus_disconnected_cb (IBusBus  *bus,
                       gpointer  user_data)
 {
-    g_debug ("bus disconnected");
     ibus_quit ();
 }
 
@@ -43,7 +42,7 @@ ibus_gconf_start (void)
     ibus_main ();
 }
 
-int
+gint
 main (gint argc, gchar **argv)
 {
     GError *error = NULL;

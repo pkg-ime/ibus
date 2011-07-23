@@ -103,3 +103,30 @@ IBusText
 @Returns: 
 
 
+<!-- ##### FUNCTION ibus_text_get_is_static ##### -->
+<para>
+
+</para>
+
+@text: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_text_get_text ##### -->
+<para>
+
+</para>
+
+@text: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_text_get_attributes ##### -->
+<para>
+
+</para>
+
+@text: 
+@Returns: 
+
+

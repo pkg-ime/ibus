@@ -1,12 +1,2302 @@
-commit c28506b7b2fb0f34448fe6a52f5a31adcb1897ab
+commit 2de728588c4ad8148a6d60092eb6db5d29766cab
 Author: Peng Huang <shawn.p.huang@gmail.com>
-Date:   2010-11-25 11:28:22 +0900
+Date:   2011-04-18 17:07:51 -0400
 
-    Release 1.3.9
+    patch from issue 4442059
+
+M	ibus/inputcontext.py
+
+commit e3957545d18900109e19d607ad17eac136a38d1c
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-04-18 11:18:27 -0400
+
+    Use g_initable_new to create BusFactoryProxy.
+    
+    BUG=none
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4446051
+
+M	bus/factoryproxy.c
+
+commit 0838133ce617c6113574f12ab1ba6a8bb90aaf43
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-04-08 23:29:23 -0400
+
+    Revert "Change default values of some config."
+    
+    This change was commited by mistake.
+    
+    This reverts commit ed4775b5fec355c1ccb13947d03dcac0aaaeb47f.
+
+M	bus/ibusimpl.c
+
+commit 0f08033ed8ea8fc494a459909722b19eb6e53427
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-04-08 09:45:18 -0400
+
+    Fix problem in creating IBusPoxy in synchronous mode.
+
+M	src/ibusproxy.c
+
+commit 2f358544a1fcc9c8c3924a722b38a86d297c9da1
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-04-08 09:49:20 -0400
+
+    Refine RequestName code and fix make dpkg errors.
+    
+    BUG=none
+    TEST=Linux Desktop
+    
+    Review URL: http://codereview.appspot.com/4368056
+
+M	bus/connection.c
+M	bus/connection.h
+M	bus/dbusimpl.c
+M	bus/ibusimpl.c
+M	debian/libibus-1.0-0.symbols
+M	ibus/common.py
+M	src/ibusutil.c
+M	src/ibusutil.h
+M	ui/gtk/Makefile.am
+M	ui/gtk/main.py
+
+commit 782566b452ca688e619bc66015bf9e8b0685ef41
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-04-08 09:19:13 -0400
+
+    Fix focus issue when reconnect to ibus-daemon
+    
+    BUG=none
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4365049
+
+M	bus/inputcontext.c
+M	bus/inputcontext.h
+M	client/gtk2/ibusimcontext.c
+
+commit 37e6e58792bef4284653e4d8f4c93c901780eafd
+Author: Takao Fujiwara <takao.fujiwara1@gmail.com>
+Date:   2011-04-08 09:18:23 -0400
+
+    Implement APIs for another non-Python panel.
+    
+    1. Support icon and prop_list = null in ibus_property_new with GIR.
+    2. Add getter methods in IBusText and IBusProperty since GJS cannot access
+       the members in C-Structure.
+    3. Add ibus_get_language_name() since GIR libxml2 does not provide the
+       useful APIs.
+    4. Implement flags in ibus_bus_request_name() to follow DBus
+       RequestName signal spec.
+       http://dbus.freedesktop.org/doc/dbus-specification.html#message-bus-names
+       This is needed to terminate the current IBus panel.
+       E.g. IBus GTK panel is launched by ibus-daemon but another panel is
+       launched by gnome-shell.
+    5. Support IBUS_BUS_NAME_FLAG_ALLOW_REPLACEMENT in ui/gtk/main.py
+    6. Fix bus_component_set_factory() not to call
+       bus_component_factory_destroy_cb() twice.
+    7. Hide ibus_text_new_from_static_string() for GIR.
+    8. Add ibus_is_running_gnome_shell() for ibus-ui-gtk because
+       gnome-shell runs earlier than ibus-ui-gtk.
+    
+    Review URL: http://codereview.appspot.com/4279042
+    Patch from Takao Fujiwara <takao.fujiwara1@gmail.com>.
+
+M	bus/component.c
+M	bus/connection.c
+M	bus/connection.h
+M	bus/dbusimpl.c
+M	bus/ibusimpl.c
+M	bus/marshalers.list
+M	ibus/bus.py
+M	ibus/common.py
+M	src/Makefile.am
+M	src/ibusbus.c
+M	src/ibusbus.h
+M	src/ibusproperty.c
+M	src/ibusproperty.h
+M	src/ibustext.c
+M	src/ibustext.h
+M	src/ibustypes.h
+A	src/ibusutil.c
+A	src/ibusutil.h
+M	ui/gtk/main.py
+M	ui/gtk/panel.py
+
+commit ac30990eddbe9e4a0f9b08cc86155654d8fb3c3d
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2011-04-08 10:11:39 +0900
+
+    Export surrounding-text API to Python.
+    
+    BUG=none
+    TEST=manually with modified ibus-anthy https://github.com/ueno/ibus-anthy/commit/2303095f
+    
+    Review URL: http://codereview.appspot.com/4377045
+
+M	ibus/engine.py
+M	ibus/interface/iengine.py
+
+commit 65c5465863bc4d9408cbec5ac0ef7f98d5db779f
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-04-05 10:27:32 -0400
+
+    Fix make dpkg errors.
+    
+    BUG=none
+    TEST=make dpkg
+    
+    Review URL: http://codereview.appspot.com/4324047
+
+M	debian/libibus-1.0-0.symbols
+M	debian/rules
+
+commit 06e6abee9f221bdf7c277538ce136154465619d7
+Author: Daiki Ueno <daiki.ueno@gmail.com>
+Date:   2011-04-05 10:11:49 -0400
+
+    Support surrounding-text retrieval.
+    
+    Unlike the GtkIMContext API, IBus automatically retrieves
+    surrounding-text when certain events occurred to the
+    client ("before filter_keypress", for example).  This makes the
+    engine API simpler but causes periodical emission of D-Bus
+    signals for updating surrounding-text information, which is
+    unwanted for typical engines.
+    
+    For this reason, the surrounding-text support is currently
+    disabled by default.  To enable it, pass
+    --enable-surrounding-text to configure.  Also, even
+    surrounding-text support is compiled in, IBus does not start
+    polling until an engine requests surrounding-text using
+    ibus_engine_get_surrounding_text().  To make the function work
+    for the first time, clients should retrieve
+    initial surrounding-text when the engine is enabled (see ibus_im_context_focus_in() and
+    _ibus_context_enabled_cb() in client/gtk2/ibusimcontext.c).
+    
+    BUG=Issue#778
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/4276082
+    Patch from Daiki Ueno <daiki.ueno@gmail.com>.
+
+M	bus/engineproxy.c
+M	bus/engineproxy.h
+M	bus/inputcontext.c
+M	client/gtk2/ibusimcontext.c
+M	configure.ac
+M	ibus/engine.py
+M	ibus/interface/iengine.py
+M	ibus/interface/iinputcontext.py
+M	src/ibusengine.c
+M	src/ibusengine.h
+M	src/ibusinputcontext.c
+M	src/ibusinputcontext.h
+M	src/ibusmarshalers.list
+
+commit 6a39a86f84fb59c06a246c1bb3f50abbf6c9f8d1
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-04-05 10:08:34 -0400
+
+    Fix a crash during creating IBusProxy asynchronously
+    
+    BUG=chromium-os:13629
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4344061
+
+M	src/ibusbus.c
+M	src/ibusproxy.c
+M	src/tests/.gitignore
+M	src/tests/Makefile.am
+A	src/tests/ibus-inputcontext-create.c
+
+commit 15e29ac3ad45c1b909fc532fe98cf3b09dfb6426
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-04-04 19:33:47 +0900
+
+    Update translations.
+    
+    Update ar.po as.po da.po es.po fr.po gu.po hi.po kn.po mr.po nl.po
+    or.po pa.po pl.po pt_BR.po ta.po te.po uk.po zh_CN.po zh_TW.po
+    and LINGUAS.
+
+M	po/LINGUAS
+M	po/ar.po
+M	po/as.po
+M	po/da.po
+M	po/es.po
+M	po/fr.po
+M	po/gu.po
+M	po/hi.po
+M	po/kn.po
+M	po/mr.po
+A	po/nl.po
+M	po/or.po
+M	po/pa.po
+M	po/pl.po
+M	po/pt_BR.po
+M	po/ta.po
+M	po/te.po
+A	po/uk.po
+M	po/zh_CN.po
+M	po/zh_TW.po
+
+commit 1428a361cd3b416c4e4da7839f4a3ec23a67eb12
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-03-31 12:56:45 +0900
+
+    Use ibus panel icon from the desktop theme instead of ibus-keyboard.
 
 M	configure.ac
+M	ibus/_config.py.in
+M	ui/gtk/panel.py
 
-commit cd7385f4cc1e729891bd878db12dfafad397b098
+commit ed4775b5fec355c1ccb13947d03dcac0aaaeb47f
+Author: James Su <james.su@gmail.com>
+Date:   2010-05-12 15:38:42 -0700
+
+    Change default values of some config.
+    
+    This CL changes the default value of use_global_engine, enable_by_default and use_sys_layout to TRUE. And also removes the default trigger key.
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.chromium.org/2008016
+
+M	bus/ibusimpl.c
+
+commit ef2be0415bbe948ce4be39b8a5d2bc60c3384bb2
+Author: Daiki Ueno <daiki.ueno@gmail.com>
+Date:   2011-03-29 09:39:44 -0400
+
+    Use gtk_status_icon_set_name() only if it is available.
+    
+    gtk_status_icon_set_name() is not exported to python through pygtk2 <= 2.17,
+    which is the version from Debian sid and Fedora 14.
+    
+    >>> import gtk
+    >>> gtk.pygtk_version
+    (2, 17, 0)
+    >>> hasattr(gtk.StatusIcon, 'set_name')
+    False
+    
+    This patch checks the availability.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/4327042
+    Patch from Daiki Ueno <daiki.ueno@gmail.com>.
+
+M	ui/gtk/panel.py
+
+commit 5ef29602141945ed1255662576c2e8194af78325
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-03-25 13:57:31 +0900
+
+    Set WM_CLASS name instead of main.py
+
+M	ui/gtk/panel.py
+
+commit 637947404f977b830e2bd9719a292ad48d0dac5b
+Author: Daiki Ueno <daiki.ueno@gmail.com>
+Date:   2011-03-25 11:16:18 -0400
+
+    Add "in" keymap which maps Alt_R to AltGr.
+    
+    BUG=none
+    TEST=manually with ibus-m17n
+    
+    Review URL: http://codereview.appspot.com/4273109
+    Patch from Daiki Ueno <daiki.ueno@gmail.com>.
+
+M	data/keymaps/Makefile.am
+A	data/keymaps/in
+
+commit ee54659184e384b25b7ee5016a12e1b81415fe66
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-25 11:07:38 -0400
+
+    Verify global engine after changing preload_engines
+    
+    BUG=http://crosbug.com/13406
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4273111
+
+M	bus/ibusimpl.c
+
+commit 7903a536375936efb6b8a38fd8f44b8d2ac6a837
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-23 09:44:20 -0400
+
+    Fix make debian package errors.
+    
+    BUG=none
+    TEST=make dpkg
+    
+    Review URL: http://codereview.appspot.com/4279068
+
+M	debian/libibus-1.0-0.symbols
+
+commit cff009de738fe0a6cb0cfdd725952b928afc6c58
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-23 09:44:06 -0400
+
+    Fix typos in IBusInputContext document
+    
+    BUG=none
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4273094
+
+M	src/ibusinputcontext.h
+
+commit 0514dc88147f7f178325f546bf073d0e1a261ddb
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-23 09:43:43 -0400
+
+    Use $(SED) to replace sed
+    
+    BUG=none
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4280059
+
+M	docs/reference/ibus/Makefile.am
+
+commit 597820e6ad9f59f596aec6f714ca6b37f2a991c6
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-03-22 22:36:52 +0900
+
+    Link appropriate libraries to ibus-scan.
+    
+    TEST=git clone the clean tree, ran ./autogen.sh --enable-gtk-doc, then ran make.
+    
+    Review URL: http://codereview.appspot.com/4289060
+
+M	docs/reference/ibus/Makefile.am
+
+commit 0929e30b91dbb7955c9f90e058bb644ff946298d
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-03-22 14:09:34 +0900
+
+    Add asynchronous InputContext.IsEnabled and InputContext.GetEngine APIs.
+    
+    * Added asynchronous InputContext.IsEnabled and InputContext.GetEngine APIs. Now
+    all InputContext IPCs can be async.
+    * Added comments to src/ibusinputcontext.h.
+    * Moved input context tests from ibus-bus.c to ibus-inputcontext.c (new file),
+    and fixed flaky tests.
+    * Fixed typos in bus/.
+    
+    BUG=http://code.google.com/p/ibus/issues/detail?id=1215
+    TEST=ran the new test
+    
+    Review URL: http://codereview.appspot.com/4298049
+
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+M	src/ibusinputcontext.c
+M	src/ibusinputcontext.h
+M	src/tests/.gitignore
+M	src/tests/Makefile.am
+M	src/tests/ibus-bus.c
+A	src/tests/ibus-inputcontext.c
+
+commit 8306617bc88fc85d818af749ee23ff115c3de5f8
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-18 09:24:18 -0400
+
+    Create a separate test case for ibus_bus_create_input_context_async().
+    
+    Create a separate test case for ibus_bus_create_input_context_async(),
+    so we can use `ibus-bus -p /ibus/create-input-context' to test and debug
+    ibus_bus_create_input_context_async() only.
+    
+    BUG=none
+    TEST=make check
+    
+    Review URL: http://codereview.appspot.com/4298045
+
+M	src/tests/ibus-bus.c
+
+commit 1861184a71b1210d7e07a19fdf90ecc4ce0be7b9
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-17 10:52:38 -0400
+
+    Refine document and coding style in ibusbus.[ch] and trim some private structs and api from document
+    
+    BUG=none
+    TEST=make
+    
+    Review URL: http://codereview.appspot.com/4290053
+
+M	.gitignore
+M	docs/reference/ibus/.gitignore
+M	docs/reference/ibus/Makefile.am
+A	docs/reference/ibus/trim.sed
+M	src/.gitignore
+M	src/ibusbus.c
+M	src/ibusbus.h
+
+commit 13697b0aec5efcb999d02720170fe968ac6dfaba
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-17 10:49:03 -0400
+
+    Do not block UI in IBusIMContext anymore.
+    
+    Replace some block IPC calls with async IPC calls, and then IBusIMContext will
+    not block UI anymore.
+    
+    BUG=http://crosbug.com/12310
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4287054
+
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+M	client/gtk2/ibusimcontext.c
+M	debian/libibus-1.0-0.symbols
+M	src/ibusbus.c
+M	src/ibusbus.h
+M	src/ibusinputcontext.c
+M	src/ibusinputcontext.h
+M	src/tests/ibus-bus.c
+
+commit b9b2c42596e1a7394e89c11025074aed2fcb099a
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-16 10:02:47 -0400
+
+    Fix issue of InputContext.SetEngine.
+    
+    InputContext.SetEngine returns error sometimes, because "request-engine"
+    signal handler calls an async function to set the engine of the context.
+    So checking context->engine != NULL just after emiting "request-engine"
+    signal is not correct.
+    
+    BUG=none
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4287049
+
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+M	bus/marshalers.list
+
+commit 14b7d1a071c08c327ab836a2b7bd3e3b2ab7d1af
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-16 10:01:18 -0400
+
+    Add git.mk from gtk+ project, Use it to update .gitignore
+    
+    BUG=none
+    TEST=make
+    
+    Review URL: http://codereview.appspot.com/4280050
+
+M	.gitignore
+M	Makefile.am
+M	bindings/Makefile.am
+M	bindings/vala/Makefile.am
+M	bus/.gitignore
+M	bus/Makefile.am
+M	client/Makefile.am
+M	client/gtk2/Makefile.am
+M	client/gtk3/Makefile.am
+M	client/x11/.gitignore
+M	client/x11/Makefile.am
+M	data/.gitignore
+M	data/Makefile.am
+M	data/icons/Makefile.am
+M	data/keymaps/Makefile.am
+A	debian/.gitignore
+M	docs/.gitignore
+M	docs/Makefile.am
+M	docs/reference/Makefile.am
+M	docs/reference/ibus/.gitignore
+M	docs/reference/ibus/Makefile.am
+M	gconf/.gitignore
+M	gconf/Makefile.am
+A	git.mk
+M	ibus/.gitignore
+M	ibus/Makefile.am
+M	ibus/interface/Makefile.am
+M	m4/.gitignore
+M	m4/Makefile.am
+M	memconf/Makefile.am
+M	po/.gitignore
+M	setup/.gitignore
+M	setup/Makefile.am
+M	src/.gitignore
+M	src/Makefile.am
+M	src/tests/.gitignore
+M	src/tests/Makefile.am
+M	ui/Makefile.am
+M	ui/gtk/.gitignore
+M	ui/gtk/Makefile.am
+M	util/IMdkit/Makefile.am
+M	util/Makefile.am
+
+commit 596680ba3cfd5aa8e4c2ef4bd5905a25c4c855b0
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-15 13:32:55 -0400
+
+    Update gtk-doc
+    
+    BUG=
+    TEST=Linux documemt
+    
+    Review URL: http://codereview.appspot.com/4277054
+
+M	docs/reference/ibus/Makefile.am
+D	docs/reference/ibus/ibus-sections.txt
+M	src/ibusbus.h
+
+commit 71bcf46f2aac7a81291bf2782915b8bf4cc36edf
+Author: Zach Kuznia <zork@chromium.org>
+Date:   2011-03-14 15:42:32 +0900
+
+    This can cause crashes on cleanup when multiple components are implemented in the same process.
+    
+    Review URL: http://codereview.appspot.com/4241058
+    Patch from Zach Kuznia <zork@chromium.org>.
+
+M	src/ibusservice.c
+
+commit 26084822d7ac9395b4553a7852a78d6d0d4bed0f
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-03-11 15:53:53 +0900
+
+    Fix preedit_string = NULL in ibus-x11 _free_ic()
+
+M	client/x11/main.c
+
+commit 5617ef1553bccb4894ef2e83f2021fda7ca6b815
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-11 10:37:40 -0500
+
+    Fix make check error
+    
+    BUG=none
+    TEST=make check
+    
+    Review URL: http://codereview.appspot.com/4250077
+
+M	po/POTFILES.in
+
+commit 57eee844b6087c188be1c7f8676d2c5acdf89a7d
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-03-10 08:44:38 +0900
+
+    Update symbols file.
+    
+    ./autogen.sh
+    ./configure --enable-gtk-doc
+    make dpkg
+    cp ppa/ibus-1.3.99.20110309/debian/libibus-1.0-0/DEBIAN/symbols debian/libibus-1.0-0.symbols
+    vi debian/libibus-1.0-0.symbols  # remove "-1phuang1~maverick1"
+    make dpkg  # confirm that lintian does not report an error.
+    
+    Review URL: http://codereview.appspot.com/4253068
+
+M	debian/libibus-1.0-0.symbols
+
+commit 32367ad614c9f4bceb55eb812860ea8ae674925e
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-09-15 12:25:17 +0900
+
+    Fix issues of the "previous_engine" hotkey.
+    
+    Check global_previous_engine_name when the previous engine is requested and rewrite it if necessary.
+    This change ensures that the "previous_engine" hotkey (Ctrl+space on Chrome OS) always works
+    whenever two or more engines are preloaded.
+    
+    Currently, Ctrl+space could become NOP by the following scenarios (http://crosbug.com/6609):
+    
+    (1)
+    1. preload engines A, B, C.
+    2. switch to A.
+    3. switch to B.
+    4. at this point, ctrl+space works fine. It selectes A and B alternately.
+    5. switch to A.
+    6. remove B from the preloaded engline list.
+    7. at this point, ctrl+space suddenly becomes NOP although C is still preloaded.
+    This is because the callback function of ctrl+space detects
+    global_previous_engine_name (i.e. B) is removed and automatically selects A (not
+    C) as a global_previous_engine_name.
+    
+    (2)
+    1. preload engines A, B.
+    2. switch to A.
+    3. switch to B.
+    4. at this point, ctrl+space works fine. It selectes A and B alternately.
+    5. switch to A.
+    6. remove B from the preloaded engline list.
+    7. press ctrl+space several times, confirm that nothing happens (this is
+    expected since only one engine, A, is preloaded).
+    8. preload additional engine, C.
+    9. at this point, ctrl+space is still NOP although two engines, A and C, are
+    preloaded.
+
+M	bus/ibusimpl.c
+
+commit 2fbbf4312d4b33885aa36df7b8d966c6ebf698c6
+Author: James Su <james.su@gmail.com>
+Date:   2010-05-26 22:31:06 -0700
+
+    If the current engine is removed, then switch to another engine automatically.
+    
+    BUG=http://crosbug.com/3577
+    TEST=manual test.
+    
+    Review URL: http://codereview.chromium.org/2259004
+
+M	bus/ibusimpl.c
+
+commit f4eae684f5e83af489b3d36662f9eddb79a0cc8e
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-03-08 21:57:10 +0900
+
+    Remove -Wall warnings.
+    
+    Review URL: http://codereview.appspot.com/4261056
+
+M	client/gtk2/ibusimcontext.c
+M	src/tests/ibus-bus.c
+
+commit 3980dd91d097a009e0967a122f284e5e4cfd07c6
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-03-08 00:55:36 +0900
+
+    Add asynchronous APIs to ibusbus.h
+    
+    Modified src/tests/ibus-bus.c so that it could be compiled with ibus-1.3.99 as well.
+    
+    BUG=chromium-os:12581
+    TEST=added async api tests to the src/tests/ibus-bus.c and ran it locally.
+    
+    Review URL: http://codereview.appspot.com/4179061
+
+M	src/ibusbus.c
+M	src/ibusbus.h
+M	src/tests/ibus-bus.c
+
+commit fbdd157b2ab1e6e873818132530dd9e55e4f94dd
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-07 10:26:04 -0500
+
+    Move gtk_key_snooper_remove from function object_fini to class_fini.
+    
+    BUG=http://crosbug.com/12803
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4267044
+
+M	client/gtk2/ibusimcontext.c
+
+commit 279ee5d5b3697b427cc22cd99a55f4e611318e25
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-03-01 15:34:37 -0500
+
+    Optimize focus_in to avoid call some UI blocking functions.
+    
+    focus_in calls some X blocking functions. It will block UI. This change delays the X blocking calls to idle callback, to avoid blocking UI.
+    
+    BUG=http://crbug.com/74237
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4254048
+
+M	client/gtk2/ibusimcontext.c
+
+commit 690be230c116afd52a6002d2ef92b56e28d829b1
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-02-28 15:57:47 -0500
+
+    Unify async and sync function names.
+    
+    BUG=none
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4246042
+
+M	client/gtk2/ibusimcontext.c
+M	client/x11/main.c
+M	debian/libibus-1.0-0.symbols
+M	src/ibusinputcontext.c
+M	src/ibusinputcontext.h
+
+commit 31b3b6a9577bb4c2787c73675f53ba38647a1501
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-02-28 10:25:54 -0500
+
+    Fix a race problem in SetGlobalEngine and add set_global_engine in python library
+    
+    The race problem:
+     1. global engine == A
+     2. call SetGlobalEngine(B) asynchronously
+     3. call SetGlobalEngine(A) immediately
+      3.1 Because step 2 is not finished, so the global engine is still A,
+          and SetGlobalEngine(A) returns sucessfully.
+     4. SetGlobalEngine(B) is completed and the global engine becomes B
+    
+    BUG=http://crosbug.com/12414
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4250041
+
+M	bus/ibusimpl.c
+M	ibus/bus.py
+M	ibus/interface/iibus.py
+
+commit 8ebad5f07b1ba821e278d4d04ab74e2d31a40139
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-02-19 04:52:40 +0900
+
+    Call gtk_key_snooper_remove when GTK IM client is switched.
+
+M	client/gtk2/ibusimcontext.c
+
+commit fb153c2a95746fde7a166775c65d281cb757cbfa
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-02-18 10:59:49 -0500
+
+    Fix make dpkg errors.
+    
+    BUG=none
+    TEST=make dpkg
+    
+    Review URL: http://codereview.appspot.com/4184055
+
+M	debian/libibus-1.0-0.symbols
+
+commit 0b02c819eee5d7cf9b7be449887677af76ee4731
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-02-18 10:59:06 -0500
+
+    Add enable_conditional and disable_conditional in gconf schemas file
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/4183057
+
+M	data/ibus.schemas.in
+
+commit d68f26bd70933df9d18d88e98c2079ce8c2f3dc2
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-02-18 10:58:27 -0500
+
+    Fix crash when turn off "use global engine" option
+    
+    BUG=none
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4170061
+
+M	bus/ibusimpl.c
+
+commit ff5db2e177944df295cf370ee066812223a75b0e
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-02-18 09:08:41 -0500
+
+    Destroy IBusInputContext correctly in ibus-x11
+    
+    BUG=none
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4178062
+
+M	client/x11/main.c
+
+commit 5bd623d697da442c9107bcb8ecd9012d2e3f8731
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-02-17 15:08:37 +0900
+
+    s/LC_MESSAGES/LC_CTYPE/ in set_default_preload_engines.
+
+M	bus/ibusimpl.c
+
+commit 9edd39912564e07dc734b5101b2c9995389aa234
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-02-16 15:49:09 -0500
+
+    Do not create GSimpleAsyncResult in ibus_input_context_process_key_event
+    
+    This change also fixes memory leak of simple result object
+    
+    BUG=none
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4175051
+
+M	src/ibusinputcontext.c
+
+commit d0755b083d954383a791256b2db4f1b3d1f0a001
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-02-16 23:42:27 +0900
+
+    Add async version of set_global_engine.
+    
+    Patch from Zach Kuznia <zork@chromium.org>, modified by Yusuke Sato <yusukes@chromium.org>.
+    
+    Review URL: http://codereview.appspot.com/4175047
+
+M	src/ibusbus.c
+M	src/ibusbus.h
+
+commit d9f8ed3e18338afefe4cf0ec2c12ca6d6e76e3b6
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-02-16 15:45:29 +0900
+
+    Implement async version of ibus_config_set_value.
+    
+    BUG=crosbug.com/11903
+    
+    Review URL: http://codereview.appspot.com/4185041
+
+M	src/ibusconfig.c
+M	src/ibusconfig.h
+
+commit 07877cf6f15d4d222738ab18cb9860083581ca82
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-02-15 16:44:05 +0900
+
+    Add engine_name parameter to the global-engine-changed signal.
+    
+    This makes it possible for a client to know the current global engine w/o issuing GetGlobalEngine reqeust.
+    
+    BUG=chromium-os:11908
+    
+    Review URL: http://codereview.appspot.com/4177045
+
+M	bus/ibusimpl.c
+M	src/ibusbus.c
+
+commit 661f1e860ea0d5145485a3c141c811e999f522a4
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-02-15 10:27:03 +0900
+
+    Use LC_MESSAGES instead of LC_ALL in bus_ibus_impl_set_default_preload_engines.
+    
+    This is a fix for https://bugs.launchpad.net/ubuntu/+source/ibus/+bug/716314. Calling setlocale(LC_ALL, NULL); in the function seems not to be a good idea since the function could return a complex string like "LC_CTYPE=ja_JP.UTF-8;LC_NUMERIC=C;LC..." when two or more values are used for LC_xxx variables (e.g. ja_JP.UTF-8 and C.)
+    
+    BUG=1204
+    
+    Review URL: http://codereview.appspot.com/4160046
+
+M	bus/ibusimpl.c
+
+commit 5743b6da70f7722792c21ec50415dce4f1790af5
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-02-15 10:24:20 +0900
+
+    Never use ibus's US keymap in bus_input_context_filter_key, and use the keyval from X as-is.
+    I think this is important for supporting non-US keyboards like a Japanese-106 keyboard correctly.
+    
+    Currently, when use_sys_layout config is unchecked (the default), ibus-daemon discards a keyval being passed from X, and regenerates a keyval from a keycode assuming the US layout.
+    
+    However, I believe this behavior is not good for non-US keyboard layout users (e.g. Japanese or Korean keyboard users.) For example, the Japanese 106 keyboard has a key called Zenkaku_Hankaku (全角_半角, whose keycode is 49) on the left hand of the '1' key, and most users want to use the key for toggling IME. But, even if a user set 'Zenkaku_Hankaku' as the toggle hotkey using ibus-setup, the user cannot toggle IME unless the 'Use system keyboard layout' option is explicitly turned on. This is because when use_sys_layout is unchecked, ibus-daemon treats the Zenkaku_Hankaku key press (keycode=49) as tilde (~) key press (remember that the tilde's keycode is also 49 in the US keyboard layout.) This is very inconvenient and confusing.
+    
+    Please also note that the hotkey configuration tool in ibus-setup always respects a keyval from X, and never checks the use_sys_layout value.
+    
+    Review URL: http://codereview.appspot.com/4173046
+
+M	bus/inputcontext.c
+
+commit c394fea7874df0173cf07d891976086ab343bead
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-02-15 10:22:48 +0900
+
+    Always call g_simple_async_result_complete in ibus_input_context_process_key_event_done in order to handle IPC errors correctly.
+    
+    Review URL: http://codereview.appspot.com/4171049
+
+M	src/ibusinputcontext.c
+
+commit b2c7173b30fb41925dbef8355477497fba43d887
+Author: Ahmad Sharif <asharif@chromium.org>
+Date:   2011-02-12 23:38:35 +0900
+
+    Fix compiler warnings in util/IMdkit/.
+    
+    BUG=1201
+    
+    Review URL: http://codereview.appspot.com/4171046
+    Patch from Ahmad Sharif <asharif@chromium.org>.
+
+M	util/IMdkit/i18nPtHdr.c
+M	util/IMdkit/i18nX.c
+
+commit 753835819886f7a46f938826632b123287f589f0
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-02-12 22:56:49 +0900
+
+    Ran 'make update-po' in po/.
+    
+    BUG=1173
+    
+    Review URL: http://codereview.appspot.com/4181044
+
+M	po/ar.po
+M	po/as.po
+M	po/bn_IN.po
+M	po/ca.po
+M	po/da.po
+M	po/de.po
+M	po/es.po
+M	po/fr.po
+M	po/gu.po
+M	po/hi.po
+M	po/hu.po
+M	po/it.po
+M	po/ja.po
+M	po/kn.po
+M	po/ko.po
+M	po/ml.po
+M	po/mr.po
+M	po/or.po
+M	po/pa.po
+M	po/pl.po
+M	po/pt_BR.po
+M	po/ru.po
+M	po/sr.po
+M	po/sr@latin.po
+M	po/ta.po
+M	po/te.po
+M	po/vi.po
+M	po/zh_CN.po
+M	po/zh_HK.po
+M	po/zh_TW.po
+
+commit b66b337e9a30d55542fbae4611565e47e932ce0a
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-02-11 23:53:34 +0900
+
+    Reimplement ibus_bus_watch_dbus_signal for GDBus and export it.
+    
+    BUG=crosbug.com/11479
+    
+    Review URL: http://codereview.appspot.com/4186041
+
+M	src/ibusbus.c
+M	src/ibusbus.h
+
+commit e3140b7206d409419faa0c8bfa50f25ad3644cd0
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-02-11 23:48:42 +0900
+
+    Support enable/disable hotkeys that enable or disable ibus unconditionally (i.e. not toggle.)
+    
+    I'll update ibus/po/*po files if the change looks good to you.
+    
+    BUG=http://code.google.com/p/ibus/issues/detail?id=1173
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/3807047
+
+M	bus/ibusimpl.c
+M	ibus/common.py
+M	setup/main.py
+M	setup/setup.ui
+
+commit 377c06515e792c2da4f4cf342ba5faa26eac5170
+Author: phuang <shawn.p.huang@gmail.com>
+Date:   2011-02-09 21:02:44 +0900
+
+    Fix ibus-daemon deadlock in engineproxy.c.
+    
+    How to reproduce the deadlock on a desktop Linux like Ubuntu Maverick:
+    
+    1. Add 20 seconds sleep in the beginning of the main() function of an engine (e.g. ibus-engine-mozc). See http://crosbug.com/11379#c16 .
+    2. Set preload_engines to "mozc" using ibus-setup.
+    3. Start ibus-daemon.
+    4. press the trigger hotkey twice within the 20 seconds.
+    
+    Expected:
+    The second trigger hotkey press cancels the bus_engine_proxy_new operation started by the first one.
+    
+    Actual:
+    ibus-daemon freezes. Stack trace: http://crosbug.com/11379#c20
+    
+    BUG=http://crosbug.com/11379
+    TEST=see the steps above.
+    
+    Review URL: http://codereview.appspot.com/4125053
+    Patch from phuang <shawn.p.huang@gmail.com>.
+
+M	bus/engineproxy.c
+M	bus/inputcontext.c
+
+commit 0501756a1e51469849eca064aeb1e340afbf8be2
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-02-09 00:51:39 +0900
+
+    Add pkgdatadir in ibus-1.0.pc.in
+
+M	ibus-1.0.pc.in
+
+commit 8199abcde4175971da78141b680eb9bb80fc2ad2
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-02-09 00:50:44 +0900
+
+    Add GTK3 definitions.
+
+M	client/gtk2/ibusimcontext.c
+
+commit 31d1e1c41cc644d3c3c9da2e076728134d3b7439
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-02-09 00:50:56 +0900
+
+    Fix typo.
+
+M	client/gtk2/ibusimcontext.c
+
+commit 03c9e591430c62354bbf26ef7bd4a2e6acfb7c8f
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-02-03 10:15:24 +0900
+
+    Overwrite Gtk+'s default compose table to fix crosbug.com/11421.
+    
+    BUG=chromium-os:11421
+    TEST=manually done on Chrome OS.
+    
+    Review URL: http://codereview.appspot.com/3989060
+
+M	client/gtk2/ibusimcontext.c
+
+commit 0e6fa20c2521c5e23fe2f5bdd17bcbdfcf227da8
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-01-27 18:01:34 -0500
+
+    Fix build debian package error.
+    
+    BUG=
+    TEST=make dpkg
+    
+    Review URL: http://codereview.appspot.com/4013046
+
+M	debian/libibus-1.0-0.symbols
+
+commit af0c9bcf7483a3d1f4520526f6d08222ae21ec1b
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-01-27 10:06:09 -0500
+
+    Export async version ibus_input_context_process_key_event.
+    
+    Some application may want to integrate with ibus directly, and want to
+    use async mode for processing key events. So I make
+    ibus_input_context_process_key_event to be an async function,
+    and also added ibus_input_context_process_key_event_sync.
+    
+    Fix problem in introspection of Engine.
+    
+    BUG=none
+    TEST=Tested in Ubuntu 10.10
+    
+    Review URL: http://codereview.appspot.com/4032044
+
+M	client/gtk2/ibusimcontext.c
+M	client/x11/main.c
+M	debian/libibus-1.0-0.symbols
+M	src/ibusinputcontext.c
+M	src/ibusinputcontext.h
+
+commit 8f3bd1b11df8806c596b9b311997f24cbfec1e66
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-01-26 19:18:05 -0500
+
+    Fix problem in introspection of Engine.
+    
+    BUG=http://code.google.com/p/ibus/issues/detail?id=1194
+    TEST=Tested in Ubuntu 10.10
+    
+    Review URL: http://codereview.appspot.com/4084046
+
+M	src/ibusengine.c
+
+commit ea3917659bb7be5ee93ced938d5b522a468f7677
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-01-26 13:15:08 +0900
+
+    Fix introspection definitions.
+
+M	src/ibusbus.h
+M	src/ibusinputcontext.h
+
+commit cc1d776aeb65b481b1bd93e1f7acfbe4fea8e1f2
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-01-26 14:01:25 +0900
+
+    Set QT_IM_MODULE=xim in case of no ibus-qt.
+
+M	xinput-ibus.in
+
+commit 73135d06d2195cee5630918e48003347315eb653
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-01-26 14:01:17 +0900
+
+    Add signals in IBusPanelService for non-C classes.
+
+M	src/ibuspanelservice.c
+M	src/ibuspanelservice.h
+
+commit f28d3e30cb04dc0eee5a657469f2c8d49d7056e0
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-01-24 12:25:48 +0900
+
+    Set GdkEventKey time for gdk_event_put with IBUS_FORWARD_MASK.
+
+M	client/gtk2/ibusimcontext.c
+
+commit d26f418a3df4a9ad78dd952d997e028ba24c88f9
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-24 10:56:05 +0900
+
+    Add <signal name='ValueChanged'> to introspection_xml in src/ibusconfigservice.c.
+    
+    I don't think that GDBus library in glib-2.26.[01] uses the information to filter out undefined signals, but just in case.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/4015043
+
+M	src/ibusconfigservice.c
+
+commit e1e72a2052ea3c869002bbba9055eab4a9e88aaa
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-01-21 10:57:54 -0500
+
+    Fix some race conditions during create engine, also fix dpkg build error.
+    
+    BUG=chromium-os:10750
+    TEST=on Linux desktop
+    
+    Review URL: http://codereview.appspot.com/3970044
+
+M	bus/engineproxy.c
+M	debian/libibus-1.0-0.symbols
+
+commit 683e301b689f3fe74769f4a7f2ad1b159e54790d
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-21 21:03:23 +0900
+
+    Emit the connected signal after setting up the connection.
+    
+    Otherwise, we might miss the first a few DBus and IBus signals.
+    
+    BUG=http://crosbug.com/11144
+    TEST=see the bug.
+    
+    Review URL: http://codereview.appspot.com/4029043
+
+M	src/ibusbus.c
+
+commit b5382549a2f4009e0e4da20c7491ba28e7cca60f
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-19 10:55:16 +0900
+
+    Fix race condition between ibus_bus_set_global_engine() and ibus_bus_get_global_engine().
+    
+    If focus moves between the two API calls, ibus_bus_get_global_engine() might return an unexpected engine name:
+    
+    1. context A is focused, and the current global engine is "X".
+    2. ibus_bus_set_global_engine("Y") is called.
+    3. a user moves the focus from A to B. First, A's engine is set to NULL in bus_ibus_impl_set_focused_context(). Then, in the same function, B's engine is set to "X" (not "Y") since the _ibus_set_global_engine asynchronous call is not finished yet.
+    4. ibus_bus_set_global_engine("Y") async call successfully finishes. Context A's (not B's) engine is set to "Y", but context B, which has a focus, is not updated.
+    5. ibus_bus_get_global_engine() is called.
+    
+    expected:
+    Y is returned.
+    
+    actual:
+    X is returned. Since the context B has a focus, and B's engine is X.
+    
+    BUG=http://crosbug.com/11031
+    TEST=see the bug
+    
+    Review URL: http://codereview.appspot.com/4063041
+
+M	bus/ibusimpl.c
+
+commit e194133baa0afc7fdb1befc18c2c1f516979a9be
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-19 10:18:13 +0900
+
+    Do not allow clients to destroy the server-side config service for safety.
+    
+    Unset the own flag of priv->config so that the config proxy object never destroys the config service even if a client wrongly unref()s the priv->config object.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/4060041
+
+M	src/ibusbus.h
+M	src/ibusconfig.c
+
+commit 302c85138bac23e7e5faf223119df0d5d04f9b0d
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-18 22:00:57 +0900
+
+    Fix possible SEGV in ibus_bus_get_global_engine.
+    
+    The g_variant_get returns NULL when the IPC call times out.
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3974043
+
+M	src/ibusbus.c
+
+commit 6b4874283c510869080eed2c63d61e54f8beeba8
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-18 21:51:40 +0900
+
+    Handle GlobalEngineChanged signals from ibus-daemon.
+    
+    BUG=http://crosbug.com/11011
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/4037042
+
+M	src/ibusbus.c
+M	src/ibusbus.h
+
+commit 469bfe396a0fa680ade8536b9bd9829918be2994
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-18 10:33:48 +0900
+
+    On ChromeOS, we don't have to (and don't want to) set default preload engines.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/4054041
+
+M	bus/ibusimpl.c
+
+commit 6a5c7666e1194e8ac8a3d0c3f680269b42fe80c2
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2011-01-17 14:22:18 +0900
+
+    Set nonzero serial number for RegistryChanged / EngineChanged signals.
+    
+    libdbus expects each message serial is greater than 0.
+    https://code.google.com/p/ibus/issues/detail?id=1186
+    
+    BUG=none
+    TEST=manual test described in the issue#1186
+    
+    Review URL: http://codereview.appspot.com/4050041
+
+M	bus/ibusimpl.c
+
+commit 990ff3920657584d356c48bebde031405285bf80
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-16 11:35:09 +0900
+
+    Fix typo in the default configuration of the trigger hotkeys.
+    
+    According to setup/keyboardshortcut.py, "Control" seems to be correct.
+    
+    BUG=none
+    TEST=compile ibus with --enable-memconf, start ibus-daemon, start ibus-setup, click "..." button for the "Enable or disable" hotkey, then verify that the "Control" checkbox in the pop-up dialog is checked from the beginning.
+    
+    Review URL: http://codereview.appspot.com/4017042
+
+M	ibus/common.py
+
+commit ee6abd76f7b0f0fc8e1a8b6964f4d8216a3b6618
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-16 11:34:34 +0900
+
+    Set correct g-flags to proxy objects.
+    
+    This change is similar to https://github.com/ibus/ibus/commit/19247aac5a348185a0e180f254ab3858c5f85703.
+    
+    The flag can prevent unnecessary communications between ibus-daemon and e.g. engines like this:
+    
+    $ . ~/.config/ibus/bus/*-unix-0 ; dbus-monitor --address $IBUS_ADDRESS 2>&1 | tee /tmp/ibus.log
+    ...
+    method call sender=org.freedesktop.DBus -> dest=(null destination) serial=3 path=/org/freedesktop/IBus/Factory; interface=org.freedesktop.IBus.Factory; member=CreateEngine
+       string "mozc-jp"
+    method return sender=:1.15 -> dest=org.freedesktop.DBus reply_serial=3
+       object path "/org/freedesktop/IBus/Engine/1"
+    method call sender=org.freedesktop.DBus -> dest=(null destination) serial=4 path=/org/freedesktop/IBus/Engine/1; interface=org.freedesktop.DBus.Properties; member=GetAll
+       string "org.freedesktop.IBus.Engine"
+    method return sender=:1.15 -> dest=org.freedesktop.DBus reply_serial=4
+       array [
+       ]
+    
+    Calling an engine's org.freedesktop.DBus.Properties.GetAll method when the engine is created is unnecessary for ibus-daemon, while it's not harmful though.
+    
+    BUG=none
+    TEST=verified using dbus-monitor that ibus-daemon does not call GetAll anymore.
+    
+    Review URL: http://codereview.appspot.com/4036041
+
+M	bus/engineproxy.c
+M	bus/factoryproxy.c
+M	bus/panelproxy.c
+
+commit ca4909cc8349a9931958c3010f965cf19bf23cd7
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-12 22:44:08 +0900
+
+    Fix a gcc warning seen in Chromium OS build.
+    
+    Please note that gcc's warn_unused_result check is enforced on the build environment. Anyway, I believe it's good to check the return value in this case.
+    
+    BUG=none
+    TEST=ran emerge-x86-generic ibus.
+    
+    Review URL: http://codereview.appspot.com/3904044
+
+M	bus/registry.c
+
+commit 199f80396f2c3db4953bac36c953742ece2d2270
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-12 22:43:16 +0900
+
+    Remove a gcc warning.
+    
+    ibusxml.c: In function 'ibus_xml_parse_file':
+    ibusxml.c:213: error: 'retval' may be used uninitialized in this function
+    
+    BUG=none
+    TEST=ran make CFLAGS="-Wall -O2"
+    
+    Review URL: http://codereview.appspot.com/3858044
+
+M	src/ibusxml.c
+
+commit 1403dc6abe87bd649c95b2454b49af2deba63461
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-12 22:42:24 +0900
+
+    Fix typo in ibus_bus_exit.
+    
+    BUG=none
+    TEST=ran make CFLAGS="-Wall -O2"
+    
+    Review URL: http://codereview.appspot.com/3900045
+
+M	src/ibusbus.c
+
+commit 411d8c5f21ea0d3f65bfc0cbdc98733af360b441
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-10 14:25:07 +0900
+
+    Fix the return value of ibus_bus_register_component so it returns TRUE on success.
+    
+    Do the same for ibus_bus_set_global_engine as well. Currently it always returns TRUE regardless of the result of the method call.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/3902043
+
+M	src/ibusbus.c
+
+commit 783905fd6e6c8983237745ba90e05070559e0458
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-09 15:12:11 +0900
+
+    Change the return type of ibus_bus_exit to make it compatible with ibus-1.3 API.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/3923042
+
+M	src/ibusbus.c
+M	src/ibusbus.h
+
+commit d5bdf851d25b07062ecb2ea932b91317b1d9e72a
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2011-01-07 10:42:44 +0900
+
+    Set correct sender and interface when sending org.freedesktop.IBus signals.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3775042
+
+M	bus/dbusimpl.c
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+
+commit b24b403295a655e0c5644c5ddca1cf3488a938ce
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-07 01:38:23 +0900
+
+    Set the "g-default-timeout" property for ibusconfig, ibusinputcontext, and ibusbus objects. The GDBus default timeout (25 seconds) seems to be too long for IBus.
+    
+    BUG=none
+    TEST=manually, with IBUS_BUS_TIMEOUT=-3,-2,-1,0,1,1000,6000,abc,1abc,abc1
+    
+    Review URL: http://codereview.appspot.com/3799049
+
+M	src/ibusbus.c
+M	src/ibusconfig.c
+M	src/ibusinputcontext.c
+M	src/ibusshare.c
+M	src/ibusshare.h
+
+commit 144272e3a8b56cc9e9cec3f09688ae47c6166032
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-06 12:28:54 +0900
+
+    Use the G_DBUS_CALL_FLAGS_NO_AUTO_START flag just in case.
+    
+    BUG=none
+    TEST=manually on Chromium OS.
+    
+    Review URL: http://codereview.appspot.com/3774043
+
+M	src/ibusbus.c
+
+commit dd4a4c1a7f64a9a7737171d7aeb8272de130475e
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-06 12:24:36 +0900
+
+    Do not write empty string to "preload_engines" for safety.
+    
+    Without the change, bus_ibus_impl_set_default_preload_engines() might erase an existing preload_engines config when --timeout option for ibus-daemon is too short for ibus_config_get() to success.
+    
+    BUG=none
+    TEST=manually with 'ibus-daemon --timeout=1'
+    
+    Review URL: http://codereview.appspot.com/3789046
+
+M	bus/ibusimpl.c
+
+commit 44e94a3d0c7812fd24bd0548601682a1c0b043d7
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-06 08:44:49 +0900
+
+    Call ibus_hotkey_profile_remove_hotkey_by_event in bus_ibus_impl_set_trigger before registering the fallback hotkey, just in case.
+    
+    Probably it's better to call the remove function in bus_ibus_impl_set_trigger just as bus_ibus_impl_set_hotkey already does, so that a wierd error message like 'IBUS-CRITICAL **: ...: file ibushotkey.c: line 381 (ibus_hotkey_profile_add_hotkey): should not be reached' will not be shown.
+    
+    The fallback hotkey could be registered twice, via bus_ibus_impl_init and _dbus_name_owner_changed_cb, if the --timeout parameter is too small to talk to the configuration daemon, for example.
+    
+    BUG=none
+    TEST=ran ibus-daemon with --timeout=1 and verified that the IBUS-CRITICAL message above was not shown.
+    
+    Review URL: http://codereview.appspot.com/3796044
+
+M	bus/ibusimpl.c
+
+commit af1460aea63a65877544e65a335398bd670ad6ee
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-06 08:25:47 +0900
+
+    Replace g_return_if_fail with g_warning since the error message 'desc != NULL' seems confusing.
+    
+    BUG=none
+    TEST=manually. removed all engines using ibus-setup and ran ibus-daemon, then press a trigger hot-key.
+    
+    Review URL: http://codereview.appspot.com/3786047
+
+M	bus/ibusimpl.c
+
+commit c6e273c0ee91858bf5af2a87048f9d2977d368d5
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-06 08:22:38 +0900
+
+    Fix --timeout command line option of ibus-daemon.
+    
+    On 1.3.99, currently the option is just ignored and '-1' (i.e. the default timeout of gdbus which is 25 seconds in glib-2.26.1) is always used. We should fix this since the default, 25 secs, is too long for some platforms like Chromium OS.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/3784047
+
+M	bus/engineproxy.c
+M	bus/engineproxy.h
+M	bus/factoryproxy.c
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+M	bus/main.c
+M	bus/option.h
+M	bus/panelproxy.c
+
+commit 2f0877decf4adde5d4779a13ab15c40c41985525
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-01-01 17:34:37 +0900
+
+    Support hotkeys that use Super/Hyper modifiers.
+    
+    BUG=1175
+    TEST=checked that Super+space and Hyper+space work as intended with and without the use_sys_layout option enabled.
+    
+    Review URL: http://codereview.appspot.com/3856041
+
+M	src/ibushotkey.c
+M	src/ibuskeynames.c
+
+commit f4075519710719aa245ed8421f0219a129152fdb
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-12-28 16:44:16 -0700
+
+    Reply an error message to sender, if ibus-daemon can not forward method call message successfully.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/3825042
+
+M	bus/dbusimpl.c
+
+commit 017077ceb9ec2f26a8c524f3794a832164f21768
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2010-12-28 12:46:25 +0900
+
+    Fix g_variant_get() call in DeleteSurroundingText signal handler.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3820042
+
+M	src/ibusinputcontext.c
+
+commit 61f0894c3555478117e9d5f286d0085bd5afdad3
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-27 07:58:29 +0900
+
+    Fix API compatibility issue in ibus_config_new.
+    
+    On ibus-1.3, ibus_config_new returns NULL when ibus-gconf is not started yet, but on 1.4 it returns a valid, non-NULL IBusConfig object. This patch fixes the discrepancy by changing the behavior of ibus_config_new of 1.4.
+    
+    If we don't return NULL when ibus-gconf does not exist, successive calls e.g. ibus_config_set_value will fail with a cryptic error message like 'IBUS-WARNING **: org.freedesktop.IBus.Config.SetValue: Cannot invoke method; proxy is for a well-known name without an owner and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag'. I believe returning NULL makes it easier to use the ibusconfig.h APIs.
+    
+    Please note that this patch is particularly important for Chromium OS. Since ibus_config_new is called shortly after ibus-daemon starts on the OS, ibus_config_new is sometimes called before ibus-memconf starts actually. This change helps the glue between chrome and ibus-daemon to remain clean.
+    
+    BUG=none
+    TEST=manually on Chromium OS
+    
+    Review URL: http://codereview.appspot.com/3784043
+
+M	src/ibusconfig.c
+
+commit 19247aac5a348185a0e180f254ab3858c5f85703
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-27 07:57:09 +0900
+
+    Create an instance of GDBusProxy with G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES flag.
+    
+    Without the flag, on_name_owner_changed() in glib-2.26.x/gio/gdbusproxy.c might invoke a remote method named GetAll in org.freedesktop.DBus.Properties interface, but the method is not implemented in ibus-daemon. Since ibus-daemon ignores the method call, the caller, which is UI thread of Chrome on Chromium OS, will block for 25 seconds (i.e. the default timeout of GDBus) waiting for a reply.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/3836042
+
+M	src/ibusconfig.c
+M	src/ibusinputcontext.c
+
+commit 7a8b3d722b83221168a339f46c7e8a617c735ade
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-12-25 22:05:13 -0700
+
+    Fix Alt+Shift hotkey issue for chrome os
+    
+    BUG=chromium-os:6225
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3741043
+
+M	src/ibushotkey.c
+
+commit 911490b3f8adac433a91153000a63a0a7143fff2
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-22 23:03:03 +0900
+
+    Fix hot-key handling in inputcontext.c.
+    
+    Without the fix, some key combinations might not trigger a hot-key event.
+    For example, one of Chrome OS hot-keys, "press Shift, then press Alt, then release Alt", does not work without the fix.
+    
+    BUG=none
+    TEST=manually checked using ChromeOS and IBus-1.4
+    
+    Review URL: http://codereview.appspot.com/3828041
+
+M	bus/inputcontext.c
+
+commit 2c3021469f770666e54e72bf8e6c306c7dd3a046
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-21 01:04:49 +0900
+
+    Add comments to ibusproxy.[ch] and related functions.
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3802042
+
+M	bus/ibusimpl.c
+M	src/ibusproxy.c
+M	src/ibusproxy.h
+
+commit e4d8612776dbb5eca85ab35d9ad71ddd68db63e4
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-21 01:04:05 +0900
+
+    Fix ibus_input_context_get_input_context() so IBus.Service.Destroy will not be called when the returned object is disposed.
+    
+    BUG=none
+    TEST=verified that calling g_object_unref(the_returned_object) does not result in the remote method call.
+    
+    Review URL: http://codereview.appspot.com/3803041
+
+M	src/ibusinputcontext.c
+M	src/ibusproxy.c
+M	src/ibusproxy.h
+
+commit fb0aee6d9f04e2b9e3177cfbd6cff359d40af879
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2010-12-20 18:19:04 +0900
+
+    Don't call nonexistent org.freedesktop.IBus.InputContext.Destroy.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3800041
+
+M	ibus/inputcontext.py
+
+commit 7ca2d0f5b8fe5eb395fdff850d482d44b6216300
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-20 15:02:20 +0900
+
+    Fix typo in introspection_xml[] for InputContext.
+    
+    https://github.com/ibus/ibus/commit/ed778cd7cfc78eb39fc74167f2169b69f4d72a6b was incomplete, sorry.
+    
+    BUG=none
+    TEST=verified that properties can be changed via input context on Chrome OS.
+    
+    Review URL: http://codereview.appspot.com/3795041
+
+M	bus/inputcontext.c
+
+commit 6a8b35d0d0ffd4c130a849a86e8c3e50cbeba14a
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2010-12-15 18:33:33 +0900
+
+    Init GError before calling g_dbus_proxy_call*().
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3669041
+
+M	src/ibusinputcontext.c
+
+commit c3c20f8e45c27440e188e2bac3baca05cc966d71
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2010-12-15 18:32:17 +0900
+
+    Fix gtk version check for deprecated keysyms.
+    
+    From the git log of gtk3, they started adding _KEY from 2.91.0 not 2.90.0.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3670041
+
+M	client/gtk2/ibusimcontext.c
+
+commit bd5ead57debd3165d7dd89b099a1faadaa223eb3
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-12-15 17:04:43 +0800
+
+    Disconnect closed signal from GDBusConnection before creating a new connection.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3668041
+
+M	src/ibusbus.c
+
+commit 4de438c3dbb35399b479b78ada3398c5319fb7ba
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-15 15:13:00 +0900
+
+    Fix assertion failure in ibusbus.c.
+    
+    The following code does not work since the underlying connection for IBus-1.4 is not a sub class of IBusObject.
+    
+            ibus_object_destroy ((IBusObject *)priv->connection);
+            g_assert (priv->connection == NULL);
+    
+    BUG=none
+    TEST=ran Chrome for Chrome OS.
+    
+    Review URL: http://codereview.appspot.com/3658041
+
+M	src/ibusbus.c
+
+commit 872aec110599de061e587746e8500e98f59feed9
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-15 14:36:19 +0900
+
+    Fix type mismatch in src/ibuspanelservice.c.
+    
+    BUG=none
+    TEST=ran candidate_window for Chrome OS.
+    
+    Review URL: http://codereview.appspot.com/3661041
+
+M	src/ibuspanelservice.c
+
+commit ed778cd7cfc78eb39fc74167f2169b69f4d72a6b
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-15 14:09:20 +0900
+
+    Use unsigned for the parameter of the PropertyActivate message.
+    
+    unsigned would be better since the Python binding and engine proxy use unsigned for this purpose.
+    
+    BUG=none
+    TEST=ran Chrome for Chrome OS.
+    
+    Review URL: http://codereview.appspot.com/3660041
+
+M	bus/inputcontext.c
+M	src/ibusinputcontext.c
+M	src/ibusinputcontext.h
+
+commit 2ce1bd05306e416d243c49eed5608b18b12f62cf
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-15 11:55:16 +0900
+
+    Fix type mismatch in the PropertyActivate message.
+    
+    src/ibusinputcontext.c sends the massage with "(si)" but the daemon use the massage as "(&su)". This triggers assertion failure on Chrome OS.
+    
+    BUG=none
+    TEST=change ibus-mozc's property on Chrome OS via the IME menu.
+    
+    Review URL: http://codereview.appspot.com/3636041
+
+M	bus/inputcontext.c
+
+commit c2c4c6df3c0b650406be0615adb738540ebaf7af
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-12-02 13:12:53 +0800
+
+    Fix crash in im-ibus.so
+    
+    BUG=chromium-os:9868
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3401041
+
+M	client/gtk2/ibusimcontext.c
+
+commit e0b882f5fb5e274f8ae909c2b2c3b634890c31b5
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-21 19:26:18 +0900
+
+    Focus out/in fake input context if the input window changed.
+    
+    BUG=chromium-os:8855
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3199042
+
+M	client/gtk2/ibusimcontext.c
+
+commit 93ceb44131ad5cef4691dae151259f268f3ba986
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-12-14 10:16:32 +0800
+
+    Focus out the fake context in im-ibus.so, when a real context gets the focus.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3561042
+
+M	client/gtk2/ibusimcontext.c
+
+commit 856bd2ea703a27fb88a82022392dbcd366a56d95
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-12-14 10:14:45 +0800
+
+    Add fake context back in IBusIMContext.
+    
+    The fake context is removed by mistake in ibus-1.4. It is necessary for Chrome OS.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3574042
+
+M	client/gtk2/ibusimcontext.c
+
+commit ac1be736ab513b46c642e9ceb8bfc3bf4dc50de4
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-12-13 17:37:09 +0800
+
+    Fix typo and annotation.
+    
+    Fix typo in IBusEngineDesc:rank doc and GI transfer mode for
+    ibus_component_get_engines().
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3614041
+
+M	src/ibuscomponent.h
+M	src/ibusenginedesc.c
+
+commit 98419a4133f6358ec2e8ad56c62aacf3e3754c3e
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-12-08 16:37:42 +0800
+
+    Fix GI transfer mode annotation in ibus_bus_list_*engines() comment.
+    
+    See https://bugzilla.gnome.org/show_bug.cgi?id=635248.  Also, do not mark those
+    functions as "not implemented", since they are apparently implemented.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3274044
+
+M	src/ibusbus.h
+
+commit 9b0e04d311f9e3e65cbdd245332502a7d36e9739
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-03 00:42:45 +0900
+
+    Add #include <ibuspanelservice.h> to ibus.h.
+    
+    Add #include <ibuspanelservice.h> to ibus.h so an external project (e.g. Chromium OS project) could implement its own panel component in C/C++.
+    
+    Review URL: http://codereview.appspot.com/3411041
+
+M	src/ibus.h
+
+commit 036554a6106ba28bf2282ad63711a277c0abfe85
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-03 00:41:15 +0900
+
+    Remove unused header file, src/ibusconfigprivate.h
+    
+    Review URL: http://codereview.appspot.com/3412041
+
+M	src/Makefile.am
+D	src/ibusconfigprivate.h
+
+commit 4f1f7e241edf9c41bc158c1367380e5b0da9a670
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-12-01 22:00:44 +0900
+
+    Fix compile errors on Chromium OS.
+    
+    This is for the master branch of ibus.
+    
+    BUG=crosbug.com/9685
+    TEST=ran emerge-x86-generic ibus.
+    
+    Review URL: http://codereview.appspot.com/3368041
+
+M	bus/inputcontext.c
+
+commit 50ceef360174ab6709a4215706ea527735f10c7e
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-29 12:04:27 +0900
+
+    Do not call g_critical when ibus->config is NULL since it's not an error.
+    
+    The change is originally for chromeos branch of ibus (http://codereview.appspot.com/3304043/) but I believe this is also good for the master branch of ibus.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/3269043
+
+M	bus/ibusimpl.c
+
+commit cf2c9302528b9ece00eb3430600e8391f05f2a5c
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-26 16:07:56 +0900
+
+    Add the "destroy" signal handler back following Peng's suggestion at http://codereview.appspot.com/3293042/.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/3335041
+
+M	bus/panelproxy.c
+
+commit 85b5e0e92104d921f161bac22349db7f1f89790a
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-26 10:15:08 +0900
+
+    Add function comments to bus/panelproxy.[ch].
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3293042
+
+M	bus/panelproxy.c
+M	bus/panelproxy.h
+
+commit ede7506ad1e69092a334bbd5b90a9f4b6c6349df
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-25 17:54:19 +0900
+
+    Fix unexpected client capabilities in ibus-daemon.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/3323041
+
+M	bus/inputcontext.c
+M	src/ibusinputcontext.h
+
+commit a902bf42cb1bb8ce2ba9db147435cb52228281b4
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-25 17:40:43 +0900
+
+    Change the order of engine method calls for consistency.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/3304042
+
+M	bus/inputcontext.c
+
+commit 9ff18b80fdb3be5ed1209698c9f22d06cad4dc47
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-25 16:55:04 +0900
+
+    Add function comments to bus/inputcontext.[ch] and bus/engineproxy.[ch].
+    
+    Removed a temporary hack for PREEDIT_CONDITION by adding bus_ibus_impl_is_embed_preedit_text function to ibusimpl.c.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/3321041
+
+M	bus/engineproxy.c
+M	bus/engineproxy.h
+M	bus/ibusimpl.c
+M	bus/ibusimpl.h
+M	bus/inputcontext.c
+M	bus/inputcontext.h
+
+commit 21c14908e7f274c32d1e454e57cd51840b15ed14
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-24 18:50:57 +0900
+
+    Re-enable the use_sys_layout feature.
+    
+    Currently use_sys_layout cannot be disabled.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: http://codereview.appspot.com/3306041
+
+M	bus/engineproxy.c
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+
+commit 5d4f22c81caad3ea6503fa8e0862aacf7fc2107a
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-24 17:46:12 +0900
+
+    Pass cancellable object to bus_factory_proxy_create_engine
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3304041
+
+M	bus/engineproxy.c
+
+commit 5f1d5dd0089094f4ace175b451387d646ce81877
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-24 11:33:10 +0900
+
+    Clean up the code of focus switch logic, and fix a crash when focused context is destroyed.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3192042
+
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+
+commit b483041c3b8b01ccc6a11dd97d313d191cb11093
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-24 11:29:19 +0900
+
+    Fix some crashs when engine processes are killed.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3152042
+
+M	bus/component.c
+M	bus/engineproxy.c
+M	bus/ibusimpl.c
+M	bus/registry.c
+M	client/gtk2/ibusimcontext.c
+M	src/ibusobject.h
+M	src/ibusproxy.c
+
+commit ee09d6331a4816044da78d8f5394da2b9d318989
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-24 10:29:26 +0900
+
+    Use g_object_add_weak_pointer to make code simpler.
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3252041
+
+M	client/gtk2/ibusimcontext.c
+
+commit 3460cc569fc5e58ed538c23b23582166ed796fba
+Author: Jim Huang <jserv@0xlab.org>
+Date:   2010-11-22 01:37:04 +0800
+
+    Add generated files into .gitignore
+
+M	.gitignore
+M	bus/.gitignore
+A	src/tests/.gitignore
+
+commit 50c0d8399e7f31135647999fc9cd78f8a888264a
+Author: Jim Huang <jserv@0xlab.org>
+Date:   2010-11-22 01:24:08 +0800
+
+    Avoid comparison of unsigned expression
+    
+    comparison of unsigned expression < 0 is always false
+
+M	src/ibuskeymap.c
+
+commit 5fc6d9b8459ce47634012a42a638b6a091c205ee
+Author: Jim Huang <jserv@0xlab.org>
+Date:   2010-11-22 01:15:25 +0800
+
+    Add assertions to connection_destroy callback
+
+M	bus/inputcontext.c
+
+commit be50bec410f0b4730dd80c69c4037521eceae9d9
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-21 19:13:34 +0900
+
+    Remove some unused header files.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3218041
+
+M	client/gtk2/ibusim.c
+M	client/gtk2/ibusimcontext.c
+
+commit 4830992d531347f6cd464c384364e9b2cf7e96a6
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2010-11-18 12:23:45 +0900
+
+    Fix NULL of focused input context
+
+M	bus/inputcontext.c
+
+commit b1b50dbbf0d3117da388e8035b490fb4c3e19ab2
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-17 19:15:38 +0900
+
+    Add comments to bus/connection.[ch].
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3164041
+
+M	bus/connection.c
+M	bus/connection.h
+
+commit 96cc5ab07c5c84e9807f3fb195166b7a5b09f2f5
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-17 19:14:44 +0900
+
+    Add comments to bus/factoryproxy.[ch].
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3163041
+
+M	bus/factoryproxy.c
+M	bus/factoryproxy.h
+
+commit f8416ad2ed6bf581a1f746b4205eda25804ee9b9
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-17 17:34:29 +0900
+
+    Add comments to bus/registry.[ch].
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3162041
+
+M	bus/registry.c
+M	bus/registry.h
+
+commit 2242d0279e7cc71c653c673acaedd4c47305ec17
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-17 17:12:32 +0900
+
+    Add comments about thread safety.
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3156041
+
+M	bus/dbusimpl.c
+
+commit a632d5e774eef4f5384f62580a682192c46ac9a9
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-17 16:01:17 +0900
+
+    Add comments to bus/component.[ch].
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3161041
+
+M	bus/component.c
+M	bus/component.h
+
+commit e237282d262d27d97c441885c62aaacc4ae90f76
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-17 13:49:55 +0900
+
+    Add comments to bus/ibusimpl.[ch].
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3154041
+
+M	bus/ibusimpl.c
+M	bus/ibusimpl.h
+
+commit 90305393b3862fdb9d5860fa81aab59bb5d1eccc
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2010-11-16 18:11:37 +0900
+
+    Fix no defined '_' in EngineAbout
+
+M	ui/gtk/engineabout.py
+
+commit 60c0bc54c0654ac89b56e94b756bbba95e8f3521
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-16 17:59:48 +0900
+
+    Add introspection data for org.freedesktop.IBus.Panel and remove Destroy method.
+    
+    Add introspection data for org.freedesktop.IBus.Panel interface.
+    And remove Destroy method from Panel interface, because it is moved to
+    org.freedesktop.IBus.Service interface.
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3137041
+
+M	src/ibuspanelservice.c
+M	src/ibuspanelservice.h
+
+commit 217d2b49264d5335f8a0b5e8c70ff417547364aa
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-16 15:43:12 +0900
+
+    Add comments to bus/dbusimpl.[ch].
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3132041
+
+M	bus/dbusimpl.c
+M	bus/dbusimpl.h
+
+commit 7ccb594a14ff3e2f189af80a34c92e6b1113f577
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-16 14:22:23 +0900
+
+    Make sure send the reply of method IBus.Exit out before the daemon exits.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3133041
+
+M	bus/ibusimpl.c
+
+commit ac3ff55b7e4c23dd6ccd634b5b5eda683c0b2f43
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-16 14:02:34 +0900
+
+    Add global variable DOMAINNAME to replace "ibus10" in everywhere.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3093042
+
+M	setup/main.py
+M	ui/gtk/i18n.py
+
+commit 97fe1c47e189178b10c23fb18b575813f60fe72a
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2010-11-16 12:08:53 +0900
+
+    Fix ibus_version in configure and translation domain in ibus-setup.
+
+M	configure.ac
+M	setup/main.py
+
+commit 6e848591c101cbf6e14ed12f0e50deac7a486d71
 Author: fujiwarat <takao.fujiwara1@gmail.com>
 Date:   2010-11-11 18:09:52 +0900
 
@@ -14,22 +2304,713 @@ Date:   2010-11-11 18:09:52 +0900
 
 M	client/x11/main.c
 
-commit 1ae76a4924d08c33aeb8bbfe9b48cc90abea799a
+commit a72b99373425872bc7a0a4b2659ac8cb5ccb546e
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-16 11:17:33 +0900
+
+    Use "org.freedesktop.IBus" instead of "org.freedesktop.DBus" for the well-known bus name for the input context proxy.
+    
+    Though "org.freedesktop.DBus" works fine, since bus_dbus_impl_connection_filter_cb in bus/dbusimpl.c treats the two bus names equally, "org.freedesktop.IBus" which matches the interface name looks more natural.
+    
+    BUG=none
+    TEST=manually done
+    
+    Review URL: http://codereview.appspot.com/3128041
+
+M	src/ibusinputcontext.c
+
+commit 5e823fcbff6b29286babc99e783d13af7ba505b3
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-16 10:24:03 +0900
+
+    Remove block call in ibus-daemon, and use async call instead and clean up code.
+    
+    1. Do not use poll factory of a component. Sometime, it will cause a dead lock of ibus: ibus-daemon are waiting reply from engine, and engine are also waiting for reply from ibus-daemon.
+    2. Move some API from IBusComponent to BusComponent, Because of those API is for internal using only
+    3. Add a fake input context in server side to support switching input method when no context has focus.
+    4. Remove fake input context in imcontext, because we added the server side fake context
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/3077042
+
+M	bindings/vala/test/Makefile
+M	bus/Makefile.am
+A	bus/component.c
+A	bus/component.h
+M	bus/engineproxy.c
+M	bus/engineproxy.h
+M	bus/factoryproxy.c
+M	bus/factoryproxy.h
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+M	bus/inputcontext.h
+M	bus/main.c
+M	bus/registry.c
+M	bus/registry.h
+M	client/gtk2/ibusimcontext.c
+M	debian/libibus-1.0-0.symbols
+M	src/ibuscomponent.c
+M	src/ibuscomponent.h
+M	src/ibusconfig.c
+M	src/ibusconfig.h
+M	src/ibusenginedesc.h
+M	src/ibusproxy.h
+
+commit 911a104d0597435fb090d6079b60b47863c3ea0b
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-15 17:39:51 +0900
+
+    Add function comments to bus/server.[ch]
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3040041
+
+M	bus/server.c
+M	bus/server.h
+
+commit 2ba1c99304b1b91a1b533a222b160febe650003f
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-15 13:05:27 +0900
+
+    Add function comments to bus/main.c.
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3036041
+
+M	bus/main.c
+
+commit d495f82052dda24cb96181aa42e1a0d2e82b08f9
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2010-11-15 13:02:23 +0900
+
+    Delete src/ibusserver.[ch] that are no longer used.
+    
+    BUG=none
+    TEST=none
+    
+    Review URL: http://codereview.appspot.com/3018042
+
+D	src/ibusserver.c
+D	src/ibusserver.h
+D	src/tests/ibus-server.c
+
+commit 4bddbd04d850ad7891ad3620f8ce0d7e34070ecd
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2010-11-12 10:12:22 +0900
 
     Disable snooper in chromium, chrome, firefox and gnome-do
+    
+    Those applications has problems with snooper enabled. So update the
+    NO_SNOOPER_APPS to disable snooper for those applications by default.
+    
+    BUG=ibus:1140
+    TEST=manual
 
-M	Makefile.am
 M	configure.ac
 
-commit 8b1943d089bee37fffb17f31dee2120cb0039591
+commit 26f62c002fcc9f7c8cc00a735dc78e6d74eb7924
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-04 12:58:13 +0900
+
+    Remove a debug output
+
+M	client/gtk2/ibusimcontext.c
+
+commit 420b7b4a80d37b1fb277d1922d3a669f28bb5a9d
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2010-11-02 14:12:06 +0900
+
+    Remove GDK_DISPLAY, this macro has been removed in gtk3
+    
+    http://live.gnome.org/GnomeGoals/RemoveDeprecatedSymbols/GTK%2B
+
+M	client/x11/main.c
+
+commit 6670716f7307084972796b00feb0781827f6636c
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-04 12:05:39 +0900
+
+    Update python test scripts for gobject-introspection
+
+M	src/python/ibus.py
+M	src/python/test.py
+
+commit 5d8096b8464f98038827f71429c489ae2aae49f7
 Author: fujiwarat <takao.fujiwara1@gmail.com>
 Date:   2010-11-04 11:07:36 +0900
 
     Remove the ability to attach to a status icon with libnotify 0.7.0
 
 M	ui/gtk/main.py
+
+commit 071dab2be51ae1142a75adc7a595a3ee9ef4230a
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-04 09:38:23 +0900
+
+    Refine some code and remove some dead code.
+
+M	bus/ibusimpl.c
+M	src/ibusinputcontext.c
+
+commit c464170208fee4abfb577bfaa8585b6f45d5c7ee
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-03 13:37:57 +0900
+
+    Fix some issues within codereview.
+
+M	bus/connection.c
+M	bus/dbusimpl.c
+M	bus/dbusimpl.h
+M	bus/engineproxy.c
+M	bus/factoryproxy.h
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+M	bus/main.c
+M	bus/matchrule.c
+M	bus/registry.c
+M	bus/server.c
+M	bus/server.h
+M	bus/test-client.c
+M	client/gtk2/ibusimcontext.c
+M	debian/rules
+M	docs/reference/ibus/ibus-sections.txt
+M	gconf/config.c
+M	memconf/config.c
+M	src/ibusbus.c
+M	src/ibusconfigservice.c
+M	src/ibusengine.c
+M	src/ibusfactory.c
+M	src/ibuspanelservice.c
+M	src/ibusservice.c
+
+commit f1c4fcb0e0cd7427999c5c97e47d85a60544a4be
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-02 20:30:02 +0900
+
+    Fix crash when icon of property is Null
+
+M	bus/factoryproxy.c
+M	src/ibusproperty.c
+
+commit a0e4923aa8c3dd3865bac7ba67b9a3979432c7fb
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2010-11-01 18:16:25 +0900
+
+    Fix UnsetValue name.
+
+M	ibus/config.py
+M	ibus/interface/iconfig.py
+
+commit 2cac54a2a77459ec5f3e0fdbed376249fee0d2a4
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2010-11-01 16:13:55 +0900
+
+    Fix serialized order.
+
+M	src/ibusenginedesc.c
+
+commit 7fa9f32f3157176a90505749426416d440e39a69
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-01 15:05:29 +0900
+
+    Rename ibus_engine_desc_new2 and ibus_component_new2 to *_new_varargs.
+    
+    wip.
+
+M	debian/libibus-1.0-0.symbols
+M	src/ibuscomponent.c
+M	src/ibuscomponent.h
+M	src/ibusenginedesc.c
+M	src/ibusenginedesc.h
+
+commit 0a0668a92a5710435e93587bb5534f25a04ab120
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-11-01 14:03:17 +0900
+
+    Fix a typo.
+
+M	ibus/common.py
+
+commit 8d8ea067c7809bd95ee69401af9960a5ea05c71e
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-29 17:28:13 +0900
+
+    Fix a typo in client/gtk3/Makefile.am
+
+M	client/gtk3/Makefile.am
+
+commit 7e07c6d87e3e9b7612d74c1ba4a71bdb3fa4565f
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-29 17:08:38 +0900
+
+    Fix some problems in debian packages.
+
+M	debian/control
+A	debian/libibus-1.0-0.install
+A	debian/libibus-1.0-0.symbols
+D	debian/libibus1.install
+D	debian/libibus1.symbols
+M	debian/rules
+
+commit d00fb1d1ce308f4848ede89ca4ff3cd3994923d6
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-29 14:25:50 +0900
+
+    Add i18n.py.
+
+A	setup/i18n.py
+A	ui/gtk/i18n.py
+
+commit 841f83c9918c2cd44d3054d1e9742be98fbd5f22
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-29 12:16:52 +0900
+
+    Fix some merge failed.
+
+M	src/tests/ibus-global-engine.c
+
+commit 955c2c2df5516aeba951a91c607d0705dd1c877f
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-28 13:00:54 +0900
+
+    Rewrite memconf in c languages.
+
+M	gconf/Makefile.am
+M	gconf/config.c
+M	gconf/config.h
+M	memconf/Makefile.am
+A	memconf/config.c
+D	memconf/config.cc
+M	memconf/config.h
+A	memconf/main.c
+D	memconf/main.cc
+M	src/Makefile.am
+
+commit a9b24316d5deb7a1358885ea37f76cd1dc68ef13
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-27 14:36:30 +0900
+
+    Emit NameOwnerChanged signal with non-zero serial to make libdbus happy.
+
+M	bus/dbusimpl.c
+
+commit e4044fa0a00e7d7fa8f691fbbb727f25edf514aa
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-27 14:35:36 +0900
+
+    Add metadata file to fix some object ownership correctly
+
+M	bindings/vala/Makefile.am
+M	bindings/vala/ibus-1.0.vapi
+M	bindings/vala/ibus-1.0/ibus-1.0.metadata
+M	bindings/vala/test/config.vala
+
+commit 21185b24f07b1757960fec383b5db4edbda4695d
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-26 13:50:36 +0900
+
+    Add vala test for config module
+
+M	bindings/vala/test/Makefile
+A	bindings/vala/test/config.vala
+M	memconf/main.cc
+
+commit 7a0f88ca2e4d841cd65a67d150b3b892a4bb5a95
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-21 21:03:37 +0900
+
+    Fix vala and gir build issues.
+
+M	bindings/vala/Makefile.am
+M	bindings/vala/test/enchant.vala
+M	src/Makefile.am
+M	src/ibusconfigservice.h
+
+commit 8854d5039f25bf791731c5e3f125a6100a9374ef
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-20 20:48:07 +0900
+
+    Remove ibusdbus.h
+
+M	bindings/vala/ibus-1.0.vapi
+M	bindings/vala/ibus-1.0/ibus-1.0.gi
+M	src/Makefile.am
+D	src/ibusdbus.h
+
+commit 16304d0882068d01f897a64451041aebc389d045
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-20 19:48:01 +0900
+
+    wip.
+
+M	bindings/vala/Makefile.am
+A	bindings/vala/ibus-1.0.deps
+M	bindings/vala/ibus-1.0.vapi
+A	bindings/vala/ibus-1.0/ibus-1.0.defines
+M	bindings/vala/ibus-1.0/ibus-1.0.files
+M	bindings/vala/ibus-1.0/ibus-1.0.gi
+M	bindings/vala/ibus-1.0/ibus-1.0.metadata
+M	bindings/vala/test/enchant.vala
+
+commit f85753ee33d44b805a956d283079ef41189f9d8c
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-20 17:15:56 +0900
+
+    wip.
+
+M	bindings/vala/test/Makefile
+A	bindings/vala/test/enchant.vala
+D	bindings/vala/test/test.vala
+
+commit 3b2bf6f4a389fb2a10d9da9a9a55430ebfca882d
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-19 21:19:06 +0900
+
+    Fix some runtime errors.
+
+M	bus/dbusimpl.c
+M	bus/engineproxy.c
+M	bus/factoryproxy.c
+M	bus/ibusimpl.c
+M	bus/matchrule.c
+M	bus/panelproxy.c
+M	bus/registry.c
+M	bus/server.c
+M	debian/rules
+M	gconf/config.c
+M	gconf/main.c
+M	ibus/interface/iengine.py
+M	ibus/interface/ipanel.py
+M	setup/Makefile.am
+M	setup/enginecombobox.py
+M	setup/enginetreeview.py
+M	setup/keyboardshortcut.py
+M	setup/main.py
+M	src/ibuscomponent.c
+M	src/ibusconfig.c
+M	src/ibusengine.c
+M	src/ibuspanelservice.c
+M	src/ibuspanelservice.h
+M	src/ibusservice.c
+M	src/ibusxml.c
+M	ui/gtk/candidatepanel.py
+M	ui/gtk/languagebar.py
+M	ui/gtk/main.py
+M	ui/gtk/panel.py
+
+commit 3b3f56d0248d9772c581e42d7efadfd7ac223874
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-19 18:23:19 +0900
+
+    Change version to 1.3.99
+
+M	Makefile.am
+M	bindings/vala/Makefile.am
+A	bindings/vala/ibus-1.0.vapi
+A	bindings/vala/ibus-1.0/ibus-1.0-custom.vala
+A	bindings/vala/ibus-1.0/ibus-1.0.excludes
+A	bindings/vala/ibus-1.0/ibus-1.0.files
+A	bindings/vala/ibus-1.0/ibus-1.0.gi
+A	bindings/vala/ibus-1.0/ibus-1.0.metadata
+A	bindings/vala/ibus-1.0/ibus-1.0.namespace
+D	bindings/vala/ibus-2.0.vapi
+D	bindings/vala/ibus-2.0/ibus-2.0-custom.vala
+D	bindings/vala/ibus-2.0/ibus-2.0.excludes
+D	bindings/vala/ibus-2.0/ibus-2.0.files
+D	bindings/vala/ibus-2.0/ibus-2.0.gi
+D	bindings/vala/ibus-2.0/ibus-2.0.metadata
+D	bindings/vala/ibus-2.0/ibus-2.0.namespace
+M	bindings/vala/test/Makefile
+M	bus/Makefile.am
+M	client/gtk2/Makefile.am
+M	client/x11/Makefile.am
+M	configure.ac
+M	debian/clean
+M	debian/control
+A	debian/libibus1.install
+A	debian/libibus1.symbols
+D	debian/libibus2.install
+D	debian/libibus2.symbols
+M	debian/rules
+M	docs/reference/ibus/Makefile.am
+M	gconf/Makefile.am
+A	ibus-1.0.pc.in
+D	ibus-2.0.pc.in
+M	ibus/_config.py.in
+M	ibus/common.py
+M	memconf/Makefile.am
+M	po/ar.po
+M	po/as.po
+M	po/bn_IN.po
+M	po/ca.po
+M	po/da.po
+M	po/de.po
+M	po/es.po
+M	po/fr.po
+M	po/gu.po
+M	po/hi.po
+M	po/hu.po
+M	po/it.po
+M	po/ja.po
+M	po/kn.po
+M	po/ko.po
+M	po/ml.po
+M	po/mr.po
+M	po/or.po
+M	po/pa.po
+M	po/pl.po
+M	po/pt_BR.po
+M	po/ru.po
+M	po/sr.po
+M	po/sr@latin.po
+M	po/ta.po
+M	po/te.po
+M	po/vi.po
+M	po/zh_CN.po
+M	po/zh_HK.po
+M	po/zh_TW.po
+M	src/Makefile.am
+M	src/ibusversion.h.in
+M	src/tests/Makefile.am
+M	ui/gtk/Makefile.am
+M	ui/gtk/candidatepanel.py
+M	ui/gtk/engineabout.py
+M	ui/gtk/languagebar.py
+M	ui/gtk/main.py
+M	ui/gtk/notifications.py
+M	ui/gtk/panel.py
+
+commit eb0c12036b8806c1e0587dba1744cd4998f66d4e
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-10-19 10:26:08 +0900
+
+    Use va_list in IBusEngineDesc and IBusComponent for back compatibility.
+    
+    Provided by fujiwarat <takao.fujiwara1@gmail.com>
+    
+    Conflicts:
+    
+    	bus/engineproxy.c
+    	bus/factoryproxy.c
+    	bus/ibusimpl.c
+    	src/ibuscomponent.c
+    	src/ibusenginedesc.c
+    	src/test-bus.c
+    	src/tests/ibus-global-engine.c
+
+M	bus/engineproxy.c
+M	bus/factoryproxy.c
+M	bus/ibusimpl.c
+M	bus/registry.c
+M	ibus/component.py
+M	ibus/enginedesc.py
+M	src/ibuscomponent.c
+M	src/ibuscomponent.h
+M	src/ibusenginedesc.c
+M	src/ibusenginedesc.h
+M	src/tests/ibus-global-engine.c
+
+commit 164fc1f12467a73c32552292076fd8226873252e
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2010-06-16 23:47:09 +0800
+
+    Use gdbus in glib, and get rid of libdbus
+
+M	Makefile.am
+M	autogen.sh
+M	bindings/vala/Makefile.am
+D	bindings/vala/ibus-1.0.vapi
+D	bindings/vala/ibus-1.0/ibus-1.0-custom.vala
+D	bindings/vala/ibus-1.0/ibus-1.0.excludes
+D	bindings/vala/ibus-1.0/ibus-1.0.files
+D	bindings/vala/ibus-1.0/ibus-1.0.gi
+D	bindings/vala/ibus-1.0/ibus-1.0.metadata
+D	bindings/vala/ibus-1.0/ibus-1.0.namespace
+A	bindings/vala/ibus-2.0.vapi
+A	bindings/vala/ibus-2.0/ibus-2.0-custom.vala
+A	bindings/vala/ibus-2.0/ibus-2.0.excludes
+A	bindings/vala/ibus-2.0/ibus-2.0.files
+A	bindings/vala/ibus-2.0/ibus-2.0.gi
+A	bindings/vala/ibus-2.0/ibus-2.0.metadata
+A	bindings/vala/ibus-2.0/ibus-2.0.namespace
+M	bindings/vala/test/Makefile
+M	bus/Makefile.am
+M	bus/connection.c
+M	bus/connection.h
+M	bus/dbusimpl.c
+M	bus/dbusimpl.h
+M	bus/engineproxy.c
+M	bus/engineproxy.h
+M	bus/factoryproxy.c
+M	bus/factoryproxy.h
+M	bus/ibusimpl.c
+M	bus/ibusimpl.h
+M	bus/inputcontext.c
+M	bus/inputcontext.h
+M	bus/main.c
+A	bus/marshalers.list
+M	bus/matchrule.c
+M	bus/matchrule.h
+M	bus/option.h
+M	bus/panelproxy.c
+M	bus/panelproxy.h
+M	bus/registry.c
+M	bus/registry.h
+M	bus/server.c
+M	bus/server.h
+M	bus/test-matchrule.c
+A	bus/types.h
+M	client/gtk2/Makefile.am
+M	client/gtk2/ibusim.c
+M	client/gtk2/ibusimcontext.c
+M	client/gtk3/Makefile.am
+M	client/x11/Makefile.am
+M	configure.ac
+M	debian/libibus-dev.install
+M	debian/libibus2.install
+M	debian/libibus2.symbols
+M	debian/rules
+M	docs/reference/ibus/Makefile.am
+M	docs/reference/ibus/ibus-sections.txt
+M	docs/reference/ibus/ibus.types
+M	gconf/Makefile.am
+M	gconf/config.c
+M	gconf/config.h
+M	gconf/main.c
+D	ibus-1.0.pc.in
+A	ibus-2.0.pc.in
+M	ibus.spec.in
+M	ibus/common.py
+A	m4/introspection.m4
+M	memconf/main.cc
+M	po/POTFILES.in
+M	po/ar.po
+M	po/as.po
+M	po/bn_IN.po
+M	po/ca.po
+M	po/da.po
+M	po/de.po
+M	po/es.po
+M	po/fr.po
+M	po/gu.po
+M	po/hi.po
+M	po/hu.po
+M	po/it.po
+M	po/ja.po
+M	po/kn.po
+M	po/ko.po
+M	po/ml.po
+M	po/mr.po
+M	po/or.po
+M	po/pa.po
+M	po/pl.po
+M	po/pt_BR.po
+M	po/ru.po
+M	po/sr.po
+M	po/sr@latin.po
+M	po/ta.po
+M	po/te.po
+M	po/vi.po
+M	po/zh_CN.po
+M	po/zh_HK.po
+M	po/zh_TW.po
+M	src/Makefile.am
+M	src/ibus.h
+M	src/ibusattribute.c
+M	src/ibusattribute.h
+M	src/ibusattrlist.c
+M	src/ibusattrlist.h
+M	src/ibusbus.c
+M	src/ibusbus.h
+M	src/ibuscomponent.c
+M	src/ibuscomponent.h
+M	src/ibusconfig.c
+M	src/ibusconfig.h
+M	src/ibusconfigprivate.h
+M	src/ibusconfigservice.c
+M	src/ibusconfigservice.h
+D	src/ibusconnection.c
+D	src/ibusconnection.h
+M	src/ibusdbus.h
+M	src/ibusdebug.h
+M	src/ibusengine.c
+M	src/ibusengine.h
+M	src/ibusenginedesc.c
+M	src/ibusenginedesc.h
+M	src/ibusenumtypes.c.template
+D	src/ibuserror.c
+D	src/ibuserror.h
+M	src/ibusfactory.c
+M	src/ibusfactory.h
+M	src/ibushotkey.c
+M	src/ibushotkey.h
+M	src/ibusinputcontext.c
+M	src/ibusinputcontext.h
+D	src/ibusinternal.c
+M	src/ibusinternal.h
+M	src/ibuskeymap.c
+M	src/ibuskeymap.h
+M	src/ibuskeysyms.h
+M	src/ibuslookuptable.c
+M	src/ibuslookuptable.h
+D	src/ibusmainloop.c
+D	src/ibusmainloop.h
+M	src/ibusmarshalers.list
+D	src/ibusmessage.c
+D	src/ibusmessage.h
+M	src/ibusobject.c
+M	src/ibusobject.h
+M	src/ibusobservedpath.c
+M	src/ibusobservedpath.h
+M	src/ibuspanelservice.c
+M	src/ibuspanelservice.h
+D	src/ibuspendingcall.c
+D	src/ibuspendingcall.h
+M	src/ibusproperty.c
+M	src/ibusproperty.h
+M	src/ibusproplist.c
+M	src/ibusproplist.h
+M	src/ibusproxy.c
+M	src/ibusproxy.h
+M	src/ibusserializable.c
+M	src/ibusserializable.h
+M	src/ibusserver.c
+M	src/ibusservice.c
+M	src/ibusservice.h
+M	src/ibusshare.c
+M	src/ibusshare.h
+M	src/ibustext.c
+M	src/ibustext.h
+M	src/ibustypes.h
+M	src/ibusxml.h
+D	src/test-attribute.c
+D	src/test-bus.c
+D	src/test-engine.c
+D	src/test-global-engine.c
+D	src/test-keymap.c
+D	src/test-keynames.c
+D	src/test-lookuptable.c
+D	src/test-proxy.c
+D	src/test-server.c
+D	src/test-text.c
+A	src/tests/Makefile.am
+A	src/tests/ibus-bus.c
+A	src/tests/ibus-configservice.c
+A	src/tests/ibus-engine.c
+A	src/tests/ibus-factory.c
+A	src/tests/ibus-global-engine.c
+A	src/tests/ibus-keymap.c
+A	src/tests/ibus-keynames.c
+A	src/tests/ibus-proxy.c
+A	src/tests/ibus-serializable.c
+A	src/tests/ibus-server.c
+A	src/tests/ibus-share.c
 
 commit 0f6fd61b6ee06e070a739e5315318e6af2b72ddd
 Author: fujiwarat <takao.fujiwara1@gmail.com>
