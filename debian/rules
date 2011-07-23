@@ -20,7 +20,7 @@ install:
 		$(CURDIR)/debian/tmp/usr/share/applications/ibus.desktop
 	dh_install --list-missing --fail-missing
 	dh_installdocs # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=552293
-	dh $@ --after installdocs
+	dh $@ --after installdocs --with python2
 	LD_LIBRARY_PATH=debian/libibus2/usr/lib:$(LD_LIBRARY_PATH) \
 		dh_gtkmodules -p ibus-gtk -s \
 		dh_gtkmodules -p ibus-gtk3 -s

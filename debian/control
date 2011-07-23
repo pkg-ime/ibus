@@ -11,11 +11,10 @@ Build-Depends: debhelper (>= 7),
  autoconf,
  automake,
  libtool,
- python-support (>= 0.6),
  libgtk2.0-dev,
  libgtk-3-dev,
  libdbus-glib-1-dev,
- python-dev,
+ python-dev (>= 2.6.6-3~),
  iso-codes,
  python-gobject-dev,
  libgconf2-dev,
@@ -26,6 +25,7 @@ Homepage: http://code.google.com/p/ibus/
 Vcs-Git: git://git.debian.org/pkg-ime/ibus.git
 Vcs-Browser: http://git.debian.org/?p=pkg-ime/ibus.git
 DM-Upload-Allowed: yes
+X-Python-Version: >= 2.5
 
 Package: ibus
 Architecture: any
