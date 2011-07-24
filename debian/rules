@@ -1,49 +1,12 @@
 #!/usr/bin/make -f
+%:
+	dh  $@ --with python2
 
-build:
-	ln -sf /usr/share/misc/config.sub config.sub
-	ln -sf /usr/share/misc/config.guess config.guess
-	dh $@ --before auto_configure
-	dh_auto_configure -- --enable-static LDFLAGS="-Wl,--as-needed" --enable-gtk3
-	dh $@ --before auto_test
-	cd po; make ibus.pot # https://bugs.launchpad.net/ubuntu/+source/ibus/+bug/188690
-	dh $@ --after auto_test
+override_dh_auto_configure:
+	dh_auto_configure -- LDFLAGS="-Wl,--as-needed" --enable-static  --enable-gtk3
 
-install:
-	dh $@ --until auto_install
-	rm -rf $(CURDIR)/debian/tmp/usr/lib/libibus.la \
-		$(CURDIR)/debian/tmp/usr/lib/gtk-2.0/2.10.0/immodules/im-ibus.a \
-		$(CURDIR)/debian/tmp/usr/lib/gtk-2.0/2.10.0/immodules/im-ibus.la \
-		$(CURDIR)/debian/tmp/usr/lib/gtk-3.0/3.0.0/immodules/im-ibus.a \
-		$(CURDIR)/debian/tmp/usr/lib/gtk-3.0/3.0.0/immodules/im-ibus.la \
-		$(CURDIR)/debian/tmp/etc/xdg \
-		$(CURDIR)/debian/tmp/usr/share/applications/ibus.desktop
-	dh_install --list-missing --fail-missing
-	dh_installdocs # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=552293
-	dh $@ --after installdocs --with python2
-	LD_LIBRARY_PATH=debian/libibus2/usr/lib:$(LD_LIBRARY_PATH) \
-		dh_gtkmodules -p ibus-gtk -s \
-		dh_gtkmodules -p ibus-gtk3 -s
+override_dh_makeshlibs:
+	dh_makeshlibs -Nibus-gtk -Nibus-gtk3
 
-install-stamp: install
-	touch $@
+override_dh_auto_test:
 
-binary: binary-indep binary-arch
-
-binary-indep: install-stamp
-	dh_installdeb -i
-	dh_gencontrol -i
-	dh_md5sums -i
-	dh_builddeb -i
-
-binary-arch: install-stamp
-	dh_strip -s
-	dh_makeshlibs -Nibus-gtk -Nibus-gtk3 -s
-	dh_shlibdeps -s
-	dh_installdeb -s
-	dh_gencontrol -s
-	dh_md5sums -s
-	dh_builddeb -s
-
-clean:
-	dh clean
