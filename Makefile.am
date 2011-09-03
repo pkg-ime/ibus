@@ -48,6 +48,12 @@ MEMCONF_DIRS = \
 	$(NULL)
 endif
 
+if ENABLE_DCONF
+DCONF_DIRS = \
+	dconf \
+	$(NULL)
+endif
+
 SUBDIRS =           \
 	src             \
 	util            \
@@ -61,6 +67,7 @@ SUBDIRS =           \
 	$(PYTHON_DIRS)  \
 	$(GCONF_DIRS)   \
 	$(MEMCONF_DIRS) \
+	$(DCONF_DIRS)   \
 	$(NULL)
 
 ACLOCAL_AMFLAGS = -I m4
@@ -119,11 +126,12 @@ srpm: dist @PACKAGE_NAME@.spec
 debian/changelog:
 	$(AM_V_GEN) \
 	( \
+		. /etc/lsb-release; \
 		date=`date -R`; \
 		version=@VERSION@; \
 		serie=$(serie); \
 		if test -z "$$serie"; then \
-		  serie=maverick; \
+		  serie=$$DISTRIB_CODENAME; \
 		fi; \
 		if test -z "$$release"; then \
 		  release=1; \

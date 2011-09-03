@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>IBusInputContext</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="IBus Reference Manual">
 <link rel="up" href="ch03.html" title="Input method engine">
 <link rel="prev" href="IBusFactory.html" title="IBusFactory">
 <link rel="next" href="IBusKeymap.html" title="IBusKeymap">
-<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.17 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -32,7 +32,7 @@
                   <a href="#IBusInputContext.signals" class="shortcut">Signals</a>
 </td></tr>
 </table>
-<div class="refentry" title="IBusInputContext">
+<div class="refentry">
 <a name="IBusInputContext"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -41,14 +41,14 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsect1" title="Stability Level">
+<div class="refsect1">
 <a name="IBusInputContext.stability-level"></a><h2>Stability Level</h2>
 Stable, unless otherwise indicated
 </div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="IBusInputContext.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">                    <a class="link" href="IBusInputContext.html#IBusInputContext-struct" title="IBusInputContext">IBusInputContext</a>;
-                    <a class="link" href="IBusInputContext.html#IBusInputContextClass" title="IBusInputContextClass">IBusInputContextClass</a>;
+<pre class="synopsis">struct              <a class="link" href="IBusInputContext.html#IBusInputContext-struct" title="struct IBusInputContext">IBusInputContext</a>;
+struct              <a class="link" href="IBusInputContext.html#IBusInputContextClass" title="struct IBusInputContextClass">IBusInputContextClass</a>;
 <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  <a class="link" href="IBusInputContext.html#ibus-input-context-new" title="ibus_input_context_new ()">ibus_input_context_new</a>              (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> *cancellable</code></em>,
@@ -72,6 +72,13 @@ Stable, unless otherwise indicated
 <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  <a class="link" href="IBusInputContext.html#ibus-input-context-get-input-context-async-finish" title="ibus_input_context_get_input_context_async_finish ()">ibus_input_context_get_input_context_async_finish</a>
                                                         (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-process-hand-writing-event" title="ibus_input_context_process_hand_writing_event ()">ibus_input_context_process_hand_writing_event</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gdouble"><span class="type">gdouble</span></a> *coordinates</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> coordinates_len</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-cancel-hand-writing" title="ibus_input_context_cancel_hand_writing ()">ibus_input_context_cancel_hand_writing</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> n_strokes</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-process-key-event-async" title="ibus_input_context_process_key_event_async ()">ibus_input_context_process_key_event_async</a>
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> keyval</code></em>,
@@ -84,7 +91,6 @@ Stable, unless otherwise indicated
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusInputContext.html#ibus-input-context-process-key-event-async-finish" title="ibus_input_context_process_key_event_async_finish ()">ibus_input_context_process_key_event_async_finish</a>
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> *processed</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusInputContext.html#ibus-input-context-process-key-event" title="ibus_input_context_process_key_event ()">ibus_input_context_process_key_event</a>
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
@@ -116,7 +122,6 @@ Stable, unless otherwise indicated
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusInputContext.html#ibus-input-context-is-enabled-async-finish" title="ibus_input_context_is_enabled_async_finish ()">ibus_input_context_is_enabled_async_finish</a>
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> *retval</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusInputContext.html#ibus-input-context-is-enabled" title="ibus_input_context_is_enabled ()">ibus_input_context_is_enabled</a>       (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-get-engine-async" title="ibus_input_context_get_engine_async ()">ibus_input_context_get_engine_async</a> (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
@@ -134,12 +139,13 @@ Stable, unless otherwise indicated
 <span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-set-surrounding-text" title="ibus_input_context_set_surrounding_text ()">ibus_input_context_set_surrounding_text</a>
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> cursor_pos</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> cursor_pos</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> anchor_pos</code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusInputContext.html#ibus-input-context-needs-surrounding-text" title="ibus_input_context_needs_surrounding_text ()">ibus_input_context_needs_surrounding_text</a>
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);
 </pre>
 </div>
-<div class="refsect1" title="Object Hierarchy">
+<div class="refsect1">
 <a name="IBusInputContext.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
   <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
@@ -148,38 +154,38 @@ Stable, unless otherwise indicated
                +----IBusInputContext
 </pre>
 </div>
-<div class="refsect1" title="Implemented Interfaces">
+<div class="refsect1">
 <a name="IBusInputContext.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
 <p>
 IBusInputContext implements
  <a href="http://library.gnome.org/devel/gio/unstable/GInitable.html">GInitable</a> and  <a href="http://library.gnome.org/devel/gio/unstable/GAsyncInitable.html">GAsyncInitable</a>.</p>
 </div>
-<div class="refsect1" title="Signals">
+<div class="refsect1">
 <a name="IBusInputContext.signals"></a><h2>Signals</h2>
 <pre class="synopsis">
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-commit-text" title='The "commit-text" signal'>commit-text</a>"                                    : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-cursor-down-lookup-table" title='The "cursor-down-lookup-table" signal'>cursor-down-lookup-table</a>"                       : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-cursor-up-lookup-table" title='The "cursor-up-lookup-table" signal'>cursor-up-lookup-table</a>"                         : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-delete-surrounding-text" title='The "delete-surrounding-text" signal'>delete-surrounding-text</a>"                        : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-disabled" title='The "disabled" signal'>disabled</a>"                                       : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-enabled" title='The "enabled" signal'>enabled</a>"                                        : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-forward-key-event" title='The "forward-key-event" signal'>forward-key-event</a>"                              : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-hide-auxiliary-text" title='The "hide-auxiliary-text" signal'>hide-auxiliary-text</a>"                            : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-hide-lookup-table" title='The "hide-lookup-table" signal'>hide-lookup-table</a>"                              : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-hide-preedit-text" title='The "hide-preedit-text" signal'>hide-preedit-text</a>"                              : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-page-down-lookup-table" title='The "page-down-lookup-table" signal'>page-down-lookup-table</a>"                         : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-page-up-lookup-table" title='The "page-up-lookup-table" signal'>page-up-lookup-table</a>"                           : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-register-properties" title='The "register-properties" signal'>register-properties</a>"                            : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-show-auxiliary-text" title='The "show-auxiliary-text" signal'>show-auxiliary-text</a>"                            : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-show-lookup-table" title='The "show-lookup-table" signal'>show-lookup-table</a>"                              : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-show-preedit-text" title='The "show-preedit-text" signal'>show-preedit-text</a>"                              : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-update-auxiliary-text" title='The "update-auxiliary-text" signal'>update-auxiliary-text</a>"                          : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-update-lookup-table" title='The "update-lookup-table" signal'>update-lookup-table</a>"                            : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-update-preedit-text" title='The "update-preedit-text" signal'>update-preedit-text</a>"                            : Run Last
-  "<a class="link" href="IBusInputContext.html#IBusInputContext-update-property" title='The "update-property" signal'>update-property</a>"                                : Run Last
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-commit-text" title='The "commit-text" signal'>commit-text</a>"                                    : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-cursor-down-lookup-table" title='The "cursor-down-lookup-table" signal'>cursor-down-lookup-table</a>"                       : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-cursor-up-lookup-table" title='The "cursor-up-lookup-table" signal'>cursor-up-lookup-table</a>"                         : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-delete-surrounding-text" title='The "delete-surrounding-text" signal'>delete-surrounding-text</a>"                        : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-disabled" title='The "disabled" signal'>disabled</a>"                                       : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-enabled" title='The "enabled" signal'>enabled</a>"                                        : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-forward-key-event" title='The "forward-key-event" signal'>forward-key-event</a>"                              : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-hide-auxiliary-text" title='The "hide-auxiliary-text" signal'>hide-auxiliary-text</a>"                            : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-hide-lookup-table" title='The "hide-lookup-table" signal'>hide-lookup-table</a>"                              : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-hide-preedit-text" title='The "hide-preedit-text" signal'>hide-preedit-text</a>"                              : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-page-down-lookup-table" title='The "page-down-lookup-table" signal'>page-down-lookup-table</a>"                         : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-page-up-lookup-table" title='The "page-up-lookup-table" signal'>page-up-lookup-table</a>"                           : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-register-properties" title='The "register-properties" signal'>register-properties</a>"                            : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-show-auxiliary-text" title='The "show-auxiliary-text" signal'>show-auxiliary-text</a>"                            : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-show-lookup-table" title='The "show-lookup-table" signal'>show-lookup-table</a>"                              : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-show-preedit-text" title='The "show-preedit-text" signal'>show-preedit-text</a>"                              : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-update-auxiliary-text" title='The "update-auxiliary-text" signal'>update-auxiliary-text</a>"                          : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-update-lookup-table" title='The "update-lookup-table" signal'>update-lookup-table</a>"                            : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-update-preedit-text" title='The "update-preedit-text" signal'>update-preedit-text</a>"                            : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-update-property" title='The "update-property" signal'>update-property</a>"                                : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
 <a name="IBusInputContext.description"></a><h2>Description</h2>
 <p>
 An IBusInputContext is a proxy object of BusInputContext,
@@ -191,28 +197,28 @@ Clients call the IBusInputContext to invoke BusInputContext,
 through which invokes IBusEngine.
 </p>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="IBusInputContext.details"></a><h2>Details</h2>
-<div class="refsect2" title="IBusInputContext">
-<a name="IBusInputContext-struct"></a><h3>IBusInputContext</h3>
-<pre class="programlisting">typedef struct _IBusInputContext IBusInputContext;</pre>
+<div class="refsect2">
+<a name="IBusInputContext-struct"></a><h3>struct IBusInputContext</h3>
+<pre class="programlisting">struct IBusInputContext;</pre>
 <p>
 An opaque data type representing an IBusInputContext.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="IBusInputContextClass">
-<a name="IBusInputContextClass"></a><h3>IBusInputContextClass</h3>
-<pre class="programlisting">typedef struct {
+<div class="refsect2">
+<a name="IBusInputContextClass"></a><h3>struct IBusInputContextClass</h3>
+<pre class="programlisting">struct IBusInputContextClass {
     IBusProxyClass parent;
     /* signals */
-} IBusInputContextClass;
+};
 </pre>
 <p>
 </p>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_new ()">
+<div class="refsect2">
 <a name="ibus-input-context-new"></a><h3>ibus_input_context_new ()</h3>
 <pre class="programlisting"><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  ibus_input_context_new              (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>,
@@ -229,34 +235,25 @@ New an IBusInputContext.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
-<td>The path to the object that emitting the signal.
-</td>
+<td>The path to the object that emitting the signal.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>An <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a>.
-</td>
+<td>An <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_new_async ()">
+<div class="refsect2">
 <a name="ibus-input-context-new-async"></a><h3>ibus_input_context_new_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_new_async        (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>,
@@ -271,35 +268,30 @@ New an <a class="link" href="IBusInputContext.html" title="IBusInputContext"><sp
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
-<td>The path to the object that emitting the signal.
-</td>
+<td>The path to the object that emitting the signal.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>An <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a>.
-</td>
+<td>An <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied.
-     The callback should not be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+The callback should not be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_new_async_finish ()">
+<div class="refsect2">
 <a name="ibus-input-context-new-async-finish"></a><h3>ibus_input_context_new_async_finish ()</h3>
 <pre class="programlisting"><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  ibus_input_context_new_async_finish (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
@@ -315,24 +307,17 @@ Finishes an operation started with <a class="link" href="IBusInputContext.html#i
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> pass to
-     <a class="link" href="IBusInputContext.html#ibus-input-context-new-async" title="ibus_input_context_new_async ()"><code class="function">ibus_input_context_new_async()</code></a>.
-</td>
+<a class="link" href="IBusInputContext.html#ibus-input-context-new-async" title="ibus_input_context_new_async ()"><code class="function">ibus_input_context_new_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_get_input_context ()">
+<div class="refsect2">
 <a name="ibus-input-context-get-input-context"></a><h3>ibus_input_context_get_input_context ()</h3>
 <pre class="programlisting"><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  ibus_input_context_get_input_context
                                                         (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
@@ -345,24 +330,22 @@ Gets an existing IBusInputContext.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
-<td>The path to the object that emitting the signal.
-</td>
+<td>The path to the object that emitting the signal.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>An <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a>.
-</td>
+<td>An <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> An existing <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+<td>An existing <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_get_input_context_async ()">
+<div class="refsect2">
 <a name="ibus-input-context-get-input-context-async"></a><h3>ibus_input_context_get_input_context_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_get_input_context_async
                                                         (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *path</code></em>,
@@ -378,35 +361,30 @@ Get an existing <a class="link" href="IBusInputContext.html" title="IBusInputCon
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
-<td>The path to the object that emitting the signal.
-</td>
+<td>The path to the object that emitting the signal.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>An <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a>.
-</td>
+<td>An <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied.
-     The callback should not be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+The callback should not be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_get_input_context_async_finish ()">
+<div class="refsect2">
 <a name="ibus-input-context-get-input-context-async-finish"></a><h3>ibus_input_context_get_input_context_async_finish ()</h3>
 <pre class="programlisting"><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  ibus_input_context_get_input_context_async_finish
                                                         (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
@@ -423,24 +401,84 @@ Finishes an operation started with <code class="function">ibus_input_contex_get_
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> pass to
-     <a class="link" href="IBusInputContext.html#ibus-input-context-get-input-context-async" title="ibus_input_context_get_input_context_async ()"><code class="function">ibus_input_context_get_input_context_async()</code></a>.
-</td>
+<a class="link" href="IBusInputContext.html#ibus-input-context-get-input-context-async" title="ibus_input_context_get_input_context_async ()"><code class="function">ibus_input_context_get_input_context_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_process_key_event_async ()">
+<div class="refsect2">
+<a name="ibus-input-context-process-hand-writing-event"></a><h3>ibus_input_context_process_hand_writing_event ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_process_hand_writing_event
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gdouble"><span class="type">gdouble</span></a> *coordinates</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> coordinates_len</code></em>);</pre>
+<p>
+Pass a handwriting stroke to an input method engine.
+</p>
+<p>
+In this API, a coordinate (0.0, 0.0) represents the top-left corner of an area for
+handwriting, and (1.0, 1.0) does the bottom-right. Therefore, for example, if
+a user writes a character 'L', the array would be something like [0.0, 0.0, 0.0, 1.0, 1.0, 1.0]
+and coordinates_len would be 6.
+</p>
+<p>
+The function is usually called when a user releases the mouse button in a hand
+writing area.
+</p>
+<p>
+see_also: <a class="link" href="IBusEngine.html#IBusEngine-process-hand-writing-event" title='The "process-hand-writing-event" signal'><span class="type">"process-hand-writing-event"</span></a>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>coordinates</code></em> :</span></p></td>
+<td>An array of gdouble (0.0 to 1.0) which represents a stroke (i.e. [x1, y1, x2, y2, x3, y3, ...]).</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>coordinates_len</code></em> :</span></p></td>
+<td>The number of elements in the array. The number should be even and &gt;= 4.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-cancel-hand-writing"></a><h3>ibus_input_context_cancel_hand_writing ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_cancel_hand_writing
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> n_strokes</code></em>);</pre>
+<p>
+Clear handwriting stroke(s) in the current input method engine.
+</p>
+<p>
+see_also: <a class="link" href="IBusEngine.html#IBusEngine-cancel-hand-writing" title='The "cancel-hand-writing" signal'><span class="type">"cancel-hand-writing"</span></a>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>n_strokes</code></em> :</span></p></td>
+<td>The number of strokes to be removed. Pass 0 to remove all.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
 <a name="ibus-input-context-process-key-event-async"></a><h3>ibus_input_context_process_key_event_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_process_key_event_async
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
@@ -482,55 +520,46 @@ see_also: <a class="link" href="IBusEngine.html#IBusEngine-process-key-event" ti
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
-<td>Key symbol of a key event.
-</td>
+<td>Key symbol of a key event.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>keycode</code></em> :</span></p></td>
-<td>Keycode of a key event.
-</td>
+<td>Keycode of a key event.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
-<td>Key modifier flags.
-</td>
+<td>Key modifier flags.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A GCancellable or NULL.
-</td>
+<td>A GCancellable or NULL.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A GAsyncReadyCallback to call when the request is satisfied or NULL
-     if you don't care about the result of the method invocation.
-</td>
+if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_process_key_event_async_finish ()">
+<div class="refsect2">
 <a name="ibus-input-context-process-key-event-async-finish"></a><h3>ibus_input_context_process_key_event_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_input_context_process_key_event_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> *processed</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>
 Finishes an operation started with <a class="link" href="IBusInputContext.html#ibus-input-context-process-key-event-async" title="ibus_input_context_process_key_event_async ()"><code class="function">ibus_input_context_process_key_event_async()</code></a>.
@@ -540,36 +569,28 @@ Finishes an operation started with <a class="link" href="IBusInputContext.html#i
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A GAsyncResult obtained from the GAsyncReadyCallback passed to
-  <a class="link" href="IBusInputContext.html#ibus-input-context-process-key-event-async" title="ibus_input_context_process_key_event_async ()"><code class="function">ibus_input_context_process_key_event_async()</code></a>.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>processed</code></em> :</span></p></td>
-<td>A point to a bool value. If the the key event is processed, it will
-     assigned to TRUE, FALSE otherwise.
-</td>
+<a class="link" href="IBusInputContext.html#ibus-input-context-process-key-event-async" title="ibus_input_context_process_key_event_async ()"><code class="function">ibus_input_context_process_key_event_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or NULL.
-</td>
+<td>Return location for error or NULL.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE for success; FALSE otherwise.
-</td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the key event is processed;
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise or some errors happen and the <em class="parameter"><code>error</code></em> will be set.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_process_key_event ()">
+<div class="refsect2">
 <a name="ibus-input-context-process-key-event"></a><h3>ibus_input_context_process_key_event ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_input_context_process_key_event
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
@@ -587,34 +608,29 @@ Pass the key event to input method engine and wait for the reply from ibus (i.e.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
-<td>Key symbol of a key event.
-</td>
+<td>Key symbol of a key event.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>keycode</code></em> :</span></p></td>
-<td>Keycode of a key event.
-</td>
+<td>Keycode of a key event.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
-<td>Key modifier flags.
-</td>
+<td>Key modifier flags.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE for successfully process the key; FALSE otherwise.
-</td>
+<td>TRUE for successfully process the key; FALSE otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_set_cursor_location ()">
+<div class="refsect2">
 <a name="ibus-input-context-set-cursor-location"></a><h3>ibus_input_context_set_cursor_location ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_set_cursor_location
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
@@ -633,34 +649,29 @@ see_also: <a class="link" href="IBusEngine.html#IBusEngine-set-cursor-location" 
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>x</code></em> :</span></p></td>
-<td>X coordinate of the cursor.
-</td>
+<td>X coordinate of the cursor.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>y</code></em> :</span></p></td>
-<td>Y coordinate of the cursor.
-</td>
+<td>Y coordinate of the cursor.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>w</code></em> :</span></p></td>
-<td>Width of the cursor.
-</td>
+<td>Width of the cursor.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>h</code></em> :</span></p></td>
-<td>Height of the cursor.
-</td>
+<td>Height of the cursor.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_set_capabilities ()">
+<div class="refsect2">
 <a name="ibus-input-context-set-capabilities"></a><h3>ibus_input_context_set_capabilities ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_set_capabilities (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> capabilities</code></em>);</pre>
@@ -677,19 +688,18 @@ see_also: <a class="link" href="IBusEngine.html#IBusEngine-set-capabilities" tit
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>capabilities</code></em> :</span></p></td>
-<td>Capabilities flags of IBusEngine, see <a class="link" href="ibus-ibustypes.html#IBusCapabilite" title="enum IBusCapabilite"><span class="type">IBusCapabilite</span></a>
+<td>Capabilities flags of IBusEngine, see <a class="link" href="ibus-ibustypes.html#IBusCapabilite"><span class="type">IBusCapabilite</span></a>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_property_activate ()">
+<div class="refsect2">
 <a name="ibus-input-context-property-activate"></a><h3>ibus_input_context_property_activate ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_property_activate
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
@@ -706,24 +716,21 @@ Activate the property asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>prop_name</code></em> :</span></p></td>
-<td>A property name (e.g. "InputMode.WideLatin")
-</td>
+<td>A property name (e.g. "InputMode.WideLatin")</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
-<td>A status of the property (e.g. PROP_STATE_CHECKED)
-</td>
+<td>A status of the property (e.g. PROP_STATE_CHECKED)</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_focus_in ()">
+<div class="refsect2">
 <a name="ibus-input-context-focus-in"></a><h3>ibus_input_context_focus_in ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_focus_in         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
 <p>
@@ -736,13 +743,12 @@ see_also: <a class="link" href="IBusEngine.html#IBusEngine-focus-in" title='The 
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr></tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_focus_out ()">
+<div class="refsect2">
 <a name="ibus-input-context-focus-out"></a><h3>ibus_input_context_focus_out ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_focus_out        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
 <p>
@@ -755,13 +761,12 @@ see_also: <a class="link" href="IBusEngine.html#IBusEngine-focus-out" title='The
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr></tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_reset ()">
+<div class="refsect2">
 <a name="ibus-input-context-reset"></a><h3>ibus_input_context_reset ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_reset            (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
 <p>
@@ -774,13 +779,12 @@ see_also: <a class="link" href="IBusEngine.html#IBusEngine-reset" title='The "re
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr></tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_enable ()">
+<div class="refsect2">
 <a name="ibus-input-context-enable"></a><h3>ibus_input_context_enable ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_enable           (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
 <p>
@@ -794,13 +798,12 @@ see_also: <a class="link" href="IBusEngine.html#IBusEngine-enable" title='The "e
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr></tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_disable ()">
+<div class="refsect2">
 <a name="ibus-input-context-disable"></a><h3>ibus_input_context_disable ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_disable          (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
 <p>
@@ -814,13 +817,12 @@ see_also: <a class="link" href="IBusEngine.html#IBusEngine-disable" title='The "
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr></tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_is_enabled_async ()">
+<div class="refsect2">
 <a name="ibus-input-context-is-enabled-async"></a><h3>ibus_input_context_is_enabled_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_is_enabled_async (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_msec</code></em>,
@@ -835,40 +837,34 @@ An asynchronous IPC will be performed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.
-</td>
+<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
-     if you don't care about the result of the method invocation.
-</td>
+if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_is_enabled_async_finish ()">
+<div class="refsect2">
 <a name="ibus-input-context-is-enabled-async-finish"></a><h3>ibus_input_context_is_enabled_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_input_context_is_enabled_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> *retval</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>
 Finishes an operation started with <a class="link" href="IBusInputContext.html#ibus-input-context-is-enabled-async" title="ibus_input_context_is_enabled_async ()"><code class="function">ibus_input_context_is_enabled_async()</code></a>.
@@ -878,36 +874,28 @@ Finishes an operation started with <a class="link" href="IBusInputContext.html#i
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.
-</td>
+<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusInputContext.html#ibus-input-context-is-enabled-async" title="ibus_input_context_is_enabled_async ()"><code class="function">ibus_input_context_is_enabled_async()</code></a>.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>retval</code></em> :</span></p></td>
-<td>If the the context is enabled, it will be assigned to <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a>, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a class="link" href="IBusInputContext.html#ibus-input-context-is-enabled-async" title="ibus_input_context_is_enabled_async ()"><code class="function">ibus_input_context_is_enabled_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> for success; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the IME is enabled on the contextfor success;
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise or some errors happen and the <em class="parameter"><code>error</code></em> will be set.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_is_enabled ()">
+<div class="refsect2">
 <a name="ibus-input-context-is-enabled"></a><h3>ibus_input_context_is_enabled ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_input_context_is_enabled       (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
 <p>
@@ -919,19 +907,17 @@ A asynchronous IPC will be performed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if the IME is enabled on the context.
-</td>
+<td>TRUE if the IME is enabled on the context.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_get_engine_async ()">
+<div class="refsect2">
 <a name="ibus-input-context-get-engine-async"></a><h3>ibus_input_context_get_engine_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_get_engine_async (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_msec</code></em>,
@@ -946,35 +932,30 @@ An asynchronous IPC will be performed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.
-</td>
+<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
-     if you don't care about the result of the method invocation.
-</td>
+if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_get_engine_async_finish ()">
+<div class="refsect2">
 <a name="ibus-input-context-get-engine-async-finish"></a><h3>ibus_input_context_get_engine_async_finish ()</h3>
 <pre class="programlisting"><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    ibus_input_context_get_engine_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
@@ -988,30 +969,27 @@ Finishes an operation started with <a class="link" href="IBusInputContext.html#i
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.
-</td>
+<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusInputContext.html#ibus-input-context-get-engine-async" title="ibus_input_context_get_engine_async ()"><code class="function">ibus_input_context_get_engine_async()</code></a>.
-</td>
+<a class="link" href="IBusInputContext.html#ibus-input-context-get-engine-async" title="ibus_input_context_get_engine_async ()"><code class="function">ibus_input_context_get_engine_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> An IME engine description for the context, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+<td>An IME engine description for the context, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_get_engine ()">
+<div class="refsect2">
 <a name="ibus-input-context-get-engine"></a><h3>ibus_input_context_get_engine ()</h3>
 <pre class="programlisting"><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    ibus_input_context_get_engine       (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
 <p>
@@ -1023,19 +1001,18 @@ A synchronous IPC will be performed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> An IME engine description for the context, or NULL. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+<td>An IME engine description for the context, or NULL. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_set_engine ()">
+<div class="refsect2">
 <a name="ibus-input-context-set-engine"></a><h3>ibus_input_context_set_engine ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_set_engine       (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
@@ -1048,47 +1025,47 @@ An asynchronous IPC will be performed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>A name of the engine.
-</td>
+<td>A name of the engine.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_set_surrounding_text ()">
+<div class="refsect2">
 <a name="ibus-input-context-set-surrounding-text"></a><h3>ibus_input_context_set_surrounding_text ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_set_surrounding_text
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> cursor_pos</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> cursor_pos</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> anchor_pos</code></em>);</pre>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.
-</td>
+<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> surrounding the current cursor on the application.
-</td>
+<td>An <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> surrounding the current cursor on the application.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cursor_pos</code></em> :</span></p></td>
-<td>
-</td>
+<td>Current cursor position in characters in <em class="parameter"><code>text</code></em>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>anchor_pos</code></em> :</span></p></td>
+<td>Anchor position of selection in <em class="parameter"><code>text</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_input_context_needs_surrounding_text ()">
+<div class="refsect2">
 <a name="ibus-input-context-needs-surrounding-text"></a><h3>ibus_input_context_needs_surrounding_text ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_input_context_needs_surrounding_text
                                                         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
@@ -1100,27 +1077,25 @@ Check whether the current engine requires surrounding-text.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.
-</td>
+<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if surrounding-text is needed by the current engine;
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 </div>
-<div class="refsect1" title="Signal Details">
+<div class="refsect1">
 <a name="IBusInputContext.signal-details"></a><h2>Signal Details</h2>
-<div class="refsect2" title='The "commit-text" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-commit-text"></a><h3>The <code class="literal">"commit-text"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
                                                         <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>         *text,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted when the text is going to be committed.
 </p>
@@ -1134,13 +1109,11 @@ Emitted when the text is going to be committed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
-<td>Text to be committed.
-</td>
+<td>Text to be committed.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1150,10 +1123,10 @@ Emitted when the text is going to be committed.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "cursor-down-lookup-table" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-cursor-down-lookup-table"></a><h3>The <code class="literal">"cursor-down-lookup-table"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to select next candidate of lookup table.
 </p>
@@ -1162,8 +1135,7 @@ Emitted to select next candidate of lookup table.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1173,10 +1145,10 @@ Emitted to select next candidate of lookup table.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "cursor-up-lookup-table" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-cursor-up-lookup-table"></a><h3>The <code class="literal">"cursor-up-lookup-table"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to select previous candidate of lookup table.
 </p>
@@ -1185,8 +1157,7 @@ Emitted to select previous candidate of lookup table.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1196,12 +1167,12 @@ Emitted to select previous candidate of lookup table.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "delete-surrounding-text" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-delete-surrounding-text"></a><h3>The <code class="literal">"delete-surrounding-text"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a>              offset,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>             n_chars,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to delete surrounding text event from IME to client of IME.
 </p>
@@ -1210,19 +1181,16 @@ Emitted to delete surrounding text event from IME to client of IME.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>offset</code></em> :</span></p></td>
 <td>the character offset from the cursor position of the text to be deleted.
-  A negative value indicates a position before the cursor.
-</td>
+A negative value indicates a position before the cursor.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>n_chars</code></em> :</span></p></td>
-<td>the number of characters to be deleted.
-</td>
+<td>the number of characters to be deleted.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1232,10 +1200,10 @@ Emitted to delete surrounding text event from IME to client of IME.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "disabled" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-disabled"></a><h3>The <code class="literal">"disabled"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted when an IME is disabled.
 </p>
@@ -1244,8 +1212,7 @@ Emitted when an IME is disabled.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1255,10 +1222,10 @@ Emitted when an IME is disabled.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "enabled" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-enabled"></a><h3>The <code class="literal">"enabled"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted when an IME is enabled.
 </p>
@@ -1267,8 +1234,7 @@ Emitted when an IME is enabled.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1278,13 +1244,13 @@ Emitted when an IME is enabled.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "forward-key-event" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-forward-key-event"></a><h3>The <code class="literal">"forward-key-event"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>             keyval,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>             keycode,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>             modifiers,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to forward key event from IME to client of IME.
 </p>
@@ -1293,23 +1259,19 @@ Emitted to forward key event from IME to client of IME.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
-<td>Key symbol of the keyboard event.
-</td>
+<td>Key symbol of the keyboard event.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>keycode</code></em> :</span></p></td>
-<td>Key symbol of the keyboard event.
-</td>
+<td>Key symbol of the keyboard event.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>modifiers</code></em> :</span></p></td>
-<td>Key modifier flags.
-</td>
+<td>Key modifier flags.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1319,10 +1281,10 @@ Emitted to forward key event from IME to client of IME.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "hide-auxiliary-text" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-hide-auxiliary-text"></a><h3>The <code class="literal">"hide-auxiliary-text"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to hide auxiliary text.
 </p>
@@ -1331,8 +1293,7 @@ Emitted to hide auxiliary text.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1342,10 +1303,10 @@ Emitted to hide auxiliary text.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "hide-lookup-table" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-hide-lookup-table"></a><h3>The <code class="literal">"hide-lookup-table"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to hide lookup table.
 </p>
@@ -1354,8 +1315,7 @@ Emitted to hide lookup table.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1365,10 +1325,10 @@ Emitted to hide lookup table.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "hide-preedit-text" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-hide-preedit-text"></a><h3>The <code class="literal">"hide-preedit-text"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to hide preedit text.
 </p>
@@ -1377,8 +1337,7 @@ Emitted to hide preedit text.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1388,10 +1347,10 @@ Emitted to hide preedit text.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "page-down-lookup-table" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-page-down-lookup-table"></a><h3>The <code class="literal">"page-down-lookup-table"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to view the next page of lookup table.
 </p>
@@ -1400,8 +1359,7 @@ Emitted to view the next page of lookup table.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1411,10 +1369,10 @@ Emitted to view the next page of lookup table.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "page-up-lookup-table" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-page-up-lookup-table"></a><h3>The <code class="literal">"page-up-lookup-table"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to view the previous page of lookup table.
 </p>
@@ -1423,8 +1381,7 @@ Emitted to view the previous page of lookup table.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1434,11 +1391,11 @@ Emitted to view the previous page of lookup table.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "register-properties" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-register-properties"></a><h3>The <code class="literal">"register-properties"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
                                                         <a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a>     *props,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to register the properties in <em class="parameter"><code>props</code></em>.
 </p>
@@ -1452,13 +1409,11 @@ Emitted to register the properties in <em class="parameter"><code>props</code></
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>props</code></em> :</span></p></td>
-<td>An IBusPropList that contains properties.
-</td>
+<td>An IBusPropList that contains properties.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1468,10 +1423,10 @@ Emitted to register the properties in <em class="parameter"><code>props</code></
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "show-auxiliary-text" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-show-auxiliary-text"></a><h3>The <code class="literal">"show-auxiliary-text"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to show auxiliary text.
 </p>
@@ -1480,8 +1435,7 @@ Emitted to show auxiliary text.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1491,10 +1445,10 @@ Emitted to show auxiliary text.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "show-lookup-table" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-show-lookup-table"></a><h3>The <code class="literal">"show-lookup-table"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to show lookup table.
 </p>
@@ -1503,8 +1457,7 @@ Emitted to show lookup table.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1514,10 +1467,10 @@ Emitted to show lookup table.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "show-preedit-text" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-show-preedit-text"></a><h3>The <code class="literal">"show-preedit-text"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to show preedit text.
 </p>
@@ -1526,8 +1479,7 @@ Emitted to show preedit text.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1537,12 +1489,12 @@ Emitted to show preedit text.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "update-auxiliary-text" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-update-auxiliary-text"></a><h3>The <code class="literal">"update-auxiliary-text"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
                                                         <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>         *arg1,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>          arg2,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to hide auxilary text.
 </p>
@@ -1556,8 +1508,7 @@ Emitted to hide auxilary text.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1567,12 +1518,12 @@ Emitted to hide auxilary text.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "update-lookup-table" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-update-lookup-table"></a><h3>The <code class="literal">"update-lookup-table"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
                                                         <a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a>  *table,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>          visible,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to update lookup table.
 </p>
@@ -1586,18 +1537,15 @@ Emitted to update lookup table.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
-<td>An IBusLookupTable to be updated.
-</td>
+<td>An IBusLookupTable to be updated.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
-<td>Whether the table should be visible.
-</td>
+<td>Whether the table should be visible.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1607,13 +1555,13 @@ Emitted to update lookup table.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "update-preedit-text" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-update-preedit-text"></a><h3>The <code class="literal">"update-preedit-text"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
                                                         <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>         *text,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>             cursor_pos,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>          visible,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)       : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)       : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to update preedit text.
 </p>
@@ -1627,23 +1575,19 @@ Emitted to update preedit text.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
-<td>Text to be updated.
-</td>
+<td>Text to be updated.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cursor_pos</code></em> :</span></p></td>
-<td>Cursor position.
-</td>
+<td>Cursor position.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
-<td>Whether the update is visible.
-</td>
+<td>Whether the update is visible.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1653,11 +1597,11 @@ Emitted to update preedit text.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "update-property" signal'>
+<div class="refsect2">
 <a name="IBusInputContext-update-property"></a><h3>The <code class="literal">"update-property"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
                                                         <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>     *prop,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>          user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted to update the property <em class="parameter"><code>prop</code></em>.
 </p>
@@ -1671,13 +1615,11 @@ Emitted to update the property <em class="parameter"><code>prop</code></em>.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
-<td>An IBusInputContext.
-</td>
+<td>An IBusInputContext.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
-<td>The IBusProperty to be updated.
-</td>
+<td>The IBusProperty to be updated.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -1690,6 +1632,6 @@ Emitted to update the property <em class="parameter"><code>prop</code></em>.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15</div>
+          Generated by GTK-Doc V1.17</div>
 </body>
 </html>

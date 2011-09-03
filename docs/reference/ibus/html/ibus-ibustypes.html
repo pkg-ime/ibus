@@ -3,11 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ibustypes</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="IBus Reference Manual">
 <link rel="up" href="ch06.html" title="Internal">
 <link rel="prev" href="ibus-ibusshare.html" title="ibusshare">
-<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.17 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -23,9 +23,11 @@
 <a href="#ibus-ibustypes.synopsis" class="shortcut">Top</a>
                    | 
                   <a href="#ibus-ibustypes.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#ibus-ibustypes.object-hierarchy" class="shortcut">Object Hierarchy</a>
 </td></tr>
 </table>
-<div class="refentry" title="ibustypes">
+<div class="refentry">
 <a name="ibus-ibustypes"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -34,32 +36,48 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsect1" title="Stability Level">
+<div class="refsect1">
 <a name="ibus-ibustypes.stability-level"></a><h2>Stability Level</h2>
 Stable, unless otherwise indicated
 </div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="ibus-ibustypes.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">enum                <a class="link" href="ibus-ibustypes.html#IBusModifierType" title="enum IBusModifierType">IBusModifierType</a>;
-enum                <a class="link" href="ibus-ibustypes.html#IBusCapabilite" title="enum IBusCapabilite">IBusCapabilite</a>;
+<a name="IBusModifierType"></a><a name="IBusCapabilite"></a><a name="IBusOrientation"></a><pre class="synopsis">enum                <a class="link" href="ibus-ibustypes.html#IBusModifierType">IBusModifierType</a>;
+enum                <a class="link" href="ibus-ibustypes.html#IBusCapabilite">IBusCapabilite</a>;
 enum                <a class="link" href="ibus-ibustypes.html#IBusPreeditFocusMode" title="enum IBusPreeditFocusMode">IBusPreeditFocusMode</a>;
-enum                <a class="link" href="ibus-ibustypes.html#IBusOrientation" title="enum IBusOrientation">IBusOrientation</a>;
+enum                <a class="link" href="ibus-ibustypes.html#IBusOrientation">IBusOrientation</a>;
 enum                <a class="link" href="ibus-ibustypes.html#IBusBusNameFlag" title="enum IBusBusNameFlag">IBusBusNameFlag</a>;
 enum                <a class="link" href="ibus-ibustypes.html#IBusBusRequestNameReply" title="enum IBusBusRequestNameReply">IBusBusRequestNameReply</a>;
-                    <a class="link" href="ibus-ibustypes.html#IBusRectangle" title="IBusRectangle">IBusRectangle</a>;
+enum                <a class="link" href="ibus-ibustypes.html#IBusError" title="enum IBusError">IBusError</a>;
+struct              <a class="link" href="ibus-ibustypes.html#IBusRectangle" title="struct IBusRectangle">IBusRectangle</a>;
 <span class="returnvalue">void</span>                (<a class="link" href="ibus-ibustypes.html#IBusFreeFunc" title="IBusFreeFunc ()">*IBusFreeFunc</a>)                     (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> object</code></em>);
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
+<a name="ibus-ibustypes.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GFlags
+   +----IBusModifierType
+</pre>
+<pre class="synopsis">
+  GFlags
+   +----IBusCapabilite
+</pre>
+<pre class="synopsis">
+  GEnum
+   +----IBusOrientation
+</pre>
+</div>
+<div class="refsect1">
 <a name="ibus-ibustypes.description"></a><h2>Description</h2>
 <p>
 This section consists generic types for IBus, including shift/control key modifiers,
 and a rectangle structure.
 </p>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="ibus-ibustypes.details"></a><h2>Details</h2>
-<div class="refsect2" title="enum IBusModifierType">
+<div class="refsect2">
 <a name="IBusModifierType"></a><h3>enum IBusModifierType</h3>
 <pre class="programlisting">typedef enum
 {
@@ -211,7 +229,7 @@ Note that nits 15 - 25 are currently unused, while bit 29 is used internally.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="enum IBusCapabilite">
+<div class="refsect2">
 <a name="IBusCapabilite"></a><h3>enum IBusCapabilite</h3>
 <pre class="programlisting">typedef enum {
     IBUS_CAP_PREEDIT_TEXT       = 1 &lt;&lt; 0,
@@ -263,7 +281,7 @@ Capability flags of UI.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="enum IBusPreeditFocusMode">
+<div class="refsect2">
 <a name="IBusPreeditFocusMode"></a><h3>enum IBusPreeditFocusMode</h3>
 <pre class="programlisting">typedef enum {
     IBUS_ENGINE_PREEDIT_CLEAR   = 0,
@@ -290,7 +308,7 @@ Pre-edit commit mode when the focus is lost.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="enum IBusOrientation">
+<div class="refsect2">
 <a name="IBusOrientation"></a><h3>enum IBusOrientation</h3>
 <pre class="programlisting">typedef enum {
     IBUS_ORIENTATION_HORIZONTAL = 0,
@@ -323,7 +341,7 @@ Orientation of UI.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="enum IBusBusNameFlag">
+<div class="refsect2">
 <a name="IBusBusNameFlag"></a><h3>enum IBusBusNameFlag</h3>
 <pre class="programlisting">typedef enum {
     IBUS_BUS_NAME_FLAG_ALLOW_REPLACEMENT   = (1 &lt;&lt; 0),
@@ -353,7 +371,7 @@ Orientation of UI.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="enum IBusBusRequestNameReply">
+<div class="refsect2">
 <a name="IBusBusRequestNameReply"></a><h3>enum IBusBusRequestNameReply</h3>
 <pre class="programlisting">typedef enum {
     IBUS_BUS_REQUEST_NAME_REPLY_PRIMARY_OWNER   = 1,
@@ -389,14 +407,30 @@ Orientation of UI.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="IBusRectangle">
-<a name="IBusRectangle"></a><h3>IBusRectangle</h3>
-<pre class="programlisting">typedef struct {
+<div class="refsect2">
+<a name="IBusError"></a><h3>enum IBusError</h3>
+<pre class="programlisting">typedef enum {
+    IBUS_ERROR_NO_ENGINE,
+} IBusError;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><a name="IBUS-ERROR-NO-ENGINE:CAPS"></a><span class="term"><code class="literal">IBUS_ERROR_NO_ENGINE</code></span></p></td>
+<td>There is no engine associated with input context.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusRectangle"></a><h3>struct IBusRectangle</h3>
+<pre class="programlisting">struct IBusRectangle {
     gint x;
     gint y;
     gint width;
     gint height;
-} IBusRectangle;
+};
 </pre>
 <p>
 Rectangle definition.
@@ -406,29 +440,25 @@ Rectangle definition.
 <tbody>
 <tr>
 <td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="IBusRectangle.x"></a>x</code></em>;</span></p></td>
-<td>x coordinate.
-</td>
+<td>x coordinate.</td>
 </tr>
 <tr>
 <td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="IBusRectangle.y"></a>y</code></em>;</span></p></td>
-<td>y coordinate.
-</td>
+<td>y coordinate.</td>
 </tr>
 <tr>
 <td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="IBusRectangle.width"></a>width</code></em>;</span></p></td>
-<td>width of the rectangle.
-</td>
+<td>width of the rectangle.</td>
 </tr>
 <tr>
 <td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="IBusRectangle.height"></a>height</code></em>;</span></p></td>
-<td>height of the renctangl.
-</td>
+<td>height of the renctangl.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="IBusFreeFunc ()">
+<div class="refsect2">
 <a name="IBusFreeFunc"></a><h3>IBusFreeFunc ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                (*IBusFreeFunc)                     (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> object</code></em>);</pre>
 <p>
@@ -438,8 +468,7 @@ Free function prototype.
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
-<td>object to be freed.
-</td>
+<td>object to be freed.</td>
 </tr></tbody>
 </table></div>
 </div>
@@ -447,6 +476,6 @@ Free function prototype.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15</div>
+          Generated by GTK-Doc V1.17</div>
 </body>
 </html>

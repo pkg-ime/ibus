@@ -209,6 +209,20 @@ ibus_bus_request_name_reply_get_type (void)
     return etype;
 }
 
+GType
+ibus_error_get_type (void)
+{
+    static GType etype = 0;
+    if (G_UNLIKELY(etype == 0)) {
+        static const GEnumValue values[] = {
+            { IBUS_ERROR_NO_ENGINE, "IBUS_ERROR_NO_ENGINE", "engine" },
+            { 0, NULL, NULL }
+        };
+        etype = g_enum_register_static (g_intern_static_string ("IBusError"), values);
+    }
+    return etype;
+}
+
 
 /* Generated data ends here */
 

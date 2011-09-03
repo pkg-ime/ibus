@@ -35,12 +35,14 @@
 #include <ibusservice.h>
 #include <ibusfactory.h>
 #include <ibusengine.h>
+#include <ibuserror.h>
 #include <ibusproperty.h>
 #include <ibusproplist.h>
 #include <ibuslookuptable.h>
 #include <ibusbus.h>
 #include <ibuskeysyms.h>
 #include <ibuskeymap.h>
+#include <ibuskeys.h>
 #include <ibusenumtypes.h>
 #include <ibushotkey.h>
 #include <ibusxml.h>

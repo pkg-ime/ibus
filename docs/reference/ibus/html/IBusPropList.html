@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>IBusPropList</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="IBus Reference Manual">
 <link rel="up" href="ch02.html" title="Panel (User Interfaces)">
 <link rel="prev" href="IBusProperty.html" title="IBusProperty">
 <link rel="next" href="IBusText.html" title="IBusText">
-<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.17 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -28,7 +28,7 @@
                   <a href="#IBusPropList.object-hierarchy" class="shortcut">Object Hierarchy</a>
 </td></tr>
 </table>
-<div class="refentry" title="IBusPropList">
+<div class="refentry">
 <a name="IBusPropList"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -37,11 +37,11 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsect1" title="Stability Level">
+<div class="refsect1">
 <a name="IBusPropList.stability-level"></a><h2>Stability Level</h2>
 Stable, unless otherwise indicated
 </div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="IBusPropList.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">                    <a class="link" href="IBusProperty.html#IBusPropList-struct" title="IBusPropList">IBusPropList</a>;
                     <a class="link" href="IBusProperty.html#IBusPropListClass" title="IBusPropListClass">IBusPropListClass</a>;
@@ -54,7 +54,7 @@ Stable, unless otherwise indicated
                                                          <em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
 </pre>
 </div>
-<div class="refsect1" title="Object Hierarchy">
+<div class="refsect1">
 <a name="IBusPropList.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
   <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
@@ -64,15 +64,15 @@ Stable, unless otherwise indicated
                      +----IBusPropList
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
 <a name="IBusPropList.description"></a><h2>Description</h2>
 <p>
 <em class="parameter"><code>See_also</code></em>: <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>, <a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a>
 </p>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="IBusPropList.details"></a><h2>Details</h2>
-<div class="refsect2" title="IBusPropList">
+<div class="refsect2">
 <a name="IBusPropList-struct"></a><h3>IBusPropList</h3>
 <pre class="programlisting">typedef struct {
     GArray *properties;
@@ -85,13 +85,12 @@ An array of IBusProperties.
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Arrays.html#GArray"><span class="type">GArray</span></a> *<em class="structfield"><code><a name="IBusPropList-struct.properties"></a>properties</code></em>;</span></p></td>
-<td>GArray that holds IBusProperties.
-</td>
+<td>GArray that holds IBusProperties.</td>
 </tr></tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="IBusPropListClass">
+<div class="refsect2">
 <a name="IBusPropListClass"></a><h3>IBusPropListClass</h3>
 <pre class="programlisting">typedef struct {
     IBusSerializableClass parent;
@@ -101,7 +100,7 @@ An array of IBusProperties.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="ibus_prop_list_new ()">
+<div class="refsect2">
 <a name="ibus-prop-list-new"></a><h3>ibus_prop_list_new ()</h3>
 <pre class="programlisting"><a class="link" href="IBusProperty.html#IBusPropList"><span class="returnvalue">IBusPropList</span></a> *      ibus_prop_list_new                  ();</pre>
 <p>
@@ -111,13 +110,12 @@ New a IBusPropList.
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A newly allocated IBusPropList.
-</td>
+<td>A newly allocated IBusPropList.</td>
 </tr></tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_prop_list_append ()">
+<div class="refsect2">
 <a name="ibus-prop-list-append"></a><h3>ibus_prop_list_append ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_prop_list_append               (<em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
@@ -129,19 +127,17 @@ Append an IBusProperty to an IBusPropList, and increase reference.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>prop_list</code></em> :</span></p></td>
-<td>An IBusPropList.
-</td>
+<td>An IBusPropList.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
-<td>IBusProperty to be append to <em class="parameter"><code>prop_list</code></em>.
-</td>
+<td>IBusProperty to be append to <em class="parameter"><code>prop_list</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_prop_list_get ()">
+<div class="refsect2">
 <a name="ibus-prop-list-get"></a><h3>ibus_prop_list_get ()</h3>
 <pre class="programlisting"><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="returnvalue">IBusProperty</span></a> *      ibus_prop_list_get                  (<em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>);</pre>
@@ -153,24 +149,22 @@ Returns IBusProperty at given index. Borrowed reference.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>prop_list</code></em> :</span></p></td>
-<td>An IBusPropList.
-</td>
+<td>An IBusPropList.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>index</code></em> :</span></p></td>
-<td>Index of an IBusPropList.
-</td>
+<td>Index of an IBusPropList.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> IBusProperty at given index, NULL if no such IBusProperty. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+<td>IBusProperty at given index, NULL if no such IBusProperty. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_prop_list_update_property ()">
+<div class="refsect2">
 <a name="ibus-prop-list-update-property"></a><h3>ibus_prop_list_update_property ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_prop_list_update_property      (<em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
@@ -182,18 +176,15 @@ Update an IBusProperty in IBusPropList.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>prop_list</code></em> :</span></p></td>
-<td>An IBusPropList.
-</td>
+<td>An IBusPropList.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
-<td>IBusProperty to be update.
-</td>
+<td>IBusProperty to be update.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if succeeded, FALSE otherwise.
-</td>
+<td>TRUE if succeeded, FALSE otherwise.</td>
 </tr>
 </tbody>
 </table></div>
@@ -202,6 +193,6 @@ Update an IBusProperty in IBusPropList.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15</div>
+          Generated by GTK-Doc V1.17</div>
 </body>
 </html>

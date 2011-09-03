@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>IBusEngineDesc</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="IBus Reference Manual">
 <link rel="up" href="ch03.html" title="Input method engine">
 <link rel="prev" href="IBusEngine.html" title="IBusEngine">
 <link rel="next" href="IBusFactory.html" title="IBusFactory">
-<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.17 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -30,7 +30,7 @@
                   <a href="#IBusEngineDesc.properties" class="shortcut">Properties</a>
 </td></tr>
 </table>
-<div class="refentry" title="IBusEngineDesc">
+<div class="refentry">
 <a name="IBusEngineDesc"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -39,14 +39,14 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsect1" title="Stability Level">
+<div class="refsect1">
 <a name="IBusEngineDesc.stability-level"></a><h2>Stability Level</h2>
 Stable, unless otherwise indicated
 </div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="IBusEngineDesc.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">                    <a class="link" href="IBusEngineDesc.html#IBusEngineDesc-struct" title="IBusEngineDesc">IBusEngineDesc</a>;
-                    <a class="link" href="IBusEngineDesc.html#IBusEngineDescClass" title="IBusEngineDescClass">IBusEngineDescClass</a>;
+<pre class="synopsis">struct              <a class="link" href="IBusEngineDesc.html#IBusEngineDesc-struct" title="struct IBusEngineDesc">IBusEngineDesc</a>;
+struct              <a class="link" href="IBusEngineDesc.html#IBusEngineDescClass" title="struct IBusEngineDescClass">IBusEngineDescClass</a>;
 <a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    <a class="link" href="IBusEngineDesc.html#ibus-engine-desc-new" title="ibus_engine_desc_new ()">ibus_engine_desc_new</a>                (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *longname</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *description</code></em>,
@@ -68,12 +68,13 @@ const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.htm
 const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusEngineDesc.html#ibus-engine-desc-get-layout" title="ibus_engine_desc_get_layout ()">ibus_engine_desc_get_layout</a>         (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusEngineDesc.html#ibus-engine-desc-get-rank" title="ibus_engine_desc_get_rank ()">ibus_engine_desc_get_rank</a>           (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);
 const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusEngineDesc.html#ibus-engine-desc-get-hotkeys" title="ibus_engine_desc_get_hotkeys ()">ibus_engine_desc_get_hotkeys</a>        (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusEngineDesc.html#ibus-engine-desc-get-symbol" title="ibus_engine_desc_get_symbol ()">ibus_engine_desc_get_symbol</a>         (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusEngineDesc.html#ibus-engine-desc-output" title="ibus_engine_desc_output ()">ibus_engine_desc_output</a>             (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Strings.html#GString"><span class="type">GString</span></a> *output</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> indent</code></em>);
 </pre>
 </div>
-<div class="refsect1" title="Object Hierarchy">
+<div class="refsect1">
 <a name="IBusEngineDesc.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
   <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
@@ -83,7 +84,7 @@ const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.htm
                      +----IBusEngineDesc
 </pre>
 </div>
-<div class="refsect1" title="Properties">
+<div class="refsect1">
 <a name="IBusEngineDesc.properties"></a><h2>Properties</h2>
 <pre class="synopsis">
   "<a class="link" href="IBusEngineDesc.html#IBusEngineDesc--author" title='The "author" property'>author</a>"                   <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only
@@ -96,9 +97,10 @@ const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.htm
   "<a class="link" href="IBusEngineDesc.html#IBusEngineDesc--longname" title='The "longname" property'>longname</a>"                 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only
   "<a class="link" href="IBusEngineDesc.html#IBusEngineDesc--name" title='The "name" property'>name</a>"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only
   "<a class="link" href="IBusEngineDesc.html#IBusEngineDesc--rank" title='The "rank" property'>rank</a>"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>                 : Read / Write / Construct Only
+  "<a class="link" href="IBusEngineDesc.html#IBusEngineDesc--symbol" title='The "symbol" property'>symbol</a>"                   <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
 <a name="IBusEngineDesc.description"></a><h2>Description</h2>
 <p>
 An IBusEngineDesc stores description data of IBusEngine.
@@ -115,11 +117,11 @@ which also includes engine description data.
 <em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a>, <a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a>
 </p>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="IBusEngineDesc.details"></a><h2>Details</h2>
-<div class="refsect2" title="IBusEngineDesc">
-<a name="IBusEngineDesc-struct"></a><h3>IBusEngineDesc</h3>
-<pre class="programlisting">typedef struct _IBusEngineDesc IBusEngineDesc;</pre>
+<div class="refsect2">
+<a name="IBusEngineDesc-struct"></a><h3>struct IBusEngineDesc</h3>
+<pre class="programlisting">struct IBusEngineDesc;</pre>
 <p>
 Input method engine description data.
 You can get extended values with g_object_get_properties.
@@ -138,18 +140,18 @@ hotkeys: One or more hotkeys for switching to this engine, separated by
 </p>
 </div>
 <hr>
-<div class="refsect2" title="IBusEngineDescClass">
-<a name="IBusEngineDescClass"></a><h3>IBusEngineDescClass</h3>
-<pre class="programlisting">typedef struct {
+<div class="refsect2">
+<a name="IBusEngineDescClass"></a><h3>struct IBusEngineDescClass</h3>
+<pre class="programlisting">struct IBusEngineDescClass {
     IBusSerializableClass parent;
     /* class members */
-} IBusEngineDescClass;
+};
 </pre>
 <p>
 </p>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_new ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-new"></a><h3>ibus_engine_desc_new ()</h3>
 <pre class="programlisting"><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    ibus_engine_desc_new                (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *longname</code></em>,
@@ -167,54 +169,45 @@ New a IBusEngineDesc.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>Name of the engine.
-</td>
+<td>Name of the engine.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>longname</code></em> :</span></p></td>
-<td>Long name of the input method engine.
-</td>
+<td>Long name of the input method engine.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>description</code></em> :</span></p></td>
-<td>Input method engine description.
-</td>
+<td>Input method engine description.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>language</code></em> :</span></p></td>
-<td>Language (e.g. zh, jp) supported by this input method engine.
-</td>
+<td>Language (e.g. zh, jp) supported by this input method engine.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>license</code></em> :</span></p></td>
-<td>License of the input method engine.
-</td>
+<td>License of the input method engine.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>author</code></em> :</span></p></td>
-<td>Author of the input method engine.
-</td>
+<td>Author of the input method engine.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>icon</code></em> :</span></p></td>
-<td>Icon file of this engine.
-</td>
+<td>Icon file of this engine.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>layout</code></em> :</span></p></td>
-<td>Keyboard layout
-</td>
+<td>Keyboard layout</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A newly allocated IBusEngineDesc.
-</td>
+<td>A newly allocated IBusEngineDesc.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_new_varargs ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-new-varargs"></a><h3>ibus_engine_desc_new_varargs ()</h3>
 <pre class="programlisting"><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    ibus_engine_desc_new_varargs        (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *first_property_name</code></em>,
                                                          <em class="parameter"><code>...</code></em>);</pre>
@@ -229,51 +222,47 @@ ibus_engine_desc_new_varargs("name", "ibus-foo", "language", "us", NULL)
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>first_property_name</code></em> :</span></p></td>
-<td>Name of the first property.
-</td>
+<td>Name of the first property.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
-<td>the NULL-terminated arguments of the properties and values.
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>
-</td>
+<td>the NULL-terminated arguments of the properties and values.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_new_from_xml_node ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-new-from-xml-node"></a><h3>ibus_engine_desc_new_from_xml_node ()</h3>
 <pre class="programlisting"><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    ibus_engine_desc_new_from_xml_node  (<em class="parameter"><code><a class="link" href="ibus-ibusxml.html#XMLNode" title="XMLNode"><span class="type">XMLNode</span></a> *node</code></em>);</pre>
 <p>
 New a IBusEngineDesc from an XML node.
-&lt;note&gt;&lt;para&gt;This function is called by <a class="link" href="IBusComponent.html#ibus-component-new-from-file" title="ibus_component_new_from_file ()"><code class="function">ibus_component_new_from_file()</code></a>,
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>This function is called by <a class="link" href="IBusComponent.html#ibus-component-new-from-file" title="ibus_component_new_from_file ()"><code class="function">ibus_component_new_from_file()</code></a>,
  so developers normally do not need to call it directly.
-&lt;/para&gt;&lt;/note&gt;
+</p>
+</div>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>node</code></em> :</span></p></td>
-<td>An XML node
-</td>
+<td>An XML node</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>A newly allocated IBusEngineDesc that contains description from
-<em class="parameter"><code>node</code></em>.
-</td>
+<em class="parameter"><code>node</code></em>.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_get_name ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-get-name"></a><h3>ibus_engine_desc_get_name ()</h3>
 <pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_engine_desc_get_name           (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);</pre>
 <p>
@@ -284,19 +273,17 @@ Return the name property in IBusEngineDesc. It should not be freed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>An IBusEngineDesc
-</td>
+<td>An IBusEngineDesc</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>name property in IBusEngineDesc
-</td>
+<td>name property in IBusEngineDesc</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_get_longname ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-get-longname"></a><h3>ibus_engine_desc_get_longname ()</h3>
 <pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_engine_desc_get_longname       (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);</pre>
 <p>
@@ -307,19 +294,17 @@ Return the longname property in IBusEngineDesc. It should not be freed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>An IBusEngineDesc
-</td>
+<td>An IBusEngineDesc</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>longname property in IBusEngineDesc
-</td>
+<td>longname property in IBusEngineDesc</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_get_description ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-get-description"></a><h3>ibus_engine_desc_get_description ()</h3>
 <pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_engine_desc_get_description    (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);</pre>
 <p>
@@ -330,19 +315,17 @@ Return the description property in IBusEngineDesc. It should not be freed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>An IBusEngineDesc
-</td>
+<td>An IBusEngineDesc</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>description property in IBusEngineDesc
-</td>
+<td>description property in IBusEngineDesc</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_get_language ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-get-language"></a><h3>ibus_engine_desc_get_language ()</h3>
 <pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_engine_desc_get_language       (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);</pre>
 <p>
@@ -353,19 +336,17 @@ Return the language property in IBusEngineDesc. It should not be freed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>An IBusEngineDesc
-</td>
+<td>An IBusEngineDesc</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>language property in IBusEngineDesc
-</td>
+<td>language property in IBusEngineDesc</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_get_license ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-get-license"></a><h3>ibus_engine_desc_get_license ()</h3>
 <pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_engine_desc_get_license        (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);</pre>
 <p>
@@ -376,19 +357,17 @@ Return the license property in IBusEngineDesc. It should not be freed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>An IBusEngineDesc
-</td>
+<td>An IBusEngineDesc</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>license property in IBusEngineDesc
-</td>
+<td>license property in IBusEngineDesc</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_get_author ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-get-author"></a><h3>ibus_engine_desc_get_author ()</h3>
 <pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_engine_desc_get_author         (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);</pre>
 <p>
@@ -399,19 +378,17 @@ Return the author property in IBusEngineDesc. It should not be freed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>An IBusEngineDesc
-</td>
+<td>An IBusEngineDesc</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>author property in IBusEngineDesc
-</td>
+<td>author property in IBusEngineDesc</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_get_icon ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-get-icon"></a><h3>ibus_engine_desc_get_icon ()</h3>
 <pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_engine_desc_get_icon           (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);</pre>
 <p>
@@ -422,19 +399,17 @@ Return the icon property in IBusEngineDesc. It should not be freed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>An IBusEngineDesc
-</td>
+<td>An IBusEngineDesc</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>icon property in IBusEngineDesc
-</td>
+<td>icon property in IBusEngineDesc</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_get_layout ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-get-layout"></a><h3>ibus_engine_desc_get_layout ()</h3>
 <pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_engine_desc_get_layout         (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);</pre>
 <p>
@@ -445,19 +420,17 @@ Return the layout property in IBusEngineDesc. It should not be freed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>An IBusEngineDesc
-</td>
+<td>An IBusEngineDesc</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>layout property in IBusEngineDesc
-</td>
+<td>layout property in IBusEngineDesc</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_get_rank ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-get-rank"></a><h3>ibus_engine_desc_get_rank ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_engine_desc_get_rank           (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);</pre>
 <p>
@@ -468,19 +441,17 @@ Return the rank property in IBusEngineDesc.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>An IBusEngineDesc
-</td>
+<td>An IBusEngineDesc</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>rank property in IBusEngineDesc
-</td>
+<td>rank property in IBusEngineDesc</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_get_hotkeys ()">
+<div class="refsect2">
 <a name="ibus-engine-desc-get-hotkeys"></a><h3>ibus_engine_desc_get_hotkeys ()</h3>
 <pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_engine_desc_get_hotkeys        (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);</pre>
 <p>
@@ -491,19 +462,38 @@ Return the hotkeys property in IBusEngineDesc. It should not be freed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>An IBusEngineDesc
-</td>
+<td>An IBusEngineDesc</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>hotkeys property in IBusEngineDesc
-</td>
+<td>hotkeys property in IBusEngineDesc</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_engine_desc_output ()">
+<div class="refsect2">
+<a name="ibus-engine-desc-get-symbol"></a><h3>ibus_engine_desc_get_symbol ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_engine_desc_get_symbol         (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>);</pre>
+<p>
+Return the symbol property in IBusEngineDesc. It should not be freed.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>An IBusEngineDesc</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>symbol property in IBusEngineDesc</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
 <a name="ibus-engine-desc-output"></a><h3>ibus_engine_desc_output ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_desc_output             (<em class="parameter"><code><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="type">IBusEngineDesc</span></a> *info</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Strings.html#GString"><span class="type">GString</span></a> *output</code></em>,
@@ -517,26 +507,23 @@ The result will be append to GString specified in <em class="parameter"><code>ou
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
-<td>An IBusEngineDesc
-</td>
+<td>An IBusEngineDesc</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>output</code></em> :</span></p></td>
-<td>XML-formatted Input method engine description.
-</td>
+<td>XML-formatted Input method engine description.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>indent</code></em> :</span></p></td>
-<td>Number of indent (showed as 4 spaces).
-</td>
+<td>Number of indent (showed as 4 spaces).</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 </div>
-<div class="refsect1" title="Property Details">
+<div class="refsect1">
 <a name="IBusEngineDesc.property-details"></a><h2>Property Details</h2>
-<div class="refsect2" title='The "author" property'>
+<div class="refsect2">
 <a name="IBusEngineDesc--author"></a><h3>The <code class="literal">"author"</code> property</h3>
 <pre class="programlisting">  "author"                   <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
 <p>
@@ -545,7 +532,7 @@ The author of engine description
 <p>Default value: ""</p>
 </div>
 <hr>
-<div class="refsect2" title='The "description" property'>
+<div class="refsect2">
 <a name="IBusEngineDesc--description"></a><h3>The <code class="literal">"description"</code> property</h3>
 <pre class="programlisting">  "description"              <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
 <p>
@@ -554,7 +541,7 @@ The description of engine description
 <p>Default value: ""</p>
 </div>
 <hr>
-<div class="refsect2" title='The "hotkeys" property'>
+<div class="refsect2">
 <a name="IBusEngineDesc--hotkeys"></a><h3>The <code class="literal">"hotkeys"</code> property</h3>
 <pre class="programlisting">  "hotkeys"                  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
 <p>
@@ -563,7 +550,7 @@ The hotkeys of engine description
 <p>Default value: ""</p>
 </div>
 <hr>
-<div class="refsect2" title='The "icon" property'>
+<div class="refsect2">
 <a name="IBusEngineDesc--icon"></a><h3>The <code class="literal">"icon"</code> property</h3>
 <pre class="programlisting">  "icon"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
 <p>
@@ -572,7 +559,7 @@ The icon of engine description
 <p>Default value: "ibus-engine"</p>
 </div>
 <hr>
-<div class="refsect2" title='The "language" property'>
+<div class="refsect2">
 <a name="IBusEngineDesc--language"></a><h3>The <code class="literal">"language"</code> property</h3>
 <pre class="programlisting">  "language"                 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
 <p>
@@ -581,7 +568,7 @@ The language of engine description
 <p>Default value: ""</p>
 </div>
 <hr>
-<div class="refsect2" title='The "layout" property'>
+<div class="refsect2">
 <a name="IBusEngineDesc--layout"></a><h3>The <code class="literal">"layout"</code> property</h3>
 <pre class="programlisting">  "layout"                   <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
 <p>
@@ -590,7 +577,7 @@ The layout of engine description
 <p>Default value: "us"</p>
 </div>
 <hr>
-<div class="refsect2" title='The "license" property'>
+<div class="refsect2">
 <a name="IBusEngineDesc--license"></a><h3>The <code class="literal">"license"</code> property</h3>
 <pre class="programlisting">  "license"                  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
 <p>
@@ -599,7 +586,7 @@ The license of engine description
 <p>Default value: ""</p>
 </div>
 <hr>
-<div class="refsect2" title='The "longname" property'>
+<div class="refsect2">
 <a name="IBusEngineDesc--longname"></a><h3>The <code class="literal">"longname"</code> property</h3>
 <pre class="programlisting">  "longname"                 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
 <p>
@@ -608,7 +595,7 @@ The longname of engine description
 <p>Default value: ""</p>
 </div>
 <hr>
-<div class="refsect2" title='The "name" property'>
+<div class="refsect2">
 <a name="IBusEngineDesc--name"></a><h3>The <code class="literal">"name"</code> property</h3>
 <pre class="programlisting">  "name"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
 <p>
@@ -617,7 +604,7 @@ The name of engine description
 <p>Default value: NULL</p>
 </div>
 <hr>
-<div class="refsect2" title='The "rank" property'>
+<div class="refsect2">
 <a name="IBusEngineDesc--rank"></a><h3>The <code class="literal">"rank"</code> property</h3>
 <pre class="programlisting">  "rank"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>                 : Read / Write / Construct Only</pre>
 <p>
@@ -625,10 +612,19 @@ The rank of engine description
 </p>
 <p>Default value: 0</p>
 </div>
+<hr>
+<div class="refsect2">
+<a name="IBusEngineDesc--symbol"></a><h3>The <code class="literal">"symbol"</code> property</h3>
+<pre class="programlisting">  "symbol"                   <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
+<p>
+The symbol chars of engine description instead of icon image
+</p>
+<p>Default value: ""</p>
+</div>
 </div>
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15</div>
+          Generated by GTK-Doc V1.17</div>
 </body>
 </html>

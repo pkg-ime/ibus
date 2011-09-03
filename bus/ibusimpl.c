@@ -24,9 +24,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <signal.h>
-#include <stdlib.h>
 #include <locale.h>
-#include <string.h>
 #include <strings.h>
 #include "types.h"
 #include "ibusimpl.h"
@@ -937,7 +935,6 @@ bus_ibus_impl_destroy (BusIBusImpl *ibus)
         ibus->fake_context = NULL;
     }
 
-    bus_server_quit ();
     IBUS_OBJECT_CLASS (bus_ibus_impl_parent_class)->destroy (IBUS_OBJECT (ibus));
 }
 
@@ -1206,8 +1203,7 @@ bus_ibus_impl_set_focused_context (BusIBusImpl     *ibus,
         /* attach engine to the focused context */
         if (engine != NULL) {
             bus_input_context_set_engine (context, engine);
-            if (bus_engine_proxy_is_enabled (engine))
-                bus_input_context_enable (context);
+            bus_input_context_enable (context);
             g_object_unref (engine);
         }
 
@@ -1682,43 +1678,8 @@ _ibus_exit (BusIBusImpl           *ibus,
     g_dbus_connection_flush_sync (g_dbus_method_invocation_get_connection (invocation),
                                   NULL,
                                   NULL);
-    bus_server_quit ();
 
-    if (!restart) {
-        exit (0);
-    }
-    else {
-        extern gchar **g_argv;
-        gchar *exe;
-        gint fd;
-
-        exe = g_strdup_printf ("/proc/%d/exe", getpid ());
-        exe = g_file_read_link (exe, NULL);
-
-        if (exe == NULL)
-            exe = BINDIR "/ibus-daemon";
-
-        /* close all fds except stdin, stdout, stderr */
-        for (fd = 3; fd <= sysconf (_SC_OPEN_MAX); fd ++) {
-            close (fd);
-        }
-
-        execv (exe, g_argv);
-
-        /* If the server binary is replaced while the server is running,
-         * "readlink /proc/[pid]/exe" might return a path with " (deleted)"
-         * suffix. */
-        const gchar suffix[] = " (deleted)";
-        if (g_str_has_suffix (exe, suffix)) {
-            exe [strlen (exe) - sizeof (suffix) + 1] = '\0';
-            execv (exe, g_argv);
-        }
-        g_warning ("execv %s failed!", g_argv[0]);
-        exit (-1);
-    }
-
-    /* should not reach here */
-    g_assert_not_reached ();
+    bus_server_quit (restart);
 }
 
 /**
@@ -2201,7 +2162,7 @@ bus_ibus_impl_load_global_engine_name_from_config (BusIBusImpl *ibus)
     GVariant *variant = ibus_config_get_value (ibus->config, "general", "global_engine");
     gchar *engine_name = NULL;
     if (variant != NULL) {
-        g_variant_get (variant, "s", &engine_name);
+        engine_name = g_variant_dup_string (variant, NULL);
         g_variant_unref (variant);
     }
     return engine_name;
@@ -2221,8 +2182,8 @@ bus_ibus_impl_save_global_engine_name_to_config (BusIBusImpl *ibus)
         ibus->use_global_engine &&
         ibus->global_engine_name) {
         ibus_config_set_value (ibus->config,
-                        "general", "global_engine",
-                        g_variant_new ("s", ibus->global_engine_name));
+                               "general", "global_engine",
+                               g_variant_new_string (ibus->global_engine_name));
     }
 }
 
@@ -2244,8 +2205,7 @@ bus_ibus_impl_load_global_previous_engine_name_from_config (BusIBusImpl *ibus)
     GVariant *value = ibus_config_get_value (ibus->config, "general", "global_previous_engine");
     if (value == NULL)
         return NULL;
-    gchar *engine_name = NULL;
-    g_variant_get (value, "(s)", &engine_name);
+    gchar *engine_name = g_variant_dup_string (value, NULL);
     g_variant_unref (value);
     return engine_name;
 }
@@ -2264,8 +2224,8 @@ bus_ibus_impl_save_global_previous_engine_name_to_config (BusIBusImpl *ibus)
         ibus->use_global_engine &&
         ibus->global_previous_engine_name) {
         ibus_config_set_value (ibus->config,
-                        "general", "global_previous_engine",
-                        g_variant_new ("s", ibus->global_previous_engine_name));
+                               "general", "global_previous_engine",
+                               g_variant_new_string (ibus->global_previous_engine_name));
     }
 }
 

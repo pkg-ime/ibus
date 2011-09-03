@@ -78,6 +78,12 @@ AC_HEADER_STDC
 AM_PROG_LIBTOOL
 IT_PROG_INTLTOOL([0.35.0])
 
+# For dislpay Date
+m4_define(ibus_datedisplay,
+    m4_esyscmd(date '+%a %b %d %Y' | tr -d '\n\r'))
+DATE_DISPLAY="ibus_datedisplay"
+AC_SUBST(DATE_DISPLAY)
+
 # If only source code changed, lt_revision + 1
 # If any interface added, lt_age + 1
 # If any interfaces changed or removed, lt_current + 1, lt_revision = 0, lt_age = 0
@@ -244,6 +250,24 @@ AC_ARG_ENABLE(memconf,
     [enable_memconf=no]
 )
 AM_CONDITIONAL([ENABLE_MEMCONF], [test "x$enable_memconf" = "xyes"])
+
+AC_ARG_ENABLE(dconf,
+    AS_HELP_STRING([--enable-dconf],
+                   [Enable configure base on dconf]),
+    [enable_dconf=$enableval],
+    [enable_dconf=no]
+)
+
+if test x"$enable_dconf" = x"yes"; then
+    # check dconf
+    PKG_CHECK_MODULES(DCONF,
+        [dconf >= 0.7.5], ,
+        enable_dconf=no
+    )
+    # check glib-compile-schemas
+    GLIB_GSETTINGS
+fi
+AM_CONDITIONAL([ENABLE_DCONF], [test x"$enable_dconf" = x"yes"])
 
 # check env
 AC_PATH_PROG(ENV_IBUS_TEST, env)
@@ -412,6 +436,7 @@ util/IMdkit/Makefile
 data/Makefile
 data/icons/Makefile
 data/keymaps/Makefile
+data/dconf/Makefile
 docs/Makefile
 docs/reference/Makefile
 docs/reference/ibus/ibus-docs.sgml
@@ -430,6 +455,8 @@ gconf/Makefile
 gconf/gconf.xml.in
 bindings/Makefile
 bindings/vala/Makefile
+dconf/Makefile
+dconf/dconf.xml.in
 ])
 
 AC_OUTPUT
@@ -448,6 +475,7 @@ Build options:
   Build python modules      $enable_python
   Build gconf modules       $enable_gconf
   Build memconf modules     $enable_memconf
+  Build dconf modules       $enable_dconf
   Build introspection       $found_introspection
   IBus-1.0.gir scannerflags "$IBUS_GIR_SCANNERFLAGS"
   Build vala binding        $enable_vala
