@@ -3,7 +3,7 @@
 	dh  $@ --with python2
 
 override_dh_auto_configure:
-	dh_auto_configure -- LDFLAGS="-Wl,--as-needed" --enable-static  --enable-gtk3
+	dh_auto_configure -- LDFLAGS="-Wl,--as-needed" --enable-static  --enable-gtk3 --enable-surrounding-text
 
 override_dh_makeshlibs:
 	dh_makeshlibs -Nibus-gtk -Nibus-gtk3
