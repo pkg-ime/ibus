@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>IBusAttrList</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="IBus Reference Manual">
 <link rel="up" href="ch02.html" title="Panel (User Interfaces)">
 <link rel="prev" href="IBusAttribute.html" title="IBusAttribute">
 <link rel="next" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile">
-<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.17 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -28,7 +28,7 @@
                   <a href="#IBusAttrList.object-hierarchy" class="shortcut">Object Hierarchy</a>
 </td></tr>
 </table>
-<div class="refentry" title="IBusAttrList">
+<div class="refentry">
 <a name="IBusAttrList"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -37,14 +37,14 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsect1" title="Stability Level">
+<div class="refsect1">
 <a name="IBusAttrList.stability-level"></a><h2>Stability Level</h2>
 Stable, unless otherwise indicated
 </div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="IBusAttrList.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">                    <a class="link" href="IBusAttrList.html#IBusAttrList-struct" title="IBusAttrList">IBusAttrList</a>;
-                    <a class="link" href="IBusAttrList.html#IBusAttrListClass" title="IBusAttrListClass">IBusAttrListClass</a>;
+<pre class="synopsis">struct              <a class="link" href="IBusAttrList.html#IBusAttrList-struct" title="struct IBusAttrList">IBusAttrList</a>;
+struct              <a class="link" href="IBusAttrList.html#IBusAttrListClass" title="struct IBusAttrListClass">IBusAttrListClass</a>;
 <a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="returnvalue">IBusAttrList</span></a> *      <a class="link" href="IBusAttrList.html#ibus-attr-list-new" title="ibus_attr_list_new ()">ibus_attr_list_new</a>                  ();
 <span class="returnvalue">void</span>                <a class="link" href="IBusAttrList.html#ibus-attr-list-append" title="ibus_attr_list_append ()">ibus_attr_list_append</a>               (<em class="parameter"><code><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="type">IBusAttrList</span></a> *attr_list</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a> *attr</code></em>);
@@ -52,7 +52,7 @@ Stable, unless otherwise indicated
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>);
 </pre>
 </div>
-<div class="refsect1" title="Object Hierarchy">
+<div class="refsect1">
 <a name="IBusAttrList.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
   <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
@@ -62,16 +62,16 @@ Stable, unless otherwise indicated
                      +----IBusAttrList
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
 <a name="IBusAttrList.description"></a><h2>Description</h2>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="IBusAttrList.details"></a><h2>Details</h2>
-<div class="refsect2" title="IBusAttrList">
-<a name="IBusAttrList-struct"></a><h3>IBusAttrList</h3>
-<pre class="programlisting">typedef struct {
+<div class="refsect2">
+<a name="IBusAttrList-struct"></a><h3>struct IBusAttrList</h3>
+<pre class="programlisting">struct IBusAttrList {
     GArray *attributes;
-} IBusAttrList;
+};
 </pre>
 <p>
 Array of IBusAttribute.
@@ -80,23 +80,22 @@ Array of IBusAttribute.
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Arrays.html#GArray"><span class="type">GArray</span></a> *<em class="structfield"><code><a name="IBusAttrList-struct.attributes"></a>attributes</code></em>;</span></p></td>
-<td>GArray that holds <a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a>.
-</td>
+<td>GArray that holds <a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a>.</td>
 </tr></tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="IBusAttrListClass">
-<a name="IBusAttrListClass"></a><h3>IBusAttrListClass</h3>
-<pre class="programlisting">typedef struct {
+<div class="refsect2">
+<a name="IBusAttrListClass"></a><h3>struct IBusAttrListClass</h3>
+<pre class="programlisting">struct IBusAttrListClass {
     IBusSerializableClass parent;
-} IBusAttrListClass;
+};
 </pre>
 <p>
 </p>
 </div>
 <hr>
-<div class="refsect2" title="ibus_attr_list_new ()">
+<div class="refsect2">
 <a name="ibus-attr-list-new"></a><h3>ibus_attr_list_new ()</h3>
 <pre class="programlisting"><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="returnvalue">IBusAttrList</span></a> *      ibus_attr_list_new                  ();</pre>
 <p>
@@ -106,13 +105,12 @@ New an IBusAttrList.
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A newly allocated IBusAttrList.
-</td>
+<td>A newly allocated IBusAttrList.</td>
 </tr></tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_attr_list_append ()">
+<div class="refsect2">
 <a name="ibus-attr-list-append"></a><h3>ibus_attr_list_append ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_attr_list_append               (<em class="parameter"><code><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="type">IBusAttrList</span></a> *attr_list</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a> *attr</code></em>);</pre>
@@ -124,19 +122,17 @@ Append an IBusAttribute to IBusAttrList, and increase reference.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>attr_list</code></em> :</span></p></td>
-<td>An IBusAttrList instance.
-</td>
+<td>An IBusAttrList instance.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>attr</code></em> :</span></p></td>
-<td>The IBusAttribute instance to be appended.
-</td>
+<td>The IBusAttribute instance to be appended.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_attr_list_get ()">
+<div class="refsect2">
 <a name="ibus-attr-list-get"></a><h3>ibus_attr_list_get ()</h3>
 <pre class="programlisting"><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     ibus_attr_list_get                  (<em class="parameter"><code><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="type">IBusAttrList</span></a> *attr_list</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> index</code></em>);</pre>
@@ -148,30 +144,28 @@ Returns IBusAttribute at given index. Borrowed reference.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>attr_list</code></em> :</span></p></td>
-<td>An IBusAttrList instance.
-</td>
+<td>An IBusAttrList instance.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>index</code></em> :</span></p></td>
-<td>Index of the <em class="parameter"><code>attr_list</code></em>.
-</td>
+<td>Index of the <em class="parameter"><code>attr_list</code></em>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> IBusAttribute at given index, NULL if no such IBusAttribute. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+<td>IBusAttribute at given index, NULL if no such IBusAttribute. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 </div>
-<div class="refsect1" title="See Also">
+<div class="refsect1">
 <a name="IBusAttrList.see-also"></a><h2>See Also</h2>
 <a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>
 </div>
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15</div>
+          Generated by GTK-Doc V1.17</div>
 </body>
 </html>

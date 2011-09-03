@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>IBusBus</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="IBus Reference Manual">
 <link rel="up" href="ch05.html" title="Communication">
 <link rel="prev" href="ch05.html" title="Communication">
 <link rel="next" href="IBusProxy.html" title="IBusProxy">
-<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.17 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -30,7 +30,7 @@
                   <a href="#IBusBus.signals" class="shortcut">Signals</a>
 </td></tr>
 </table>
-<div class="refentry" title="IBusBus">
+<div class="refentry">
 <a name="IBusBus"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -39,14 +39,14 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsect1" title="Stability Level">
+<div class="refsect1">
 <a name="IBusBus.stability-level"></a><h2>Stability Level</h2>
 Stable, unless otherwise indicated
 </div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="IBusBus.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">                    <a class="link" href="IBusBus.html#IBusBus-struct" title="IBusBus">IBusBus</a>;
-                    <a class="link" href="IBusBus.html#IBusBusClass" title="IBusBusClass">IBusBusClass</a>;
+<pre class="synopsis">struct              <a class="link" href="IBusBus.html#IBusBus-struct" title="struct IBusBus">IBusBus</a>;
+struct              <a class="link" href="IBusBus.html#IBusBusClass" title="struct IBusBusClass">IBusBusClass</a>;
 <a class="link" href="IBusBus.html" title="IBusBus"><span class="returnvalue">IBusBus</span></a> *           <a class="link" href="IBusBus.html#ibus-bus-new" title="ibus_bus_new ()">ibus_bus_new</a>                        (<em class="parameter"><code><span class="type">void</span></code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusBus.html#ibus-bus-is-connected" title="ibus_bus_is_connected ()">ibus_bus_is_connected</a>               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
 <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="returnvalue">GDBusConnection</span></a> *   <a class="link" href="IBusBus.html#ibus-bus-get-connection" title="ibus_bus_get_connection ()">ibus_bus_get_connection</a>             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
@@ -250,7 +250,7 @@ const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.htm
 <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        <a class="link" href="IBusBus.html#ibus-bus-get-config" title="ibus_bus_get_config ()">ibus_bus_get_config</a>                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
 </pre>
 </div>
-<div class="refsect1" title="Object Hierarchy">
+<div class="refsect1">
 <a name="IBusBus.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
   <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
@@ -259,43 +259,43 @@ const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.htm
                +----IBusBus
 </pre>
 </div>
-<div class="refsect1" title="Signals">
+<div class="refsect1">
 <a name="IBusBus.signals"></a><h2>Signals</h2>
 <pre class="synopsis">
-  "<a class="link" href="IBusBus.html#IBusBus-connected" title='The "connected" signal'>connected</a>"                                      : Run Last
-  "<a class="link" href="IBusBus.html#IBusBus-disconnected" title='The "disconnected" signal'>disconnected</a>"                                   : Run Last
-  "<a class="link" href="IBusBus.html#IBusBus-global-engine-changed" title='The "global-engine-changed" signal'>global-engine-changed</a>"                          : Run Last
-  "<a class="link" href="IBusBus.html#IBusBus-name-owner-changed" title='The "name-owner-changed" signal'>name-owner-changed</a>"                             : Run Last
+  "<a class="link" href="IBusBus.html#IBusBus-connected" title='The "connected" signal'>connected</a>"                                      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusBus.html#IBusBus-disconnected" title='The "disconnected" signal'>disconnected</a>"                                   : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusBus.html#IBusBus-global-engine-changed" title='The "global-engine-changed" signal'>global-engine-changed</a>"                          : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="IBusBus.html#IBusBus-name-owner-changed" title='The "name-owner-changed" signal'>name-owner-changed</a>"                             : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
 <a name="IBusBus.description"></a><h2>Description</h2>
 <p>
 An IBusBus connects with IBus daemon.
 </p>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="IBusBus.details"></a><h2>Details</h2>
-<div class="refsect2" title="IBusBus">
-<a name="IBusBus-struct"></a><h3>IBusBus</h3>
-<pre class="programlisting">typedef struct _IBusBus IBusBus;</pre>
+<div class="refsect2">
+<a name="IBusBus-struct"></a><h3>struct IBusBus</h3>
+<pre class="programlisting">struct IBusBus;</pre>
 <p>
 An opaque data type representing IBus bus (daemon communication) status.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="IBusBusClass">
-<a name="IBusBusClass"></a><h3>IBusBusClass</h3>
-<pre class="programlisting">typedef struct {
+<div class="refsect2">
+<a name="IBusBusClass"></a><h3>struct IBusBusClass</h3>
+<pre class="programlisting">struct IBusBusClass {
     IBusObjectClass parent;
     /* class members */
-} IBusBusClass;
+};
 </pre>
 <p>
 </p>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_new ()">
+<div class="refsect2">
 <a name="ibus-bus-new"></a><h3>ibus_bus_new ()</h3>
 <pre class="programlisting"><a class="link" href="IBusBus.html" title="IBusBus"><span class="returnvalue">IBusBus</span></a> *           ibus_bus_new                        (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
 <p>
@@ -305,13 +305,12 @@ New an <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IB
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A newly allocated <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> instance, and the instance is not floating.
-</td>
+<td>A newly allocated <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> instance, and the instance is not floating.</td>
 </tr></tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_is_connected ()">
+<div class="refsect2">
 <a name="ibus-bus-is-connected"></a><h3>ibus_bus_is_connected ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_is_connected               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
 <p>
@@ -322,20 +321,18 @@ Return <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macro
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>bus</code></em> is connected, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>bus</code></em> is connected, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_connection ()">
+<div class="refsect2">
 <a name="ibus-bus-get-connection"></a><h3>ibus_bus_get_connection ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="returnvalue">GDBusConnection</span></a> *   ibus_bus_get_connection             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
 <p>
@@ -346,19 +343,18 @@ Return <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> of an <span class="type">IBusIBus</span> instance. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> of an <span class="type">IBusIBus</span> instance. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_hello ()">
+<div class="refsect2">
 <a name="ibus-bus-hello"></a><h3>ibus_bus_hello ()</h3>
 <pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_bus_hello                      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
 <p>
@@ -370,19 +366,17 @@ which replies the unique name of current IBus process.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>The unique name of <span class="type">IBus</span> process in DBus.
-</td>
+<td>The unique name of <span class="type">IBus</span> process in DBus.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_request_name ()">
+<div class="refsect2">
 <a name="ibus-bus-request-name"></a><h3>ibus_bus_request_name ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             ibus_bus_request_name               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
@@ -395,29 +389,25 @@ Request a name from IBus daemon synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>the IBusBus instance to be processed.
-</td>
+<td>the IBusBus instance to be processed.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>Name to be requested.
-</td>
+<td>Name to be requested.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
-<td>IBusBusNameFlag.
-</td>
+<td>IBusBusNameFlag.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>0 if failed; IBusBusRequestNameReply otherwise.
-</td>
+<td>0 if failed; IBusBusRequestNameReply otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_request_name_async ()">
+<div class="refsect2">
 <a name="ibus-bus-request-name-async"></a><h3>ibus_bus_request_name_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_request_name_async         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
@@ -434,45 +424,38 @@ Request a name from IBus daemon asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>Name to be requested.
-</td>
+<td>Name to be requested.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
-<td>Flags (FixMe).
-</td>
+<td>Flags (FixMe).</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
-     if you don't care about the result of the method invocation.
-</td>
+if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_request_name_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-request-name-async-finish"></a><h3>ibus_bus_request_name_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_bus_request_name_async_finish  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
@@ -485,30 +468,26 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-r
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-request-name-async" title="ibus_bus_request_name_async ()"><code class="function">ibus_bus_request_name_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-request-name-async" title="ibus_bus_request_name_async ()"><code class="function">ibus_bus_request_name_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>0 if failed; positive number otherwise.
-</td>
+<td>0 if failed; positive number otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_release_name ()">
+<div class="refsect2">
 <a name="ibus-bus-release-name"></a><h3>ibus_bus_release_name ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_bus_release_name               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
@@ -520,24 +499,21 @@ Release a name to IBus daemon synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>Name to be released.
-</td>
+<td>Name to be released.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>0 if failed; positive number otherwise.
-</td>
+<td>0 if failed; positive number otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_release_name_async ()">
+<div class="refsect2">
 <a name="ibus-bus-release-name-async"></a><h3>ibus_bus_release_name_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_release_name_async         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
@@ -553,40 +529,34 @@ Release a name to IBus daemon asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>Name to be released.
-</td>
+<td>Name to be released.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied
-     or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.
-</td>
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_release_name_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-release-name-async-finish"></a><h3>ibus_bus_release_name_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_bus_release_name_async_finish  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
@@ -599,30 +569,26 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-r
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-release-name-async" title="ibus_bus_release_name_async ()"><code class="function">ibus_bus_release_name_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-release-name-async" title="ibus_bus_release_name_async ()"><code class="function">ibus_bus_release_name_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>0 if failed; positive number otherwise.
-</td>
+<td>0 if failed; positive number otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_list_queued_owners ()">
+<div class="refsect2">
 <a name="ibus-bus-list-queued-owners"></a><h3>ibus_bus_list_queued_owners ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             ibus_bus_list_queued_owners         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
@@ -637,25 +603,22 @@ FIXME add an asynchronous version.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An IBusBus.
-</td>
+<td>An IBusBus.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>Name to be queried.
-</td>
+<td>Name to be queried.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>
-          The unique bus names of connections currently queued for <em class="parameter"><code>name</code></em>. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> utf8]</span>
+<td>The unique bus names of connections currently queued for <em class="parameter"><code>name</code></em>. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> utf8]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_name_has_owner ()">
+<div class="refsect2">
 <a name="ibus-bus-name-has-owner"></a><h3>ibus_bus_name_has_owner ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_name_has_owner             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
@@ -667,25 +630,22 @@ Checks whether the name has owner synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>Name to be checked.
-</td>
+<td>Name to be checked.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the name has owner, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the name has owner, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_name_has_owner_async ()">
+<div class="refsect2">
 <a name="ibus-bus-name-has-owner-async"></a><h3>ibus_bus_name_has_owner_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_name_has_owner_async       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
@@ -701,40 +661,34 @@ Checks whether the name has owner asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>Name to be checked.
-</td>
+<td>Name to be checked.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied
-     or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.
-</td>
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_name_has_owner_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-name-has-owner-async-finish"></a><h3>ibus_bus_name_has_owner_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_name_has_owner_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -748,56 +702,61 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-n
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-name-has-owner-async" title="ibus_bus_name_has_owner_async ()"><code class="function">ibus_bus_name_has_owner_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-name-has-owner-async" title="ibus_bus_name_has_owner_async ()"><code class="function">ibus_bus_name_has_owner_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the name has owner, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the name has owner, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_list_names ()">
+<div class="refsect2">
 <a name="ibus-bus-list-names"></a><h3>ibus_bus_list_names ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             ibus_bus_list_names                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
 <p>
 Return lists that attached to <em class="parameter"><code>bus</code></em>.
-&lt;note&gt;&lt;para&gt;[FixMe] Not implemented yet, only return NULL.&lt;/para&gt;&lt;/note&gt;
-&lt;note&gt;&lt;para&gt;[FixMe] Add async version.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>[FixMe] Not implemented yet, only return NULL.</p>
+</div>
+<p>
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>[FixMe] Add async version.</p>
+</div>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> Lists that attached to <em class="parameter"><code>bus</code></em>. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> utf8]</span>
+<td>Lists that attached to <em class="parameter"><code>bus</code></em>. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> utf8]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_add_match ()">
+<div class="refsect2">
 <a name="ibus-bus-add-match"></a><h3>ibus_bus_add_match ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_add_match                  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *rule</code></em>);</pre>
@@ -809,25 +768,22 @@ Add a match rule to an <a class="link" href="IBusBus.html" title="IBusBus"><span
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>rule</code></em> :</span></p></td>
-<td>Match rule.
-</td>
+<td>Match rule.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the rule is added. <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the rule is added. <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_add_match_async ()">
+<div class="refsect2">
 <a name="ibus-bus-add-match-async"></a><h3>ibus_bus_add_match_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_add_match_async            (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *rule</code></em>,
@@ -843,40 +799,34 @@ Add a match rule to an <a class="link" href="IBusBus.html" title="IBusBus"><span
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>rule</code></em> :</span></p></td>
-<td>Match rule.
-</td>
+<td>Match rule.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied
-     or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.
-</td>
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_add_match_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-add-match-async-finish"></a><h3>ibus_bus_add_match_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_add_match_async_finish     (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
@@ -889,31 +839,27 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-a
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-add-match-async" title="ibus_bus_add_match_async ()"><code class="function">ibus_bus_add_match_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-add-match-async" title="ibus_bus_add_match_async ()"><code class="function">ibus_bus_add_match_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the rule is added. <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the rule is added. <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_remove_match ()">
+<div class="refsect2">
 <a name="ibus-bus-remove-match"></a><h3>ibus_bus_remove_match ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_remove_match               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *rule</code></em>);</pre>
@@ -925,25 +871,22 @@ Remove a match rule to an <a class="link" href="IBusBus.html" title="IBusBus"><s
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>rule</code></em> :</span></p></td>
-<td>Match rule.
-</td>
+<td>Match rule.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the rule is removed. <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the rule is removed. <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_remove_match_async ()">
+<div class="refsect2">
 <a name="ibus-bus-remove-match-async"></a><h3>ibus_bus_remove_match_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_remove_match_async         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *rule</code></em>,
@@ -959,40 +902,34 @@ Remove a match rule to an IBusBus asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>rule</code></em> :</span></p></td>
-<td>Match rule.
-</td>
+<td>Match rule.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied
-     or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.
-</td>
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_remove_match_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-remove-match-async-finish"></a><h3>ibus_bus_remove_match_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_remove_match_async_finish  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
@@ -1005,31 +942,27 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-r
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-remove-match-async" title="ibus_bus_remove_match_async ()"><code class="function">ibus_bus_remove_match_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-remove-match-async" title="ibus_bus_remove_match_async ()"><code class="function">ibus_bus_remove_match_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the rule is removed. <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the rule is removed. <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_name_owner ()">
+<div class="refsect2">
 <a name="ibus-bus-get-name-owner"></a><h3>ibus_bus_get_name_owner ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             ibus_bus_get_name_owner             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
@@ -1041,24 +974,21 @@ Return the name owner synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>Name.
-</td>
+<td>Name.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>Owner of the name. The returned value must be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>.
-</td>
+<td>Owner of the name. The returned value must be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_name_owner_async ()">
+<div class="refsect2">
 <a name="ibus-bus-get-name-owner-async"></a><h3>ibus_bus_get_name_owner_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_get_name_owner_async       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
@@ -1074,40 +1004,34 @@ Return the name owner asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>Name.
-</td>
+<td>Name.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied
-     or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.
-</td>
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_name_owner_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-get-name-owner-async-finish"></a><h3>ibus_bus_get_name_owner_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             ibus_bus_get_name_owner_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -1121,30 +1045,26 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-g
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-get-name-owner-async" title="ibus_bus_get_name_owner_async ()"><code class="function">ibus_bus_get_name_owner_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-get-name-owner-async" title="ibus_bus_get_name_owner_async ()"><code class="function">ibus_bus_get_name_owner_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>Owner of the name. The returned value must be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>.
-</td>
+<td>Owner of the name. The returned value must be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_exit ()">
+<div class="refsect2">
 <a name="ibus-bus-exit"></a><h3>ibus_bus_exit ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_exit                       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> restart</code></em>);</pre>
@@ -1156,25 +1076,22 @@ Exit or restart ibus-daemon synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>restart</code></em> :</span></p></td>
-<td>Whether restarting the ibus.
-</td>
+<td>Whether restarting the ibus.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the "Exit" call is suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the "Exit" call is suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_exit_async ()">
+<div class="refsect2">
 <a name="ibus-bus-exit-async"></a><h3>ibus_bus_exit_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_exit_async                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> restart</code></em>,
@@ -1190,40 +1107,34 @@ Exit or restart ibus-daemon asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>restart</code></em> :</span></p></td>
-<td>Whether restarting the ibus.
-</td>
+<td>Whether restarting the ibus.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied
-     or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.
-</td>
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_exit_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-exit-async-finish"></a><h3>ibus_bus_exit_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_exit_async_finish          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
@@ -1236,31 +1147,27 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-e
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-exit-async" title="ibus_bus_exit_async ()"><code class="function">ibus_bus_exit_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-exit-async" title="ibus_bus_exit_async ()"><code class="function">ibus_bus_exit_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the "Exit" call is suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the "Exit" call is suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_create_input_context ()">
+<div class="refsect2">
 <a name="ibus-bus-create-input-context"></a><h3>ibus_bus_create_input_context ()</h3>
 <pre class="programlisting"><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  ibus_bus_create_input_context       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *client_name</code></em>);</pre>
@@ -1272,25 +1179,22 @@ Create an input context for client synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>client_name</code></em> :</span></p></td>
-<td>Name of client.
-</td>
+<td>Name of client.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>An newly allocated <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> if the "CreateInputContext"
-     call is suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.
-</td>
+call is suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_create_input_context_async ()">
+<div class="refsect2">
 <a name="ibus-bus-create-input-context-async"></a><h3>ibus_bus_create_input_context_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_create_input_context_async (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *client_name</code></em>,
@@ -1306,40 +1210,34 @@ Create an input context for client asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>client_name</code></em> :</span></p></td>
-<td>Name of client.
-</td>
+<td>Name of client.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied.
-     It should not be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+It should not be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_create_input_context_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-create-input-context-async-finish"></a><h3>ibus_bus_create_input_context_async_finish ()</h3>
 <pre class="programlisting"><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  ibus_bus_create_input_context_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -1353,31 +1251,27 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-c
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-create-input-context-async" title="ibus_bus_create_input_context_async ()"><code class="function">ibus_bus_create_input_context_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-create-input-context-async" title="ibus_bus_create_input_context_async ()"><code class="function">ibus_bus_create_input_context_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>An newly allocated <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> if the "CreateInputContext"
-     call is suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.
-</td>
+call is suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_current_input_context ()">
+<div class="refsect2">
 <a name="ibus-bus-current-input-context"></a><h3>ibus_bus_current_input_context ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             ibus_bus_current_input_context      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
 <p>
@@ -1388,21 +1282,19 @@ Get the current focused input context synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>The named of currently focued <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> if the
-           "CurrentInputContext" call suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise. The return
-           value must be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>.
-</td>
+"CurrentInputContext" call suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise. The return
+value must be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_current_input_context_async ()">
+<div class="refsect2">
 <a name="ibus-bus-current-input-context-async"></a><h3>ibus_bus_current_input_context_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_current_input_context_async
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -1418,35 +1310,30 @@ Get the current focused input context asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied
-     or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.
-</td>
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_current_input_context_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-current-input-context-async-finish"></a><h3>ibus_bus_current_input_context_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             ibus_bus_current_input_context_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -1460,32 +1347,28 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-c
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-current-input-context-async" title="ibus_bus_current_input_context_async ()"><code class="function">ibus_bus_current_input_context_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-current-input-context-async" title="ibus_bus_current_input_context_async ()"><code class="function">ibus_bus_current_input_context_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>The named of currently focued IBusInputContext if the
-           "CurrentInputContext" call suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise. The return
-           value must be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>.
-</td>
+"CurrentInputContext" call suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise. The return
+value must be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_register_component ()">
+<div class="refsect2">
 <a name="ibus-bus-register-component"></a><h3>ibus_bus_register_component ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_register_component         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);</pre>
@@ -1497,25 +1380,22 @@ Register a componet to an <a class="link" href="IBusBus.html" title="IBusBus"><s
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
-<td>A input engine component.
-</td>
+<td>A input engine component.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the "RegisterComponent" call is suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the "RegisterComponent" call is suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_register_component_async ()">
+<div class="refsect2">
 <a name="ibus-bus-register-component-async"></a><h3>ibus_bus_register_component_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_register_component_async   (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
@@ -1531,40 +1411,34 @@ Register a componet to an <a class="link" href="IBusBus.html" title="IBusBus"><s
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
-<td>A input engine component.
-</td>
+<td>A input engine component.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied
-     or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.
-</td>
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_register_component_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-register-component-async-finish"></a><h3>ibus_bus_register_component_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_register_component_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -1578,31 +1452,27 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-r
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-register-component-async" title="ibus_bus_register_component_async ()"><code class="function">ibus_bus_register_component_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-register-component-async" title="ibus_bus_register_component_async ()"><code class="function">ibus_bus_register_component_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the "RegisterComponent" call is suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the "RegisterComponent" call is suceeded, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_list_engines ()">
+<div class="refsect2">
 <a name="ibus-bus-list-engines"></a><h3>ibus_bus_list_engines ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             ibus_bus_list_engines               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
 <p>
@@ -1613,19 +1483,18 @@ List engines synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A List of engines. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusEngineDesc]</span>
+<td>A List of engines. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusEngineDesc]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_list_engines_async ()">
+<div class="refsect2">
 <a name="ibus-bus-list-engines-async"></a><h3>ibus_bus_list_engines_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_list_engines_async         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_msec</code></em>,
@@ -1640,35 +1509,30 @@ List engines asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
-     if you don't care about the result of the method invocation.
-</td>
+if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_list_engines_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-list-engines-async-finish"></a><h3>ibus_bus_list_engines_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             ibus_bus_list_engines_async_finish  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
@@ -1681,30 +1545,27 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-l
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-list-engines-async" title="ibus_bus_list_engines_async ()"><code class="function">ibus_bus_list_engines_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-list-engines-async" title="ibus_bus_list_engines_async ()"><code class="function">ibus_bus_list_engines_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A List of engines. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusEngineDesc]</span>
+<td>A List of engines. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusEngineDesc]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_list_active_engines ()">
+<div class="refsect2">
 <a name="ibus-bus-list-active-engines"></a><h3>ibus_bus_list_active_engines ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             ibus_bus_list_active_engines        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
 <p>
@@ -1715,19 +1576,18 @@ List active engines synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A List of active engines. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusEngineDesc]</span>
+<td>A List of active engines. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusEngineDesc]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_list_active_engines_async ()">
+<div class="refsect2">
 <a name="ibus-bus-list-active-engines-async"></a><h3>ibus_bus_list_active_engines_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_list_active_engines_async  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_msec</code></em>,
@@ -1742,35 +1602,30 @@ List active engines asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
-     if you don't care about the result of the method invocation.
-</td>
+if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_list_active_engines_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-list-active-engines-async-finish"></a><h3>ibus_bus_list_active_engines_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             ibus_bus_list_active_engines_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -1784,30 +1639,27 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-l
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-list-active-engines-async" title="ibus_bus_list_active_engines_async ()"><code class="function">ibus_bus_list_active_engines_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-list-active-engines-async" title="ibus_bus_list_active_engines_async ()"><code class="function">ibus_bus_list_active_engines_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A List of active engines. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusEngineDesc]</span>
+<td>A List of active engines. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> IBusEngineDesc]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_use_sys_layout ()">
+<div class="refsect2">
 <a name="ibus-bus-get-use-sys-layout"></a><h3>ibus_bus_get_use_sys_layout ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_get_use_sys_layout         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
 <p>
@@ -1818,20 +1670,18 @@ Check if the bus's "use_sys_layout" option is enabled or not synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if "use_sys_layout" option is enabled.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if "use_sys_layout" option is enabled.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_use_sys_layout_async ()">
+<div class="refsect2">
 <a name="ibus-bus-get-use-sys-layout-async"></a><h3>ibus_bus_get_use_sys_layout_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_get_use_sys_layout_async   (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_msec</code></em>,
@@ -1846,35 +1696,30 @@ Check if the bus's "use_sys_layout" option is enabled or not asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied
-     or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.
-</td>
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_use_sys_layout_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-get-use-sys-layout-async-finish"></a><h3>ibus_bus_get_use_sys_layout_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_get_use_sys_layout_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -1888,30 +1733,26 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-g
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-get-use-sys-layout-async" title="ibus_bus_get_use_sys_layout_async ()"><code class="function">ibus_bus_get_use_sys_layout_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-get-use-sys-layout-async" title="ibus_bus_get_use_sys_layout_async ()"><code class="function">ibus_bus_get_use_sys_layout_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if "use_sys_layout" option is enabled.
-</td>
+<td>TRUE if "use_sys_layout" option is enabled.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_use_global_engine ()">
+<div class="refsect2">
 <a name="ibus-bus-get-use-global-engine"></a><h3>ibus_bus_get_use_global_engine ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_get_use_global_engine      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
 <p>
@@ -1922,19 +1763,17 @@ Check if the bus's "use_global_engine" option is enabled or not synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if "use_global_engine" option is enabled.
-</td>
+<td>TRUE if "use_global_engine" option is enabled.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_use_global_engine_async ()">
+<div class="refsect2">
 <a name="ibus-bus-get-use-global-engine-async"></a><h3>ibus_bus_get_use_global_engine_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_get_use_global_engine_async
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -1950,35 +1789,30 @@ Check if the bus's "use_global_engine" option is enabled or not asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied
-     or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.
-</td>
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_use_global_engine_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-get-use-global-engine-async-finish"></a><h3>ibus_bus_get_use_global_engine_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_get_use_global_engine_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -1992,31 +1826,27 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-g
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-get-use-global-engine-async" title="ibus_bus_get_use_global_engine_async ()"><code class="function">ibus_bus_get_use_global_engine_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-get-use-global-engine-async" title="ibus_bus_get_use_global_engine_async ()"><code class="function">ibus_bus_get_use_global_engine_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if "use_global_engine" option is enabled.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if "use_global_engine" option is enabled.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_is_global_engine_enabled ()">
+<div class="refsect2">
 <a name="ibus-bus-is-global-engine-enabled"></a><h3>ibus_bus_is_global_engine_enabled ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_is_global_engine_enabled   (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
 <p>
@@ -2027,20 +1857,18 @@ Check if the current global engine is enabled or not synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the current global engine is enabled.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the current global engine is enabled.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_is_global_engine_enabled_async ()">
+<div class="refsect2">
 <a name="ibus-bus-is-global-engine-enabled-async"></a><h3>ibus_bus_is_global_engine_enabled_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_is_global_engine_enabled_async
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -2056,35 +1884,30 @@ Check if the current global engine is enabled or not asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied
-     or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.
-</td>
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_is_global_engine_enabled_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-is-global-engine-enabled-async-finish"></a><h3>ibus_bus_is_global_engine_enabled_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_is_global_engine_enabled_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -2098,31 +1921,27 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-i
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-is-global-engine-enabled-async" title="ibus_bus_is_global_engine_enabled_async ()"><code class="function">ibus_bus_is_global_engine_enabled_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-is-global-engine-enabled-async" title="ibus_bus_is_global_engine_enabled_async ()"><code class="function">ibus_bus_is_global_engine_enabled_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the current global engine is enabled.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the current global engine is enabled.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_global_engine ()">
+<div class="refsect2">
 <a name="ibus-bus-get-global-engine"></a><h3>ibus_bus_get_global_engine ()</h3>
 <pre class="programlisting"><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    ibus_bus_get_global_engine          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
 <p>
@@ -2133,20 +1952,18 @@ Get the description of current global engine synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>The description of current global engine, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if there is no
-global engine.
-</td>
+global engine.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_global_engine_async ()">
+<div class="refsect2">
 <a name="ibus-bus-get-global-engine-async"></a><h3>ibus_bus_get_global_engine_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_get_global_engine_async    (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> timeout_msec</code></em>,
@@ -2161,35 +1978,30 @@ Get the description of current global engine asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
-     if you don't care about the result of the method invocation.
-</td>
+if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_global_engine_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-get-global-engine-async-finish"></a><h3>ibus_bus_get_global_engine_async_finish ()</h3>
 <pre class="programlisting"><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    ibus_bus_get_global_engine_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -2203,31 +2015,27 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-g
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-get-global-engine-async-finish" title="ibus_bus_get_global_engine_async_finish ()"><code class="function">ibus_bus_get_global_engine_async_finish()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-get-global-engine-async-finish" title="ibus_bus_get_global_engine_async_finish ()"><code class="function">ibus_bus_get_global_engine_async_finish()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>The description of current global engine, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if there is no
-global engine.
-</td>
+global engine.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_set_global_engine ()">
+<div class="refsect2">
 <a name="ibus-bus-set-global-engine"></a><h3>ibus_bus_set_global_engine ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_set_global_engine          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *global_engine</code></em>);</pre>
@@ -2239,25 +2047,22 @@ Set current global engine synchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>global_engine</code></em> :</span></p></td>
-<td>A new engine name.
-</td>
+<td>A new engine name.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the global engine was set successfully.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the global engine was set successfully.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_set_global_engine_async ()">
+<div class="refsect2">
 <a name="ibus-bus-set-global-engine-async"></a><h3>ibus_bus_set_global_engine_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_set_global_engine_async    (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *global_engine</code></em>,
@@ -2273,40 +2078,34 @@ Set current global engine asynchronously.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>global_engine</code></em> :</span></p></td>
-<td>A new engine name.
-</td>
+<td>A new engine name.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
-<td>The timeout in milliseconds or -1 to use the default timeout.
-</td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>A <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied
-     or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.
-</td>
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you don't care about the result of the method invocation.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
-<td>The data to pass to callback.
-</td>
+<td>The data to pass to callback.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_set_global_engine_async_finish ()">
+<div class="refsect2">
 <a name="ibus-bus-set-global-engine-async-finish"></a><h3>ibus_bus_set_global_engine_async_finish ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_bus_set_global_engine_async_finish
                                                         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
@@ -2320,31 +2119,27 @@ Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-s
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
 <td>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
-  <a class="link" href="IBusBus.html#ibus-bus-set-global-engine-async" title="ibus_bus_set_global_engine_async ()"><code class="function">ibus_bus_set_global_engine_async()</code></a>.
-</td>
+<a class="link" href="IBusBus.html#ibus-bus-set-global-engine-async" title="ibus_bus_set_global_engine_async ()"><code class="function">ibus_bus_set_global_engine_async()</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</td>
+<td>Return location for error or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if no IPC errros. <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if no IPC errros. <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_set_watch_dbus_signal ()">
+<div class="refsect2">
 <a name="ibus-bus-set-watch-dbus-signal"></a><h3>ibus_bus_set_watch_dbus_signal ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_set_watch_dbus_signal      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> watch</code></em>);</pre>
@@ -2356,21 +2151,19 @@ Start or stop watching the NameOwnerChanged DBus signal.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>watch</code></em> :</span></p></td>
 <td>
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if you want ibusbus to emit "name-owner-changed" signal when
-ibus-daemon emits the NameOwnerChanged DBus signal.
-</td>
+ibus-daemon emits the NameOwnerChanged DBus signal.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_set_watch_ibus_signal ()">
+<div class="refsect2">
 <a name="ibus-bus-set-watch-ibus-signal"></a><h3>ibus_bus_set_watch_ibus_signal ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_set_watch_ibus_signal      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> watch</code></em>);</pre>
@@ -2382,21 +2175,19 @@ Start or stop watching the GlobalEngineChanged IBus signal.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>watch</code></em> :</span></p></td>
 <td>
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if you want ibusbus to emit "global-engine-changed" signal when
-ibus-daemon emits the GlobalEngineChanged IBus signal.
-</td>
+ibus-daemon emits the GlobalEngineChanged IBus signal.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_bus_get_config ()">
+<div class="refsect2">
 <a name="ibus-bus-get-config"></a><h3>ibus_bus_get_config ()</h3>
 <pre class="programlisting"><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        ibus_bus_get_config                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
 <p>
@@ -2407,12 +2198,11 @@ Get the config instance from <a class="link" href="IBusBus.html" title="IBusBus"
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
-</td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> object which is configurable with
+<td>An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> object which is configurable with
 <em class="parameter"><code>bus</code></em>. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
 </td>
 </tr>
@@ -2420,12 +2210,12 @@ Get the config instance from <a class="link" href="IBusBus.html" title="IBusBus"
 </table></div>
 </div>
 </div>
-<div class="refsect1" title="Signal Details">
+<div class="refsect1">
 <a name="IBusBus.signal-details"></a><h2>Signal Details</h2>
-<div class="refsect2" title='The "connected" signal'>
+<div class="refsect2">
 <a name="IBusBus-connected"></a><h3>The <code class="literal">"connected"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted when <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> is connected to ibus-daemon.
 </p>
@@ -2434,8 +2224,7 @@ Emitted when <a class="link" href="IBusBus.html" title="IBusBus"><span class="ty
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>The <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object which recevied the signal
-</td>
+<td>The <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object which recevied the signal</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -2445,10 +2234,10 @@ Emitted when <a class="link" href="IBusBus.html" title="IBusBus"><span class="ty
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "disconnected" signal'>
+<div class="refsect2">
 <a name="IBusBus-disconnected"></a><h3>The <code class="literal">"disconnected"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted when <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> is disconnected from ibus-daemon.
 </p>
@@ -2457,8 +2246,7 @@ Emitted when <a class="link" href="IBusBus.html" title="IBusBus"><span class="ty
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>The <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object which recevied the signal
-</td>
+<td>The <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object which recevied the signal</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -2468,11 +2256,11 @@ Emitted when <a class="link" href="IBusBus.html" title="IBusBus"><span class="ty
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "global-engine-changed" signal'>
+<div class="refsect2">
 <a name="IBusBus-global-engine-changed"></a><h3>The <code class="literal">"global-engine-changed"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>   *name,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted when global engine is changed.
 </p>
@@ -2481,13 +2269,11 @@ Emitted when global engine is changed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>The <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object which recevied the signal
-</td>
+<td>The <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object which recevied the signal</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>The name of the new global engine.
-</td>
+<td>The name of the new global engine.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -2497,13 +2283,13 @@ Emitted when global engine is changed.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title='The "name-owner-changed" signal'>
+<div class="refsect2">
 <a name="IBusBus-name-owner-changed"></a><h3>The <code class="literal">"name-owner-changed"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>   *name,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>   *old_owner,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>   *new_owner,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted when D-Bus name owner is changed.
 </p>
@@ -2512,23 +2298,19 @@ Emitted when D-Bus name owner is changed.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
-<td>The <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object which recevied the signal
-</td>
+<td>The <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object which recevied the signal</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
-<td>The name which ower is changed.
-</td>
+<td>The name which ower is changed.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>old_owner</code></em> :</span></p></td>
-<td>The unique bus name of the old owner.
-</td>
+<td>The unique bus name of the old owner.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>new_owner</code></em> :</span></p></td>
-<td>The unique bus name of the new owner.
-</td>
+<td>The unique bus name of the new owner.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -2541,6 +2323,6 @@ Emitted when D-Bus name owner is changed.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15</div>
+          Generated by GTK-Doc V1.17</div>
 </body>
 </html>

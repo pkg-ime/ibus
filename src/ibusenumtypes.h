@@ -187,6 +187,21 @@ GType ibus_bus_request_name_reply_get_type (void) G_GNUC_CONST;
  * Returns the type of IBUS_BUS_REQUEST_NAME_REPLY as GType.
  */
 #define IBUS_TYPE_BUS_REQUEST_NAME_REPLY (ibus_bus_request_name_reply_get_type ())
+/**
+ * ibus_error_get_type:
+ * @returns: GType of IBUS_ERROR
+ *
+ * Returns the type of IBUS_ERROR as GType.
+ */
+GType ibus_error_get_type (void) G_GNUC_CONST;
+
+/**
+ * IBUS_TYPE_ERROR:
+ * @returns: GType of IBUS_ERROR
+ *
+ * Returns the type of IBUS_ERROR as GType.
+ */
+#define IBUS_TYPE_ERROR (ibus_error_get_type ())
 G_END_DECLS
 
 #endif /* __IBUS_ENUM_TYPES_H__ */

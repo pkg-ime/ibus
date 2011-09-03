@@ -37,6 +37,7 @@
     </sub>
     <sub name="Internal" link="ch06.html">
       <sub name="ibusdebug" link="ibus-ibusdebug.html"/>
+      <sub name="ibuserror" link="ibus-ibuserror.html"/>
       <sub name="IBusObject" link="IBusObject.html"/>
       <sub name="ibusshare" link="ibus-ibusshare.html"/>
       <sub name="ibustypes" link="ibus-ibustypes.html"/>
@@ -45,19 +46,19 @@
   <functions>
     <function name="enum IBusAttrType" link="IBusAttribute.html#IBusAttrType"/>
     <function name="enum IBusAttrUnderline" link="IBusAttribute.html#IBusAttrUnderline"/>
-    <function name="IBusAttribute" link="IBusAttribute.html#IBusAttribute-struct"/>
-    <function name="IBusAttributeClass" link="IBusAttribute.html#IBusAttributeClass"/>
+    <function name="struct IBusAttribute" link="IBusAttribute.html#IBusAttribute-struct"/>
+    <function name="struct IBusAttributeClass" link="IBusAttribute.html#IBusAttributeClass"/>
     <function name="ibus_attribute_new ()" link="IBusAttribute.html#ibus-attribute-new"/>
     <function name="ibus_attr_underline_new ()" link="IBusAttribute.html#ibus-attr-underline-new"/>
     <function name="ibus_attr_foreground_new ()" link="IBusAttribute.html#ibus-attr-foreground-new"/>
     <function name="ibus_attr_background_new ()" link="IBusAttribute.html#ibus-attr-background-new"/>
-    <function name="IBusAttrList" link="IBusAttrList.html#IBusAttrList-struct"/>
-    <function name="IBusAttrListClass" link="IBusAttrList.html#IBusAttrListClass"/>
+    <function name="struct IBusAttrList" link="IBusAttrList.html#IBusAttrList-struct"/>
+    <function name="struct IBusAttrListClass" link="IBusAttrList.html#IBusAttrListClass"/>
     <function name="ibus_attr_list_new ()" link="IBusAttrList.html#ibus-attr-list-new"/>
     <function name="ibus_attr_list_append ()" link="IBusAttrList.html#ibus-attr-list-append"/>
     <function name="ibus_attr_list_get ()" link="IBusAttrList.html#ibus-attr-list-get"/>
-    <function name="IBusHotkeyProfile" link="IBusHotkeyProfile.html#IBusHotkeyProfile-struct"/>
-    <function name="IBusHotkeyProfileClass" link="IBusHotkeyProfile.html#IBusHotkeyProfileClass"/>
+    <function name="struct IBusHotkeyProfile" link="IBusHotkeyProfile.html#IBusHotkeyProfile-struct"/>
+    <function name="struct IBusHotkeyProfileClass" link="IBusHotkeyProfile.html#IBusHotkeyProfileClass"/>
     <function name="ibus_hotkey_profile_add_hotkey ()" link="IBusHotkeyProfile.html#ibus-hotkey-profile-add-hotkey"/>
     <function name="ibus_hotkey_profile_add_hotkey_from_string ()" link="IBusHotkeyProfile.html#ibus-hotkey-profile-add-hotkey-from-string"/>
     <function name="ibus_hotkey_profile_remove_hotkey ()" link="IBusHotkeyProfile.html#ibus-hotkey-profile-remove-hotkey"/>
@@ -65,8 +66,8 @@
     <function name="ibus_hotkey_profile_filter_key_event ()" link="IBusHotkeyProfile.html#ibus-hotkey-profile-filter-key-event"/>
     <function name="ibus_hotkey_profile_lookup_hotkey ()" link="IBusHotkeyProfile.html#ibus-hotkey-profile-lookup-hotkey"/>
     <function name="The &quot;trigger&quot; signal" link="IBusHotkeyProfile.html#IBusHotkeyProfile-trigger"/>
-    <function name="IBusLookupTable" link="IBusLookupTable.html#IBusLookupTable-struct"/>
-    <function name="IBusLookupTableClass" link="IBusLookupTable.html#IBusLookupTableClass"/>
+    <function name="struct IBusLookupTable" link="IBusLookupTable.html#IBusLookupTable-struct"/>
+    <function name="struct IBusLookupTableClass" link="IBusLookupTable.html#IBusLookupTableClass"/>
     <function name="ibus_lookup_table_new ()" link="IBusLookupTable.html#ibus-lookup-table-new"/>
     <function name="ibus_lookup_table_append_candidate ()" link="IBusLookupTable.html#ibus-lookup-table-append-candidate"/>
     <function name="ibus_lookup_table_get_number_of_candidates ()" link="IBusLookupTable.html#ibus-lookup-table-get-number-of-candidates"/>
@@ -90,8 +91,8 @@
     <function name="ibus_lookup_table_page_down ()" link="IBusLookupTable.html#ibus-lookup-table-page-down"/>
     <function name="ibus_lookup_table_cursor_up ()" link="IBusLookupTable.html#ibus-lookup-table-cursor-up"/>
     <function name="ibus_lookup_table_cursor_down ()" link="IBusLookupTable.html#ibus-lookup-table-cursor-down"/>
-    <function name="IBusPanelService" link="IBusPanelService.html#IBusPanelService-struct"/>
-    <function name="IBusPanelServiceClass" link="IBusPanelService.html#IBusPanelServiceClass"/>
+    <function name="struct IBusPanelService" link="IBusPanelService.html#IBusPanelService-struct"/>
+    <function name="struct IBusPanelServiceClass" link="IBusPanelService.html#IBusPanelServiceClass"/>
     <function name="ibus_panel_service_new ()" link="IBusPanelService.html#ibus-panel-service-new"/>
     <function name="ibus_panel_service_candidate_clicked ()" link="IBusPanelService.html#ibus-panel-service-candidate-clicked"/>
     <function name="ibus_panel_service_cursor_down ()" link="IBusPanelService.html#ibus-panel-service-cursor-down"/>
@@ -126,10 +127,8 @@
     <function name="The &quot;update-property&quot; signal" link="IBusPanelService.html#IBusPanelService-update-property"/>
     <function name="enum IBusPropType" link="IBusProperty.html#IBusPropType"/>
     <function name="enum IBusPropState" link="IBusProperty.html#IBusPropState"/>
-    <function name="IBusProperty" link="IBusProperty.html#IBusProperty-struct"/>
-    <function name="IBusPropertyClass" link="IBusProperty.html#IBusPropertyClass"/>
-    <function name="IBusPropList" link="IBusProperty.html#IBusPropList-struct"/>
-    <function name="IBusPropListClass" link="IBusProperty.html#IBusPropListClass"/>
+    <function name="struct IBusProperty" link="IBusProperty.html#IBusProperty-struct"/>
+    <function name="struct IBusPropertyClass" link="IBusProperty.html#IBusPropertyClass"/>
     <function name="ibus_property_new ()" link="IBusProperty.html#ibus-property-new"/>
     <function name="ibus_property_get_key ()" link="IBusProperty.html#ibus-property-get-key"/>
     <function name="ibus_property_get_prop_type ()" link="IBusProperty.html#ibus-property-get-prop-type"/>
@@ -148,14 +147,16 @@
     <function name="ibus_property_get_sub_props ()" link="IBusProperty.html#ibus-property-get-sub-props"/>
     <function name="ibus_property_set_sub_props ()" link="IBusProperty.html#ibus-property-set-sub-props"/>
     <function name="ibus_property_update ()" link="IBusProperty.html#ibus-property-update"/>
+    <function name="IBusPropListClass" link="IBusProperty.html#IBusPropListClass"/>
+    <function name="IBusPropList" link="IBusProperty.html#IBusPropList-struct"/>
     <function name="IBusPropList" link="IBusPropList.html#IBusPropList-struct"/>
     <function name="IBusPropListClass" link="IBusPropList.html#IBusPropListClass"/>
     <function name="ibus_prop_list_new ()" link="IBusPropList.html#ibus-prop-list-new"/>
     <function name="ibus_prop_list_append ()" link="IBusPropList.html#ibus-prop-list-append"/>
     <function name="ibus_prop_list_get ()" link="IBusPropList.html#ibus-prop-list-get"/>
     <function name="ibus_prop_list_update_property ()" link="IBusPropList.html#ibus-prop-list-update-property"/>
-    <function name="IBusText" link="IBusText.html#IBusText-struct"/>
-    <function name="IBusTextClass" link="IBusText.html#IBusTextClass"/>
+    <function name="struct IBusText" link="IBusText.html#IBusText-struct"/>
+    <function name="struct IBusTextClass" link="IBusText.html#IBusTextClass"/>
     <function name="ibus_text_new_from_string ()" link="IBusText.html#ibus-text-new-from-string"/>
     <function name="ibus_text_new_from_ucs4 ()" link="IBusText.html#ibus-text-new-from-ucs4"/>
     <function name="ibus_text_new_from_static_string ()" link="IBusText.html#ibus-text-new-from-static-string"/>
@@ -166,8 +167,8 @@
     <function name="ibus_text_get_is_static ()" link="IBusText.html#ibus-text-get-is-static"/>
     <function name="ibus_text_get_text ()" link="IBusText.html#ibus-text-get-text"/>
     <function name="ibus_text_get_attributes ()" link="IBusText.html#ibus-text-get-attributes"/>
-    <function name="IBusComponent" link="IBusComponent.html#IBusComponent-struct"/>
-    <function name="IBusComponentClass" link="IBusComponent.html#IBusComponentClass"/>
+    <function name="struct IBusComponent" link="IBusComponent.html#IBusComponent-struct"/>
+    <function name="struct IBusComponentClass" link="IBusComponent.html#IBusComponentClass"/>
     <function name="ibus_component_new ()" link="IBusComponent.html#ibus-component-new"/>
     <function name="ibus_component_new_varargs ()" link="IBusComponent.html#ibus-component-new-varargs"/>
     <function name="ibus_component_new_from_xml_node ()" link="IBusComponent.html#ibus-component-new-from-xml-node"/>
@@ -194,8 +195,8 @@
     <function name="The &quot;name&quot; property" link="IBusComponent.html#IBusComponent--name"/>
     <function name="The &quot;textdomain&quot; property" link="IBusComponent.html#IBusComponent--textdomain"/>
     <function name="The &quot;version&quot; property" link="IBusComponent.html#IBusComponent--version"/>
-    <function name="IBusEngine" link="IBusEngine.html#IBusEngine-struct"/>
-    <function name="IBusEngineClass" link="IBusEngine.html#IBusEngineClass"/>
+    <function name="struct IBusEngine" link="IBusEngine.html#IBusEngine-struct"/>
+    <function name="struct IBusEngineClass" link="IBusEngine.html#IBusEngineClass"/>
     <function name="ibus_engine_new ()" link="IBusEngine.html#ibus-engine-new"/>
     <function name="ibus_engine_new_type ()" link="IBusEngine.html#ibus-engine-new-type"/>
     <function name="ibus_engine_commit_text ()" link="IBusEngine.html#ibus-engine-commit-text"/>
@@ -217,6 +218,7 @@
     <function name="ibus_engine_get_surrounding_text ()" link="IBusEngine.html#ibus-engine-get-surrounding-text"/>
     <function name="ibus_engine_get_name ()" link="IBusEngine.html#ibus-engine-get-name"/>
     <function name="The &quot;engine-name&quot; property" link="IBusEngine.html#IBusEngine--engine-name"/>
+    <function name="The &quot;cancel-hand-writing&quot; signal" link="IBusEngine.html#IBusEngine-cancel-hand-writing"/>
     <function name="The &quot;candidate-clicked&quot; signal" link="IBusEngine.html#IBusEngine-candidate-clicked"/>
     <function name="The &quot;cursor-down&quot; signal" link="IBusEngine.html#IBusEngine-cursor-down"/>
     <function name="The &quot;cursor-up&quot; signal" link="IBusEngine.html#IBusEngine-cursor-up"/>
@@ -226,6 +228,7 @@
     <function name="The &quot;focus-out&quot; signal" link="IBusEngine.html#IBusEngine-focus-out"/>
     <function name="The &quot;page-down&quot; signal" link="IBusEngine.html#IBusEngine-page-down"/>
     <function name="The &quot;page-up&quot; signal" link="IBusEngine.html#IBusEngine-page-up"/>
+    <function name="The &quot;process-hand-writing-event&quot; signal" link="IBusEngine.html#IBusEngine-process-hand-writing-event"/>
     <function name="The &quot;process-key-event&quot; signal" link="IBusEngine.html#IBusEngine-process-key-event"/>
     <function name="The &quot;property-activate&quot; signal" link="IBusEngine.html#IBusEngine-property-activate"/>
     <function name="The &quot;property-hide&quot; signal" link="IBusEngine.html#IBusEngine-property-hide"/>
@@ -234,8 +237,8 @@
     <function name="The &quot;set-capabilities&quot; signal" link="IBusEngine.html#IBusEngine-set-capabilities"/>
     <function name="The &quot;set-cursor-location&quot; signal" link="IBusEngine.html#IBusEngine-set-cursor-location"/>
     <function name="The &quot;set-surrounding-text&quot; signal" link="IBusEngine.html#IBusEngine-set-surrounding-text"/>
-    <function name="IBusEngineDesc" link="IBusEngineDesc.html#IBusEngineDesc-struct"/>
-    <function name="IBusEngineDescClass" link="IBusEngineDesc.html#IBusEngineDescClass"/>
+    <function name="struct IBusEngineDesc" link="IBusEngineDesc.html#IBusEngineDesc-struct"/>
+    <function name="struct IBusEngineDescClass" link="IBusEngineDesc.html#IBusEngineDescClass"/>
     <function name="ibus_engine_desc_new ()" link="IBusEngineDesc.html#ibus-engine-desc-new"/>
     <function name="ibus_engine_desc_new_varargs ()" link="IBusEngineDesc.html#ibus-engine-desc-new-varargs"/>
     <function name="ibus_engine_desc_new_from_xml_node ()" link="IBusEngineDesc.html#ibus-engine-desc-new-from-xml-node"/>
@@ -249,6 +252,7 @@
     <function name="ibus_engine_desc_get_layout ()" link="IBusEngineDesc.html#ibus-engine-desc-get-layout"/>
     <function name="ibus_engine_desc_get_rank ()" link="IBusEngineDesc.html#ibus-engine-desc-get-rank"/>
     <function name="ibus_engine_desc_get_hotkeys ()" link="IBusEngineDesc.html#ibus-engine-desc-get-hotkeys"/>
+    <function name="ibus_engine_desc_get_symbol ()" link="IBusEngineDesc.html#ibus-engine-desc-get-symbol"/>
     <function name="ibus_engine_desc_output ()" link="IBusEngineDesc.html#ibus-engine-desc-output"/>
     <function name="The &quot;author&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--author"/>
     <function name="The &quot;description&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--description"/>
@@ -260,18 +264,22 @@
     <function name="The &quot;longname&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--longname"/>
     <function name="The &quot;name&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--name"/>
     <function name="The &quot;rank&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--rank"/>
-    <function name="IBusFactory" link="IBusFactory.html#IBusFactory-struct"/>
-    <function name="IBusFactoryClass" link="IBusFactory.html#IBusFactoryClass"/>
+    <function name="The &quot;symbol&quot; property" link="IBusEngineDesc.html#IBusEngineDesc--symbol"/>
+    <function name="struct IBusFactory" link="IBusFactory.html#IBusFactory-struct"/>
+    <function name="struct IBusFactoryClass" link="IBusFactory.html#IBusFactoryClass"/>
     <function name="ibus_factory_new ()" link="IBusFactory.html#ibus-factory-new"/>
     <function name="ibus_factory_add_engine ()" link="IBusFactory.html#ibus-factory-add-engine"/>
-    <function name="IBusInputContext" link="IBusInputContext.html#IBusInputContext-struct"/>
-    <function name="IBusInputContextClass" link="IBusInputContext.html#IBusInputContextClass"/>
+    <function name="The &quot;create-engine&quot; signal" link="IBusFactory.html#IBusFactory-create-engine"/>
+    <function name="struct IBusInputContext" link="IBusInputContext.html#IBusInputContext-struct"/>
+    <function name="struct IBusInputContextClass" link="IBusInputContext.html#IBusInputContextClass"/>
     <function name="ibus_input_context_new ()" link="IBusInputContext.html#ibus-input-context-new"/>
     <function name="ibus_input_context_new_async ()" link="IBusInputContext.html#ibus-input-context-new-async"/>
     <function name="ibus_input_context_new_async_finish ()" link="IBusInputContext.html#ibus-input-context-new-async-finish"/>
     <function name="ibus_input_context_get_input_context ()" link="IBusInputContext.html#ibus-input-context-get-input-context"/>
     <function name="ibus_input_context_get_input_context_async ()" link="IBusInputContext.html#ibus-input-context-get-input-context-async"/>
     <function name="ibus_input_context_get_input_context_async_finish ()" link="IBusInputContext.html#ibus-input-context-get-input-context-async-finish"/>
+    <function name="ibus_input_context_process_hand_writing_event ()" link="IBusInputContext.html#ibus-input-context-process-hand-writing-event"/>
+    <function name="ibus_input_context_cancel_hand_writing ()" link="IBusInputContext.html#ibus-input-context-cancel-hand-writing"/>
     <function name="ibus_input_context_process_key_event_async ()" link="IBusInputContext.html#ibus-input-context-process-key-event-async"/>
     <function name="ibus_input_context_process_key_event_async_finish ()" link="IBusInputContext.html#ibus-input-context-process-key-event-async-finish"/>
     <function name="ibus_input_context_process_key_event ()" link="IBusInputContext.html#ibus-input-context-process-key-event"/>
@@ -312,8 +320,8 @@
     <function name="The &quot;update-lookup-table&quot; signal" link="IBusInputContext.html#IBusInputContext-update-lookup-table"/>
     <function name="The &quot;update-preedit-text&quot; signal" link="IBusInputContext.html#IBusInputContext-update-preedit-text"/>
     <function name="The &quot;update-property&quot; signal" link="IBusInputContext.html#IBusInputContext-update-property"/>
-    <function name="IBusKeymap" link="IBusKeymap.html#IBusKeymap-struct"/>
-    <function name="IBusKeymapClass" link="IBusKeymap.html#IBusKeymapClass"/>
+    <function name="struct IBusKeymap" link="IBusKeymap.html#IBusKeymap-struct"/>
+    <function name="struct IBusKeymapClass" link="IBusKeymap.html#IBusKeymapClass"/>
     <function name="ibus_keymap_new ()" link="IBusKeymap.html#ibus-keymap-new"/>
     <function name="ibus_keymap_get ()" link="IBusKeymap.html#ibus-keymap-get"/>
     <function name="ibus_keymap_lookup_keysym ()" link="IBusKeymap.html#ibus-keymap-lookup-keysym"/>
@@ -2306,23 +2314,28 @@
     <function name="IBUS_braille_dots_1345678" link="ibus-IBusKeysyms.html#IBUS-braille-dots-1345678"/>
     <function name="IBUS_braille_dots_2345678" link="ibus-IBusKeysyms.html#IBUS-braille-dots-2345678"/>
     <function name="IBUS_braille_dots_12345678" link="ibus-IBusKeysyms.html#IBUS-braille-dots-12345678"/>
-    <function name="IBusConfig" link="IBusConfig.html#IBusConfig-struct"/>
-    <function name="IBusConfigClass" link="IBusConfig.html#IBusConfigClass"/>
+    <function name="struct IBusConfig" link="IBusConfig.html#IBusConfig-struct"/>
+    <function name="struct IBusConfigClass" link="IBusConfig.html#IBusConfigClass"/>
     <function name="ibus_config_new ()" link="IBusConfig.html#ibus-config-new"/>
+    <function name="ibus_config_new_async ()" link="IBusConfig.html#ibus-config-new-async"/>
+    <function name="ibus_config_new_async_finish ()" link="IBusConfig.html#ibus-config-new-async-finish"/>
     <function name="ibus_config_get_value ()" link="IBusConfig.html#ibus-config-get-value"/>
     <function name="ibus_config_get_value_async ()" link="IBusConfig.html#ibus-config-get-value-async"/>
     <function name="ibus_config_get_value_async_finish ()" link="IBusConfig.html#ibus-config-get-value-async-finish"/>
+    <function name="ibus_config_get_values ()" link="IBusConfig.html#ibus-config-get-values"/>
+    <function name="ibus_config_get_values_async ()" link="IBusConfig.html#ibus-config-get-values-async"/>
+    <function name="ibus_config_get_values_async_finish ()" link="IBusConfig.html#ibus-config-get-values-async-finish"/>
     <function name="ibus_config_set_value ()" link="IBusConfig.html#ibus-config-set-value"/>
     <function name="ibus_config_set_value_async ()" link="IBusConfig.html#ibus-config-set-value-async"/>
     <function name="ibus_config_set_value_async_finish ()" link="IBusConfig.html#ibus-config-set-value-async-finish"/>
     <function name="ibus_config_unset ()" link="IBusConfig.html#ibus-config-unset"/>
     <function name="The &quot;value-changed&quot; signal" link="IBusConfig.html#IBusConfig-value-changed"/>
-    <function name="IBusConfigService" link="IBusConfigService.html#IBusConfigService-struct"/>
-    <function name="IBusConfigServiceClass" link="IBusConfigService.html#IBusConfigServiceClass"/>
+    <function name="struct IBusConfigService" link="IBusConfigService.html#IBusConfigService-struct"/>
+    <function name="struct IBusConfigServiceClass" link="IBusConfigService.html#IBusConfigServiceClass"/>
     <function name="ibus_config_service_new ()" link="IBusConfigService.html#ibus-config-service-new"/>
     <function name="ibus_config_service_value_changed ()" link="IBusConfigService.html#ibus-config-service-value-changed"/>
-    <function name="IBusObservedPath" link="IBusObservedPath.html#IBusObservedPath-struct"/>
-    <function name="IBusObservedPathClass" link="IBusObservedPath.html#IBusObservedPathClass"/>
+    <function name="struct IBusObservedPath" link="IBusObservedPath.html#IBusObservedPath-struct"/>
+    <function name="struct IBusObservedPathClass" link="IBusObservedPath.html#IBusObservedPathClass"/>
     <function name="ibus_observed_path_new_from_xml_node ()" link="IBusObservedPath.html#ibus-observed-path-new-from-xml-node"/>
     <function name="ibus_observed_path_new ()" link="IBusObservedPath.html#ibus-observed-path-new"/>
     <function name="ibus_observed_path_traverse ()" link="IBusObservedPath.html#ibus-observed-path-traverse"/>
@@ -2337,8 +2350,8 @@
     <function name="ibus_xml_parse_buffer ()" link="ibus-ibusxml.html#ibus-xml-parse-buffer"/>
     <function name="ibus_xml_free ()" link="ibus-ibusxml.html#ibus-xml-free"/>
     <function name="ibus_xml_output ()" link="ibus-ibusxml.html#ibus-xml-output"/>
-    <function name="IBusBus" link="IBusBus.html#IBusBus-struct"/>
-    <function name="IBusBusClass" link="IBusBus.html#IBusBusClass"/>
+    <function name="struct IBusBus" link="IBusBus.html#IBusBus-struct"/>
+    <function name="struct IBusBusClass" link="IBusBus.html#IBusBusClass"/>
     <function name="ibus_bus_new ()" link="IBusBus.html#ibus-bus-new"/>
     <function name="ibus_bus_is_connected ()" link="IBusBus.html#ibus-bus-is-connected"/>
     <function name="ibus_bus_get_connection ()" link="IBusBus.html#ibus-bus-get-connection"/>
@@ -2403,22 +2416,22 @@
     <function name="The &quot;disconnected&quot; signal" link="IBusBus.html#IBusBus-disconnected"/>
     <function name="The &quot;global-engine-changed&quot; signal" link="IBusBus.html#IBusBus-global-engine-changed"/>
     <function name="The &quot;name-owner-changed&quot; signal" link="IBusBus.html#IBusBus-name-owner-changed"/>
-    <function name="IBusProxy" link="IBusProxy.html#IBusProxy-struct"/>
-    <function name="IBusProxyClass" link="IBusProxy.html#IBusProxyClass"/>
     <function name="IBUS_PROXY_FLAGS()" link="IBusProxy.html#IBUS-PROXY-FLAGS:CAPS"/>
     <function name="IBUS_PROXY_SET_FLAGS()" link="IBusProxy.html#IBUS-PROXY-SET-FLAGS:CAPS"/>
     <function name="IBUS_PROXY_UNSET_FLAGS()" link="IBusProxy.html#IBUS-PROXY-UNSET-FLAGS:CAPS"/>
     <function name="IBUS_PROXY_DESTROYED()" link="IBusProxy.html#IBUS-PROXY-DESTROYED:CAPS"/>
+    <function name="struct IBusProxy" link="IBusProxy.html#IBusProxy-struct"/>
+    <function name="struct IBusProxyClass" link="IBusProxy.html#IBusProxyClass"/>
     <function name="ibus_proxy_destroy ()" link="IBusProxy.html#ibus-proxy-destroy"/>
     <function name="The &quot;destroy&quot; signal" link="IBusProxy.html#IBusProxy-destroy"/>
     <function name="ibus_serializable_set_attachment()" link="IBusSerializable.html#ibus-serializable-set-attachment"/>
     <function name="ibus_serializable_get_attachment()" link="IBusSerializable.html#ibus-serializable-get-attachment"/>
     <function name="ibus_serializable_remove_attachment()" link="IBusSerializable.html#ibus-serializable-remove-attachment"/>
-    <function name="IBusSerializable" link="IBusSerializable.html#IBusSerializable-struct"/>
-    <function name="IBusSerializableClass" link="IBusSerializable.html#IBusSerializableClass"/>
+    <function name="struct IBusSerializable" link="IBusSerializable.html#IBusSerializable-struct"/>
     <function name="IBusSerializableSerializeFunc ()" link="IBusSerializable.html#IBusSerializableSerializeFunc"/>
     <function name="IBusSerializableDeserializeFunc ()" link="IBusSerializable.html#IBusSerializableDeserializeFunc"/>
     <function name="IBusSerializableCopyFunc ()" link="IBusSerializable.html#IBusSerializableCopyFunc"/>
+    <function name="struct IBusSerializableClass" link="IBusSerializable.html#IBusSerializableClass"/>
     <function name="ibus_serializable_new ()" link="IBusSerializable.html#ibus-serializable-new"/>
     <function name="ibus_serializable_set_qattachment ()" link="IBusSerializable.html#ibus-serializable-set-qattachment"/>
     <function name="ibus_serializable_get_qattachment ()" link="IBusSerializable.html#ibus-serializable-get-qattachment"/>
@@ -2426,8 +2439,8 @@
     <function name="ibus_serializable_copy ()" link="IBusSerializable.html#ibus-serializable-copy"/>
     <function name="ibus_serializable_serialize ()" link="IBusSerializable.html#ibus-serializable-serialize"/>
     <function name="ibus_serializable_deserialize ()" link="IBusSerializable.html#ibus-serializable-deserialize"/>
-    <function name="IBusService" link="IBusService.html#IBusService-struct"/>
-    <function name="IBusServiceClass" link="IBusService.html#IBusServiceClass"/>
+    <function name="struct IBusService" link="IBusService.html#IBusService-struct"/>
+    <function name="struct IBusServiceClass" link="IBusService.html#IBusServiceClass"/>
     <function name="ibus_service_new ()" link="IBusService.html#ibus-service-new"/>
     <function name="ibus_service_get_object_path ()" link="IBusService.html#ibus-service-get-object-path"/>
     <function name="ibus_service_get_connection ()" link="IBusService.html#ibus-service-get-connection"/>
@@ -2436,10 +2449,12 @@
     <function name="ibus_service_emit_signal ()" link="IBusService.html#ibus-service-emit-signal"/>
     <function name="ibus_service_class_add_interfaces ()" link="IBusService.html#ibus-service-class-add-interfaces"/>
     <function name="ibus_warning()" link="ibus-ibusdebug.html#ibus-warning"/>
+    <function name="IBUS_ERROR" link="ibus-ibuserror.html#IBUS-ERROR:CAPS"/>
+    <function name="ibus_error_quark ()" link="ibus-ibuserror.html#ibus-error-quark"/>
     <function name="IBUS_OBJECT_IN_DESTRUCTION()" link="IBusObject.html#IBUS-OBJECT-IN-DESTRUCTION:CAPS"/>
     <function name="IBUS_OBJECT_DESTROYED()" link="IBusObject.html#IBUS-OBJECT-DESTROYED:CAPS"/>
-    <function name="IBusObject" link="IBusObject.html#IBusObject-struct"/>
-    <function name="IBusObjectClass" link="IBusObject.html#IBusObjectClass"/>
+    <function name="struct IBusObject" link="IBusObject.html#IBusObject-struct"/>
+    <function name="struct IBusObjectClass" link="IBusObject.html#IBusObjectClass"/>
     <function name="ibus_object_new ()" link="IBusObject.html#ibus-object-new"/>
     <function name="ibus_object_destroy ()" link="IBusObject.html#ibus-object-destroy"/>
     <function name="The &quot;destroy&quot; signal" link="IBusObject.html#IBusObject-destroy"/>
@@ -2468,8 +2483,6 @@
     <function name="ibus_get_daemon_uid ()" link="ibus-ibusshare.html#ibus-get-daemon-uid"/>
     <function name="ibus_get_socket_path ()" link="ibus-ibusshare.html#ibus-get-socket-path"/>
     <function name="ibus_get_timeout ()" link="ibus-ibusshare.html#ibus-get-timeout"/>
-    <function name="ibus_keyval_name ()" link="ibus-ibusshare.html#ibus-keyval-name"/>
-    <function name="ibus_keyval_from_name ()" link="ibus-ibusshare.html#ibus-keyval-from-name"/>
     <function name="ibus_free_strv ()" link="ibus-ibusshare.html#ibus-free-strv"/>
     <function name="ibus_key_event_to_string ()" link="ibus-ibusshare.html#ibus-key-event-to-string"/>
     <function name="ibus_key_event_from_string ()" link="ibus-ibusshare.html#ibus-key-event-from-string"/>
@@ -2483,7 +2496,8 @@
     <function name="enum IBusOrientation" link="ibus-ibustypes.html#IBusOrientation"/>
     <function name="enum IBusBusNameFlag" link="ibus-ibustypes.html#IBusBusNameFlag"/>
     <function name="enum IBusBusRequestNameReply" link="ibus-ibustypes.html#IBusBusRequestNameReply"/>
-    <function name="IBusRectangle" link="ibus-ibustypes.html#IBusRectangle"/>
+    <function name="enum IBusError" link="ibus-ibustypes.html#IBusError"/>
+    <function name="struct IBusRectangle" link="ibus-ibustypes.html#IBusRectangle"/>
     <function name="IBusFreeFunc ()" link="ibus-ibustypes.html#IBusFreeFunc"/>
   </functions>
 </book>

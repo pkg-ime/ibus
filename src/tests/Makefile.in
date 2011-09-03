@@ -57,11 +57,11 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 noinst_PROGRAMS = $(am__EXEEXT_2)
-TESTS = ibus-bus$(EXEEXT) ibus-inputcontext$(EXEEXT) \
-	ibus-inputcontext-create$(EXEEXT) ibus-keynames$(EXEEXT) \
-	ibus-serializable$(EXEEXT) ibus-share$(EXEEXT) \
-	ibus-factory$(EXEEXT) ibus-configservice$(EXEEXT) \
-	$(am__EXEEXT_1)
+TESTS = ibus-bus$(EXEEXT) ibus-config$(EXEEXT) \
+	ibus-inputcontext$(EXEEXT) ibus-inputcontext-create$(EXEEXT) \
+	ibus-keynames$(EXEEXT) ibus-serializable$(EXEEXT) \
+	ibus-share$(EXEEXT) ibus-factory$(EXEEXT) \
+	ibus-configservice$(EXEEXT) $(am__EXEEXT_1)
 subdir = src/tests
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -77,11 +77,11 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__EXEEXT_1 =
-am__EXEEXT_2 = ibus-bus$(EXEEXT) ibus-inputcontext$(EXEEXT) \
-	ibus-inputcontext-create$(EXEEXT) ibus-keynames$(EXEEXT) \
-	ibus-serializable$(EXEEXT) ibus-share$(EXEEXT) \
-	ibus-factory$(EXEEXT) ibus-configservice$(EXEEXT) \
-	$(am__EXEEXT_1)
+am__EXEEXT_2 = ibus-bus$(EXEEXT) ibus-config$(EXEEXT) \
+	ibus-inputcontext$(EXEEXT) ibus-inputcontext-create$(EXEEXT) \
+	ibus-keynames$(EXEEXT) ibus-serializable$(EXEEXT) \
+	ibus-share$(EXEEXT) ibus-factory$(EXEEXT) \
+	ibus-configservice$(EXEEXT) $(am__EXEEXT_1)
 PROGRAMS = $(noinst_PROGRAMS)
 am_ibus_bus_OBJECTS = ibus-bus.$(OBJEXT)
 ibus_bus_OBJECTS = $(am_ibus_bus_OBJECTS)
@@ -93,6 +93,9 @@ ibus_bus_DEPENDENCIES = $(am__DEPENDENCIES_2)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
+am_ibus_config_OBJECTS = ibus-config.$(OBJEXT)
+ibus_config_OBJECTS = $(am_ibus_config_OBJECTS)
+ibus_config_DEPENDENCIES = $(am__DEPENDENCIES_2)
 am_ibus_configservice_OBJECTS = ibus-configservice.$(OBJEXT)
 ibus_configservice_OBJECTS = $(am_ibus_configservice_OBJECTS)
 ibus_configservice_DEPENDENCIES = $(am__DEPENDENCIES_2)
@@ -145,12 +148,14 @@ am__v_CCLD_0 = @echo "  CCLD  " $@;
 AM_V_GEN = $(am__v_GEN_$(V))
 am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))
 am__v_GEN_0 = @echo "  GEN   " $@;
-SOURCES = $(ibus_bus_SOURCES) $(ibus_configservice_SOURCES) \
-	$(ibus_factory_SOURCES) $(ibus_inputcontext_SOURCES) \
+SOURCES = $(ibus_bus_SOURCES) $(ibus_config_SOURCES) \
+	$(ibus_configservice_SOURCES) $(ibus_factory_SOURCES) \
+	$(ibus_inputcontext_SOURCES) \
 	$(ibus_inputcontext_create_SOURCES) $(ibus_keynames_SOURCES) \
 	$(ibus_serializable_SOURCES) $(ibus_share_SOURCES)
-DIST_SOURCES = $(ibus_bus_SOURCES) $(ibus_configservice_SOURCES) \
-	$(ibus_factory_SOURCES) $(ibus_inputcontext_SOURCES) \
+DIST_SOURCES = $(ibus_bus_SOURCES) $(ibus_config_SOURCES) \
+	$(ibus_configservice_SOURCES) $(ibus_factory_SOURCES) \
+	$(ibus_inputcontext_SOURCES) \
 	$(ibus_inputcontext_create_SOURCES) $(ibus_keynames_SOURCES) \
 	$(ibus_serializable_SOURCES) $(ibus_share_SOURCES)
 ETAGS = etags
@@ -180,12 +185,16 @@ CXXDEPMODE = @CXXDEPMODE@
 CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DATADIRNAME = @DATADIRNAME@
+DATE_DISPLAY = @DATE_DISPLAY@
 DBUS_CFLAGS = @DBUS_CFLAGS@
 DBUS_LIBS = @DBUS_LIBS@
 DBUS_PYTHON_CFLAGS = @DBUS_PYTHON_CFLAGS@
 DBUS_PYTHON_LIBS = @DBUS_PYTHON_LIBS@
+DCONF_CFLAGS = @DCONF_CFLAGS@
+DCONF_LIBS = @DCONF_LIBS@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DLLTOOL = @DLLTOOL@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
@@ -210,6 +219,7 @@ GIO2_LIBS = @GIO2_LIBS@
 GLIB2_CFLAGS = @GLIB2_CFLAGS@
 GLIB2_LIBS = @GLIB2_LIBS@
 GLIB_CFLAGS = @GLIB_CFLAGS@
+GLIB_COMPILE_SCHEMAS = @GLIB_COMPILE_SCHEMAS@
 GLIB_GENMARSHAL = @GLIB_GENMARSHAL@
 GLIB_LIBS = @GLIB_LIBS@
 GLIB_MKENUMS = @GLIB_MKENUMS@
@@ -219,6 +229,7 @@ GOBJECT2_CFLAGS = @GOBJECT2_CFLAGS@
 GOBJECT2_LIBS = @GOBJECT2_LIBS@
 GOBJECT_QUERY = @GOBJECT_QUERY@
 GREP = @GREP@
+GSETTINGS_DISABLE_SCHEMAS_COMPILE = @GSETTINGS_DISABLE_SCHEMAS_COMPILE@
 GTHREAD2_CFLAGS = @GTHREAD2_CFLAGS@
 GTHREAD2_LIBS = @GTHREAD2_LIBS@
 GTK2_CFLAGS = @GTK2_CFLAGS@
@@ -270,6 +281,7 @@ LTLIBOBJS = @LTLIBOBJS@
 LT_VERSION_INFO = @LT_VERSION_INFO@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
+MANIFEST_TOOL = @MANIFEST_TOOL@
 MKDIR_P = @MKDIR_P@
 MKINSTALLDIRS = @MKINSTALLDIRS@
 MSGFMT = @MSGFMT@
@@ -319,6 +331,7 @@ abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
+ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
 ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
@@ -339,6 +352,7 @@ datarootdir = @datarootdir@
 docdir = @docdir@
 dvidir = @dvidir@
 exec_prefix = @exec_prefix@
+gsettingsschemadir = @gsettingsschemadir@
 host = @host@
 host_alias = @host_alias@
 host_cpu = @host_cpu@
@@ -352,7 +366,6 @@ libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
 localstatedir = @localstatedir@
-lt_ECHO = @lt_ECHO@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
@@ -388,6 +401,8 @@ prog_ldadd = \
 
 ibus_bus_SOURCES = ibus-bus.c
 ibus_bus_LDADD = $(prog_ldadd)
+ibus_config_SOURCES = ibus-config.c
+ibus_config_LDADD = $(prog_ldadd)
 ibus_inputcontext_SOURCES = ibus-inputcontext.c
 ibus_inputcontext_LDADD = $(prog_ldadd)
 ibus_inputcontext_create_SOURCES = ibus-inputcontext-create.c
@@ -449,6 +464,9 @@ clean-noinstPROGRAMS:
 ibus-bus$(EXEEXT): $(ibus_bus_OBJECTS) $(ibus_bus_DEPENDENCIES) 
 	@rm -f ibus-bus$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(ibus_bus_OBJECTS) $(ibus_bus_LDADD) $(LIBS)
+ibus-config$(EXEEXT): $(ibus_config_OBJECTS) $(ibus_config_DEPENDENCIES) 
+	@rm -f ibus-config$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(ibus_config_OBJECTS) $(ibus_config_LDADD) $(LIBS)
 ibus-configservice$(EXEEXT): $(ibus_configservice_OBJECTS) $(ibus_configservice_DEPENDENCIES) 
 	@rm -f ibus-configservice$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(ibus_configservice_OBJECTS) $(ibus_configservice_LDADD) $(LIBS)
@@ -478,6 +496,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus-bus.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus-config.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus-configservice.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus-factory.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibus-inputcontext-create.Po@am__quote@

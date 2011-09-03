@@ -25,6 +25,10 @@ SUBDIRS = \
 	keymaps \
 	$(NULL)
 
+if ENABLE_DCONF
+SUBDIRS += dconf
+endif
+
 schemasdir = $(GCONF_SCHEMA_FILE_DIR)
 schemas_in_files = ibus.schemas.in
 schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)

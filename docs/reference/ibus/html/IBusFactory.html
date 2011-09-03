@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>IBusFactory</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="IBus Reference Manual">
 <link rel="up" href="ch03.html" title="Input method engine">
 <link rel="prev" href="IBusEngineDesc.html" title="IBusEngineDesc">
 <link rel="next" href="IBusInputContext.html" title="IBusInputContext">
-<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.17 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -26,9 +26,11 @@
                   <a href="#IBusFactory.description" class="shortcut">Description</a>
                    | 
                   <a href="#IBusFactory.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusFactory.signals" class="shortcut">Signals</a>
 </td></tr>
 </table>
-<div class="refentry" title="IBusFactory">
+<div class="refentry">
 <a name="IBusFactory"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -37,21 +39,21 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsect1" title="Stability Level">
+<div class="refsect1">
 <a name="IBusFactory.stability-level"></a><h2>Stability Level</h2>
 Stable, unless otherwise indicated
 </div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="IBusFactory.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">                    <a class="link" href="IBusFactory.html#IBusFactory-struct" title="IBusFactory">IBusFactory</a>;
-                    <a class="link" href="IBusFactory.html#IBusFactoryClass" title="IBusFactoryClass">IBusFactoryClass</a>;
+<pre class="synopsis">struct              <a class="link" href="IBusFactory.html#IBusFactory-struct" title="struct IBusFactory">IBusFactory</a>;
+struct              <a class="link" href="IBusFactory.html#IBusFactoryClass" title="struct IBusFactoryClass">IBusFactoryClass</a>;
 <a class="link" href="IBusFactory.html" title="IBusFactory"><span class="returnvalue">IBusFactory</span></a> *       <a class="link" href="IBusFactory.html#ibus-factory-new" title="ibus_factory_new ()">ibus_factory_new</a>                    (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusFactory.html#ibus-factory-add-engine" title="ibus_factory_add_engine ()">ibus_factory_add_engine</a>             (<em class="parameter"><code><a class="link" href="IBusFactory.html" title="IBusFactory"><span class="type">IBusFactory</span></a> *factory</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *engine_name</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> engine_type</code></em>);
 </pre>
 </div>
-<div class="refsect1" title="Object Hierarchy">
+<div class="refsect1">
 <a name="IBusFactory.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
   <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
@@ -61,7 +63,13 @@ Stable, unless otherwise indicated
                      +----IBusFactory
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
+<a name="IBusFactory.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusFactory.html#IBusFactory-create-engine" title='The "create-engine" signal'>create-engine</a>"                                  : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+</pre>
+</div>
+<div class="refsect1">
 <a name="IBusFactory.description"></a><h2>Description</h2>
 <p>
 An IBusFactory is an <a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> that creates input method engine (IME) instance.
@@ -72,26 +80,26 @@ and returns the D-Bus object path to IBus daemon.
 <em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a>
 </p>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="IBusFactory.details"></a><h2>Details</h2>
-<div class="refsect2" title="IBusFactory">
-<a name="IBusFactory-struct"></a><h3>IBusFactory</h3>
-<pre class="programlisting">typedef struct _IBusFactory IBusFactory;</pre>
+<div class="refsect2">
+<a name="IBusFactory-struct"></a><h3>struct IBusFactory</h3>
+<pre class="programlisting">struct IBusFactory;</pre>
 <p>
 An opaque data type representing an IBusFactory.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="IBusFactoryClass">
-<a name="IBusFactoryClass"></a><h3>IBusFactoryClass</h3>
-<pre class="programlisting">typedef struct {
-} IBusFactoryClass;
+<div class="refsect2">
+<a name="IBusFactoryClass"></a><h3>struct IBusFactoryClass</h3>
+<pre class="programlisting">struct IBusFactoryClass {
+};
 </pre>
 <p>
 </p>
 </div>
 <hr>
-<div class="refsect2" title="ibus_factory_new ()">
+<div class="refsect2">
 <a name="ibus-factory-new"></a><h3>ibus_factory_new ()</h3>
 <pre class="programlisting"><a class="link" href="IBusFactory.html" title="IBusFactory"><span class="returnvalue">IBusFactory</span></a> *       ibus_factory_new                    (<em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>);</pre>
 <p>
@@ -102,19 +110,17 @@ New an IBusFactory.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
-<td>An GDBusConnection.
-</td>
+<td>An GDBusConnection.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A newly allocated IBusFactory.
-</td>
+<td>A newly allocated IBusFactory.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_factory_add_engine ()">
+<div class="refsect2">
 <a name="ibus-factory-add-engine"></a><h3>ibus_factory_add_engine ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_factory_add_engine             (<em class="parameter"><code><a class="link" href="IBusFactory.html" title="IBusFactory"><span class="type">IBusFactory</span></a> *factory</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *engine_name</code></em>,
@@ -127,18 +133,39 @@ Add an engine to the factory.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>factory</code></em> :</span></p></td>
-<td>An IBusFactory.
-</td>
+<td>An IBusFactory.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>engine_name</code></em> :</span></p></td>
-<td>Name of an engine.
-</td>
+<td>Name of an engine.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>engine_type</code></em> :</span></p></td>
-<td>GType of an engine.
-</td>
+<td>GType of an engine.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="IBusFactory.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="IBusFactory-create-engine"></a><h3>The <code class="literal">"create-engine"</code> signal</h3>
+<pre class="programlisting"><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="returnvalue">IBusEngine</span></a>*         user_function                      (<a class="link" href="IBusFactory.html" title="IBusFactory"><span class="type">IBusFactory</span></a> *ibusfactory,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>       *arg1,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>     user_data)        : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>ibusfactory</code></em> :</span></p></td>
+<td>the object which received the signal.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
 </tr>
 </tbody>
 </table></div>
@@ -147,6 +174,6 @@ Add an engine to the factory.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15</div>
+          Generated by GTK-Doc V1.17</div>
 </body>
 </html>

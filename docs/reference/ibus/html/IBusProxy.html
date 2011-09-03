@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>IBusProxy</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="IBus Reference Manual">
 <link rel="up" href="ch05.html" title="Communication">
 <link rel="prev" href="IBusBus.html" title="IBusBus">
 <link rel="next" href="IBusSerializable.html" title="IBusSerializable">
-<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.17 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -32,7 +32,7 @@
                   <a href="#IBusProxy.signals" class="shortcut">Signals</a>
 </td></tr>
 </table>
-<div class="refentry" title="IBusProxy">
+<div class="refentry">
 <a name="IBusProxy"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -41,24 +41,24 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsect1" title="Stability Level">
+<div class="refsect1">
 <a name="IBusProxy.stability-level"></a><h2>Stability Level</h2>
 Stable, unless otherwise indicated
 </div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="IBusProxy.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">                    <a class="link" href="IBusProxy.html#IBusProxy-struct" title="IBusProxy">IBusProxy</a>;
-                    <a class="link" href="IBusProxy.html#IBusProxyClass" title="IBusProxyClass">IBusProxyClass</a>;
-#define             <a class="link" href="IBusProxy.html#IBUS-PROXY-FLAGS:CAPS" title="IBUS_PROXY_FLAGS()">IBUS_PROXY_FLAGS</a>                    (obj)
+<pre class="synopsis">#define             <a class="link" href="IBusProxy.html#IBUS-PROXY-FLAGS:CAPS" title="IBUS_PROXY_FLAGS()">IBUS_PROXY_FLAGS</a>                    (obj)
 #define             <a class="link" href="IBusProxy.html#IBUS-PROXY-SET-FLAGS:CAPS" title="IBUS_PROXY_SET_FLAGS()">IBUS_PROXY_SET_FLAGS</a>                (obj,
                                                          flag)
 #define             <a class="link" href="IBusProxy.html#IBUS-PROXY-UNSET-FLAGS:CAPS" title="IBUS_PROXY_UNSET_FLAGS()">IBUS_PROXY_UNSET_FLAGS</a>              (obj,
                                                          flag)
 #define             <a class="link" href="IBusProxy.html#IBUS-PROXY-DESTROYED:CAPS" title="IBUS_PROXY_DESTROYED()">IBUS_PROXY_DESTROYED</a>                (obj)
+struct              <a class="link" href="IBusProxy.html#IBusProxy-struct" title="struct IBusProxy">IBusProxy</a>;
+struct              <a class="link" href="IBusProxy.html#IBusProxyClass" title="struct IBusProxyClass">IBusProxyClass</a>;
 <span class="returnvalue">void</span>                <a class="link" href="IBusProxy.html#ibus-proxy-destroy" title="ibus_proxy_destroy ()">ibus_proxy_destroy</a>                  (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>);
 </pre>
 </div>
-<div class="refsect1" title="Object Hierarchy">
+<div class="refsect1">
 <a name="IBusProxy.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
   <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
@@ -68,19 +68,19 @@ Stable, unless otherwise indicated
                +----<a class="link" href="IBusInputContext.html" title="IBusInputContext">IBusInputContext</a>
 </pre>
 </div>
-<div class="refsect1" title="Implemented Interfaces">
+<div class="refsect1">
 <a name="IBusProxy.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
 <p>
 IBusProxy implements
  <a href="http://library.gnome.org/devel/gio/unstable/GInitable.html">GInitable</a> and  <a href="http://library.gnome.org/devel/gio/unstable/GAsyncInitable.html">GAsyncInitable</a>.</p>
 </div>
-<div class="refsect1" title="Signals">
+<div class="refsect1">
 <a name="IBusProxy.signals"></a><h2>Signals</h2>
 <pre class="synopsis">
-  "<a class="link" href="IBusProxy.html#IBusProxy-destroy" title='The "destroy" signal'>destroy</a>"                                        : Run Last
+  "<a class="link" href="IBusProxy.html#IBusProxy-destroy" title='The "destroy" signal'>destroy</a>"                                        : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
 <a name="IBusProxy.description"></a><h2>Description</h2>
 <p>
 An IBusProxy is the base of all proxy objects,
@@ -92,108 +92,62 @@ IBusInputContext to communicate with the InputContext service of the ibus-daemon
 Almost all services have corresponding proxies, except very simple services.
 </p>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="IBusProxy.details"></a><h2>Details</h2>
-<div class="refsect2" title="IBusProxy">
-<a name="IBusProxy-struct"></a><h3>IBusProxy</h3>
-<pre class="programlisting">typedef struct _IBusProxy IBusProxy;</pre>
-<p>
-An opaque data type representing an IBusProxy.
-</p>
-</div>
-<hr>
-<div class="refsect2" title="IBusProxyClass">
-<a name="IBusProxyClass"></a><h3>IBusProxyClass</h3>
-<pre class="programlisting">typedef struct {
-    GDBusProxyClass parent;
-
-    /* class members */
-    void    (* destroy)     (IBusProxy      *proxy);
-} IBusProxyClass;
-</pre>
-<p>
-</p>
-</div>
-<hr>
-<div class="refsect2" title="IBUS_PROXY_FLAGS()">
+<div class="refsect2">
 <a name="IBUS-PROXY-FLAGS:CAPS"></a><h3>IBUS_PROXY_FLAGS()</h3>
 <pre class="programlisting">#define IBUS_PROXY_FLAGS(obj)             (IBUS_PROXY (obj)-&gt;flags)
 </pre>
 <p>
 </p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody><tr>
-<td><p><span class="term"><em class="parameter"><code>obj</code></em> :</span></p></td>
-<td>
-</td>
-</tr></tbody>
-</table></div>
 </div>
 <hr>
-<div class="refsect2" title="IBUS_PROXY_SET_FLAGS()">
+<div class="refsect2">
 <a name="IBUS-PROXY-SET-FLAGS:CAPS"></a><h3>IBUS_PROXY_SET_FLAGS()</h3>
 <pre class="programlisting">#define IBUS_PROXY_SET_FLAGS(obj,flag)    G_STMT_START{ (IBUS_PROXY_FLAGS (obj) |= (flag)); }G_STMT_END
 </pre>
 <p>
 </p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>obj</code></em> :</span></p></td>
-<td>
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>flag</code></em> :</span></p></td>
-<td>
-</td>
-</tr>
-</tbody>
-</table></div>
 </div>
 <hr>
-<div class="refsect2" title="IBUS_PROXY_UNSET_FLAGS()">
+<div class="refsect2">
 <a name="IBUS-PROXY-UNSET-FLAGS:CAPS"></a><h3>IBUS_PROXY_UNSET_FLAGS()</h3>
 <pre class="programlisting">#define IBUS_PROXY_UNSET_FLAGS(obj,flag)  G_STMT_START{ (IBUS_PROXY_FLAGS (obj) &amp;= ~(flag)); }G_STMT_END
 </pre>
 <p>
 </p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>obj</code></em> :</span></p></td>
-<td>
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>flag</code></em> :</span></p></td>
-<td>
-</td>
-</tr>
-</tbody>
-</table></div>
 </div>
 <hr>
-<div class="refsect2" title="IBUS_PROXY_DESTROYED()">
+<div class="refsect2">
 <a name="IBUS-PROXY-DESTROYED:CAPS"></a><h3>IBUS_PROXY_DESTROYED()</h3>
 <pre class="programlisting">#define IBUS_PROXY_DESTROYED(obj)         (IBUS_PROXY_FLAGS (obj) &amp; IBUS_DESTROYED)
 </pre>
 <p>
 </p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody><tr>
-<td><p><span class="term"><em class="parameter"><code>obj</code></em> :</span></p></td>
-<td>
-</td>
-</tr></tbody>
-</table></div>
 </div>
 <hr>
-<div class="refsect2" title="ibus_proxy_destroy ()">
+<div class="refsect2">
+<a name="IBusProxy-struct"></a><h3>struct IBusProxy</h3>
+<pre class="programlisting">struct IBusProxy;</pre>
+<p>
+An opaque data type representing an IBusProxy.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusProxyClass"></a><h3>struct IBusProxyClass</h3>
+<pre class="programlisting">struct IBusProxyClass {
+    GDBusProxyClass parent;
+
+    /* class members */
+    void    (* destroy)     (IBusProxy      *proxy);
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
 <a name="ibus-proxy-destroy"></a><h3>ibus_proxy_destroy ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_proxy_destroy                  (<em class="parameter"><code><a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *proxy</code></em>);</pre>
 <p>
@@ -203,22 +157,14 @@ called. Note that "destroy" signal might be emitted when ibus_proxy_destroy is c
 or the underlying dbus connection for the proxy is terminated. In the callback of the
 destroy signal, you might have to call something like 'g_object_unref(the_proxy);'.
 </p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody><tr>
-<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
-<td>
-</td>
-</tr></tbody>
-</table></div>
 </div>
 </div>
-<div class="refsect1" title="Signal Details">
+<div class="refsect1">
 <a name="IBusProxy.signal-details"></a><h2>Signal Details</h2>
-<div class="refsect2" title='The "destroy" signal'>
+<div class="refsect2">
 <a name="IBusProxy-destroy"></a><h3>The <code class="literal">"destroy"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusProxy.html" title="IBusProxy"><span class="type">IBusProxy</span></a> *object,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>   user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>   user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Destroy and free an IBusProxy
 </p>
@@ -226,15 +172,19 @@ Destroy and free an IBusProxy
 See also:  <a class="link" href="IBusProxy.html#ibus-proxy-destroy" title="ibus_proxy_destroy ()"><code class="function">ibus_proxy_destroy()</code></a>.
 </p>
 <p>
-&lt;note&gt;&lt;para&gt;Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.&lt;/para&gt;&lt;/note&gt;
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.</p>
+</div>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
-<td>An IBusProxy.
-</td>
+<td>An IBusProxy.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -247,6 +197,6 @@ See also:  <a class="link" href="IBusProxy.html#ibus-proxy-destroy" title="ibus_
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15</div>
+          Generated by GTK-Doc V1.17</div>
 </body>
 </html>
