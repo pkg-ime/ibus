@@ -188,6 +188,21 @@ GType ibus_bus_request_name_reply_get_type (void) G_GNUC_CONST;
  */
 #define IBUS_TYPE_BUS_REQUEST_NAME_REPLY (ibus_bus_request_name_reply_get_type ())
 /**
+ * ibus_bus_start_service_by_name_reply_get_type:
+ * @returns: GType of IBUS_BUS_START_SERVICE_BY_NAME_REPLY
+ *
+ * Returns the type of IBUS_BUS_START_SERVICE_BY_NAME_REPLY as GType.
+ */
+GType ibus_bus_start_service_by_name_reply_get_type (void) G_GNUC_CONST;
+
+/**
+ * IBUS_TYPE_BUS_START_SERVICE_BY_NAME_REPLY:
+ * @returns: GType of IBUS_BUS_START_SERVICE_BY_NAME_REPLY
+ *
+ * Returns the type of IBUS_BUS_START_SERVICE_BY_NAME_REPLY as GType.
+ */
+#define IBUS_TYPE_BUS_START_SERVICE_BY_NAME_REPLY (ibus_bus_start_service_by_name_reply_get_type ())
+/**
  * ibus_error_get_type:
  * @returns: GType of IBUS_ERROR
  *

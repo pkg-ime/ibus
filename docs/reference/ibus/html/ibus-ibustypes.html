@@ -48,6 +48,7 @@ enum                <a class="link" href="ibus-ibustypes.html#IBusPreeditFocusMo
 enum                <a class="link" href="ibus-ibustypes.html#IBusOrientation">IBusOrientation</a>;
 enum                <a class="link" href="ibus-ibustypes.html#IBusBusNameFlag" title="enum IBusBusNameFlag">IBusBusNameFlag</a>;
 enum                <a class="link" href="ibus-ibustypes.html#IBusBusRequestNameReply" title="enum IBusBusRequestNameReply">IBusBusRequestNameReply</a>;
+enum                <a class="link" href="ibus-ibustypes.html#IBusBusStartServiceByNameReply" title="enum IBusBusStartServiceByNameReply">IBusBusStartServiceByNameReply</a>;
 enum                <a class="link" href="ibus-ibustypes.html#IBusError" title="enum IBusError">IBusError</a>;
 struct              <a class="link" href="ibus-ibustypes.html#IBusRectangle" title="struct IBusRectangle">IBusRectangle</a>;
 <span class="returnvalue">void</span>                (<a class="link" href="ibus-ibustypes.html#IBusFreeFunc" title="IBusFreeFunc ()">*IBusFreeFunc</a>)                     (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> object</code></em>);
@@ -401,6 +402,30 @@ Orientation of UI.
 <tr>
 <td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-ALREADY-OWNER:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_ALREADY_OWNER</code></span></p></td>
 <td>   same as DBUS_REQUEST_NAME_REPLY_ALREADY_OWNER
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusBusStartServiceByNameReply"></a><h3>enum IBusBusStartServiceByNameReply</h3>
+<pre class="programlisting">typedef enum {
+    IBUS_BUS_START_REPLY_SUCCESS = 1,
+    IBUS_BUS_START_REPLY_ALREADY_RUNNING = 2,
+} IBusBusStartServiceByNameReply;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="IBUS-BUS-START-REPLY-SUCCESS:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_START_REPLY_SUCCESS</code></span></p></td>
+<td>   same as DBUS_START_REPLY_SUCCESS
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-BUS-START-REPLY-ALREADY-RUNNING:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_START_REPLY_ALREADY_RUNNING</code></span></p></td>
+<td>   same as DBUS_START_REPLY_ALREADY_RUNNING
 </td>
 </tr>
 </tbody>

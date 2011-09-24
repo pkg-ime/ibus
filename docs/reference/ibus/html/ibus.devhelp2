@@ -49,6 +49,10 @@
     <keyword type="struct" name="struct IBusAttribute" link="IBusAttribute.html#IBusAttribute-struct"/>
     <keyword type="struct" name="struct IBusAttributeClass" link="IBusAttribute.html#IBusAttributeClass"/>
     <keyword type="function" name="ibus_attribute_new ()" link="IBusAttribute.html#ibus-attribute-new"/>
+    <keyword type="function" name="ibus_attribute_get_attr_type ()" link="IBusAttribute.html#ibus-attribute-get-attr-type"/>
+    <keyword type="function" name="ibus_attribute_get_value ()" link="IBusAttribute.html#ibus-attribute-get-value"/>
+    <keyword type="function" name="ibus_attribute_get_start_index ()" link="IBusAttribute.html#ibus-attribute-get-start-index"/>
+    <keyword type="function" name="ibus_attribute_get_end_index ()" link="IBusAttribute.html#ibus-attribute-get-end-index"/>
     <keyword type="function" name="ibus_attr_underline_new ()" link="IBusAttribute.html#ibus-attr-underline-new"/>
     <keyword type="function" name="ibus_attr_foreground_new ()" link="IBusAttribute.html#ibus-attr-foreground-new"/>
     <keyword type="function" name="ibus_attr_background_new ()" link="IBusAttribute.html#ibus-attr-background-new"/>
@@ -2496,6 +2500,7 @@
     <keyword type="enum" name="enum IBusOrientation" link="ibus-ibustypes.html#IBusOrientation"/>
     <keyword type="enum" name="enum IBusBusNameFlag" link="ibus-ibustypes.html#IBusBusNameFlag"/>
     <keyword type="enum" name="enum IBusBusRequestNameReply" link="ibus-ibustypes.html#IBusBusRequestNameReply"/>
+    <keyword type="enum" name="enum IBusBusStartServiceByNameReply" link="ibus-ibustypes.html#IBusBusStartServiceByNameReply"/>
     <keyword type="enum" name="enum IBusError" link="ibus-ibustypes.html#IBusError"/>
     <keyword type="struct" name="struct IBusRectangle" link="ibus-ibustypes.html#IBusRectangle"/>
     <keyword type="function" name="IBusFreeFunc ()" link="ibus-ibustypes.html#IBusFreeFunc"/>
@@ -2554,6 +2559,8 @@
     <keyword type="constant" name="IBUS_BUS_REQUEST_NAME_REPLY_IN_QUEUE" link="ibus-ibustypes.html#IBUS-BUS-REQUEST-NAME-REPLY-IN-QUEUE:CAPS"/>
     <keyword type="constant" name="IBUS_BUS_REQUEST_NAME_REPLY_EXISTS" link="ibus-ibustypes.html#IBUS-BUS-REQUEST-NAME-REPLY-EXISTS:CAPS"/>
     <keyword type="constant" name="IBUS_BUS_REQUEST_NAME_REPLY_ALREADY_OWNER" link="ibus-ibustypes.html#IBUS-BUS-REQUEST-NAME-REPLY-ALREADY-OWNER:CAPS"/>
+    <keyword type="constant" name="IBUS_BUS_START_REPLY_SUCCESS" link="ibus-ibustypes.html#IBUS-BUS-START-REPLY-SUCCESS:CAPS"/>
+    <keyword type="constant" name="IBUS_BUS_START_REPLY_ALREADY_RUNNING" link="ibus-ibustypes.html#IBUS-BUS-START-REPLY-ALREADY-RUNNING:CAPS"/>
     <keyword type="constant" name="IBUS_ERROR_NO_ENGINE" link="ibus-ibustypes.html#IBUS-ERROR-NO-ENGINE:CAPS"/>
   </functions>
 </book>

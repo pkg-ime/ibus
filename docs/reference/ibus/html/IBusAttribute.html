@@ -51,6 +51,10 @@ struct              <a class="link" href="IBusAttribute.html#IBusAttributeClass"
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> value</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusAttribute.html#ibus-attribute-get-attr-type" title="ibus_attribute_get_attr_type ()">ibus_attribute_get_attr_type</a>        (<em class="parameter"><code><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a> *attr</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusAttribute.html#ibus-attribute-get-value" title="ibus_attribute_get_value ()">ibus_attribute_get_value</a>            (<em class="parameter"><code><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a> *attr</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusAttribute.html#ibus-attribute-get-start-index" title="ibus_attribute_get_start_index ()">ibus_attribute_get_start_index</a>      (<em class="parameter"><code><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a> *attr</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="IBusAttribute.html#ibus-attribute-get-end-index" title="ibus_attribute_get_end_index ()">ibus_attribute_get_end_index</a>        (<em class="parameter"><code><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a> *attr</code></em>);
 <a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     <a class="link" href="IBusAttribute.html#ibus-attr-underline-new" title="ibus_attr_underline_new ()">ibus_attr_underline_new</a>             (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> underline_type</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);
@@ -250,12 +254,75 @@ New an IBusAttribute.
 </div>
 <hr>
 <div class="refsect2">
+<a name="ibus-attribute-get-attr-type"></a><h3>ibus_attribute_get_attr_type ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_attribute_get_attr_type        (<em class="parameter"><code><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a> *attr</code></em>);</pre>
+<p>
+Returns an enum of <a class="link" href="IBusAttribute.html#IBusAttrType"><span class="type">IBusAttrType</span></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An enum of <a class="link" href="IBusAttribute.html#IBusAttrType"><span class="type">IBusAttrType</span></a>.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-attribute-get-value"></a><h3>ibus_attribute_get_value ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_attribute_get_value            (<em class="parameter"><code><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a> *attr</code></em>);</pre>
+<p>
+Returns an unsigned int value relative with <a class="link" href="IBusAttribute.html#IBusAttrType"><span class="type">IBusAttrType</span></a>.
+If the type is <a class="link" href="IBusAttribute.html#IBUS-ATTR-TYPE-UNDERLINE:CAPS"><code class="literal">IBUS_ATTR_TYPE_UNDERLINE</code></a>, the return value is
+<a class="link" href="IBusAttribute.html#IBusAttrUnderline"><span class="type">IBusAttrUnderline</span></a>. If the type is <a class="link" href="IBusAttribute.html#IBUS-ATTR-TYPE-FOREGROUND:CAPS"><code class="literal">IBUS_ATTR_TYPE_FOREGROUND</code></a>,
+the return value is the color RGB.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An unsigned int value relative with <a class="link" href="IBusAttribute.html#IBusAttrType"><span class="type">IBusAttrType</span></a>.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-attribute-get-start-index"></a><h3>ibus_attribute_get_start_index ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_attribute_get_start_index      (<em class="parameter"><code><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a> *attr</code></em>);</pre>
+<p>
+Returns a start unsigned index
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A start unsigned index</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-attribute-get-end-index"></a><h3>ibus_attribute_get_end_index ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               ibus_attribute_get_end_index        (<em class="parameter"><code><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a> *attr</code></em>);</pre>
+<p>
+Returns a end unsigned index
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A end unsigned index</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
 <a name="ibus-attr-underline-new"></a><h3>ibus_attr_underline_new ()</h3>
 <pre class="programlisting"><a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="returnvalue">IBusAttribute</span></a> *     ibus_attr_underline_new             (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> underline_type</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);</pre>
 <p>
-New an underline IBusAttribute.
+New an underline <a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -274,7 +341,7 @@ New an underline IBusAttribute.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A newly allocated IBusAttribute.</td>
+<td>A newly allocated <a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -286,7 +353,7 @@ New an underline IBusAttribute.
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);</pre>
 <p>
-New an foreground IBusAttribute.
+New an foreground <a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -305,7 +372,7 @@ New an foreground IBusAttribute.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A newly allocated IBusAttribute.</td>
+<td>A newly allocated <a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -317,7 +384,7 @@ New an foreground IBusAttribute.
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> start_index</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> end_index</code></em>);</pre>
 <p>
-New an background IBusAttribute.
+New an background <a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -336,7 +403,7 @@ New an background IBusAttribute.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A newly allocated IBusAttribute.</td>
+<td>A newly allocated <a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a>.</td>
 </tr>
 </tbody>
 </table></div>

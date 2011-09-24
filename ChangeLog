@@ -1,3 +1,182 @@
+commit 600fd9ab1607a6d5780fb07a6cd49290ca85c4fc
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-09-23 11:11:24 -0400
+
+    Release 1.4.0
+    
+    BUG=None
+    TEST=make dist
+    
+    Review URL: http://codereview.appspot.com/5106043
+
+M	configure.ac
+
+commit a5aadb62244d699fa38f6699cf38faf71a7c24c0
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-09-23 11:10:53 -0400
+
+    Fix make distcheck error
+    
+    BUG=None
+    TEST=make distcheck
+    
+    Review URL: http://codereview.appspot.com/5113041
+
+M	po/POTFILES.in
+
+commit 55cb3cd2e398169a1335564e3e95003df469dd66
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2011-09-21 10:00:17 +0900
+
+    Fix dconf profile installation.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/5077042
+
+M	data/dconf/Makefile.am
+
+commit e42dda581368a77e2f6f87caee1b9355f7f725fa
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-09-18 10:39:09 -0400
+
+    Add some warning message in ibustext.c
+    
+    BUG=None
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5051043
+
+M	src/ibustext.c
+
+commit 235ef3ae4a0796bc03f2265b15e9a0a7a39b892c
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-09-18 10:36:02 -0400
+
+    Refine configure.ac and fix make distcheck errors.
+    
+    BUG=None
+    TEST=Test on Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5045043
+
+M	configure.ac
+M	docs/reference/ibus/.gitignore
+M	docs/reference/ibus/Makefile.am
+M	ibus.spec.in
+M	src/Makefile.am
+
+commit 6c474596e43c932467d4d35afa23db59a71093f5
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-09-16 23:36:44 +0900
+
+    Add get methods for the members in IBusAttribute for non-C language.
+    
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4956068
+
+M	src/ibusattribute.c
+M	src/ibusattribute.h
+
+commit 4438c043aafa301579737094dbccc02c9ef8c2c1
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2011-09-16 10:22:38 +0900
+
+    Implement org.freedesktop.DBus.StartServiceByName.
+    
+    BUG=none
+    TEST=tested with https://github.com/ueno/ibus-gucharmap/tree/charmap-service
+    
+    Review URL: http://codereview.appspot.com/4960060
+
+M	bus/dbusimpl.c
+M	ibus/bus.py
+M	src/ibustypes.h
+
+commit 02604ac968d6f0c6064b4620f8a65148a178eacd
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-09-09 09:47:37 -0400
+
+    Fix make dist error if dsettings does not exist.
+    
+    BUG=make dist failed without gsettings
+    TEST=make dist
+    
+    Review URL: http://codereview.appspot.com/4994043
+
+M	data/dconf/Makefile.am
+
+commit 19a504a62574b9f2d1ef9f61bedfbac2819d8c8b
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-09-08 22:09:26 -0400
+
+    Do not send surrounding text to ibus-daemon if engine does not need surrounding text.
+    
+    BUG=None
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4977058
+
+M	src/ibusinputcontext.c
+
+commit 894ecc8e16b01d5594ef9b8f9c5530bb2e9d0502
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-08-25 09:59:42 +0900
+
+    Add Disable signal when bus_ibus_impl_set_context_engine_from_desc is called.
+    
+    BUG=#1261
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4875049
+
+M	bus/inputcontext.c
+
+commit adcf71e6e5de45530a09e7b9f310f2e489cd9631
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-08-24 11:44:21 +0900
+
+    Check if BusInputContext has an enabled engine in global input method.
+    
+    BUG=RH#731610
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4917041
+
+M	bus/ibusimpl.c
+
+commit ac9dfac13cef34288440a2ecdf067cd827fb2f8f
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-08-19 08:23:33 -0400
+
+    Use GVariant as attachment for IBusSerializable.
+    
+    BUG=None
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4902051
+
+M	src/ibusserializable.c
+M	src/ibusserializable.h
+M	src/tests/ibus-serializable.c
+
+commit 9614076737ee88c092af209485d1d65d2269f4ad
+Author: Tsuyoshi Horo <horo@chromium.org>
+Date:   2011-08-18 11:48:30 -0400
+
+    Fix for ibus_serializable_{get,set}_attachment.
+    
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/4905054
+    Patch from Tsuyoshi Horo <horo@chromium.org>.
+
+M	src/ibusserializable.c
+M	src/ibusserializable.h
+M	src/tests/ibus-serializable.c
+
 commit 97afd4854b0af0483539d2ab8f0e6f15309d1ec4
 Author: fujiwarat <takao.fujiwara1@gmail.com>
 Date:   2011-08-14 08:56:31 +0900

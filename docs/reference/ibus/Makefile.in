@@ -79,10 +79,6 @@ CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
-CXX = @CXX@
-CXXCPP = @CXXCPP@
-CXXDEPMODE = @CXXDEPMODE@
-CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DATADIRNAME = @DATADIRNAME@
 DATE_DISPLAY = @DATE_DISPLAY@
@@ -143,11 +139,15 @@ GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
 HTML_DIR = @HTML_DIR@
 IBUS_API_VERSION = @IBUS_API_VERSION@
+IBUS_BINARY_AGE = @IBUS_BINARY_AGE@
+IBUS_BINARY_VERSION = @IBUS_BINARY_VERSION@
 IBUS_GIR_SCANNERFLAGS = @IBUS_GIR_SCANNERFLAGS@
 IBUS_ICON_KEYBOARD = @IBUS_ICON_KEYBOARD@
+IBUS_INTERFACE_AGE = @IBUS_INTERFACE_AGE@
 IBUS_MAJOR_VERSION = @IBUS_MAJOR_VERSION@
 IBUS_MICRO_VERSION = @IBUS_MICRO_VERSION@
 IBUS_MINOR_VERSION = @IBUS_MINOR_VERSION@
+IBUS_VERSION = @IBUS_VERSION@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -178,6 +178,7 @@ LIBTOOL = @LIBTOOL@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
+LT_CURRENT_MINUS_AGE = @LT_CURRENT_MINUS_AGE@
 LT_VERSION_INFO = @LT_VERSION_INFO@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
@@ -233,7 +234,6 @@ abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
 ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
-ac_ct_CXX = @ac_ct_CXX@
 ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
@@ -835,8 +835,9 @@ dist-hook: dist-check-gtkdoc dist-hook-local
 
 trim-build.stamp: scan-build.stamp
 	$(AM_V_GEN) \
-	    $(SED) -f $(srcdir)/trim.sed -i.bak $(srcdir)/$(DOC_MODULE)-sections.txt && \
-	    $(RM) $(srcdir)/$(DOC_MODULE)-sections.txt.bak && \
+	    $(SED) -f $(srcdir)/trim.sed -i.bak \
+			$(builddir)/$(DOC_MODULE)-sections.txt && \
+	    $(RM) $(buildir)/$(DOC_MODULE)-sections.txt.bak && \
 	    touch trim-build.stamp
 
 tmpl-build.stamp: trim-build.stamp  $(DOC_MODULE)-decl.txt $(SCANOBJ_FILES) $(DOC_MODULE)-overrides.txt

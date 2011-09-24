@@ -42,14 +42,14 @@
  *
  * IBus minor version.
  */
-#define IBUS_MINOR_VERSION				(3)
+#define IBUS_MINOR_VERSION				(4)
 
 /**
  * IBUS_MICRO_VERSION:
  *
  * IBus micro version.
  */
-#define IBUS_MICRO_VERSION				(99)
+#define IBUS_MICRO_VERSION				(0)
 
 /**
  * IBUS_CHECK_VERSION:

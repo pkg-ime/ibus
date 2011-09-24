@@ -47,29 +47,28 @@ Stable, unless otherwise indicated
                                                          k,
                                                          v)
 #define             <a class="link" href="IBusSerializable.html#ibus-serializable-get-attachment" title="ibus_serializable_get_attachment()">ibus_serializable_get_attachment</a>    (o,
-                                                         k,
-                                                         v)
+                                                         k)
 #define             <a class="link" href="IBusSerializable.html#ibus-serializable-remove-attachment" title="ibus_serializable_remove_attachment()">ibus_serializable_remove_attachment</a> (o,
                                                          k)
 struct              <a class="link" href="IBusSerializable.html#IBusSerializable-struct" title="struct IBusSerializable">IBusSerializable</a>;
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            (<a class="link" href="IBusSerializable.html#IBusSerializableSerializeFunc" title="IBusSerializableSerializeFunc ()">*IBusSerializableSerializeFunc</a>)    (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>,
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            (<a class="link" href="IBusSerializable.html#IBusSerializableSerializeFunc" title="IBusSerializableSerializeFunc ()">*IBusSerializableSerializeFunc</a>)    (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariantBuilder"><span class="type">GVariantBuilder</span></a> *builder</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                (<a class="link" href="IBusSerializable.html#IBusSerializableDeserializeFunc" title="IBusSerializableDeserializeFunc ()">*IBusSerializableDeserializeFunc</a>)  (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>,
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                (<a class="link" href="IBusSerializable.html#IBusSerializableDeserializeFunc" title="IBusSerializableDeserializeFunc ()">*IBusSerializableDeserializeFunc</a>)  (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *variant</code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            (<a class="link" href="IBusSerializable.html#IBusSerializableCopyFunc" title="IBusSerializableCopyFunc ()">*IBusSerializableCopyFunc</a>)         (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *dest</code></em>,
                                                          <em class="parameter"><code>const <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *src</code></em>);
 struct              <a class="link" href="IBusSerializable.html#IBusSerializableClass" title="struct IBusSerializableClass">IBusSerializableClass</a>;
-<a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="returnvalue">IBusSerializable</span></a> *    <a class="link" href="IBusSerializable.html#ibus-serializable-new" title="ibus_serializable_new ()">ibus_serializable_new</a>             (<em class="parameter"><code><span class="type">void</span></code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusSerializable.html#ibus-serializable-set-qattachment" title="ibus_serializable_set_qattachment ()">ibus_serializable_set_qattachment</a>   (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>,
+<a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="returnvalue">IBusSerializable</span></a> *  <a class="link" href="IBusSerializable.html#ibus-serializable-new" title="ibus_serializable_new ()">ibus_serializable_new</a>               (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusSerializable.html#ibus-serializable-set-qattachment" title="ibus_serializable_set_qattachment ()">ibus_serializable_set_qattachment</a>   (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> key</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);
-const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="returnvalue">GValue</span></a> *      <a class="link" href="IBusSerializable.html#ibus-serializable-get-qattachment" title="ibus_serializable_get_qattachment ()">ibus_serializable_get_qattachment</a>   (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *value</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *          <a class="link" href="IBusSerializable.html#ibus-serializable-get-qattachment" title="ibus_serializable_get_qattachment ()">ibus_serializable_get_qattachment</a>   (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> key</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusSerializable.html#ibus-serializable-remove-qattachment" title="ibus_serializable_remove_qattachment ()">ibus_serializable_remove_qattachment</a>
-                                                        (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>,
+                                                        (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> key</code></em>);
-<a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="returnvalue">IBusSerializable</span></a> *  <a class="link" href="IBusSerializable.html#ibus-serializable-copy" title="ibus_serializable_copy ()">ibus_serializable_copy</a>              (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *          <a class="link" href="IBusSerializable.html#ibus-serializable-serialize" title="ibus_serializable_serialize ()">ibus_serializable_serialize</a>         (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>);
+<a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="returnvalue">IBusSerializable</span></a> *  <a class="link" href="IBusSerializable.html#ibus-serializable-copy" title="ibus_serializable_copy ()">ibus_serializable_copy</a>              (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *          <a class="link" href="IBusSerializable.html#ibus-serializable-serialize" title="ibus_serializable_serialize ()">ibus_serializable_serialize</a>         (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>);
 <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="returnvalue">IBusSerializable</span></a> *  <a class="link" href="IBusSerializable.html#ibus-serializable-deserialize" title="ibus_serializable_deserialize ()">ibus_serializable_deserialize</a>       (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *variant</code></em>);
 </pre>
 </div>
@@ -142,7 +141,7 @@ This macro is an convenient wrapper of <a class="link" href="IBusSerializable.ht
 <hr>
 <div class="refsect2">
 <a name="ibus-serializable-get-attachment"></a><h3>ibus_serializable_get_attachment()</h3>
-<pre class="programlisting">#define             ibus_serializable_get_attachment(o, k, v)</pre>
+<pre class="programlisting">#define             ibus_serializable_get_attachment(o, k)</pre>
 <p>
 Get a value from attachment of an IBusSerializable.
 This macro is an convenient wrapper of <a class="link" href="IBusSerializable.html#ibus-serializable-get-qattachment" title="ibus_serializable_get_qattachment ()"><code class="function">ibus_serializable_get_qattachment()</code></a>.
@@ -157,10 +156,6 @@ This macro is an convenient wrapper of <a class="link" href="IBusSerializable.ht
 <tr>
 <td><p><span class="term"><em class="parameter"><code>k</code></em> :</span></p></td>
 <td>String formatted key for indexing value.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>v</code></em> :</span></p></td>
-<td>Value to be attached. Should be also serializable.</td>
 </tr>
 </tbody>
 </table></div>
@@ -199,24 +194,29 @@ private to the <a class="link" href="IBusSerializable.html" title="IBusSerializa
 <hr>
 <div class="refsect2">
 <a name="IBusSerializableSerializeFunc"></a><h3>IBusSerializableSerializeFunc ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            (*IBusSerializableSerializeFunc)    (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>,
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            (*IBusSerializableSerializeFunc)    (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariantBuilder"><span class="type">GVariantBuilder</span></a> *builder</code></em>);</pre>
 <p>
 Prototype of serialize function.
 Serialize function convert an IBusSerializable to IBusMessageIter.
 Returns a gboolean value which indicates whether the conversion is success.
-Return TRUE if succeed.
+Return <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
-<td>An IBusSerializable.</td>
+<td><p><span class="term"><em class="parameter"><code>serializable</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>builder</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariantBuilder"><span class="type">GVariantBuilder</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if succeed; FALSE otherwise.</td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
@@ -224,23 +224,28 @@ Return TRUE if succeed.
 <hr>
 <div class="refsect2">
 <a name="IBusSerializableDeserializeFunc"></a><h3>IBusSerializableDeserializeFunc ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                (*IBusSerializableDeserializeFunc)  (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>,
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                (*IBusSerializableDeserializeFunc)  (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *variant</code></em>);</pre>
 <p>
 Prototype of deserialize function.
 Deserialize function convert an IBusMessageIter to IBusSerializable.
-Returns a gboolean value which indicates whether the conversion is success.
+Returns an integer value which indicates how many values in
+the variant(tuple) are consumed.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
-<td>An IBusSerializable.</td>
+<td><p><span class="term"><em class="parameter"><code>serializable</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>variant</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> contains a tuple.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if succeed; FALSE otherwise.</td>
+<td>The number of values in the variant(tuple) are consumed.</td>
 </tr>
 </tbody>
 </table></div>
@@ -252,7 +257,7 @@ Returns a gboolean value which indicates whether the conversion is success.
                                                          <em class="parameter"><code>const <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *src</code></em>);</pre>
 <p>
 Prototype of copy function.
-Copy function copy from source IBusSerializable to the destination one.
+Copy function copy from source <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> to the destination one.
 Returns a gboolean value which indicates whether the copying is success.
 </p>
 <div class="variablelist"><table border="0">
@@ -260,15 +265,16 @@ Returns a gboolean value which indicates whether the copying is success.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>dest</code></em> :</span></p></td>
-<td>The destination IBusSerializable.</td>
+<td>The destination <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>src</code></em> :</span></p></td>
-<td>A source IBusMessageIter.</td>
+<td>A source <span class="type">IBusMessageIter</span>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if succeed; FALSE otherwise.</td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if succeed; <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
@@ -285,7 +291,7 @@ Returns a gboolean value which indicates whether the copying is success.
 <hr>
 <div class="refsect2">
 <a name="ibus-serializable-new"></a><h3>ibus_serializable_new ()</h3>
-<pre class="programlisting"><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="returnvalue">IBusSerializable</span></a> *    ibus_serializable_new             (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<pre class="programlisting"><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="returnvalue">IBusSerializable</span></a> *  ibus_serializable_new               (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
 <p>
 Creates a new instance of an <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.
 </p>
@@ -300,12 +306,12 @@ Creates a new instance of an <a class="link" href="IBusSerializable.html" title=
 <hr>
 <div class="refsect2">
 <a name="ibus-serializable-set-qattachment"></a><h3>ibus_serializable_set_qattachment ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_serializable_set_qattachment   (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>,
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_serializable_set_qattachment   (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> key</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *value</code></em>);</pre>
 <p>
-Attach a value to an IBusSerializable. The value should be serializable as well.
-Basic type such as integer, string are deemed to be serializable.
+Attach a value to an IBusSerializable. If the value is floating,
+the serializable will take the ownership.
 </p>
 <p>
 <em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusSerializable.html#ibus-serializable-set-attachment" title="ibus_serializable_set_attachment()"><code class="function">ibus_serializable_set_attachment()</code></a>.
@@ -314,8 +320,8 @@ Basic type such as integer, string are deemed to be serializable.
 <col align="left" valign="top">
 <tbody>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
-<td>An IBusSerializable.</td>
+<td><p><span class="term"><em class="parameter"><code>serializable</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>key</code></em> :</span></p></td>
@@ -323,11 +329,7 @@ Basic type such as integer, string are deemed to be serializable.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
-<td>Value to be attached. Should be also serializable.</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if succeed; FALSE otherwise.</td>
+<td>Value to be attached or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to remove any prevoius value.</td>
 </tr>
 </tbody>
 </table></div>
@@ -335,18 +337,18 @@ Basic type such as integer, string are deemed to be serializable.
 <hr>
 <div class="refsect2">
 <a name="ibus-serializable-get-qattachment"></a><h3>ibus_serializable_get_qattachment ()</h3>
-<pre class="programlisting">const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="returnvalue">GValue</span></a> *      ibus_serializable_get_qattachment   (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>,
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *          ibus_serializable_get_qattachment   (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> key</code></em>);</pre>
 <p>
-Get a value from attachment of an IBusSerializable.
+Get a value from attachment of an <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.
 <em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusSerializable.html#ibus-serializable-set-attachment" title="ibus_serializable_set_attachment()"><code class="function">ibus_serializable_set_attachment()</code></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
-<td>An IBusSerializable.</td>
+<td><p><span class="term"><em class="parameter"><code>serializable</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>key</code></em> :</span></p></td>
@@ -354,7 +356,7 @@ Get a value from attachment of an IBusSerializable.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>The attached value; or NULL if fail to retrieve the value.</td>
+<td>The attached value; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if fail to retrieve the value.</td>
 </tr>
 </tbody>
 </table></div>
@@ -363,18 +365,18 @@ Get a value from attachment of an IBusSerializable.
 <div class="refsect2">
 <a name="ibus-serializable-remove-qattachment"></a><h3>ibus_serializable_remove_qattachment ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_serializable_remove_qattachment
-                                                        (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>,
+                                                        (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> key</code></em>);</pre>
 <p>
-Remove a value from attachment of an IBusSerializable.
+Remove a value from attachment of an <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.
 <em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusSerializable.html#ibus-serializable-remove-attachment" title="ibus_serializable_remove_attachment()"><code class="function">ibus_serializable_remove_attachment()</code></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
-<td>An IBusSerializable.</td>
+<td><p><span class="term"><em class="parameter"><code>serializable</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>key</code></em> :</span></p></td>
@@ -386,9 +388,9 @@ Remove a value from attachment of an IBusSerializable.
 <hr>
 <div class="refsect2">
 <a name="ibus-serializable-copy"></a><h3>ibus_serializable_copy ()</h3>
-<pre class="programlisting"><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="returnvalue">IBusSerializable</span></a> *  ibus_serializable_copy              (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="returnvalue">IBusSerializable</span></a> *  ibus_serializable_copy              (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>);</pre>
 <p>
-Clone an IBusSerializable.
+Clone an <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.
 The copy method should be implemented in extended class.
 </p>
 <p>
@@ -398,12 +400,12 @@ The copy method should be implemented in extended class.
 <col align="left" valign="top">
 <tbody>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
-<td>An IBusSerializable.</td>
+<td><p><span class="term"><em class="parameter"><code>serializable</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A newly allocated clone object; or NULL if <em class="parameter"><code>object</code></em> is not serializable.</td>
+<td>A newly allocated clone object; or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if <em class="parameter"><code>object</code></em> is not serializable.</td>
 </tr>
 </tbody>
 </table></div>
@@ -411,9 +413,9 @@ The copy method should be implemented in extended class.
 <hr>
 <div class="refsect2">
 <a name="ibus-serializable-serialize"></a><h3>ibus_serializable_serialize ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *          ibus_serializable_serialize         (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *object</code></em>);</pre>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *          ibus_serializable_serialize         (<em class="parameter"><code><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> *serializable</code></em>);</pre>
 <p>
-Serialize an IBusSerializable to an IBusMessageIter.
+Serialize an <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a> to a <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a>.
 The serialize method should be implemented in extended class.
 </p>
 <p>
@@ -423,12 +425,12 @@ The serialize method should be implemented in extended class.
 <col align="left" valign="top">
 <tbody>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
-<td>An IBusSerializable.</td>
+<td><p><span class="term"><em class="parameter"><code>serializable</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>TRUE if succeed; FALSE otherwise.</td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -438,7 +440,7 @@ The serialize method should be implemented in extended class.
 <a name="ibus-serializable-deserialize"></a><h3>ibus_serializable_deserialize ()</h3>
 <pre class="programlisting"><a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="returnvalue">IBusSerializable</span></a> *  ibus_serializable_deserialize       (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *variant</code></em>);</pre>
 <p>
-Deserialize an IBusMessageIter to an IBusSerializable/
+Deserialize a <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> to an <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>/
 The deserialize method should be implemented in extended class.
 </p>
 <p>
@@ -446,10 +448,16 @@ The deserialize method should be implemented in extended class.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
-<tbody><tr>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>variant</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a>.</td>
+</tr>
+<tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>The deserialized IBusSerializable.</td>
-</tr></tbody>
+<td>The deserialized <a class="link" href="IBusSerializable.html" title="IBusSerializable"><span class="type">IBusSerializable</span></a>.</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 </div>
