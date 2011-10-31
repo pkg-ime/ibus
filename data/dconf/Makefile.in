@@ -58,8 +58,7 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 subdir = data/dconf
-DIST_COMMON = $(dist_gsettingsconvert_DATA) \
-	$(nobase_dist_dconfprofile_DATA) $(srcdir)/Makefile.am \
+DIST_COMMON = $(dist_gsettingsconvert_DATA) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/gtk-doc.m4 \
@@ -104,7 +103,7 @@ am__base_list = \
   sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
 am__installdirs = "$(DESTDIR)$(gsettingsconvertdir)" \
 	"$(DESTDIR)$(dconfprofiledir)"
-DATA = $(dist_gsettingsconvert_DATA) $(nobase_dist_dconfprofile_DATA)
+DATA = $(dist_gsettingsconvert_DATA) $(nobase_dconfprofile_DATA)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 ALL_LINGUAS = @ALL_LINGUAS@
@@ -122,10 +121,6 @@ CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
-CXX = @CXX@
-CXXCPP = @CXXCPP@
-CXXDEPMODE = @CXXDEPMODE@
-CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DATADIRNAME = @DATADIRNAME@
 DATE_DISPLAY = @DATE_DISPLAY@
@@ -186,11 +181,15 @@ GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
 HTML_DIR = @HTML_DIR@
 IBUS_API_VERSION = @IBUS_API_VERSION@
+IBUS_BINARY_AGE = @IBUS_BINARY_AGE@
+IBUS_BINARY_VERSION = @IBUS_BINARY_VERSION@
 IBUS_GIR_SCANNERFLAGS = @IBUS_GIR_SCANNERFLAGS@
 IBUS_ICON_KEYBOARD = @IBUS_ICON_KEYBOARD@
+IBUS_INTERFACE_AGE = @IBUS_INTERFACE_AGE@
 IBUS_MAJOR_VERSION = @IBUS_MAJOR_VERSION@
 IBUS_MICRO_VERSION = @IBUS_MICRO_VERSION@
 IBUS_MINOR_VERSION = @IBUS_MINOR_VERSION@
+IBUS_VERSION = @IBUS_VERSION@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -221,6 +220,7 @@ LIBTOOL = @LIBTOOL@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
+LT_CURRENT_MINUS_AGE = @LT_CURRENT_MINUS_AGE@
 LT_VERSION_INFO = @LT_VERSION_INFO@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
@@ -276,7 +276,6 @@ abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
 ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
-ac_ct_CXX = @ac_ct_CXX@
 ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
@@ -335,6 +334,7 @@ dist_gsettingsconvert_DATA = ibus.convert
 EXTRA_DIST = \
 	$(gsettings_schemas_in_files) \
 	make-dconf-override-db.sh \
+	profile/ibus \
 	$(NULL)
 
 DISTCLEANFILES = \
@@ -342,13 +342,15 @@ DISTCLEANFILES = \
 	$(NULL)
 
 MAINTAINERCLEANFILES = \
-	$(gsettings_schemas_in_files)
+	$(gsettings_schemas_in_files) \
+	$(NULL)
+
+CLEANFILES = \
+	db/ibus \
+	$(NULL)
 
 dconfprofiledir = $(sysconfdir)/dconf
-nobase_dist_dconfprofile_DATA = \
-	db/ibus \
-	profile/ibus
-
+nobase_dconfprofile_DATA = db/ibus profile/ibus
 all: all-am
 
 .SUFFIXES:
@@ -408,10 +410,10 @@ uninstall-dist_gsettingsconvertDATA:
 	test -n "$$files" || exit 0; \
 	echo " ( cd '$(DESTDIR)$(gsettingsconvertdir)' && rm -f" $$files ")"; \
 	cd "$(DESTDIR)$(gsettingsconvertdir)" && rm -f $$files
-install-nobase_dist_dconfprofileDATA: $(nobase_dist_dconfprofile_DATA)
+install-nobase_dconfprofileDATA: $(nobase_dconfprofile_DATA)
 	@$(NORMAL_INSTALL)
 	test -z "$(dconfprofiledir)" || $(MKDIR_P) "$(DESTDIR)$(dconfprofiledir)"
-	@list='$(nobase_dist_dconfprofile_DATA)'; test -n "$(dconfprofiledir)" || list=; \
+	@list='$(nobase_dconfprofile_DATA)'; test -n "$(dconfprofiledir)" || list=; \
 	$(am__nobase_list) | while read dir files; do \
 	  xfiles=; for file in $$files; do \
 	    if test -f "$$file"; then xfiles="$$xfiles $$file"; \
@@ -424,9 +426,9 @@ install-nobase_dist_dconfprofileDATA: $(nobase_dist_dconfprofile_DATA)
 	    $(INSTALL_DATA) $$xfiles "$(DESTDIR)$(dconfprofiledir)/$$dir" || exit $$?; }; \
 	done
 
-uninstall-nobase_dist_dconfprofileDATA:
+uninstall-nobase_dconfprofileDATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(nobase_dist_dconfprofile_DATA)'; test -n "$(dconfprofiledir)" || list=; \
+	@list='$(nobase_dconfprofile_DATA)'; test -n "$(dconfprofiledir)" || list=; \
 	$(am__nobase_strip_setup); files=`$(am__nobase_strip)`; \
 	test -n "$$files" || exit 0; \
 	echo " ( cd '$(DESTDIR)$(dconfprofiledir)' && rm -f" $$files ")"; \
@@ -492,6 +494,7 @@ install-strip:
 mostlyclean-generic:
 
 clean-generic:
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
@@ -523,7 +526,7 @@ info: info-am
 info-am:
 
 install-data-am: install-dist_gsettingsconvertDATA \
-	install-nobase_dist_dconfprofileDATA
+	install-nobase_dconfprofileDATA
 
 install-dvi: install-dvi-am
 
@@ -568,7 +571,7 @@ ps: ps-am
 ps-am:
 
 uninstall-am: uninstall-dist_gsettingsconvertDATA \
-	uninstall-nobase_dist_dconfprofileDATA
+	uninstall-nobase_dconfprofileDATA
 
 .MAKE: install-am install-strip
 
@@ -578,17 +581,16 @@ uninstall-am: uninstall-dist_gsettingsconvertDATA \
 	install-data install-data-am install-dist_gsettingsconvertDATA \
 	install-dvi install-dvi-am install-exec install-exec-am \
 	install-html install-html-am install-info install-info-am \
-	install-man install-nobase_dist_dconfprofileDATA install-pdf \
+	install-man install-nobase_dconfprofileDATA install-pdf \
 	install-pdf-am install-ps install-ps-am install-strip \
 	installcheck installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-generic \
 	mostlyclean-libtool pdf pdf-am ps ps-am uninstall uninstall-am \
 	uninstall-dist_gsettingsconvertDATA \
-	uninstall-nobase_dist_dconfprofileDATA
+	uninstall-nobase_dconfprofileDATA
 
 @GSETTINGS_RULES@
 @INTLTOOL_XML_NOMERGE_RULE@
-	$(NULL)
 
 org.freedesktop.ibus.gschema.xml.in: $(top_srcdir)/data/ibus.schemas.in
 	$(AM_V_GEN) gsettings-schema-convert --force --gconf --xml \

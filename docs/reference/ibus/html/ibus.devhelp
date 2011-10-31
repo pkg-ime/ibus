@@ -49,6 +49,10 @@
     <function name="struct IBusAttribute" link="IBusAttribute.html#IBusAttribute-struct"/>
     <function name="struct IBusAttributeClass" link="IBusAttribute.html#IBusAttributeClass"/>
     <function name="ibus_attribute_new ()" link="IBusAttribute.html#ibus-attribute-new"/>
+    <function name="ibus_attribute_get_attr_type ()" link="IBusAttribute.html#ibus-attribute-get-attr-type"/>
+    <function name="ibus_attribute_get_value ()" link="IBusAttribute.html#ibus-attribute-get-value"/>
+    <function name="ibus_attribute_get_start_index ()" link="IBusAttribute.html#ibus-attribute-get-start-index"/>
+    <function name="ibus_attribute_get_end_index ()" link="IBusAttribute.html#ibus-attribute-get-end-index"/>
     <function name="ibus_attr_underline_new ()" link="IBusAttribute.html#ibus-attr-underline-new"/>
     <function name="ibus_attr_foreground_new ()" link="IBusAttribute.html#ibus-attr-foreground-new"/>
     <function name="ibus_attr_background_new ()" link="IBusAttribute.html#ibus-attr-background-new"/>
@@ -2496,6 +2500,7 @@
     <function name="enum IBusOrientation" link="ibus-ibustypes.html#IBusOrientation"/>
     <function name="enum IBusBusNameFlag" link="ibus-ibustypes.html#IBusBusNameFlag"/>
     <function name="enum IBusBusRequestNameReply" link="ibus-ibustypes.html#IBusBusRequestNameReply"/>
+    <function name="enum IBusBusStartServiceByNameReply" link="ibus-ibustypes.html#IBusBusStartServiceByNameReply"/>
     <function name="enum IBusError" link="ibus-ibustypes.html#IBusError"/>
     <function name="struct IBusRectangle" link="ibus-ibustypes.html#IBusRectangle"/>
     <function name="IBusFreeFunc ()" link="ibus-ibustypes.html#IBusFreeFunc"/>

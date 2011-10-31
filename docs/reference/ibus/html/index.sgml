@@ -20,6 +20,10 @@
 <ANCHOR id="IBusAttribute-struct" href="ibus/IBusAttribute.html#IBusAttribute-struct">
 <ANCHOR id="IBusAttributeClass" href="ibus/IBusAttribute.html#IBusAttributeClass">
 <ANCHOR id="ibus-attribute-new" href="ibus/IBusAttribute.html#ibus-attribute-new">
+<ANCHOR id="ibus-attribute-get-attr-type" href="ibus/IBusAttribute.html#ibus-attribute-get-attr-type">
+<ANCHOR id="ibus-attribute-get-value" href="ibus/IBusAttribute.html#ibus-attribute-get-value">
+<ANCHOR id="ibus-attribute-get-start-index" href="ibus/IBusAttribute.html#ibus-attribute-get-start-index">
+<ANCHOR id="ibus-attribute-get-end-index" href="ibus/IBusAttribute.html#ibus-attribute-get-end-index">
 <ANCHOR id="ibus-attr-underline-new" href="ibus/IBusAttribute.html#ibus-attr-underline-new">
 <ANCHOR id="ibus-attr-foreground-new" href="ibus/IBusAttribute.html#ibus-attr-foreground-new">
 <ANCHOR id="ibus-attr-background-new" href="ibus/IBusAttribute.html#ibus-attr-background-new">
@@ -2710,6 +2714,9 @@
 <ANCHOR id="IBUS-BUS-REQUEST-NAME-REPLY-IN-QUEUE:CAPS" href="ibus/ibus-ibustypes.html#IBUS-BUS-REQUEST-NAME-REPLY-IN-QUEUE:CAPS">
 <ANCHOR id="IBUS-BUS-REQUEST-NAME-REPLY-EXISTS:CAPS" href="ibus/ibus-ibustypes.html#IBUS-BUS-REQUEST-NAME-REPLY-EXISTS:CAPS">
 <ANCHOR id="IBUS-BUS-REQUEST-NAME-REPLY-ALREADY-OWNER:CAPS" href="ibus/ibus-ibustypes.html#IBUS-BUS-REQUEST-NAME-REPLY-ALREADY-OWNER:CAPS">
+<ANCHOR id="IBusBusStartServiceByNameReply" href="ibus/ibus-ibustypes.html#IBusBusStartServiceByNameReply">
+<ANCHOR id="IBUS-BUS-START-REPLY-SUCCESS:CAPS" href="ibus/ibus-ibustypes.html#IBUS-BUS-START-REPLY-SUCCESS:CAPS">
+<ANCHOR id="IBUS-BUS-START-REPLY-ALREADY-RUNNING:CAPS" href="ibus/ibus-ibustypes.html#IBUS-BUS-START-REPLY-ALREADY-RUNNING:CAPS">
 <ANCHOR id="IBusError" href="ibus/ibus-ibustypes.html#IBusError">
 <ANCHOR id="IBUS-ERROR-NO-ENGINE:CAPS" href="ibus/ibus-ibustypes.html#IBUS-ERROR-NO-ENGINE:CAPS">
 <ANCHOR id="IBusRectangle" href="ibus/ibus-ibustypes.html#IBusRectangle">

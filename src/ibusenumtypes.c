@@ -210,6 +210,21 @@ ibus_bus_request_name_reply_get_type (void)
 }
 
 GType
+ibus_bus_start_service_by_name_reply_get_type (void)
+{
+    static GType etype = 0;
+    if (G_UNLIKELY(etype == 0)) {
+        static const GEnumValue values[] = {
+            { IBUS_BUS_START_REPLY_SUCCESS, "IBUS_BUS_START_REPLY_SUCCESS", "success" },
+            { IBUS_BUS_START_REPLY_ALREADY_RUNNING, "IBUS_BUS_START_REPLY_ALREADY_RUNNING", "already-running" },
+            { 0, NULL, NULL }
+        };
+        etype = g_enum_register_static (g_intern_static_string ("IBusBusStartServiceByNameReply"), values);
+    }
+    return etype;
+}
+
+GType
 ibus_error_get_type (void)
 {
     static GType etype = 0;

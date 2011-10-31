@@ -9,7 +9,7 @@
 /* Enable surrounding-text support */
 #undef ENABLE_SURROUNDING
 
-/* Gettext package */
+/* The prefix for out gettext translation domains. */
 #undef GETTEXT_PACKAGE
 
 /* Define to 1 if you have the `bind_textdomain_codeset' function. */
