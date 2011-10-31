@@ -1,7 +1,9 @@
 XIM=ibus
 XIM_PROGRAM=/usr/bin/ibus-daemon
 XIM_ARGS="--xim"
-if [ -e /usr/lib/gtk-*.0/*/immodules/im-ibus.so ]; then
+if [ -e /usr/lib/gtk-3.0/*/immodules/im-ibus.so ] \
+   && [ -e /usr/lib/gtk-2.0/*/immodules/im-ibus.so ]
+then
     GTK_IM_MODULE=ibus
 else
     GTK_IM_MODULE=xim

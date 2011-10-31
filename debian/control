@@ -30,8 +30,8 @@ X-Python-Version: >= 2.5
 Package: ibus
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends},
- python-ibus (= ${source:Version}), python-xdg, librsvg2-common, python-notify, im-config
-Recommends: ibus-gtk | ibus-qt4 | ibus-clutter
+ python-ibus (= ${source:Version}), python-xdg, librsvg2-common, python-notify
+Recommends: ibus-gtk3, ibus-gtk, ibus-qt4, ibus-clutter, im-config
 Conflicts: ibus-anthy (<< 1.2),
  ibus-table (<< 1.2),
  ibus-pinyin (<< 1.2.99),
