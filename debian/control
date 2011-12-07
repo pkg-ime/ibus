@@ -5,7 +5,8 @@ Maintainer: IME Packaging Team <pkg-ime-devel@lists.alioth.debian.org>
 Uploaders: 
  LI Daobing <lidaobing@debian.org>,
  Zhengpeng Hou <zhengpeng-hou@ubuntu.com>,
- Asias He <asias.hejun@gmail.com>
+ Asias He <asias.hejun@gmail.com>,
+ Osamu Aoki <osamu@debian.org>
 Build-Depends: debhelper (>= 7.0.50~),
  autotools-dev,
  autoconf,
