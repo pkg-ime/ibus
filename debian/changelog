@@ -1,10 +1,13 @@
 ibus (1.4.0-2) unstable; urgency=low
 
+  [ LI Daobing ]
   * Fix "The xim doesn't work; the location to install gtk im modules
     doesn't consider multiarch", thanks Steve Langasek.
     (Closes: #642317)
   * Fix "checking for ibus support in gtk2 and gtk3 separately", thanks Steve
     Langasek and Osamu Aoki (Closes: #645729)
+
+  [ Osamu Aoki ]
   * Remove old README.source (Closes:#645728)
   * Add README.Debian to improve documentation. (Closes: #600414) 
   * Breaks should be used instead of Conflicts for versioned case.
