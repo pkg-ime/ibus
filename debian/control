@@ -33,7 +33,7 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends},
  python-ibus (= ${source:Version}), python-xdg, librsvg2-common, python-notify
 Recommends: ibus-gtk3, ibus-gtk, ibus-qt4, ibus-clutter, im-config
-Conflicts: ibus-anthy (<< 1.2),
+Breaks: ibus-anthy (<< 1.2),
  ibus-table (<< 1.2),
  ibus-pinyin (<< 1.2.99),
  ibus-m17n (<< 1.2.99),

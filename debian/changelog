@@ -7,8 +7,9 @@ ibus (1.4.0-2) unstable; urgency=low
     Langasek and Osamu Aoki (Closes: #645729)
   * Remove old README.source (Closes:#645728)
   * Add README.Debian to improve documentation. (Closes: #600414) 
+  * Breaks should be used instead of Conflicts for versioned case.
 
- -- Osamu Aoki <osamu@debian.org>  Wed, 07 Dec 2011 23:08:44 +0900
+ -- Osamu Aoki <osamu@debian.org>  Wed, 07 Dec 2011 23:35:51 +0900
 
 ibus (1.4.0-1) unstable; urgency=low
 
