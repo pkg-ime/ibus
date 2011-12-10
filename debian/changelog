@@ -1,3 +1,20 @@
+ibus (1.4.0-3) unstable; urgency=low
+
+  [ Kees Cook ]
+  * debian/{control,*.install}: Convert to Multi-Arch. Closes: #651488
+  * debian/patches/use_pkglibexec.patch: modify upstream build to use
+    pkglibexec instead of libexec, since this provides the ibus/
+    subdirectory.
+  * proper-gtk-plugin-path.patch: adjust to leave gtk3 where it thinks
+    it should be.
+
+  [ Osamu Aoki ]
+  * debian/xinput/ibus: adopt to multiarch having multiple matches.
+  * Add comments to patch fixing #642317 in 1.4.0-2.
+  * Add im-switch as seconday choice for smoother upgrade.
+
+ -- Osamu Aoki <osamu@debian.org>  Sun, 11 Dec 2011 09:21:23 +0900
+
 ibus (1.4.0-2) unstable; urgency=low
 
   [ LI Daobing ]
