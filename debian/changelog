@@ -12,8 +12,9 @@ ibus (1.4.0-3) unstable; urgency=low
   * debian/xinput/ibus: adopt to multiarch having multiple matches.
   * Add comments to patch fixing #642317 in 1.4.0-2.
   * Add im-switch as seconday choice for smoother upgrade.
+  * Enable autoreconf for each build. Closes: #558568
 
- -- Osamu Aoki <osamu@debian.org>  Sun, 11 Dec 2011 09:21:23 +0900
+ -- Osamu Aoki <osamu@debian.org>  Thu, 15 Dec 2011 23:44:12 +0900
 
 ibus (1.4.0-2) unstable; urgency=low
 

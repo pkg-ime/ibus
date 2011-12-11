@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 %:
-	dh  $@ --with python2
+	dh  $@ --with python2 --with autoreconf
 
 override_dh_auto_configure:
 	dh_auto_configure -- LDFLAGS="-Wl,--as-needed" --enable-static  --enable-gtk3 --enable-surrounding-text

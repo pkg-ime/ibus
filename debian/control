@@ -9,6 +9,7 @@ Uploaders:
  Osamu Aoki <osamu@debian.org>
 Build-Depends: debhelper (>= 8.1.3~),
  autotools-dev,
+ dh-autoreconf,
  autoconf,
  automake,
  libtool,
