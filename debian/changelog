@@ -5,8 +5,9 @@ ibus (1.4.0-4) unstable; urgency=low
   * Add Daiki Ueno as Uploaders.
   * Fix build problem due to old automake1.11-2. Closes: #657828
   * Fix typo and other minor issues. 
+  * Fix documentation location. Closes: #655056 
 
- -- Osamu Aoki <osamu@debian.org>  Tue, 31 Jan 2012 20:25:50 +0900
+ -- Osamu Aoki <osamu@debian.org>  Tue, 31 Jan 2012 20:56:01 +0900
 
 ibus (1.4.0-3) unstable; urgency=low
 
