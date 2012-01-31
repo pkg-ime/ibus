@@ -1,3 +1,4 @@
 proper-gtk-plugin-path.patch
 use_pkglibexec.patch
 ibusuigtk.patch
+cosmetic.patch

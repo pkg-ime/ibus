@@ -1,10 +1,12 @@
 ibus (1.4.0-4) unstable; urgency=low
 
-  * Applied patch to add gobject-introspection support from Daiki Ueno.
+  * Apply patch to add gobject-introspection support from Daiki Ueno.
+    Closes: #657436
   * Add Daiki Ueno as Uploaders.
-  * Fix build problem due to old automake1.11-2.
+  * Fix build problem due to old automake1.11-2. Closes: #657828
+  * Fix typo and other minor issues. 
 
- -- Osamu Aoki <osamu@debian.org>  Mon, 30 Jan 2012 22:36:09 +0900
+ -- Osamu Aoki <osamu@debian.org>  Tue, 31 Jan 2012 20:25:50 +0900
 
 ibus (1.4.0-3) unstable; urgency=low
 
