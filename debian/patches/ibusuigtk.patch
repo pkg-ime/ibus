@@ -10,8 +10,8 @@ Author: Aron Xu <happyaron.xu@gmail.com>, Daiki Ueno <ueno@unixuser.org>
  	$(NULL)
  ui_gtkdir = $(pkgdatadir)/ui/gtk
  
--pkglibexec_SCRIPTS = \
-+ibusuigtkdir = $(pkglibexecdir)
+-libexec_SCRIPTS = \
++ibusuigtkdir = $(libexecdir)/ibus
 +dist_ibusuigtk_SCRIPTS = \
  	ibus-ui-gtk \
  	$(NULL)

@@ -1,3 +1,10 @@
+ibus (1.4.0-5) unstable; urgency=low
+
+  * Revert pkglibexec patch by Kees Cook with old automake1.11-2
+    workaround.
+
+ -- Osamu Aoki <osamu@debian.org>  Fri, 03 Feb 2012 22:13:28 +0900
+
 ibus (1.4.0-4) unstable; urgency=low
 
   * Apply patch to add gobject-introspection support from Daiki Ueno.
