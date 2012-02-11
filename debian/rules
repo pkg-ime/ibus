@@ -3,7 +3,12 @@
 	dh  $@ --with python2 --with autoreconf
 
 override_dh_auto_configure:
-	dh_auto_configure -- LDFLAGS="-Wl,--as-needed" --enable-static  --enable-gtk3 --enable-surrounding-text
+	dh_auto_configure -- \
+		LDFLAGS="-Wl,--as-needed" \
+		--enable-static \
+		--enable-gtk3 \
+		--enable-surrounding-text \
+		--libexec=/usr/lib/$(DEB_BUILD_MULTIARCH)/ibus
 
 override_dh_makeshlibs:
 	dh_makeshlibs -Nibus-gtk -Nibus-gtk3

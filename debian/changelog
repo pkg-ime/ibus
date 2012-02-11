@@ -1,9 +1,10 @@
-ibus (1.4.0-5) unstable; urgency=low
+ibus (1.4.1-1) unstable; urgency=low
 
   * Revert pkglibexec patch by Kees Cook with old automake1.11-2
     workaround.
+  * Removed old patches which is included upstream.
 
- -- Osamu Aoki <osamu@debian.org>  Fri, 03 Feb 2012 22:13:28 +0900
+ -- Osamu Aoki <osamu@debian.org>  Sat, 11 Feb 2012 10:21:24 +0900
 
 ibus (1.4.0-4) unstable; urgency=low
 
