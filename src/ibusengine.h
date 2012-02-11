@@ -169,8 +169,8 @@ IBusEngine  *ibus_engine_new            (const gchar        *engine_name,
                                          const gchar        *object_path,
                                          GDBusConnection    *connection);
 /**
- * ibus_engine_new_type:
- * @engine_type: GType of subclass of IBUS_TYPE_ENGINE
+ * ibus_engine_new_with_type:
+ * @engine_type: GType of #IBusEngine.
  * @engine_name: Name of the IBusObject.
  * @object_path: Path for IBusService.
  * @connection: An opened GDBusConnection.
@@ -178,7 +178,7 @@ IBusEngine  *ibus_engine_new            (const gchar        *engine_name,
  *
  * New an IBusEngine.
  */
-IBusEngine  *ibus_engine_new_type       (GType               engine_type,
+IBusEngine  *ibus_engine_new_with_type  (GType               engine_type,
                                          const gchar        *engine_name,
                                          const gchar        *object_path,
                                          GDBusConnection    *connection);
@@ -408,9 +408,9 @@ void ibus_engine_delete_surrounding_text(IBusEngine         *engine,
 /**
  * ibus_engine_get_surrounding_text:
  * @engine: An IBusEngine.
- * @text: (allow-none): Location to store surrounding text.
- * @cursor_pos: (allow-none): Cursor position in characters in @text.
- * @anchor_pos: (allow-none): Anchor position of selection in @text.
+ * @text: (out) (transfer none) (allow-none): Location to store surrounding text.
+ * @cursor_pos: (out) (allow-none): Cursor position in characters in @text.
+ * @anchor_pos: (out) (allow-none): Anchor position of selection in @text.
  *
  * Get surrounding text.
  *

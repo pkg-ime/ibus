@@ -1,0 +1,256 @@
+<!-- ##### SECTION Title ##### -->
+IBusLookupTable
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusLookupTable ##### -->
+<para>
+
+</para>
+
+@page_size: 
+@cursor_pos: 
+@cursor_visible: 
+@round: 
+@orientation: 
+@candidates: 
+@labels: 
+
+<!-- ##### STRUCT IBusLookupTableClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_lookup_table_append_candidate ##### -->
+<para>
+
+</para>
+
+@table: 
+@text: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_append_label ##### -->
+<para>
+
+</para>
+
+@table: 
+@text: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_clear ##### -->
+<para>
+
+</para>
+
+@table: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_cursor_down ##### -->
+<para>
+
+</para>
+
+@table: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_cursor_up ##### -->
+<para>
+
+</para>
+
+@table: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_get_candidate ##### -->
+<para>
+
+</para>
+
+@table: 
+@index: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_get_cursor_in_page ##### -->
+<para>
+
+</para>
+
+@table: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_get_cursor_pos ##### -->
+<para>
+
+</para>
+
+@table: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_get_label ##### -->
+<para>
+
+</para>
+
+@table: 
+@index: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_get_number_of_candidates ##### -->
+<para>
+
+</para>
+
+@table: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_get_orientation ##### -->
+<para>
+
+</para>
+
+@table: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_get_page_size ##### -->
+<para>
+
+</para>
+
+@table: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_is_cursor_visible ##### -->
+<para>
+
+</para>
+
+@table: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_is_round ##### -->
+<para>
+
+</para>
+
+@table: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_new ##### -->
+<para>
+
+</para>
+
+@page_size: 
+@cursor_pos: 
+@cursor_visible: 
+@round: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_page_down ##### -->
+<para>
+
+</para>
+
+@table: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_page_up ##### -->
+<para>
+
+</para>
+
+@table: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_set_cursor_pos ##### -->
+<para>
+
+</para>
+
+@table: 
+@cursor_pos: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_set_cursor_visible ##### -->
+<para>
+
+</para>
+
+@table: 
+@visible: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_set_label ##### -->
+<para>
+
+</para>
+
+@table: 
+@index: 
+@text: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_set_orientation ##### -->
+<para>
+
+</para>
+
+@table: 
+@orientation: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_set_page_size ##### -->
+<para>
+
+</para>
+
+@table: 
+@page_size: 
+
+
+<!-- ##### FUNCTION ibus_lookup_table_set_round ##### -->
+<para>
+
+</para>
+
+@table: 
+@round: 
+
+

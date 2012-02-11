@@ -175,6 +175,8 @@ GTK3_CFLAGS = @GTK3_CFLAGS@
 GTK3_IM_MODULEDIR = @GTK3_IM_MODULEDIR@
 GTK3_LIBS = @GTK3_LIBS@
 GTKDOC_CHECK = @GTKDOC_CHECK@
+GTKDOC_DEPS_CFLAGS = @GTKDOC_DEPS_CFLAGS@
+GTKDOC_DEPS_LIBS = @GTKDOC_DEPS_LIBS@
 GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
 HTML_DIR = @HTML_DIR@
@@ -264,6 +266,7 @@ SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
 USE_NLS = @USE_NLS@
+VAPIGEN = @VAPIGEN@
 VERSION = @VERSION@
 X11_CFLAGS = @X11_CFLAGS@
 X11_LIBS = @X11_LIBS@
@@ -331,6 +334,21 @@ dist_vapi_DATA = \
 	ibus-@IBUS_API_VERSION@.deps \
 	$(NULL)
 
+
+# Don't rebuild vapi every time gir is updated.
+vapi_deps = \
+	$(srcdir)/IBus-1.0.metadata \
+	$(srcdir)/IBus-1.0-custom.vala \
+	| \
+	$(top_srcdir)/src/IBus-@IBUS_API_VERSION@.gir \
+	$(NULL)
+
+EXTRA_DIST = \
+	IBus-1.0.metadata \
+	IBus-1.0-custom.vala \
+	$(NULL)
+
+MAINTAINERCLEANFILES = ibus-@IBUS_API_VERSION@.vapi
 all: all-am
 
 .SUFFIXES:
@@ -459,6 +477,7 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
+	-test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 clean: clean-am
 
 clean-am: clean-generic clean-libtool mostlyclean-am
@@ -540,15 +559,12 @@ uninstall-am: uninstall-dist_vapiDATA
 	uninstall uninstall-am uninstall-dist_vapiDATA
 
 
-ibus-@IBUS_API_VERSION@.vapi:
-	vapigen --library ibus-@IBUS_API_VERSION@ \
+ibus-@IBUS_API_VERSION@.vapi: $(vapi_deps)
+	$(AM_V_GEN) $(VAPIGEN) --library ibus-@IBUS_API_VERSION@ \
 			--pkg gio-2.0 \
-			--metadata=ibus-@IBUS_API_VERSION@/ibus-@IBUS_API_VERSION@.metadata \
-			ibus-@IBUS_API_VERSION@/ibus-@IBUS_API_VERSION@.gi \
-			ibus-@IBUS_API_VERSION@/ibus-@IBUS_API_VERSION@-custom.vala
-
-generate-vala:
-	vala-gen-introspect ibus-@IBUS_API_VERSION@ ibus-@IBUS_API_VERSION@
+			--metadatadir=$(srcdir) \
+			$(top_srcdir)/src/IBus-@IBUS_API_VERSION@.gir \
+			$(srcdir)/IBus-1.0-custom.vala
 
 -include $(top_srcdir)/git.mk
 

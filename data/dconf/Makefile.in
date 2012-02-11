@@ -177,6 +177,8 @@ GTK3_CFLAGS = @GTK3_CFLAGS@
 GTK3_IM_MODULEDIR = @GTK3_IM_MODULEDIR@
 GTK3_LIBS = @GTK3_LIBS@
 GTKDOC_CHECK = @GTKDOC_CHECK@
+GTKDOC_DEPS_CFLAGS = @GTKDOC_DEPS_CFLAGS@
+GTKDOC_DEPS_LIBS = @GTKDOC_DEPS_LIBS@
 GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
 HTML_DIR = @HTML_DIR@
@@ -266,6 +268,7 @@ SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
 USE_NLS = @USE_NLS@
+VAPIGEN = @VAPIGEN@
 VERSION = @VERSION@
 X11_CFLAGS = @X11_CFLAGS@
 X11_LIBS = @X11_LIBS@
@@ -601,6 +604,8 @@ db/ibus: $(srcdir)/make-dconf-override-db.sh $(gsettings_SCHEMAS)
 	@$(MKDIR_P) db
 	$(AM_V_GEN) $(srcdir)/make-dconf-override-db.sh $@ || \
 		{ rc=$$?; $(RM) -rf $@; exit $$rc; }
+
+-include $(top_srcdir)/git.mk
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

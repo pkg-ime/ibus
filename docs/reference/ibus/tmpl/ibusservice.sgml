@@ -1,0 +1,111 @@
+<!-- ##### SECTION Title ##### -->
+IBusService
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusService ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT IBusServiceClass ##### -->
+<para>
+
+</para>
+
+@service_method_call: 
+@service_get_property: 
+@service_set_property: 
+
+<!-- ##### FUNCTION ibus_service_class_add_interfaces ##### -->
+<para>
+
+</para>
+
+@klass: 
+@xml_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_emit_signal ##### -->
+<para>
+
+</para>
+
+@service: 
+@dest_bus_name: 
+@interface_name: 
+@signal_name: 
+@parameters: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_get_connection ##### -->
+<para>
+
+</para>
+
+@service: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_get_object_path ##### -->
+<para>
+
+</para>
+
+@service: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_new ##### -->
+<para>
+
+</para>
+
+@connection: 
+@path: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_register ##### -->
+<para>
+
+</para>
+
+@service: 
+@connection: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_service_unregister ##### -->
+<para>
+
+</para>
+
+@service: 
+@connection: 
+
+

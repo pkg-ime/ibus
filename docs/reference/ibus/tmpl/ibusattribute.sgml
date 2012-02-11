@@ -1,0 +1,142 @@
+<!-- ##### SECTION Title ##### -->
+IBusAttribute
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### ENUM IBusAttrType ##### -->
+<para>
+
+</para>
+
+@IBUS_ATTR_TYPE_UNDERLINE: 
+@IBUS_ATTR_TYPE_FOREGROUND: 
+@IBUS_ATTR_TYPE_BACKGROUND: 
+
+<!-- ##### ENUM IBusAttrUnderline ##### -->
+<para>
+
+</para>
+
+@IBUS_ATTR_UNDERLINE_NONE: 
+@IBUS_ATTR_UNDERLINE_SINGLE: 
+@IBUS_ATTR_UNDERLINE_DOUBLE: 
+@IBUS_ATTR_UNDERLINE_LOW: 
+@IBUS_ATTR_UNDERLINE_ERROR: 
+
+<!-- ##### STRUCT IBusAttribute ##### -->
+<para>
+
+</para>
+
+@type: 
+@value: 
+@start_index: 
+@end_index: 
+
+<!-- ##### STRUCT IBusAttributeClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_attr_background_new ##### -->
+<para>
+
+</para>
+
+@color: 
+@start_index: 
+@end_index: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_attr_foreground_new ##### -->
+<para>
+
+</para>
+
+@color: 
+@start_index: 
+@end_index: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_attr_underline_new ##### -->
+<para>
+
+</para>
+
+@underline_type: 
+@start_index: 
+@end_index: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_attribute_get_attr_type ##### -->
+<para>
+
+</para>
+
+@attr: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_attribute_get_end_index ##### -->
+<para>
+
+</para>
+
+@attr: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_attribute_get_start_index ##### -->
+<para>
+
+</para>
+
+@attr: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_attribute_get_value ##### -->
+<para>
+
+</para>
+
+@attr: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_attribute_new ##### -->
+<para>
+
+</para>
+
+@type: 
+@value: 
+@start_index: 
+@end_index: 
+@Returns: 
+
+

@@ -1,0 +1,33 @@
+<!-- ##### SECTION Title ##### -->
+ibusutil
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### FUNCTION ibus_get_language_name ##### -->
+<para>
+
+</para>
+
+@_locale: 
+@Returns: 
+
+

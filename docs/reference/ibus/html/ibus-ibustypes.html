@@ -7,7 +7,7 @@
 <link rel="home" href="index.html" title="IBus Reference Manual">
 <link rel="up" href="ch06.html" title="Internal">
 <link rel="prev" href="ibus-ibusshare.html" title="ibusshare">
-<meta name="generator" content="GTK-Doc V1.17 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -42,27 +42,27 @@ Stable, unless otherwise indicated
 </div>
 <div class="refsynopsisdiv">
 <a name="ibus-ibustypes.synopsis"></a><h2>Synopsis</h2>
-<a name="IBusModifierType"></a><a name="IBusCapabilite"></a><a name="IBusOrientation"></a><pre class="synopsis">enum                <a class="link" href="ibus-ibustypes.html#IBusModifierType">IBusModifierType</a>;
-enum                <a class="link" href="ibus-ibustypes.html#IBusCapabilite">IBusCapabilite</a>;
-enum                <a class="link" href="ibus-ibustypes.html#IBusPreeditFocusMode" title="enum IBusPreeditFocusMode">IBusPreeditFocusMode</a>;
-enum                <a class="link" href="ibus-ibustypes.html#IBusOrientation">IBusOrientation</a>;
-enum                <a class="link" href="ibus-ibustypes.html#IBusBusNameFlag" title="enum IBusBusNameFlag">IBusBusNameFlag</a>;
+<a name="IBusCapabilite"></a><a name="IBusModifierType"></a><a name="IBusOrientation"></a><pre class="synopsis">enum                <a class="link" href="ibus-ibustypes.html#IBusBusNameFlag" title="enum IBusBusNameFlag">IBusBusNameFlag</a>;
 enum                <a class="link" href="ibus-ibustypes.html#IBusBusRequestNameReply" title="enum IBusBusRequestNameReply">IBusBusRequestNameReply</a>;
 enum                <a class="link" href="ibus-ibustypes.html#IBusBusStartServiceByNameReply" title="enum IBusBusStartServiceByNameReply">IBusBusStartServiceByNameReply</a>;
+enum                <a class="link" href="ibus-ibustypes.html#IBusCapabilite-enum" title="enum IBusCapabilite">IBusCapabilite</a>;
 enum                <a class="link" href="ibus-ibustypes.html#IBusError" title="enum IBusError">IBusError</a>;
-struct              <a class="link" href="ibus-ibustypes.html#IBusRectangle" title="struct IBusRectangle">IBusRectangle</a>;
 <span class="returnvalue">void</span>                (<a class="link" href="ibus-ibustypes.html#IBusFreeFunc" title="IBusFreeFunc ()">*IBusFreeFunc</a>)                     (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> object</code></em>);
+enum                <a class="link" href="ibus-ibustypes.html#IBusModifierType-enum" title="enum IBusModifierType">IBusModifierType</a>;
+enum                <a class="link" href="ibus-ibustypes.html#IBusOrientation-enum" title="enum IBusOrientation">IBusOrientation</a>;
+enum                <a class="link" href="ibus-ibustypes.html#IBusPreeditFocusMode" title="enum IBusPreeditFocusMode">IBusPreeditFocusMode</a>;
+struct              <a class="link" href="ibus-ibustypes.html#IBusRectangle" title="struct IBusRectangle">IBusRectangle</a>;
 </pre>
 </div>
 <div class="refsect1">
 <a name="ibus-ibustypes.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
   GFlags
-   +----IBusModifierType
+   +----IBusCapabilite
 </pre>
 <pre class="synopsis">
   GFlags
-   +----IBusCapabilite
+   +----IBusModifierType
 </pre>
 <pre class="synopsis">
   GEnum
@@ -79,9 +79,181 @@ and a rectangle structure.
 <div class="refsect1">
 <a name="ibus-ibustypes.details"></a><h2>Details</h2>
 <div class="refsect2">
-<a name="IBusModifierType"></a><h3>enum IBusModifierType</h3>
-<pre class="programlisting">typedef enum
-{
+<a name="IBusBusNameFlag"></a><h3>enum IBusBusNameFlag</h3>
+<pre class="programlisting">typedef enum {
+    IBUS_BUS_NAME_FLAG_ALLOW_REPLACEMENT   = (1 &lt;&lt; 0),
+    IBUS_BUS_NAME_FLAG_REPLACE_EXISTING    = (1 &lt;&lt; 1),
+    IBUS_BUS_NAME_FLAG_DO_NOT_QUEUE        = (1 &lt;&lt; 2),
+} IBusBusNameFlag;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="IBUS-BUS-NAME-FLAG-ALLOW-REPLACEMENT:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_NAME_FLAG_ALLOW_REPLACEMENT</code></span></p></td>
+<td>   same as DBUS_NAME_FLAG_ALLOW_REPLACEMENT	
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-BUS-NAME-FLAG-REPLACE-EXISTING:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_NAME_FLAG_REPLACE_EXISTING</code></span></p></td>
+<td>   same as DBUS_NAME_FLAG_REPLACE_EXISTING
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-BUS-NAME-FLAG-DO-NOT-QUEUE:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_NAME_FLAG_DO_NOT_QUEUE</code></span></p></td>
+<td>   same as DBUS_NAME_FLAG_DO_NOT_QUEUE 
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusBusRequestNameReply"></a><h3>enum IBusBusRequestNameReply</h3>
+<pre class="programlisting">typedef enum {
+    IBUS_BUS_REQUEST_NAME_REPLY_PRIMARY_OWNER   = 1,
+    IBUS_BUS_REQUEST_NAME_REPLY_IN_QUEUE        = 2,
+    IBUS_BUS_REQUEST_NAME_REPLY_EXISTS          = 3,
+    IBUS_BUS_REQUEST_NAME_REPLY_ALREADY_OWNER   = 4,
+} IBusBusRequestNameReply;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-PRIMARY-OWNER:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_PRIMARY_OWNER</code></span></p></td>
+<td>   same as DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-IN-QUEUE:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_IN_QUEUE</code></span></p></td>
+<td>   same as DBUS_REQUEST_NAME_REPLY_IN_QUEUE
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-EXISTS:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_EXISTS</code></span></p></td>
+<td>   same as DBUS_REQUEST_NAME_REPLY_EXISTS
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-ALREADY-OWNER:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_ALREADY_OWNER</code></span></p></td>
+<td>   same as DBUS_REQUEST_NAME_REPLY_ALREADY_OWNER
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusBusStartServiceByNameReply"></a><h3>enum IBusBusStartServiceByNameReply</h3>
+<pre class="programlisting">typedef enum {
+    IBUS_BUS_START_REPLY_SUCCESS = 1,
+    IBUS_BUS_START_REPLY_ALREADY_RUNNING = 2,
+} IBusBusStartServiceByNameReply;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="IBUS-BUS-START-REPLY-SUCCESS:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_START_REPLY_SUCCESS</code></span></p></td>
+<td>   same as DBUS_START_REPLY_SUCCESS
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-BUS-START-REPLY-ALREADY-RUNNING:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_START_REPLY_ALREADY_RUNNING</code></span></p></td>
+<td>   same as DBUS_START_REPLY_ALREADY_RUNNING
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusCapabilite-enum"></a><h3>enum IBusCapabilite</h3>
+<pre class="programlisting">typedef enum {
+    IBUS_CAP_PREEDIT_TEXT       = 1 &lt;&lt; 0,
+    IBUS_CAP_AUXILIARY_TEXT     = 1 &lt;&lt; 1,
+    IBUS_CAP_LOOKUP_TABLE       = 1 &lt;&lt; 2,
+    IBUS_CAP_FOCUS              = 1 &lt;&lt; 3,
+    IBUS_CAP_PROPERTY           = 1 &lt;&lt; 4,
+    IBUS_CAP_SURROUNDING_TEXT   = 1 &lt;&lt; 5,
+} IBusCapabilite;
+</pre>
+<p>
+Capability flags of UI.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="IBUS-CAP-PREEDIT-TEXT:CAPS"></a><span class="term"><code class="literal">IBUS_CAP_PREEDIT_TEXT</code></span></p></td>
+<td>UI is capable to show pre-edit text.
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-CAP-AUXILIARY-TEXT:CAPS"></a><span class="term"><code class="literal">IBUS_CAP_AUXILIARY_TEXT</code></span></p></td>
+<td>UI is capable to show auxiliary text.
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-CAP-LOOKUP-TABLE:CAPS"></a><span class="term"><code class="literal">IBUS_CAP_LOOKUP_TABLE</code></span></p></td>
+<td>UI is capable to show the lookup table.
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-CAP-FOCUS:CAPS"></a><span class="term"><code class="literal">IBUS_CAP_FOCUS</code></span></p></td>
+<td>UI is capable to get focus.
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-CAP-PROPERTY:CAPS"></a><span class="term"><code class="literal">IBUS_CAP_PROPERTY</code></span></p></td>
+<td>UI is capable to have property.
+</td>
+</tr>
+<tr>
+<td><p><a name="IBUS-CAP-SURROUNDING-TEXT:CAPS"></a><span class="term"><code class="literal">IBUS_CAP_SURROUNDING_TEXT</code></span></p></td>
+<td>Client can provide surround text,
+ or IME can handle surround text.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusError"></a><h3>enum IBusError</h3>
+<pre class="programlisting">typedef enum {
+    IBUS_ERROR_NO_ENGINE,
+} IBusError;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><a name="IBUS-ERROR-NO-ENGINE:CAPS"></a><span class="term"><code class="literal">IBUS_ERROR_NO_ENGINE</code></span></p></td>
+<td>There is no engine associated with input context.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusFreeFunc"></a><h3>IBusFreeFunc ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                (*IBusFreeFunc)                     (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> object</code></em>);</pre>
+<p>
+Free function prototype.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>object to be freed.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusModifierType-enum"></a><h3>enum IBusModifierType</h3>
+<pre class="programlisting">typedef enum {
     IBUS_SHIFT_MASK    = 1 &lt;&lt; 0,
     IBUS_LOCK_MASK     = 1 &lt;&lt; 1,
     IBUS_CONTROL_MASK  = 1 &lt;&lt; 2,
@@ -231,86 +403,7 @@ Note that nits 15 - 25 are currently unused, while bit 29 is used internally.
 </div>
 <hr>
 <div class="refsect2">
-<a name="IBusCapabilite"></a><h3>enum IBusCapabilite</h3>
-<pre class="programlisting">typedef enum {
-    IBUS_CAP_PREEDIT_TEXT       = 1 &lt;&lt; 0,
-    IBUS_CAP_AUXILIARY_TEXT     = 1 &lt;&lt; 1,
-    IBUS_CAP_LOOKUP_TABLE       = 1 &lt;&lt; 2,
-    IBUS_CAP_FOCUS              = 1 &lt;&lt; 3,
-    IBUS_CAP_PROPERTY           = 1 &lt;&lt; 4,
-    IBUS_CAP_SURROUNDING_TEXT   = 1 &lt;&lt; 5,
-} IBusCapabilite;
-</pre>
-<p>
-Capability flags of UI.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><a name="IBUS-CAP-PREEDIT-TEXT:CAPS"></a><span class="term"><code class="literal">IBUS_CAP_PREEDIT_TEXT</code></span></p></td>
-<td>UI is capable to show pre-edit text.
-</td>
-</tr>
-<tr>
-<td><p><a name="IBUS-CAP-AUXILIARY-TEXT:CAPS"></a><span class="term"><code class="literal">IBUS_CAP_AUXILIARY_TEXT</code></span></p></td>
-<td>UI is capable to show auxiliary text.
-</td>
-</tr>
-<tr>
-<td><p><a name="IBUS-CAP-LOOKUP-TABLE:CAPS"></a><span class="term"><code class="literal">IBUS_CAP_LOOKUP_TABLE</code></span></p></td>
-<td>UI is capable to show the lookup table.
-</td>
-</tr>
-<tr>
-<td><p><a name="IBUS-CAP-FOCUS:CAPS"></a><span class="term"><code class="literal">IBUS_CAP_FOCUS</code></span></p></td>
-<td>UI is capable to get focus.
-</td>
-</tr>
-<tr>
-<td><p><a name="IBUS-CAP-PROPERTY:CAPS"></a><span class="term"><code class="literal">IBUS_CAP_PROPERTY</code></span></p></td>
-<td>UI is capable to have property.
-</td>
-</tr>
-<tr>
-<td><p><a name="IBUS-CAP-SURROUNDING-TEXT:CAPS"></a><span class="term"><code class="literal">IBUS_CAP_SURROUNDING_TEXT</code></span></p></td>
-<td>Client can provide surround text,
- or IME can handle surround text.
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="IBusPreeditFocusMode"></a><h3>enum IBusPreeditFocusMode</h3>
-<pre class="programlisting">typedef enum {
-    IBUS_ENGINE_PREEDIT_CLEAR   = 0,
-    IBUS_ENGINE_PREEDIT_COMMIT  = 1,
-} IBusPreeditFocusMode;
-</pre>
-<p>
-Pre-edit commit mode when the focus is lost.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><a name="IBUS-ENGINE-PREEDIT-CLEAR:CAPS"></a><span class="term"><code class="literal">IBUS_ENGINE_PREEDIT_CLEAR</code></span></p></td>
-<td>pre-edit text is cleared.
-</td>
-</tr>
-<tr>
-<td><p><a name="IBUS-ENGINE-PREEDIT-COMMIT:CAPS"></a><span class="term"><code class="literal">IBUS_ENGINE_PREEDIT_COMMIT</code></span></p></td>
-<td>pre-edit text is committed.
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="IBusOrientation"></a><h3>enum IBusOrientation</h3>
+<a name="IBusOrientation-enum"></a><h3>enum IBusOrientation</h3>
 <pre class="programlisting">typedef enum {
     IBUS_ORIENTATION_HORIZONTAL = 0,
     IBUS_ORIENTATION_VERTICAL   = 1,
@@ -343,108 +436,29 @@ Orientation of UI.
 </div>
 <hr>
 <div class="refsect2">
-<a name="IBusBusNameFlag"></a><h3>enum IBusBusNameFlag</h3>
+<a name="IBusPreeditFocusMode"></a><h3>enum IBusPreeditFocusMode</h3>
 <pre class="programlisting">typedef enum {
-    IBUS_BUS_NAME_FLAG_ALLOW_REPLACEMENT   = (1 &lt;&lt; 0),
-    IBUS_BUS_NAME_FLAG_REPLACE_EXISTING    = (1 &lt;&lt; 1),
-    IBUS_BUS_NAME_FLAG_DO_NOT_QUEUE        = (1 &lt;&lt; 2),
-} IBusBusNameFlag;
+    IBUS_ENGINE_PREEDIT_CLEAR   = 0,
+    IBUS_ENGINE_PREEDIT_COMMIT  = 1,
+} IBusPreeditFocusMode;
 </pre>
+<p>
+Pre-edit commit mode when the focus is lost.
+</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
-<td><p><a name="IBUS-BUS-NAME-FLAG-ALLOW-REPLACEMENT:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_NAME_FLAG_ALLOW_REPLACEMENT</code></span></p></td>
-<td>   same as DBUS_NAME_FLAG_ALLOW_REPLACEMENT	
+<td><p><a name="IBUS-ENGINE-PREEDIT-CLEAR:CAPS"></a><span class="term"><code class="literal">IBUS_ENGINE_PREEDIT_CLEAR</code></span></p></td>
+<td>pre-edit text is cleared.
 </td>
 </tr>
 <tr>
-<td><p><a name="IBUS-BUS-NAME-FLAG-REPLACE-EXISTING:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_NAME_FLAG_REPLACE_EXISTING</code></span></p></td>
-<td>   same as DBUS_NAME_FLAG_REPLACE_EXISTING
-</td>
-</tr>
-<tr>
-<td><p><a name="IBUS-BUS-NAME-FLAG-DO-NOT-QUEUE:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_NAME_FLAG_DO_NOT_QUEUE</code></span></p></td>
-<td>   same as DBUS_NAME_FLAG_DO_NOT_QUEUE 
+<td><p><a name="IBUS-ENGINE-PREEDIT-COMMIT:CAPS"></a><span class="term"><code class="literal">IBUS_ENGINE_PREEDIT_COMMIT</code></span></p></td>
+<td>pre-edit text is committed.
 </td>
 </tr>
 </tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="IBusBusRequestNameReply"></a><h3>enum IBusBusRequestNameReply</h3>
-<pre class="programlisting">typedef enum {
-    IBUS_BUS_REQUEST_NAME_REPLY_PRIMARY_OWNER   = 1,
-    IBUS_BUS_REQUEST_NAME_REPLY_IN_QUEUE        = 2,
-    IBUS_BUS_REQUEST_NAME_REPLY_EXISTS          = 3,
-    IBUS_BUS_REQUEST_NAME_REPLY_ALREADY_OWNER   = 4,
-} IBusBusRequestNameReply;
-</pre>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-PRIMARY-OWNER:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_PRIMARY_OWNER</code></span></p></td>
-<td>   same as DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER
-</td>
-</tr>
-<tr>
-<td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-IN-QUEUE:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_IN_QUEUE</code></span></p></td>
-<td>   same as DBUS_REQUEST_NAME_REPLY_IN_QUEUE
-</td>
-</tr>
-<tr>
-<td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-EXISTS:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_EXISTS</code></span></p></td>
-<td>   same as DBUS_REQUEST_NAME_REPLY_EXISTS
-</td>
-</tr>
-<tr>
-<td><p><a name="IBUS-BUS-REQUEST-NAME-REPLY-ALREADY-OWNER:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_REQUEST_NAME_REPLY_ALREADY_OWNER</code></span></p></td>
-<td>   same as DBUS_REQUEST_NAME_REPLY_ALREADY_OWNER
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="IBusBusStartServiceByNameReply"></a><h3>enum IBusBusStartServiceByNameReply</h3>
-<pre class="programlisting">typedef enum {
-    IBUS_BUS_START_REPLY_SUCCESS = 1,
-    IBUS_BUS_START_REPLY_ALREADY_RUNNING = 2,
-} IBusBusStartServiceByNameReply;
-</pre>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><a name="IBUS-BUS-START-REPLY-SUCCESS:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_START_REPLY_SUCCESS</code></span></p></td>
-<td>   same as DBUS_START_REPLY_SUCCESS
-</td>
-</tr>
-<tr>
-<td><p><a name="IBUS-BUS-START-REPLY-ALREADY-RUNNING:CAPS"></a><span class="term"><code class="literal">IBUS_BUS_START_REPLY_ALREADY_RUNNING</code></span></p></td>
-<td>   same as DBUS_START_REPLY_ALREADY_RUNNING
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="IBusError"></a><h3>enum IBusError</h3>
-<pre class="programlisting">typedef enum {
-    IBUS_ERROR_NO_ENGINE,
-} IBusError;
-</pre>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody><tr>
-<td><p><a name="IBUS-ERROR-NO-ENGINE:CAPS"></a><span class="term"><code class="literal">IBUS_ERROR_NO_ENGINE</code></span></p></td>
-<td>There is no engine associated with input context.
-</td>
-</tr></tbody>
 </table></div>
 </div>
 <hr>
@@ -482,25 +496,10 @@ Rectangle definition.
 </tbody>
 </table></div>
 </div>
-<hr>
-<div class="refsect2">
-<a name="IBusFreeFunc"></a><h3>IBusFreeFunc ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                (*IBusFreeFunc)                     (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> object</code></em>);</pre>
-<p>
-Free function prototype.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody><tr>
-<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
-<td>object to be freed.</td>
-</tr></tbody>
-</table></div>
-</div>
 </div>
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.17</div>
+          Generated by GTK-Doc V1.18</div>
 </body>
 </html>

@@ -8,7 +8,7 @@
 <link rel="up" href="ch02.html" title="Panel (User Interfaces)">
 <link rel="prev" href="IBusAttrList.html" title="IBusAttrList">
 <link rel="next" href="IBusLookupTable.html" title="IBusLookupTable">
-<meta name="generator" content="GTK-Doc V1.17 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -55,12 +55,6 @@ struct              <a class="link" href="IBusHotkeyProfile.html#IBusHotkeyProfi
                                                         (<em class="parameter"><code><a class="link" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile"><span class="type">IBusHotkeyProfile</span></a> *profile</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *str</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> event</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusHotkeyProfile.html#ibus-hotkey-profile-remove-hotkey" title="ibus_hotkey_profile_remove_hotkey ()">ibus_hotkey_profile_remove_hotkey</a>   (<em class="parameter"><code><a class="link" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile"><span class="type">IBusHotkeyProfile</span></a> *profile</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> modifiers</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusHotkeyProfile.html#ibus-hotkey-profile-remove-hotkey-by-event" title="ibus_hotkey_profile_remove_hotkey_by_event ()">ibus_hotkey_profile_remove_hotkey_by_event</a>
-                                                        (<em class="parameter"><code><a class="link" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile"><span class="type">IBusHotkeyProfile</span></a> *profile</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> event</code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="returnvalue">GQuark</span></a>              <a class="link" href="IBusHotkeyProfile.html#ibus-hotkey-profile-filter-key-event" title="ibus_hotkey_profile_filter_key_event ()">ibus_hotkey_profile_filter_key_event</a>
                                                         (<em class="parameter"><code><a class="link" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile"><span class="type">IBusHotkeyProfile</span></a> *profile</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>,
@@ -71,6 +65,12 @@ struct              <a class="link" href="IBusHotkeyProfile.html#IBusHotkeyProfi
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="returnvalue">GQuark</span></a>              <a class="link" href="IBusHotkeyProfile.html#ibus-hotkey-profile-lookup-hotkey" title="ibus_hotkey_profile_lookup_hotkey ()">ibus_hotkey_profile_lookup_hotkey</a>   (<em class="parameter"><code><a class="link" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile"><span class="type">IBusHotkeyProfile</span></a> *profile</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> modifiers</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusHotkeyProfile.html#ibus-hotkey-profile-remove-hotkey" title="ibus_hotkey_profile_remove_hotkey ()">ibus_hotkey_profile_remove_hotkey</a>   (<em class="parameter"><code><a class="link" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile"><span class="type">IBusHotkeyProfile</span></a> *profile</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> modifiers</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="IBusHotkeyProfile.html#ibus-hotkey-profile-remove-hotkey-by-event" title="ibus_hotkey_profile_remove_hotkey_by_event ()">ibus_hotkey_profile_remove_hotkey_by_event</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile"><span class="type">IBusHotkeyProfile</span></a> *profile</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> event</code></em>);
 </pre>
 </div>
 <div class="refsect1">
@@ -189,64 +189,6 @@ The hotkey is in string format, such like <code class="constant">Control+Shift+A
 </div>
 <hr>
 <div class="refsect2">
-<a name="ibus-hotkey-profile-remove-hotkey"></a><h3>ibus_hotkey_profile_remove_hotkey ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_hotkey_profile_remove_hotkey   (<em class="parameter"><code><a class="link" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile"><span class="type">IBusHotkeyProfile</span></a> *profile</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> modifiers</code></em>);</pre>
-<p>
-Remove the hotkey for an IBusHotkeyProfile.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>profile</code></em> :</span></p></td>
-<td>An IBusHotkeyProfile.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
-<td>Keycode of the hotkey.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>modifiers</code></em> :</span></p></td>
-<td>Modifiers of the hotkey.</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>FALSE if the key is not in <em class="parameter"><code>profile</code></em>, TRUE otherwise.</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-hotkey-profile-remove-hotkey-by-event"></a><h3>ibus_hotkey_profile_remove_hotkey_by_event ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_hotkey_profile_remove_hotkey_by_event
-                                                        (<em class="parameter"><code><a class="link" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile"><span class="type">IBusHotkeyProfile</span></a> *profile</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> event</code></em>);</pre>
-<p>
-Remove the hotkey for an IBusHotkeyProfile by event.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>profile</code></em> :</span></p></td>
-<td>An IBusHotkeyProfile.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>event</code></em> :</span></p></td>
-<td>The associated event.</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>FALSE if no such event in <em class="parameter"><code>profile</code></em>, TRUE otherwise.</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
 <a name="ibus-hotkey-profile-filter-key-event"></a><h3>ibus_hotkey_profile_filter_key_event ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="returnvalue">GQuark</span></a>              ibus_hotkey_profile_filter_key_event
                                                         (<em class="parameter"><code><a class="link" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile"><span class="type">IBusHotkeyProfile</span></a> *profile</code></em>,
@@ -324,6 +266,64 @@ profile.</td>
 </tbody>
 </table></div>
 </div>
+<hr>
+<div class="refsect2">
+<a name="ibus-hotkey-profile-remove-hotkey"></a><h3>ibus_hotkey_profile_remove_hotkey ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_hotkey_profile_remove_hotkey   (<em class="parameter"><code><a class="link" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile"><span class="type">IBusHotkeyProfile</span></a> *profile</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> modifiers</code></em>);</pre>
+<p>
+Remove the hotkey for an IBusHotkeyProfile.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>profile</code></em> :</span></p></td>
+<td>An IBusHotkeyProfile.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
+<td>Keycode of the hotkey.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>modifiers</code></em> :</span></p></td>
+<td>Modifiers of the hotkey.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>FALSE if the key is not in <em class="parameter"><code>profile</code></em>, TRUE otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-hotkey-profile-remove-hotkey-by-event"></a><h3>ibus_hotkey_profile_remove_hotkey_by_event ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            ibus_hotkey_profile_remove_hotkey_by_event
+                                                        (<em class="parameter"><code><a class="link" href="IBusHotkeyProfile.html" title="IBusHotkeyProfile"><span class="type">IBusHotkeyProfile</span></a> *profile</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> event</code></em>);</pre>
+<p>
+Remove the hotkey for an IBusHotkeyProfile by event.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>profile</code></em> :</span></p></td>
+<td>An IBusHotkeyProfile.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>event</code></em> :</span></p></td>
+<td>The associated event.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>FALSE if no such event in <em class="parameter"><code>profile</code></em>, TRUE otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
 </div>
 <div class="refsect1">
 <a name="IBusHotkeyProfile.signal-details"></a><h2>Signal Details</h2>
@@ -371,6 +371,6 @@ Implement the member function <code class="function">trigger()</code> in extende
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.17</div>
+          Generated by GTK-Doc V1.18</div>
 </body>
 </html>

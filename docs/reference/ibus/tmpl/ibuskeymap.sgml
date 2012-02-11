@@ -1,0 +1,68 @@
+<!-- ##### SECTION Title ##### -->
+IBusKeymap
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusKeymap ##### -->
+<para>
+
+</para>
+
+@name: 
+@keymap: 
+
+<!-- ##### STRUCT IBusKeymapClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_keymap_get ##### -->
+<para>
+
+</para>
+
+@name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_keymap_lookup_keysym ##### -->
+<para>
+
+</para>
+
+@keymap: 
+@keycode: 
+@state: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_keymap_new ##### -->
+<para>
+
+</para>
+
+@name: 
+@Returns: 
+
+

@@ -1,0 +1,69 @@
+<!-- ##### SECTION Title ##### -->
+ibusxml
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT XMLNode ##### -->
+<para>
+
+</para>
+
+@name: 
+@text: 
+@attributes: 
+@sub_nodes: 
+
+<!-- ##### FUNCTION ibus_xml_free ##### -->
+<para>
+
+</para>
+
+@node: 
+
+
+<!-- ##### FUNCTION ibus_xml_output ##### -->
+<para>
+
+</para>
+
+@node: 
+@output: 
+
+
+<!-- ##### FUNCTION ibus_xml_parse_buffer ##### -->
+<para>
+
+</para>
+
+@buffer: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_xml_parse_file ##### -->
+<para>
+
+</para>
+
+@name: 
+@Returns: 
+
+

@@ -1,0 +1,78 @@
+<!-- ##### SECTION Title ##### -->
+IBusObject
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO IBUS_OBJECT_DESTROYED ##### -->
+<para>
+
+</para>
+
+@obj: 
+
+
+<!-- ##### MACRO IBUS_OBJECT_IN_DESTRUCTION ##### -->
+<para>
+
+</para>
+
+@obj: 
+
+
+<!-- ##### STRUCT IBusObject ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusObject::destroy ##### -->
+<para>
+
+</para>
+
+@ibusobject: the object which received the signal.
+
+<!-- ##### STRUCT IBusObjectClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+@destroy: 
+
+<!-- ##### FUNCTION ibus_object_destroy ##### -->
+<para>
+
+</para>
+
+@object: 
+
+
+<!-- ##### FUNCTION ibus_object_new ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+

@@ -1,0 +1,87 @@
+<!-- ##### SECTION Title ##### -->
+IBusProxy
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO IBUS_PROXY_DESTROYED ##### -->
+<para>
+
+</para>
+
+@obj: 
+
+
+<!-- ##### MACRO IBUS_PROXY_FLAGS ##### -->
+<para>
+
+</para>
+
+@obj: 
+
+
+<!-- ##### MACRO IBUS_PROXY_SET_FLAGS ##### -->
+<para>
+
+</para>
+
+@obj: 
+@flag: 
+
+
+<!-- ##### MACRO IBUS_PROXY_UNSET_FLAGS ##### -->
+<para>
+
+</para>
+
+@obj: 
+@flag: 
+
+
+<!-- ##### STRUCT IBusProxy ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusProxy::destroy ##### -->
+<para>
+
+</para>
+
+@ibusproxy: the object which received the signal.
+
+<!-- ##### STRUCT IBusProxyClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+@destroy: 
+
+<!-- ##### FUNCTION ibus_proxy_destroy ##### -->
+<para>
+
+</para>
+
+@proxy: 
+
+

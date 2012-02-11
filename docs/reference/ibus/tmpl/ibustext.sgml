@@ -1,0 +1,143 @@
+<!-- ##### SECTION Title ##### -->
+IBusText
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusText ##### -->
+<para>
+
+</para>
+
+@is_static: 
+@text: 
+@attrs: 
+
+<!-- ##### STRUCT IBusTextClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_text_append_attribute ##### -->
+<para>
+
+</para>
+
+@text: 
+@type: 
+@value: 
+@start_index: 
+@end_index: 
+
+
+<!-- ##### FUNCTION ibus_text_get_attributes ##### -->
+<para>
+
+</para>
+
+@text: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_text_get_is_static ##### -->
+<para>
+
+</para>
+
+@text: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_text_get_length ##### -->
+<para>
+
+</para>
+
+@text: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_text_get_text ##### -->
+<para>
+
+</para>
+
+@text: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_text_new_from_printf ##### -->
+<para>
+
+</para>
+
+@fmt: 
+@...: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_text_new_from_static_string ##### -->
+<para>
+
+</para>
+
+@str: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_text_new_from_string ##### -->
+<para>
+
+</para>
+
+@str: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_text_new_from_ucs4 ##### -->
+<para>
+
+</para>
+
+@str: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_text_new_from_unichar ##### -->
+<para>
+
+</para>
+
+@c: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_text_set_attributes ##### -->
+<para>
+
+</para>
+
+@text: 
+@attrs: 
+
+
