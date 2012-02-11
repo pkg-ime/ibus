@@ -1,0 +1,116 @@
+<!-- ##### SECTION Title ##### -->
+IBusHotkeyProfile
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusHotkeyProfile ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusHotkeyProfile::trigger ##### -->
+<para>
+
+</para>
+
+@ibushotkeyprofile: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### STRUCT IBusHotkeyProfileClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+@trigger: 
+
+<!-- ##### FUNCTION ibus_hotkey_profile_add_hotkey ##### -->
+<para>
+
+</para>
+
+@profile: 
+@keyval: 
+@modifiers: 
+@event: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_hotkey_profile_add_hotkey_from_string ##### -->
+<para>
+
+</para>
+
+@profile: 
+@str: 
+@event: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_hotkey_profile_filter_key_event ##### -->
+<para>
+
+</para>
+
+@profile: 
+@keyval: 
+@modifiers: 
+@prev_keyval: 
+@prev_modifiers: 
+@user_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_hotkey_profile_lookup_hotkey ##### -->
+<para>
+
+</para>
+
+@profile: 
+@keyval: 
+@modifiers: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_hotkey_profile_remove_hotkey ##### -->
+<para>
+
+</para>
+
+@profile: 
+@keyval: 
+@modifiers: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_hotkey_profile_remove_hotkey_by_event ##### -->
+<para>
+
+</para>
+
+@profile: 
+@event: 
+@Returns: 
+
+

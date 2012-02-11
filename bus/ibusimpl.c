@@ -1044,18 +1044,19 @@ bus_ibus_impl_get_engine_desc (BusIBusImpl *ibus,
 }
 
 /**
- * bus_ibus_impl_context_request_next_engine_in_menu:
+ * bus_ibus_impl_context_request_rotate_engine_in_menu:
  *
- * Process the "next_engine_in_menu" hotkey.
+ * Process the "next_engine_in_menu" or "previous_engine" hotkey.
  */
 static void
-bus_ibus_impl_context_request_next_engine_in_menu (BusIBusImpl     *ibus,
-                                                   BusInputContext *context)
+bus_ibus_impl_context_request_rotate_engine_in_menu (BusIBusImpl     *ibus,
+                                                     BusInputContext *context,
+                                                     gboolean         is_next)
 {
     BusEngineProxy *engine;
     IBusEngineDesc *desc;
     IBusEngineDesc *next_desc = NULL;
-    GList *p;
+    GList *p = NULL;
 
     engine = bus_input_context_get_engine (context);
     if (engine == NULL) {
@@ -1071,12 +1072,45 @@ bus_ibus_impl_context_request_next_engine_in_menu (BusIBusImpl     *ibus,
 
     p = g_list_find (ibus->register_engine_list, desc);
     if (p != NULL) {
-        p = p->next;
+        if (is_next) {
+            p = p->next;
+        } else {
+            p = p->prev;
+        }
     }
+
+    /* Rotate register_engine_list and engine_list. */
+    if (p == NULL && g_list_find (ibus->register_engine_list, desc) != NULL) {
+        if (is_next) {
+            p = ibus->engine_list;
+        } else {
+            p = g_list_last (ibus->engine_list);
+        }
+    }
+
     if (p == NULL) {
         p = g_list_find (ibus->engine_list, desc);
         if (p != NULL) {
-            p = p->next;
+            if (is_next) {
+                p = p->next;
+            } else {
+                p = p->prev;
+            }
+        }
+    }
+
+    /* Rerotate register_engine_list and engine_list. */
+    if (p == NULL && g_list_find (ibus->engine_list, desc) != NULL) {
+        if (is_next) {
+            p = ibus->register_engine_list;
+            if (p == NULL) {
+                p = ibus->engine_list;
+            }
+        } else {
+            p = g_list_last (ibus->register_engine_list);
+            if (p == NULL) {
+                p = g_list_last (ibus->engine_list);
+            }
         }
     }
 
@@ -1126,12 +1160,9 @@ bus_ibus_impl_context_request_previous_engine (BusIBusImpl     *ibus,
         }
     }
 
-    /*
-     * If the previous engine name is not found, switch to the next engine
-     * in the menu. This behavior is better than doing nothing.
-     */
     if (!engine_name) {
-        bus_ibus_impl_context_request_next_engine_in_menu (ibus, context);
+        bus_ibus_impl_context_request_rotate_engine_in_menu (ibus, context,
+                                                             FALSE);
         return;
     }
 
@@ -2066,25 +2097,26 @@ bus_ibus_impl_filter_keyboard_shortcuts (BusIBusImpl     *ibus,
         else {
             bus_input_context_enable (context);
         }
-        return (enabled != bus_input_context_is_enabled (context));
+        return TRUE;
     }
     if (event == enable_unconditional) {
         gboolean enabled = bus_input_context_is_enabled (context);
         if (!enabled) {
             bus_input_context_enable (context);
         }
-        return bus_input_context_is_enabled (context);
+        return TRUE;
     }
     if (event == disable_unconditional) {
         gboolean enabled = bus_input_context_is_enabled (context);
         if (enabled) {
             bus_input_context_disable (context);
         }
-        return !bus_input_context_is_enabled (context);
+        return TRUE;
     }
     if (event == next) {
         if (bus_input_context_is_enabled (context)) {
-            bus_ibus_impl_context_request_next_engine_in_menu (ibus, context);
+            bus_ibus_impl_context_request_rotate_engine_in_menu (ibus, context,
+                                                                 TRUE);
         }
         else {
             bus_input_context_enable (context);

@@ -8,7 +8,7 @@
 <link rel="up" href="ch03.html" title="Input method engine">
 <link rel="prev" href="IBusComponent.html" title="IBusComponent">
 <link rel="next" href="IBusEngineDesc.html" title="IBusEngineDesc">
-<meta name="generator" content="GTK-Doc V1.17 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -49,15 +49,45 @@ Stable, unless otherwise indicated
 <a name="IBusEngine.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">struct              <a class="link" href="IBusEngine.html#IBusEngine-struct" title="struct IBusEngine">IBusEngine</a>;
 struct              <a class="link" href="IBusEngine.html#IBusEngineClass" title="struct IBusEngineClass">IBusEngineClass</a>;
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-commit-text" title="ibus_engine_commit_text ()">ibus_engine_commit_text</a>             (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-delete-surrounding-text" title="ibus_engine_delete_surrounding_text ()">ibus_engine_delete_surrounding_text</a> (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> offset</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> nchars</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-forward-key-event" title="ibus_engine_forward_key_event ()">ibus_engine_forward_key_event</a>       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keycode</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> state</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusEngine.html#ibus-engine-get-name" title="ibus_engine_get_name ()">ibus_engine_get_name</a>                (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-get-surrounding-text" title="ibus_engine_get_surrounding_text ()">ibus_engine_get_surrounding_text</a>    (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> **text</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *cursor_pos</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *anchor_pos</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-hide-auxiliary-text" title="ibus_engine_hide_auxiliary_text ()">ibus_engine_hide_auxiliary_text</a>     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-hide-lookup-table" title="ibus_engine_hide_lookup_table ()">ibus_engine_hide_lookup_table</a>       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-hide-preedit-text" title="ibus_engine_hide_preedit_text ()">ibus_engine_hide_preedit_text</a>       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
 <a class="link" href="IBusEngine.html" title="IBusEngine"><span class="returnvalue">IBusEngine</span></a> *        <a class="link" href="IBusEngine.html#ibus-engine-new" title="ibus_engine_new ()">ibus_engine_new</a>                     (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *engine_name</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *object_path</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>);
-<a class="link" href="IBusEngine.html" title="IBusEngine"><span class="returnvalue">IBusEngine</span></a> *        <a class="link" href="IBusEngine.html#ibus-engine-new-type" title="ibus_engine_new_type ()">ibus_engine_new_type</a>                (<em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> engine_type</code></em>,
+<a class="link" href="IBusEngine.html" title="IBusEngine"><span class="returnvalue">IBusEngine</span></a> *        <a class="link" href="IBusEngine.html#ibus-engine-new-with-type" title="ibus_engine_new_with_type ()">ibus_engine_new_with_type</a>           (<em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> engine_type</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *engine_name</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *object_path</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-commit-text" title="ibus_engine_commit_text ()">ibus_engine_commit_text</a>             (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-register-properties" title="ibus_engine_register_properties ()">ibus_engine_register_properties</a>     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-show-auxiliary-text" title="ibus_engine_show_auxiliary_text ()">ibus_engine_show_auxiliary_text</a>     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-show-lookup-table" title="ibus_engine_show_lookup_table ()">ibus_engine_show_lookup_table</a>       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-show-preedit-text" title="ibus_engine_show_preedit_text ()">ibus_engine_show_preedit_text</a>       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-update-auxiliary-text" title="ibus_engine_update_auxiliary_text ()">ibus_engine_update_auxiliary_text</a>   (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-update-lookup-table" title="ibus_engine_update_lookup_table ()">ibus_engine_update_lookup_table</a>     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *lookup_table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-update-lookup-table-fast" title="ibus_engine_update_lookup_table_fast ()">ibus_engine_update_lookup_table_fast</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *lookup_table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-update-preedit-text" title="ibus_engine_update_preedit_text ()">ibus_engine_update_preedit_text</a>     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> cursor_pos</code></em>,
@@ -68,38 +98,8 @@ struct              <a class="link" href="IBusEngine.html#IBusEngineClass" title
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> cursor_pos</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>,
                                                          <em class="parameter"><code><a class="link" href="ibus-ibustypes.html#IBusPreeditFocusMode" title="enum IBusPreeditFocusMode"><span class="type">IBusPreeditFocusMode</span></a> mode</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-show-preedit-text" title="ibus_engine_show_preedit_text ()">ibus_engine_show_preedit_text</a>       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-hide-preedit-text" title="ibus_engine_hide_preedit_text ()">ibus_engine_hide_preedit_text</a>       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-update-auxiliary-text" title="ibus_engine_update_auxiliary_text ()">ibus_engine_update_auxiliary_text</a>   (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-show-auxiliary-text" title="ibus_engine_show_auxiliary_text ()">ibus_engine_show_auxiliary_text</a>     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-hide-auxiliary-text" title="ibus_engine_hide_auxiliary_text ()">ibus_engine_hide_auxiliary_text</a>     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-update-lookup-table" title="ibus_engine_update_lookup_table ()">ibus_engine_update_lookup_table</a>     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *lookup_table</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-update-lookup-table-fast" title="ibus_engine_update_lookup_table_fast ()">ibus_engine_update_lookup_table_fast</a>
-                                                        (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *lookup_table</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-show-lookup-table" title="ibus_engine_show_lookup_table ()">ibus_engine_show_lookup_table</a>       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-hide-lookup-table" title="ibus_engine_hide_lookup_table ()">ibus_engine_hide_lookup_table</a>       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-forward-key-event" title="ibus_engine_forward_key_event ()">ibus_engine_forward_key_event</a>       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keycode</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> state</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-register-properties" title="ibus_engine_register_properties ()">ibus_engine_register_properties</a>     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-update-property" title="ibus_engine_update_property ()">ibus_engine_update_property</a>         (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-delete-surrounding-text" title="ibus_engine_delete_surrounding_text ()">ibus_engine_delete_surrounding_text</a> (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> offset</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> nchars</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="IBusEngine.html#ibus-engine-get-surrounding-text" title="ibus_engine_get_surrounding_text ()">ibus_engine_get_surrounding_text</a>    (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> **text</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *cursor_pos</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *anchor_pos</code></em>);
-const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="IBusEngine.html#ibus-engine-get-name" title="ibus_engine_get_name ()">ibus_engine_get_name</a>                (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);
 </pre>
 </div>
 <div class="refsect1">
@@ -252,6 +252,202 @@ IBusEngine properties.
 </div>
 <hr>
 <div class="refsect2">
+<a name="ibus-engine-commit-text"></a><h3>ibus_engine_commit_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_commit_text             (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);</pre>
+<p>
+Commit output of input method to IBus client.
+</p>
+<p>
+(Note: The text object will be released, if it is floating.
+ If caller want to keep the object, caller should make the object
+ sink by g_object_ref_sink.)
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>String commit to IBusEngine.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-delete-surrounding-text"></a><h3>ibus_engine_delete_surrounding_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_delete_surrounding_text (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> offset</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> nchars</code></em>);</pre>
+<p>
+Delete surrounding text.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>offset</code></em> :</span></p></td>
+<td>The offset of the first char.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>nchars</code></em> :</span></p></td>
+<td>Number of chars to be deleted.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-forward-key-event"></a><h3>ibus_engine_forward_key_event ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_forward_key_event       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keycode</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> state</code></em>);</pre>
+<p>
+Forward the key event.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
+<td>KeySym.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keycode</code></em> :</span></p></td>
+<td>keyboard scancode.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
+<td>Key modifier flags.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-get-name"></a><h3>ibus_engine_get_name ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_engine_get_name                (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
+<p>
+Return the name of IBusEngine.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Name of IBusEngine.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-get-surrounding-text"></a><h3>ibus_engine_get_surrounding_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_get_surrounding_text    (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> **text</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *cursor_pos</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *anchor_pos</code></em>);</pre>
+<p>
+Get surrounding text.
+</p>
+<p>
+It is also used to tell the input-context that the engine will
+utilize surrounding-text.  In that case, it must be called in
+<a class="link" href="IBusEngine.html#IBusEngine-enable" title='The "enable" signal'><span class="type">"enable"</span></a> handler, with both <em class="parameter"><code>text</code></em> and <em class="parameter"><code>cursor</code></em> set to
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em> <a class="link" href="IBusEngine.html#IBusEngine-set-surrounding-text" title='The "set-surrounding-text" signal'><span class="type">"set-surrounding-text"</span></a>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>Location to store surrounding text. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>][<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cursor_pos</code></em> :</span></p></td>
+<td>Cursor position in characters in <em class="parameter"><code>text</code></em>. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>anchor_pos</code></em> :</span></p></td>
+<td>Anchor position of selection in <em class="parameter"><code>text</code></em>. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-hide-auxiliary-text"></a><h3>ibus_engine_hide_auxiliary_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_hide_auxiliary_text     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
+<p>
+Hide the auxiliary bar.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-hide-lookup-table"></a><h3>ibus_engine_hide_lookup_table ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_hide_lookup_table       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
+<p>
+Hide the lookup table.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-hide-preedit-text"></a><h3>ibus_engine_hide_preedit_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_hide_preedit_text       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
+<p>
+Hide the pre-edit buffer.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
 <a name="ibus-engine-new"></a><h3>ibus_engine_new ()</h3>
 <pre class="programlisting"><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="returnvalue">IBusEngine</span></a> *        ibus_engine_new                     (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *engine_name</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *object_path</code></em>,
@@ -275,8 +471,8 @@ New an IBusEngine.
 </div>
 <hr>
 <div class="refsect2">
-<a name="ibus-engine-new-type"></a><h3>ibus_engine_new_type ()</h3>
-<pre class="programlisting"><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="returnvalue">IBusEngine</span></a> *        ibus_engine_new_type                (<em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> engine_type</code></em>,
+<a name="ibus-engine-new-with-type"></a><h3>ibus_engine_new_with_type ()</h3>
+<pre class="programlisting"><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="returnvalue">IBusEngine</span></a> *        ibus_engine_new_with_type           (<em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> engine_type</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *engine_name</code></em>,
                                                          <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *object_path</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>);</pre>
@@ -288,7 +484,7 @@ New an IBusEngine.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>engine_type</code></em> :</span></p></td>
-<td>GType of subclass of IBUS_TYPE_ENGINE</td>
+<td>GType of <a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>engine_name</code></em> :</span></p></td>
@@ -311,11 +507,84 @@ New an IBusEngine.
 </div>
 <hr>
 <div class="refsect2">
-<a name="ibus-engine-commit-text"></a><h3>ibus_engine_commit_text ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_commit_text             (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);</pre>
+<a name="ibus-engine-register-properties"></a><h3>ibus_engine_register_properties ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_register_properties     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>);</pre>
 <p>
-Commit output of input method to IBus client.
+Register and show properties in language bar.
+</p>
+<p>
+(Note: The prop_list object will be released, if it is floating.
+ If caller want to keep the object, caller should make the object
+ sink by g_object_ref_sink.)
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_list</code></em> :</span></p></td>
+<td>Property List.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-show-auxiliary-text"></a><h3>ibus_engine_show_auxiliary_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_show_auxiliary_text     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
+<p>
+Show the auxiliary bar.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-show-lookup-table"></a><h3>ibus_engine_show_lookup_table ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_show_lookup_table       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
+<p>
+Show the lookup table.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-show-preedit-text"></a><h3>ibus_engine_show_preedit_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_show_preedit_text       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
+<p>
+Show the pre-edit buffer.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-update-auxiliary-text"></a><h3>ibus_engine_update_auxiliary_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_update_auxiliary_text   (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);</pre>
+<p>
+Update the auxiliary bar.
 </p>
 <p>
 (Note: The text object will be released, if it is floating.
@@ -331,7 +600,80 @@ Commit output of input method to IBus client.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
-<td>String commit to IBusEngine.</td>
+<td>Update content.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
+<td>Whether the auxiliary text bar is visible.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-update-lookup-table"></a><h3>ibus_engine_update_lookup_table ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_update_lookup_table     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *lookup_table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);</pre>
+<p>
+Update the lookup table.
+</p>
+<p>
+(Note: The table object will be released, if it is floating.
+ If caller want to keep the object, caller should make the object
+ sink by g_object_ref_sink.)
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>lookup_table</code></em> :</span></p></td>
+<td>An lookup_table.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
+<td>Whether the lookup_table is visible.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-update-lookup-table-fast"></a><h3>ibus_engine_update_lookup_table_fast ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_update_lookup_table_fast
+                                                        (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *lookup_table</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);</pre>
+<p>
+Fast update for big lookup table.
+</p>
+<p>
+If size of lookup table is not over table page size *4,
+then it calls <a class="link" href="IBusEngine.html#ibus-engine-update-lookup-table" title="ibus_engine_update_lookup_table ()"><code class="function">ibus_engine_update_lookup_table()</code></a>.
+</p>
+<p>
+(Note: The table object will be released, if it is floating.
+ If caller want to keep the object, caller should make the object
+ sink by g_object_ref_sink.)
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
+<td>An IBusEngine.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>lookup_table</code></em> :</span></p></td>
+<td>An lookup_table.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
+<td>Whether the lookup_table is visible.</td>
 </tr>
 </tbody>
 </table></div>
@@ -421,256 +763,6 @@ ibus_engine_update_preedit_text.
 </div>
 <hr>
 <div class="refsect2">
-<a name="ibus-engine-show-preedit-text"></a><h3>ibus_engine_show_preedit_text ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_show_preedit_text       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
-<p>
-Show the pre-edit buffer.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody><tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr></tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-hide-preedit-text"></a><h3>ibus_engine_hide_preedit_text ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_hide_preedit_text       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
-<p>
-Hide the pre-edit buffer.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody><tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr></tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-update-auxiliary-text"></a><h3>ibus_engine_update_auxiliary_text ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_update_auxiliary_text   (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);</pre>
-<p>
-Update the auxiliary bar.
-</p>
-<p>
-(Note: The text object will be released, if it is floating.
- If caller want to keep the object, caller should make the object
- sink by g_object_ref_sink.)
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
-<td>Update content.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
-<td>Whether the auxiliary text bar is visible.</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-show-auxiliary-text"></a><h3>ibus_engine_show_auxiliary_text ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_show_auxiliary_text     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
-<p>
-Show the auxiliary bar.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody><tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr></tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-hide-auxiliary-text"></a><h3>ibus_engine_hide_auxiliary_text ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_hide_auxiliary_text     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
-<p>
-Hide the auxiliary bar.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody><tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr></tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-update-lookup-table"></a><h3>ibus_engine_update_lookup_table ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_update_lookup_table     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *lookup_table</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);</pre>
-<p>
-Update the lookup table.
-</p>
-<p>
-(Note: The table object will be released, if it is floating.
- If caller want to keep the object, caller should make the object
- sink by g_object_ref_sink.)
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>lookup_table</code></em> :</span></p></td>
-<td>An lookup_table.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
-<td>Whether the lookup_table is visible.</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-update-lookup-table-fast"></a><h3>ibus_engine_update_lookup_table_fast ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_update_lookup_table_fast
-                                                        (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a> *lookup_table</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> visible</code></em>);</pre>
-<p>
-Fast update for big lookup table.
-</p>
-<p>
-If size of lookup table is not over table page size *4,
-then it calls <a class="link" href="IBusEngine.html#ibus-engine-update-lookup-table" title="ibus_engine_update_lookup_table ()"><code class="function">ibus_engine_update_lookup_table()</code></a>.
-</p>
-<p>
-(Note: The table object will be released, if it is floating.
- If caller want to keep the object, caller should make the object
- sink by g_object_ref_sink.)
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>lookup_table</code></em> :</span></p></td>
-<td>An lookup_table.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
-<td>Whether the lookup_table is visible.</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-show-lookup-table"></a><h3>ibus_engine_show_lookup_table ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_show_lookup_table       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
-<p>
-Show the lookup table.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody><tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr></tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-hide-lookup-table"></a><h3>ibus_engine_hide_lookup_table ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_hide_lookup_table       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
-<p>
-Hide the lookup table.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody><tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr></tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-forward-key-event"></a><h3>ibus_engine_forward_key_event ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_forward_key_event       (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keyval</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> keycode</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> state</code></em>);</pre>
-<p>
-Forward the key event.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
-<td>KeySym.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>keycode</code></em> :</span></p></td>
-<td>keyboard scancode.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
-<td>Key modifier flags.</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-register-properties"></a><h3>ibus_engine_register_properties ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_register_properties     (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>);</pre>
-<p>
-Register and show properties in language bar.
-</p>
-<p>
-(Note: The prop_list object will be released, if it is floating.
- If caller want to keep the object, caller should make the object
- sink by g_object_ref_sink.)
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>prop_list</code></em> :</span></p></td>
-<td>Property List.</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
 <a name="ibus-engine-update-property"></a><h3>ibus_engine_update_property ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_update_property         (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
                                                          <em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
@@ -692,98 +784,6 @@ Update the state displayed in language bar.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
 <td>IBusProperty to be updated.</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-delete-surrounding-text"></a><h3>ibus_engine_delete_surrounding_text ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_delete_surrounding_text (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> offset</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> nchars</code></em>);</pre>
-<p>
-Delete surrounding text.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>offset</code></em> :</span></p></td>
-<td>The offset of the first char.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>nchars</code></em> :</span></p></td>
-<td>Number of chars to be deleted.</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-get-surrounding-text"></a><h3>ibus_engine_get_surrounding_text ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_get_surrounding_text    (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> **text</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *cursor_pos</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *anchor_pos</code></em>);</pre>
-<p>
-Get surrounding text.
-</p>
-<p>
-It is also used to tell the input-context that the engine will
-utilize surrounding-text.  In that case, it must be called in
-<a class="link" href="IBusEngine.html#IBusEngine-enable" title='The "enable" signal'><span class="type">"enable"</span></a> handler, with both <em class="parameter"><code>text</code></em> and <em class="parameter"><code>cursor</code></em> set to
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
-</p>
-<p>
-<em class="parameter"><code>see_also</code></em> <a class="link" href="IBusEngine.html#IBusEngine-set-surrounding-text" title='The "set-surrounding-text" signal'><span class="type">"set-surrounding-text"</span></a>
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
-<td>Location to store surrounding text. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>cursor_pos</code></em> :</span></p></td>
-<td>Cursor position in characters in <em class="parameter"><code>text</code></em>. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
-</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>anchor_pos</code></em> :</span></p></td>
-<td>Anchor position of selection in <em class="parameter"><code>text</code></em>. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="ibus-engine-get-name"></a><h3>ibus_engine_get_name ()</h3>
-<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       ibus_engine_get_name                (<em class="parameter"><code><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> *engine</code></em>);</pre>
-<p>
-Return the name of IBusEngine.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>engine</code></em> :</span></p></td>
-<td>An IBusEngine.</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>Name of IBusEngine.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1512,6 +1512,6 @@ selection retrival".
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.17</div>
+          Generated by GTK-Doc V1.18</div>
 </body>
 </html>

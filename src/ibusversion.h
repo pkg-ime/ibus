@@ -49,7 +49,7 @@
  *
  * IBus micro version.
  */
-#define IBUS_MICRO_VERSION				(0)
+#define IBUS_MICRO_VERSION				(1)
 
 /**
  * IBUS_CHECK_VERSION:

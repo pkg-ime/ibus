@@ -1,3 +1,459 @@
+commit 91dd6724035bf89eb843b7d147e08794a35a569a
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2012-02-05 09:04:22 -0500
+
+    Release 1.4.1.
+    
+    BUG=None
+    TEST=Make dist
+    
+    Review URL: https://codereview.appspot.com/5602056
+
+M	configure.ac
+
+commit 185dd51b595bdeedf8d86eb1214466e2de93f5f3
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2012-02-02 00:28:42 -0500
+
+    Fix typoes and remove Encoding from desktop files.
+    
+    BUG=None
+    TEST=None
+    
+    Review URL: https://codereview.appspot.com/5618046
+
+M	bus/ibus.desktop.in
+M	client/x11/main.c
+M	setup/ibus-setup.desktop.in
+
+commit 6c777b2d17cbbbf84cddebec0da980374774542b
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2012-02-01 10:00:42 +0900
+
+    Minor fixes related to git.mk.
+    
+    Remove .gitignore files from the git repo, define GITIGNOREFILES in some
+    Makefiles, and update git.mk from the Behdad upstream.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: https://codereview.appspot.com/5581057
+
+D	.gitignore
+M	Makefile.am
+D	bus/.gitignore
+D	client/x11/.gitignore
+D	data/.gitignore
+M	data/dconf/Makefile.am
+D	debian/.gitignore
+D	docs/.gitignore
+D	docs/reference/ibus/.gitignore
+D	gconf/.gitignore
+M	git.mk
+D	ibus/.gitignore
+D	m4/.gitignore
+M	m4/Makefile.am
+D	po/.gitignore
+D	setup/.gitignore
+D	src/.gitignore
+D	src/tests/.gitignore
+D	ui/gtk/.gitignore
+
+commit cbdd673a040c95ba42f33c0c3884319b37155b46
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2012-02-01 09:59:37 +0900
+
+    Generate vapi from gir instead of gi.
+    
+    BUG=none
+    TEST=manually on Fedora 16
+    
+    Review URL: https://codereview.appspot.com/5599052
+
+A	bindings/vala/IBus-1.0-custom.vala
+A	bindings/vala/IBus-1.0.metadata
+M	bindings/vala/Makefile.am
+D	bindings/vala/ibus-1.0.vapi
+D	bindings/vala/ibus-1.0/ibus-1.0-custom.vala
+D	bindings/vala/ibus-1.0/ibus-1.0.defines
+D	bindings/vala/ibus-1.0/ibus-1.0.excludes
+D	bindings/vala/ibus-1.0/ibus-1.0.files
+D	bindings/vala/ibus-1.0/ibus-1.0.gi
+D	bindings/vala/ibus-1.0/ibus-1.0.metadata
+D	bindings/vala/ibus-1.0/ibus-1.0.namespace
+M	configure.ac
+
+commit deaa090367c89128490a9247a7d0fd5d1b21149c
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2012-01-31 12:56:27 +0900
+
+    Minor fixes when generating GIR.
+    
+    BUG=none
+    TEST=manually
+    
+    Review URL: https://codereview.appspot.com/5600052
+
+M	src/Makefile.am
+M	src/ibusengine.h
+M	src/ibusfactory.h
+
+commit eb1dbdce044f43a1064179c4ee2591cff0f74aad
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2012-01-30 12:29:48 +0900
+
+    dconf: preserve names under /desktop/ibus/engine/bopomofo.
+    
+    BUG=none
+    TEST=manually on Fedora 16
+    
+    Review URL: https://codereview.appspot.com/5595047
+
+M	data/ibus.schemas.in
+
+commit 3e363af1c526a92456df5d1597763d175cd7ba7d
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2012-01-29 10:32:01 +0900
+
+    Fix the GIR annotation of ibus_bus_get_global_engine #2.
+    
+    BUG=none
+    TEST=Linux desktop
+    
+    Review URL: https://codereview.appspot.com/5578054
+
+M	src/ibusbus.h
+
+commit d380b11952513f3862be4d91d2c2042d76621ee3
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2012-01-27 11:16:52 +0900
+
+    Fix the GIR annotation of ibus_bus_get_global_engine.
+    
+    BUG=none
+    TEST=Linux_desktop
+    
+    Review URL: https://codereview.appspot.com/5576048
+
+M	src/ibusbus.h
+
+commit d3610308ed0d1d722de061d3957dcef55bcf7448
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2012-01-26 11:09:33 +0900
+
+    Fix the return value in IBusEngine.process_key_event with signal.
+    
+    BUG=none
+    TEST=Linux_desktop
+    
+    Review URL: https://codereview.appspot.com/5569061
+
+M	src/ibusengine.c
+
+commit 90e971bdbb0d46ad474d3e952286fb40f3d04bfe
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2012-01-26 10:27:27 +0900
+
+    Add a dconf option to inhibit dconf name conversion.
+    
+    BUG=https://code.google.com/p/ibus/issues/detail?id=1395
+    TEST=manually with ibus-hangul and ibus-skk on Fedora 16
+    
+    Review URL: https://codereview.appspot.com/5570062
+
+M	data/ibus.schemas.in
+M	dconf/config.c
+
+commit 50491822d6bc6738a5f565360b14a6913059b006
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2012-01-24 11:06:19 +0900
+
+    Rename ibus_engine_new_type with ibus_engine_new_with_type.
+    
+    seed assigns GType in IBus.Engine.type and also assignes "*_new_foo"
+    method in IBus.Engine.foo so renamed the function.
+    
+    BUG=http://code.google.com/p/ibus/issues/detail?id=1397
+    TEST=Linux_desktop with seed and gjs
+    
+    Review URL: https://codereview.appspot.com/5572046
+
+M	src/ibusengine.c
+M	src/ibusengine.h
+M	src/ibusfactory.c
+
+commit 64c5f3d8667f26cd44ed35c229a8983ba75c6eff
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2012-01-06 10:17:10 -0500
+
+    Add G_GNUC_PRINTF for function ibus_text_new_from_printf(), so compiler can check arguments.
+    
+    BUG=None
+    TEST=Manually
+    
+    Review URL: http://codereview.appspot.com/5519047
+
+M	src/ibustext.h
+
+commit f25acc22028e3dd98d8482e58c3925d2611683b9
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-12-31 09:55:20 +0900
+
+    Fix g-ir-scanner errors in ibusproperty.h and ibustext.h.
+    
+    BUG=none
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5498091
+
+M	src/ibusproperty.h
+M	src/ibustext.h
+
+commit 4d1f38314b3a9c3dc1683053cda10cfa36fd9019
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-12-22 09:59:05 -0500
+
+    Fix a typo in docs/references/ibus/Makefile
+    
+    BUG=None
+    TEST=make
+    
+    Review URL: http://codereview.appspot.com/5496079
+
+M	docs/reference/ibus/Makefile.am
+
+commit df10a24f905c8eea420a5fd33eff78417312410c
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-12-22 09:57:23 -0500
+
+    Add ibus_text_set_attributes for scipt language bindings.
+    
+    BUG=None
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5500067
+
+M	src/ibustext.c
+M	src/ibustext.h
+
+commit ee9c4fba4535e85bd1f02743cab8914dd84e6178
+Author: Peng Huang <shawn.p.huang@gmail.com>
+Date:   2011-12-22 09:57:01 -0500
+
+    Make all fields of IBusProperty as gobject property.
+    
+    BUG=http://code.google.com/p/ibus/issues/detail?id=1383
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5500066
+
+M	src/ibusproperty.c
+M	src/ibusproperty.h
+
+commit fd07a5a761fe1c242ba8babaab1060d5679a3618
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-12-20 13:46:45 +0900
+
+    Fix a SEGV if ibusimcontext->ibuscontext is null.
+    
+    BUG=
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5489086
+
+M	client/gtk2/ibusimcontext.c
+
+commit 028e2dca75f6cf12c589216b4f156aa10ffdd2bb
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-12-14 09:55:26 +0900
+
+    Update translations.
+    
+    po/LINGUAS: Updated
+    po/ ca.po da.po de.po es.po fr.po hu.po ja.po pa.po te.po zh_TW.po: Updated
+    po/ fa.po lv.po tg.po: Added
+    
+    BUG=
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5483055
+
+M	po/LINGUAS
+M	po/ca.po
+M	po/da.po
+M	po/de.po
+M	po/es.po
+A	po/fa.po
+M	po/fr.po
+M	po/hu.po
+M	po/ja.po
+A	po/lv.po
+M	po/pa.po
+M	po/te.po
+A	po/tg.po
+M	po/zh_TW.po
+
+commit 5236e2159f2e6184c18df9a9ecbb05bfb09106d4
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-11-30 12:28:22 +0900
+
+    Add the engine preference button on ibus-setup
+    
+    The new preference button launches $libexecdir/ibus-setup- + engine.name
+    by default. The engine is IBusEngineDesc.
+    If engine.setup has a value, the button launches it instead.
+    
+    BUG=RH#618229
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5437062
+
+M	ibus/enginedesc.py
+M	setup/ibus-setup.in
+M	setup/main.py
+M	setup/setup.ui
+M	src/ibusenginedesc.c
+M	src/ibusenginedesc.h
+
+commit 5d2ac19e1524b1802f5298eedff1ba52423c847f
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2011-11-30 09:40:15 +0900
+
+    Disable surrounding-text when retrieve-surrounding signal is not handled in GTK.
+    
+    BUG=https://code.google.com/p/ibus/issues/detail?id=1358
+    TEST=On Fedora with ibus-m17n tis820
+    
+    Review URL: http://codereview.appspot.com/5431086
+
+M	client/gtk2/ibusimcontext.c
+
+commit 23abee88ca1a234d0ed549489a505cd2a07a9a5c
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-11-21 11:06:21 +0900
+
+    Use ibus_input_context_process_key_event_async in ibus-x11
+    
+    ibus-hangul calls ibus_commit_text() in process_key_event with
+    returing FALSE. ibus_commit_text() is async API and there is a
+    time issue in ibus_commit_text() and returning process_key_event.
+    This fix adds async in ibus-x11 process_key_event too.
+    
+    BUG=RH#753781
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5417044
+
+M	client/x11/main.c
+
+commit 613e01520f27a53c947fed476d99aeb8ae1ae39b
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-11-08 10:48:42 +0900
+
+    Fixed fallback icons.
+    
+    1. Set 'ibus-keyboard' icon for IME off in non-GNOME theme.
+    People would think the application icon for non-GNONE classic desktop.
+    The themed icon is applied for GNOME icon theme only.
+    
+    2. Set gtk-fallback-icon-theme as 'gnome'
+    ibus gtk panel needs gtk stock icons but some desktop does not load GNOME
+    icon theme. I assigned 'gnome' for gtk-fallback-icon-theme if it's none.
+    
+    3. Use 'gtk-dialog-info' if 'gtk-info' is not found.
+    It seems the latest gtk2 does not have 'gtk-info' icon via pygtk2.
+    
+    BUG=RH#711632
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5320066
+
+M	ibus/_config.py.in
+M	ui/gtk/main.py
+M	ui/gtk/panel.py
+
+commit 02893693fc0a8692a6242b0be6dc8f09e14c1c54
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-11-02 14:17:50 +0900
+
+    Rerotate next/previous engines without global engine.
+    
+    BUG=http://code.google.com/p/ibus/issues/detail?id=1331
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5321067
+
+M	bus/ibusimpl.c
+
+commit cca4fd8993613a6993965c3120323e43c4647ef5
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2011-10-28 15:42:08 +0900
+
+    Don't set focus on GTK password entry.
+    
+    For an old bug:
+    https://bugzilla.redhat.com/show_bug.cgi?id=484643
+    Input method should be disabled on password entry for security reason.
+    
+    BUG=none
+    TEST=manually with gtk-demo "Entry Buffer" example
+    
+    Review URL: http://codereview.appspot.com/5319053
+
+M	client/gtk2/ibusimcontext.c
+
+commit 910f8a64098d89b04c50056f621ec1a49dd3e7ea
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-10-25 10:50:34 +0900
+
+    Fix previous_engine without global engine.
+    
+    BUG=http://code.google.com/p/ibus/issues/detail?id=1331
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5297047
+
+M	bus/ibusimpl.c
+
+commit ee966e327cc3b1b4bba40379bc0fbb3d46c38239
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2011-10-25 10:37:22 +0900
+
+    Add ibusutil.h in ibus.h
+    
+    BUG=http://code.google.com/p/ibus/issues/detail?id=1338
+    TEST=Linux desktop
+    
+    Review URL: http://codereview.appspot.com/5294054
+
+M	src/ibus.h
+
+commit d19018b8709847009d2e0836c942dd9f1385e7cb
+Author: Yusuke Sato <yusukes@chromium.org>
+Date:   2011-10-09 13:52:42 +0900
+
+    Always consume a hotkey press
+    
+    BUG=1324
+    
+    Review URL: http://codereview.appspot.com/5242044
+
+M	bus/ibusimpl.c
+
+commit cb519c852dfc7a652df1768c81974d750ef48f58
+Author: Daiki Ueno <ueno@unixuser.org>
+Date:   2011-09-29 12:24:53 +0900
+
+    Fix hiding button items in GTK panel.
+    
+    BUG=none
+    TEST=manual
+    
+    Review URL: http://codereview.appspot.com/5148041
+
+M	ui/gtk/toolitem.py
+
 commit 600fd9ab1607a6d5780fb07a6cd49290ca85c4fc
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2011-09-23 11:11:24 -0400

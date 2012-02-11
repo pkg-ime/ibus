@@ -26,7 +26,7 @@ m4_define([ibus_released], [1])
 
 m4_define([ibus_major_version], [1])
 m4_define([ibus_minor_version], [4])
-m4_define([ibus_micro_version], [0])
+m4_define([ibus_micro_version], [1])
 m4_define([ibus_interface_age], [0])
 m4_define([ibus_binary_age],
           [m4_eval(100 * ibus_minor_version + ibus_micro_version)])
@@ -171,6 +171,9 @@ AC_ARG_ENABLE(vala,
     [enable_vala=$enableval],
     [enable_vala=yes]
 )
+if test x"$enable_vala" = x"yes"; then
+    AC_PATH_PROG([VAPIGEN], [vapigen], [false])
+fi
 AM_CONDITIONAL([ENABLE_VALA], [test x"$enable_vala" = x"yes"])
 if test x"$enable_vala" != x"yes"; then
     enable_vala="no (disabled, use --enable-vala to enable)"

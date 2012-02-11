@@ -1,0 +1,75 @@
+<!-- ##### SECTION Title ##### -->
+IBusPropList
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusPropList ##### -->
+<para>
+
+</para>
+
+@properties: 
+
+<!-- ##### STRUCT IBusPropListClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_prop_list_append ##### -->
+<para>
+
+</para>
+
+@prop_list: 
+@prop: 
+
+
+<!-- ##### FUNCTION ibus_prop_list_get ##### -->
+<para>
+
+</para>
+
+@prop_list: 
+@index: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_prop_list_new ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_prop_list_update_property ##### -->
+<para>
+
+</para>
+
+@prop_list: 
+@prop: 
+@Returns: 
+
+

@@ -1,0 +1,316 @@
+<!-- ##### SECTION Title ##### -->
+IBusPanelService
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusPanelService ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusPanelService::cursor-down-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::cursor-up-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::focus-in ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusPanelService::focus-out ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusPanelService::hide-auxiliary-text ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::hide-language-bar ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::hide-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::hide-preedit-text ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::page-down-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::page-up-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::register-properties ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusPanelService::reset ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::set-cursor-location ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+@arg4: 
+
+<!-- ##### SIGNAL IBusPanelService::show-auxiliary-text ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::show-language-bar ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::show-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::show-preedit-text ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::start-setup ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::state-changed ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+
+<!-- ##### SIGNAL IBusPanelService::update-auxiliary-text ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### SIGNAL IBusPanelService::update-lookup-table ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### SIGNAL IBusPanelService::update-preedit-text ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+
+<!-- ##### SIGNAL IBusPanelService::update-property ##### -->
+<para>
+
+</para>
+
+@ibuspanelservice: the object which received the signal.
+@arg1: 
+
+<!-- ##### STRUCT IBusPanelServiceClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+@focus_in: 
+@focus_out: 
+@register_properties: 
+@set_cursor_location: 
+@update_auxiliary_text: 
+@update_lookup_table: 
+@update_preedit_text: 
+@update_property: 
+@cursor_down_lookup_table: 
+@cursor_up_lookup_table: 
+@hide_auxiliary_text: 
+@hide_language_bar: 
+@hide_lookup_table: 
+@hide_preedit_text: 
+@page_down_lookup_table: 
+@page_up_lookup_table: 
+@reset: 
+@show_auxiliary_text: 
+@show_language_bar: 
+@show_lookup_table: 
+@show_preedit_text: 
+@start_setup: 
+@state_changed: 
+
+<!-- ##### FUNCTION ibus_panel_service_candidate_clicked ##### -->
+<para>
+
+</para>
+
+@panel: 
+@index: 
+@button: 
+@state: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_cursor_down ##### -->
+<para>
+
+</para>
+
+@panel: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_cursor_up ##### -->
+<para>
+
+</para>
+
+@panel: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_new ##### -->
+<para>
+
+</para>
+
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_page_down ##### -->
+<para>
+
+</para>
+
+@panel: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_page_up ##### -->
+<para>
+
+</para>
+
+@panel: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_property_activate ##### -->
+<para>
+
+</para>
+
+@panel: 
+@prop_name: 
+@prop_state: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_property_hide ##### -->
+<para>
+
+</para>
+
+@panel: 
+@prop_name: 
+
+
+<!-- ##### FUNCTION ibus_panel_service_property_show ##### -->
+<para>
+
+</para>
+
+@panel: 
+@prop_name: 
+
+

@@ -1,0 +1,411 @@
+<!-- ##### SECTION Title ##### -->
+IBusEngine
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusEngine ##### -->
+<para>
+
+</para>
+
+@enabled: 
+@has_focus: 
+@cursor_area: 
+@client_capabilities: 
+
+<!-- ##### SIGNAL IBusEngine::cancel-hand-writing ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusEngine::candidate-clicked ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+
+<!-- ##### SIGNAL IBusEngine::cursor-down ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+
+<!-- ##### SIGNAL IBusEngine::cursor-up ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+
+<!-- ##### SIGNAL IBusEngine::disable ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+
+<!-- ##### SIGNAL IBusEngine::enable ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+
+<!-- ##### SIGNAL IBusEngine::focus-in ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+
+<!-- ##### SIGNAL IBusEngine::focus-out ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+
+<!-- ##### SIGNAL IBusEngine::page-down ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+
+<!-- ##### SIGNAL IBusEngine::page-up ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+
+<!-- ##### SIGNAL IBusEngine::process-hand-writing-event ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### SIGNAL IBusEngine::process-key-event ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+@Returns: 
+
+<!-- ##### SIGNAL IBusEngine::property-activate ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### SIGNAL IBusEngine::property-hide ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusEngine::property-show ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusEngine::reset ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+
+<!-- ##### SIGNAL IBusEngine::set-capabilities ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL IBusEngine::set-cursor-location ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+@arg4: 
+
+<!-- ##### SIGNAL IBusEngine::set-surrounding-text ##### -->
+<para>
+
+</para>
+
+@ibusengine: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+
+<!-- ##### ARG IBusEngine:engine-name ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT IBusEngineClass ##### -->
+<para>
+
+</para>
+
+@process_key_event: 
+@focus_in: 
+@focus_out: 
+@reset: 
+@enable: 
+@disable: 
+@set_cursor_location: 
+@set_capabilities: 
+@page_up: 
+@page_down: 
+@cursor_up: 
+@cursor_down: 
+@property_activate: 
+@property_show: 
+@property_hide: 
+@candidate_clicked: 
+@set_surrounding_text: 
+@process_hand_writing_event: 
+@cancel_hand_writing: 
+
+<!-- ##### FUNCTION ibus_engine_commit_text ##### -->
+<para>
+
+</para>
+
+@engine: 
+@text: 
+
+
+<!-- ##### FUNCTION ibus_engine_delete_surrounding_text ##### -->
+<para>
+
+</para>
+
+@engine: 
+@offset: 
+@nchars: 
+
+
+<!-- ##### FUNCTION ibus_engine_forward_key_event ##### -->
+<para>
+
+</para>
+
+@engine: 
+@keyval: 
+@keycode: 
+@state: 
+
+
+<!-- ##### FUNCTION ibus_engine_get_name ##### -->
+<para>
+
+</para>
+
+@engine: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_get_surrounding_text ##### -->
+<para>
+
+</para>
+
+@engine: 
+@text: 
+@cursor_pos: 
+@anchor_pos: 
+
+
+<!-- ##### FUNCTION ibus_engine_hide_auxiliary_text ##### -->
+<para>
+
+</para>
+
+@engine: 
+
+
+<!-- ##### FUNCTION ibus_engine_hide_lookup_table ##### -->
+<para>
+
+</para>
+
+@engine: 
+
+
+<!-- ##### FUNCTION ibus_engine_hide_preedit_text ##### -->
+<para>
+
+</para>
+
+@engine: 
+
+
+<!-- ##### FUNCTION ibus_engine_new ##### -->
+<para>
+
+</para>
+
+@engine_name: 
+@object_path: 
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_new_with_type ##### -->
+<para>
+
+</para>
+
+@engine_type: 
+@engine_name: 
+@object_path: 
+@connection: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_register_properties ##### -->
+<para>
+
+</para>
+
+@engine: 
+@prop_list: 
+
+
+<!-- ##### FUNCTION ibus_engine_show_auxiliary_text ##### -->
+<para>
+
+</para>
+
+@engine: 
+
+
+<!-- ##### FUNCTION ibus_engine_show_lookup_table ##### -->
+<para>
+
+</para>
+
+@engine: 
+
+
+<!-- ##### FUNCTION ibus_engine_show_preedit_text ##### -->
+<para>
+
+</para>
+
+@engine: 
+
+
+<!-- ##### FUNCTION ibus_engine_update_auxiliary_text ##### -->
+<para>
+
+</para>
+
+@engine: 
+@text: 
+@visible: 
+
+
+<!-- ##### FUNCTION ibus_engine_update_lookup_table ##### -->
+<para>
+
+</para>
+
+@engine: 
+@lookup_table: 
+@visible: 
+
+
+<!-- ##### FUNCTION ibus_engine_update_lookup_table_fast ##### -->
+<para>
+
+</para>
+
+@engine: 
+@lookup_table: 
+@visible: 
+
+
+<!-- ##### FUNCTION ibus_engine_update_preedit_text ##### -->
+<para>
+
+</para>
+
+@engine: 
+@text: 
+@cursor_pos: 
+@visible: 
+
+
+<!-- ##### FUNCTION ibus_engine_update_preedit_text_with_mode ##### -->
+<para>
+
+</para>
+
+@engine: 
+@text: 
+@cursor_pos: 
+@visible: 
+@mode: 
+
+
+<!-- ##### FUNCTION ibus_engine_update_property ##### -->
+<para>
+
+</para>
+
+@engine: 
+@prop: 
+
+

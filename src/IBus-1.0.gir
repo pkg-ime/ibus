@@ -9,7 +9,7 @@ and/or use gtk-doc annotations.  -->
   <include name="GLib" version="2.0"/>
   <include name="GObject" version="2.0"/>
   <include name="Gio" version="2.0"/>
-  <package name="glib-2.0"/>
+  <package name="ibus-1.0"/>
   <namespace name="IBus"
              version="1.0"
              shared-library="libibus-1.0.so.0"
@@ -1363,10 +1363,9 @@ the return value is the color RGB.</doc>
         </return-value>
       </method>
       <method name="get_global_engine"
-              c:identifier="ibus_bus_get_global_engine"
-              introspectable="0">
+              c:identifier="ibus_bus_get_global_engine">
         <doc xml:whitespace="preserve">Get the description of current global engine synchronously.</doc>
-        <return-value>
+        <return-value transfer-ownership="none">
           <doc xml:whitespace="preserve">The description of current global engine, or %NULL if there is no global engine.</doc>
           <type name="EngineDesc" c:type="IBusEngineDesc*"/>
         </return-value>
@@ -1404,10 +1403,9 @@ the return value is the color RGB.</doc>
       </method>
       <method name="get_global_engine_async_finish"
               c:identifier="ibus_bus_get_global_engine_async_finish"
-              introspectable="0"
               throws="1">
         <doc xml:whitespace="preserve">Finishes an operation started with ibus_bus_get_global_engine_async_finish().</doc>
-        <return-value>
+        <return-value transfer-ownership="none">
           <doc xml:whitespace="preserve">The description of current global engine, or %NULL if there is no global engine.</doc>
           <type name="EngineDesc" c:type="IBusEngineDesc*"/>
         </return-value>
@@ -2223,37 +2221,45 @@ FIXME add an asynchronous version.</doc>
         <type name="BusPrivate" c:type="IBusBusPrivate*"/>
       </field>
       <glib:signal name="connected" when="last">
+        <doc xml:whitespace="preserve">Emitted when #IBusBus is connected to ibus-daemon.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="disconnected" when="last">
+        <doc xml:whitespace="preserve">Emitted when #IBusBus is disconnected from ibus-daemon.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="global-engine-changed" when="last">
+        <doc xml:whitespace="preserve">Emitted when global engine is changed.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="name" transfer-ownership="none">
+            <doc xml:whitespace="preserve">The name of the new global engine.</doc>
             <type name="utf8"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="name-owner-changed" when="last">
+        <doc xml:whitespace="preserve">Emitted when D-Bus name owner is changed.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="name" transfer-ownership="none">
+            <doc xml:whitespace="preserve">The name which ower is changed.</doc>
             <type name="utf8"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="old_owner" transfer-ownership="none">
+            <doc xml:whitespace="preserve">The unique bus name of the old owner.</doc>
             <type name="utf8"/>
           </parameter>
-          <parameter name="p1" transfer-ownership="none">
+          <parameter name="new_owner" transfer-ownership="none">
+            <doc xml:whitespace="preserve">The unique bus name of the new owner.</doc>
             <type name="utf8"/>
           </parameter>
         </parameters>
@@ -2648,48 +2654,56 @@ The output string can be then shown on the screen or written to file.</doc>
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The author of component</doc>
         <type name="utf8"/>
       </property>
       <property name="description"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The description of component</doc>
         <type name="utf8"/>
       </property>
       <property name="exec"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The exec path of component</doc>
         <type name="utf8"/>
       </property>
       <property name="homepage"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The homepage of component</doc>
         <type name="utf8"/>
       </property>
       <property name="license"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The license of component</doc>
         <type name="utf8"/>
       </property>
       <property name="name"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The name of component</doc>
         <type name="utf8"/>
       </property>
       <property name="textdomain"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The textdomain of component</doc>
         <type name="utf8"/>
       </property>
       <property name="version"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The version of component</doc>
         <type name="utf8"/>
       </property>
       <field name="parent" readable="0" private="1">
@@ -3029,17 +3043,22 @@ so the section name for it is "engine/Chewing".</doc>
         <type name="Proxy" c:type="IBusProxy"/>
       </field>
       <glib:signal name="value-changed" when="last">
+        <doc xml:whitespace="preserve">Emitted when configuration value is changed.
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="section" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Section name.</doc>
             <type name="utf8"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="name" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Name of the property.</doc>
             <type name="utf8"/>
           </parameter>
-          <parameter name="p1" transfer-ownership="none">
+          <parameter name="value" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Value.</doc>
             <type name="GLib.Variant"/>
           </parameter>
         </parameters>
@@ -3749,7 +3768,8 @@ by sending a "ValueChanged" message to IBus service.</doc>
           </parameter>
         </parameters>
       </constructor>
-      <constructor name="new_type" c:identifier="ibus_engine_new_type">
+      <constructor name="new_with_type"
+                   c:identifier="ibus_engine_new_with_type">
         <doc xml:whitespace="preserve">New an IBusEngine.</doc>
         <return-value transfer-ownership="none">
           <doc xml:whitespace="preserve">A newly allocated IBusEngine.</doc>
@@ -3757,7 +3777,7 @@ by sending a "ValueChanged" message to IBus service.</doc>
         </return-value>
         <parameters>
           <parameter name="engine_type" transfer-ownership="none">
-            <doc xml:whitespace="preserve">GType of subclass of IBUS_TYPE_ENGINE</doc>
+            <doc xml:whitespace="preserve">GType of #IBusEngine.</doc>
             <type name="GType" c:type="GType"/>
           </parameter>
           <parameter name="engine_name" transfer-ownership="none">
@@ -4027,18 +4047,26 @@ utilize surrounding-text.  In that case, it must be called in
           <type name="none" c:type="void"/>
         </return-value>
         <parameters>
-          <parameter name="text" transfer-ownership="none" allow-none="1">
+          <parameter name="text"
+                     direction="out"
+                     caller-allocates="0"
+                     transfer-ownership="none"
+                     allow-none="1">
             <doc xml:whitespace="preserve">Location to store surrounding text.</doc>
             <type name="Text" c:type="IBusText**"/>
           </parameter>
           <parameter name="cursor_pos"
-                     transfer-ownership="none"
+                     direction="out"
+                     caller-allocates="0"
+                     transfer-ownership="full"
                      allow-none="1">
             <doc xml:whitespace="preserve">Cursor position in characters in @text.</doc>
             <type name="guint" c:type="guint*"/>
           </parameter>
           <parameter name="anchor_pos"
-                     transfer-ownership="none"
+                     direction="out"
+                     caller-allocates="0"
+                     transfer-ownership="full"
                      allow-none="1">
             <doc xml:whitespace="preserve">Anchor position of selection in @text.</doc>
             <type name="guint" c:type="guint*"/>
@@ -4269,179 +4297,291 @@ sink by g_object_ref_sink.)</doc>
         <type name="guint" c:type="guint"/>
       </field>
       <glib:signal name="cancel-hand-writing" when="last">
+        <doc xml:whitespace="preserve">Emitted when a hand writing operation is cancelled.
+Implement the member function cancel_hand_writing() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="n_strokes" transfer-ownership="none">
+            <doc xml:whitespace="preserve">The number of strokes to be removed. 0 means "remove all".</doc>
             <type name="guint"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="candidate-clicked" when="last">
+        <doc xml:whitespace="preserve">Emitted when candidate on lookup table is clicked.
+Implement the member function candidate_clicked() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="index" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Index of candidate be clicked.</doc>
             <type name="guint"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="button" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Mouse button.</doc>
             <type name="guint"/>
           </parameter>
-          <parameter name="p1" transfer-ownership="none">
+          <parameter name="state" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Keyboard state.</doc>
             <type name="guint"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="cursor-down" when="last">
+        <doc xml:whitespace="preserve">Emitted when the down cursor button is pressed.
+Implement the member function cursor_down() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="cursor-up" when="last">
+        <doc xml:whitespace="preserve">Emitted when the up cursor button is pressed.
+Implement the member function cursor_up() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="disable" when="last">
+        <doc xml:whitespace="preserve">Emitted when the IME is disabled.
+Implement the member function set_disable() in extended class to receive this signal.
+
+See also:  ibus_input_context_disable().
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="enable" when="last">
+        <doc xml:whitespace="preserve">Emitted when the IME is enabled.
+Implement the member function set_enable() in extended class to receive this signal.
+
+See also:  ibus_input_context_enable().
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="focus-in" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the focus.
+Implement the member function focus_in() in extended class to receive this signal.
+
+See also: ibus_input_context_focus_in()
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="focus-out" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application  lost the focus.
+Implement the member function focus_out() in extended class to receive this signal.
+
+See also: ibus_input_context_focus_out()
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="page-down" when="last">
+        <doc xml:whitespace="preserve">Emitted when the page-down button is pressed.
+Implement the member function page_down() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="page-up" when="last">
+        <doc xml:whitespace="preserve">Emitted when the page-up button is pressed.
+Implement the member function page_up() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="process-hand-writing-event" when="last">
+        <doc xml:whitespace="preserve">Emitted when a hand writing operation is cancelled.
+Implement the member function cancel_hand_writing() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="coordinates" transfer-ownership="none">
+            <doc xml:whitespace="preserve">An array of double (0.0 to 1.0) which represents a stroke (i.e. [x1, y1, x2, y2, x3, y3, ...]).</doc>
             <type name="gpointer"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="coordinates_len" transfer-ownership="none">
+            <doc xml:whitespace="preserve">The number of elements in the array.</doc>
             <type name="guint"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="process-key-event" when="last">
+        <doc xml:whitespace="preserve">Emitted when a key event is received.
+Implement the member function process_key_event() in extended class to receive this signal.
+Both the key symbol and keycode are passed to the member function.
+See ibus_input_context_process_key_event() for further explanation of
+key symbol, keycode and which to use.
+
+See also:  ibus_input_context_process_key_event().
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
+          <doc xml:whitespace="preserve">TRUE for successfully process the key; FALSE otherwise.</doc>
           <type name="gboolean"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="keyval" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Key symbol of the key press.</doc>
             <type name="guint"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="keycode" transfer-ownership="none">
+            <doc xml:whitespace="preserve">KeyCode of the key press.</doc>
             <type name="guint"/>
           </parameter>
-          <parameter name="p1" transfer-ownership="none">
+          <parameter name="state" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Key modifier flags.</doc>
             <type name="guint"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="property-activate" when="last">
+        <doc xml:whitespace="preserve">Emitted when a property is activated or change changed.
+Implement the member function property_activate() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="name" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Property name.</doc>
             <type name="utf8"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="state" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Property state.</doc>
             <type name="guint"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="property-hide" when="last">
+        <doc xml:whitespace="preserve">Emitted when a property is hidden.
+Implement the member function property_hide() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="name" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Property name.</doc>
             <type name="utf8"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="property-show" when="last">
+        <doc xml:whitespace="preserve">Emitted when a property is shown.
+Implement the member function property_side() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="name" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Property name.</doc>
             <type name="utf8"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="reset" when="last">
+        <doc xml:whitespace="preserve">Emitted when the IME is reset.
+Implement the member function reset() in extended class to receive this signal.
+
+See also:  ibus_input_context_reset().
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="set-capabilities" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application capabilities is set.
+Implement the member function set_capabilities() in extended class to receive this signal.
+
+See also:  ibus_input_context_set_capabilities().
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="caps" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Capabilities flags of IBusEngine, see #IBusCapabilite</doc>
             <type name="guint"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="set-cursor-location" when="last">
+        <doc xml:whitespace="preserve">Emitted when the location of IME is set.
+Implement the member function set_cursor_location() in extended class to receive this signal.
+
+See also:  ibus_input_context_set_cursor_location().
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="x" transfer-ownership="none">
+            <doc xml:whitespace="preserve">X coordinate of the cursor.</doc>
             <type name="gint"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="y" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Y coordinate of the cursor.</doc>
             <type name="gint"/>
           </parameter>
-          <parameter name="p1" transfer-ownership="none">
+          <parameter name="w" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Width of the cursor.</doc>
             <type name="gint"/>
           </parameter>
-          <parameter name="p2" transfer-ownership="none">
+          <parameter name="h" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Height of the cursor.</doc>
             <type name="gint"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="set-surrounding-text" when="last">
+        <doc xml:whitespace="preserve">Emitted when a surrounding text is set.
+Implement the member function set_surrounding_text() in extended class to receive this signal.
+If anchor_pos equals to cursor_pos, it means "there are no selection" or "does not support
+selection retrival".
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="text" transfer-ownership="none">
+            <doc xml:whitespace="preserve">The surrounding text.</doc>
             <type name="GObject.Object"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="cursor_pos" transfer-ownership="none">
+            <doc xml:whitespace="preserve">The cursor position on surrounding text.</doc>
             <type name="guint"/>
           </parameter>
-          <parameter name="p1" transfer-ownership="none">
+          <parameter name="anchor_pos" transfer-ownership="none">
+            <doc xml:whitespace="preserve">The anchor position on selection area.</doc>
             <type name="guint"/>
           </parameter>
         </parameters>
@@ -4922,6 +5062,13 @@ ibus_engine_desc_new_varargs("name", "ibus-foo", "language", "us", NULL)</doc>
           <type name="guint" c:type="guint"/>
         </return-value>
       </method>
+      <method name="get_setup" c:identifier="ibus_engine_desc_get_setup">
+        <doc xml:whitespace="preserve">Return the setup property in IBusEngineDesc. It should not be freed.</doc>
+        <return-value transfer-ownership="none">
+          <doc xml:whitespace="preserve">setup property in IBusEngineDesc</doc>
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
       <method name="get_symbol" c:identifier="ibus_engine_desc_get_symbol">
         <doc xml:whitespace="preserve">Return the symbol property in IBusEngineDesc. It should not be freed.</doc>
         <return-value transfer-ownership="none">
@@ -4950,66 +5097,84 @@ The result will be append to GString specified in @output.</doc>
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The author of engine description</doc>
         <type name="utf8"/>
       </property>
       <property name="description"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The description of engine description</doc>
         <type name="utf8"/>
       </property>
       <property name="hotkeys"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The hotkeys of engine description</doc>
         <type name="utf8"/>
       </property>
       <property name="icon"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The icon of engine description</doc>
         <type name="utf8"/>
       </property>
       <property name="language"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The language of engine description</doc>
         <type name="utf8"/>
       </property>
       <property name="layout"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The layout of engine description</doc>
         <type name="utf8"/>
       </property>
       <property name="license"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The license of engine description</doc>
         <type name="utf8"/>
       </property>
       <property name="longname"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The longname of engine description</doc>
         <type name="utf8"/>
       </property>
       <property name="name"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The name of engine description</doc>
         <type name="utf8"/>
       </property>
       <property name="rank"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The rank of engine description</doc>
         <type name="guint"/>
+      </property>
+      <property name="setup"
+                writable="1"
+                construct-only="1"
+                transfer-ownership="none">
+        <doc xml:whitespace="preserve">The exec lists of the engine setup command</doc>
+        <type name="utf8"/>
       </property>
       <property name="symbol"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The symbol chars of engine description instead of icon image</doc>
         <type name="utf8"/>
       </property>
       <field name="parent">
@@ -5231,12 +5396,19 @@ The result will be append to GString specified in @output.</doc>
       <field name="priv" readable="0" private="1">
         <type name="FactoryPrivate" c:type="IBusFactoryPrivate*"/>
       </field>
-      <glib:signal name="create-engine" when="last" introspectable="0">
-        <return-value>
+      <glib:signal name="create-engine" when="last">
+        <doc xml:whitespace="preserve">The ::create-engine signal is a signal to create IBusEngine
+with @engine_name, which gets emitted when IBusFactory
+received CreateEngine dbus method. The callback functions
+will be called until a callback returns a non-null object
+of IBusEngine.</doc>
+        <return-value transfer-ownership="none">
+          <doc xml:whitespace="preserve">An IBusEngine</doc>
           <type name="Engine"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="engine_name" transfer-ownership="none">
+            <doc xml:whitespace="preserve">the engine_name which received the signal</doc>
             <type name="utf8"/>
           </parameter>
         </parameters>
@@ -6338,14 +6510,20 @@ The hotkey is in string format, such like &lt;constant&gt;Control+Shift+A&lt;/co
         <type name="Serializable" c:type="IBusSerializable"/>
       </field>
       <glib:signal name="trigger" when="last" detailed="1">
+        <doc xml:whitespace="preserve">Emitted when a hotkey is pressed and the hotkey is in profile.
+Implement the member function trigger() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;The last parameter, user_data is not actually a valid parameter. It is displayed because of GtkDoc bug.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="event" transfer-ownership="none">
+            <doc xml:whitespace="preserve">An event in GQuark.</doc>
             <type name="guint"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="user_data" transfer-ownership="none">
+            <doc xml:whitespace="preserve">User data for callback.</doc>
             <type name="gpointer"/>
           </parameter>
         </parameters>
@@ -7181,115 +7359,151 @@ An asynchronous IPC will be performed.</doc>
         <type name="Proxy" c:type="IBusProxy"/>
       </field>
       <glib:signal name="commit-text" when="last">
+        <doc xml:whitespace="preserve">Emitted when the text is going to be committed.
+
+(Note: The text object is floating, and it will be released after the signal.
+If singal handler want to keep the object, the handler should use g_object_ref_sink()
+to get the ownership of the object.)</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="text" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Text to be committed.</doc>
             <type name="Text"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="cursor-down-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted to select next candidate of lookup table.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="cursor-up-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted to select previous candidate of lookup table.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="delete-surrounding-text" when="last">
+        <doc xml:whitespace="preserve">Emitted to delete surrounding text event from IME to client of IME.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="offset" transfer-ownership="none">
+            <doc xml:whitespace="preserve">the character offset from the cursor position of the text to be deleted. A negative value indicates a position before the cursor.</doc>
             <type name="gint"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="n_chars" transfer-ownership="none">
+            <doc xml:whitespace="preserve">the number of characters to be deleted.</doc>
             <type name="guint"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="disabled" when="last">
+        <doc xml:whitespace="preserve">Emitted when an IME is disabled.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="enabled" when="last">
+        <doc xml:whitespace="preserve">Emitted when an IME is enabled.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="forward-key-event" when="last">
+        <doc xml:whitespace="preserve">Emitted to forward key event from IME to client of IME.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="keyval" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Key symbol of the keyboard event.</doc>
             <type name="guint"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="keycode" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Key symbol of the keyboard event.</doc>
             <type name="guint"/>
           </parameter>
-          <parameter name="p1" transfer-ownership="none">
+          <parameter name="modifiers" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Key modifier flags.</doc>
             <type name="guint"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="hide-auxiliary-text" when="last">
+        <doc xml:whitespace="preserve">Emitted to hide auxiliary text.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="hide-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted to hide lookup table.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="hide-preedit-text" when="last">
+        <doc xml:whitespace="preserve">Emitted to hide preedit text.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="page-down-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted to view the next page of lookup table.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="page-up-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted to view the previous page of lookup table.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="register-properties" when="last">
+        <doc xml:whitespace="preserve">Emitted to register the properties in @props.
+
+(Note: The props object is floating, and it will be released after the signal.
+If singal handler want to keep the object, the handler should use g_object_ref_sink()
+to get the ownership of the object.)</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="props" transfer-ownership="none">
+            <doc xml:whitespace="preserve">An IBusPropList that contains properties.</doc>
             <type name="PropList"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="show-auxiliary-text" when="last">
+        <doc xml:whitespace="preserve">Emitted to show auxiliary text.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="show-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted to show lookup table.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="show-preedit-text" when="last">
+        <doc xml:whitespace="preserve">Emitted to show preedit text.</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="update-auxiliary-text" when="last">
+        <doc xml:whitespace="preserve">Emitted to hide auxilary text.
+
+(Note: The text object is floating, and it will be released after the signal.
+If singal handler want to keep the object, the handler should use g_object_ref_sink()
+to get the ownership of the object.)</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -7303,40 +7517,61 @@ An asynchronous IPC will be performed.</doc>
         </parameters>
       </glib:signal>
       <glib:signal name="update-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted to update lookup table.
+
+(Note: The table object is floating, and it will be released after the signal.
+If singal handler want to keep the object, the handler should use g_object_ref_sink()
+to get the ownership of the object.)</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="table" transfer-ownership="none">
+            <doc xml:whitespace="preserve">An IBusLookupTable to be updated.</doc>
             <type name="LookupTable"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="visible" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Whether the table should be visible.</doc>
             <type name="gboolean"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="update-preedit-text" when="last">
+        <doc xml:whitespace="preserve">Emitted to update preedit text.
+
+(Note: The text object is floating, and it will be released after the signal.
+If singal handler want to keep the object, the handler should use g_object_ref_sink()
+to get the ownership of the object.)</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="text" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Text to be updated.</doc>
             <type name="Text"/>
           </parameter>
-          <parameter name="p0" transfer-ownership="none">
+          <parameter name="cursor_pos" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Cursor position.</doc>
             <type name="guint"/>
           </parameter>
-          <parameter name="p1" transfer-ownership="none">
+          <parameter name="visible" transfer-ownership="none">
+            <doc xml:whitespace="preserve">Whether the update is visible.</doc>
             <type name="gboolean"/>
           </parameter>
         </parameters>
       </glib:signal>
       <glib:signal name="update-property" when="last">
+        <doc xml:whitespace="preserve">Emitted to update the property @prop.
+
+(Note: The prop object is floating, and it will be released after the signal.
+If singal handler want to keep the object, the handler should use g_object_ref_sink()
+to get the ownership of the object.)</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
         <parameters>
-          <parameter name="object" transfer-ownership="none">
+          <parameter name="prop" transfer-ownership="none">
+            <doc xml:whitespace="preserve">The IBusProperty to be updated.</doc>
             <type name="Property"/>
           </parameter>
         </parameters>
@@ -7967,7 +8202,7 @@ non-numeric keys such as "asdfghjkl;".</doc>
     <constant name="MAJOR_VERSION" value="1" c:type="IBUS_MAJOR_VERSION">
       <type name="gint" c:type="gint"/>
     </constant>
-    <constant name="MICRO_VERSION" value="0" c:type="IBUS_MICRO_VERSION">
+    <constant name="MICRO_VERSION" value="1" c:type="IBUS_MICRO_VERSION">
       <type name="gint" c:type="gint"/>
     </constant>
     <constant name="MINOR_VERSION" value="4" c:type="IBUS_MINOR_VERSION">
@@ -8224,6 +8459,11 @@ release their references. It does not free the object.</doc>
         <type name="ObjectPrivate" c:type="IBusObjectPrivate*"/>
       </field>
       <glib:signal name="destroy" when="last">
+        <doc xml:whitespace="preserve">Destroy and free an IBusObject
+
+See also:  ibus_object_destroy().
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -8834,16 +9074,28 @@ by sending a "ValueChanged" message to IBus service.</doc>
         <type name="Service" c:type="IBusService"/>
       </field>
       <glib:signal name="cursor-down-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the cursor-down-lookup-table.
+Implement the member function cursor_down_lookup_table() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="cursor-up-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the cursor-up-lookup-table.
+Implement the member function cursor_up_lookup_table() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="focus-in" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the focus-in.
+Implement the member function focus_in() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -8854,6 +9106,10 @@ by sending a "ValueChanged" message to IBus service.</doc>
         </parameters>
       </glib:signal>
       <glib:signal name="focus-out" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the focus-out.
+Implement the member function focus_out() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -8864,36 +9120,64 @@ by sending a "ValueChanged" message to IBus service.</doc>
         </parameters>
       </glib:signal>
       <glib:signal name="hide-auxiliary-text" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the hide-auxiliary-text.
+Implement the member function hide_auxiliary_text() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="hide-language-bar" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the hide-language-bar.
+Implement the member function hide_language_bar() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="hide-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the hide-lookup-table.
+Implement the member function hide_lookup_table() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="hide-preedit-text" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the hide-preedit-text.
+Implement the member function hide_preedit_text() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="page-down-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the page-down-lookup-table.
+Implement the member function page_down_lookup_table() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="page-up-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the page-up-lookup-table.
+Implement the member function page_up_lookup_table() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="register-properties" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the register-properties.
+Implement the member function register_properties() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -8904,11 +9188,19 @@ by sending a "ValueChanged" message to IBus service.</doc>
         </parameters>
       </glib:signal>
       <glib:signal name="reset" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the reset.
+Implement the member function reset() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="set-cursor-location" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the set-cursor-location.
+Implement the member function set_cursor_location() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -8928,36 +9220,64 @@ by sending a "ValueChanged" message to IBus service.</doc>
         </parameters>
       </glib:signal>
       <glib:signal name="show-auxiliary-text" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the show-auxiliary-text.
+Implement the member function show_auxiliary_text() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="show-language-bar" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the show-language-bar.
+Implement the member function show_language_bar() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="show-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the show-lookup-table.
+Implement the member function show_lookup_table() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="show-preedit-text" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the show-preedit-text.
+Implement the member function show_preedit_text() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="start-setup" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the start-setup.
+Implement the member function start_setup() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="state-changed" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the state-changed.
+Implement the member function state_changed() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
       <glib:signal name="update-auxiliary-text" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the update-auxiliary-text.
+Implement the member function update_auxiliary_text() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -8971,6 +9291,10 @@ by sending a "ValueChanged" message to IBus service.</doc>
         </parameters>
       </glib:signal>
       <glib:signal name="update-lookup-table" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the update-lookup-table.
+Implement the member function update_lookup_table() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -8984,6 +9308,10 @@ by sending a "ValueChanged" message to IBus service.</doc>
         </parameters>
       </glib:signal>
       <glib:signal name="update-preedit-text" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the update-preedit-text.
+Implement the member function update_preedit_text() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -9000,6 +9328,10 @@ by sending a "ValueChanged" message to IBus service.</doc>
         </parameters>
       </glib:signal>
       <glib:signal name="update-property" when="last">
+        <doc xml:whitespace="preserve">Emitted when the client application get the update-property.
+Implement the member function update_property() in extended class to receive this signal.
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -9711,9 +10043,7 @@ No effect on other types.</doc>
         </return-value>
       </method>
       <method name="get_prop_type" c:identifier="ibus_property_get_prop_type">
-        <doc xml:whitespace="preserve">Get the type of IBusProperty.</doc>
         <return-value transfer-ownership="none">
-          <doc xml:whitespace="preserve">the type of IBusProperty.</doc>
           <type name="PropType" c:type="IBusPropType"/>
         </return-value>
       </method>
@@ -9851,35 +10181,52 @@ or holds new values for @prop.</doc>
           </parameter>
         </parameters>
       </method>
-      <field name="parent">
+      <property name="icon" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="key"
+                writable="1"
+                construct-only="1"
+                transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="label"
+                writable="1"
+                construct="1"
+                transfer-ownership="none">
+        <type name="Text"/>
+      </property>
+      <property name="prop-type"
+                writable="1"
+                construct-only="1"
+                transfer-ownership="none">
+        <type name="PropType"/>
+      </property>
+      <property name="sensitive" writable="1" transfer-ownership="none">
+        <type name="gboolean"/>
+      </property>
+      <property name="state" writable="1" transfer-ownership="none">
+        <type name="PropState"/>
+      </property>
+      <property name="sub-props" writable="1" transfer-ownership="none">
+        <type name="PropList"/>
+      </property>
+      <property name="tooltip" writable="1" transfer-ownership="none">
+        <type name="Text"/>
+      </property>
+      <property name="visible" writable="1" transfer-ownership="none">
+        <type name="gboolean"/>
+      </property>
+      <field name="parent" readable="0" private="1">
         <type name="Serializable" c:type="IBusSerializable"/>
       </field>
-      <field name="key">
-        <type name="utf8" c:type="gchar*"/>
+      <field name="priv" readable="0" private="1">
+        <type name="PropertyPrivate" c:type="IBusPropertyPrivate*"/>
       </field>
-      <field name="icon">
-        <type name="utf8" c:type="gchar*"/>
-      </field>
-      <field name="label">
-        <type name="Text" c:type="IBusText*"/>
-      </field>
-      <field name="tooltip">
-        <type name="Text" c:type="IBusText*"/>
-      </field>
-      <field name="sensitive">
-        <type name="gboolean" c:type="gboolean"/>
-      </field>
-      <field name="visible">
-        <type name="gboolean" c:type="gboolean"/>
-      </field>
-      <field name="type">
-        <type name="guint" c:type="guint"/>
-      </field>
-      <field name="state">
-        <type name="guint" c:type="guint"/>
-      </field>
-      <field name="sub_props">
-        <type name="PropList" c:type="IBusPropList*"/>
+      <field name="pdummy" readable="0" private="1">
+        <array zero-terminated="0" c:type="gpointer" fixed-size="7">
+          <type name="gpointer" c:type="gpointer"/>
+        </array>
       </field>
     </class>
     <record name="PropertyClass"
@@ -9888,6 +10235,8 @@ or holds new values for @prop.</doc>
       <field name="parent">
         <type name="SerializableClass" c:type="IBusSerializableClass"/>
       </field>
+    </record>
+    <record name="PropertyPrivate" c:type="IBusPropertyPrivate" disguised="1">
     </record>
     <class name="Proxy"
            c:symbol-prefix="proxy"
@@ -9930,6 +10279,11 @@ destroy signal, you might have to call something like 'g_object_unref(the_proxy)
         <type name="gboolean" c:type="gboolean"/>
       </field>
       <glib:signal name="destroy" when="last">
+        <doc xml:whitespace="preserve">Destroy and free an IBusProxy
+
+See also:  ibus_proxy_destroy().
+
+&lt;note&gt;&lt;para&gt;Argument @user_data is ignored in this function.&lt;/para&gt;&lt;/note&gt;</doc>
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -10556,12 +10910,14 @@ Return %TRUE if succeed.</doc>
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The connection of service object.</doc>
         <type name="Gio.DBusConnection"/>
       </property>
       <property name="object-path"
                 writable="1"
                 construct-only="1"
                 transfer-ownership="none">
+        <doc xml:whitespace="preserve">The path of service object.</doc>
         <type name="utf8"/>
       </property>
       <field name="parent" readable="0" private="1">
@@ -10898,6 +11254,17 @@ it does not count by bytes but characters instead.</doc>
           <doc xml:whitespace="preserve">the text in @text.</doc>
           <type name="utf8" c:type="gchar*"/>
         </return-value>
+      </method>
+      <method name="set_attributes" c:identifier="ibus_text_set_attributes">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="attrs" transfer-ownership="none">
+            <doc xml:whitespace="preserve">An IBusAttrList</doc>
+            <type name="AttrList" c:type="IBusAttrList*"/>
+          </parameter>
+        </parameters>
       </method>
       <field name="parent">
         <type name="Serializable" c:type="IBusSerializable"/>

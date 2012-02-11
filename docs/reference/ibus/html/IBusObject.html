@@ -8,7 +8,7 @@
 <link rel="up" href="ch06.html" title="Internal">
 <link rel="prev" href="ibus-ibuserror.html" title="ibuserror">
 <link rel="next" href="ibus-ibusshare.html" title="ibusshare">
-<meta name="generator" content="GTK-Doc V1.17 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -45,12 +45,12 @@ Stable, unless otherwise indicated
 </div>
 <div class="refsynopsisdiv">
 <a name="IBusObject.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">#define             <a class="link" href="IBusObject.html#IBUS-OBJECT-IN-DESTRUCTION:CAPS" title="IBUS_OBJECT_IN_DESTRUCTION()">IBUS_OBJECT_IN_DESTRUCTION</a>          (obj)
-#define             <a class="link" href="IBusObject.html#IBUS-OBJECT-DESTROYED:CAPS" title="IBUS_OBJECT_DESTROYED()">IBUS_OBJECT_DESTROYED</a>               (obj)
+<pre class="synopsis">#define             <a class="link" href="IBusObject.html#IBUS-OBJECT-DESTROYED:CAPS" title="IBUS_OBJECT_DESTROYED()">IBUS_OBJECT_DESTROYED</a>               (obj)
+#define             <a class="link" href="IBusObject.html#IBUS-OBJECT-IN-DESTRUCTION:CAPS" title="IBUS_OBJECT_IN_DESTRUCTION()">IBUS_OBJECT_IN_DESTRUCTION</a>          (obj)
 struct              <a class="link" href="IBusObject.html#IBusObject-struct" title="struct IBusObject">IBusObject</a>;
 struct              <a class="link" href="IBusObject.html#IBusObjectClass" title="struct IBusObjectClass">IBusObjectClass</a>;
-<a class="link" href="IBusObject.html" title="IBusObject"><span class="returnvalue">IBusObject</span></a> *        <a class="link" href="IBusObject.html#ibus-object-new" title="ibus_object_new ()">ibus_object_new</a>                     (<em class="parameter"><code><span class="type">void</span></code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="IBusObject.html#ibus-object-destroy" title="ibus_object_destroy ()">ibus_object_destroy</a>                 (<em class="parameter"><code><a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a> *object</code></em>);
+<a class="link" href="IBusObject.html" title="IBusObject"><span class="returnvalue">IBusObject</span></a> *        <a class="link" href="IBusObject.html#ibus-object-new" title="ibus_object_new ()">ibus_object_new</a>                     (<em class="parameter"><code><span class="type">void</span></code></em>);
 </pre>
 </div>
 <div class="refsect1">
@@ -80,16 +80,16 @@ IBusObject is the base object for all objects in IBus.
 <div class="refsect1">
 <a name="IBusObject.details"></a><h2>Details</h2>
 <div class="refsect2">
-<a name="IBUS-OBJECT-IN-DESTRUCTION:CAPS"></a><h3>IBUS_OBJECT_IN_DESTRUCTION()</h3>
-<pre class="programlisting">#define IBUS_OBJECT_IN_DESTRUCTION(obj)    (IBUS_OBJECT_FLAGS (obj) &amp; IBUS_IN_DESTRUCTION)
+<a name="IBUS-OBJECT-DESTROYED:CAPS"></a><h3>IBUS_OBJECT_DESTROYED()</h3>
+<pre class="programlisting">#define IBUS_OBJECT_DESTROYED(obj)         (IBUS_OBJECT_FLAGS (obj) &amp; IBUS_DESTROYED)
 </pre>
 <p>
 </p>
 </div>
 <hr>
 <div class="refsect2">
-<a name="IBUS-OBJECT-DESTROYED:CAPS"></a><h3>IBUS_OBJECT_DESTROYED()</h3>
-<pre class="programlisting">#define IBUS_OBJECT_DESTROYED(obj)         (IBUS_OBJECT_FLAGS (obj) &amp; IBUS_DESTROYED)
+<a name="IBUS-OBJECT-IN-DESTRUCTION:CAPS"></a><h3>IBUS_OBJECT_IN_DESTRUCTION()</h3>
+<pre class="programlisting">#define IBUS_OBJECT_IN_DESTRUCTION(obj)    (IBUS_OBJECT_FLAGS (obj) &amp; IBUS_IN_DESTRUCTION)
 </pre>
 <p>
 </p>
@@ -118,21 +118,6 @@ private to the <a class="link" href="IBusObject.html" title="IBusObject"><span c
 </div>
 <hr>
 <div class="refsect2">
-<a name="ibus-object-new"></a><h3>ibus_object_new ()</h3>
-<pre class="programlisting"><a class="link" href="IBusObject.html" title="IBusObject"><span class="returnvalue">IBusObject</span></a> *        ibus_object_new                     (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
-<p>
-Creates a new instance of an <a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a>.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody><tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>a new instance of <a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a>.</td>
-</tr></tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
 <a name="ibus-object-destroy"></a><h3>ibus_object_destroy ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                ibus_object_destroy                 (<em class="parameter"><code><a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a> *object</code></em>);</pre>
 <p>
@@ -149,6 +134,21 @@ release their references. It does not free the object.
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
 <td>an <a class="link" href="IBusObject.html" title="IBusObject"><span class="type">IBusObject</span></a> to destroy.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-object-new"></a><h3>ibus_object_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusObject.html" title="IBusObject"><span class="returnvalue">IBusObject</span></a> *        ibus_object_new                     (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+New an IBusObject.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusObject</td>
 </tr></tbody>
 </table></div>
 </div>
@@ -191,6 +191,6 @@ See also:  <a class="link" href="IBusObject.html#ibus-object-destroy" title="ibu
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.17</div>
+          Generated by GTK-Doc V1.18</div>
 </body>
 </html>

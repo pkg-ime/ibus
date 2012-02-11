@@ -1,0 +1,65 @@
+<!-- ##### SECTION Title ##### -->
+IBusFactory
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusFactory ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusFactory::create-engine ##### -->
+<para>
+
+</para>
+
+@ibusfactory: the object which received the signal.
+@arg1: 
+@Returns: 
+
+<!-- ##### STRUCT IBusFactoryClass ##### -->
+<para>
+
+</para>
+
+@create_engine: 
+
+<!-- ##### FUNCTION ibus_factory_add_engine ##### -->
+<para>
+
+</para>
+
+@factory: 
+@engine_name: 
+@engine_type: 
+
+
+<!-- ##### FUNCTION ibus_factory_new ##### -->
+<para>
+
+</para>
+
+@connection: 
+@Returns: 
+
+

@@ -1,0 +1,250 @@
+<!-- ##### SECTION Title ##### -->
+IBusEngineDesc
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusEngineDesc ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ARG IBusEngineDesc:author ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusEngineDesc:description ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusEngineDesc:hotkeys ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusEngineDesc:icon ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusEngineDesc:language ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusEngineDesc:layout ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusEngineDesc:license ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusEngineDesc:longname ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusEngineDesc:name ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusEngineDesc:rank ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusEngineDesc:setup ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusEngineDesc:symbol ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT IBusEngineDescClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_engine_desc_get_author ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_get_description ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_get_hotkeys ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_get_icon ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_get_language ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_get_layout ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_get_license ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_get_longname ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_get_name ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_get_rank ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_get_setup ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_get_symbol ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_new ##### -->
+<para>
+
+</para>
+
+@name: 
+@longname: 
+@description: 
+@language: 
+@license: 
+@author: 
+@icon: 
+@layout: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_new_from_xml_node ##### -->
+<para>
+
+</para>
+
+@node: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_new_varargs ##### -->
+<para>
+
+</para>
+
+@first_property_name: 
+@...: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_engine_desc_output ##### -->
+<para>
+
+</para>
+
+@info: 
+@output: 
+@indent: 
+
+

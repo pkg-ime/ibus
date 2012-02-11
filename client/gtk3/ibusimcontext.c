@@ -273,11 +273,17 @@ _request_surrounding_text (IBusIMContext *context)
 {
     if (context && context->enable &&
         (context->caps & IBUS_CAP_SURROUNDING_TEXT) != 0 &&
+        context->ibuscontext != NULL &&
         ibus_input_context_needs_surrounding_text (context->ibuscontext)) {
         gboolean return_value;
         IDEBUG ("requesting surrounding text");
         g_signal_emit (context, _signal_retrieve_surrounding_id, 0,
                        &return_value);
+        if (!return_value) {
+            context->caps &= ~IBUS_CAP_SURROUNDING_TEXT;
+            ibus_input_context_set_capabilities (context->ibuscontext,
+                                                 context->caps);
+        }
     }
 }
 
@@ -733,6 +739,19 @@ ibus_im_context_focus_in (GtkIMContext *context)
 
     if (ibusimcontext->has_focus)
         return;
+
+    /* don't set focus on password entry */
+    if (ibusimcontext->client_window != NULL) {
+        GtkWidget *widget;
+
+        gdk_window_get_user_data (ibusimcontext->client_window,
+                                  (gpointer *)&widget);
+
+        if (GTK_IS_ENTRY (widget) &&
+            !gtk_entry_get_visibility (GTK_ENTRY (widget))) {
+            return;
+        }
+    }
 
     if (_focus_im_context != NULL) {
         g_assert (_focus_im_context != context);

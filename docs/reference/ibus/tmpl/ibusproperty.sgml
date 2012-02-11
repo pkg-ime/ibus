@@ -1,0 +1,287 @@
+<!-- ##### SECTION Title ##### -->
+IBusProperty
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusPropList ##### -->
+<para>
+
+</para>
+
+@properties: 
+
+<!-- ##### STRUCT IBusPropListClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### ENUM IBusPropState ##### -->
+<para>
+
+</para>
+
+@PROP_STATE_UNCHECKED: 
+@PROP_STATE_CHECKED: 
+@PROP_STATE_INCONSISTENT: 
+
+<!-- ##### ENUM IBusPropType ##### -->
+<para>
+
+</para>
+
+@PROP_TYPE_NORMAL: 
+@PROP_TYPE_TOGGLE: 
+@PROP_TYPE_RADIO: 
+@PROP_TYPE_MENU: 
+@PROP_TYPE_SEPARATOR: 
+
+<!-- ##### STRUCT IBusProperty ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ARG IBusProperty:icon ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusProperty:key ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusProperty:label ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusProperty:prop-type ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusProperty:sensitive ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusProperty:state ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusProperty:sub-props ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusProperty:tooltip ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG IBusProperty:visible ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT IBusPropertyClass ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### FUNCTION ibus_property_get_icon ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_get_key ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_get_label ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_get_prop_type ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_get_sensitive ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_get_state ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_get_sub_props ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_get_tooltip ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_get_visible ##### -->
+<para>
+
+</para>
+
+@prop: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_new ##### -->
+<para>
+
+</para>
+
+@key: 
+@type: 
+@label: 
+@icon: 
+@tooltip: 
+@sensitive: 
+@visible: 
+@state: 
+@prop_list: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_property_set_icon ##### -->
+<para>
+
+</para>
+
+@prop: 
+@icon: 
+
+
+<!-- ##### FUNCTION ibus_property_set_label ##### -->
+<para>
+
+</para>
+
+@prop: 
+@label: 
+
+
+<!-- ##### FUNCTION ibus_property_set_sensitive ##### -->
+<para>
+
+</para>
+
+@prop: 
+@sensitive: 
+
+
+<!-- ##### FUNCTION ibus_property_set_state ##### -->
+<para>
+
+</para>
+
+@prop: 
+@state: 
+
+
+<!-- ##### FUNCTION ibus_property_set_sub_props ##### -->
+<para>
+
+</para>
+
+@prop: 
+@prop_list: 
+
+
+<!-- ##### FUNCTION ibus_property_set_tooltip ##### -->
+<para>
+
+</para>
+
+@prop: 
+@tooltip: 
+
+
+<!-- ##### FUNCTION ibus_property_set_visible ##### -->
+<para>
+
+</para>
+
+@prop: 
+@visible: 
+
+
+<!-- ##### FUNCTION ibus_property_update ##### -->
+<para>
+
+</para>
+
+@prop: 
+@prop_update: 
+@Returns: 
+
+
