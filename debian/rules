@@ -5,9 +5,12 @@
 override_dh_auto_configure:
 	dh_auto_configure -- \
 		LDFLAGS="-Wl,--as-needed" \
-		--enable-static \
+		--disable-static \
+		--enable-gtk2 \
 		--enable-gtk3 \
-		--enable-surrounding-text \
+		--enable-xim \
+		--disable-gtk-doc \
+		--enable-introspection \
 		--libexec=/usr/lib/$(DEB_BUILD_MULTIARCH)/ibus
 
 override_dh_makeshlibs:
