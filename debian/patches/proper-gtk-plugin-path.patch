@@ -5,11 +5,9 @@ Description: Multi-arch build script backport from Ubuntu
  against the multiarch-enabled version of gtk.
 Author: Steve Langasek <steve.langasek@canonical.com>
 
-Index: ibus-1.4.0/configure.ac
-===================================================================
---- ibus-1.4.0.orig/configure.ac	2011-12-08 18:09:52.752499052 -0800
-+++ ibus-1.4.0/configure.ac	2011-12-08 18:25:24.484738739 -0800
-@@ -186,7 +186,8 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -189,7 +189,8 @@
  if test x"$enable_gtk2" = x"yes"; then
      # check for gdk2
      gtk2_binary_version=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
@@ -19,7 +17,7 @@ Index: ibus-1.4.0/configure.ac
  
      PKG_CHECK_MODULES(GDK2, [
          gdk-2.0
-@@ -202,7 +203,8 @@
+@@ -205,7 +206,8 @@
      ])
  
      gtk3_binary_version=`$PKG_CONFIG --variable=gtk_binary_version gtk+-3.0`
@@ -29,11 +27,9 @@ Index: ibus-1.4.0/configure.ac
  
      PKG_CHECK_MODULES(GDK3, [
          gdk-3.0
-Index: ibus-1.4.0/configure
-===================================================================
---- ibus-1.4.0.orig/configure	2011-12-08 18:09:52.740498894 -0800
-+++ ibus-1.4.0/configure	2011-12-08 18:25:40.144945175 -0800
-@@ -15207,7 +15207,8 @@
+--- a/configure
++++ b/configure
+@@ -15263,7 +15263,8 @@
  if test x"$enable_gtk2" = x"yes"; then
      # check for gdk2
      gtk2_binary_version=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
@@ -43,7 +39,7 @@ Index: ibus-1.4.0/configure
  
  
  pkg_failed=no
-@@ -15435,7 +15436,8 @@
+@@ -15491,7 +15492,8 @@
  fi
  
      gtk3_binary_version=`$PKG_CONFIG --variable=gtk_binary_version gtk+-3.0`
